@@ -1,0 +1,49 @@
+{# formatting borrowed from https://github.com/python/cpython/blob/master/Doc/tools/templates/indexcontent.html #}
+{% extends "layout.html" %}
+{%- block htmltitle -%}
+<title>{{ shorttitle }}</title>
+{%- endblock -%}
+{% block body %}
+  <h1>{{ docstitle|e }}</h1>
+  <p>
+  Welcome! This is the documentation for Chameleon Cloud.
+  </p>
+
+  <p><strong>Parts of the documentation:</strong></p>
+  <table class="contentstable" align="center"><tr>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("getting-started") }}">Getting Started</a><br/>
+         <span class="linkdescr">start here</span></p>
+    </td>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("accounts/index") }}">Users and Projects</a><br/>
+         <span class="linkdescr">creating accounts and getting allocations</span></p>
+    </td>
+    </tr>
+    <tr>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("index") }}">Using Chamelon</a><br/>
+         <span class="linkdescr">the web interface</span></p>
+    </td>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("index") }}">Command Line</a><br/>
+         <span class="linkdescr">cli</span></p>
+    </td></tr>
+  </table>
+
+  <p><strong>Indices and tables:</strong></p>
+  <table class="contentstable" align="center"><tr>
+    <!-- <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("genindex") }}">General Index</a><br/>
+         <span class="linkdescr">all functions, classes, terms</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("glossary") }}">Glossary</a><br/>
+         <span class="linkdescr">the most important terms explained</span></p>
+    </td>  -->
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("search") }}">Search page</a><br/>
+         <span class="linkdescr">search this documentation</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("contents") }}">Complete Table of Contents</a><br/>
+         <span class="linkdescr">lists all sections and subsections</span></p>
+    </td></tr>
+  </table>
+{% endblock %}
