@@ -9,6 +9,10 @@ Quickstart
 2. Install dependencies ``pip install -r requirements.txt``
 3. Build using ``make html`` (Mac/Linux) or ``make.bat html`` (Windows)
 
+If you ``pip install sphinx-autobuilder``, you can use ``make autohtml`` which
+will start a server that watches for source changes and will rebuild/refresh
+automatically. Go to http://localhost:8000/ to see its output.
+
 reStructuredText help
 ---------------------
 
