@@ -1,0 +1,13 @@
+{%- if show_source and has_source and sourcename %}
+<div role="note" aria-label="source link">
+    <h3>{{ _('This Page') }}</h3>
+    <!-- <h4>{{ _('Sources') }}</h4> -->
+    <ul class="this-page-menu">
+        <li>
+            <a href="https://github.com/ChameleonCloud/docs/blob/master/source/{{ sourcename|replace('.rst.txt', '.rst') }}"
+                rel="nofollow">{{ _('Show Source') }}
+            </a>
+        </li>
+    </ul>
+</div>
+{%- endif %}

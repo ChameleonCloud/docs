@@ -17,9 +17,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
+import os
+import sys
 # sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('_ext'))
 
 
 # -- General configuration ------------------------------------------------
@@ -47,7 +48,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The master toctree document.
-# master_doc = 'index'
+master_doc = 'contents'
 
 # General information about the project.
 project = 'Chameleon Cloud Documentation'
@@ -84,16 +85,24 @@ todo_include_todos = True
 
 # -- Options for HTML output ----------------------------------------------
 
+html_title = 'Chameleon Cloud Documentation'
+html_short_title = 'Chameleon Documentation'
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
-html_theme = 'nature'
+
+# html_theme = 'nature'
+# html_theme = 'alabaster'
+# html_theme = 'classic'
+html_theme = 'sphinxdoc'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    # 'logo': 'chameleon64.png' # alabaster only
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -107,8 +116,11 @@ html_static_path = ['_static']
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
     '**': [
+        # 'about.html', # alabaster
+        # 'navigation.html',
         'relations.html',  # needs 'show_related': True theme option to display
         'searchbox.html',
+        'sourcelink.html',
     ]
 }
 
