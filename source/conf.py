@@ -94,7 +94,8 @@ html_short_title = 'Chameleon Documentation'
 # html_theme = 'nature'
 # html_theme = 'alabaster'
 # html_theme = 'classic'
-html_theme = 'sphinxdoc'
+#html_theme = 'sphinxdoc'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -121,6 +122,7 @@ html_sidebars = {
         'relations.html',  # needs 'show_related': True theme option to display
         'searchbox.html',
         'sourcelink.html',
+        'globaltoc.html',
     ]
 }
 
