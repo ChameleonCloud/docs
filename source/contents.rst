@@ -23,7 +23,8 @@ Welcome to Chameleon Cloud Documentation's documentation!
    technical/project
    technical/dashboard
    technical/cli
-   technical/resources
+   technical/discovery
+   technical/reservations
    technical/instances
    technical/snapshot
    technical/metrics

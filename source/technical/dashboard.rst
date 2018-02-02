@@ -1,9 +1,9 @@
 ==============================
-The Chameleon Dashboard
+The Dashboard
 ==============================
 
 __________________________
-Project overview
+Overview
 __________________________
 
 
@@ -12,10 +12,6 @@ Key Pair Management
 __________________________
 
 __________________________
-Managing project reosurces
+Managing project resources
 __________________________
 
-
-__________________________
-OpenStack RC file
-__________________________
