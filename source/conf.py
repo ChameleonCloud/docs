@@ -126,9 +126,9 @@ html_sidebars = {
     ]
 }
 
-html_additional_pages = {
-    'index': 'indexcontent.html',
-}
+#html_additional_pages = {
+#    'index': 'indexcontent.html',
+#}
 
 # -- Options for HTMLHelp output ------------------------------------------
 

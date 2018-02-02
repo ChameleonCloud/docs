@@ -8,10 +8,17 @@ Welcome to Chameleon Cloud Documentation's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Introduction
 
-   getting-started
-   accounts/index
+   index
+   getting-started/index
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Technical Guide
+
+   technical/*
 
 
 Indices and tables
