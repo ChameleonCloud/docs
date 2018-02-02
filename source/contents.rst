@@ -13,14 +13,6 @@ Welcome to Chameleon Cloud Documentation's documentation!
    index
    getting-started/index
 
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   :caption: Technical Guide
-
-   technical/*
-
-
 Indices and tables
 ==================
 
