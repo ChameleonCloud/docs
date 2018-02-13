@@ -21,7 +21,7 @@ Welcome to Chameleon Cloud Documentation's documentation!
 
    technical/index
    technical/project
-   technical/dashboard
+   technical/gui
    technical/cli
    technical/discovery
    technical/reservations
