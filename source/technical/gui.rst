@@ -164,6 +164,16 @@ You may generate a new Public/Private Key Pair on Chameleon using the GUI. Click
 
 After entering aname for your Key Pair, a file will automatically be downloaded in your browser with the extension ``.pem``. This is the Private Key in ``PEM`` format. The Public Key associated with this Private Key is now stored at your current Chameleon site. Clicking on the *Regenerate and download Key Pair* button will generate a new random Public/Private Key Pair and initiate a new download for your new Private Key pair. This new Private Key will not match the previously generated file.
 
+Importing a Key Pair
+====================
+
+Alternatively, you may import a Public Key for a Key Pair that you have generated on your computer. Click the *Import Key Pair* button in the tool bar. This will open a dialog that allows you to provide a name for the Key Pair and paste the contents of the Public Key file. This dialog also provides information on how to generate a key pair using the Linux/macOS terminal.
+
+.. figure:: gui/import_key_pair.png
+   :alt: Importing a public key
+
+   Importing a public key
+
 API Access
 __________
 
