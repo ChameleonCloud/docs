@@ -108,6 +108,8 @@ The `Outages <https://www.chameleoncloud.org/user/outages/>`_ page of the Dashbo
 
   The Outages announcement page
 
+.. _help-desk:
+
 Help Desk
 _________
 
