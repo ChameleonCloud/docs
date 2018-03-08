@@ -79,7 +79,7 @@ You may extend a Lease that has not yet expired by clicking on the *Update Lease
 To prolong a lease, fill out the form specifying the amount of additional time to add to the lease. When you are finished, click the *Update* button.
 
 Reserving a Node by UUID
-_______________________
+________________________
 
 You may specify a specific node to reserve if you know its UUID. In the *Create Lease* dialog, select *uid* in the *Resource Type* dropdown. Next, select your node UUID in the dropdown underneath it. 
 
@@ -100,6 +100,7 @@ ___________________________________
 To manage your reservations with the CLI, you must install the ``python-blazarclient`` Python package in addition to the ``python-openstackclient`` package. You may use the following command to install ``python-blazarclient``:
 
 .. code-block:: bash
+
    pip install python-blazarclient
 
 The Blazar Client is similar to the OpenStack Client. You must first set environment variables for your project using :ref:`cli-rc-script` or use the same set of CLI switches to authenticate the client with Chameleon. Once installed, you may type ``blazar`` in your terminal session to open the CLI in Interactive Mode, or you may use ``blazar`` in shell mode for scripting.
@@ -111,7 +112,7 @@ ______________________
 
 The ``host-list`` command retrieves a list of nodes at your Chameleon site. The output may appear like this:
 
-.. code-block::
+.. code-block:: text
 
    +------+--------------------------------------+-------+-----------+----------+
    | id   | hypervisor_hostname                  | vcpus | memory_mb | local_gb |
@@ -130,13 +131,13 @@ The ``host-list`` command retrieves a list of nodes at your Chameleon site. The 
 
 You may retrieve details about an individual node with the ``host-show`` command by using the ``id`` from this chart. For example, you can retrieve details about the node with ``id`` 151 by using the command:
 
-.. code-block::
+.. code-block:: bash
 
    blazar host-show 151
 
 You will receive verbose details about this host that may look like this:
 
-.. code-block::
+.. code-block:: text
 
    +----------------------------------+---------------------------------------------+
    | Field                            | Value                                       |
