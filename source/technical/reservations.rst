@@ -14,8 +14,12 @@ _________________________________________
 
 Content from https://www.chameleoncloud.org/provision-resources/
 
+
+.. _reservation-cli:
+
 ___________________________________
 Managing Reservations using the CLI
 ___________________________________ 
+
 
 Content from https://www.chameleoncloud.org/advanced-provision-resources/

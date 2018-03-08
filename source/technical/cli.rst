@@ -56,6 +56,9 @@ To install ``python-openstackclient`` on Windows, you must first install Python 
 #. Verify that it has installed correctly by typing ``openstack`` in the command prompt. You will enter the Openstack Client in interactive mode and your prompt should change to ``(openstack)``.
 #. Exit the client by typing ``exit``
 
+
+.. _cli-rc-script:
+
 _______________________
 The OpenStack RC Script
 _______________________
