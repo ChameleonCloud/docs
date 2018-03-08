@@ -53,6 +53,8 @@ In the upper right of the screen, you will see your account name. You may click 
 
    The user dropdown menu
 
+.. _gui-settings:
+
 Settings
 ________
 
