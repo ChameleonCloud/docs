@@ -231,4 +231,3 @@ Here are examples for reserving different types of nodes:
 | ARM64 nodes              | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "arm64"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-arm64-nodes``            |
 +--------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Content from https://www.chameleoncloud.org/advanced-provision-resources/
