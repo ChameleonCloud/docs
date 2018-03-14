@@ -25,7 +25,7 @@ Welcome to Chameleon Cloud Documentation's documentation!
    technical/cli
    technical/discovery
    technical/reservations
-   technical/instances
+   technical/baremetal
    technical/snapshot
    technical/metrics
    technical/complex 

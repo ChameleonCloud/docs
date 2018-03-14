@@ -3,7 +3,7 @@ The Graphical User Interface
 ==============================
 
 __________________________
-Overview
+Introduction
 __________________________
 
 The Graphical User Interface (GUI) provides a point-and-click interface for working with Chameleon resources. From the GUI, you may perform tasks such as manage and launch instances, and configure custom networking. Additionally, you may download an OpenStack RC file from the GUI if you wish to work with a Command Line Interface, instead. The Chameleon GUI is web-based, using OpenStack Horizon for its front end. There are two Chameleon resource sites, each with its own URL.
@@ -141,6 +141,8 @@ The Images page allows you to edit Snapshots and Images. You may use this page t
    :alt: The Images page
 
    The Images page
+
+.. _gui-key-pairs:
 
 Key Pairs
 _________

@@ -1,3 +1,5 @@
+.. _networking:
+
 =========================
 Reconfigurable Networking 
 =========================

@@ -1,14 +1,18 @@
+.. _cli:
+
 ======================================
 The Command Line Interface
 ======================================
 
 _______________
-Overview
+Introduction
 _______________
 
 The Command Line Interface (CLI) provides a way to interact with Chameleon resources using shell and scripting tools. Chameleon uses the OpenStack Client to provide CLI functionality.  In addition, the CLI provides access to Chameleon features that are not accessible through the GUI, such as Gnocchi metrics and advanced networking features. This documentation provides an overview of how to install the OpenStack Client and configure your shell environment to access Chameleon features for your project.
 
 .. note:: Chameleon Cloud is primarily designed to support Unix shell environments. Windows instructions are here for reference, but it is highly recommended that CLI access is performed through a Unix shell. Windows 10 includes `Windows Subsystem for Linux <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_, which can provide this functionality.
+
+.. _cli-installing:
 
 ___________________________
 Installing the CLI

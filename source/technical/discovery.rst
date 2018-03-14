@@ -2,6 +2,9 @@
 Resource Discovery
 ===================
 
+Introduction
+============
+
 Chameleon supports fine grained resource discovery for experimentation. This means that you can identify a specific node, see the node's hardware maintenance history and reserve it for repeated use. Some resource discovery features are available through the GUI or web portal, while others such as node version history are available only through command line access.
 
 The Hardware Catalog on the Chameleon Portal
