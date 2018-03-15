@@ -86,7 +86,16 @@ To launch an instance with the GUI, follow these steps:
 
       An Instance with the Active status
 
-.. _baremetal-gui-assocaite-ip:
+.. _baremetal-instance-id:
+
+#. You may view instance information by clicking on an instance. This information include's the instance's *ID*, useful for retrieving metrics from the Gnocchi CLI.
+
+   .. figure:: baremetal/instancedetails.png
+      :alt: Instance details
+
+      Instance details
+
+.. _baremetal-gui-associate-ip:
 
 Associate a Floating IP
 _______________________
