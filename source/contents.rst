@@ -26,7 +26,7 @@ Welcome to Chameleon Cloud Documentation's documentation!
    technical/discovery
    technical/reservations
    technical/baremetal
-   technical/snapshot
+   technical/images
    technical/metrics
    technical/complex 
    technical/swift
