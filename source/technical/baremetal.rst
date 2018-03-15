@@ -245,17 +245,17 @@ If you have associated a Floating IP with the instance and you have the private 
 
 #. You may receive the response below. Type ``yes`` and hit enter:
 
-   .. code-block:: bash
+   .. code::
 
-   The authenticity of host '130.202.88.241 (130.202.88.241)' can't be established.
-   RSA key fingerprint is 5b:ca:f0:63:6f:22:c6:96:9f:c0:4a:d8:5e:dd:fd:eb.
-   Are you sure you want to continue connecting (yes/no)?
+      The authenticity of host '130.202.88.241 (130.202.88.241)' can't be established.
+      RSA key fingerprint is 5b:ca:f0:63:6f:22:c6:96:9f:c0:4a:d8:5e:dd:fd:eb.
+      Are you sure you want to continue connecting (yes/no)?
 
 #. When logged in, your prompt may appear like this:
 
-   .. code-block:: bash
+   .. code::
 
-   [cc@my-first-instance ~]$
+      [cc@my-first-instance ~]$
 
 .. note:: If you notice SSH errors such as connection refused, password requests, or failures to accept your key, it is likely that the physical node is still going through the boot process. In that case, please wait before retrying. Also make sure that you use the cc account. If after 10 minutes you still cannot connect to the machine, please open a ticket with our help desk.
 
@@ -263,7 +263,7 @@ If you have associated a Floating IP with the instance and you have the private 
    
    .. code-block:: bash
    
-   sudo cc-checks -v
+      sudo cc-checks -v
 
 The ``cc-checks`` program prints the result of each check in green if it is successful and red if it failed. You can now run your experiment directly on the machine via SSH. You can run commands with root privileges by prefixing them with ``sudo``. To completely switch user and become root, use the ``sudo su - root`` command.
 
