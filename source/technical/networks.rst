@@ -37,6 +37,21 @@ _______________
 
 Currently, Security Groups are not implemented on CHI@TACC and CHI@UC. Therefore, all inbound and outbound port traffic is open to the Internet at these sites. KVM@TACC observes Security Groups, allowing inbound and outbound traffic to be filtered by port, with a default policy of denying inbound traffic.
 
+Network Isolation
+_________________
+
+By default, bare metal nodes on each Chameleon site share the same local network (shared VLAN and IP subnet). However, some experiments may require more network isolation, which is now supported by Chameleon.
+
+Our implementation of network isolation is based on dynamically managed VLANs (network layer 2) associated with user-configured private IP subnets (network layer 3). This means that all network communications local to the IP subnet or the broadcast domain (such as Ethernet broadcast, ARP, IP broadcast, DHCP, etc.) will be restricted to the user-configured network and its associated VLAN. This feature enables a range of experiments in networking and security. For example, this allows running your own DHCP server to configure virtual machines running on bare metal nodes, without impacting other users.
+
+Please note the following:
+
+- Network isolation is now available on both CHI@UC and CHI@TACC.
+- Strong network isolation is provided at network layer 2 only. Even using separate IP subnetworks, any bare metal node can still communicate with each other and with the Internet through the network's router. We are investigating solutions to provide stronger isolation at network layer 3.
+- Network isolation works on all nodes, including our low-power HP Moonshot nodes (low-power Xeon, Atom, ARM64).
+
+The easiest way to launch an Isolated Network is to use the `Network Isolation HEAT Template <https://raw.githubusercontent.com/ChameleonCloud/heat-templates/master/network-isolation/network-isolation.yaml>`_ with Chameleon's :ref:`complex` feature.
+
 ____________________________________
 Configuring Networking using the GUI
 ____________________________________
