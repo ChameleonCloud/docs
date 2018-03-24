@@ -37,6 +37,8 @@ _______________
 
 Currently, Security Groups are not implemented on CHI@TACC and CHI@UC. Therefore, all inbound and outbound port traffic is open to the Internet at these sites. KVM@TACC observes Security Groups, allowing inbound and outbound traffic to be filtered by port, with a default policy of denying inbound traffic.
 
+.. _network-isolation:
+
 Network Isolation
 _________________
 
@@ -145,6 +147,8 @@ Configuring Networking using the CLI
 ________________________________________________________
 
 You may configure Networking using the CLI. Make sure you have configured environment variables for your Project and Chameleon site using :ref:`cli-rc-script`.
+
+.. _network-cli-create:
 
 Creating a Network
 __________________
