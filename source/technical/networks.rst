@@ -290,4 +290,4 @@ ____________________________
 Advanced Networking Features
 ____________________________
 
-Chameleon implements additional configurable Networking *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure traffic. These features may be configured through the CLI and through :ref:`complex`. To see a list of available list of Resource Types, use the GUI at either CHI@TACC or CHI@UC and navigate to *Project* > *Orchestration* > *Resource Types*.
+Chameleon implements additional configurable *OpenStack Neutron* *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure traffic. These features may be configured through the CLI and through :ref:`complex`. To see a list of available list of Resource Types, use the GUI at either CHI@TACC or CHI@UC and navigate to *Project* > *Orchestration* > *Resource Types*. Networking Resource Types are listed as ``OS::Neutron`` Resources.
