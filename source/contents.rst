@@ -12,10 +12,25 @@ Welcome to Chameleon Cloud Documentation's documentation!
 
    index
    getting-started/index
+   getting-started/faq
+   getting-started/citing
 
-Indices and tables
-==================
+.. toctree::
+   :maxdepth: 2
+   :caption: Technical Guide
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   technical/index
+   technical/project
+   technical/gui
+   technical/cli
+   technical/discovery
+   technical/reservations
+   technical/baremetal
+   technical/images
+   technical/metrics
+   technical/complex 
+   technical/swift
+   technical/networks
+   technical/stitching
+   technical/fpga
+   technical/kvm
