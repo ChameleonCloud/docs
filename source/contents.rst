@@ -34,11 +34,3 @@ Welcome to Chameleon Cloud Documentation's documentation!
    technical/stitching
    technical/fpga
    technical/kvm
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
