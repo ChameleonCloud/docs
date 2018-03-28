@@ -8,7 +8,12 @@ ____________
 
 Chameleon provides access to four FPGA nodes. Each of these nodes is fitted with a Nallatech 385A board with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support. They are configured to run OpenCL code, but they can be reconfigured (by a request to our help desk) to run compiled designs prepared with Altera Quartus.
 
-Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes.
+Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes. Briefly, the steps for building an FPGA application are:
+
+- Setup Multi-Factor Authentication for TACC Resources by following `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_
+- Request access to the FPGA Build Node project at the `Help Desk <https://www.chameleoncloud.org/user/help/>`_
+- SSH to the ``fpga01.tacc.chameleoncloud.org`` host to build your FPGA application
+- Use ``scp`` to copy your FPGA application from ``fpga01.tacc.chameleoncloud.org`` to the FPGA node you wish to run it on
 
 ____________
 Development
@@ -52,7 +57,7 @@ Now run the emulated kernel.
 
 When debugging is complete, and the code is ready to be compiled for the FPGA hardware, remove the emulation flag. This may take several hours to complete, so we recommend you run it inside a terminal multiplexer, such as screen or tmux which are both installed on the build node.
 
-.. code-bock:: bash
+.. code-block:: bash
 
    aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx
 
