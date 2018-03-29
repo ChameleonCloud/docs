@@ -96,7 +96,9 @@ When creating a *Subnet*, you must specify a  *Subnet Name* and a *CIDR* consist
 You may specify *DHCP* and static *Route* information on this tab:
 
 - *Allocation Pools* allow you to specify DHCP address ranges using a pair of addresses per line, with the first and last addresses in the range seperated by a comma. For example, entering ``192.168.1.2,192.168.1.100`` would create this range of available addresses to be automatically assigned to Instances on the Subnet.
-- *DNS Name Servers* allow you to specify a list of DNS servers, one per line. At CHI@UC, you may use ``130.202.101.6`` and ``130.202.101.37``.
+- *DNS Name Servers* allow you to specify a list of DNS servers, one per line. 
+  - At CHI@TACC, you may use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
+  - At CHI@UC, you may use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
 - *Host Routes* allow you to specify static routing information for the subnet. You may specify them as a Subnet CIDR and a Router IP address, separated by a comma. For example, ``192.168.3.0/24,10.56.1.254`` would cause all traffic from this Subnet destined for the ``192.168.3.0`` subnet to be forwarded to the Router Interface at ``10.56.1.254``.
 
 When you are finished, click *Create*.
