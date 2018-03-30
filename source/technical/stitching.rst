@@ -16,11 +16,11 @@ ________________________________
 Configuring a Stitchable Network
 ________________________________
 
-Follow the technical documentation for :ref:`network-cli-create` using the CLI. When performing this step, you must supply the name of your external testbed network as the parameter for ``--physical-network``. In this documentation, we will describe how to stitch to the ExoGENI testbed:
+Follow the technical documentation for :ref:`network-cli-create` using the CLI. When performing this step, you must supply the name of your external testbed network as the parameter for ``--provider-physical-network``. In this documentation, we will describe how to stitch to the ExoGENI testbed:
 
 .. code-block:: bash
 
-   openstack network create --physical-network exogeni <network_name>
+   openstack network create --provider-physical-network exogeni <network_name>
 
 
 _______________________________
