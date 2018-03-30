@@ -32,11 +32,16 @@ ExoGENI is one of the two primary GENI testbeds. ExoGENI allows users to create 
 Stitchports that exist in ExoGENI topology are listed on ExoGENI Wiki (`ExoGENI Resource Types: Stitchport Identifiers <Stitchports that exist in ExoGENI topology are listed on ExoGENI Wiki (ExoGENI Resource Types: Stitchport Identifiers). URLs for port locations and corresponding VLAN tags are used to create a stitchport connection. Stitchport information for Chameleon is listed as below:>`_). URLs for port locations and corresponding VLAN tags are used to create a stitchport connection. Stitchport information for Chameleon is listed as below:
 
 - Port Location: ChameleonUC@ION
-  URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/Chameleon/Cisco/6509/GigabitEthernet/1/1
-  Allowed VLANs: 3290-3299
+
+    URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/Chameleon/Cisco/6509/GigabitEthernet/1/1
+
+    Allowed VLANs: 3291-3299
+
 - Port Location: ChameleonTACC@ION
-  URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/TACC/Cisco/6509/TenGigabitEthernet/1/1
-  Allowed VLANs: 3501-3509
+
+    URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/TACC/Cisco/6509/TenGigabitEthernet/1/1
+
+    Allowed VLANs: 3501-3509
 
 Layer 2 connections on ExoGENI are provisioned on AL2S by an agent that submits requests to OESS on behalf of the user slice. Users do not need to have an OESS account. An ExoGENI slice with a stitchport can be created as below. (Information for using ExoGENI and creating slices can be found at http://www.exogeni.net)
 

@@ -155,11 +155,11 @@ You may configure Networking using the CLI. Make sure you have configured enviro
 Creating a Network
 __________________
 
-You can create a Network using the command:
+You can create an *Isolated* VLAN Network using the command:
 
 .. code-block:: bash
 
-   openstack network create <network_name>
+   openstack network create --provider-network-type vlan --provider-physical-network physnet1 <network_name>
 
 You may receive output that appears like this:
 
@@ -199,13 +199,13 @@ You may receive output that appears like this:
 
 Once you have created a Network, you may create a subnet with the command:
 
-.. code-block::
+.. code-block:: bash
 
    openstack subnet create --subnet-range <cidr> --dhcp --network <network_name> <subnet_name>
 
 For example, the command:
 
-.. code-block::
+.. code-block:: bash
 
    openstack subnet create --subnet-range 192.168.1.0/24 --dhcp --network MyNetwork MySubnet
 
@@ -241,16 +241,18 @@ Will create a subnet with the following output:
 
 You may specify other Subnet options with the appropriate flags, which you may view by simply typing the command:
 
-.. code-block::
+.. code-block:: bash
 
    openstack subnet create
+
+For example, you may specify DNS nameserver IP addresses with ``--dns-nameserver <nameserver_ip>``.
 
 Creating a Router
 _________________
 
 You may create a Router by using the command:
 
-.. code-block::
+.. code-block:: bash
 
    openstack create router <router_name>
 
