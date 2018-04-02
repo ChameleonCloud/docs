@@ -1,3 +1,5 @@
+.. _project-management:
+
 ==================
 Project Management
 ==================
@@ -89,6 +91,8 @@ Recharge or Extend Your Allocation
 __________________________________
 
 In the *Allocations* section of your :ref:`project-details`, you may view your project start and end dates, current Service Unit usage and request a Service Unit recharge or project extension. To request a Service unit recharge or project extension, click the link next to your project in the *Actions* column of this section.
+
+.. _manage-users:
 
 _________________
 Manage Users

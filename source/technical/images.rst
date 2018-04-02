@@ -25,6 +25,8 @@ You will be prompted to enter your username and password. ``cc-snapshot`` will c
 
 .. note:: If you choose an Image name that already exists, the previous one will not be overwritten. A new Image with a different UUID will be generated.
 
+.. _updating-snapshot:
+
 Updating ``cc-snapshot``
 ________________________
 

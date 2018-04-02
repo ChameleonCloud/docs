@@ -52,6 +52,8 @@ You may configure security using the following steps:
 
 You may now click the *Launch* button.
 
+.. _kvm-associate-ip:
+
 Associating a Floating IP Address
 _________________________________
 
@@ -94,6 +96,8 @@ The default Security Group allows outbound IPv4 and IPv6 traffic, as seen by eac
 .. figure:: kvm/addrule.png
 
 You may configure a custom rule by specifying *Custom TCP Rule* (or *Custom UDP Rule* or *Custom ICMP Rule*). You may specify a *Direction* (*Ingress* for inbound traffic to your Instance or *Egress* for outbound traffic) and a *Port*. Alternatively, you may specify a pre-defined, commonly used Rule in the *Rule* dropdown, such as *SSH*. when you are finished, click *Add*.
+
+.. _kvm-security-group:
 
 Adding a Security Group to an Instance
 ______________________________________
