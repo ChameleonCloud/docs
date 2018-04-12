@@ -6,12 +6,12 @@ ____________
 Introduction
 ____________
 
-Chameleon provides an object store service through the OpenStack Swift interface. It is intended to be used for storing and retrieving data used during experiments, such as input files needed for your applications, or results produced by your experiments. The object store can be accessed from CHI@TACC and CHI@UC using the CLI. In addition, the object store CLI is installed on all Appliances supported by Chameleon.
+Chameleon provides an object store service through the OpenStack Swift interface. It is intended to be used for storing and retrieving data used during experiments, such as input files needed for your applications, or results produced by your experiments. The object store can be accessed from `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ using the CLI. In addition, the object store CLI is installed on all Appliances supported by Chameleon.
 
 Availability
 ____________
 
-You can access the Object Store from instances running on CHI@TACC, CHI@UC and KVM@TACC by using your CHI@TACC OpenStack RC file (UC users will see more latency impact since the Object Store is located at TACC). To make it easier for you to use the Object Store client, we installed it in all appliances supported by Chameleon. Additionally, you can also access the Object Store from the CHI@TACC web interface under the Object Store panel.
+You can access the Object Store from instances running on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ by using your `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ OpenStack RC file (UC users will see more latency impact since the Object Store is located at TACC). To make it easier for you to use the Object Store client, we installed it in all appliances supported by Chameleon. Additionally, you can also access the Object Store from the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ web interface under the Object Store panel.
 
 Objects and Containers
 ______________________
@@ -22,9 +22,9 @@ __________________________________
 Working with Objects using the GUI
 __________________________________
 
-.. note:: The Object Store is implemented at TACC. Only CHI@TACC implements a GUI interface for the Object Store. However, the CLI works for both CHI@TACC and CHI@UC.
+.. note:: The Object Store is implemented at TACC. Only `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ implements a GUI interface for the Object Store. However, the CLI works for both CHI@TACC and `CHI@UC <https://chi.uc.chameleoncloud.org>`_.
 
-To access the Object Store using the GUI for CHI@TACC, use the navigation sidebar to go to *Project* > *Object Store* > *Containers*.
+To access the Object Store using the GUI for `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, use the navigation sidebar to go to *Project* > *Object Store* > *Containers*.
 
 .. figure:: swift/containerspage.png
    :alt: The Containers page

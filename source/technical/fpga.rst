@@ -23,7 +23,7 @@ Chameleon provides a build system that includes the necessary `Altera SDK for Op
 
 Due to licensing requirements, you must apply for access to the FPGA build system. Submit a ticket through our help system to request access.
 
-FPGA resources are only available at CHI@TACC. Due to TACC’s security requirements, multi-factor authentication must be used to access the FPGA build system. You can either use a smartphone app (Apple iOS or Android) or SMS messaging: follow `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_ to set it up. Once you have set up multi-factor authentication, you can SSH to fpga01.tacc.chameleoncloud.org with your Chameleon username and password; you will also be asked for a TACC security token, which will be provided to you via the app or SMS.
+FPGA resources are only available at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_. Due to TACC’s security requirements, multi-factor authentication must be used to access the FPGA build system. You can either use a smartphone app (Apple iOS or Android) or SMS messaging: follow `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_ to set it up. Once you have set up multi-factor authentication, you can SSH to fpga01.tacc.chameleoncloud.org with your Chameleon username and password; you will also be asked for a TACC security token, which will be provided to you via the app or SMS.
 
 Each user's home directory will contain an archive file containing a Hello World OpenCL example: ``exm_opencl_hello_world_x64_linux_16.0.tgz``. Extract the archive with the following command:
 
@@ -67,7 +67,7 @@ _________
 
 After completing development of an OpenCL kernel on our build node, the kernel and host application must be transferred and executed on a node with an FPGA accelerator.
 
-When using CHI@TACC GUI to reserve nodes, use the “Node Type to Reserve” selector and choose “FPGA”. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the “with FPGA” button, and clicking “Reserve” at the bottom of the selection. Copy the generated CLI command and use it to create your reservation. 
+When using `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ GUI to reserve nodes, use the “Node Type to Reserve” selector and choose “FPGA”. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the “with FPGA” button, and clicking “Reserve” at the bottom of the selection. Copy the generated CLI command and use it to create your reservation. 
 
 In order to have access to the required runtime environment for using the FPGAs, use the image “CC-CentOS7-FPGA” when launching your instance.
 

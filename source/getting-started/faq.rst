@@ -30,6 +30,7 @@ Frequently Asked Questions
 
 - :ref:`what-is-appliance`
 - :ref:`what-is-catalog`
+- :ref:`how-build-appliance`
 - :ref:`how-publish-catalog`
 - :ref:`how-manage-appliance`
 - :ref:`why-different-ids`
@@ -248,6 +249,22 @@ ________________________________________
 
 The `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ is a repository that allows users to discover, publish, and share appliances. The appliance catalog contains useful images of both bare metal and virtual machine appliances supported by the Chameleon team as well appliances contributed by users.
 
+.. _how-build-appliance:
+
+How to build or customize a Chameleon appliance?
+_________________________________________________________________
+
+There are two options to build or customize a Chameleon appliance -- the ``cc-snapshot`` utility and the OpenStack ``diskimage-builder``.
+
+:ref:`cc-snapshot-utility`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The ``cc-snapshot`` tool is pre-installed in all Chameleon supported appliances and it provides a quick and easy way to customize a Chameleon appliance. To start, spin up an instance with the Chameleon appliance you would like to customize.  Then install the libraries and tools you would like to add into your new appliance, or uninstall things you want to exclude from your new appliance. Finally, take a snapshot by running the ``cc-snapshot`` command.
+
+The OpenStack ``diskimage-builder``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can use ``diskimage-builder`` to build your appliance from scratch or customize the Chameleon appliances by using the code on Github as templates (`CC-CentOS7 <https://github.com/ChameleonCloud/CC-CentOS7>`_, `CC-Ubuntu14.06 <https://github.com/ChameleonCloud/CC-Ubuntu14.04>`_, `CC-Ubuntu16.06 <https://github.com/ChameleonCloud/CC-Ubuntu16.04>`_). The OpenStack ``diskimage-builder`` provides a more manageable way of building appliances. For more information about OpenStack ``diskimage-builder``, please see the `OpenStack documentation <https://docs.openstack.org/diskimage-builder/latest/>`_.
+
+
 .. _how-publish-catalog:
 
 How do I publish an appliance in the Chameleon Appliance Catalog?
@@ -276,7 +293,7 @@ And finally, you can delete appliances you had made available. Browse to the app
 
 .. _why-different-ids:
 
-Why are there different image IDs for KVM@TACC, CHI@TACC, and CHI@UC for the same appliance?
+Why are there different image IDs for `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_, `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ for the same appliance?
 ____________________________________________________________________________________________
 
 The three clouds forming the Chameleon testbed are fully separated, each having its own Glance image repository. The same appliance image uploaded to the three clouds will produce three different image IDs. In addition, it is sometimes needed to customize an appliance image for each site, resulting in slightly different image files.

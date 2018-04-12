@@ -225,7 +225,7 @@ This will return a JSON dictionary describing site, cluster, and node.
 Customizing Networking
 ______________________
 
-In its default configuration, the bare metal deployment system used by Chameleon (OpenStack Ironic) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On CHI@UC, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
+In its default configuration, the bare metal deployment system used by Chameleon (OpenStack Ironic) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On `CHI@UC <https://chi.uc.chameleoncloud.org>`_, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
 
 __________________________
 Interacting with Instances

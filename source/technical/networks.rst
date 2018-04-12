@@ -30,12 +30,12 @@ All Chameleon Projects have access to two fixed networks - ``sharednet1`` and ``
 Floating IP Addresses
 _____________________
 
-*Floating IP Addresses* are publicly accessible IPv4 addresses. CHI@TACC and CHI@UC each use a different Class B address block for Floating IP Addresses. These addresses can be bound to Instances to allow access over the Internet, and are shared between all Chameleon users. When not in use, you should be a good citizen by releasing them back to their respective IP Address pool, called ``ext-net``.
+*Floating IP Addresses* are publicly accessible IPv4 addresses. `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ each use a different Class B address block for Floating IP Addresses. These addresses can be bound to Instances to allow access over the Internet, and are shared between all Chameleon users. When not in use, you should be a good citizen by releasing them back to their respective IP Address pool, called ``ext-net``.
 
 Security Groups
 _______________
 
-Currently, Security Groups are not implemented on CHI@TACC and CHI@UC. Therefore, all inbound and outbound port traffic is open to the Internet at these sites. KVM@TACC observes Security Groups, allowing inbound and outbound traffic to be filtered by port, with a default policy of denying inbound traffic.
+Currently, Security Groups are not implemented on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Therefore, all inbound and outbound port traffic is open to the Internet at these sites. `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ observes Security Groups, allowing inbound and outbound traffic to be filtered by port, with a default policy of denying inbound traffic.
 
 .. _network-isolation:
 
@@ -48,7 +48,7 @@ Our implementation of network isolation is based on dynamically managed VLANs (n
 
 Please note the following:
 
-- Network isolation is now available on both CHI@UC and CHI@TACC.
+- Network isolation is now available on both `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_.
 - Strong network isolation is provided at network layer 2 only. Even using separate IP subnetworks, any bare metal node can still communicate with each other and with the Internet through the network's router. We are investigating solutions to provide stronger isolation at network layer 3.
 - Network isolation works on all nodes, including our low-power HP Moonshot nodes (low-power Xeon, Atom, ARM64).
 
@@ -97,8 +97,8 @@ You may specify *DHCP* and static *Route* information on this tab:
 
 - *Allocation Pools* allow you to specify DHCP address ranges using a pair of addresses per line, with the first and last addresses in the range seperated by a comma. For example, entering ``192.168.1.2,192.168.1.100`` would create this range of available addresses to be automatically assigned to Instances on the Subnet.
 - *DNS Name Servers* allow you to specify a list of DNS servers, one per line. 
-  - At CHI@TACC, you may use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
-  - At CHI@UC, you may use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
+  - At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, you may use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
+  - At `CHI@UC <https://chi.uc.chameleoncloud.org>`_, you may use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
 - *Host Routes* allow you to specify static routing information for the subnet. You may specify them as a Subnet CIDR and a Router IP address, separated by a comma. For example, ``192.168.3.0/24,10.56.1.254`` would cause all traffic from this Subnet destined for the ``192.168.3.0`` subnet to be forwarded to the Router Interface at ``10.56.1.254``.
 
 When you are finished, click *Create*.
@@ -313,4 +313,4 @@ ____________________________
 Advanced Networking Features
 ____________________________
 
-Chameleon implements additional configurable *OpenStack Neutron* *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure traffic. These features may be configured through the CLI and through :ref:`complex`. To see a list of available list of Resource Types, use the GUI at either CHI@TACC or CHI@UC and navigate to *Project* > *Orchestration* > *Resource Types*. Networking Resource Types are listed as ``OS::Neutron`` Resources.
+Chameleon implements additional configurable *OpenStack Neutron* *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure traffic. These features may be configured through the CLI and through :ref:`complex`. To see a list of available list of Resource Types, use the GUI at either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and navigate to *Project* > *Orchestration* > *Resource Types*. Networking Resource Types are listed as ``OS::Neutron`` Resources.
