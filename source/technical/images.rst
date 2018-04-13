@@ -8,6 +8,8 @@ When you are working with Chameleon instances, you may wish to make a new *Image
 
 Chameleon implements the Image functionality using `Glance <https://docs.openstack.org/glance/ocata/>`_. This documentation demonstrates how to accomplish common tasks with Images using either the GUI or the CLI.
 
+.. _cc-snapshot-utility:
+
 _________________________________________________
 The ``cc-snapshot`` Utility
 _________________________________________________
@@ -55,7 +57,7 @@ You can work with Images from within the GUI at `CHI@TACC <https://chi.tacc.cham
 
    The Images page
 
-.. note:: Images at each site are stored independently of each other. An Image made at CHI@TACC will not be available at CHI@UC (or vice versa) unless transferred manually.
+.. note:: Images at each site are stored independently of each other. An Image made at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ will not be available at `CHI@UC <https://chi.uc.chameleoncloud.org>`_ (or vice versa) unless transferred manually.
 
 Uploading an Image
 __________________

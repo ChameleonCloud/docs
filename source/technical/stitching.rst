@@ -61,7 +61,7 @@ Layer 2 connections on ExoGENI are provisioned on AL2S by an agent that submits 
 
    .. figure:: stitching/createcomplete.png
 
-#. It is also possible to connect ExoGENI nodes to both CHI@UC and CHI@TACC with multiple interfaces.
+#. It is also possible to connect ExoGENI nodes to both `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ with multiple interfaces.
 
    .. figure:: stitching/multipleinterfaces.png
 
@@ -123,7 +123,7 @@ The user in the ExoGENI workgroup can create a circuit with two endpoints to con
    Interface: et-9/0/0
    VLAN: 3998
    
-   Endpoint 2 (CHI@UC):
+   Endpoint 2 (`CHI@UC <https://chi.uc.chameleoncloud.org>`_):
    Node: sdn-sw.star.net.internet2.edu
    Interface: et-8/0/0
    VLAN: 3290

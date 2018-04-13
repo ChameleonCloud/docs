@@ -4,7 +4,7 @@ Metrics
 
 Chameleon implements resource monitoring and data collection. Bare metal nodes launched using the `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance automatically use the `collectd <https://collectd.org>`_ daemon to send metrics to Chameleon. Chameleon stores these metrics using the `Gnocchi <https://gnocchi.xyz>`_ time series database. The type of metrics that are collected can be modified, and metrics may be retrieved using the CLI. Currently, visualization of metrics is not yet supported in the GUI.
 
-.. note:: Gnocchi metrics are currently available only at CHI@UC. Gnocchi will be available at CHI@TACC in the future.
+.. note:: Gnocchi metrics are currently available only at `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Gnocchi will be available at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ in the future.
 
 __________________________
 Using the Gnocchi CLI
