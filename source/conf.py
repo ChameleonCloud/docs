@@ -97,6 +97,9 @@ html_short_title = 'Chameleon Documentation'
 #html_theme = 'sphinxdoc'
 html_theme = 'sphinx_rtd_theme'
 
+def setup(app):
+    app.add_stylesheet( "css/textstyles.css" )
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
