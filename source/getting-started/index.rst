@@ -59,7 +59,7 @@ First, we need to reserve a node for our use. Chameleon provides bare-metal acce
 #. In the sidebar, click *Reservations*, then click *Leases*
 #. Click on the *+ Create Lease* button in the toolbar
 #. Type *my_first_lease* for the lease name
-#. Find the *Resource Properties* section. In the dropdown below *node_type*, select *compute*
+#. Find the *Resource Properties* section. In the dropdown below *node_type*, select *compute_haswell*
 #. Click the *Create* button
 
 .. figure:: create_lease.png

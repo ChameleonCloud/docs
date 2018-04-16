@@ -182,7 +182,7 @@ For example, if you wish to create a reservation for a compute node called ``my-
 
 .. code-block:: bash
 
-   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-lease
+   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-lease
 
 Extending a Lease
 _________________
