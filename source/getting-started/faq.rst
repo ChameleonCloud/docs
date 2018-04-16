@@ -262,7 +262,7 @@ The ``cc-snapshot`` tool is pre-installed in all Chameleon supported appliances 
 
 The OpenStack ``diskimage-builder``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You can use ``diskimage-builder`` to build your appliance from scratch or customize the Chameleon appliances by using the code on Github as templates (`CC-CentOS7 <https://github.com/ChameleonCloud/CC-CentOS7>`_, `CC-Ubuntu14.06 <https://github.com/ChameleonCloud/CC-Ubuntu14.04>`_, `CC-Ubuntu16.06 <https://github.com/ChameleonCloud/CC-Ubuntu16.04>`_). The OpenStack ``diskimage-builder`` provides a more manageable way of building appliances. For more information about OpenStack ``diskimage-builder``, please see the `OpenStack documentation <https://docs.openstack.org/diskimage-builder/latest/>`_.
+You can use ``diskimage-builder`` to build your appliance from scratch or customize the Chameleon appliances by using the code on Github as templates (`CC-CentOS7 <https://github.com/ChameleonCloud/CC-CentOS7>`_, `CC-Ubuntu14.04 <https://github.com/ChameleonCloud/CC-Ubuntu14.04>`_, `CC-Ubuntu16.04 <https://github.com/ChameleonCloud/CC-Ubuntu16.04>`_). The OpenStack ``diskimage-builder`` provides a more manageable way of building appliances. For more information about OpenStack ``diskimage-builder``, please see the `OpenStack documentation <https://docs.openstack.org/diskimage-builder/latest/>`_.
 
 
 .. _how-publish-catalog:
