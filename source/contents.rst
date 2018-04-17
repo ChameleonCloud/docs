@@ -13,6 +13,7 @@ Welcome to Chameleon Cloud Documentation's documentation!
    index
    getting-started/index
    getting-started/faq
+   getting-started/old_doc
 
 .. toctree::
    :maxdepth: 2
