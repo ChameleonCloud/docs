@@ -201,3 +201,41 @@ There is no CLI command for creating a Folder within a Container. However, you m
 .. code-block:: bash
 
    openstack object create --name "MyFolder/MyObject.txt" MyContainer MyObject.txt
+
+__________________________________
+Mounting Object Store as a File System
+__________________________________
+
+When logged into an instance using Chameleon supported images, such as ``CC-CentOS7`` and ``CC-Ubuntu16.04``, you may use the pre-installed ``cloudfuse`` (Source: `Github <https://github.com/redbo/cloudfuse>`_) to mount your Chameleon Object Store as a directory on your Linux environment.
+
+Before mount, create a ``~/.cloudfuse`` file with the following content:
+
+.. code-block:: bash
+
+   username=<username>
+   password=<password>
+   tenant=<projectname>
+   authurl=https://chi.tacc.chameleoncloud.org:5000/v2.0
+   
+Replace ``username`` and ``password`` with your Chameleon username and password, and replace ``projectname`` with your Chameleon project name.
+
+Then mount with the following command:
+
+.. code-block:: bash
+
+   cloudfuse <mount_dir>
+   
+Or you can specify your username and password as mount options:
+
+.. code-block:: bash
+
+   cloudfuse -o username=<username>,password=<password> <mount_dir>
+   
+Now you can access your Chameleon Object Store as your local file system.
+
+To unmount:
+
+.. code-block:: bash
+
+   fusermount -u <mount_dir>
+
