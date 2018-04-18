@@ -2,63 +2,66 @@
 Metrics
 =========================
 
-Chameleon implements resource monitoring and data collection. Bare metal nodes launched using the `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance automatically use the `collectd <https://collectd.org>`_ daemon to send metrics to Chameleon. Chameleon stores these metrics using the `Gnocchi <https://gnocchi.xyz>`_ time series database. The type of metrics that are collected can be modified, and metrics may be retrieved using the CLI. Currently, visualization of metrics is not yet supported in the GUI.
+Our latest `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances are configured to send a selection of system metrics to the `Gnocchi time series database <https://gnocchi.xyz>`_, using the `collectd system statistics collection daemon <https://collectd.org>`_. Measurements of these metrics can be retrieved via the command line. **Visualizing these metrics is not yet supported in the web interfaces.**
 
-.. note:: Gnocchi metrics are currently available only at `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Gnocchi will be available at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ in the future.
+.. note:: Gnocchi metrics are **only** available at `CHI@UC <https://chi.uc.chameleoncloud.org>`_ now, but will be available at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ in the future.
 
-__________________________
-Using the Gnocchi CLI
-__________________________
+.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
 
 Setting up the Gnocchi CLI
 __________________________
 
-In addition to :ref:`cli-installing`, you must also install the Gnocchi client plugin. On your local machine, use the command:
+In addition to :ref:`cli-installing`, you must also install the Gnocchi client plugin. To install on your local machine, run the following command:
 
 .. code-block:: bash
 
    pip install gnocchiclient
+   
+Then, set up your environment for OpenStack command line usage, as described in :ref:`cli-rc-script`.
 
 Retrieving Metrics
 __________________
 
-Make sure that you have also set environment variables in your terminal session to access your project, using :ref:`cli-rc-script`. Metrics are stored by instance ID. You may retrieve an instance's ID by selecting it in the GUI. Each instance is called a *Resource* in Gnocchi. You may view all Resources by using the command:
+Now, you can run the ``openstack metric`` command line utility. To show the different kinds of metrics collected for a specific instance, run: 
 
 .. code-block:: bash
 
-   openstack metric resource list
+   openstack metric resource show <instance_id> 
+   
+.. tip:: 
+   You can get the instance' *ID* from the GUI.
+   
+   You can get your list of instances by running:
+   
+   .. code-block:: bash
+   
+      openstack metric resource list
+      
+   It will print out a chart similar to below:
+   
+   .. code::
 
-You may receive a result that looks like this:
+      +--------------------------------------+---------+------------+
+      | id                                   | type    | project_id |
+      +--------------------------------------+---------+------------+
+      | 8d643431-9a90-4100-8e00-f43d56a68d1e | generic | None       |
+      | 39ff85e4-cf4e-4969-9408-af47a372ad06 | generic | None       |
+      | 3c6c81ba-0566-4cde-a8c5-7ae4d4644293 | generic | None       |
+      | 219f2fec-0e90-4e04-a5d7-1a78c9fde93b | generic | None       |
+      | 57f2ba05-e57c-4241-bd27-bf95cca9c027 | generic | None       |
+      | a0cc7bb7-0169-4973-8d4a-08151c52dec6 | generic | None       |
+      | afb1d1e2-85db-463c-9769-2a2752eb447e | generic | None       |
+      | 87e52c8d-c66e-43f5-b9fc-da376eccdf2d | generic | None       |
+      | bf383c17-d76a-4e50-b347-426c96020d3b | generic | None       |
+      | 9f25dffd-79f5-4c34-86b6-79767b8db086 | generic | None       |
+      | 4b8ee1ce-9733-4808-921f-6d8ca92a6752 | generic | None       |
+      | 5887a427-286f-47ad-bd4a-d7b9278bbc0f | generic | None       |
+      | f5856741-89d5-462f-a0a2-f2423d9bfc38 | generic | None       |
+      | fea54e18-9668-4df0-a511-5b2af4c76945 | generic | None       |
+      | 304dc702-c57a-471c-81df-6e711d793e50 | generic | None       |
+      +--------------------------------------+---------+------------+
 
-.. code::
-
-   +--------------------------------------+---------+------------+
-   | id                                   | type    | project_id |
-   +--------------------------------------+---------+------------+
-   | 8d643431-9a90-4100-8e00-f43d56a68d1e | generic | None       |
-   | 39ff85e4-cf4e-4969-9408-af47a372ad06 | generic | None       |
-   | 3c6c81ba-0566-4cde-a8c5-7ae4d4644293 | generic | None       |
-   | 219f2fec-0e90-4e04-a5d7-1a78c9fde93b | generic | None       |
-   | 57f2ba05-e57c-4241-bd27-bf95cca9c027 | generic | None       |
-   | a0cc7bb7-0169-4973-8d4a-08151c52dec6 | generic | None       |
-   | afb1d1e2-85db-463c-9769-2a2752eb447e | generic | None       |
-   | 87e52c8d-c66e-43f5-b9fc-da376eccdf2d | generic | None       |
-   | bf383c17-d76a-4e50-b347-426c96020d3b | generic | None       |
-   | 9f25dffd-79f5-4c34-86b6-79767b8db086 | generic | None       |
-   | 4b8ee1ce-9733-4808-921f-6d8ca92a6752 | generic | None       |
-   | 5887a427-286f-47ad-bd4a-d7b9278bbc0f | generic | None       |
-   | f5856741-89d5-462f-a0a2-f2423d9bfc38 | generic | None       |
-   | fea54e18-9668-4df0-a511-5b2af4c76945 | generic | None       |
-   | 304dc702-c57a-471c-81df-6e711d793e50 | generic | None       |
-   +--------------------------------------+---------+------------+
-
-Each ``id`` corresponds to an instance ID, including instances that have previously existed but are no longer running. You may view a list of measurements being taken on an instance with the command:
-
-.. code-block:: bash
-
-   openstack metric resource show <id>
-
-The ``id`` parameter is a resource or instance Id. This will display results that may look like this:
+You will get a result like the following:
 
 .. code::
 
@@ -106,11 +109,19 @@ The ``id`` parameter is a resource or instance Id. This will display results tha
    | user_id               | None                                                              |
    +-----------------------+-------------------------------------------------------------------+
 
-Each metric is also assigned a UUID which is unique to the metric on that particular instance. To retrieve all measurements of a particular metric, use the command:
+To get all the measurements of a particular metric, run:
 
 .. code-block:: bash
 
-   openstack metric measures show <metric_uuid> --refresh
+   openstack metric measures show <metric_name> --resource <instance_id> --refresh
+
+For example, to get measurements of used memory over time for instance ``d17d5191-af60-4407-9ed2-e3d48e86ac6d``, run:
+
+.. code-block:: bash
+
+   openstack metric measures show memory@memory.used --resource-id d17d5191-af60-4407-9ed2-e3d48e86ac6d --refresh
+   
+.. tip:: You may notice that each metric has been assigned a *UUID* to it. Therefore, instead of providing ``metric name``, you can provide ``metric uuid``.
 
 This will show the latest measurements of that metric with granularity set to 1.0, as well as aggregate values (by default, the mean) over one minute and one hour. Other aggregation methods can be used with the ``--aggregation`` option, such as ``std``, ``count``, ``min``, ``max`` and ``sum``. Your results may appear like this:
 
@@ -147,19 +158,19 @@ By default, metrics are stored with an archive policy set to "high", which is de
 - Per minute granularity for the last week
 - Per hour granularity for a year
 
-However, note that since collectd is configured to collect metrics only every 10 seconds, there is no metric measurement for each second but every 10 seconds.
+However, note that since ``collectd`` is configured to collect metrics only every 10 seconds, there is no metric measurement for each second but every 10 seconds.
 
 ________________________
 Configuring ``collectd``
 ________________________
 
-While only a few collectd plugins are enabled by default, you can leverage the large collection of `available plugins <https://collectd.org/wiki/index.php/Table_of_Plugins>`_. To enable a plugin on your instance, edit the instance's ``/etc/collectd.conf`` file. Uncomment each ``LoadPlugin <plugin_name>`` line that you wish to enable. Then, restart collectd with the command:
+While only a few ``collectd`` plugins are enabled by default, you can leverage the large collection of `available plugins <https://collectd.org/wiki/index.php/Table_of_Plugins>`_. To enable a plugin on your instance, edit the instance's ``/etc/collectd.conf`` file. Uncomment each ``LoadPlugin <plugin_name>`` line that you wish to enable. Then, restart collectd with the command:
 
 .. code-block:: bash
 
    sudo systemctl restart collectd
 
-The collectd configured to send measurements by batch to minimize network traffic. However, if you want to avoid any interference during your experiments, you can disable collectd with the command:
+The ``collectd`` configured to send measurements by batch to minimize network traffic. However, if you want to avoid any interference during your experiments, you can disable ``collectd`` with the command:
 
 .. code-block:: bash
 
@@ -169,22 +180,36 @@ _________________________________________________________
 Energy and Power Consumption Measurement with ``etrace2``
 _________________________________________________________
 
-The `CC-CentOS 7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. It is done with the ``etrace2`` utility which relies on the Intel RAPL (Running Average Power Limit) interface. From within your instance, you may use the terminal command:
+The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. It is done with the ``etrace2`` utility which relies on the `Intel RAPL (Running Average Power Limit) <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ interface.
+
+To spawn your program and print energy consumption:
 
 .. code-block:: bash
 
    etrace2 <your_program>
 
-``etrace2`` also supports reporting using set intervals and durations, and can be used for all processes. For example, to print power consumption every second for 10 seconds for the entire system, use the command:
+To print power consumption every 0.5 second:
+
+.. code-block:: bash
+
+   etrace2 -i 0.5 <your_program>
+   
+To print power consumption every 1 second for 10 seconds:
 
 .. code-block:: bash
 
    etrace2 -i 1.0 -t 10
 
-Your output may appear like this:
+For example, to report energy consumption during the generation of a large RSA private key:
 
 .. code::
 
+   $ etrace2 openssl genrsa -out private.pem 4096
+   # ETRACE2_VERSION=0.1
+   Generating RSA private key, 4096 bit long modulus
+   ..............................................................................................................................................................................................................................................................................................................++
+   .............................................................................................................................................................++
+   e is 65537 (0x10001)
    # ELAPSED=2.579472
    # ENERGY=365.788208
    # ENERGY_SOCKET0=99.037841
@@ -199,8 +224,8 @@ The energy consumption is reported in joules.
 Note the following caveats:
 
 - This utility is compatible with all our hardware, except for Intel Atom nodes released in December 2016. We are hoping to extend support for them in the future.
-- Intel documents that the RAPL is not an analog power meter, but rather uses a software power model. This software power model estimates energy usage by using hardware performance counters and I/O models. Based on their measurements, they match actual power measurements.
-- In some situations the total ENERGY value is incorrectly reported as a value equal or close to zero. However, the sum of ENERGY_SOCKET and ENERGY_DRAM values should be accurate.
+- `Intel <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ documents that the RAPL is not an analog power meter, but rather uses a software power model. This software power model estimates energy usage by using hardware performance counters and I/O models. Based on their measurements, they match actual power measurements.
+- In some situations the total *ENERGY* value is incorrectly reported as a value equal or close to zero. However, the sum of *ENERGY_SOCKET* and *ENERGY_DRAM* values should be accurate.
 - Monitoring periods larger than 10-15 minutes may be inaccurate due to RAPL registers overflowing if they're not read regularly.
 
 This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.

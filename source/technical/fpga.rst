@@ -6,7 +6,7 @@ ____________
 Introduction
 ____________
 
-Chameleon provides access to four FPGA nodes. Each of these nodes is fitted with a Nallatech 385A board with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support. They are configured to run OpenCL code, but they can be reconfigured (by a request to our help desk) to run compiled designs prepared with Altera Quartus.
+Chameleon provides access to four FPGA nodes. Each of these nodes is fitted with a `Nallatech 385A board <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support. They are configured to run OpenCL code, but they can be reconfigured (by a request to our `help desk <https://www.chameleoncloud.org/user/help/>`_) to run compiled designs prepared with Altera Quartus.
 
 Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes. Briefly, the steps for building an FPGA application are:
 
@@ -37,7 +37,7 @@ Two directories will be extracted: ``common`` and ``hello_world``. Change into t
 
    cd hello_world
 
-Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using -march=emulator in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required, and correctly identifies the FPGA boards available on Chameleon. Do not alter this parameter. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
+Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using ``-march=emulator`` in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required, and correctly identifies the FPGA boards available on Chameleon. Do not alter this parameter. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
 
 .. code-block:: bash
 
@@ -67,9 +67,9 @@ _________
 
 After completing development of an OpenCL kernel on our build node, the kernel and host application must be transferred and executed on a node with an FPGA accelerator.
 
-When using `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ GUI to reserve nodes, use the “Node Type to Reserve” selector and choose “FPGA”. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the “with FPGA” button, and clicking “Reserve” at the bottom of the selection. Copy the generated CLI command and use it to create your reservation. 
+When using `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ GUI to reserve nodes, use the *Node Type to Reserve* selector and choose *FPGA*. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the *with FPGA* button, and clicking *Reserve* at the bottom of the selection. Copy the generated CLI command and use it to create your reservation. 
 
-In order to have access to the required runtime environment for using the FPGAs, use the image “CC-CentOS7-FPGA” when launching your instance.
+In order to have access to the required runtime environment for using the FPGAs, use the image **CC-CentOS7-FPGA** when launching your instance.
 
 Log in to the instance, download the application code (both ``common`` and ``hello_world`` directories) from the build system using ``scp``, and change into the ``hello_world`` directory:
 

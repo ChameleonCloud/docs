@@ -8,15 +8,17 @@ ___________________
 Introduction
 ___________________
 
-In order to use bare metal resources, you must reserve them in advance by creating a *Lease*. This is highly recommended for bare metal resources that are in high demand, such as GPU nodes. A Lease for a set of nodes ensures that you will be the only user with access to those specific nodes for the duration of the Lease. Leases can be made well in advance of when you need to use bare metal resources, and may contain requests for specific nodes by node UUID. Leases are shared by all members of a Project. Leases have a maximum duration of *7 days* but may be extended within 48 hours prior to the end of the Lease through the GUI. If you require a Lease longer than 7 days, you may request it by opening a ticket at the :ref:`help-desk`.
+Unlike virtual resources on a regular on-demand cloud, physical resources on Chameleon must be reserved before using them for an experiment. Once a reservation has been accepted, users are guaranteed that resources will be available at the time they chose (except in extraordinary circumstances such as hardware or platform failures), which helps to plan large scale experiments.
 
-The Reservation mechanism is implemented using the Blazar OpenStack module. You may make reservations through the GUI at each Chameleon site or through the CLI. 
+Chameleon resources are reserved via `Blazar <https://docs.openstack.org/blazar/latest/>`_ (previously known as *Climate*) which provides Reservation as a Service for OpenStack.
 
 _________________________________________
-Managing Reservations using the GUI
+Provisioning and Managing Resources Using the GUI
 _________________________________________
 
-To manage reservations using the GUI, log in to the GUI for the Chameleon site where the specific resources you wish to use are located - either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. In the navigation sidebar, go to the *Reservations* section and click *Leases*.
+To make reservations of the resources, first log into the Horizon web interface - either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :doc:`gui`.
+
+In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 
 .. figure:: reservations/leasespage.png
    :alt: The Leases page in the GUI
@@ -26,21 +28,22 @@ To manage reservations using the GUI, log in to the GUI for the Chameleon site w
 The Lease Calendar
 __________________
 
-If you wish to see the availability and usage of Chameleon bare metal nodes, you may view them by clicking on the *Lease Calendar* button. This will load the Lease Calendar.
+To discover when resources are available, access the lease calendar by clicking on the *Lease Calendar* button. This will display a Gantt chart of the reservations which allows you to find when resources are available. The *Y* axis represents the different physical nodes in the system and the *X* axis represents time.
 
 .. figure:: reservations/leasecalendar.png
    :alt: The Lease Calendar
 
    The Lease Calendar
 
-The Lease Calendar is a Gantt chart display Chameleon bare metal nodes by UUID. Individual reservations are represented by colored bars of the same color. All reservations system-wide are displayed, including those from other projects. Hovering over a reservation will display details of the reservation. You may also alter the Gantt chart's display time frame or filter the types of nodes being displayed by using the *Node Type* dropdown.
+.. tip::
+   The nodes are identified by their *UUIDs*. The colors are used to indicate different reservations, i.e. the nodes that belong to the same reservation are colored the same. Hovering over the chart provides the details about the reservation. To change the display time frame, click on ``1d``, ``1w``, and ``1m`` buttons or fill in the start and end times.
 
 .. _reservations-create-lease-gui:
 
 Creating a Lease
 ________________
 
-You may create a new Lease by clicking on the *+Create Lease* button. This will display the *Create Lease* dialog.
+Once you have chosen a time period when you want to reserve resources, go back to the *Leases* screen and click on the *Create Lease* button. It should bring up the window displayed below:
 
 .. figure:: reservations/createlease.png
    :alt: The Create Lease dialog
@@ -50,40 +53,53 @@ You may create a new Lease by clicking on the *+Create Lease* button. This will 
 #. Pick a name for the Lease. The name needs to be unique across your project.
 #. Pick a start and end date and time. If you would like to start your Lease as soon as possible, you may leave these blank and Chameleon will attempt to reserve your nodes to begin immediately with a default Lease duration of 1 day.
 
-   .. note:: The start and end date and times use your user setting's configured Timezone. By default, this is UTC. You may configure your Timezone setting by visiting the GUI's :ref:`gui-settings` settings page.
+   .. note:: 
+      If you have not selected a timezone earlier, the default timezone is **UTC**. Therefore, the date must be entered in **UTC**! 
+      
+   .. tip:: You can get the UTC time by running ``date -u`` in your terminal.
 
-#. Choose the minimum and maximum number of hosts you require. The default is 1 node.
+#. Choose the minimum and maximum number of hosts. The default is 1 node.
 #. Choose a node type in the drop down menu below the *node_type* and *=* drop down lists.
 
    .. note:: You may only request one type of node in each individual Lease. If you wish to request multiple node types, you must create separate Leases for each node type.
 
 #. Click on the *Create* button.
 
-If your Lease was successfully created, you will be taken to the *Lease Detail* page for the Lease that was created.
+Once created, the lease details will be displayed. At the bottom of the page are the details about the reservation. Initially the reservation is in the ``Pending`` status, and stays in this state until it reaches the start time.
 
 .. figure:: reservations/leasedetails.png
    :alt: Lease details page
 
    Lease details page
+   
+Once the start time of the lease is reached, the lease will be started and its reservation will change to ``Active``; you may need to refresh the page to see the updates.
 
-The *Id* field in the Lease Detail page displays your Lease UUID. This value is useful when using the CLI or communicating issues when opening a ticket at the :ref:`help-desk`. In addition, the *Action*, *Status* and *Status Reason* fields display the state of your Lease. If your Lease fails to start at the appointed time, you may delete your Lease and re-create it.
+.. tip:: The lease is identified by a *UUID*. You may find it useful when using the CLI or submitting tickets on our `help desk <https://www.chameleoncloud.org/user/help/>`_.
+
+.. role:: redbold
+
+.. attention:: 
+   To ensure fairness to all users, resource reservations (leases) are limited to a duration of :redbold:`7 days`. However, an active lease within :redbold:`48 hours` of its end time can be prolonged by :redbold:`up to 7 days` from the moment of request if resources are available.
 
 Extending a Lease
 _________________
 
-You may extend a Lease that has not yet expired by clicking on the *Update Lease* button next to it on the Leases page in the GUI. This will open the *Update Lease Parameters* dialog.
+To prolong a lease, click on the *Update Lease* button in *Actions* column.
 
 .. figure:: reservations/updatelease.png
    :alt: The Update Lease Parameters dialog
 
    The Update Lease Parameters dialog
 
-To prolong a lease, fill out the form specifying the amount of additional time to add to the lease. When you are finished, click the *Update* button.
+Fill out the form by specifying the amount of additional time to add to the lease. Then, click on the *Update* button to finish your request.
+
+.. tip:: 
+   If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can submit a ticket on our `help desk <https://www.chameleoncloud.org/user/help/>`_ to request a **one-time exception** of creating a longer lease.
 
 Reserving a Node by UUID
 ________________________
 
-You may specify a specific node to reserve if you know its UUID. In the *Create Lease* dialog, select *uid* in the *Resource Type* dropdown. Next, select your node UUID in the dropdown underneath it. 
+You may reserve a specific node by providing its *UUID*. To learn more about how to find a node with a specific type, please see :doc:`discovery`. In the *Create Lease* dialog, select *uid* in the *Resource Type* dropdown. Then, choose the *UUID* of the node you would like to reserve.
 
 .. figure:: reservations/uid.png
    :alt: Selecting a node by UUID
@@ -96,23 +112,54 @@ You may specify a specific node to reserve if you know its UUID. In the *Create 
 .. _reservation-cli:
 
 ___________________________________
-Managing Reservations using the CLI
+Provisioning and Managing Resources Using the CLI
 ___________________________________ 
 
-To manage your reservations with the CLI, you must install the ``python-blazarclient`` Python package in addition to the ``python-openstackclient`` package. You may use the following command to install ``python-blazarclient``:
+The sections above present the most user friendly mode of usage, with most actions performed via the web interface. However, Chameleon can be accessed via the OpenStack command line tools which provides more capabilities. This section presents some advanced usage using the command line tools.
+
+.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+
+Blazar Client Installation
+______________________
+
+To reserve specific nodes, based on their identifier or their resource specifications, you must use the `Blazar <https://docs.openstack.org/blazar/latest/>`_ command line client. To use the CLI, you must install the ``python-blazarclient``. To install ``python-blazarclient``, run the following command:
 
 .. code-block:: bash
 
    pip install python-blazarclient
+Before using *Blazar Client*, You must configure the environment variables for your project via ``source`` :ref:`the OpenStack RC Script <cli-rc-script>` or use the CLI switches every time you run the commands. Type ``blazar`` in your terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in the *Shell Mode*.
 
-The Blazar Client is similar to the OpenStack Client. You must first set environment variables for your project using :ref:`cli-rc-script` or use the same set of CLI switches to authenticate the client with Chameleon. Once installed, you may type ``blazar`` in your terminal session to open the CLI in Interactive Mode, or you may use ``blazar`` in shell mode for scripting.
+.. note:: ``blazar`` is previously known as ``climate``. In Chameleon, ``blazar`` and ``climate`` are used interchangeably, but they have the same functionality.
 
-.. note:: ``blazar`` previously used the development name ``climate``. Both ``blazar`` and ``climate`` are occasionally used interchangeably on Chameleon and have the same functionality.
+Creating a Lease
+________________
 
-Retrieving a Node List
-______________________
+To create a lease, use the ``lease-create`` command. The following arguments are required:
 
-The ``host-list`` command retrieves a list of nodes at your Chameleon site. The output may appear like this:
+- ``--physical-reservation`` with the ``min``, ``max``, and ``resource_properties`` attributes
+- ``--start-date`` in ``"YYYY-MM-DD HH:MM"`` format
+- ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
+- A lease name
+
+For example, the following command will create a lease with the name of ``my-first-lease`` and the node type of ``compute_haswell`` that starts on June 17th, 2015 at 4:00pm and ends on June 17th, 2015 at 6:00pm:
+
+.. code-block:: bash
+
+   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-lease
+
+Instead of specifying the node type, you may also reserve a specific node by providing it's *UUID*. For example, to reserve the node with *UUID* of ``c9f98cc9-25e9-424e-8a89-002989054ec2``, you may run the command similar to the following:
+
+.. code-block:: bash
+
+   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
+
+Actually, you may use any resource property that is in the resource registry to reserve the nodes. To see the list of properties of nodes, first get the full list of nodes with the command:
+
+.. code-block:: bash
+
+   blazar host-list
+   
+The output should look like:
 
 .. code-block:: text
 
@@ -131,13 +178,13 @@ The ``host-list`` command retrieves a list of nodes at your Chameleon site. The 
    | 175  | 07fd65f0-b814-429b-a2fb-3a4afa52de41 |    24 |    128000 |      200 |
    | 255  | 081d2cb1-b6b5-4014-b226-7a42d8588307 |    24 |    128000 |      200 |
 
-You may retrieve details about an individual node with the ``host-show`` command by using the ``id`` from this chart. For example, you can retrieve details about the node with ``id`` 151 by using the command:
+To get resource properties of a host, run ``host-show`` command with the ``id`` listed in the first column. For example, to get the resource properties of the host 151,  run:
 
 .. code-block:: bash
 
    blazar host-show 151
 
-You will receive verbose details about this host that may look like this:
+The output should look like:
 
 .. code-block:: text
 
@@ -166,72 +213,50 @@ You will receive verbose details about this host that may look like this:
    | version                          | 78dbf26565cf24050718674dcf322331fab8ead5    |
    +----------------------------------+---------------------------------------------+
 
-Any of these fields may be used in the reservation process. The ``uid`` field is the UUID of the node, used for making a specific reservation for that node.
+Any of the property listed in the field column may be used to reserve the nodes. For example, you can use ``resource_properties='["=", "$architecture.smp_size", "2"]'`` to reserve a node with two physical processors.
 
-Creating a Lease
-________________
-
-You may use the ``lease-create`` commmand to create a Lease. You must provide the following arguments:
-
-- ``--physical-reservation`` switch to request specific node types or node UUIDs, with the ``min``, ``max``, and ``resource_properties`` attributes
-- ``--start-date`` followed by a date and time in ``"YYYY-MM-DD HH:MM"`` format
-- ``--end-date`` followed by a date and time in ``"YYYY-MM-DD HH:MM"`` format
-- A lease name
-
-For example, if you wish to create a reservation for a compute node called ``my-first-lease`` that starts on June 17th, 2015 at 4:00pm and ends on June 17th, 2015 at 6:00pm, you would use the command:
-
-.. code-block:: bash
-
-   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-lease
+.. note:: Remember to use ``$`` in front of the property.
 
 Extending a Lease
 _________________
 
-You may extend a lease by using the ``lease-update`` command with the ``--prolong-for`` switch and a duration, in quotes. The format of the duration is a number followed by a letter specifying a unit of time. ``w`` is for weeks, ``d`` is for days and ``h`` is for hours. For example, if you wish to extend a lease by one day, you would use the command:
+To extend your lease, use ``lease-update`` command, and provide time duration via ``--prolong-for`` switch. The format of the duration is a number followed by a letter specifying the time unit. ``w`` is for weeks, ``d`` is for days and ``h`` is for hours. For example, if you would like to extend the ``my-first-lease`` by one day, run the following command:
 
 .. code-block:: bash
 
    blazar lease-update --prolong-for "1d" my-first-lease
+   
+Chameleon Node Types
+_________________
 
-Reserving a Node by UUID
-________________________
+The following node types are reservable on Chameleon.
 
-If you wish to reserve a specific node by UUID, you may specify a parameter type and value in ``resource_properties``. For example, if you wish to reserve node ``c9f98cc9-25e9-424e-8a89-002989054ec2``, you would use the command:
-
-.. code-block:: bash
-
-   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
-
-.. note:: When specifying the ``resource_properties`` parameters, use the ``$`` symbol in front of the resource type string.
-
-Here are examples for reserving different types of nodes:
-
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Node Type                | Command                                                                                                                                                                                                        |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Haswell compute nodes    | ``blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell"]' --start-date "2016-06-22 20:38" --end-date "2016-06-25 15:00" my-haswell-compute-nodes`` |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Skylake compute nodes    | ``blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' --start-date "2016-06-22 20:38" --end-date "2016-06-25 15:00" my-skylake-compute-nodes`` |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Storage nodes            | ``blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "storage"]' --start-date "2016-06-22 20:38" --end-date "2016-06-25 15:00" my-storage-nodes``                 |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Haswell Infiniband nodes | ``blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell_ib"]' --start-date "2016-06-22 20:38" --end-date "2016-06-25 15:00" my-infiniband-nodes``   |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Storage Hierarchy nodes  | ``blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "storage_hierarchy"]' --start-date "2016-06-22 20:38" --end-date "2016-06-25 15:00" my-ssd-nodes``           |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| NVIDIA K80 nodes         | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "gpu_k80"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-k80-nodes``                   |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| NVIDIA M40 nodes         | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "gpu_m40"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-m40-nodes``                   |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| NVIDIA P100 nodes        | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "gpu_p100"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-p100-nodes``                 |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| NVIDIA P100 NVLink nodes | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "gpu_p100_nvlink"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-nvlink-nodes``        |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| FPGA nodes               | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "fpga"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-fpga-nodes``                     |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Low power Xeon nodes     | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "lowpower_xeon"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-xeon-nodes``            |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Atom nodes               | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "atom"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-atom-nodes``                     |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ARM64 nodes              | ``blazar lease-create --physical-reservation min=1,max=1,hypervisor_properties='["=", "$node_type", "arm64"]' --start-date "2016-06-28 17:32" --end-date "2016-06-28 20:32" my-arm64-nodes``                   |
-+--------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------+------------------------------------------------------------------------------+
+| Node Type                | ``resource_properties='["=", "$node_type", "<Chameleon node type name>"]'``  |
++--------------------------+------------------------------------------------------------------------------+
+| Haswell compute nodes    | ``compute_haswell``                                                          |
++--------------------------+------------------------------------------------------------------------------+
+| Skylake compute nodes    | ``compute_skylake``                                                          |
++--------------------------+------------------------------------------------------------------------------+
+| Storage nodes            | ``storage``                                                                  |
++--------------------------+------------------------------------------------------------------------------+
+| Haswell Infiniband nodes | ``compute_haswell_ib``                                                       |
++--------------------------+------------------------------------------------------------------------------+
+| Storage Hierarchy nodes  | ``storage_hierarchy``                                                        |
++--------------------------+------------------------------------------------------------------------------+
+| NVIDIA K80 nodes         | ``gpu_k80``                                                                  |
++--------------------------+------------------------------------------------------------------------------+
+| NVIDIA M40 nodes         | ``gpu_m40``                                                                  |
++--------------------------+------------------------------------------------------------------------------+
+| NVIDIA P100 nodes        | ``gpu_p100``                                                                 |
++--------------------------+------------------------------------------------------------------------------+
+| NVIDIA P100 NVLink nodes | ``gpu_p100_nvlink``                                                          |
++--------------------------+------------------------------------------------------------------------------+
+| FPGA nodes               | ``fpga``                                                                     |
++--------------------------+------------------------------------------------------------------------------+
+| Low power Xeon nodes     | ``lowpower_xeon``                                                            |
++--------------------------+------------------------------------------------------------------------------+
+| Atom nodes               | ``atom``                                                                     |
++--------------------------+------------------------------------------------------------------------------+
+| ARM64 nodes              | ``arm64``                                                                    |
++--------------------------+------------------------------------------------------------------------------+

@@ -14,9 +14,12 @@ ___________________________
 Work with KVM using the GUI
 ___________________________
 
-An easy way to use `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ is via the GUI, which is similar to the GUIs for `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. You log into the web interface using your Chameleon username and password. If you change your Chameleon password in the portal, that change will propagate to the OpenStack KVM interface in about 5 minutes.
+An easy way to use OpenStack KVM on Chameleon is via the GUI, which is similar to the GUIs for `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. You log into the web interface using your Chameleon username and password. 
 
-After a successful log in, you will see the Overview page as shown below. This page provides a summary of your current and recent usage and provides links to various other pages. Most of the tasks you will perform are done via the menu on the lower left and will be described below. One thing to note is that on the left, your current project is displayed. If you have multiple Chameleon projects, you can change which of them is your current project. All of the information displayed and actions that you take apply to your current project. So in the screen shot below, the quota and usage apply to the current project you have selected and no information about your other projects is shown.
+.. note::
+   If you change your Chameleon password in the portal, the change will propagate to the OpenStack KVM interface in about 5 minutes.
+
+After a successful log in, you will see the *Overview* page as shown below. This page provides a summary of your current and recent usage and provides links to various other pages. Most of the tasks you will perform are done via the menu on the lower left and will be described below. One thing to note is that on the left, your current project is displayed. If you have multiple Chameleon projects, you can change which of them is your current project. All of the information displayed and actions that you take apply to your current project. So in the screen shot below, the quota and usage apply to the current project you have selected and no information about your other projects is shown.
 
 .. figure:: kvm/overview.png
 
@@ -34,23 +37,30 @@ To launch an *Instance*, click the *Launch Instance* button. This will open the 
 
 .. figure:: kvm/launchdetails.png
 
-Follow these steps:
+Follow these steps to configure *Details* tab:
 
-#. Enter an *Instance Name*
+#. Provide a name for this instance (to help you identify instances that you are running)
 #. Choose a *Flavor* for the Instance. Flavors refer to the virtual machine's assigned memory and and disk size. Different images and snapshots may require a larger Flavor. For example, the ``CC-CentOS7`` image requires at least an ``m1.small`` flavor.
-#. If you wish to launch more than one Instance, you may specify this in *Instance Count*.
-#. Choose an *Instance Boot Source*. If you choose ``Boot from Image`` as a boot source, you will be presented a list of disk images. Alternatively, you may choose ``Boot from Snapshot`` if you have a previously saved Snapshot of a virtual machine. 
+   
+   .. tip:: If you select different flavors from the Flavor dropdown, their characteristics are displayed on the right.
+
+#. Select the amount of resources (Flavor) to allocate to the instance.
+#. Select the *Instance Boot Source* of the instance, which is either an *Image*, a *Snapshot* (an image created from a running virtual machine), or a *Volume* (a persistent virtual disk that can be attached to a virtual machine). If you select *Boot from image*, the *Image Name* dropdown presents a list of virtual machine images that we have provided, that other Chameleon users have uploaded and made public, or images that you have uploaded for yourself. If you select *Boot from snapshot*, the *Instance Snapshot* dropdown presents a list of virtual machine images that you have created from your running virtual machines.
 
 When you are finished with this step, go to the *Access and Security* Tab.
 
 .. figure:: kvm/launchaccess.png
 
-You may configure security using the following steps:
-
-#. Select an SSH Key Pair for this Instance.
+#. Select an SSH keypair that will be inserted into your virtual machine. You will need to select a keypair here to be able to access an instance created from one of the public images Chameleon provides. These images are not configured with a default root password and you will not be able to log in to them without configuring an SSH key.
 #. If you have previously defined *Security Groups*, you may select them here. Alternatively, you can configure them later.
 
-You may now click the *Launch* button.
+Set up network using *Network* tab.
+
+.. figure:: kvm/launchnetwork.png
+
+#. Select which network should be associated with the instance. Click the ``+`` next to your project’s private network (PROJECT_NAME-net), not ``ext-net``.
+
+Now you can launch your instance by clicking on the *Launch* button and the *Instances* page will show progress as it starts.
 
 .. _kvm-associate-ip:
 
@@ -61,12 +71,12 @@ You may assign a Floating IP Address to your Instance by selecting *Associate Fl
 
 .. figure:: kvm/associatemenu.png
 
-This process is similar to the using the GUI to :ref:`baremetal-gui-associate-ip` on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
+This process is similar to :ref:`baremetal-gui-associate-ip` on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
 
 Key Pairs
 _________
 
-You will need to import or create SSH :ref:`gui-key-pairs`. This process is similar on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
+You will need to import or create SSH :ref:`gui-key-pairs`. This process is similar to the process performed on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
 
 Security Groups
 _______________
@@ -79,36 +89,37 @@ To create a Security Group, click *Projects* > *Compute* > *Access and Security*
 
 .. figure:: kvm/securitytab.png
 
-Click the *+Create Security Group* button. This will open the *Create Security Group* page.
+Click the *+Create Security Group* button to open the *Create Security Group* page.
 
 .. figure:: kvm/createsecurity.png
 
-Enter a *Name* and an optional *Description*, then click the *Create Security Group* button. You will be returned to the *Security Groups* tab in the *Access and Security* page, where you will see your new Security Group.
+Enter a *Name* for your *Security Group*, and optionally provide a *Description*. Then click the *Create Security Group* button. 
+Now, you should see your *Security Group* listed on the *Access and Security* page.
 
 .. figure:: kvm/grouplist.png
 
-Click the *Manage Rules* button in the Action dropdown next to your Security Group. This will open the *Manage Security Group Rules* page for your Security Group.
+Click the *Manage Rules* button in the *Action* column to open the *Manage Security Group Rules* page.
 
 .. figure:: kvm/managerules.png
 
-The default Security Group allows outbound IPv4 and IPv6 traffic, as seen by each entry that specifies *Egress* as the *Direction*, with *Any* as the *IP Protocol* and *Port Range*. If there are no entries specified *Ingress*, then no inbound traffic will be allowed. You may add an additional rule with *+Add Rule*. This will open the *Add Rule* dialog.
+The default Security Group allows outbound IPv4 and IPv6 traffic for *Any IP Protocol* and *Port Range*. If no entry for *Ingress*, no inbound traffic will be allowed. You may add an additional rule by clicking on the *+Add Rule* to open the *Add Rule* dialog.
 
 .. figure:: kvm/addrule.png
 
-You may configure a custom rule by specifying *Custom TCP Rule* (or *Custom UDP Rule* or *Custom ICMP Rule*). You may specify a *Direction* (*Ingress* for inbound traffic to your Instance or *Egress* for outbound traffic) and a *Port*. Alternatively, you may specify a pre-defined, commonly used Rule in the *Rule* dropdown, such as *SSH*. when you are finished, click *Add*.
+In this dialog, you can specify *Custom TCP Rule* (or *Custom UDP Rule* or *Custom ICMP Rule*), a *Direction* (*Ingress* for inbound traffic to your Instance or *Egress* for outbound traffic) and a *Port*. Alternatively, you can use a pre-defined rule in the *Rule* dropdown, such as *SSH*. when you are finished, click *Add*.
 
 .. _kvm-security-group:
 
 Adding a Security Group to an Instance
 ______________________________________
 
-Once you have defined a Security Group, you may apply it to an Instance by clicking *Project* > *Compute* > *Instances* in the navigation sidebar and clicking the *Edit Security Groups* option in the *Actions* dropdown next to your Instance.
+Once you have defined a *Security Group*, you may apply it to an Instance by clicking *Project* > *Compute* > *Instances* in the navigation sidebar and clicking the *Edit Security Groups* option in the *Actions* dropdown.
 
 .. figure:: kvm/editaction.png
 
-This will open the *Security Groups* tab in the *Edit Instance* dialog. 
+The *Security Groups* tab in the *Edit Instance* dialog will pop up. 
 
 .. figure:: kvm/editinstance.png
 
-You may click the *+* button next to the Security Group you wish to apply in the *All Security Groups* list on the left. Once you are finished, click *Save*. You may now access services on any open Ingress ports on your Instance.
+You may click the *+* button next to the Security Group you wish to apply in the *All Security Groups* list on the left. Once you are finished, click *Save* to finish the process.
 

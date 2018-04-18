@@ -8,58 +8,69 @@ ___________________________
 Introduction
 ___________________________
 
-*Complex Appliances* allow you to deploy multiple nodes with advanced networking and automated configuration with "one click". Configuration tasks, such as hostname and security key distribution across a scalable number of nodes, are automated using Complex Appliances. This facilitates reproducibility and sharing, using only :ref:`images` and a configuration document called a *Template*. 
+Deploying an MPI cluster, an OpenStack installation, or any other type of cluster in which nodes can take on multiple roles can be complex: you have to provision potentially hundreds of nodes, configure them to take on various roles, and make them share information that is generated or assigned only at deployment time, such as hostnames, IP addresses, or security keys. When you want to run a different experiment later you have to redo all this work. When you want to reproduce the experiment, or allow somebody else to reproduce it, you have to take very precise notes and pay great attention to their execution.
 
-.. note:: Chameleon implements Complex Appliances using `OpenStack Heat <https://wiki.openstack.org/wiki/Heat>`_ orchestration. You may see terminology in the GUI and CLI that refer to Complex Appliances as *Stacks*.
+To help solve this problem and facilitate reproducibility and sharing, the Chameleon team configured a tool that allows you to deploy complex clusters with “one click”. This tool requires not just a simple *image* (i.e., appliance) but also a document, called a *template*, that contains the information needed to orchestrate the deployment and configuration of such clusters. We call this *image + template* combination **Complex Appliances** because it consists of more than just the image (i.e., appliance).
+
+In a nutshell, *Complex Appliances* allow you to specify not only what image you want to deploy but also on how many nodes you want to deploy that image, what roles the deployed instances should boot into (such as e.g., head node and worker node in a cluster), what information from a specific instance should be passed to another instance in that *Complex Appliance*, and what scripts should be executed on boot so that this information is properly used for configuring the “one click” cluster. 
+
+This guide will tell you all you need to know in order to use and configure *Complex Appliances* on Chameleon.
+
+.. hint::
+   Since *Complex Appliances* in Chameleon are currently implemented using the `OpenStack Heat <https://docs.openstack.org/heat/latest/>`_ orchestration service, we will be using OpenStack terminology and features to work with them. The templates described above are YAML files using the `Heat Orchestration Template (HOT) <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html>`_ format (Heat also supports the AWS CloudFormation template format, but this is not covered here). A deployed complex appliance is referred to as a “stack” – just as a deployed single appliance is typically referred to as an “instance”. 
 
 _________________________________
 Complex Appliances in the Catalog
 _________________________________
 
-The `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ has several pre-written Complex Appliances that demonstrate its uses. The Templates from these Complex Appliances can be easily modified for many use cases. Complex Appliances are marked with a badge in the upper right corner.
+The `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ has several *Complex Appliances* for popular technologies that people want to deploy such as OpenStack or MPI or even more advanced deployments such as efficient SR-IOV enabled MPI in KVM virtual machines. We also provide common building blocks for cluster architectures, such as an NFS share. *Complex Appliances* are identified by a badge in their top-right corner representing a group of machines, as in the screenshot below:
 
 .. figure:: complex/nfsappliance.png
    :alt: A Complex Appliance with a badge in the upper right
 
    A Complex Appliance with a badge in the upper right
 
-Several pre-written Complex Appliances demonstrate the following use cases:
-
-- `NFS Share <https://www.chameleoncloud.org/appliances/25/>`_: A single NFS server with a configurable number of clients
-- `OpenStack Ocata (Devstack) + Swift <https://www.chameleoncloud.org/appliances/39/>`_: An OpenStack deployment with a configurable number of compute nodes
-- `MPI bare-metal cluster <https://www.chameleoncloud.org/appliances/29/>`_: An MPI cluster for a configurable number of Infiniband nodes
-
-A Complex Appliance page in the Appliance Catalog displays various details about the appliance.
+To view the details of a *Complex Appliance*, simply click on it.
 
 .. figure:: complex/nfsappliancedetail.png
    :alt: A Complex Appliance page
 
    A Complex Appliance page
 
-Complex Appliance descriptions typically include a description of *Input Parameters* for configuration and a description of *Outputs* which return automatically configured values such as IP addresses. The *Get Template* button provides a link to the *Template*, required for launching the Complex Appliance. You may use the Template's provided URL during the launch process or download the Template to modify and then upload during launching.
+.. tip:: You may download the *Template* file or copy the *Template* file URL to clipboard by clicking the *Get Template* button. The *Template* file or it's URL is required when launching a *Complex Appliance*. 
 
 __________________________________________________________
 Managing Complex Appliances using the GUI
 __________________________________________________________
 
-Before launching a Complex Appliance, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most Complex Appliances will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the Appliance Catalog. In the GUI for either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_, use the navigation sidebar to go to *Project* > *Orchestration* > *Stacks*.
+Before launching a *Complex Appliance*, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ stie or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
 
 .. figure:: complex/stacks.png
    :alt: The Stacks page
 
    The Stacks page
+   
+.. tip::
+   You can go to *Stacks* page directly from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_.
+   
+   #. Go to the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ and identify the appliance you want to launch. Click on it to open its details page.
+   
+   #. Click on the "Launch Complex Appliance at ``CHI@TACC``" or "Launch Complex Appliance at ``CHI@UC``" button depending on where your reservation is created.
+
 
 Launching a Complex Appliance
 _____________________________
 
-To launch a stack, click the *Launch Stack* button in the upper right of the Stacks page. This will open a wizard. Follow these steps:
+To launch a stack, click the *Launch Stack* button in the upper right of the *Stacks* page. Then follow the steps:
 
-#. In the *Select Template* step, you must provide a *Template*. Choose a *Template Source* in the dropdown. Choosing *File* will allow you to upload a file. Choosing *URL* will allow you to provide a URL of a Template, such as one from the Appliance Catalog. Chameleon will automatically retrieve the file from that URL. 
+#. Start setting up a *Template* by choosing a *Template Source* in the dropdown. You may either select the *File* option as *Template Source* and upload the *Template* file, or select the *URL* option and provide the URL of the *Template* file. 
 
    .. figure:: complex/selecttemplate.png
       :alt: The Select Template step
 
       The Select Template step
+      
+   .. important:: **Do not** change the environment source settings!
 
 #. Once you have provided a Template, click the *Next* button. Chameleon will validate the Template file and proceed to the *Launch Stack* step.
 
@@ -68,48 +79,52 @@ To launch a stack, click the *Launch Stack* button in the upper right of the Sta
 
       The Launch Stack step
 
-#. In the *Launch Stack* step, provide a *Stack Name* and re-enter your *Password*. There will be additional configuration options specified by the *Template* file on this step. Most Template files available in the Appliance Catalog will require a ``key_name`` and a ``reservation_id``. These allow you to specify an SSH key pair to be applied to nodes within the Complex Appliance, as well as a Lease to use for the nodes.
-#. When you are finished, click the *Launch* button. You will be returned to the Stacks page, and your new Complex Appliance status will show *Create in Progress*.
+#. Choose a name for your stack. Ignore the “Creation Timeout” and “Rollback On Failure” settings. You also need to enter your Chameleon password. Then, you need to select a value for the parameters of the template. Finally, click the *Launch* button.
+#. Your stack should be in status "Create In Progress" for several minutes while it first launches the server instance, followed by the client instances. It will then move to the status "Create Complete".
 
 .. figure:: complex/createinprogress.png
    :alt: A Complex Appliance with the Create in Progress status
 
    A Complex Appliance with the Create in Progress status
-
+   
 Monitoring a Complex Appliance
 ______________________________
 
-As the Complex Appliance launches, you may monitor its status by clicking on it in the *Stacks* page. There are several tabs that allow you to view your Complex Appliance.
+To monitor and get more details about your *Complex Appliance*, click on it in the *Stacks* page.
 
-- The *Topology* tab displays a graph representation of each of the resources in your Stack. Some nodes may appear to be blinking, indicating that they are currently being provisioned and launched by Chameleon.
+- The *Topology* tab displays a topology graph of the stack. The rack of machine represents the client instance group. The server’s floating IP (the public IP assigned to a resource) is represented by an IP in a circle; while an IP in a circle is also used to represent the association of the IP with the server instance (not the greatest idea to use the same symbol for both the IP and the association -- we agree but can’t do much about it at the moment). Blow off some steam by dragging the visualization across the screen, it can be rather fun!
+
+  .. note:: Blinking nodes indicates that they are still provisioning.
 
   .. figure:: complex/topology.png
      :alt: The Topology tab
 
      The Topology tab
 
-- The *Overview* tab displays various parameters, including the *ID* of the Stack and *Outputs* such as IP addresses assigned to each node. Many Complex Appliances automatically allocate and assign an externally accessible Floating IP address to one node, while leaving the others accessible through private IP addresses. You may *SSH* with agent forwarding (``ssh -A cc@your_ip``) to the externally accessible node to access any nodes in the private network.
+- The *Overview* tab displays various parameters, including the *ID* of the stack and *Outputs* such as IP addresses assigned to each node. If you have a floating IP associated to the server, you can now ``ssh`` to the server using the floating IP just as you do with regular instances. The client may not have a floating IP attached to it, but you can connect to it via the server node with the client’s private IP.
+  
+  .. tip:: To talk to the client without an associated floating IP, connect to the server with ``ssh -A`` to enable the SSH agent forwarding after loading your key to your SSH agent with ``ssh-add <path-to-your-key>``.
 
   .. figure:: complex/overview.png
      :alt: The Overview tab
 
      The Overview tab
 
-- The *Resource* tab displays *Heat Resources* used to build the Complex Appliance. This is useful for debugging the deployment and configuration of a Complex Appliance.
+- Under the *Resources* tab you will see the resources of the stack (the server, clients, server’s public/floating IP, and its the association) and information about them. 
 
   .. figure:: complex/resources.png
      :alt: The Resources tab
 
      The Resources tab
 
-- The *Events* tab displays any state changes of *Heat Resources* in the Complex Appliance. If a deployment of a Complex Appliance fails, you can see the event here.
+- In the *Events* tab you will see information about the history of the deployment so far. 
 
   .. figure:: complex/events.png
      :alt: The Events tab
 
      The Events tab
 
-- The *Template* tab displays the Template used to launch the Complex Appliance.
+- In *Template* tab, you will see the template that was used to deploy this stack.
 
   .. figure:: complex/template.png
      :alt: The Template tab
@@ -119,25 +134,27 @@ As the Complex Appliance launches, you may monitor its status by clicking on it 
 Deleting a Complex Appliance
 ____________________________
 
-To delete a Complex Appliance, select it in the *Stacks* page and click the *Delete Stacks* button. This will delete all resources associated with the stack, such as nodes and Floating IP addresses.
+To delete a *Complex Appliance*, select it in the *Stacks* page and click the *Delete Stacks* button. This will delete all resources of the stack, such as nodes and floating IP addresses.
 
 _____________________________________________________________
 Managing Complex Appliances using the CLI 
 _____________________________________________________________
 
-You may use the CLI to work with Complex Appliances. You will need to install the ``python-heatclient`` package using the command:
+.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+
+In addition to :ref:`cli-installing`, you will need to install the ``python-heatclient`` package using the command:
 
 .. code-block:: bash
 
    pip install python-heatclient
 
-Make sure that you configured your environment variables for your project using :ref:`cli-rc-script`. Once you have installed ``python-heatclient``, you may retrieve a list of current Complex Appliances in your project using the command:
+Then, set up your environment for OpenStack command line usage, as described in :ref:`cli-rc-script`. You can get a list of your *Complex Appliances* in your project using the command:
 
 .. code-block:: bash
 
    openstack stack list
 
-You will receive output that may look like this:
+The output should look like the following:
 
 .. code::
 
@@ -150,13 +167,13 @@ You will receive output that may look like this:
 Launching a Complex Appliance
 _____________________________
 
-You may launch a Complex Appliance from a Template file on your local machine by specifying the file and any input *Parameters*, using the command:
+To launch a *Complex Appliance* using *Template*, run the command on your local machine:
 
 .. code-block:: bash
 
    openstack stack create --template <template_file> --parameter <parameter>=<value> <stack_name>
 
-``<template_file>`` corresponds to the filename of a Template on your local machine and ``<stack_name>`` is the name you wish to assign the Complex Appliance. The ``--parameter`` switch can be provided multiple times and is used to specify the values of each input *Parameter* in the Template. For example, the `NFS Server Template <https://www.chameleoncloud.org/appliances/api/appliances/25/template>`_ lists the following ``parameters`` section:
+Provide the path to and the name of the *Template* file in your local file system via the ``template`` switch.  The ``<stack_name>`` is the name of the *Complex Appliance*. In addition, you may provide the parameters required in the *Template* file with their values by ``parameter`` switch. For example, the `NFS Server Template <https://www.chameleoncloud.org/appliances/api/appliances/25/template>`_ lists the following ``parameters`` section:
 
 .. code::
 
@@ -180,40 +197,22 @@ You may launch a Complex Appliance from a Template file on your local machine by
        constraints:
        - custom_constraint: blazar.reservation
 
-For this Template, you must provide values for ``nfs_client_count``, ``key_name`` and ``reservation_id``. 
-
-- ``key_name`` will correspond to one of your SSH key pairs, which you may retrieve with the command:
-
-  .. code-block:: bash
-
-     openstack keypair list
-
-- ``reservation_id`` will correspond to one of your active Lease UUIDs, which you may retrieve with the command:
-
-  .. code-block:: bash
-
-     blazar lease-list
-
-- ``nfs_client_count`` is a Parameter that is unique to this particular Template, and specifies the number of client nodes to configure. Because the Paramter ``type`` is ``number``, it should be a number.
-
-If this Template was saved locally as ``template.yaml``, you could launch the Complex Appliance using the command: 
-
-.. code-block:: bash
-
-   openstack stack create --template template.yaml --parameter key_name=mykey --parameter reservation_id=754f2dae-1758-426a-8e51-d0040373c626 --parameter nfs_client_count=1 my_nfs_stack
+Therefore, in order to use this *Template*, you must provide values for ``nfs_client_count``, ``key_name`` and ``reservation_id``. 
 
 Monitoring a Complex Appliance
 ______________________________
 
-You may view the information about your Complex Appliance in the CLI, such as *Outputs*, *Events* and *Resources*, if you know the Complex Appliance's UUID (retrieved with ``openstack stack list``).
+You can get details about your *Complex Appliance*, such as *Outputs*, *Events* and *Resources*, via the CLI. You will need the *UUID* of the *Complex Appliance*.
 
-- You may retrieve a list of *Outputs* by using the command:
+.. tip:: To get the *UUID* of your *Complex Appliance*, use the *Stacks* page on the GUI or retrieve it by ``openstack stack list`` command.
+
+- To view the *Outputs*, run:
 
   .. code-block:: bash
 
      openstack stack output list <uuid>
 
-  For example, the Outputs of the *NFS Share* stack is:
+  For example, the list of the outputs for the `NFS Share <https://www.chameleoncloud.org/appliances/25/>`_ stack is:
 
   .. code::
 
@@ -224,19 +223,19 @@ You may view the information about your Complex Appliance in the CLI, such as *O
      | server_ip  | Public IP address of the NFS server     |
      +------------+-----------------------------------------+
 
-  To view the values of all Outputs for a node, use the command:
+  You can get more details about the outputs by using the following command:
 
   .. code-block:: bash
 
      openstack stack output show --all <uuid>
 
-- You may retrieve a list of *Events* by using the command:
+- To view the *Events*, run:
 
   .. code-block:: bash
 
      openstack stack event list <uuid> 
 
-- You may retrieve a list of *Resources* used in your Complex Appliance by using the command:
+- To view the *Resources*, run:
 
   .. code-block:: bash
 
@@ -255,7 +254,7 @@ You may view the information about your Complex Appliance in the CLI, such as *O
      | nfs_clients               |                                      | OS::Heat::ResourceGroup         | INIT_COMPLETE   | 2018-03-19T18:38:05Z |
      +---------------------------+--------------------------------------+---------------------------------+-----------------+----------------------+
 
-  You may then retrieve information about a specific resource using the command:
+  Then, you may retrieve information about a specific resource using the command:
 
   .. code-block:: bash
 
@@ -264,107 +263,339 @@ You may view the information about your Complex Appliance in the CLI, such as *O
 Deleting a Complex Appliance
 ____________________________
 
-You may delete a Complex Appliance using the command:
+Use the following command to delete a stack:
 
 .. code-block:: bash
 
    openstack stack delete <uuid>
+   
+It will remove all the resources attached to the stack.
 
 ____________________________
-Heat Templates
+Heat Orchestration Templates
 ____________________________
 
-A *Heat Template* is a YAML file that specifies how resources are used and configured in a Complex Appliance. Each Template must provide three sections:
-
-- ``resources``: This section specifies OpenStack Resources to be used in the Template. You may view available Resources in the GUI by going to *Projet* > *Orchestration* > *Resource Types*. Each Resource type specifies output *Attributes* and input *Properties* for configuring the Resource.
-- ``parameters``: This section specifies input Parameters, used in configuring the Complex Appliance upon Launch.
-- ``outputs``: This section specifies Output values after a Complex Appliance launches. This can be used to output Resource values like Floating IP addresses.
+A *Heat Orchestration Template* is a YAML file that specifies how resources are used and configured in a *Complex Appliance*. 
 
 A Case Example: NFS Share
 _________________________
 
 Let's look at the `NFS Share Template <https://www.chameleoncloud.org/appliances/api/appliances/25/template>`_. The NFS share appliance deploys:
 
-- An NFS server instance, that exports the directory /exports/example to any instance running on Chameleon bare-metal,
-- Ane or several NFS client instances, which configure /etc/fstab to mount this NFS share to /mnt (and can subsequently read from and write to it).
+- An NFS server instance, that exports the directory ``/exports/example`` to any instance running on Chameleon bare-metal,
+- One or several NFS client instances, which configure ``/etc/fstab`` to mount this NFS share to ``/mnt`` (and can subsequently read from and write to it).
+
+This template is reproduced further below, and includes inline comments starting with the ``#`` character. There are three main sections:
+
+- resources
+- parameters
+- outputs
 
 The ``resources`` section is the most important part of the template: it defines which OpenStack *Resources* to create and configure. Inside this section you can see four resources defined:
 
-- ``nfs_server_floating_ip``: This Resource creates a Floating IP on the ``ext-net`` public network. It is not attached to any isntance yet.
-- ``nfs_server``: This Resource creates the NFS server instance (an instance is defined with the type ``OS::Nova::Server`` in Heat). It is a bare-metal instance (``flavor: baremetal``) using the ``CC-CentOS7`` image and connected to the private network named ``sharednet1``. We set the keypair to use the value of the parameter defined earlier, using the ``get_param`` function. Similarly, the reservation to use is passed to the scheduler. Finally, a ``user_data`` script is given to the instance, which configures it as an NFS server exporting ``/exports/example`` to Chameleon instances.
-- ``nfs_server_ip_association``: This Resource associates the floating IP created earlier with the NFS server instance.
-- ``nfs_clients``: This Resource defines a resource group containing instance configured to be NFS clients and mount the directory exported by the NFS server defined earlier. The IP of the NFS server is gathered using the ``get_attr`` function, and placed into ``user_data`` using the ``str_replace`` function.
+- ``nfs_server_floating_ip``: creates a *Floating IP* on the ``ext-net`` public network. It is not attached to any instance yet.
+- ``nfs_server``: creates the NFS server instance (an instance is defined with the type ``OS::Nova::Server`` in *Heat*). It is a bare-metal instance (``flavor: baremetal``) using the ``CC-CentOS7`` image and connected to the private network named ``sharednet1``. We set the key pair to use the value of the parameter defined earlier, using the ``get_param`` function. Similarly, the reservation to use is passed to the scheduler. Finally, a ``user_data`` script is given to the instance, which configures it as an NFS server exporting ``/exports/example`` to Chameleon instances.
+- ``nfs_server_ip_association``: associates the floating IP created earlier with the NFS server instance.
+- ``nfs_clients``: defines a resource group containing instance configured to be NFS clients and mount the directory exported by the NFS server defined earlier. The IP of the NFS server is gathered using the ``get_attr`` function, and placed into ``user_data`` using the ``str_replace`` function.
 
 Once a Resource has been specified, you may provide it as a value for another Resource's property using the ``get_resource`` function.
 
-The ``parameters`` section defines inputs to be used on Complex Appliance launch. Parameters all have the same data structure: each one has a name (``key_name`` or ``reservation_id`` in this case), a data type (``number`` or ``string``), a comment field called ``description``, optionally a ``default value``, and a list of ``constraints`` (in this case only one per parameter). Constraints tell Heat to match a parameter to a specific type of OpenStack resource. Complex appliances on Chameleon require users to customize at least the key pair name and reservation ID, and will generally provide additional parameters to customize other properties of the cluster, such as its size, as in this example. The values of Parameters can be used in the ``resources`` section using the ``get_param`` function.
+The ``parameters`` section defines inputs to be used on *Complex Appliance* launch. Parameters all have the same data structure: each one has a name (``key_name`` or ``reservation_id`` in this case), a data type (``number`` or ``string``), a comment field called ``description``, optionally a ``default value``, and a list of ``constraints`` (in this case only one per parameter). Constraints tell *Heat* to match a parameter to a specific type of OpenStack resource. *Complex appliances* on Chameleon require users to customize at least the key pair name and reservation ID, and will generally provide additional parameters to customize other properties of the cluster, such as its size, as in this example. The values of Parameters can be used in the ``resources`` section using the ``get_param`` function.
 
-The ``outputs`` section defines what values are returned to the user. Outputs are declared similarly to parameters: they each have a name, an optional description, and a value. They allow to return information from the stack to the user. You may use the ``get_attr`` function to retrieve a Resource's attribute for output.
+The ``outputs`` section defines what values are returned to the user. *Outputs* are declared similarly to *Parameters*: they each have a name, an optional description, and a value. They allow to return information from the stack to the user. You may use the ``get_attr`` function to retrieve a resource's attribute for output.
 
-Scalability in NFS Share
+Heat Template Customization
 ________________________
 
-Much of the flexibility in Complex Appliances is the ability to use input Parameters to configure the Complex Appliance. Look at the ``nfs_clients`` resource defintion:
+Customizing an existing template is a good way to start developing your own. We will use a simpler template than the previous example to start with: it is the `Hello World complex appliance <https://www.chameleoncloud.org/appliances/26/>`_.
 
-.. code:: 
+First, delete the stack you launched, because we will need all three nodes to be free. To do this, go back to the *Project* > *Orchestration* > *Stacks* page, select your stack, and then click on the *Delete Stacks* button. You will be asked to confirm, so click on the *Delete Stacks* button.
 
-   nfs_clients:
-       type: OS::Heat::ResourceGroup
-       properties:
-         count: { get_param: nfs_client_count }
-         resource_def:
-           type: OS::Nova::Server
-           properties:
-             flavor: baremetal
-             image: CC-CentOS7
-             key_name: { get_param: key_name }
-             networks:
-                - network: sharednet1
-             scheduler_hints: { reservation: { get_param: reservation_id } }
-             user_data:
-               str_replace:
-                 template: |
-                   #!/bin/bash
-                   yum install -y nfs-utils
-                   echo "$nfs_server_ip:/exports/example    /mnt/    nfs" > /etc/fstab
-                   mount -a
-                 params:
-                   $nfs_server_ip: { get_attr: [nfs_server, first_address] }
+   .. figure:: complex/deletestacks.png
+      :alt: Confirm deleting stack dialog
 
-The ``OS::Heat::ResourceGroup`` OpenStack Resource facilitates replicating the same type of Resource multiple times.  In this case, the ``count`` parameter is configured using the ``nfs_client_count`` input Parameter. The ``resource_def`` property, in this case, is an ``OS::Nova::Server`` resource (which allocates and launches a bare metal node.) The startup script for each of these client nodes is specified using the ``user_data`` property of the ``OS::Nova::Server`` resource. To configure the NFS mount point to match the IP address of the ``nfs_server``, we use ``str_replace``. ``str_replace`` specifies a ``template`` property and a ``params`` property. The ``params`` property ``$nfs_server_ip`` will be used to replace all occurrences of ``$nfs_server_ip`` in the template. 
+      Confirm deleting stack dialog
+
+The template for the `Hello World complex appliance <https://www.chameleoncloud.org/appliances/26/>`_ is reproduced below. It is similar to the NFS share appliance, except that it deploys only a single client. You can see that it has four resources defined:
+
+-  ``nfs_server_floating_ip``
+-  ``nfs_server``
+-  ``nfs_server_ip_association``
+-  ``nfs_client``
+
+The ``nfs_client`` instance mounts the NFS directory shared by the ``nfs_server`` instance, just like in our earlier example.
+
+::
+
+    # This describes what is deployed by this template.
+    description: NFS server and client deployed with Heat on Chameleon
+
+    # This defines the minimum Heat version required by this template.
+    heat_template_version: 2015-10-15
+
+    # The resources section defines what OpenStack resources are to be deployed and
+    # how they should be configured.
+    resources:
+      nfs_server_floating_ip:
+        type: OS::Nova::FloatingIP
+        properties:
+          pool: ext-net
+
+      nfs_server:
+        type: OS::Nova::Server
+        properties:
+          flavor: baremetal
+          image: CC-CentOS7
+          key_name: { get_param: key_name }
+          networks:
+             - network: sharednet1
+          scheduler_hints: { reservation: { get_param: reservation_id } }
+          user_data: |
+            #!/bin/bash
+            yum install -y nfs-utils
+            mkdir -p /exports/example
+            chown -R cc:cc /exports
+            echo '/exports/example 10.140.80.0/22(rw,async) 10.40.0.0/23(rw,async)' >> /etc/exports
+            systemctl enable rpcbind && systemctl start rpcbind
+            systemctl enable nfs-server && systemctl start nfs-server
+
+      nfs_server_ip_association:
+        type: OS::Nova::FloatingIPAssociation
+        properties:
+          floating_ip: { get_resource: nfs_server_floating_ip }
+          server_id: { get_resource: nfs_server }
+
+      nfs_client:
+        type: OS::Nova::Server
+        properties:
+          flavor: baremetal
+          image: CC-CentOS7
+          key_name: { get_param: key_name }
+          networks:
+             - network: sharednet1
+          scheduler_hints: { reservation: { get_param: reservation_id } }
+          user_data:
+            str_replace:
+              template: |
+                #!/bin/bash
+                yum install -y nfs-utils
+                echo "$nfs_server_ip:/exports/example    /mnt/    nfs" > /etc/fstab
+                mount -a
+              params:
+                $nfs_server_ip: { get_attr: [nfs_server, first_address] }
+
+    # The parameters section gathers configuration from the user.
+    parameters:
+      key_name:
+        type: string
+        description: Name of a KeyPair to enable SSH access to the instance
+        default: default
+        constraints:
+        - custom_constraint: nova.keypair
+      reservation_id:
+        type: string
+        description: ID of the Blazar reservation to use for launching instances.
+        constraints:
+        - custom_constraint: blazar.reservation
+
+Download `this template <https://www.chameleoncloud.org/appliances/api/appliances/26/template>`_ to your local machine, and open it in your favorite text editor.
+
+We will customize the template to add a second NFS client by creating a new resource called ``another_nfs_client``. Add the following text to your template inside the resources section. Make sure to respect the level of indentation, which is important in YAML.
+
+::
+
+      another_nfs_client:
+        type: OS::Nova::Server
+        properties:
+          flavor: baremetal
+          image: CC-CentOS7
+          key_name: { get_param: key_name }
+          networks:
+             - network: sharednet1
+          scheduler_hints: { reservation: { get_param: reservation_id } }
+          user_data:
+            str_replace:
+              template: |
+                #!/bin/bash
+                yum install -y nfs-utils
+                echo "$nfs_server_ip:/exports/example    /mnt/    nfs" > /etc/fstab
+                mount -a
+              params:
+                $nfs_server_ip: { get_attr: [nfs_server, first_address] }
+
+Now, launch a new stack with this template. Since the customized template is only on your computer and cannot be addressed by a URL, use the *Direct Input* method instead and copy/paste the content of the customized template. The resulting topology view is shown below: as you can see, the two client instances are shown separately since each one is defined as a separate resource in the template.
+
+   .. figure:: complex/topologycustomhelloworld.png
+      :alt: Topology of the customized Hello World Appliance
+
+      Topology of the customized Hello World Appliance
+
+You may have realized already that while adding just one additional client instance was easy, launching more of them would require to copy / paste blocks of YAML many times while ensuring that the total count is correct. This would be easy to get wrong, especially when dealing with tens or hundreds of instances.
+
+So instead, we leverage another construct from *Heat*: resource groups. Resource groups allow to define one kind of resource and request it to be created any number of times.
+
+Remove the ``nfs_client`` and ``another_client`` resources from your customized template, and replace them with the following:
+
+::
+
+      nfs_clients:
+        type: OS::Heat::ResourceGroup
+        properties:
+          count: 2
+          resource_def:
+            type: OS::Nova::Server
+            properties:
+              flavor: baremetal
+              image: CC-CentOS7
+              key_name: { get_param: key_name }
+              networks:
+                 - network: sharednet1
+              scheduler_hints: { reservation: { get_param: reservation_id } }
+              user_data:
+                str_replace:
+                  template: |
+                    #!/bin/bash
+                    yum install -y nfs-utils
+                    echo "$nfs_server_ip:/exports/example    /mnt/    nfs" > /etc/fstab
+                    mount -a
+                  params:
+                    $nfs_server_ip: { get_attr: [nfs_server, first_address] }
+
+A resource group is configured with a properties field, containing the definition of the resource to launch (``resource_def``) and the number of resources to launch (``count``). Once launched, you will notice that the topology view groups all client instances under a single *Resource Group* icon. We use the same ``resource_def`` than when defining separate instances earlier.
+
+Another way we can customize this template is by adding outputs to the template. Outputs allow a *Heat* template to return data to the user. This can be useful to return values like IP addresses or credentials that the user must know to use the system.
+
+We will create an output returning the floating IP address used by the NFS server. We define an outputs section, and one output with the name ``server_ip`` and a description. The value of the output is gathered using the ``get_attr`` function which obtains the IP address of the server instance.
+
+::
+
+    outputs:
+      server_ip:
+        description: Public IP address of the NFS server
+        value: { get_attr: [nfs_server_floating_ip, ip] }
+
+You can get outputs in the *Overview* tab of the *Stack Details* page. If you want to use the command line, install ``python-heatclient`` and use the ``heat output-list`` and ``heat output-show`` commands, or get a full list in the information returned by ``heat stack-show``.
+
+Multiple outputs can be defined in the outputs section. Each of them needs to have a unique name. For example, we can add another output to list the private IPs assigned to client instances:
+
+::
+
+      client_ips:
+        description: Private IP addresses of the NFS clients
+        value: { get_attr: [nfs_clients, first_address] }
+
+The image below shows the resulting outputs as viewed from the web interface. Of course IP addresses will be specific to each deployment.
+
+   .. figure:: complex/helloworldoutputs.png
+      :alt: The Outputs of customized Hello World appliance
+
+      The Outputs of customized Hello World appliance
+
+Finally, we can add a new parameter to replace the hard-coded number of client instances by a value passed to the template. Add the following text to the parameters section:
+
+::
+
+      nfs_client_count:
+        type: number
+        description: Number of NFS client instances
+        default: 1
+        constraints:
+          - range: { min: 1 }
+            description: There must be at least one client.
+
+Inside the resource group definition, change ``count: 2`` to ``count: { get_param: nfs_client_count }`` to retrieve and use the parameter we just defined. When you launch this template, you will see that an additional parameter allows you to define the number of client instances, like in the NFS share appliance.
+
+At this stage, we have fully recreated the *NFS share* appliance starting from the *Hello World* one! The next section will explain how to write a new template from scratch.
 
 Writing a New Template
 ______________________
 
-It is best to build Complex Appliance Template from a pre-existing one. Because hardware Leases and SSH access are an important concept in Chameleon, it is best to make sure that the input ``parameters`` always include ``key_name`` and ``reservation_id``. Simple modifications may be made, such as changing the ``image`` property of any ``OS::Nova::Server`` to one that is specific to your Project. 
+You may want to write a whole new template, rather than customizing an existing one. Each template should follow the same layout and be composed of the following sections:
 
-Heat Template Version
-_____________________
+-  Heat template version
+-  Description
+-  Resources
+-  Parameters
+-  Outputs
 
-Each Heat Template must include the ``heat_template_version`` key with a valid version of HOT (Heat Orchestration Template). Chameleon bare metal supports any HOT version up to 2015-10-15, which corresponds to OpenStack Liberty. The Heat documentation lists all available versions and their features. We recommended that you always use the latest supported version to have access to all supported features: ``heat_template_version: 2015-10-15``
+Heat template version
+~~~~~~~~~~~~~~~~~~~~~
+
+Each Heat template has to include the ``heat_template_version`` key with a valid version of `HOT (Heat Orchestration Template) <https://docs.openstack.org/heat/pike/template_guide/hot_guide.html>`_. Chameleon bare-metal supports any HOT version up to **2015-10-15**, which corresponds to OpenStack Liberty. 
+The `Heat documentation <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html#hot-spec-template-version>`_ lists all available versions and their features. We recommended that you always use the latest Chameleon supported version to have access to all supported features:
+
+``heat_template_version: 2015-10-15``
 
 Description
-___________
+~~~~~~~~~~~
 
-While not mandatory, it is good practice to describe what  is deployed and configured by your template. It can be on a single line:
+While not mandatory, it is good practice to describe what is deployed and configured by your template. It can be on a single line:
 
-.. code:: 
+::
 
-   description: This describes what this Heat template deploys on Chameleon.
+    description: This describes what this Heat template deploys on Chameleon.
 
 If a longer description is needed, you can provide multi-line text in YAML, for example:
 
-.. code:: 
+::
 
-   description: >
-     This describes what this Heat
-     template deploys on Chameleon.
+    description: >
+      This describes what this Heat
+      template deploys on Chameleon.
+
+Resources
+~~~~~~~~~
+
+The resources section is required and must contain at least one resource definition. A `complete list of resources types known to Heat <https://docs.openstack.org/heat/latest/template_guide/openstack.html>`_ is
+available.
+
+However, only a subset of them are supported by Chameleon, and some are limited to administrative use. We recommend that you only use:
+
+-  OS::Glance::Image
+-  OS::Heat::ResourceGroup
+-  OS::Heat::SoftwareConfig
+-  OS::Heat::SoftwareDeployment
+-  OS::Heat::SoftwareDeploymentGroup
+-  OS::Neutron::FloatingIP
+-  OS::Neutron::FloatingIPAssociation
+-  OS::Neutron::Port (advanced users only)
+-  OS::Nova::Keypair
+-  OS::Nova::Server
+
+If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare-metal, please let us know via our `help desk <https://www.chameleoncloud.org/user/help/>`_.
+
+Parameters
+~~~~~~~~~~
+
+Parameters allow users to customize the template with necessary or optional values. 
+For example, they can customize which Chameleon appliance they want to deploy, or which key pair to install. 
+Default values can be provided with the ``default`` key, as well as constraints to ensure that only valid OpenStack resources can be selected. 
+For example, ``custom_constraint: glance.image`` restricts the image selection to an available OpenStack image, while providing a pre-filled selection box in the web interface. 
+`More details about constraints <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html#parameter-constraints>`_ are available in the *Heat* documentation.
+
+Outputs
+~~~~~~~
+
+Outputs allow template to give information from the deployment to users. This can include usernames, passwords, IP addresses, hostnames, paths, etc. The outputs declaration is using the following format:
+
+::
+
+    outputs:
+      first_output_name:
+        description: Description of the first output
+        value: first_output_value
+      second_output_name:
+        description: Description of the second output
+        value: second_output_value
+
+Generally values will be calls to ``get_attr``, ``get_param``, or some other function to get information from parameters or resources deployed by the
+template and return them in the proper format to the user.
 
 __________________________
 Sharing Complex Appliances
 __________________________
 
-If you have written your own Complex Appliance or substantially customized an existing one, we would love if you shared them with our user community! The process is very similar to regular appliances: log into the Chameleon portal, go to the appliance catalog, and click on the button in the top-right corner: *Add an appliance* (you need to be logged in to see it).
+If you have written your own *Complex Appliance* or substantially customized an existing one, we would love if you shared them with our user community! The process is very similar to regular appliances: log into the Chameleon portal, go to the appliance catalog, and click on the button in the top-right corner: *Add an appliance* (you need to be logged in to see it).
 
 .. figure:: complex/addappliance.png
    :alt: The Add an Appliance button
@@ -382,14 +613,14 @@ _______________________________
 
 The previous examples have all used ``user_data`` scripts to provide instances with contextualization information. While it is easy to use, this contextualization method has a major drawback: because it is given to the instance as part of its launch request, it cannot use any context information that is not yet known at this time. In practice, this means that in a client-server deployment, only one of these pattern will be possible:
 
-- The server has to be deployed first, and once it is deployed, the clients can be launched and contextualized with information from the server. The server won’t know about the clients unless there is a mechanism (not managed by Heat) for the client to contact the server.
-- The clients have to be deployed first, and once they are deployed, the server can be launched and contextualized with information from the clients. The clients won’t know about the server unless there is a mechanism (not managed by Heat) for the server to contact the clients.
+- The server has to be deployed first, and once it is deployed, the clients can be launched and contextualized with information from the server. The server won’t know about the clients unless there is a mechanism (not managed by *Heat*) for the client to contact the server.
+- The clients have to be deployed first, and once they are deployed, the server can be launched and contextualized with information from the clients. The clients won’t know about the server unless there is a mechanism (not managed by *Heat*) for the server to contact the clients.
 
-This limitation was already apparent in our NFS share appliance: this is why the server instance exports the file system to all bare-metal instances on Chameleon, because it doesn’t know which specific IP addresses are allocated to the clients.
+This limitation was already apparent in our `NFS share <https://www.chameleoncloud.org/appliances/25/>`_ appliance: this is why the server instance exports the file system to all bare-metal instances on Chameleon, because it doesn’t know which specific IP addresses are allocated to the clients.
 
 This limitation is even more important if the deployment is not hierarchical, i.e. all instances need to know about all others. For example, a cluster with IP and hostnames populated in ``/etc/hosts`` required each instance to be known by every other instance.
 
-This section presents a more advanced form of contextualization that can perform this kind of information exchange. This is implemented by Heat agents running inside instances and communicating with the Heat service to send and receive information. This means you will need to use an image bundling these agents. Currently, our CC-CentOS7 appliance and its CUDA version are the only ones supporting this mode of contextualization. If you build your own images using the CC-CentOS7 appliance builder, you will automatically have these agents installed. This contextualization is performed with several Heat resources:
+This section presents a more advanced form of contextualization that can perform this kind of information exchange. This is implemented by *Heat* agents running inside instances and communicating with the *Heat* service to send and receive information. This means you will need to use an image bundling these agents. Currently, our `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance and its CUDA version are the only ones supporting this mode of contextualization. If you build your own images using the `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance builder, you will automatically have these agents installed. This contextualization is performed with several Heat resources:
 
 - ``OS::Heat::SoftwareConfig``: This resource describes code to run on an instance. It can be configured with inputs and provide outputs.
 - ``OS::Heat::SoftwareDeployment``: This resource applies a SoftwareConfig to a specific instance.

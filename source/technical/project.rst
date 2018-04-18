@@ -4,32 +4,33 @@
 Project Management
 ==================
 
-Project management tasks, such as adding users to your project or requesting a renewal, is performed through the portal at https://chameleoncloud.org. After you have `created a user account <https://www.chameleoncloud.org/user/register/>`_ and verified your e-mail address from the system generated verification e-mail, you may `login to the portal <https://www.chameleoncloud.org/login/>`_. You will be taken to the Dashboard_.
+Project management tasks, such as adding users to your project or requesting a renewal, is performed through the portal at https://chameleoncloud.org. After you have `created a user account <https://www.chameleoncloud.org/user/register/>`_ and verified your email address, you may `login to the portal <https://www.chameleoncloud.org/login/>`_.
+Once logged in, you should be at *Dashboard* page automatically. If not, you can access your *Dashboard* via the dropdown list on top right of the screen.  
 
-The Dashboard_ consists of the following panes:
+The *Dashboard* consists of the following panes:
 
-- `The Dashboard main page <Dashboard>`_
-- Projects_
-- Outages_
-- `Help Desk <Help Desk>`_
-- Profile_
-- Webinars_
+- :ref:`dashboard-page`
+- :ref:`projects-page`
+- :ref:`outages-page`
+- :ref:`help-desk-page`
+- :ref:`profile-page`
+- :ref:`webinars-page`
 
 .. _dashboard-page:
 
 Dashboard
 ____________
 
-The Dashboard's main page consists of two control panels - the Active Projects control panel and the Open Tickets panel.
+The Dashboard's main page consists of two control panels - the *Active Projects* control panel and the *Open Tickets* panel.
 
 .. figure:: project/dashboard.png
   :alt: The project dashboard
 
   The project dashboard
 
-The left panel is the Active Projects control panel, which allows you to view your active projects and their current usage. You may click on a project here to view that project.
+The *Active Projects* control panel allows you to view all your active projects and their current usage. You may click on a project to view details.
 
-The right panel is the Open Tickets panel, where you may view active help desk tickets or `Open a Ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_.
+The *Open Tickets* panel lists all your active help desk tickets. In addition, you can `Open a Ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_ via the *Open Tickets* panel.
 
 .. _projects-page:
 
@@ -43,18 +44,18 @@ The Dashboard's `Projects Page <https://www.chameleoncloud.org/user/projects/>`_
 
   Project list
 
-Each individual Project has its own:
+Each individual *Project* has its own:
 
 - Service Unit allocations
 - Users that have access to the project
-- System resources such as Security Groups, Floating IP Addresses and Instances
+- System resources such as *Security Groups*, *Floating IP Addresses* and *Instances*
 - Assets such as snapshots, object containers, metrics and network configuration
 
 __________________
 Creating a Project
 __________________
 
-When you click the *+Create a Project* button, you will be presented the `Create a New Project <https://www.chameleoncloud.org/user/projects/new/>`_ web form. Fill out the form with your project description. Your request will be reviewed by a system administrator and you will be notified once your projects get approved. Project durations are six months with a default allocation of 20,000 :ref:`service-units`.
+To create a project, click the *+Create a Project* button. After filling out and submit the request form, a system administrator will review your request and notify you once your project get approved. Project durations are six months with a default allocation of 20,000 :ref:`service-units`.
 
 .. figure:: project/createproject.png
   :alt: The Create a New Project form
@@ -75,14 +76,14 @@ __________________
 Project Details
 __________________
 
-Clicking on a project from either the :ref:`dashboard-page` main page or the :ref:`projects-page` page will allow you to manage one of your approved Projects.
+Clicking on a project from either the :ref:`dashboard-page` main page or the :ref:`projects-page` page will allow you to manage one of your approved *Projects*.
 
 .. figure:: project/projectdetails.png
   :alt: Project details 
 
   Project details
 
-From within the details page of your project, you may :ref:`recharge-extend-allocation` and manage `Project Users <Project Users>`_ on your project.
+In the details page of your project, you may :ref:`recharge or extend your allocation <recharge-extend-allocation>` and :ref:`manage users <manage-users>` of your project.
 
 .. _recharge-extend-allocation:
 
@@ -90,7 +91,7 @@ __________________________________
 Recharge or Extend Your Allocation
 __________________________________
 
-In the *Allocations* section of your :ref:`project-details`, you may view your project start and end dates, current Service Unit usage and request a Service Unit recharge or project extension. To request a Service unit recharge or project extension, click the link next to your project in the *Actions* column of this section.
+In the *Allocations* section of your :ref:`project-details`, you may view your project start and end dates, current *Service Unit* usage and request a *Service Unit* recharge or project extension. To request a *Service Unit* recharge or *Project* extension, click the link next to your project in the *Actions* column of this section.
 
 .. _manage-users:
 
@@ -98,9 +99,13 @@ _________________
 Manage Users
 _________________
 
-In the *Project Users* section of your :ref:`project-details`, you may manage users that are attached to your Project. While each user has their own Chameleon User account independent of your project, they may be added as members to one or more projects. Users do not have to be PI elligible to have membership in a project. It is highly recommended that if you are an educator with students, each student should have their own non-PI Chameleon account and be added to your project. 
+To manage users of a *Project*, use the *Project Users* section in the :ref:`project-details`. While each user has their own Chameleon User account independent of your project, they may be added to one or more projects. Being a user of a *Project* **does not** require a :ref:`PI eligibility <pi-eligibility>`.
 
-You may add a user to your account by filling out their username and clicking the *Add user* button. You may remove a user from your project by locating their username in the user list and clicking the *-* button next to their username.
+.. important::  For *Project* PIs, it is highly recommended that your *Project* users should have their own non-PI Chameleon accounts and should be added to your project. 
+
+You may add a user to your account by filling out their user name and clicking the *Add user* button. You may remove a user from your project by locating their user name in the user list and clicking the *-* button next to their user name.
+
+.. _outages-page:
 
 Outages
 _________
@@ -112,7 +117,7 @@ The `Outages <https://www.chameleoncloud.org/user/outages/>`_ page of the Dashbo
 
   The Outages announcement page
 
-.. _help-desk:
+.. _help-desk-page:
 
 Help Desk
 _________
@@ -124,7 +129,9 @@ The `Help Desk <https://www.chameleoncloud.org/user/help/>`_ allows you to submi
 
   The Help Desk page
 
-To create a new help ticket, click the `+Create a new ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_ button and fill in the form. A system administrator will respond to your ticket and contact you within 3 business days.
+To create a new help ticket, click the `+Create a new ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_ button and fill in the form. A system administrator will respond to your ticket within 3 business days.
+
+.. _profile-page:
 
 Profile
 _________
@@ -137,6 +144,8 @@ The `Profile <https://www.chameleoncloud.org/user/profile/>`_ page allows you to
   The Profile page
 
 To edit your biographical information, click the `Edit Profile <https://www.chameleoncloud.org/user/profile/edit/>`_ button. To subscribe to or unsubscribe from any Chameleon mailing lists, click the `Manage Email Subscriptions <https://www.chameleoncloud.org/user/profile/subscriptions/>`_ button.
+
+.. _webinars-page:
 
 Webinars
 _________

@@ -6,17 +6,22 @@ ____________
 Introduction
 ____________
 
-Chameleon provides support for sophisticated networking experiments by providing GENI-style stitching. This capability enables users to deploy networking experiments (layer 2 and layer 3) that extend across Chameleon, potentially other testbeds such as GENI, and into physical resources on their own campus networks. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. 
+Chameleon provides support for sophisticated networking experiments by providing `GENI-style stitching <http://groups.geni.net/geni/wiki/GeniNetworkStitchingSites>`_. This capability enables users to deploy networking experiments (layer 2 and layer 3) that extend across Chameleon, potentially other testbeds such as `GENI <http://www.geni.net/>`_, and into physical resources on their own campus networks. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. 
 
 Currently, it is possible to connect user-configured networks to other domains (e.g. GENI) over circuits created on Internet2’s Advanced Layer 2 Service (AL2S). In this setup, a pool of VLANs is extended from Chameleon racks to the AL2S endpoint at StarLight. Currently, 10 VLAN tags (3290-3299) are dedicated to this AL2S endpoint. A user-configured network that is associated with one of the dedicated AL2S VLAN tags (segmentation ID must be the same as AL2S VLAN tag) can be stitched to external domains (e.g. GENI). A circuit on AL2S needs to be created.
 
-This document describes how to stitch Chameleon experiments to external resources including ExoGENI and Internet2 connected campuses. You will need to know how to create stitchable dynamic VLANs as described in the :ref:`network-isolation` documentation. After you have created such VLAN this document will describe how to create a slice in three cases: connect to ExoGENI, connect to other domains using ExoGENI as an intermediary, or connect to other domains directly.
+This document describes how to stitch Chameleon experiments to external resources including `ExoGENI <http://www.exogeni.net/>`_ and `Internet2 <https://www.internet2.edu/>`_ connected campuses. You will need to know how to create stitchable dynamic VLANs as described in the :doc:`networks` documentation. After you have created such VLAN this document will describe how to create a slice in three cases: connect to ExoGENI, connect to other domains using ExoGENI as an intermediary, or connect to other domains directly.
+
+Chameleon has the capability to create dynamically managed VLANs associated with user-configured private IP subnets as described on :doc:`networks`. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. These networks can be created through the web as well as command line interface. User-configured networks (isolated networks) are associated with VLANs by *Segmentation IDs*.
+
+In the following sections, this workflow is described for different settings.
 
 ________________________________
 Configuring a Stitchable Network
 ________________________________
 
-Follow the technical documentation for :ref:`network-cli-create` using the CLI. When performing this step, you must supply the name of your external testbed network as the parameter for ``--provider-physical-network``. In this documentation, we will describe how to stitch to the ExoGENI testbed:
+Follow the technical documentation for :ref:`network-cli-create` using the CLI, but replace the provider network with the appropriate external testbed (e.g. replace ``physnet1`` with ``exogeni``). 
+In this documentation, we will describe how to stitch to the ExoGENI testbed:
 
 .. code-block:: bash
 
@@ -27,17 +32,17 @@ _______________________________
 Connecting Chameleon to ExoGENI
 _______________________________
 
-ExoGENI is one of the two primary GENI testbeds. ExoGENI allows users to create isolated experimental environments with compute and network resources distributed across 20 sites. ExoGENI has a special type of connection called “stitchport” which is a formally defined meeting point between VLANs dynamically provisioned within Chameleon and ExoGENI slices. Users can create slices on ExoGENI testbed, and connect these slices with Chameleon nodes by using a stitchport.
+`ExoGENI <http://www.exogeni.net/>`_ is one of the two primary `GENI <http://www.geni.net/>`_ testbeds. ExoGENI allows users to create isolated experimental environments with compute and network resources distributed across 20 sites. ExoGENI has a special type of connection called “stitchport” which is a formally defined meeting point between VLANs dynamically provisioned within Chameleon and ExoGENI slices. Users can create slices on ExoGENI testbed, and connect these slices with Chameleon nodes by using a stitchport.
 
-Stitchports that exist in ExoGENI topology are listed on ExoGENI Wiki (`ExoGENI Resource Types: Stitchport Identifiers <Stitchports that exist in ExoGENI topology are listed on ExoGENI Wiki (ExoGENI Resource Types: Stitchport Identifiers). URLs for port locations and corresponding VLAN tags are used to create a stitchport connection. Stitchport information for Chameleon is listed as below:>`_). URLs for port locations and corresponding VLAN tags are used to create a stitchport connection. Stitchport information for Chameleon is listed as below:
+Stitchports that exist in ExoGENI topology are listed on ExoGENI Wiki (`ExoGENI Resource Types: Stitchport Identifiers <https://wiki.exogeni.net/doku.php?id=public:experimenters:resource_types:start#stitch_port_identifiers>`_). URLs for port locations and corresponding VLAN tags are used to create a stitchport connection. Stitchport information for Chameleon is listed as below:
 
-- Port Location: ChameleonUC@ION
+- Port Location: ``ChameleonUC@ION``
 
     URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/Chameleon/Cisco/6509/GigabitEthernet/1/1
 
     Allowed VLANs: 3291-3299
 
-- Port Location: ChameleonTACC@ION
+- Port Location: ``ChameleonTACC@ION``
 
     URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/TACC/Cisco/6509/TenGigabitEthernet/1/1
 
@@ -77,7 +82,7 @@ In this use case, a local site can be connected to ExoGENI via stitchports, and 
 
 Connecting a local site to ExoGENI via stitchports is a process that requires multiple steps involving site owners, regional network providers, and ExoGENI.
 
-ExoGENI racks are located on campuses across the US. Campuses are connected to Internet2 AL2S via regional provider networks. A set of VLAN tags is reserved for ExoGENI from the pool of available VLAN tags by the regional providers and campus administrations. These VLANs are plumbed on both regional provider and campus networks all the way from AL2S endpoint to the rack or server(s). Some campuses/institutions are directly connected to AL2S nodes without a regional provider (eg. Pittsburgh Supercomputing Center, George Washington University (CAREEN)).
+ExoGENI racks are located on campuses across the US. Campuses are connected to Internet2 AL2S via regional provider networks. A set of VLAN tags is reserved for ExoGENI from the pool of available VLAN tags by the regional providers and campus administrations. These VLANs are plumbed on both regional provider and campus networks all the way from AL2S endpoint to the rack or server(s). Some campuses/institutions are directly connected to AL2S nodes without a regional provider (e.g. Pittsburgh Supercomputing Center, George Washington University (CAREEN)).
 
 .. figure:: stitching/al2s.jpg
 

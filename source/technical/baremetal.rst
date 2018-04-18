@@ -6,25 +6,18 @@ ________________
 Introduction
 ________________
 
-Bare Metal access is a core Chameleon feature. When launched, a bare metal node is referred to as an *Instance*. It allows you to reserve and launch images on nodes with root access to the node and direct access to the hardware. This is useful for computer science experimentation such as power measurement. The pre-requisites for launching a bare metal node are:
-
-- A configured SSH key within the GUI. For instructions on creating or importing an SSH key, see the documentation on :ref:`gui-key-pairs`.
-- A reservation at either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. For instructions on creating reservations, see the documentation on :ref:`reservations`
-
-Once you have launched a bare metal instance, you may interact with it using SSH or the Serial Console.
+Before launching an instance, make sure you own a lease. About how to create a lease, please see :doc:`reservations`. Once your lease is started, you are almost ready to start an instance. But first, you need to make sure that you will be able to connect to it by setting up :ref:`gui-key-pairs`.
 
 ________________________________
 Launching Instances with the GUI
 ________________________________
-
-You may use the GUI at either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Make sure that you have created an SSH Key Pair and made a Reservation for the hardware you wish to use. After launching an instance, you may access it either by associating a Floating IP address to the instance and logging in via SSH or by using the Serial Console in the GUI.
 
 .. _baremetal-gui-launch:
 
 Launch an Instance
 _____________________
 
-To launch an instance with the GUI, follow these steps:
+To launch an instance with the GUI, follow the steps:
 
 #. In the navigation side bar, click *Project* > *Compute* > *Instances* to get to the *Instances* page.
 
@@ -33,7 +26,7 @@ To launch an instance with the GUI, follow these steps:
 
       The Instances page
 
-#. Click the *Launch Instance* button in the upper right corner. This will open the *Launch Instance* wizard. The left tabs display configuration steps. Steps labeled with a * are mandatory.
+#. Click the *Launch Instance* button in the upper right corner. This will open the *Launch Instance* wizard with several configuration steps. Steps with ``*`` are required.
 
    .. figure:: baremetal/launchinstance.png
       :alt: The Launch Instance wizard.
@@ -41,7 +34,7 @@ To launch an instance with the GUI, follow these steps:
       The Launch Instance wizard.
 
 #. In the *Details* step, enter a name for your instance that is unique within your project and select a currently active reservation for the instance.
-#. In the *Source* step, select an image to use for your instance by searching for it in the image list and clicking the "up" arrow next to the image. The *Allocated* list will display the image that is loaded. You may select a different image by clicking the "down" arrow next to your previously selected image in the *Allocated* list.
+#. In the *Source* step, select an image for your instance and click the "up" arrow. The image should move to the *Allocated* list, and can be removed by clicking the "Down" arrow if you wish to select a different image.
 
    .. figure:: baremetal/launchsource.png
       :alt: The Source configuration step
@@ -54,15 +47,25 @@ To launch an instance with the GUI, follow these steps:
       :alt: The Flavor configuration step
 
       The Flavor configuration step
+      
+   .. hint:: If you are familiar with Openstack, other implementations allow for the selection of flavors based on machine disk size and RAM. On Chameleon, the only flavor available is "baremetal" because hardware selection is performed in reservations.
 
-#. In the *Key Pair* step, select one of your SSH key pairs. Although this step is not marked as mandatory, it is a good idea. If you do not select a key pair to be loaded on the bare metal instance, you may not be able to access it.
+#. In the *Networks* step, select a network by clicking the "up" arrow next to it. About Chameleon default network and how to create your own network, please see :doc:`networks`.
+
+#. In the *Key Pair* step, select one of your SSH key pairs. If you only have one key pair associated with your account, then it is selected by default.
 
    .. figure:: baremetal/launchkeypair.png
       :alt: The Key Pair configuration step
 
       The Key Pair configuration step
+      
+   .. important::
+      It is a good practice to make sure that the instance is launching with the key pair of your choice, or you will not be able to access your instance.
+   
+   .. tip::   
+      You may import or create key pairs directly through this step.
 
-#. Optionally, you may configure *Scheduler Hints*. This allows you to perform tasks such as launching your instance on a specific node within your reservation by UUID number.
+#. Optionally, you may configure *Scheduler Hints*. This is useful if you would like to launch an instance on a specific node in your multi-node reservation by *UUID*.
 
    - In the *Custom* text box, type ``query`` and click the *+* button. This will add a *query* hint to the list on the right.
    - In the *query* hint, enter your scheduler hint. For example, if you require a specific node, type ``["=","$hypervisor_hostname","<node_uuid>"]`` where ``<node_uuid>`` is the node you are requesting.
@@ -72,7 +75,7 @@ To launch an instance with the GUI, follow these steps:
 
       Adding a Scheduler Hint
 
-#. When you are finished configure your instance, click the *Launch Instance* button. You will be returned to the *Instances* page, with your new instance appearing in the list with the *Build* status. It takes a few minutes to deploy the instance on bare metal hardware and reboot the machine.
+#. Finish configuring and start launching the instance by clicking on the *Launch Instance* button. The instance will show up in the instance list, at first in *Build* status. It takes a few minutes to deploy the instance on bare metal hardware and reboot the machine.
 
    .. figure:: baremetal/instancesbuild.png
       :alt: An Instance with the Build status
@@ -86,9 +89,7 @@ To launch an instance with the GUI, follow these steps:
 
       An Instance with the Active status
 
-.. _baremetal-instance-id:
-
-#. You may view instance information by clicking on an instance. This information include's the instance's *ID*, useful for retrieving metrics from the Gnocchi CLI.
+#. To view instance details, click on the instance.
 
    .. figure:: baremetal/instancedetails.png
       :alt: Instance details
@@ -100,11 +101,9 @@ To launch an instance with the GUI, follow these steps:
 Associate a Floating IP
 _______________________
 
-To make your instance publicly accessible over the Internet, you must associate a *Floating IP Address* to it. This will assign a publicly routable IP address to the instance which you may use to SSH into the instance. To associate a Floating IP, follow the steps below.
+To make your instance publicly accessible over the Internet, you must associate a *Floating IP Address* to it.
 
-.. note:: All ports are accessible on a bare metal instance, and security groups are not observed. Assigning your instance a Floating IP address will make it completely accessible over the Internet. Therefore, it is a good idea to configure a firewall on your instance.
-
-#. On the *Instances* page, click the *Associate Floating IP* button next to your bare metal instance. This will load the *Manage Floating IP Assocations* dialog. 
+#. On the *Instances* page, click the *Associate Floating IP* button next to your bare metal instance. The following *Manage Floating IP Assocations* dialog will show. 
    
    .. figure:: baremetal/associate_manage.png
       :alt: The Manage Floating IP Associations dialog
@@ -118,14 +117,14 @@ To make your instance publicly accessible over the Internet, you must associate 
 
       The Allocate Floating IP dialog
 
-#. Your newly allocated Floating IP address will be automatically selected. You may click the *Associate* button.
+#. The correct value for "Port to be associated" should already be selected. You may click the *Associate* button.
 
    .. figure:: baremetal/associate_ip.png
       :alt: The Manage Floating IP Associations dialog with an IP selected
 
       The Manage Floating IP Associations dialog with an IP selected
 
-#. You will be returned to the *Instances* page. Your instance should now display its allocated Floating IP address.
+#. You will be sent back to the instance list, where you can see the *floating IP* attached to the instance (you may need to refresh your browser to see the *floating IP*).
 
    .. figure:: baremetal/instanceswithip.png
       :alt: An instance with an allocated Floating IP
@@ -136,7 +135,7 @@ ________________________________
 Launching Instances with the CLI
 ________________________________
 
-You may use the CLI to launch a bare metal instance. Make sure that you have configured your SSH :ref:`gui-key-pairs` and are familiar with steps for using :ref:`cli`, including :ref:`cli-installing` and configuring your terminal session using :ref:`cli-rc-script`. You must also create :ref:`reservations` for the hardware you wish to use. You will need your reservation's ID. You can retrieve this with the Blazar client. For more information, see :ref:`reservation-cli`
+.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
 
 Creating an Instance with the Nova Client
 _________________________________________
@@ -151,27 +150,27 @@ The ID of the ``sharednet1`` network can be obtained using the command:
 
 .. code-block:: bash
 
-   openstack network list command.
+   openstack network list
    
-Alternatively, you may look it up in the GUI in the *Network* > *Networks* page. You can obtain your reservation ID via the web interface or by running:
+Alternatively, you may look it up in the GUI in the *Network* > *Networks* page. You can obtain your *reservation ID* via the web interface or by running:
 
 .. code-block:: bash
 
    blazar lease-show <lease_name>
    
-.. note:: The reservation ID and the lease ID are different
+.. attention:: The **reservation ID** and the **lease ID** are different
 
 Running a Shell Script on Boot
 ______________________________
 
-You might want to automatically execute some code after launching an instance, whether it is installing packages, changing configuration files, or running an application. OpenStack provides a mechanism called *User Data* to pass information to instances. This information can be any data in any format, but if it is a shell script it will be automatically executed after boot by cloudinit. You can provide this shell script either via the web interface in the *Configuration* tab when launching an instance, or by providing a file to the nova command line using the ``--user-data`` option.
+You might want to automatically execute some code after launching an instance, whether it is installing packages, changing configuration files, or running an application. OpenStack provides a mechanism called `User Data <https://docs.openstack.org/queens/user/#term-user-data>`_ to pass information to instances. This information can be any data in any format, but if it is a shell script it will be automatically executed after boot by `cloudinit <https://cloudinit.readthedocs.io/en/latest/>`_. You can provide this shell script either via the web interface in the *Configuration* tab when launching an instance, or by providing a file to the nova command line using the ``--user-data`` option.
 
 Customizing the Kernel
 ______________________
 
-Before the February 2016 upgrade, support for kernel customizing on bare- etal was limited due to the fact that instances were always booting their kernel directly using PXE and a common kernel command line. This required uploading kernel and ramdisk files to the Glance image repository as well as updating or creating a new OS image using these artifacts.
+Before the February 2016 upgrade, support for kernel customizing on bare metal was limited due to the fact that instances were always booting their kernel directly using `PXE <https://en.wikipedia.org/wiki/Preboot_Execution_Environment>`_ and a common kernel command line. This required uploading kernel and ramdisk files to the `Glance <https://docs.openstack.org/glance/latest/>`_ image repository as well as updating or creating a new OS image using these artifacts.
 
-However, it is now easy to customize the operating system kernel or modify the kernel command line. You now have the option of modifying the boot loader configuration (/boot/grub2/grub.cfg on CentOS 7 images) to point it to a new kernel on the local disk, or specifying kernel parameters and then rebooting using this modified configuration.
+However, it is now easy to customize the operating system kernel or modify the kernel command line. You now have the option of modifying the boot loader configuration (``/boot/grub2/grub.cfg`` on CentOS 7 images) to point it to a new kernel on the local disk, or specifying kernel parameters and then rebooting using this modified configuration.
 
 To do this, you must be using a whole disk image rather than a partition image. Whole disk images contain their own kernel and ramdisk files and do not have ``kernel_id`` and ``ramdisk_id`` properties in the image repository, unlike partition images.
 
@@ -180,7 +179,13 @@ _______________________________________________
 
 For cloud computing and virtualization experiments, you might want to run virtual machines on bare hardware that you fully control rather than use the shared OpenStack KVM cloud. There are many different ways to configure networking for virtual machines. The configuration described below will enable you to connect your virtual machines to the Internet using a `KVM Public Bridge <http://www.linux-kvm.org/page/Networking#public_bridge>`_ which you must first configure manually on your host on the default network interface.
 
-You can use the CLI to request ports for your bridge. For each virtual machine you want to run, request a Neutron port with:
+First, set up your environment for the OpenStack command line tools by following :doc:`the instructions <cli>`. Install the `Neutron <https://docs.openstack.org/neutron/queens/>`_ client in a virtualenv with:
+
+.. code-block:: bash
+
+   pip install python-neutronclient
+
+Then, for each virtual machine you want to run, request a `Neutron <https://docs.openstack.org/neutron/queens/>`_ port with:
 
 .. code-block:: bash
 
@@ -191,7 +196,7 @@ This should display, among other information:
 - A fixed IP in the same private network as the physical nodes
 - A MAC address
   
-Finally, start your virtual machine while assigning it the MAC address provided by OpenStack. If your image is configured to use DHCP, the virtual machine should receive the allocated IP.
+Finally, start your virtual machine while assigning it the *MAC address* provided by OpenStack. If your image is configured to use *DHCP*, the virtual machine should receive the allocated IP.
 
 Neutron ports allocated this way are not automatically deleted, so please delete them after your experiment is over using:
 
@@ -208,7 +213,7 @@ You may find the ID of your ports using:
 Launching Instances on Specific Nodes
 _____________________________________
 
-If you have a reservation for multiple physical nodes, explicitly identified with their UUIDs, you might want to force an instance to be launched on a specific node rather than letting the scheduler select one. This can be done with the CLI using a scheduler hint:
+If you have a reservation for multiple physical nodes, explicitly identified with their *UUIDs*, you might want to force an instance to be launched on a specific node rather than letting the scheduler select one. This can be done with the CLI using a scheduler hint:
 
 .. code-block:: bash
 
@@ -225,34 +230,39 @@ This will return a JSON dictionary describing site, cluster, and node.
 Customizing Networking
 ______________________
 
-In its default configuration, the bare metal deployment system used by Chameleon (OpenStack Ironic) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On `CHI@UC <https://chi.uc.chameleoncloud.org>`_, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
+In its default configuration, the bare metal deployment system used by Chameleon (`OpenStack Ironic <https://docs.openstack.org/ironic/pike/>`_) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On `CHI@UC <https://chi.uc.chameleoncloud.org>`_, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
 
 __________________________
 Interacting with Instances
 __________________________
 
-Once your bare metal instance has launched, you may interact with it by using SSH if you have associated a Floating IP with it or by using the Serial Console from the GUI.
+Once your bare metal instance has launched, you may interact with it by using SSH if you have associated a *Floating IP* to it or by using the *Serial Console* from the GUI.
 
 Connecting via SSH
 __________________
 
-If you have associated a Floating IP with the instance and you have the private key file for the Key Pair that was used to launch your instance, you may use it to SSH to the instance by following these steps:
+If you have associated a *Floating IP* with the instance and you have the private key in place, you should be able to connect to the instance via SSH using the ``cc`` account. 
 
-#. Make sure the permissions on the private key file are set to 600 on your local computer using:
-
-   .. code-block:: bash
-
-      chmod 600 mykey.pem
-
-#. Make sure you do not have a previous entry for the instance's Floating IP in your ``~/.ssh/known_hosts`` file on your computer. You may use a text editor such as ``nano`` to delete any matching entries.
-
-#. To SSH into the instance, use the command:
+To access the instance using SSH, type the command in your terminal:
 
    .. code-block:: bash
 
       ssh cc@<floating_ip>
 
-#. You may receive the response below. Type ``yes`` and hit enter:
+.. error::
+   If you get errors:
+   
+   .. code-block:: shell
+   
+      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+      IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+      ...
+   
+   It is likely that you have saved a previous entry for the instance's *Floating IP* in your ``~/.ssh/known_hosts`` file on your computer. Simply removing the entry from the file should solve the issue.
+
+You may receive the response below. Type ``yes`` and hit enter:
 
    .. code::
 
@@ -260,15 +270,15 @@ If you have associated a Floating IP with the instance and you have the private 
       RSA key fingerprint is 5b:ca:f0:63:6f:22:c6:96:9f:c0:4a:d8:5e:dd:fd:eb.
       Are you sure you want to continue connecting (yes/no)?
 
-#. When logged in, your prompt may appear like this:
+When logged in, your prompt may appear like this:
 
    .. code::
 
       [cc@my-first-instance ~]$
 
-.. note:: If you notice SSH errors such as connection refused, password requests, or failures to accept your key, it is likely that the physical node is still going through the boot process. In that case, please wait before retrying. Also make sure that you use the cc account. If after 10 minutes you still cannot connect to the machine, please open a ticket with our help desk.
+.. note:: If you notice SSH errors such as connection refused, password requests, or failures to accept your key, it is likely that the physical node is still going through the boot process. In that case, please wait before retrying. Also make sure that you use the ``cc`` account. If after 10 minutes you still cannot connect to the machine, please open a ticket with our `help desk <https://www.chameleoncloud.org/user/help/>`_.
 
-#. You can now check whether the resource matches its known description in the resource registry. For this, simply run: 
+You can now check whether the resource matches its known description in the resource registry. For this, simply run: 
    
    .. code-block:: bash
    

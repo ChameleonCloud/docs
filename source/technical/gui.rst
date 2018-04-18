@@ -6,27 +6,28 @@ __________________________
 Introduction
 __________________________
 
-The Graphical User Interface (GUI) provides a point-and-click interface for working with Chameleon resources. From the GUI, you may perform tasks such as manage and launch instances, and configure custom networking. Additionally, you may download an OpenStack RC file from the GUI if you wish to work with a Command Line Interface, instead. The Chameleon GUI is web-based, using OpenStack Horizon for its front end. There are two Chameleon resource sites, each with its own URL.
+The Graphical User Interface (GUI) provides a point-and-click experience for working with Chameleon resources. From the GUI, you may perform tasks such as manage and launch instances, and configure custom networking. Additionally, you may download an *OpenStack RC* file from the GUI if you wish to work with the :ref:`Command Line Interface <cli>`, instead. The Chameleon GUI is built on top of the `OpenStack Horizon <https://docs.openstack.org/horizon/latest/>`_. There are two Chameleon resource sites, each with its own URL.
 
-- Texas Advanced Computing Center resources are available at:
+- The Texas Advanced Computing Center resources are available at:
   
     https://chi.tacc.chameleoncloud.org
 
-- University of Chicago resources are available at:
+- The University of Chicago resources are available at:
   
     https://chi.uc.chameleoncloud.org
 
-Chameleon also hosts an OpenStack KVM implementation where you may work with virtual machines. This site does not have access to bare metal resources. It is available at:
+Chameleon also hosts an *OpenStack KVM* implementation where you may work with virtual machines. This site **does not** have access to bare metal resources. It is available at:
 
     https://openstack.tacc.chameleoncloud.org
 
-This document provides an overview of features available on GUIs for the bare metal sites at Texas Advanced Computing Center and University of Chicago. Documentaiton is also available for :doc:`kvm`.
+This section provides an overview of features available on the GUI for the bare metal sites at the Texas Advanced Computing Center (`CHI@TACC <https://chi.tacc.chameleoncloud.org>`_) and the University of Chicago (`CHI@UC <https://chi.uc.chameleoncloud.org>`_). For information about *OpenStack KVM*, please see :doc:`kvm`.
 
 You may login to either site using your Chameleon portal username and password.
 
-.. note:: If you are a new user or have just changed your password on http://www.chameleoncloud.org it takes approximately 10 minutes for changes to propagate to each site.
+.. note:: If you are a new user or have just changed your password on http://www.chameleoncloud.org, it takes approximately 10 minutes for changes to propagate to each site.
 
-Each Chameleon site shares user accounts, but snapshots, keypairs, Swift containers, Gnocchi statistics and other objects at each site are independent of each other. A keypair created at the Texas Advanced Computing Center site would not be available at the University of Chicago site. In addition, the bare metal resource types vary between Texas Advanced Computing Center and University of Chicago.
+.. attention:: 
+    Two Chameleon bare metal sites - `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ - **only** share user accounts, but snapshots, keypairs, Swift containers, Gnocchi statistics and other objects at each site are **independent**. For example, a keypair created at the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ site is **not** available at the `CHI@UC <https://chi.uc.chameleoncloud.org>`_ site. In addition, the bare metal resource types vary between `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_.
 
 __________________________
 GUI Features
@@ -39,14 +40,24 @@ Upon logging in to the GUI at a Chameleon site, you will see your project's Over
 
    The Chameleon GUI
 
-In the upper left of the screen next to the Chameleon logo, there is a dropdown where you may switch between any projects that your user account is a member of.
+.. _gui-project-menu:
+
+Project Menu
+__________________________
+
+To switch among the projects you belong to, use the project menu - the dropdown on the upper left of the screen next to the Chameleon logo.
 
 .. figure:: gui/project_dropdown.png
    :alt: Switching between projects
 
    Switching between projects
 
-In the upper right of the screen, you will see your account name. You may click on it to view a dropdown that allows you to access user specific settings.
+.. _gui-user-menu:
+
+User Menu
+__________________________
+
+To access user specific settings and download *OpenStack RC* files, use the user menu - the dropdown on the upper right of the screen where you will see your account name.
 
 .. figure:: gui/user_dropdown.png
    :alt: The user dropdown menu
@@ -58,56 +69,62 @@ In the upper right of the screen, you will see your account name. You may click 
 Settings
 ________
 
-In the settings menu, you can change specific user settings such as your Timezone.
+In the settings menu, you can change user specific settings such as the Timezone.
 
 .. figure:: gui/user_settings.png
    :alt: User settings
 
    User settings
 
-You may wish to change your Timezone. You current Timezone will be used when creating reservations for bare metal resources. UTC is the default Timezone. 
+.. Note::
+   Updating your Timezone is **highly** recommended. When you make reservations for bare metal resources, your local time will be used. UTC is the default Timezone. 
 
 
 Help
 ____
 
-Clicking on the Help menu item will take you to this documentation site.
+The *Help* menu item will take you to this documentation site.
 
 
 OpenStack RC File v2 and OpenStack RC File v3
 _____________________________________________
 
-Clicking on either of these menu items will download a customized RC file for use with the OpenStack Command Line Interface. These RC files may be run in Linux/macOS shell environments with the terminal command ``source CH-XXXXXX-openrc.sh`` (where *XXXXXX* is your project number.) This will configure environment variables that allow you to easily log in using the Command Line Interface.
+Clicking on either of these menu items will download a customized RC file for use with the OpenStack Command Line Interface. Source the RC file using ``source`` command to configure environment variables that allow you to easily log in using the :ref:`Command Line Interface <cli>`. For more information about *OpenStack RC* script, please see :ref:`cli-rc-script`.
 
 
 Themes
 ______
 
-You may change the GUI theme by selecting any of these menu items.
+You may change the GUI theme by selecting the provided menu items.
 
 
 Sign Out
 ________
 
-This will sign you out of the GUI for your current site. If you do not sign out manually, your session will automatically sign out in 30 minutes.
+Use the *sign out* menu item to sign out from your current site. 
+
+.. note::
+    If you do not sign out manually, your session will expire in 30 minutes.
 
 
 _________________________
 Navigating the GUI
 _________________________
 
-You may navigate between different sections of the GUI using the sidebar.
+The navigation sidebar allows you to access different sections.
 
 .. figure:: gui/sidebar.png
    :alt: The GUI sidebar
 
    The GUI sidebar
 
+.. _gui-compute:
+
 __________________________
 Compute
 __________________________
 
-The Compute section contains many of the common tasks needed to work with single bare metal instances.
+Use *Compute* section for reserving, configuring and managing your instances. 
 
 
 Overview
@@ -120,12 +137,15 @@ The Overview page provides a graphical summary of your project's current resourc
 
    The Overview page
 
-At the bare metal sites, you may launch as many instances as you like. On the OpenStack KVM site, your project is limited to a certain number of virtual machines. By default, each project is allowed to allocate 50 Floating IP addresses and use 10 Security Groups. You may request additional resources by submitting a help ticket using the :ref:`help-desk`.
+.. note::
+	At the bare metal sites, you may launch as many instances as you like, but bounded by the project :ref:`Service Unit <service-units>` allocation. However, at the OpenStack KVM site, your project is limited to a certain number of virtual machines. By default, each project is allowed to allocate 50 *Floating IP addresses* and use 10 *Security Groups*. You may request additional resources by submitting a ticket on the `help desk <https://www.chameleoncloud.org/user/help/>`_.
+
+.. _gui-compute-instances:
 
 Instances
 _________
 
-The Instances page allows you to work with instances at your site. You may use this page to launch and terminate bare metal instances at Texas Advanced Computing Center and University of Chicago. 
+The Instances page allows you to work with your instances. You may launch, terminate, monitoring, associate/dissociate a floating IP to a instance. Clicking on the dropdown list in *Action* column to see what you are eligible to do to your instances.
 
 .. figure:: gui/instances.png
    :alt: The Instances page
@@ -135,73 +155,86 @@ The Instances page allows you to work with instances at your site. You may use t
 Images
 ______
 
-The Images page allows you to edit Snapshots and Images. You may use this page to launch Images. You may edit Images that you own. Additionally, this page features an interactive search bar for filtering which Images are displayed.
+The Images page allows you to view, upload and edit the images. You may also use this page to launch instance using selected images.
+
+.. note:: You can only edit the images you own.
 
 .. figure:: gui/images.png
    :alt: The Images page
 
    The Images page
+   
+.. tip:: Search for images using the filter bar.
 
 .. _gui-key-pairs:
 
 Key Pairs
 _________
 
-The Key Pairs page allows you to work with SSH key pairs associated with your user account on the site at which you are logged in.
+The Key Pairs page allows you to create, import and manage SSH key pairs associated with your user account.
 
 .. figure:: gui/key_pairs.png
    :alt: The Key Pairs page
 
    The Key Pairs page
 
-Your SSH key pairs are available to each project you are a member of. Chameleon stores the Public Key for each SSH key pair and does not retain the associated Private Key. You may delete Public Keys by clicking on the *Delete Key Pair* button next to it. You may delete multiple Public Keys by clicking on the checkbox next to each key and clicking the *Delete Key Pairs* button in the toolbar.
+.. note:: Chameleon **only** stores the *Publc Key* for each SSH key pair. **Do not** upload your *Private Key* to the portal!
+
+To delete a SSH key pair, click on the *Delete Key Pair* button in the *Action* column. You may delete multiple key pairs by selecting them via the checkbox and clicking the *Delete Key Pairs* button.
 
 Creating a Key Pair
 ===================
 
-You may generate a new Public/Private Key Pair on Chameleon using the GUI. Click the *+ Create Key Pair* button in the tool bar. This will open a dialog, prompting you to specify a name for your new Key Pair.
+To create a key pair, click the *+ Create Key Pair* button. In the prompted dialog, provide a name for your new key pair and then click the *Create Key Pair* button.
 
 .. figure:: gui/create_key_pair_name.png
    :alt: Specifying a key pair name
 
    Specifying a key pair name
 
-After entering aname for your Key Pair, a file will automatically be downloaded in your browser with the extension ``.pem``. This is the Private Key in ``PEM`` format. The Public Key associated with this Private Key is now stored at your current Chameleon site. Clicking on the *Regenerate and download Key Pair* button will generate a new random Public/Private Key Pair and initiate a new download for your new Private Key pair. This new Private Key will not match the previously generated file.
+A ``.pem`` file that contains the *Private Key* should be automatically downloaded. In addition, the *Public Key* associated with the *Private Key* should be saved automatically to Chameleon. Clicking on the *Regenerate and download Key Pair* button will generate a new *Public/Private Key Pair* and initiate a new download of the *Private Key*.
+
+.. tip:: Save the *Private Key* to a location you will remember at your local file system. Your *home* directory is recommanded for macOS and Linux systems.
 
 .. _importing-key-pair:
 
 Importing a Key Pair
 ====================
 
-Alternatively, you may import a Public Key for a Key Pair that you have generated on your computer. Click the *Import Key Pair* button in the tool bar. This will open a dialog that allows you to provide a name for the Key Pair and paste the contents of the Public Key file. This dialog also provides information on how to generate a key pair using the Linux/macOS terminal.
+Alternatively, you may import a key pair that you have generated on your computer. Clicking the *Import Key Pair* button to prompt the dialog. Then, provide a name for your imported key pair and paste the *Public Key*.
+
+.. tip:: The prompted dialog contains the instructions on how to generate a key pair using the Linux/macOS command.
 
 .. figure:: gui/import_key_pair.png
    :alt: Importing a public key
 
    Importing a public key
+   
+.. tip::
+   Typically, the key generated from your computer will be at ``~/.ssh/id_rsa.pub``. On Mac OS X, you can run in a terminal: ``cat ~/.ssh/id_rsa.pub | pbcopy``. It copies the content of the public key to your copy/paste buffer. Then you can simply paste in the "Public Key" box.
+
+.. _gui-api-access:
 
 API Access
 __________
 
-This page allows you to view REST endpoints and ports for configuring the Command Line Interface.
+The API Access page lists all the available REST APIs that are used for configuring the :ref:`Command Line Interface <cli>`. In addition, you may download :ref:`OpenStack RC <cli-rc-script>` scripts and view your Chameleon credentials via this page.
 
 .. figure:: gui/api_access.png
    :alt: The API Access page
 
    The API Access page
 
-Each line displayed is a different environment variable that you may set using the Command Line Interface. Alternatively, you may click either of the *Download OpenStack RC* buttons in the toolbar to download a shell script that will configure these settings for you.
-
 __________
 Network
 __________
 
-The Network section of the GUI allows you to work with virtual network resources. You may configure routers and virtual networks. For more information, see :doc:`networks`.
+The Network section allows you to work with virtual network resources, such as configuring routers and virtual networks. For more information, please see :doc:`networks`.
 
 Network Topology
 ________________
 
-The Network Topology page displays your current virtual network topology in either the Topology or Graph formats. You may use this page to directly launch instances, create networks or create routers using the buttons in the tool bar.
+The Network Topology page displays your current virtual network topology in either the *Topology* or *Graph* formats. You may also use this section to directly launch instances, create networks or create routers.
 
 .. figure:: gui/network_topology.png
    :alt: The Network Topology page
@@ -211,7 +244,7 @@ The Network Topology page displays your current virtual network topology in eith
 Networks
 ________
 
-The Networks page provides a tabular view of Virtual Networks. You may use this page to work with Virtual Networks and associated Subnets.
+The Networks page lists all the Virtual Networks of the selected project. You may use this section to create, delete and modify Virtual Networks. Clicking on the dropdown list (if shown) in *Action* column to see what you are eligible to do to your virtual networks.
 
 .. figure:: gui/networks.png
    :alt: The Networks page
@@ -221,7 +254,7 @@ The Networks page provides a tabular view of Virtual Networks. You may use this 
 Routers
 _______
 
-The Routers page allows you to manipulate Routers within your project. 
+Same as the Networks page, the Routers page allows you to work on the Routers of the selected project. 
 
 .. figure:: gui/routers.png
    :alt: The Routers page
@@ -232,33 +265,33 @@ The Routers page allows you to manipulate Routers within your project.
 Security Groups
 _______________
 
-The Security Groups page allows you to manipulate Security Groups within your project.
+Use the Security Groups page to create, delete, and modify the Security Groups of the selected project.
 
 .. figure:: gui/security_groups.png
    :alt: The Security Groups page
 
    The Security Groups page
 
-.. note:: Currently, bare metal sites do not implement security groups. All ports are open to the public Internet at each bare metal site.
+.. attention:: Chameleon bare metal sites - `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ - **do not** support security groups (i.e. all ports are open to the public).
 
 
 Floating IPs
 ____________
 
-The Floating IPs page allows you to work with Floating IP addresses allocated to your project.
+The Floating IPs page allows you to work with the Floating IP addresses allocated for the selected project, including associating with instances and releasing back to the pool. Clicking on the dropdown list (if shown) in *Action* column to see what you are eligible to do to your Floating IPs.
 
 .. figure:: gui/floating_ips.png
    :alt: The Floating IPs page
 
    The Floating IPs page
 
-You may use this page to allocate Floating IP addresses to your project, associate them with instances or release them back to the general Floating IP pool for other Chameleon Users.
-
 Releasing Floating IP Addresses
 ===============================
 
-If your project is not currently using a Floating IP address that you have allocated, you should release the Floating IP address for other Chameleon users and projects to use. They are a shared, finite resource. Releasing Floating IP addresses allows you to be a "good citizen". You may release a single Floating IP address by selecting *Release Floating IP* in the *Actions* dropdown for that IP address. You may release multiple addresses by selecting them using their check boxes and clicking
-the *Release Floating IPs* button in the tool bar.
+.. important:: The Chameleon Floating IP address pool is a shared and finite resource. **Please be responsible and release the Floating IP addresses that are not used, so other Chameleon users and projects can use them!**
+
+To release a single Floating IP address,  click on the dropdown in the *Actions* column and select *Release Floating IP* . You may also release multiple addresses by selecting them via checkboxes and clicking
+the *Release Floating IPs* button.
 
 .. figure:: gui/releasing.png
    :alt: Releasing a Floating IP address
@@ -269,35 +302,37 @@ _____________
 Orchestration
 _____________
 
-The Orchestration section allows you to work with Chameleon's Complex Appliance and Orchestration functionality. Complex Appliances, after launched, are referred to as Stacks. For more information, see :doc:`complex`.
+The Orchestration section allows you to work with the :ref:`Chameleon's Complex Appliances <complex>`.
 
 
 Stacks
 ______
 
-Complex Appliances in Chameleon are implemented using OpenStack Heat. Therefore, they are referred to in the GUI as *Stacks*. The Stacks page allows you to launch, rebuild, or terminate stacks. Stacks are separate from individually launched bare metal instances. When you terminate a Stack, all bare metal instances launched by the Stack are also termianted.
+A deployed complex appliance is referred to as a “stack” – just as a deployed single appliance is typically referred to as an “instance”. The Stacks page allows you to launch, rebuild, or terminate stacks.
 
 .. figure:: gui/stacks.png
    :alt: The Stacks page
 
    The Stacks page
+   
+.. tip:: After launching a stack, all the instances launched with the stack can be viewed at :ref:`Compute - Instances <gui-compute-instances>` section as well. 
+
+.. note:: When you terminate a stack, all instances launched with the stack will be terminated.
 
 Resource Types
 ______________
 
-The Resource Types page allows you to view Orchestration Resource Types that are available on Chameleon. These are used when writing Heat Orchestration Templats.
+The Resource Types page lists the currently available Orchestration Resource Types of Chameleon. You may click on the resource types to get details. The Orchestration Resource Types are used when writing *OpenStack Heat Orchestration Template*. For more information about *OpenStack Heat*, please see `the OpenStack Heat documentation <https://docs.openstack.org/heat/latest/>`_.
 
 .. figure:: gui/resource_types.png
    :alt: The Resource Types page
 
    The Resource Types page
 
-You may filter for different Resource Types. You may also click on a Resource Type to view details about that Resource Type, such as Attributes and Properties.
-
 Template Versions
 _________________
 
-The Template Versions page allows you to access information about supported features within each Heat Orchestration Template version implemented on Chameleon.
+The Template Versions are also used when writing *OpenStack Heat Orchestration Template*. Clicking on the version to get supported features of the specific version.
 
 .. figure:: gui/template_versions.png
    :alt: The Template Versions page
@@ -308,29 +343,33 @@ ____________
 Object Store
 ____________
 
-The Object Store section contains only the Containers page, which allows you to work with the Swift object store system. A container may contain multiple objects, which are typically individual files. For more information, see :doc:`swift`.
+The *Containers* section under *Object Store* gives an easy access to your Chameleon object/blob store. You may create, delete, upload objects to or remove objects from containers via this page. For more information about Chameleon Object Store, please see :doc:`swift`.
 
 .. figure:: gui/containers.png
    :alt: The Containers page
 
    The Containers page
+   
+.. note:: Currently, **only** `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ maintains *Object Store*.
 
 ____________
 Reservations
 ____________
 
-The Reservations section contains only the Leases page, which allows you to manage leases for bare metal nodes. For more information, see :doc:`reservations`.
+The Reservations section allows you to manage your leases of the selected project, including creating and deleting leases. For more information, see :doc:`reservations`.
 
 .. figure:: gui/leases.png
    :alt: The Leases page
 
    The Leases page
 
+.. tip:: Check *Lease Calendar*, so you can schedule your experiments efficiently. 
+
 ___________
 Identity
 ___________
 
-The Identity section contains only the Projects page, which allows you to view which projects you are currently a member of.
+The Project section under Identity allows you to check what projects you belong to. You can set your default project by clicking the *Set as Active Project* button in the *Actions* column.
 
 .. figure:: gui/projects.png
    :alt: The Projets page

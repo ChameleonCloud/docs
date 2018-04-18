@@ -4,38 +4,39 @@
 Reconfigurable Networking 
 =========================
 
-Content from https://www.chameleoncloud.org/docs/bare-metal-user-guide/network-isolation-bare-metal/
-
 __________________________________
 Introduction
 __________________________________
 
-Chameleon supports Reconfigurable Networking. This allows your Instances to be attached to *Subnets* on Isolated *Networks*, joined by *Routers*. These features are achieved through Multi-Tenant Routing using Chameleon hardware resources, and can be configured through the GUI and CLI. Chameleon implements Reconfigurable Networking using OpenStack Neutron.
+Reconfigurable Networking on Chameleon is implemented based on `OpenStack Neutron <https://docs.openstack.org/neutron/pike/>`_. With reconfigurable networking, you may attach your instances to *Subnets* of *Isolated Networks*, joined by *Routers*. 
 
 Networks
 ________
 
-Networks are isolated logical Networks, with attached *Subnets*. *Subnets* are IP address spaces. Within a *Project*, Subnet addresses must not conflict. However, you do not have to worry about a Subnet address conflicting with other users or projects on Chameleon. Once you create a Network and Subnet, you may assign Instances to be attached to them. When creating a Subnet, you may allow the Subnet to provide *DHCP* services to Instances. This allows you to automatically assign IP Addresses to Instances on the Subnet, as well as *DNS* server addresses and static Routes.
+The *Subnet* can be created for an *Isolated Network*. The *Subnet* consists of IP ranges. 
+On Chameleon, the *Subnet* can assign the IP address to the instance automatically via `DHCP <https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol>`_ service, which guarantees unique IP addresses assigned to the instances within your Chameleon Project. 
 
 Routers
 _______
 
-*Routers* provide routing between *Networks* within your Project or to the public Internet. A Router can have multiple *Interfaces* that are attached to Networks. These Interfaces can serve as the *Gateway* for the Network, and are assigned the first address on the Subnet. 
+The *Routers* provide traffic directing services between *Networks* within your Chameleon Project or to the Internet. Chameleon allows you to set multiple *Interfaces* to a router and attach them to the *Networks*. 
 
 Chameleon Networks
 __________________
 
-All Chameleon Projects have access to two fixed networks - ``sharednet1`` and ``public``, which represents the *Public Internet*. ``sharednet1`` is a shared network between all Chameleon Projects. It has a Subnet address space of ``10.52.0.0/22``. ``public`` does not have an Subnet address space, but provides a logical Network that allows you to provide routing to the Internet.
+All Chameleon Projects have access to two fixed networks - ``sharednet1`` and ``public``. The ``sharednet1`` is a shared network between all Chameleon Projects with a *Subnet* whose address space is ``10.52.0.0/22``. The ``public`` represents the Internet.
 
 Floating IP Addresses
 _____________________
 
-*Floating IP Addresses* are publicly accessible IPv4 addresses. `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ each use a different Class B address block for Floating IP Addresses. These addresses can be bound to Instances to allow access over the Internet, and are shared between all Chameleon users. When not in use, you should be a good citizen by releasing them back to their respective IP Address pool, called ``ext-net``.
+The *Floating IP Addresses* are publicly accessible IPv4 addresses. `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ each uses a different group of `Class B addresses <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc940018(v=technet.10)>`_ for the Floating IP Addresses. 
+
+.. important:: The Chameleon Floating IP address pool is a shared and finite resource. **Please be responsible and release the Floating IP addresses that are not used, so other Chameleon users and projects can use them!**
 
 Security Groups
 _______________
 
-Currently, Security Groups are not implemented on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Therefore, all inbound and outbound port traffic is open to the Internet at these sites. `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ observes Security Groups, allowing inbound and outbound traffic to be filtered by port, with a default policy of denying inbound traffic.
+Currently, *Security Groups* are not implemented on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Therefore, all inbound and outbound port traffic is open to the Internet at these sites. `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ observes *Security Groups*, which allows inbound and outbound traffic to be filtered by port with a default policy.
 
 .. _network-isolation:
 
@@ -46,79 +47,116 @@ By default, bare metal nodes on each Chameleon site share the same local network
 
 Our implementation of network isolation is based on dynamically managed VLANs (network layer 2) associated with user-configured private IP subnets (network layer 3). This means that all network communications local to the IP subnet or the broadcast domain (such as Ethernet broadcast, ARP, IP broadcast, DHCP, etc.) will be restricted to the user-configured network and its associated VLAN. This feature enables a range of experiments in networking and security. For example, this allows running your own DHCP server to configure virtual machines running on bare metal nodes, without impacting other users.
 
-Please note the following:
+.. note::
 
-- Network isolation is now available on both `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_.
-- Strong network isolation is provided at network layer 2 only. Even using separate IP subnetworks, any bare metal node can still communicate with each other and with the Internet through the network's router. We are investigating solutions to provide stronger isolation at network layer 3.
-- Network isolation works on all nodes, including our low-power HP Moonshot nodes (low-power Xeon, Atom, ARM64).
+   - Network isolation is now available on both `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_.
+   - Strong network isolation is provided at network layer 2 only. Even using separate IP subnetworks, any bare metal node can still communicate with each other and with the Internet through the network's router. We are investigating solutions to provide stronger isolation at network layer 3.
+   - Network isolation works on all nodes, including our low-power HP Moonshot nodes (low-power Xeon, Atom, ARM64).
 
-The easiest way to launch an Isolated Network is to use the `Network Isolation HEAT Template <https://raw.githubusercontent.com/ChameleonCloud/heat-templates/master/network-isolation/network-isolation.yaml>`_ with Chameleon's :ref:`complex` feature.
+To use this feature, you will need to create a dedicated network and router. You can use a *Heat* template or use *Network* panel of the GUI. The network isolation procedure by using *Heat* template is explained below in the same section. For creating networks and routers using *Network* panel of the GUI, please continue reading the following sections. 
+
+#. To create networks and routers using a *Heat* template, go to *Project* > *Orchestration* > *Stacks*. 
+#. Click the *Lauch Stack* button to open an interactive dialog.
+#. Select *URL* as *Template Source* and paste https://raw.githubusercontent.com/ChameleonCloud/heat-templates/master/network-isolation/network-isolation.yaml to *Template URL*.
+#. Click the *Next* button to navigate to *Lauch Stack* dialog.
+#. Provide a name for your stack and your password, and set a private IP range that does not overlap with other IP addresses within your project.
+   
+   .. tip::
+      A good rule for setting a private IP range is to use the last 2 or 4 digits of your project number.
+      
+      For example, my project number is 81 **7790** :
+      
+         - For a unique 10.xx.yy.0/24 address range, use 10. **77** . **90** .0/24
+         - For a unique 172.16-31.x.0/24 or 192.168.x.0/24 address range, use 172.16. **90** .0/24 or 192.168. **90** .0/24
+         - Numbers 100-254 are not used by basic application of this rule and therefore can be used whenever there are conflicts (i.e. in the rare case where the last 2-4 digits of your project is the same as another project, and hence your desired IP subnet range is already in use).
+#. Set the first and the last IP addresses of *DHCP* range.
+
+   .. important::
+      The first IP adddress in the DHCP range should never be *.1 and *.2. The last IP address in the range must be less than *.255.
+      
+#. Start creating the network and router by clicking the *Launch* button.
+
+For more information about *Stack*, please read :ref:`complex`.    
 
 ____________________________________
 Configuring Networking using the GUI
 ____________________________________
 
-There are two GUI interfaces for working with Networks. The first interface is the *Network Topology* page, accessible clicking *Project* > *Network* > *Network Topology*. This provides a graphical representation of your Project's network configuration.
-
-.. figure:: networks/networktopology.png
-   :alt: The Topology View on the Network Topology page
-
-   The Topology View on the Network Topology page
-
-Alternatively, you may configure Networks and Routers independently of each other using their respective pages in *Project* > *Network*. 
-
 Creating a Network
 __________________
 
-To create a Network from either the *Network Toplogy* page or the *Networks* page (accessible by clicking *Project* > *Network* > *Networks*), click the *+Create Network* button. This will load the *Create Network* dialog.
+To create a Network from either the *Network Topology* page or the *Networks* page, click the *+Create Network* button to open the *Create Network* dialog.
 
 .. figure:: networks/createnetwork.png
    :alt: The Create Network dialog
 
    The Create Network dialog
 
-First, enter a *Network Name*. In general, you will also want to create a *Subnet* for your new Network. Click the *Next* button.
+In *Create Network* dialog, name your network. In general, you will also want to create a *Subnet* for your new Network, so make sure you have *Create Subnet* checked. Click the *Next* button.
 
 .. figure:: networks/createnetworksubnet.png
    :alt: The Subnet tab
 
    The Subnet tab
 
-When creating a *Subnet*, you must specify a  *Subnet Name* and a *CIDR* consisting of a  *Network Address* using a private IP address space and a subnet mask length. For example, you may create a Class C subnet with a 24-bit mask by entering ``192.168.1.0/24``. Then you may click the *Next* button.
+When creating a *Subnet*, you must specify a  *Subnet Name* and a `CIDR <https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing>`_ *Network Address* that contains a private IP address and a subnet mask length. For example, you may create a `Class C <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc940018(v=technet.10)>`_ subnet with a 24-bit mask by entering ``192.168.1.0/24``. You may set a Gateway or leave it blank to use the default. Then, click the *Next* button.
 
-.. note:: Do not select the *Disable Gateway* checkbox.
+   .. tip::
+      A good rule for setting a private IP range is to use the last 2 or 4 digits of your project number.
+      
+      For example, my project number is 81 **7790** :
+      
+         - For a unique 10.xx.yy.0/24 address range, use 10. **77** . **90** .0/24
+         - For a unique 172.16-31.x.0/24 or 192.168.x.0/24 address range, use 172.16. **90** .0/24 or 192.168. **90** .0/24
+         - Numbers 100-254 are not used by basic application of this rule and therefore can be used whenever there are conflicts (i.e. in the rare case where the last 2-4 digits of your project is the same as another project, and hence your desired IP subnet range is already in use).
+
+.. attention:: **Do not** select the *Disable Gateway* checkbox!
 
 .. figure:: networks/createnetworkdetails.png
    :alt: Subnet details
 
    Subnet details
 
-You may specify *DHCP* and static *Route* information on this tab:
+You may specify *DHCP* and static *Route* information at *Subnet Details* section:
 
-- *Allocation Pools* allow you to specify DHCP address ranges using a pair of addresses per line, with the first and last addresses in the range seperated by a comma. For example, entering ``192.168.1.2,192.168.1.100`` would create this range of available addresses to be automatically assigned to Instances on the Subnet.
-- *DNS Name Servers* allow you to specify a list of DNS servers, one per line. 
-  - At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, you may use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
-  - At `CHI@UC <https://chi.uc.chameleoncloud.org>`_, you may use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
-- *Host Routes* allow you to specify static routing information for the subnet. You may specify them as a Subnet CIDR and a Router IP address, separated by a comma. For example, ``192.168.3.0/24,10.56.1.254`` would cause all traffic from this Subnet destined for the ``192.168.3.0`` subnet to be forwarded to the Router Interface at ``10.56.1.254``.
+- *Allocation Pools* section allows you to specify *DHCP* address ranges in the format of ``<first address>,<last address>``. For example, entering ``192.168.1.2,192.168.1.100`` will create a *Subnet* with IP ranges from ``192.168.1.2`` to ``192.168.1.100``.
+- *DNS Name Servers* section allows you to specify a list of DNS servers. 
+  
+  .. note::
+     At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
+     
+     At `CHI@UC <https://chi.uc.chameleoncloud.org>`_, use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
+- *Host Routes* section allows you to specify static routing information for the subnet in the format of ``<subnet CIDR>,<router IP address>``. For example, ``192.168.3.0/24,10.56.1.254`` means all traffic from this Subnet to ``192.168.3.0`` will be forwarded to the Router Interface at ``10.56.1.254``.
 
-When you are finished, click *Create*.
+.. note:: All three sections above are line separated.
+
+Click *Create* button and a new Network will be created. Check if the network is created without error.
+
+.. error::
+   If you see error like below, pick a different subnet IP range.
+   
+   .. figure:: networks/networkcreateerror.png
+      :alt: Network created with error
+      
+      Network created with error
+      
 
 Creating a Router
 _________________
 
-You may create a *Router* by using the *+Create Router* button on either the *Network Topology* page or from the *Routers* page, accessed by clicking *Project* > *Network* > *Routers*. This will open the *Create Router* dialog.
+To create a *Router* from either the *Network Topology* page or the *Routers* page, click the *+Create Router* button to open the *Create Router* dialog.
 
 .. figure:: networks/createrouter.png
    :alt: The Create Router dialog
 
    The Create Router dialog
 
-In this dialog, specify a *Router Name*. Optionally, you may connect the Router to the internet by selecting ``public`` in the *External Network* dropdown. When you are finished, click *Create Router*.
+In this dialog, specify a *Router Name*. Optionally, you may select *public* as the *External Network* if you want to have external access.  Click *Create Router* to complete the process.
 
 Adding a Router Interface
 _________________________
 
-A Router may have multiple *Interfaces*, each connected to a *Network*. You may add an Interface to an existing Router by selecting the Router in the *Network Topology* page, or by selecting the Router in the *Routers* page and then clicking the *Interfaces* tab.
+A Router may have multiple *Interfaces*, each connected to a *Network*. You may add an *Interface* to an existing *Router* by clicking on *Add Interface* from either the *Network Topology* page or the *Routers* page to open the *Add Interface* dialog.
 
 .. figure:: networks/topologyaddinterface.png
    :alt: The Router interface in the Network Topology page
@@ -130,25 +168,41 @@ A Router may have multiple *Interfaces*, each connected to a *Network*. You may 
 
    The Interfaces tab in the Router detail page
 
-In either location, clicking the *+Add Interface* button will open the *Add Interface* dialog.
-
 .. figure:: networks/addinterface.png
    :alt: The Add Interface dialog
 
    The Add Interface dialog
 
-First, select a *Subnet* to attach to the Interface. If you do not specify an *IP Address*, Chameeon will attempt to automatically assign an IP address. For custom *Subnets*, it will typically assign a *Gateway* address (the first address on the *Subnet*). 
+First, select a network and subnet you have created. You can specify an *IP address*; otherwise, Chameleon will attempt to assign an IP address automatically. Gateway IP you assigned to the subnet will be automatically picked.
 
 Deleting Networking Objects
 ___________________________
 
-Network Objects such as *Routers* and *Networks* must be deleted in reverse order of which they were created. Objects cannot be deleted while other objects are depending on them. For example, you must dissociate a *Floating IP* or delete its associated *Instance* before removing a *Router* it is dependent on.
+.. attention::
+   Network Objects such as *Routers* and *Networks* must be deleted in the reverse order of which they were created. Objects **can not** be deleted while other objects are depending on them. 
+
+.. attention::
+   **Before start deleting, make sure all instances using them are terminated!**
+
+#. Go to *Project* > *Network* > *Routers*, and click on the router you would like to delete.
+#. Go to *Static Routes* tab, and click on the *Delete Static Routes* button in the *Action* column. The *Static Routes* will be deleted after confirm.
+#. Go to *Instatnces* tab, delete the Gateway interface by clicking on *Delete Interface* button in the *Action* column and confirm the deletion. 
+#. Now you can safely delete the router by click on the dropdown on the upper right corner. Then, click on *Delete Router*. Finally, confirm your deletion of the router. 
+   
+   .. figure:: networks/deleterouterbutton.png
+      :alt: Dropdown for deleting router
+      
+      Dropdown for deleting router
+      
+#. Go to *Project* > *Network* > *Networks*, and delete the network by using the dropdown in the *Action* column. Alternatively, you may delete the network by selecting the network using the checkbox and click on *Delete Networks* button on the upper right corner. Confirm your deletion to finish the process. 
 
 ________________________________________________________
 Configuring Networking using the CLI
 ________________________________________________________
 
-You may configure Networking using the CLI. Make sure you have configured environment variables for your Project and Chameleon site using :ref:`cli-rc-script`.
+.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+
+Before using the CLI, make sure you have configured environment variables using :ref:`cli-rc-script`.
 
 .. _network-cli-create:
 
@@ -161,7 +215,7 @@ You can create an *Isolated* VLAN Network using the command:
 
    openstack network create --provider-network-type vlan --provider-physical-network physnet1 <network_name>
 
-You may receive output that appears like this:
+The output should look like the following:
 
 .. code::
 
@@ -239,24 +293,22 @@ Will create a subnet with the following output:
    | updated_at        | 2018-03-23T23:50:11Z                 |
    +-------------------+--------------------------------------+
 
-You may specify other Subnet options with the appropriate flags, which you may view by simply typing the command:
+To see more options when creating a subnet, use the following command:
 
 .. code-block:: bash
 
-   openstack subnet create
-
-For example, you may specify DNS nameserver IP addresses with ``--dns-nameserver <nameserver_ip>``.
+   openstack subnet create --help
 
 Creating a Router
 _________________
 
-You may create a Router by using the command:
+To create a router, use the following command:
 
 .. code-block:: bash
 
    openstack create router <router_name>
 
-You may receive output that looks like this:
+Your output should look like:
 
 .. code::
 
@@ -285,13 +337,13 @@ You may receive output that looks like this:
 Adding a Router Interface
 _________________________
 
-You can add a Router Interface with the command:
+A Router Interface can be added and attached to a subnet with the command:
 
 .. code-block:: bash
 
    openstack router add subnet <router_name> <subnet_name>
 
-This automatically attaches a new Interface to the specified Subnet. You may also wish to specify an *External Gateway* for your router and connect it to the ``public`` Network with the following command:
+In addition, you can specify an *External Gateway* for your router and connect it to the ``public`` Network with the following command:
 
 .. code-block:: bash
 
@@ -300,7 +352,7 @@ This automatically attaches a new Interface to the specified Subnet. You may als
 Deleting Networking Objects
 ___________________________
 
-To delete a Router with an External Gateway and its associated Subnets, you may use the following commands:
+To delete a router with an External Gateway and subnets associated to it, use the following commands:
 
 .. code-block:: bash
 
@@ -313,4 +365,4 @@ ____________________________
 Advanced Networking Features
 ____________________________
 
-Chameleon implements additional configurable *OpenStack Neutron* *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure traffic. These features may be configured through the CLI and through :ref:`complex`. To see a list of available list of Resource Types, use the GUI at either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and navigate to *Project* > *Orchestration* > *Resource Types*. Networking Resource Types are listed as ``OS::Neutron`` Resources.
+Chameleon implements additional configurable *OpenStack Neutron* *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure the traffic. Use the CLI or :ref:`complex` to configure your network with these advanced features. To see a list of available Resource Types, go to either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and navigate to *Project* > *Orchestration* > *Resource Types*. *Networking Resource Types* are listed as ``OS::Neutron`` Resources.

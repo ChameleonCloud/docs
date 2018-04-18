@@ -16,5 +16,5 @@ This Technical Documentation for Chameleon provides in-depth knowledge for utili
 - :doc:`swift`: Store user data such as files as Objects in portable Containers.
 - :doc:`networks`: Create Isolated virtual networks within Chameleon.
 - :doc:`stitching`: Stitch Chameleon to external testbed networks such as ExoGENI.
-- :doc:`fpga`: Configure and work with FPGA nodes at CHI@TACC.
+- :doc:`fpga`: Configure and work with FPGA nodes at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_.
 - :doc:`kvm`: Use non-bare metal virtual machine resources in Chameleon's OpenStack implementation.

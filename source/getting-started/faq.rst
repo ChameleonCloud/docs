@@ -2,54 +2,86 @@
 Frequently Asked Questions
 ==========================
 
-:ref:`faq-general`
+.. container:: toggle
 
-- :ref:`what-is-chameleon`
-- :ref:`what-does-chi-mean`
-- :ref:`who-can-use-chameleon`
-- :ref:`what-are-best-practices`
-- :ref:`are-there-limitations`
-- :ref:`how-to-acknowledge`
-- :ref:`what-infrastructures`
+    .. container:: header
 
-:ref:`faq-project`
+        :ref:`faq-general`
+    
+    - :ref:`what-is-chameleon`
+    - :ref:`what-does-chi-mean`
+    - :ref:`who-can-use-chameleon`
+    - :ref:`what-are-best-practices`
+    - :ref:`are-there-limitations`
+    - :ref:`how-to-acknowledge`
+    - :ref:`what-infrastructures`
+    
+.. container:: toggle
 
-- :ref:`how-do-i-apply`
-- :ref:`who-is-elligible`
-- :ref:`how-add-users`
-- :ref:`what-are-sus`
-- :ref:`what-are-allocation-sizes`
-- :ref:`what-is-format-of-proposal`
-- :ref:`project-criteria`
-- :ref:`account-management-troubleshooting`
-- :ref:`email-already-registered`
-- :ref:`cannot-log-in`
-- :ref:`username-password-unknown`
+    .. container:: header
 
-:ref:`faq-appliances`
+        :ref:`faq-project`
+    
+    - :ref:`how-do-i-apply`
+    - :ref:`who-is-elligible`
+    - :ref:`how-add-users`
+    - :ref:`what-are-sus`
+    - :ref:`what-are-allocation-sizes`
+    - :ref:`what-is-format-of-proposal`
+    - :ref:`project-criteria`
 
-- :ref:`what-is-appliance`
-- :ref:`what-is-catalog`
-- :ref:`how-build-appliance`
-- :ref:`how-publish-catalog`
-- :ref:`how-manage-appliance`
-- :ref:`why-different-ids`
-- :ref:`can-use-other-us`
-- :ref:`cc-snapshot-doesnt-work`
+.. container:: toggle
 
-:ref:`faq-bare-metal`
+    .. container:: header
 
-- :ref:`why-fail-launch`
+        :ref:`account-management-troubleshooting`
 
-:ref:`faq-kvm-troubleshooting`
+    - :ref:`email-already-registered`
+    - :ref:`cannot-log-in`
+    - :ref:`username-password-unknown`
+    
+.. container:: toggle
 
-- :ref:`why-kvm-fail`
-- :ref:`why-cant-ping`
+    .. container:: header
 
-:ref:`faq-ssh`
+        :ref:`faq-appliances`
+    
+    - :ref:`what-is-appliance`
+    - :ref:`what-is-catalog`
+    - :ref:`how-build-appliance`
+    - :ref:`how-publish-catalog`
+    - :ref:`how-manage-appliance`
+    - :ref:`why-different-ids`
+    - :ref:`can-use-other-us`
+    - :ref:`cc-snapshot-doesnt-work`
 
-- :ref:`faq-ssh-keypairs-linux`
-- :ref:`faq-ssh-keypairs-windows`
+.. container:: toggle
+
+    .. container:: header
+
+        :ref:`faq-bare-metal`
+    
+    - :ref:`why-fail-launch`
+
+.. container:: toggle
+
+    .. container:: header
+
+        :ref:`faq-kvm-troubleshooting`
+    
+    - :ref:`why-kvm-fail`
+    - :ref:`why-cant-ping`
+
+.. container:: toggle
+
+    .. container:: header
+
+        :ref:`faq-ssh`
+    
+    - :ref:`faq-ssh-keypairs-linux`
+    - :ref:`faq-ssh-keypairs-windows`
+
+|
 
 .. _faq-general:
 
@@ -62,7 +94,7 @@ _______
 What is Chameleon?
 __________________
 
-Chameleon is an experimental testbed for Computer Science funded by the NSF FutureCloud program. Chameleon is built over two sites, University of Chicago and TACC, offering a total of over 550 nodes and 5 PB of space in twelve `Standard Cloud Unit (SCU) racks <https://www.chameleoncloud.org/about/hardware-description/>`_. To effectively support Computer Science experiments Chameleon offers bare metal reconfigurability on most of the hardware. To provide easy access to educational users, three SCUs at TACC (a quarter of the testbed) are configured with OpenStack KVM.
+Chameleon is an experimental testbed for Computer Science funded by the NSF FutureCloud program. Chameleon is built over two sites, University of Chicago and TACC, offering a total of over 550 nodes and 5 PB of space in twelve `Standard Cloud Unit (SCU) racks <https://www.chameleoncloud.org/about/hardware-description/>`_. To effectively support Computer Science experiments Chameleon offers bare metal reconfigurability on most of the hardware. To provide easy access to educational users, three SCUs at TACC (a quarter of the testbed) are configured with OpenStack KVM. You can read more about Chameleon `here <https://www.chameleoncloud.org/about/chameleon/>`_.
 
 .. _what-does-chi-mean:
 
@@ -82,6 +114,12 @@ Chameleon is broadly available to members of the US Computer Science research co
 
 What are the best practices for Chameleon usage?
 ________________________________________________
+
+In order to promote fairness to all users, we have the following set of Best Practices for using Chameleon bare metal partitions:
+
+- Think Small for Development: If you are just developing or prototyping a system, and not yet running experiments at scale, use only as many nodes as you actually need (e.g., many projects can be developed and tested on 3-4 nodes), and try to take short reservations (e.g., for a work day or two when you actually develop). Always release the reservation if you will not use the testbed for an extended period of time (e.g., when you leave for the weekend or holidays). 
+- Automation is your Friend: You can always snapshot your work/images between sessions using :ref:`cc-snapshot-utility` to simplify the redeployment of your environment during the next work session. You can also use scripting and environment customization to make it easier to redeploy images. An additional benefit of automation is that it makes it easier for you to reproduce your work and eventually share it with colleagues within your lab and other collaborators.
+- Think Big for Experimentation: Once you are ready to experiment you will want to test your experimental setup on increasingly larger scales. This is possible by taking an advance reservation for many resources for a relatively short time. The more resources you need, the more likely it is that you will need to run experiments at a less attractive time (e.g., during the weekend) — here’s where automation will also help. In justified cases, we will support reserving even the whole bare metal testbed.
 
 .. _are-there-limitations:
 
@@ -118,7 +156,7 @@ _________________________________
 How do I apply for a Chameleon project?
 _______________________________________
 
-Project applications may be filled out `here <https://www.chameleoncloud.org/user/projects/new/>`_. If you want to apply for a project you have to be `PI eligible <https://www.chameleoncloud.org/docs/getting-started/pi-eligibility/>`_; if you fulfill the PI eligibility criteria but did not request PI eligibility when you applied for a Chameleon account you can request it by modifying options in your profile. An application for a project has to include a description of the research or education project to be performed using the testbed and the type of resources needed (see below). Each Chameleon project is awarded an allocation of service units for a specific amount of time. Users can expect a project decision within one business day.
+Project applications may be filled out `here <https://www.chameleoncloud.org/user/projects/new/>`_. If you want to apply for a project you have to be :ref:`PI eligible <pi-eligibility>`; if you fulfill the PI eligibility criteria but did not request PI eligibility when you applied for a Chameleon account you can request it by modifying options in your profile. An application for a project has to include a description of the research or education project to be performed using the testbed and the type of resources needed (see below). Each Chameleon project is awarded an allocation of service units for a specific amount of time. Users can expect a project decision within one business day.
 
 .. _who-is-elligible:
 
@@ -193,7 +231,7 @@ __________________________________________________________
 
 Requests for projects and allocations are currently reviewed for merit by project operators with a future move towards review by independent review board composed of Chameleon Science Advisory Board members. The following criteria are used:
 
-- PI eligibility
+- :ref:`PI eligibility <pi-eligibility>`
 - Relevance of the proposed experiment to cloud computing research; scientific merit and significance of the proposed experiments
 - Demonstrated need for Chameleon resources, methodology appropriate to the use of the Chameleon resource, justification of the requested allocation
 - Success of prior or other existing allocations (for renewals) in terms of published research results and new funding.
@@ -225,7 +263,7 @@ Please make sure that you have successfully confirmed your email address. Check 
 I have an account, but when I try to log in to OpenStack/Experiment it says my username/password is unknown, why?
 _________________________________________________________________________________________________________________
 
-You must be a member of an active project to access the OpenStack/Experiment interface. If you are PI Eligible, you can request a new project on the `Chameleon Project Management page <https://www.chameleoncloud.org/user/projects>`_. If you are not PI Eligible, you will need to be added to an existing project by the project PI. You can check that a project has an active Chameleon allocation by clicking on the View Project button. If you are part of a project but the allocation is Pending, it means your project is under review. If you still cannot log in, please `open a ticket with our help desk <https://www.chameleoncloud.org/user/help/>`_.
+You must be a member of an active project to access the OpenStack/Experiment interface. If you are :ref:`PI eligible <pi-eligibility>`, you can request a new project on the `Chameleon Project Management page <https://www.chameleoncloud.org/user/projects>`_. If you are not :ref:`PI eligible <pi-eligibility>`, you will need to be added to an existing project by the project PI. You can check that a project has an active Chameleon allocation by clicking on the *View Project* button. If you are part of a project but the allocation is Pending, it means your project is under review. If you still cannot log in, please `open a ticket with our help desk <https://www.chameleoncloud.org/user/help/>`_.
 
 .. _faq-appliances:
 
@@ -280,7 +318,7 @@ Once you are ready to proceed, an appliance can be contributed to Chameleon in t
 
 If you are adding a complex appliance, skip the image ID fields and enter your template instead in the dedicated text box.
 
-As always, if you encounter any problems or want to share with us additional improvements we should do to the process, please don’t hesitate to submit a ticket.
+As always, if you encounter any problems or want to share with us additional improvements we should do to the process, please don’t hesitate to `submit a ticket <https://www.chameleoncloud.org/user/help/>`_.
 
 .. _how-manage-appliance:
 
