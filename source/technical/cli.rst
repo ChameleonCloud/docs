@@ -40,7 +40,7 @@ _______________________
 The OpenStack RC Script
 _______________________
 
-The *OpenStack RC Scripts* are used for configuring the environment variables to access Chameleon features, and they can be downloaded from the Chameleon GUI at the :ref:`user menu <gui-user-menu>` or the :ref:`gui-compute` > :ref:`gui-api-access`.
+You must use the *OpenStack RC Scripts* to configure the environment variables for accessing Chameleon features. You can downloaded the script from the Chameleon GUI at the :ref:`user menu <gui-user-menu>` or the :ref:`gui-compute` > :ref:`gui-api-access`.
 
 #. Log in to the GUI at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. 
 
@@ -102,14 +102,14 @@ The *OpenStack RC Scripts* are used for configuring the environment variables to
 
    .. error:: If you get permission error at this step, please check that 1) the terminal session has been configured correctly with the environment variables; 2) the *OpenStack RC* script you ``source`` is **v3**; 3) the *OpenStack Client* version is the latest. To check the *OpenStack Client* version, use ``openstack --version`` command. Some older version of the *OpenStack Client* may cause errors.
    
-   .. error:: If you get the ``Missing value`` error when using a command, it is likely that your terminal session has not been configured correctly and completely with the environment variables. The error may be fixed by re-running the ``source`` command over the OpenStack RC Script or use the command line switches.
+   .. error:: If you get the ``Missing value`` error when using a command, it is likely that your terminal session has not been configured correctly and completely with the environment variables. The error may be fixed by re-running the ``source`` command over the OpenStack RC Script or using the command line switches.
 
 
 _____________________________
 Using the CLI
 _____________________________
 
-The CLI may be used in either Interactive Mode or Shell Mode. In either mode, the *OpenStack Client* has to be configured by using the *OpenStack RC Script* or by providing the command line switches. For more information about the usage of *OpenStack Client*, run ``openstack --help``.
+You can use the CLI in either Interactive Mode or Shell Mode. In either mode, the *OpenStack Client* has to be configured by using the *OpenStack RC Script* or by providing the command line switches. For more information about the usage of *OpenStack Client*, run ``openstack --help``.
 
 Interactive Mode
 ________________

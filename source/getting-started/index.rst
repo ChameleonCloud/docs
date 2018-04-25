@@ -58,7 +58,7 @@ Once you are logged in, you should see a summary of your project's current resou
 Reserving a Node
 ================
 
-First, a node need to be reserved. Chameleon provides bare-metal access to nodes. When you create a reservation for one or more nodes, only you and the users of your project will be able to use those nodes for the time specified. For this tutorial, a single day reservation for a compute node will be created. The compute nodes are the most common types available on Chameleon.
+First, we need to reserve a node for our use. Chameleon provides bare-metal access to nodes. When you create a reservation for one or more nodes, only you and users on your project will be able to use those nodes for the time specified. We will create a single day reservation for a compute node, which are the most common types of nodes available on Chameleon.
 
 #. In the sidebar, click *Reservations*, then click *Leases*
 #. Click on the *+ Create Lease* button in the toolbar

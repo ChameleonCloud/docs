@@ -19,7 +19,7 @@ You may use the `Hardware <https://chameleoncloud.org/hardware/>`_ page at the `
 Availability
 ____________
 
-The *CHI@TACC* and *CHI@UC* buttons in the *Availability* section of the Resource Browser allow you to open the Lease Calendars at the Chameleon sites. The login using your Chameleon account is required to view these lease calendars.
+The *CHI@TACC* and *CHI@UC* buttons in the *Availability* section of the Resource Browser allow you to open the Lease Calendars at the Chameleon sites. You must login using your Chameleon account to view these lease calendars.
 
 .. figure:: discovery/availability.png
    :alt: Resource availability links to the lease calendars
@@ -46,7 +46,7 @@ You may filter for specific node types by selecting the checkboxes that match yo
 .. tip:: To get more precise characteristics of the selected node, search the node at `Intel's CPU database <https://ark.intel.com/>`_.
 
 .. note:: 
-   All the nodes in Chameleon is identified by their *UUIDs*. The *UUID* of a node is used for making reservations and identifying metrics collected from the node using Gnocchi. In addition, each node also has a *Version UUID*, which is used for retrieving its maintenance history. 
+   All the nodes in Chameleon is identified by their *UUIDs*. You will need the *UUID* of a node for making reservations and identifying metrics collected from the node using Gnocchi. In addition, each node also has a *Version UUID*, which is used for retrieving its maintenance history. 
 
 .. attention::
    When we replace faulty hardware on a node, the replacement part typically has the same hardware characteristics. For example, a node with a faulty 250 GB hard drive would be replaced with the same 250 GB hard drive model. However, it may be important for your experimental reproducibility to know about those hardware replacement events, in case it affects your metrics.
