@@ -118,7 +118,7 @@ ________________________________________________
 In order to promote fairness to all users, we have the following set of Best Practices for using Chameleon bare metal partitions:
 
 - Think Small for Development: If you are just developing or prototyping a system, and not yet running experiments at scale, use only as many nodes as you actually need (e.g., many projects can be developed and tested on 3-4 nodes), and try to take short reservations (e.g., for a work day or two when you actually develop). Always release the reservation if you will not use the testbed for an extended period of time (e.g., when you leave for the weekend or holidays). 
-- Automation is your Friend: You can always snapshot your work/images between sessions using :ref:`cc-snapshot-utility` to simplify the redeployment of your environment during the next work session. You can also use scripting and environment customization to make it easier to redeploy images. An additional benefit of automation is that it makes it easier for you to reproduce your work and eventually share it with colleagues within your lab and other collaborators.
+- Automation is your Friend: You can always snapshot your work/images between sessions using :ref:`cc-snapshot <cc-snapshot-utility>` to simplify the redeployment of your environment during the next work session. You can also use scripting and environment customization to make it easier to redeploy images. An additional benefit of automation is that it makes it easier for you to reproduce your work and eventually share it with colleagues within your lab and other collaborators.
 - Think Big for Experimentation: Once you are ready to experiment you will want to test your experimental setup on increasingly larger scales. This is possible by taking an advance reservation for many resources for a relatively short time. The more resources you need, the more likely it is that you will need to run experiments at a less attractive time (e.g., during the weekend) — here’s where automation will also help. In justified cases, we will support reserving even the whole bare metal testbed.
 
 .. _are-there-limitations:
@@ -128,7 +128,7 @@ _____________________________________________
 
 We have two types of limitations, introduced to promote fair resource usage to all:
 
-- Allocation: Chameleon projects are limited to a per-project allocation currently set to 20,000 service units for 6 months. Allocations can be renewed or extended. See the :ref:`project-management` documentation for more details on Chameleon allocations.
+- Allocation: Chameleon projects are limited to a per-project allocation currently set to 20,000 service units for 6 months. Allocations can be renewed or extended. See the :ref:`project management <project-management>` documentation for more details on Chameleon allocations.
 - Lease: To ensure fairness to all users, resource reservations (leases) are limited to a duration of 7 days. However, an active lease within 48 hours of its end time can be prolonged by up to 7 days from the moment of request if resources are available. To prolong a lease, click on the “Update Lease” button in the Reservations panel of the CHI OpenStack dashboard, and enter the additional duration requested in the “Prolong for” boxes. If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can `contact Chameleon staff via the ticketing system <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to request a one-time exception to create a longer lease.
 
 .. _how-to-acknowledge:
@@ -181,7 +181,7 @@ If are eligible to be PI, in order to apply for a project  you need to make sure
 My PI/Professor/Colleague already has a Chameleon Project. How do I get added as a user on the project?
 _______________________________________________________________________________________________________
 
-You will need to contact the project PI and request that they add you as a user. Provide the PI with your Chameleon username. The project PI should visit the `Chameleon Project Management page <https://www.chameleoncloud.org/user/projects>`_. From there, the PI may follow the instructions on how to :ref:`manage-users`.
+You will need to contact the project PI and request that they add you as a user. Provide the PI with your Chameleon username. The project PI should visit the `Chameleon Project Management page <https://www.chameleoncloud.org/user/projects>`_. From there, the PI may follow the instructions on how to :ref:`manage users <manage-users>`.
 
 .. _what-are-sus:
 
@@ -362,7 +362,7 @@ __________________________
 Why are my Bare Metal instances failing to launch?
 __________________________________________________
 
-The Chameleon Bare Metal clouds require users to reserve resources before allowing them to launch instances. Please follow the documentation on making :ref:`reservations` and make sure that:
+The Chameleon Bare Metal clouds require users to reserve resources before allowing them to launch instances. Please follow the documentation on :ref:`making reservations <reservations>` and make sure that:
 
 - You have created a lease and it has started (the associated reservation is shown as Active)
 - You have selected your reservation in the Launch Instance panel
