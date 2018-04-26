@@ -349,7 +349,7 @@ These appliances provide Chameleon-specific customizations, such as login using 
 The cc-snapshot tool doesn't work on previously snapshot images.
 ________________________________________________________________
 
-cc-snapshot is occasionally updated to accommodate changes to the infrastructure and distributions. To replace the script in your image, follow our instructions for :ref:`updating-snapshot`.
+cc-snapshot is occasionally updated to accommodate changes to the infrastructure and distributions. To replace the script in your image, follow our instructions for :ref:`updating cc-snapshot <updating-snapshot>`.
 
 .. _faq-bare-metal:
 
