@@ -49,6 +49,8 @@ You will be prompted to enter your username and password.
 
 .. note:: If you choose an *Image* name that already exists, the previous one **will not** be overwritten. A new *Image* with the same name but a different *UUID* will be generated.
 
+.. _updating-snapshot:
+
 .. error::
    If you receive the following error:
    
