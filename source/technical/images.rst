@@ -25,14 +25,29 @@ To make a snapshot of a bare-metal instance, run the following command from insi
 .. code-block:: bash
 
    sudo cc-snapshot <image_name>
+   
+.. tip:: 
+   You may get warnings, such as "image too large", during snapshotting, and get prompted to confirm. If you are confident about what you are trying to do, you can skip all warnings by using the ``-f`` flag. 
+   
+   .. code-block:: bash
+   
+      sudo cc-snapshot -f <image_name>
+      
+   In addition, you can exclude directories by using the ``-e`` flag.
+   
+   .. code-block:: bash
+   
+      sudo cc-snapshot -e <dir1> -e <dir2> <image_name>
+      
+   To see all available options for ``cc-snapshot``, run ``sudo cc-snapshot -h``.
 
 You will be prompted to enter your username and password. 
+
+.. tip:: You can skip entering username and password by setting the ``OS_USERNAME`` and ``OS_PASSWORD`` environment variables. You can set those environment variables manually or using :ref:`cli-rc-script`.
 
 .. note:: When using the ``cc-snapshot``, it will create an image within your project with the ``shared`` visibility. Anyone with access to your project can access this image.
 
 .. note:: If you choose an *Image* name that already exists, the previous one **will not** be overwritten. A new *Image* with the same name but a different *UUID* will be generated.
-
-.. _updating-snapshot:
 
 .. error::
    If you receive the following error:
@@ -87,7 +102,7 @@ In the *Create Image* dialog:
 #. Click the *Create Image* button to upload your image.
 
 Launching Instance using an Image
-__________________
+__________________________________
 
 During the process of :ref:`launching instance <baremetal-gui-launch>` from the *Instance* page, it will ask you to select an image. Alternatively, you can launch instances with a selected image from the *Image* page by simply clicking on the *Launch* button located in the same row of the targeted image.
 

@@ -21,9 +21,9 @@ ______________________
 
 *Objects* are equivalent to individual files. They are stored in *Containers*, which are data structures that can contain multiple *Objects*. When uploading *Objects*, they must be stored inside of *Containers*. You may perform operations on individual *Objects* inside Containers, such as downloading or deleting them. You may also work with entire *Containers* and perform operations such as downloading an entire *Container*.
 
-__________________________________
+_____________________________________
 Managing Object Store using the GUI
-__________________________________
+_____________________________________
 
 .. note:: The Object Store is implemented at TACC. Therefore, only `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ implements a GUI interface for the *Object Store*. However, the CLI works for both `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_.
 
@@ -35,7 +35,7 @@ To access the *Object Store* using the GUI at `CHI@TACC <https://chi.tacc.chamel
    The Containers page
 
 Working with Containers
-____________________
+_________________________
 
 To create a container, click the *+Container* button. This will open the *Create Container* dialog.
 
@@ -68,7 +68,7 @@ You may delete a container by clicking the *Delete* icon in the upper right of t
    The Delete Container button
 
 Working with Objects
-_________________
+_____________________
 
 To upload a local file to a container, click the button with the *Upload* symbol next to the search bar.
 
@@ -85,11 +85,9 @@ This will open the *Upload File* dialog.
    The Upload File dialog
 
 Choose a file to upload from your local file system and give a name to the object.
-
-.. hint::
    
 Working with Folders
-_________________
+_____________________
 
 If you wish to create a *Folder* within your *Container*, click the *+Folder* button and give a name to your folder in the *Create Folder* dialog.
 
@@ -112,9 +110,9 @@ You may browse your folder and upload files to it by clicking on the folder.
 
    A Folder within the Container
 
-__________________________________
+_____________________________________
 Managing Object Store using the CLI
-__________________________________
+_____________________________________
 
 .. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
 
@@ -127,7 +125,7 @@ In addition to :ref:`cli-installing`, you must also install ``python-swiftclient
 Then, you must set environment variables for your account and project using :ref:`cli-rc-script`.
 
 Working with Containers
-____________________
+_________________________
 
 To create a *Container*, use the following command:
 
@@ -170,7 +168,7 @@ To delete a container and wipe out all the objects belong to it, use the followi
    openstack container delete <container_name>
 
 Working with Objects
-_________________
+______________________
 
 You may upload a file from your local machine to a container using the following command:
 
@@ -193,13 +191,13 @@ If you wish to download an individual object directly from a container, use the 
    openstack object save <container_name> <object_name>
 
 Working with Folders
-_________________
+_______________________
 
 There isn't "folders" when you managing the *Object Store* with the CLI. However, when you create an object, you may use the delimiter ``/`` to specify the path. 
 
-__________________________________
+________________________________________
 Mounting Object Store as a File System
-__________________________________
+________________________________________
 
 When logged into an instance using Chameleon supported images, such as ``CC-CentOS7`` and ``CC-Ubuntu16.04``, you may use the pre-installed ``cloudfuse`` (Source: `Github <https://github.com/redbo/cloudfuse>`_) to mount your Chameleon Object Store as a directory on your Linux environment.
 

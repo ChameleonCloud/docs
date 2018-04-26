@@ -305,7 +305,7 @@ The ``parameters`` section defines inputs to be used on *Complex Appliance* laun
 The ``outputs`` section defines what values are returned to the user. *Outputs* are declared similarly to *Parameters*: they each have a name, an optional description, and a value. They allow to return information from the stack to the user. You may use the ``get_attr`` function to retrieve a resource's attribute for output.
 
 Heat Template Customization
-________________________
+______________________________
 
 Customizing an existing template is a good way to start developing your own. We will use a simpler template than the previous example to start with: it is the `Hello World complex appliance <https://www.chameleoncloud.org/appliances/26/>`_.
 

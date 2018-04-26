@@ -12,9 +12,9 @@ Unlike virtual resources on a regular on-demand cloud, physical resources on Cha
 
 Chameleon resources are reserved via `Blazar <https://docs.openstack.org/blazar/latest/>`_ (previously known as *Climate*) which provides Reservation as a Service for OpenStack.
 
-_________________________________________
+___________________________________________________
 Provisioning and Managing Resources Using the GUI
-_________________________________________
+___________________________________________________
 
 To make reservations of the resources, first log into the Horizon web interface - either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :doc:`gui`.
 
@@ -111,22 +111,23 @@ You may reserve a specific node by providing its *UUID*. To learn more about how
 
 .. _reservation-cli:
 
-___________________________________
+___________________________________________________
 Provisioning and Managing Resources Using the CLI
-___________________________________ 
+___________________________________________________
 
 The sections above present the most user friendly mode of usage, with most actions performed via the web interface. However, Chameleon can be accessed via the OpenStack command line tools which provides more capabilities. This section presents some advanced usage using the command line tools.
 
 .. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
 
 Blazar Client Installation
-______________________
+____________________________
 
 To reserve specific nodes, based on their identifier or their resource specifications, you must use the `Blazar <https://docs.openstack.org/blazar/latest/>`_ command line client. To use the CLI, you must install the ``python-blazarclient``. To install ``python-blazarclient``, run the following command:
 
 .. code-block:: bash
 
    pip install python-blazarclient
+
 Before using *Blazar Client*, You must configure the environment variables for your project via ``source`` :ref:`the OpenStack RC Script <cli-rc-script>` or use the CLI switches every time you run the commands. Type ``blazar`` in your terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in the *Shell Mode*.
 
 .. note:: ``blazar`` is previously known as ``climate``. In Chameleon, ``blazar`` and ``climate`` are used interchangeably, but they have the same functionality.
@@ -227,7 +228,7 @@ To extend your lease, use ``lease-update`` command, and provide time duration vi
    blazar lease-update --prolong-for "1d" my-first-lease
    
 Chameleon Node Types
-_________________
+_____________________
 
 The following node types are reservable on Chameleon.
 

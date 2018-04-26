@@ -72,7 +72,7 @@ To use this feature, you will need to create a dedicated network and router. You
 #. Set the first and the last IP addresses of *DHCP* range.
 
    .. important::
-      The first IP adddress in the DHCP range should never be *.1 and *.2. The last IP address in the range must be less than *.255.
+      The first IP adddress in the DHCP range should never be \*.1 and \*.2. The last IP address in the range must be less than \*.255.
       
 #. Start creating the network and router by clicking the *Launch* button.
 
