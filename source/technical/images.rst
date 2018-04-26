@@ -41,9 +41,10 @@ You will be prompted to enter your username and password.
 
       public endpoint for image service in regionOne not found Unable to contact Glance, check username and password
       
-   it means that you have an out-dated copy of ``cc-snapshot`` and you will need to update ``cc-snapshot``.
-   
-   This usually happens when you use an older images that contains an out-dated verion of ``cc-snapshot``.
+   it means that you have an outdated copy of ``cc-snapshot`` and you will need to update ``cc-snapshot``.
+   This usually happens when you use an older images that contains an outdated version of ``cc-snapshot``.
+
+   You may also want to get new functionalities added to the latest version of ``cc-snapshot``.
    
    Run the following commands from your instance:
 
