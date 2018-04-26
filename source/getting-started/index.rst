@@ -28,20 +28,20 @@ To use Chameleon, you will need to be associated with a *project* that is assign
 
 If you are a PI, you may `apply for a new project <https://www.chameleoncloud.org/user/projects/new/>`_. A project application typically consists of a description of your intended research and takes one business day to process. Once your project has been approved, you may add users to your project.
 
-For more information about project management, please see :ref:`Project Management Section <project-management>` or :ref:`FAQs of projection management <faq-project>`.
+For more information about project management, please see the :ref:`Project Management <project-management>` section or :ref:`FAQs about project management <faq-project>`.
 
 --------------------------------------------
 Step 3: Start using Chameleon!
 --------------------------------------------
 
-Congratulations, you are now ready to launch your first instance! Instances are much like what you may expect to find in a virtual machine, except here the instances are on bare-metal nodes - the core feature of Chameleon. A bare-metal node is a whole compute node that you have exclusive access to. An instance is going to be a bare-metal node that has been launched with an operating system image. Follow these steps to make a reservation for a machine, launch an instance and log in to it.
+Congratulations, you are now ready to launch your first instance! Instances are much like what you may expect to find in a virtual machine, except here the instances are on bare-metal nodes - the core feature of Chameleon. A bare-metal node is a whole physical server that you have exclusive access to. An instance is going to be a bare-metal node that has been launched with an operating system image. Follow these steps to make a reservation for a node, launch an instance and log in to it.
 
 The Chameleon Dashboard
 =======================
 
 Chameleon resources are available at two sites. You may login to the Chameleon Dashboard for resources at `the University of Chicago <https://chi.uc.chameleoncloud.org>`_ or `the Texas Advanced Computing Center <https://chi.tacc.chameleoncloud.org>`_. Use the account name and password that you signed up with.
 
-.. note:: If you change your account password, it takes approximately ten minutes for the change to propagate to each dashboard.
+.. note:: If you change your account password, it can take up to 15 minutes for the change to propagate to each dashboard.
 
 .. figure:: chi_login.png
   :alt: The Chameleon Dashboard login
@@ -58,7 +58,7 @@ Once you are logged in, you should see a summary of your project's current resou
 Reserving a Node
 ================
 
-First, we need to reserve a node for our use. Chameleon provides bare-metal access to nodes. When you create a reservation for one or more nodes, only you and users on your project will be able to use those nodes for the time specified. We will create a single day reservation for a compute node, which are the most common types of nodes available on Chameleon.
+First, we need to reserve a node for our use. Chameleon provides bare-metal access to nodes. When you create a reservation for one or more nodes, only you and other users on your project will be able to use those nodes for the time specified. We will create a single day reservation for a compute node, which are the most common types of nodes available on Chameleon.
 
 #. In the sidebar, click *Reservations*, then click *Leases*
 #. Click on the *+ Create Lease* button in the toolbar
@@ -69,7 +69,7 @@ First, we need to reserve a node for our use. Chameleon provides bare-metal acce
 .. figure:: create_lease.png
   :alt: The Create Lease dialog
 
-  The Create Lease dialog - be sure to select compute in the dropdown below node_type
+  The Create Lease dialog - be sure to select compute_haswell in the dropdown below node_type
 
 The reservation will start shortly, at which point you can launch an instance on a bare-metal node.
 
@@ -118,7 +118,7 @@ Congratulations, you have launched an instance on a bare-metal node!
 Associating an IP Address
 =========================
 
-Your instance may take approximately ten minutes to launch. The launching process includes powering down, loading the operating system over the networking, and booting up for the first time on a rack located either at the University of Chicago or the Texas Advanced Computing Center, depending on where you chose to launch your instance. Before you can access your instance, you need to first assign a floating IP address - an IP address that is accessible over the public Internet.
+Your instance may take approximately ten minutes to launch. The launch process includes powering up, loading the operating system over the network, and booting up for the first time on a rack located either at the University of Chicago or the Texas Advanced Computing Center, depending on where you chose to launch your instance. Before you can access your instance, you need to first assign a floating IP address - an IP address that is accessible over the public Internet.
 
 #. If you don't see your instance, go to the *Instances* list by clicking on *Compute* and *Instances* in the sidebar.
 #. Locate your instance. It is probably in the *Spawning* state.
@@ -141,7 +141,7 @@ Your instance may take approximately ten minutes to launch. The launching proces
    .. figure:: associate_pool.png
       :alt: The Allocate Floating IP dialog
 
-      This dialog allows you to allocate an IP address for Chameleon's global IP pool
+      This dialog allows you to allocate an IP address from Chameleon's public IP pool
 
 #. Click the *Allocate IP* button. You will return to the previous dialog and an IP address will be selected for you.
 
@@ -151,12 +151,12 @@ Your instance may take approximately ten minutes to launch. The launching proces
 
       You have now allocated a floating IP address 
 
-#. Click the *Associate* button and a floating IP will be associated to your instance.
+#. Click the *Associate* button and the floating IP will be associated to your instance.
 
 Accessing Your Instance
 =======================
 
-Once your instance has launched with an associated floating IP address, it can be accessed via SSH using the private key that you have downloaded during the `Launching an Instance`_ step
+Once your instance has launched with an associated floating IP address, it can be accessed via SSH using the private key that you have downloaded during the `Launching an Instance`_ step.
 
 .. note:: The following instructions assume that you are using a macOS or Linux terminal equivalent. You may view our `YouTube video on how to login via SSH on Windows <https://youtu.be/MDK5D2ptJiQ>`_.
 
@@ -168,7 +168,7 @@ To log in to your instance, follow the steps:
 
       chmod 600 mychameleonkey.pem
 
-#. Add the key to your current SSH identity
+#. Add the key to your current SSH identity:
 
    .. code-block:: bash
 
@@ -182,5 +182,3 @@ To log in to your instance, follow the steps:
 
 
    .. note:: Change the IP address in this command to match your instance's floating IP address!
-
-
