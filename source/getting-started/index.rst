@@ -151,18 +151,18 @@ Your instance may take approximately ten minutes to launch. The launch process i
 
       You have now allocated a floating IP address 
 
-#. Click the *Associate* button and the floating IP will be associated to your instance.
+#. Click the *Associate* button and make note of the public IP address that has been associated to your instance.
 
 Accessing Your Instance
 =======================
 
-Once your instance has launched with an associated floating IP address, it can be accessed via SSH using the private key that you have downloaded during the `Launching an Instance`_ step.
+Once your instance has launched with an associated floating IP address, it can be accessed via SSH using the private key that you downloaded during the `Launching an Instance`_ step.
 
 .. note:: The following instructions assume that you are using a macOS or Linux terminal equivalent. You may view our `YouTube video on how to login via SSH on Windows <https://youtu.be/MDK5D2ptJiQ>`_.
 
-To log in to your instance, follow the steps:
+To log in to your instance, follow these steps:
 
-#. Open a terminal window and navigate to where you have saved the ``mychameleonkey.pem`` file. Change the permissions on the file to user read/write only:
+#. Open a terminal window and navigate to where you downloaded the ``mychameleonkey.pem`` file. Change the permissions on the file to user read/write only:
 
    .. code-block:: bash
 
