@@ -94,7 +94,7 @@ _______
 What is Chameleon?
 __________________
 
-Chameleon is an experimental testbed for Computer Science funded by the NSF FutureCloud program. Chameleon is built over two sites, University of Chicago and TACC, offering a total of over 550 nodes and 5 PB of space in twelve `Standard Cloud Unit (SCU) racks <https://www.chameleoncloud.org/about/hardware-description/>`_. To effectively support Computer Science experiments Chameleon offers bare metal reconfigurability on most of the hardware. To provide easy access to educational users, three SCUs at TACC (a quarter of the testbed) are configured with OpenStack KVM. You can read more about Chameleon `here <https://www.chameleoncloud.org/about/chameleon/>`_.
+Chameleon is an experimental testbed for Computer Science funded by the NSF FutureCloud program. Chameleon is built over two sites, University of Chicago and TACC, offering a total of over 550 nodes and 5 PB of space in twelve `Standard Cloud Unit (SCU) racks <https://www.chameleoncloud.org/about/hardware-description/>`_. To effectively support Computer Science experiments, Chameleon offers bare metal reconfigurability on most of the hardware. To provide easy access to educational users, two SCUs at TACC (one sixth of the testbed) are configured with OpenStack KVM. You can read more about Chameleon `here <https://www.chameleoncloud.org/about/chameleon/>`_.
 
 .. _what-does-chi-mean:
 
