@@ -28,7 +28,7 @@ ________________________
 #. **PIP** - If you’re using Python 2.7.9 (or greater) or Python 3.4 (or greater), then PIP comes installed with Python by default.
 
 OpenStack Client Installation
-________________________
+_________________________________
 
 #. Install the CLI by typing ``pip install python-openstackclient`` in the terminal.
 #. Verify that it has installed correctly by typing ``openstack``. You will enter the Openstack Client in interactive mode and your prompt should change to ``(openstack)``.

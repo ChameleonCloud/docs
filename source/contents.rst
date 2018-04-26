@@ -14,6 +14,7 @@ Welcome to Chameleon Cloud Documentation's documentation!
    getting-started/index
    getting-started/faq
    getting-started/community
+   getting-started/pi_eligibility
    getting-started/old_doc
 
 .. toctree::

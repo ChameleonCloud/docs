@@ -119,7 +119,7 @@ The API entry-point for the resource discovery API is located at https://api.cha
 
 Below is what you should see in response:
 
-.. code-block:: json
+.. code-block:: javascript
    
    HTTP/1.1 200 OK
    Server: nginx/1.6.2
