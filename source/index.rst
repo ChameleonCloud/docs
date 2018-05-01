@@ -5,7 +5,7 @@ Welcome to Chameleon
 .. role:: redbold
 
 .. attention:: 
-    The :ref:`old-doc` will be **deprecated** after :redbold:`May 31, 2018`. If you need more time for the transition from the old documentation to the new one, please submit a ticket on our `help desk <https://www.chameleoncloud.org/user/help/>`_.
+    The :ref:`old-doc` will be **deprecated** after :redbold:`June 30, 2018`. If you need more time for the transition from the old documentation to the new one, please submit a ticket on our `help desk <https://www.chameleoncloud.org/user/help/>`_.
     
     This new Chameleon documentation is still :redbold:`under review`. 
 
