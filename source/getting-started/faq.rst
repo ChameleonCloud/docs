@@ -78,8 +78,8 @@ Frequently Asked Questions
 
         :ref:`faq-ssh`
     
-    - :ref:`faq-ssh-keypairs-linux`
-    - :ref:`faq-ssh-keypairs-windows`
+    - :ref:`create-ssh`
+    - :ref:`why-fail-ssh`
 
 |
 
@@ -397,7 +397,12 @@ While the possibility that the system is being taking over by nanites should not
 
 .. _faq-ssh:
 
-____________________________________________
+_____________________________
+SSH Issues
+_____________________________
+
+.. _create-ssh:
+
 Create your own SSH key pairs on Linux/macOS
 ____________________________________________
 
@@ -406,7 +411,7 @@ Whenever you are creating an instance in Chameleon, you will have an option to s
 .. _faq-ssh-keypairs-linux:
 
 For Linux/ Mac OS X
-___________________
+^^^^^^^^^^^^^^^^^^^^
 
 Open a terminal window:
 
@@ -459,7 +464,7 @@ After you have created a key pair and imported it in Chameleon, you can connect 
 .. _faq-ssh-keypairs-windows:
 
 For Windows
-___________
+^^^^^^^^^^^^^^^^^^^^
 
 First, download and install PuTTY and PuTTYgen `from here <http://www.chiark.greenend.org.uk/~sgtatham/putty/>`_. Once downloaded, opening PuTTYgen will open a key generator window, seen below.
 
@@ -476,5 +481,13 @@ Save both the public and private keys into a file of your choice using the “Sa
 Before closing this window, select the entire public key and copy it with “Control-C”. Please note that everything should be copied, including “ssh-rsa”. This will be used when importing the key pair to Openstack.
 
 At this time, the public key has been created and copied. Now you can now follow the steps described above (starting with the line “Provide the public key to your cloud system or individual instance”) to import the generated key pair for use with Chameleon!
+
+.. _why-fail-ssh:
+
+How to fix "REMOTE HOST IDENTIFICATION HAS CHANGED"
+___________________________________________________________________
+
+The warning message is the result of reassigning a floating IP to a new instance, and is a normal security precaution built into SSH. 
+To learn how to address this issue, please see :ref:`connecting-via-ssh`.
 
 

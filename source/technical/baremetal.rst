@@ -238,6 +238,8 @@ __________________________
 
 Once your bare metal instance has launched, you may interact with it by using SSH if you have associated a *Floating IP* to it or by using the *Serial Console* from the GUI.
 
+.. _connecting-via-ssh:
+
 Connecting via SSH
 __________________
 
@@ -261,6 +263,12 @@ To access the instance using SSH, type the command in your terminal:
       ...
    
    It is likely that you have saved a previous entry for the instance's *Floating IP* in your ``~/.ssh/known_hosts`` file on your computer. Simply removing the entry from the file should solve the issue.
+   
+   You can remove the entry from the ``~/.ssh/known_hosts`` file by using the command:
+   
+   .. code-block:: shell
+    
+      ssh-keygen -R <floating_ip>
 
 You may receive the response below. Type ``yes`` and hit enter:
 
