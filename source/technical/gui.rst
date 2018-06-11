@@ -6,14 +6,14 @@ __________________________
 Introduction
 __________________________
 
-The Graphical User Interface (GUI) provides a point-and-click experience for working with Chameleon resources. From the GUI, you may perform tasks such as manage and launch instances, and configure custom networking. Additionally, you may download an *OpenStack RC* file from the GUI if you wish to work with the :ref:`Command Line Interface <cli>`, instead. The Chameleon GUI is built on top of the `OpenStack Horizon <https://docs.openstack.org/horizon/latest/>`_. There are two Chameleon resource sites, each with its own URL.
+The Graphical User Interface (GUI) provides a point-and-click experience for working with Chameleon resources. From the GUI, you may perform tasks such as manage and launch instances, and configure custom networking. Additionally, you may download an *OpenStack RC* file from the GUI if you wish to work with the :ref:`Command Line Interface <cli>`, instead. The Chameleon GUI is built on top of `OpenStack Horizon <https://docs.openstack.org/horizon/latest/>`_. There are two Chameleon resource sites, each with its own URL (though it is possible to easily switch from one to other, see :ref:`gui-project-menu`).
 
-- The Texas Advanced Computing Center resources are available at:
-  
+- The Texas Advanced Computing Center resources (CHI@TACC) are available at:
+
     https://chi.tacc.chameleoncloud.org
 
-- The University of Chicago resources are available at:
-  
+- The University of Chicago resources (CHI@UC) are available at:
+
     https://chi.uc.chameleoncloud.org
 
 Chameleon also hosts an *OpenStack KVM* implementation where you may work with virtual machines. This site **does not** have access to bare metal resources. It is available at:
@@ -26,8 +26,8 @@ You may login to either site using your Chameleon portal username and password.
 
 .. note:: If you are a new user or have just changed your password on http://www.chameleoncloud.org, it takes approximately 10 minutes for changes to propagate to each site.
 
-.. attention:: 
-    Two Chameleon bare metal sites - `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ - **only** share user accounts, but snapshots, keypairs, Swift containers, Gnocchi statistics and other objects at each site are **independent**. For example, a keypair created at the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ site is **not** available at the `CHI@UC <https://chi.uc.chameleoncloud.org>`_ site. In addition, the bare metal resource types vary between `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_.
+.. attention::
+    These two Chameleon bare metal sites---`CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_---**only** share user accounts, but snapshots, keypairs, Swift containers, Gnocchi metrics and other objects at each site are **independent**. For example, a keypair created at the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ site is **not** available at the `CHI@UC <https://chi.uc.chameleoncloud.org>`_ site. In addition, the bare metal resource types vary between `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_.
 
 __________________________
 GUI Features
@@ -42,10 +42,10 @@ Upon logging in to the GUI at a Chameleon site, you will see your project's Over
 
 .. _gui-project-menu:
 
-Project Menu
+Project and Region Menu
 __________________________
 
-To switch among the projects you belong to, use the project menu - the dropdown on the upper left of the screen next to the Chameleon logo.
+To switch among the projects you belong to, use the project and region menu - the dropdown on the upper left of the screen next to the Chameleon logo. You can also use this menu to switch from one Chameleon site to the other (sites are called *regions* in OpenStack terminology). This allows you to easily perform multi-site experiments without logging in twice.
 
 .. figure:: gui/project_dropdown.png
    :alt: Switching between projects
@@ -53,6 +53,9 @@ To switch among the projects you belong to, use the project menu - the dropdown 
    Switching between projects
 
 .. _gui-user-menu:
+
+.. Attention::
+   If you switch from one site to the other, make sure you have selected the site that you want to use before starting an experiment.
 
 User Menu
 __________________________
