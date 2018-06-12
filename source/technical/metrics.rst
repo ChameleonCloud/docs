@@ -231,12 +231,12 @@ Note the following caveats:
 This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.
 
 _____________________________________________
-Power Consumption Metrics for Low-Power Nodes
+Power Consumption Metrics for Low Power Nodes
 _____________________________________________
 
 In addition to the system and power consumption metrics described above, Chameleon automatically collects power usage data on all low power nodes in the system. Instantaneous power usage data (in watts) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off. Low power nodes for which power usage data are now being collected include all Intel Atoms, low power Xeons, and ARM64s.
 
-As with the system metrics, retrieving the power consumption metrics for a low power node requires the OpenStack CLI and gnocchiclient (see installation instructions above). Retrieve the power usage metrics using the following command:
+As with the system metrics, retrieving the power consumption metrics for a low power node requires the OpenStack CLI and Gnocchi client plugin (see installation instructions above). Retrieve the power usage metrics using the following command:
 
 .. code-block:: bash
 
@@ -244,7 +244,7 @@ As with the system metrics, retrieving the power consumption metrics for a low p
 
 
 .. tip::
-   The node ID and the instance ID are different. You can get a node's ID for a reservation from the Horizon GUI (https://chi.tacc.chamelonecloud.org). Click on your lease name from within the list of leases on the Leases subtab within the Reservations tab. The node ID is at the very bottom under the ``Nodes`` section.
+   The node UUID and the instance UUID are different. You can get a node's UUID for a reservation from the Horizon GUI (https://chi.tacc.chameleoncloud.org for TACC reservations, https://chi.uc.chameleoncloud.org for UC reservations). Click on your lease name from within the list of leases on the Leases subtab within the Reservations tab. The node UUID is at the very bottom under the ``Nodes`` section.
 
 For example, issuing the following command:
 
