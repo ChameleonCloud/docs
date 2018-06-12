@@ -229,3 +229,74 @@ Note the following caveats:
 - Monitoring periods larger than 10-15 minutes may be inaccurate due to RAPL registers overflowing if they're not read regularly.
 
 This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.
+
+_____________________________________________
+Power Consumption Metrics for Low-Power Nodes
+_____________________________________________
+
+In addition to the system and power consumption metrics described above, Chameleon automatically collects power usage data on all low power nodes in the system. Instantaneous power usage data (in watts) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off. Low power nodes for which power usage data are now being collected include all Intel Atoms, low power Xeons, and ARM64s.
+
+As with the system metrics, retrieving the power consumption metrics for a low power node requires the OpenStack CLI and gnocchiclient (see installation instructions above). Retrieve the power usage metrics using the following command:
+
+.. code-block:: bash
+
+   $ openstack metric measures show power --resource-id=<node_uuid> --refresh
+
+
+.. tip::
+   The node ID and the instance ID are different. You can get a node's ID for a reservation from the Horizon GUI (https://chi.tacc.chamelonecloud.org). Click on your lease name from within the list of leases on the Leases subtab within the Reservations tab. The node ID is at the very bottom under the ``Nodes`` section.
+
+For example, issuing the following command:
+
+.. code-block:: bash
+
+   $ openstack metric measures show power --resource-id=05dd5e25-440f-4492-b3b8-9d39af83b8bc --refresh
+
+returns the following power results for node with id ``05dd5e25-440f-4492-b3b8-9d39af83b8bc``. The output below has been truncated:
+
+.. code::
+
+    +---------------------------+-------------+--------------------+
+    | timestamp                 | granularity |              value |
+    +---------------------------+-------------+--------------------+
+    | 2018-03-21T07:00:00-05:00 |      3600.0 | 3.6990394736842047 |
+    | 2018-03-21T08:00:00-05:00 |      3600.0 | 3.6944069767441814 |
+    | 2018-03-21T09:00:00-05:00 |      3600.0 | 3.7072767295597435 |
+    | 2018-03-21T10:00:00-05:00 |      3600.0 |  3.674499999999995 |
+    | 2018-03-21T11:00:00-05:00 |      3600.0 |  3.708236024844716 |
+    | 2018-03-21T12:00:00-05:00 |      3600.0 | 3.6747818181818137 |
+    | 2018-03-21T13:00:00-05:00 |      3600.0 |  3.706847058823526 |
+
+    . . . . . .
+
+    | 2018-05-07T08:17:43-05:00 |         1.0 |              3.537 |
+    | 2018-05-07T08:18:03-05:00 |         1.0 |              3.996 |
+    | 2018-05-07T08:18:23-05:00 |         1.0 |              3.847 |
+    | 2018-05-07T08:19:03-05:00 |         1.0 |              4.145 |
+    | 2018-05-07T08:19:23-05:00 |         1.0 |              4.145 |
+    | 2018-05-07T08:19:43-05:00 |         1.0 |              3.686 |
+    | 2018-05-07T08:20:03-05:00 |         1.0 |              3.847 |
+    | 2018-05-07T08:20:23-05:00 |         1.0 |              3.686 |
+    | 2018-05-07T08:20:43-05:00 |         1.0 |              3.847 |
+    +---------------------------+-------------+--------------------+
+
+To retrieve power metrics for a specific time interval, pass the ``start`` and ``stop`` parameters; for example:
+
+.. code::
+
+    $ openstack metric measures show power --start 2018-05-06T12:35:00 --stop 2018-05-06T12:40:00 --resource-id=05dd5e25-440f-4492-b3b8-9d39af83b8bc --refresh
+
+returns:
+
+.. code::
+
+    +---------------------------+-------------+--------------------+
+    | timestamp                 | granularity |              value |
+    +---------------------------+-------------+--------------------+
+    | 2018-05-06T12:00:00-05:00 |      3600.0 | 3.6863040935672484 |
+    | 2018-05-06T12:35:00-05:00 |        60.0 | 3.5833333333333335 |
+    | 2018-05-06T12:36:00-05:00 |        60.0 | 3.6870000000000003 |
+    | 2018-05-06T12:37:00-05:00 |        60.0 | 3.5309999999999997 |
+    | 2018-05-06T12:38:00-05:00 |        60.0 |              3.537 |
+    | 2018-05-06T12:39:00-05:00 |        60.0 |              3.692 |
+    +---------------------------+-------------+--------------------+
