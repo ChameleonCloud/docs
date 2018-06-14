@@ -38,6 +38,8 @@ Step 3: Start using Chameleon!
 
 Congratulations, you are now ready to launch your first instance! Instances are much like what you may expect to find in a virtual machine, except here the instances are on bare-metal nodes - the core feature of Chameleon. A bare-metal node is a whole physical server that you have exclusive access to. An instance is going to be a bare-metal node that has been launched with an operating system image. Follow these steps to make a reservation for a node, launch an instance and log in to it.
 
+.. note:: Chameleon also offers a multi-tenant, virtualized cloud, with fewer functionalities and a smaller scale. See :ref:`kvm` for more details.
+
 The Chameleon Dashboard
 =======================
 
