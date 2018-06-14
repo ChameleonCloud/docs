@@ -28,6 +28,8 @@ To use Chameleon, you will need to be associated with a *project* that is assign
 
 If you are a PI, you may `apply for a new project <https://www.chameleoncloud.org/user/projects/new/>`_. A project application typically consists of a description of your intended research and takes one business day to process. Once your project has been approved, you may add users to your project.
 
+If you want to join an existing project, ask the PI of the project to add you to their project. They will need your Chameleon username.
+
 For more information about project management, please see the :ref:`Project Management <project-management>` section or :ref:`FAQs about project management <faq-project>`.
 
 --------------------------------------------
