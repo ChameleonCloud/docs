@@ -126,9 +126,9 @@ To reserve specific nodes, based on their identifier or their resource specifica
 
 .. code-block:: bash
 
-   pip install -e git+https://github.com/ChameleonCloud/python-blazarclient.git@region-name#egg=python-blazarclient
+   pip install -e git+https://github.com/openstack/python-blazarclient.git#egg=python-blazarclient
 
-.. note:: The official release of python-blazarclient doesn't yet support multi-region clouds, as a result we advise that you install our fork using the instruction above.
+.. note:: The latest packaged release of python-blazarclient doesn't yet support multi-region clouds. Until a new version is releaased, install the latest code from GitHub using the instruction above.
 
 Before using *Blazar Client*, You must configure the environment variables for your project via ``source`` :ref:`the OpenStack RC Script <cli-rc-script>` or use the CLI switches every time you run the commands. Type ``blazar`` in your terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in the *Shell Mode*.
 
