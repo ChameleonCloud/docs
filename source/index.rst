@@ -24,7 +24,7 @@ distributed and cluster computing and security. Chameleon's features include:
   * GPUs
   * Low-power Xeon and ARM processors
 
-* Reconfigurable networking
+* Networking
 
 Using Chameleon
 _______________

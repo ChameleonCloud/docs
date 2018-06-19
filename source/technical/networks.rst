@@ -1,35 +1,37 @@
 .. _networking:
 
 =========================
-Reconfigurable Networking 
+Networking 
 =========================
 
-__________________________________
-Introduction
-__________________________________
 
-Reconfigurable Networking on Chameleon is implemented based on `OpenStack Neutron <https://docs.openstack.org/neutron/pike/>`_. With reconfigurable networking, you may attach your instances to *Subnets* of *Isolated Networks*, joined by *Routers*. 
+Networking on Chameleon is implemented using on `OpenStack Neutron <https://docs.openstack.org/neutron/pike/>`_. 
+Most experiments will require :ref:`basic-networking` functionality including Internet access and connectivity between nodes. Chameleon provides basic networking capabilities via a pre-configured shared network called ``sharednet1``. Many experiments require additional connectivity and control of the network.  Theses experiments can utilize Chameleon's advanced networking capabilities including :ref:`network-isolation`, :ref:`stitching`, and :ref:`sdn`. 
 
-Networks
-________
 
-The *Subnet* can be created for an *Isolated Network*. The *Subnet* consists of IP ranges. 
-On Chameleon, the *Subnet* can assign the IP address to the instance automatically via `DHCP <https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol>`_ service, which guarantees unique IP addresses assigned to the instances within your Chameleon Project. 
+.. _basic-networking:
 
-Routers
-_______
+________________
+Basic Networking 
+________________
 
-The *Routers* provide traffic directing services between *Networks* within your Chameleon Project or to the Internet. Chameleon allows you to set multiple *Interfaces* to a router and attach them to the *Networks*. 
+.. Note:: Step-by-step instructions for getting started with Chameleon are available in the :ref:`getting-started` section of this documentation. These instructions include using basic networking functionality. 
 
-Chameleon Networks
-__________________
 
-All Chameleon Projects have access to two fixed networks - ``sharednet1`` and ``public``. The ``sharednet1`` is a shared network between all Chameleon Projects with a *Subnet* whose address space is ``10.52.0.0/22``. The ``public`` represents the Internet.
+Shared Network
+_______________
+
+All Chameleon Projects have access to the fixed network ``sharednet1`` which is used by most experiments. The ``sharednet1`` is a pre-configured network shared among all Chameleon Projects with a *Subnet* whose address space is ``10.52.0.0/22`` and includes a routers providing NAT access to the public Internet. All instances using ``sharednet1`` can communicate directly.    
+
 
 Floating IP Addresses
 _____________________
 
-The *Floating IP Addresses* are publicly accessible IPv4 addresses. `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ each uses a different group of `Class B addresses <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc940018(v=technet.10)>`_ for the Floating IP Addresses. 
+Instances on Chameleon are assigned a *fixed* IP address that can be used for local connectivity as well as NAT access to the public Internet. A publicly accessible IPv4 address (*Floating IP address*) is required in order to access Chameleon instances or host public services. `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ each have a group of `Class B addresses <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc940018(v=technet.10)>`_ that can be allocated to your instances.  
+
+The :ref:`getting-started` guide shows how to allocate *Floating IP address* to your nodes.
+
+
 
 .. important:: The Chameleon Floating IP address pool is a shared and finite resource. **Please be responsible and release the Floating IP addresses that are not used, so other Chameleon users and projects can use them!**
 
@@ -38,14 +40,21 @@ _______________
 
 Currently, *Security Groups* are not implemented on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Therefore, all inbound and outbound port traffic is open to the Internet at these sites. `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ observes *Security Groups*, which allows inbound and outbound traffic to be filtered by port with a default policy.
 
+
+
+
+
+
 .. _network-isolation:
 
-Network Isolation
-_________________
+______________________
+Isolated Network VLANs
+______________________
+
 
 By default, bare metal nodes on each Chameleon site share the same local network (shared VLAN and IP subnet). However, some experiments may require more network isolation, which is now supported by Chameleon.
 
-Our implementation of network isolation is based on dynamically managed VLANs (network layer 2) associated with user-configured private IP subnets (network layer 3). This means that all network communications local to the IP subnet or the broadcast domain (such as Ethernet broadcast, ARP, IP broadcast, DHCP, etc.) will be restricted to the user-configured network and its associated VLAN. This feature enables a range of experiments in networking and security. For example, this allows running your own DHCP server to configure virtual machines running on bare metal nodes, without impacting other users.
+Chameleon's implementation of network isolation is based on dynamically managed VLANs (network layer 2) associated with user-configured private IP subnets (network layer 3). This means that all network communications local to the IP subnet or the broadcast domain (such as Ethernet broadcast, ARP, IP broadcast, DHCP, etc.) will be restricted to the user-configured network and its associated VLAN. This feature enables a range of experiments in networking and security. For example, this allows running your own DHCP server to configure virtual machines running on bare metal nodes, without impacting other users.
 
 .. note::
 
@@ -78,12 +87,10 @@ To use this feature, you will need to create a dedicated network and router. You
 
 For more information about *Stack*, please read :ref:`complex`.    
 
-____________________________________
-Configuring Networking using the GUI
-____________________________________
 
-Creating a Network
-__________________
+
+Creating a Network using the GUI
+________________________________
 
 To create a Network from either the *Network Topology* page or the *Networks* page, click the *+Create Network* button to open the *Create Network* dialog.
 
@@ -196,7 +203,8 @@ ___________________________
       
 #. Go to *Project* > *Network* > *Networks*, and delete the network by using the dropdown in the *Action* column. Alternatively, you may delete the network by selecting the network using the checkbox and click on *Delete Networks* button on the upper right corner. Confirm your deletion to finish the process. 
 
-________________________________________________________
+
+
 Configuring Networking using the CLI
 ________________________________________________________
 
@@ -361,8 +369,374 @@ To delete a router with an External Gateway and subnets associated to it, use th
    openstack router delete <subnet>
    openstack network delete <network_name>
 
-____________________________
-Advanced Networking Features
-____________________________
+
+
+.. _stitching:
+
+_______________________________________
+External Layer2 Connections (Stitching)
+_______________________________________
+
+Chameleon provides support for sophisticated networking experiments by providing `GENI-style stitching <http://groups.geni.net/geni/wiki/GeniNetworkStitchingSites>`_. This capability enables users to deploy networking experiments (layer 2 and layer 3) that extend across Chameleon, potentially other testbeds such as `GENI <http://www.geni.net/>`_, and into physical resources on their own campus networks. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. 
+
+Currently, it is possible to connect user-configured networks to other domains (e.g. GENI) over circuits created on Internet2’s Advanced Layer 2 Service (AL2S). In this setup, a pool of VLANs is extended from Chameleon racks to the AL2S endpoint at StarLight. Currently, 10 VLAN tags (3290-3299) are dedicated to this AL2S endpoint. A user-configured network that is associated with one of the dedicated AL2S VLAN tags (segmentation ID must be the same as AL2S VLAN tag) can be stitched to external domains (e.g. GENI). A circuit on AL2S needs to be created.
+
+This document describes how to stitch Chameleon experiments to external resources including `ExoGENI <http://www.exogeni.net/>`_ and `Internet2 <https://www.internet2.edu/>`_ connected campuses. You will need to know how to create stitchable dynamic VLANs as described in the :doc:`networks` documentation. After you have created such VLAN this document will describe how to create a slice in three cases: connect to ExoGENI, connect to other domains using ExoGENI as an intermediary, or connect to other domains directly.
+
+Chameleon has the capability to create dynamically managed VLANs associated with user-configured private IP subnets as described on :doc:`networks`. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. These networks can be created through the web as well as command line interface. User-configured networks (isolated networks) are associated with VLANs by *Segmentation IDs*.
+
+In the following sections, this workflow is described for different settings.
+
+
+Configuring a Stitchable Network
+________________________________
+
+Follow the technical documentation for :ref:`network-cli-create` using the CLI, but replace the provider network with the appropriate external testbed (e.g. replace ``physnet1`` with ``exogeni``). 
+In this documentation, we will describe how to stitch to the ExoGENI testbed:
+
+.. code-block:: bash
+
+   openstack network create --provider-physical-network exogeni <network_name>
+
+
+
+Connecting Chameleon to ExoGENI
+_______________________________
+
+`ExoGENI <http://www.exogeni.net/>`_ is one of the two primary `GENI <http://www.geni.net/>`_ testbeds. ExoGENI allows users to create isolated experimental environments with compute and network resources distributed across 20 sites. ExoGENI has a special type of connection called “stitchport” which is a formally defined meeting point between VLANs dynamically provisioned within Chameleon and ExoGENI slices. Users can create slices on ExoGENI testbed, and connect these slices with Chameleon nodes by using a stitchport.
+
+Stitchports that exist in ExoGENI topology are listed on ExoGENI Wiki (`ExoGENI Resource Types: Stitchport Identifiers <https://wiki.exogeni.net/doku.php?id=public:experimenters:resource_types:start#stitch_port_identifiers>`_). URLs for port locations and corresponding VLAN tags are used to create a stitchport connection. Stitchport information for Chameleon is listed as below:
+
+- Port Location: ``ChameleonUC@ION``
+
+    URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/Chameleon/Cisco/6509/GigabitEthernet/1/1
+
+    Allowed VLANs: 3291-3299
+
+- Port Location: ``ChameleonTACC@ION``
+
+    URL: http://geni-orca.renci.org/owl/ion.rdf#AL2S/TACC/Cisco/6509/TenGigabitEthernet/1/1
+
+    Allowed VLANs: 3501-3509
+
+Layer 2 connections on ExoGENI are provisioned on AL2S by an agent that submits requests to OESS on behalf of the user slice. Users do not need to have an OESS account. An ExoGENI slice with a stitchport can be created as below. (Information for using ExoGENI and creating slices can be found at http://www.exogeni.net)
+
+#. Connect the node to a stitchport:
+
+   .. figure:: networks/connectstitchport.png
+
+#. Supply the URL and VLAN tag to the stitchport properties. VLAN 3299 will be used for Chameleon connection. The user-configured network on Chameleon must have segmentation ID: 3299.
+
+   .. figure:: networks/portdetails.png
+
+#. Submit request. A manifest for the reservations will be returned.
+
+   .. figure:: networks/submitrequest.png
+
+#. After the slice creation is completed, nodes in the slice will be able to connect to the Chameleon nodes that are connected to the user-configured network with segmentation ID: 3299.
+
+   .. figure:: networks/createcomplete.png
+
+#. It is also possible to connect ExoGENI nodes to both `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ with multiple interfaces.
+
+   .. figure:: networks/multipleinterfaces.png
+
+
+Connecting Chameleon to user owned domains via ExoGENI
+______________________________________________________
+
+Using ExoGENI to connect to Chameleon can be further extended by using ExoGENI as an intermediary domain.
+
+In this use case, a local site can be connected to ExoGENI via stitchports, and an ExoGENI slice can be created to route traffic to Chameleon. In the example below, a stitchport connects the local site (NCBI) to an ExoGENI slice which is connected to Chameleon. Nodes on the ExoGENI slice can be used to route traffic from NCBI nodes to Chameleon nodes. In this case, all layer 2 circuits will be provisioned by ExoGENI.
+
+.. figure:: networks/provisionedbyexogeni.png
+
+Connecting a local site to ExoGENI via stitchports is a process that requires multiple steps involving site owners, regional network providers, and ExoGENI.
+
+ExoGENI racks are located on campuses across the US. Campuses are connected to Internet2 AL2S via regional provider networks. A set of VLAN tags is reserved for ExoGENI from the pool of available VLAN tags by the regional providers and campus administrations. These VLANs are plumbed on both regional provider and campus networks all the way from AL2S endpoint to the rack or server(s). Some campuses/institutions are directly connected to AL2S nodes without a regional provider (e.g. Pittsburgh Supercomputing Center, George Washington University (CAREEN)).
+
+.. figure:: networks/al2s.jpg
+
+Stitchports can be used to connect a specific location to ExoGENI racks.
+
+#. VLAN(s) from the local site should be extended through the campus network all the way to the AL2S endpoint.
+#. ExoGENI must update the topology to activate the stitchport.
+
+ExoGENI administrators can provide assistance and can be contacted at geni-orca-users@googlegroups.com
+
+
+Connecting Chameleon to user owned domains
+__________________________________________
+
+Users can connect their local domains to Chameleon over manually created layer-2 circuits on AL2S. Local domains need to be connected to the other AL2S endpoint of the circuit by users.
+
+Circuits on AL2S are created through the Internet2 `AL2S OESS portal <https://al2s.net.internet2.edu/oess/>`_. The `OESS (Open Exchange Software Suite) <https://docs.globalnoc.iu.edu/sdn/oess.html>`_ is a set of software used to configure and control dynamic layer 2 virtual circuit (VLAN) networks on OpenFlow enabled switches. It includes a web-based user interface as well as a web services API.
+
+Chameleon is connected to the AL2S endpoint at StarLight:
+
+.. code::
+
+   Node: sdn-sw.star.net.internet2.edu
+   Interface: et-8/0/0
+   VLAN range: 3290-3299
+
+A user can log into the AL2S OESS portal and create a circuit connecting the Chameleon endpoint to the user-owned endpoint. The user should have an account to log in to the AL2S OESS portal. On OESS, users are members of workgroups. After logging in to the portal, a user can see the workgroups that he/she is a member of.
+
+.. figure:: networks/oess.png
+
+Network resources on AL2S are granted access to the workgroups. This access is granted by the owner of the AL2S network resource (campus network administrators or network engineers at regional providers). After granting access to the resources, they become available for the workgroup and start showing up in the “Available Resources” section. For the user to create such a circuit on AL2S with Chameleon endpoint, the workgroup that the user has membership should be granted access for this endpoint. This can be requested from Chameleon by opening a ticket with our help desk.
+
+As an example, Chameleon resources can be seen in “Available Resources” section for a user in the “ExoGENI” workgroup after access to the workgroup is granted.
+
+.. figure:: networks/available.png
+
+The user in the ExoGENI workgroup can create a circuit with two endpoints to connect a local site to Chameleon.
+
+.. code:: 
+
+   Endpoint 1 (Local site):
+   Node: sdn-sw.rale.net.internet2.edu
+   Interface: et-9/0/0
+   VLAN: 3998
+   
+   Endpoint 2 (`CHI@UC <https://chi.uc.chameleoncloud.org>`_):
+   Node: sdn-sw.star.net.internet2.edu
+   Interface: et-8/0/0
+   VLAN: 3290
+
+To create a circuit, follow these instructions:
+
+#. Create a new VLAN
+
+   .. figure:: networks/createvlan.png
+
+#. Select endpoints
+
+   .. figure:: networks/selectendpoints.png
+
+#. Submit circuit request
+
+   .. figure:: networks/submitcircuit.png
+
+#. When the circuit is provisioned, you should see this:
+
+   .. figure:: networks/circuitprovisioned.png
+
+#. In addition, the Path can be seen on the map. Utilization data becomes available after 3 hours.
+
+   .. figure:: networks/pathseen.png
+
+At this point, a layer-2 circuit is created on AL2S. The user-configured network with segmentation ID 3290 can be connected to the local servers. The user needs to extend the VLANs at the local site (3998 in this case) to the AL2S endpoint.
+
+To obtain an account to access AL2S OESS portal, users should contact Internet2. Information can be found from the links below:
+
+- `AL2S Participants <https://www.internet2.edu/products-services/advanced-networks/layer-2-services/al2s-participants/>`_
+- `AL2S Layer 2 Service Workgroups <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-participate>`_
+- `AL2S FAQ <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-faq>`_
+- `Using OESS <https://docs.globalnoc.iu.edu/sdn/oess/using-oess.html#Multipoint%20Static%20MAC%20Addresses>`_
+
+
+
+.. _sdn:
+
+___________________________
+Software Defined Networking
+___________________________
+
+
+.. Tip:: A good way to start working with OpenFlow on Chameleon is the `OpenFlow Quick Start`_ appliance. 
+
+.. _OpenFlow Quick Start: https://www.chameleoncloud.org/appliances/56/
+
+Chameleon's Bring Your Own Controller (BYOC) functionality enables tenants to create isolated network switches managed using an OpenFlow controller provided by the tenant.  This feature is targeted at users wishing to experiment with software-defined networking (SDN) as well as enabling custom network appliances supporting experiments that have non-standard networking requirements. This document focuses on how to use OpenFlow networks on Chameleon. A complete discussion of OpenFlow and SDN is beyond the scope of this document.
+
+.. Note::  **More information on OpenFlow**:   
+           https://www.sdxcentral.com/sdn/definitions/what-is-openflow/  and 
+           https://www.opennetworking.org/technical-communities/areas/specification/open-datapath/
+
+OpenFlow switches, like traditional switches, forward network traffic between a number of ports used to connect other networks and devices. The primary difference is that OpenFlow switches rely on external software (a "controller") to dynamically manage the rules (or "flows") that determine how and where the traffic is forwarded. In addition, OpenFlow enables a much larger set of possible rules which can be imposed on the traffic.
+
+The basic requirements of an OpenFlow switch are the switch and the controller. The switch is configured with the IP address and port of a controller (software) that manages the switch's rules.  When a packet arrives at the switch, the packet is tested against the rules that are known by the switch to determine what action(s) to take.  Typically, if there are no rules that apply to a packet, the packet is sent to the controller which replies with a set of rules for that type of packet. The new rules are cached in the switch and applied to subsequent packets until the rules expire or are explicitly removed.
+
+.. Note:: **Common OpenFlow Controllers**:
+          Open Daylight: https://www.opendaylight.org/
+          Ryu: https://osrg.github.io/ryu/
+          ONOS: https://onosproject.org/
+          Floodlight: http://www.projectfloodlight.org/floodlight/
+          NOX: https://github.com/noxrepo/nox
+
+Chameleon and OpenFlow
+______________________
+
+BYOC is part of the expanded deployment for Chameleon's phase 2. It enables tenants to allocate OpenFlow switches controlled by their own OpenFlow controller. This capability is limited to the phase 2 hardware additions that include the Corsa DP2000 series OpenFlow switches and Skylake compute nodes. The Corsa switches are key to enabling the BYOC functionality.  These switches allow for the creation of mutually isolated forwarding contexts which can be thought of as virtual OpenFlow switches even though they are the native abstraction used by the Corsa DP2000s. Each isolated forwarding context can be configured to use its own OpenFlow controller. The Chameleon BYOC functionality enables tenants to specify the IP and port of an arbitrary OpenFlow controller when they create private networks.
+
+Using OpenFlow on Chameleon
+
+Specifying an OpenFlow controller for your private network is just a special case of creating a private network.  Before proceeding you should become familiar with using regular private VLANs on Chameleon and be able to create your own private VLANs. Background information can be found in the document covering Reconfigurable Networking.
+
+Alert: Currently it is not possible to specify an OpenFlow controller using the Horizon portal.  However, OpenFlow networks with tenant owned controllers can be created using Heat templates which integrate the instructions below.  
+
+Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the "--description" field as shown below. Creating the subnet and router is the same as any other Chameleon network. 
+
+.. code-block:: bash
+
+   openstack network create --provider-network-type vlan --provider-physical-network physnet1 
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port> <network_name>
+
+.. code-block:: bash
+
+   openstack network create --provider-network-type vlan --provider-physical-network exogeni 
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>  <network_name>
+
+
+The output should look like the following:
+
+
+.. code::
+
+   +---------------------------+--------------------------------------+
+   | Field                     | Value                                |
+   +---------------------------+--------------------------------------+
+   | admin_state_up            | UP                                   |
+   | availability_zone_hints   |                                      |
+   | availability_zones        |                                      |
+   | created_at                | 2018-05-23T14:38:18Z                 |
+   | description               | OFController=162.250.136.46:6653     |
+   | dns_domain                | None                                 |
+   | id                        | 5e359c6f-a69e-4f4d-b92a-784a5f6ca59f |
+   | ipv4_address_scope        | None                                 |
+   | ipv6_address_scope        | None                                 |
+   | is_default                | None                                 |
+   | mtu                       | 1500                                 |
+   | name                      | exogeni-exogeni-3294                 |
+   | port_security_enabled     | False                                |
+   | project_id                | e8ae724d28374d0fa15a0e16674b5c47     |
+   | provider:network_type     | vlan                                 |
+   | provider:physical_network | exogeni                              |
+   | provider:segmentation_id  | 3294                                 |
+   | qos_policy_id             | None                                 |
+   | revision_number           | 2                                    |
+   | router:external           | Internal                             |
+   | segments                  | None                                 |
+   | shared                    | False                                |
+   | status                    | ACTIVE                               |
+   | subnets                   |                                      |
+   | updated_at                | 2018-05-23T14:38:18Z                 |
+   +---------------------------+--------------------------------------+
+
+
+Example CLI command used to create the network:
+
+
+.. code-block:: bash
+
+   [root@admin02 ~]# NET="exogeni-3294"
+   [root@admin02 ~]# PHYSICAL_NETWORK_TENANT="exogeni"
+   [root@admin02 ~]# NET_TYPE="vlan"
+   [root@admin02 ~]# NET_NAME="${PHYSICAL_NETWORK_TENANT}-${NET}"
+   [root@admin02 ~]# OF_CONTROLLER_IP="162.250.136.46"
+   [root@admin02 ~]# OF_CONTROLLER_PORT="6653"
+   [root@admin02 ~]# openstack network create --provider-network-type ${NET_TYPE} \
+   >                          --provider-physical-network ${PHYSICAL_NETWORK_TENANT} \
+   >                          --description OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT} \
+   >                          ${NET_NAME}
+   +---------------------------+--------------------------------------+
+   | Field                     | Value                                |
+   +---------------------------+--------------------------------------+
+   | admin_state_up            | UP                                   |
+   | availability_zone_hints   |                                      |
+   | availability_zones        |                                      |
+   | created_at                | 2018-05-23T14:38:18Z                 |
+   | description               | OFController=162.250.136.46:6653     |
+   | dns_domain                | None                                 |
+   | id                        | 5e359c6f-a69e-4f4d-b92a-784a5f6ca59f |
+   | ipv4_address_scope        | None                                 |
+   | ipv6_address_scope        | None                                 |
+   | is_default                | None                                 |
+   | mtu                       | 1500                                 |
+   | name                      | exogeni-exogeni-3294                 |
+   | port_security_enabled     | False                                |
+   | project_id                | e8ae724d28374d0fa15a0e16674b5c47     |
+   | provider:network_type     | vlan                                 |
+   | provider:physical_network | exogeni                              |
+   | provider:segmentation_id  | 3294                                 |
+   | qos_policy_id             | None                                 |
+   | revision_number           | 2                                    |
+   | router:external           | Internal                             |
+   | segments                  | None                                 |
+   | shared                    | False                                |
+   | status                    | ACTIVE                               |
+   | subnets                   |                                      |
+   | updated_at                | 2018-05-23T14:38:18Z                 |
+   +---------------------------+--------------------------------------+
+
+Controllers for Corsa DP2000 series switches
+____________________________________________
+
+OpenFlow controllers often need to be aware of the slight differences in implementation across switch vendors. What follows is a description of the quirks we have found while using the Corsa DP2000 series switches as well as a simple controller configuration that is compatible with Chameleon OpenFlow networks.
+
+We have used Ryu and OpenDaylight controllers for the VFCs (Virtual Forwarding Context) on Corsa switches.  We have provided a sample OpenFlow Ryu controller application that is available on GitHub. In addition, we have provided a Chameleon appliance that creates a Ryu controller based on these code modifications.
+
+This controller is derived from the Ryu simple_switch_13.py with the following considerations. If you want use any other OpenFlow controller you will have to make similar considerations.
+
+1. VFCs on Corsa switches are created by allocating specific amounts of system resources. Each VFC has a limited amount of resources in order to accommodate the requests of all Chameleon users. This limits the number of flows that can be put in the flow tables. Controllers will need to be careful not to fill up the flow tables. In our example, an idle timeout (defaulting to 5 minutes) to any rule inserted into the VFC via the controller is added to ensure the flow tables are cleaned up. This way, the switch removes the rule itself, once traffic matching the rule stops passing (for the specified interval).
+
+2. The Corsa switches do not support Actions=FLOOD since this reserved port type is only for hybrid switches and it is optional. Corsa is an Openflow-only switch which supports the required port ALL. Controllers must replace the Actions=FLOOD to Actions=ALL in packet out messages.
+
+3. Flow tables are modified according to the status of the ports being added or deleted from the VFC. 
+
+The following changes are made to the application:
+
+Added the functions below:
+
+.. code::
+
+   def _port_status_handler(self, ev):
+   def delete_flow(self, datapath, port):
+
+Added IDLE_TIMEOUT to flow modification in:
+
+.. code::
+
+   def add_flow(self, datapath, priority, match, actions, buffer_id=None):
+
+Changes are made in the function below to change ``Actions=FLOOD`` to ``actions=ALL`` in packet out message in the ``def _packet_in_handler(self, ev):`` method.
+
+
+
+This controller application can be run by the script below:
+
+.. code::
+
+   CHAMELEON_RYU_URL="https://github.com/ChameleonCloud/ryu.git"
+   CHAMELEON_RYU_APP="simple_switch_13_custom_chameleon.py"
+   
+   yum install -y epel-release
+   yum install -y python-pip git
+   pip install ryu
+   
+   RYU_DIR="/opt/ryu"
+   
+   mkdir ${RYU_DIR} && mkdir ${RYU_DIR}/repo
+   
+   git clone ${CHAMELEON_RYU_URL} ${RYU_DIR}/repo
+   ln -s ${RYU_DIR}/repo/ryu/app/${CHAMELEON_RYU_APP} ${RYU_DIR}/${CHAMELEON_RYU_APP}
+   
+   
+   RYU_PID_FILE="/var/run/ryu/ryu-manager.pid"
+   RYU_LOG_FILE="/var/log/ryu/ryu-manager.log"
+   RYU_CONFIG_DIR="/opt/ryu/etc"
+   RYU_APP="${RYU_DIR}/${CHAMELEON_RYU_APP}"
+   OFP_TCP_LISTEN_PORT="6653"
+   
+   
+   /usr/bin/ryu-manager --pid-file \${RYU_PID_FILE} --ofp-tcp-listen-port \${OFP_TCP_LISTEN_PORT} --log-file \${RYU_LOG_FILE} \${RYU_APP}
+
+
+.. _extras:
+
+______________________________
+Additional Networking Features
+______________________________
 
 Chameleon implements additional configurable *OpenStack Neutron* *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure the traffic. Use the CLI or :ref:`complex` to configure your network with these advanced features. To see a list of available Resource Types, go to either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and navigate to *Project* > *Orchestration* > *Resource Types*. *Networking Resource Types* are listed as ``OS::Neutron`` Resources.
