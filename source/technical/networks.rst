@@ -533,7 +533,7 @@ ______________________
 
 BYOC is part of the expanded deployment for Chameleon's phase 2. It enables tenants to allocate OpenFlow switches controlled by their own OpenFlow controller. This capability is limited to the phase 2 hardware additions that include the Corsa DP2000 series OpenFlow switches and Skylake compute nodes. The Corsa switches are key to enabling the BYOC functionality.  These switches allow for the creation of mutually isolated forwarding contexts which can be thought of as virtual OpenFlow switches even though they are the native abstraction used by the Corsa DP2000s. Each isolated forwarding context can be configured to use its own OpenFlow controller. The Chameleon BYOC functionality enables tenants to specify the IP and port of an arbitrary OpenFlow controller when they create private networks.
 
-Using OpenFlow on Chameleon
+.. Important:: OpenFlow capabilities are only available on the Skylake nodes. These are the only nodes that are attached to the Corsa DP2000 series switches.
 
 Specifying an OpenFlow controller for your private network is just a special case of creating a private network.  Before proceeding you should become familiar with using regular private VLANs on Chameleon and be able to create your own private VLANs. Background information can be found in the document covering Reconfigurable Networking.
 
@@ -541,16 +541,12 @@ Alert: Currently it is not possible to specify an OpenFlow controller using the 
 
 Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the "--description" field as shown below. Creating the subnet and router is the same as any other Chameleon network. 
 
-.. code-block:: bash
-
-   openstack network create --provider-network-type vlan --provider-physical-network physnet1 
-   --description OFController=<OF_Controller_IP>:<OF_Controller_Port> <network_name>
+.. Important:: For now, the OpenFlow functionallity will only with ExoGENI stitchable VLANs at UC. Soon, OpenFlow will be available across both sites and for all VLANs.
 
 .. code-block:: bash
 
    openstack network create --provider-network-type vlan --provider-physical-network exogeni 
-   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>  <network_name>
-
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port> <network_name>
 
 The output should look like the following:
 
