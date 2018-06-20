@@ -100,11 +100,10 @@ When creating a *Subnet*, you must specify a  *Subnet Name* and a `CIDR <https:/
 You may specify *DHCP* and static *Route* information at *Subnet Details* section:
 
 - *Allocation Pools* section allows you to specify *DHCP* address ranges in the format of ``<first address>,<last address>``. For example, entering ``192.168.1.2,192.168.1.100`` will create a *Subnet* with IP ranges from ``192.168.1.2`` to ``192.168.1.100``.
-- *DNS Name Servers* section allows you to specify a list of DNS servers. 
-  
+- *DNS Name Servers* section allows you to specify a list of DNS servers.
+
   .. note::
      At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
-     
      At `CHI@UC <https://chi.uc.chameleoncloud.org>`_, use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
 - *Host Routes* section allows you to specify static routing information for the subnet in the format of ``<subnet CIDR>,<router IP address>``. For example, ``192.168.3.0/24,10.56.1.254`` means all traffic from this Subnet to ``192.168.3.0`` will be forwarded to the Router Interface at ``10.56.1.254``.
 
@@ -144,28 +143,28 @@ A Router may have multiple *Interfaces*, each connected to a *Network*. You may 
 
    The Add Interface dialog
 
-First, select a network and subnet you have created. You can specify an *IP address*; otherwise, Chameleon will attempt to assign an IP address automatically. Gateway IP you assigned to the subnet will be automatically picked.
+First, select a network and subnet you have created. You can specify an *IP address*; otherwise, Chameleon will attempt to assign an IP address automatically. The gateway IP you assigned to the subnet will be automatically picked.
 
 Deleting Networking Objects
 ___________________________
 
 .. attention::
-   Network Objects such as *Routers* and *Networks* must be deleted in the reverse order of which they were created. Objects **can not** be deleted while other objects are depending on them. 
+   Network objects such as *Routers* and *Networks* must be deleted in the reverse order of which they were created. Objects **can not** be deleted while other objects are depending on them.
 
 .. attention::
-   **Before start deleting, make sure all instances using them are terminated!**
+   **Before starting to delete network objects, make sure all instances using them are terminated!**
 
 #. Go to *Project* > *Network* > *Routers*, and click on the router you would like to delete.
 #. Go to *Static Routes* tab, and click on the *Delete Static Routes* button in the *Action* column. The *Static Routes* will be deleted after confirm.
-#. Go to *Instatnces* tab, delete the Gateway interface by clicking on *Delete Interface* button in the *Action* column and confirm the deletion. 
-#. Now you can safely delete the router by click on the dropdown on the upper right corner. Then, click on *Delete Router*. Finally, confirm your deletion of the router. 
-   
+#. Go to *Instances* tab, delete the Gateway interface by clicking on *Delete Interface* button in the *Action* column and confirm the deletion.
+#. Now you can safely delete the router by clicking on the dropdown on the upper right corner. Then, click on *Delete Router*. Finally, confirm your deletion of the router.
+
    .. figure:: networks/deleterouterbutton.png
       :alt: Dropdown for deleting router
-      
+
       Dropdown for deleting router
-      
-#. Go to *Project* > *Network* > *Networks*, and delete the network by using the dropdown in the *Action* column. Alternatively, you may delete the network by selecting the network using the checkbox and click on *Delete Networks* button on the upper right corner. Confirm your deletion to finish the process. 
+
+#. Go to *Project* > *Network* > *Networks*, and delete the network by using the dropdown in the *Action* column. Alternatively, you may delete the network by selecting the network using the checkbox and click on *Delete Networks* button on the upper right corner. Confirm your deletion to finish the process.
 
 
 
@@ -235,7 +234,7 @@ For example, the command:
 
    openstack subnet create --subnet-range 192.168.1.0/24 --dhcp --network MyNetwork MySubnet
 
-Will create a subnet with the following output:
+will create a subnet with the following output:
 
 .. code::
 
