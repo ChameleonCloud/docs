@@ -55,12 +55,12 @@ Chameleon's implementation of network isolation is based on dynamically managed 
    - Strong network isolation is provided at network layer 2 only. Even using separate IP subnetworks, any bare metal node can still communicate with each other and with the Internet through the network's router. We are investigating solutions to provide stronger isolation at network layer 3.
    - Network isolation works on all nodes, including our low-power HP Moonshot nodes (low-power Xeon, Atom, ARM64).
 
-To use this feature, you will need to create a dedicated network and router. You can use a *Heat* template or use *Network* panel of the GUI. The network isolation procedure by using *Heat* template is explained below in the same section. For creating networks and routers using *Network* panel of the GUI, please continue reading the following sections. 
+To use this feature, you will need to create a dedicated network and router. You can use a *Heat* template or use the *Network* panel of the GUI. Network isolation using the *Heat* template procedure is explained in this section below. For creating networks and routers using the *Network* panel of the GUI, please continue reading the following sections. 
 
 #. To create networks and routers using a *Heat* template, go to *Project* > *Orchestration* > *Stacks*. 
-#. Click the *Lauch Stack* button to open an interactive dialog.
+#. Click the *Launch Stack* button to open an interactive dialog.
 #. Select *URL* as *Template Source* and paste https://raw.githubusercontent.com/ChameleonCloud/heat-templates/master/network-isolation/network-isolation.yaml to *Template URL*.
-#. Click the *Next* button to navigate to *Lauch Stack* dialog.
+#. Click the *Next* button to navigate to the *Launch Stack* dialog.
 #. Provide a name for your stack and your password, and set a private IP range that does not overlap with other IP addresses within your project.
    
    .. tip::
