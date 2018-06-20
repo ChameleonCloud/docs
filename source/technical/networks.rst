@@ -724,12 +724,3 @@ This controller application can be run by the script below:
    
    
    /usr/bin/ryu-manager --pid-file \${RYU_PID_FILE} --ofp-tcp-listen-port \${OFP_TCP_LISTEN_PORT} --log-file \${RYU_LOG_FILE} \${RYU_APP}
-
-
-.. _extras:
-
-______________________________
-Additional Networking Features
-______________________________
-
-Chameleon implements additional configurable *OpenStack Neutron* *Resource Types*, such as *Subnet Pools* for dynamic Network creation and rule-based *Metering* to measure the traffic. Use the CLI or :ref:`complex` to configure your network with these advanced features. To see a list of available Resource Types, go to either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and navigate to *Project* > *Orchestration* > *Resource Types*. *Networking Resource Types* are listed as ``OS::Neutron`` Resources.
