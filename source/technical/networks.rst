@@ -1,7 +1,7 @@
 .. _networking:
 
 ==========
-Networking 
+Networking
 ==========
 
 
@@ -55,32 +55,21 @@ Chameleon's implementation of network isolation is based on dynamically managed 
    - Strong network isolation is provided at network layer 2 only. Even using separate IP subnetworks, any bare metal node can still communicate with each other and with the Internet through the network's router. We are investigating solutions to provide stronger isolation at network layer 3.
    - Network isolation works on all nodes, including our low-power HP Moonshot nodes (low-power Xeon, Atom, ARM64).
 
-To use this feature, you will need to create a dedicated network and router. You can use a *Heat* template or use the *Network* panel of the GUI. Network isolation using the *Heat* template procedure is explained in this section below. For creating networks and routers using the *Network* panel of the GUI, please continue reading the following sections. 
+To use this feature, you will need to create a dedicated network and router. You can use a *Heat* template or use the *Network* panel of the GUI. Network isolation using the *Heat* template procedure is explained in this section below. For creating networks and routers using the *Network* panel of the GUI, please continue reading the following sections.
 
-#. To create networks and routers using a *Heat* template, go to *Project* > *Orchestration* > *Stacks*. 
+#. To create networks and routers using a *Heat* template, go to *Project* > *Orchestration* > *Stacks*.
 #. Click the *Launch Stack* button to open an interactive dialog.
 #. Select *URL* as *Template Source* and paste https://raw.githubusercontent.com/ChameleonCloud/heat-templates/master/network-isolation/network-isolation.yaml to *Template URL*.
 #. Click the *Next* button to navigate to the *Launch Stack* dialog.
-#. Provide a name for your stack and your password, and set a private IP range that does not overlap with other IP addresses within your project.
-   
-   .. tip::
-      A good rule for setting a private IP range is to use the last 2 or 4 digits of your project number.
-      
-      For example, my project number is 81 **7790** :
-      
-         - For a unique 10.xx.yy.0/24 address range, use 10. **77** . **90** .0/24
-         - For a unique 172.16-31.x.0/24 or 192.168.x.0/24 address range, use 172.16. **90** .0/24 or 192.168. **90** .0/24
-         - Numbers 100-254 are not used by basic application of this rule and therefore can be used whenever there are conflicts (i.e. in the rare case where the last 2-4 digits of your project is the same as another project, and hence your desired IP subnet range is already in use).
+#. Provide a name for your stack, enter your password, and set a private IP range, such as 192.168.1.0/24.
 #. Set the first and the last IP addresses of *DHCP* range.
 
    .. important::
       The first IP adddress in the DHCP range should never be \*.1 and \*.2. The last IP address in the range must be less than \*.255.
-      
+
 #. Start creating the network and router by clicking the *Launch* button.
 
-For more information about *Stack*, please read :ref:`complex`.    
-
-
+For more information about *Stack*, please read :ref:`complex`.
 
 Creating a Network using the GUI
 ________________________________
@@ -100,15 +89,6 @@ In *Create Network* dialog, name your network. In general, you will also want to
    The Subnet tab
 
 When creating a *Subnet*, you must specify a  *Subnet Name* and a `CIDR <https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing>`_ *Network Address* that contains a private IP address and a subnet mask length. For example, you may create a `Class C <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-2000-server/cc940018(v=technet.10)>`_ subnet with a 24-bit mask by entering ``192.168.1.0/24``. You may set a Gateway or leave it blank to use the default. Then, click the *Next* button.
-
-   .. tip::
-      A good rule for setting a private IP range is to use the last 2 or 4 digits of your project number.
-      
-      For example, my project number is 81 **7790** :
-      
-         - For a unique 10.xx.yy.0/24 address range, use 10. **77** . **90** .0/24
-         - For a unique 172.16-31.x.0/24 or 192.168.x.0/24 address range, use 172.16. **90** .0/24 or 192.168. **90** .0/24
-         - Numbers 100-254 are not used by basic application of this rule and therefore can be used whenever there are conflicts (i.e. in the rare case where the last 2-4 digits of your project is the same as another project, and hence your desired IP subnet range is already in use).
 
 .. attention:: **Do not** select the *Disable Gateway* checkbox!
 
@@ -131,15 +111,6 @@ You may specify *DHCP* and static *Route* information at *Subnet Details* sectio
 .. note:: All three sections above are line separated.
 
 Click *Create* button and a new Network will be created. Check if the network is created without error.
-
-.. error::
-   If you see error like below, pick a different subnet IP range.
-   
-   .. figure:: networks/networkcreateerror.png
-      :alt: Network created with error
-      
-      Network created with error
-      
 
 Creating a Router
 _________________
