@@ -1,12 +1,12 @@
 =========================
-Metrics
+Monitoring
 =========================
 
-Our latest `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances are configured to send a selection of system metrics to the `Gnocchi time series database <https://gnocchi.xyz>`_, using the `collectd system statistics collection daemon <https://collectd.org>`_. Measurements of these metrics can be retrieved via the command line. **Visualizing these metrics is not yet supported in the web interfaces.**
+Chameleon collects monitoring information, representing qualities such as CPU load or power consumption data, from various sources into an *aggregation service*. Data is kept in this service with resolution that decreases over time. Users can retrieve those metrics via a *command line interface (CLI)*.
 
-.. note:: Gnocchi metrics are **only** available at `CHI@UC <https://chi.uc.chameleoncloud.org>`_ now, but will be available at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ in the future.
+In Chameleon, the aggregation service is implemented using the `Gnocchi time series database <https://gnocchi.xyz>`_. All Chameleon supported images, from which most of our user’s images are derived, are configured to send a selection of system metrics using the `collectd system statistics collection daemon <https://collectd.org>`_. There is a wide range of qualities this daemon can gather; by default only selected metrics are sent but users can configure the daemon (see `Configuring collectd`_) to adapt this set anytime to monitor their experiments better. Another source of metrics is the infrastructure itself, for example the energy and power consumption metrics.
 
-.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :doc:`cli` is highly recommended before continuing on the following sections.
 
 Setting up the Gnocchi CLI
 __________________________
@@ -176,67 +176,13 @@ The ``collectd`` configured to send measurements by batch to minimize network tr
 
    sudo systemctl stop collectd && sudo systemctl disable collectd
 
-_________________________________________________________
-Energy and Power Consumption Measurement with ``etrace2``
-_________________________________________________________
-
-The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. It is done with the ``etrace2`` utility which relies on the `Intel RAPL (Running Average Power Limit) <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ interface.
-
-To spawn your program and print energy consumption:
-
-.. code-block:: bash
-
-   etrace2 <your_program>
-
-To print power consumption every 0.5 second:
-
-.. code-block:: bash
-
-   etrace2 -i 0.5 <your_program>
-   
-To print power consumption every 1 second for 10 seconds:
-
-.. code-block:: bash
-
-   etrace2 -i 1.0 -t 10
-
-For example, to report energy consumption during the generation of a large RSA private key:
-
-.. code::
-
-   $ etrace2 openssl genrsa -out private.pem 4096
-   # ETRACE2_VERSION=0.1
-   Generating RSA private key, 4096 bit long modulus
-   ..............................................................................................................................................................................................................................................................................................................++
-   .............................................................................................................................................................++
-   e is 65537 (0x10001)
-   # ELAPSED=2.579472
-   # ENERGY=365.788208
-   # ENERGY_SOCKET0=99.037841
-   # ENERGY_DRAM0=78.577698
-   # ENERGY_SOCKET1=109.230103
-   # ENERGY_DRAM1=80.336548
-
-The energy consumption is reported in joules.
-
-``etrace2`` reports power and energy consumption of CPUs and memory of the node during the entire execution of the program. This will include consumption of other programs running during this period, as well as power and energy consumption of CPUs and memory under idle load.
-
-Note the following caveats:
-
-- This utility is compatible with all our hardware, except for Intel Atom nodes released in December 2016. We are hoping to extend support for them in the future.
-- `Intel <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ documents that the RAPL is not an analog power meter, but rather uses a software power model. This software power model estimates energy usage by using hardware performance counters and I/O models. Based on their measurements, they match actual power measurements.
-- In some situations the total *ENERGY* value is incorrectly reported as a value equal or close to zero. However, the sum of *ENERGY_SOCKET* and *ENERGY_DRAM* values should be accurate.
-- Monitoring periods larger than 10-15 minutes may be inaccurate due to RAPL registers overflowing if they're not read regularly.
-
-This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.
-
 _____________________________________________
 Power Consumption Metrics for Low Power Nodes
 _____________________________________________
 
 In addition to the system and power consumption metrics described above, Chameleon automatically collects power usage data on all low power nodes in the system. Instantaneous power usage data (in watts) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off. Low power nodes for which power usage data are now being collected include all Intel Atoms, low power Xeons, and ARM64s.
 
-As with the system metrics, retrieving the power consumption metrics for a low power node requires the OpenStack CLI and Gnocchi client plugin (see installation instructions above). Retrieve the power usage metrics using the following command:
+As with the system metrics, retrieving the power consumption metrics for a low power node requires the OpenStack CLI and Gnocchi client plugin (see installation instructions `Setting up the Gnocchi CLI`_ above). Retrieve the power usage metrics using the following command:
 
 .. code-block:: bash
 
@@ -300,3 +246,56 @@ returns:
     | 2018-05-06T12:38:00-05:00 |        60.0 |              3.537 |
     | 2018-05-06T12:39:00-05:00 |        60.0 |              3.692 |
     +---------------------------+-------------+--------------------+
+
+_________________________________________________________
+Energy and Power Consumption Measurement with ``etrace2``
+_________________________________________________________
+
+The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances, as well as all Chameleon supported images dervied from them, now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. It is done with the ``etrace2`` utility which relies on the `Intel RAPL (Running Average Power Limit) <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ interface.
+
+To spawn your program and print energy consumption:
+
+.. code-block:: bash
+
+   etrace2 <your_program>
+
+To print power consumption every 0.5 second:
+
+.. code-block:: bash
+
+   etrace2 -i 0.5 <your_program>
+   
+To print power consumption every 1 second for 10 seconds:
+
+.. code-block:: bash
+
+   etrace2 -i 1.0 -t 10
+
+For example, to report energy consumption during the generation of a large RSA private key:
+
+.. code::
+
+   $ etrace2 openssl genrsa -out private.pem 4096
+   # ETRACE2_VERSION=0.1
+   Generating RSA private key, 4096 bit long modulus
+   ..............................................................................................................................................................................................................................................................................................................++
+   .............................................................................................................................................................++
+   e is 65537 (0x10001)
+   # ELAPSED=2.579472
+   # ENERGY=365.788208
+   # ENERGY_SOCKET0=99.037841
+   # ENERGY_DRAM0=78.577698
+   # ENERGY_SOCKET1=109.230103
+   # ENERGY_DRAM1=80.336548
+
+The energy consumption is reported in joules.
+
+``etrace2`` reports power and energy consumption of CPUs and memory of the node during the entire execution of the program. This will include consumption of other programs running during this period, as well as power and energy consumption of CPUs and memory under idle load.
+
+Note the following caveats:
+
+- `Intel <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ documents that the RAPL is not an analog power meter, but rather uses a software power model. This software power model estimates energy usage by using hardware performance counters and I/O models. Based on their measurements, they match actual power measurements.
+- In some situations the total *ENERGY* value is incorrectly reported as a value equal or close to zero. However, the sum of *ENERGY_SOCKET* and *ENERGY_DRAM* values should be accurate.
+- Monitoring periods larger than 10-15 minutes may be inaccurate due to RAPL registers overflowing if they're not read regularly.
+
+This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.
