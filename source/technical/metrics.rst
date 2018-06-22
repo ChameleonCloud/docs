@@ -113,7 +113,7 @@ To get all the measurements of a particular metric, run:
 
 .. code-block:: bash
 
-   openstack metric measures show <metric_name> --resource <instance_id> --refresh
+   openstack metric measures show <metric_name> --resource-id <instance_id> --refresh
 
 For example, to get measurements of used memory over time for instance ``d17d5191-af60-4407-9ed2-e3d48e86ac6d``, run:
 

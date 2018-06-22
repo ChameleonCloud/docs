@@ -33,6 +33,5 @@ Welcome to Chameleon Cloud Documentation's documentation!
    technical/complex 
    technical/swift
    technical/networks
-   technical/stitching
    technical/fpga
    technical/kvm

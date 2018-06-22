@@ -1,3 +1,6 @@
+
+.. _getting-started:
+
 ==================
 Getting Started
 ==================
@@ -28,6 +31,8 @@ To use Chameleon, you will need to be associated with a *project* that is assign
 
 If you are a PI, you may `apply for a new project <https://www.chameleoncloud.org/user/projects/new/>`_. A project application typically consists of a description of your intended research and takes one business day to process. Once your project has been approved, you may add users to your project.
 
+If you want to join an existing project, ask the PI of the project to add you to their project. They will need your Chameleon username.
+
 For more information about project management, please see the :ref:`Project Management <project-management>` section or :ref:`FAQs about project management <faq-project>`.
 
 --------------------------------------------
@@ -35,6 +40,8 @@ Step 3: Start using Chameleon!
 --------------------------------------------
 
 Congratulations, you are now ready to launch your first instance! Instances are much like what you may expect to find in a virtual machine, except here the instances are on bare-metal nodes - the core feature of Chameleon. A bare-metal node is a whole physical server that you have exclusive access to. An instance is going to be a bare-metal node that has been launched with an operating system image. Follow these steps to make a reservation for a node, launch an instance and log in to it.
+
+.. note:: Chameleon also offers a multi-tenant, virtualized cloud, with fewer functionalities and a smaller scale. See :ref:`kvm` for more details.
 
 The Chameleon Dashboard
 =======================
