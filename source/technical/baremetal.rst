@@ -144,7 +144,13 @@ To launch an instance inside a reservation, run:
 
 .. code-block:: bash
 
-   openstack server create --image CC-CentOS7 --flavor baremetal --key-name <key_name> --nic net-id=<sharednet1_id> --hint reservation=<reservation_id> my-instance
+   openstack server create \
+   --image CC-CentOS7 \
+   --flavor baremetal \
+   --key-name <key_name> \
+   --nic net-id=<sharednet1_id> \
+   --hint reservation=<reservation_id> \
+   my-instance
 
 The ID of the ``sharednet1`` network can be obtained using the command:
 
@@ -217,7 +223,14 @@ If you have a reservation for multiple physical nodes, explicitly identified wit
 
 .. code-block:: bash
 
-   openstack server create --image CC-CentOS7 --flavor baremetal --key-name <key_name> --nic net-id=<sharednet1_id> --hint reservation=<reservation_id> --hint query='["=","$hypervisor_hostname","<node_uuid>"]' <instance_name>
+   openstack server create \
+   --image CC-CentOS7 \
+   --flavor baremetal \
+   --key-name <key_name> \
+   --nic net-id=<sharednet1_id> \
+   --hint reservation=<reservation_id> \
+   --hint query='["=","$hypervisor_hostname","<node_uuid>"]' \
+   <instance_name>
 
 From within an instance you have already launched, you can discover which node it is running on by executing 
 
