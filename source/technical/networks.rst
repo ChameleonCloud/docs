@@ -11,7 +11,7 @@ Most experiments will require :ref:`basic-networking` functionality including In
 
 .. toctree::
    :maxdepth: 1
-   :caption: Networking Caption
+   :caption: Networking Topics
 
    networks/networks_basic
    networks/networks_vlan
