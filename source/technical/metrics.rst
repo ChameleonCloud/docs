@@ -253,6 +253,9 @@ _________________________________________________________
 
 The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances, as well as all Chameleon supported images dervied from them, now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. It is done with the ``etrace2`` utility which relies on the `Intel RAPL (Running Average Power Limit) <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ interface.
 
+.. attention:: 
+   Currenly, ``etrace2`` requires a kernel feature that is not supported on our ARM nodes.
+   
 To spawn your program and print energy consumption:
 
 .. code-block:: bash
