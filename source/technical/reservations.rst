@@ -80,6 +80,8 @@ Once the start time of the lease is reached, the lease will be started and its r
 
 .. attention:: 
    To ensure fairness to all users, resource reservations (leases) are limited to a duration of :redbold:`7 days`. However, an active lease within :redbold:`48 hours` of its end time can be prolonged by :redbold:`up to 7 days` from the moment of request if resources are available.
+   
+   Chameleon will send an email remainder to you 48 hours before your lease ends. If your lease duration is less than 48 hours, Chameleon will send you an email right after your lease is created. You can :ref:`disable the email notification by using the command line <disable-blazar-notification>`. 
 
 Extending a Lease
 _________________
@@ -155,6 +157,29 @@ Instead of specifying the node type, you may also reserve a specific node by pro
 .. code-block:: bash
 
    blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
+
+.. _disable-blazar-notification:
+.. attention:: 
+   To specify a ``before_end`` action, simply add ``before_end=<action_type>`` to ``physical-reservation`` parameter. For example:
+   
+   .. code-block:: bash
+
+      blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
+   
+   Currently supported ``before_end`` action types include 
+   
+   +-----------------+-------------------------------------------------------------------------------+
+   | **Action Type** | **Description**                                                               |
+   +-----------------+-------------------------------------------------------------------------------+
+   |  ``email``      | Send an email notification                                                    |
+   +-----------------+-------------------------------------------------------------------------------+
+   | ``default``     | Default action used when no action is specified; Currently set to ``email``   |
+   +-----------------+-------------------------------------------------------------------------------+
+   |    ``''``       | Do nothing                                                                    |
+   +-----------------+-------------------------------------------------------------------------------+
+      
+   The default ``before_end`` action is set to ``email``. To disable the email notification, set ``before_end=''``. 
+    
 
 Actually, you may use any resource property that is in the resource registry to reserve the nodes. To see the list of properties of nodes, first get the full list of nodes with the command:
 
