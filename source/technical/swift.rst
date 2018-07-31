@@ -6,15 +6,18 @@ ____________
 Introduction
 ____________
 
-Chameleon provides an object store service through the `OpenStack Swift <https://docs.openstack.org/swift/latest/>`_ interface. It is intended to be used for storing and retrieving data used during experiments, such as input files needed for your applications, or results produced by your experiments. 
+Chameleon provides an object store service through the `OpenStack Swift <https://docs.openstack.org/swift/latest/>`_ interface. It is intended to be used for storing and retrieving data used during experiments, such as input files needed for your applications, or results produced by your experiments.
 
 .. hint::
-   Chameleon object store service is currently backed by a `Ceph <https://ceph.com/>`_ cluster with more than 1.6 PB of capacity. The data is replicated, keeping two copies of each object, effectively providing over 800 TB of storage available to users. This storage capacity will increase as the project goes on. The replication should provide good availability in case of hardware failures. However, all copies are kept within the same data center and are not backed up on a separate system; if you feel that this does not provide sufficient reliability in your case, you should consider backing up really critical data externally.
+   Chameleon object store service is currently backed by a `Ceph <https://ceph.com/>`_ cluster with more than 2.1 PB of capacity. The data is replicated, keeping two copies of each object, effectively providing over 1 PB of storage available to users. This storage capacity will increase as the project goes on. The replication should provide good availability in case of hardware failures. However, all copies are kept within the same data center and are not backed up on a separate system; if you feel that this does not provide sufficient reliability in your case, you should consider backing up really critical data externally.
 
 Availability
 ____________
 
-You can access the *Object Store* from instances running on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ by using your `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ :ref:`OpenStack RC file <cli-rc-script>` (UC users will see more latency impact since the *Object Store* is located at TACC). To make it easier for you to use the *Object Store* client, we installed it in all appliances supported by Chameleon. Additionally, you can also access the *Object Store* from the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ web interface under the *Object Store* panel.
+You can access the *Object Store* from instances running on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Each region has its own store, meaning that objects uploaded to one are not visible to the other. In general you should use the store local to the region where your instances are running for the best performance.  To make it easier for you to use the *Object Store* client, we installed it in all appliances supported by Chameleon. Additionally, you can also access the *Object Store* from the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ web interfaces under the *Object Store* panel.
+
+.. hint::
+    `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ users can access the TACC store by using their `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ :ref:`OpenStack RC file <cli-rc-script>`.
 
 Objects and Containers
 ______________________
@@ -60,7 +63,7 @@ You may click on a *Container* to see the details and work with *Objects* belong
 
 .. attention:: Downloading a container is not available from the GUI. Use the CLI to download containers.
 
-You may delete a container by clicking the *Delete* icon in the upper right of the *Container Detail Panel*. 
+You may delete a container by clicking the *Delete* icon in the upper right of the *Container Detail Panel*.
 
 .. figure:: swift/containerdelete.png
    :alt: The Delete Container button
@@ -85,7 +88,7 @@ This will open the *Upload File* dialog.
    The Upload File dialog
 
 Choose a file to upload from your local file system and give a name to the object.
-   
+
 Working with Folders
 _____________________
 
@@ -133,15 +136,15 @@ To create a *Container*, use the following command:
 
    openstack container create <container_name>
 
-.. tip:: By default, the *Container* created using the above command will not be visible to the public. 
+.. tip:: By default, the *Container* created using the above command will not be visible to the public.
 
 To view all containers that belong to your project, run:
 
 .. code-block:: bash
 
-   openstack container list 
+   openstack container list
 
-.. tip:: You may use ``--prefix <prefix>`` as a filter to list the containers whose name starts with ``<prefix>``. 
+.. tip:: You may use ``--prefix <prefix>`` as a filter to list the containers whose name starts with ``<prefix>``.
 
 To see details of a container, use the command:
 
@@ -176,7 +179,7 @@ You may upload a file from your local machine to a container using the following
 
    openstack object create <container_name> <local_filename>
 
-.. tip:: Optionally, you may name the object differently from it's original name in your local machine by using the ``--name <object_name>`` parameter. 
+.. tip:: Optionally, you may name the object differently from it's original name in your local machine by using the ``--name <object_name>`` parameter.
 
 To delete an object from a container, run:
 
@@ -193,7 +196,7 @@ If you wish to download an individual object directly from a container, use the 
 Working with Folders
 _______________________
 
-There isn't "folders" when you managing the *Object Store* with the CLI. However, when you create an object, you may use the delimiter ``/`` to specify the path. 
+There isn't "folders" when you managing the *Object Store* with the CLI. However, when you create an object, you may use the delimiter ``/`` to specify the path.
 
 ________________________________________
 Mounting Object Store as a File System
@@ -209,7 +212,7 @@ Before mount, create a ``~/.cloudfuse`` file with the following content:
    password=<password>
    tenant=<projectname>
    authurl=https://chi.tacc.chameleoncloud.org:5000/v2.0
-   
+
 Replace ``username`` and ``password`` with your Chameleon username and password, and replace ``projectname`` with your Chameleon project name.
 
 Then mount with the following command:
@@ -217,13 +220,13 @@ Then mount with the following command:
 .. code-block:: bash
 
    cloudfuse <mount_dir>
-   
+
 Or you can specify your username and password as mount options:
 
 .. code-block:: bash
 
    cloudfuse -o username=<username>,password=<password> <mount_dir>
-   
+
 Now you can access your Chameleon Object Store as your local file system.
 
 To unmount:
@@ -231,4 +234,3 @@ To unmount:
 .. code-block:: bash
 
    fusermount -u <mount_dir>
-
