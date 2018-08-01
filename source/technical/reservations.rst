@@ -78,6 +78,8 @@ Once the start time of the lease is reached, the lease will be started and its r
 
 .. role:: redbold
 
+.. _lease-policy:
+
 .. attention:: 
    To ensure fairness to all users, resource reservations (leases) are limited to a duration of :redbold:`7 days`. However, an active lease within :redbold:`48 hours` of its end time can be prolonged by :redbold:`up to 7 days` from the moment of request if resources are available.
    
