@@ -39,7 +39,7 @@ Alert: Currently it is not possible to specify an OpenFlow controller using the 
 
 Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the "--description" field as shown below. Creating the subnet and router is the same as any other Chameleon network. 
 
-.. Important:: For now, the OpenFlow functionallity will only with ExoGENI stitchable VLANs at UC. Soon, OpenFlow will be available across both sites and for all VLANs.
+.. Important:: For now, the OpenFlow functionality at UC is restricted to ExoGENI stitchable VLANs only. OpenFlow is available for all VLANs at the TACC site.
 
 .. code-block:: bash
 
