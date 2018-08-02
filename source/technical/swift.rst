@@ -211,9 +211,10 @@ Before mount, create a ``~/.cloudfuse`` file with the following content:
    username=<username>
    password=<password>
    tenant=<projectname>
+   region=<regionname> # CHI@TACC or CHI@UC
    authurl=https://chi.tacc.chameleoncloud.org:5000/v2.0
 
-Replace ``username`` and ``password`` with your Chameleon username and password, and replace ``projectname`` with your Chameleon project name.
+Replace ``username`` and ``password`` with your Chameleon username and password; replace ``projectname`` with your Chameleon project name; and replace ``regionname`` with the regional endpoint to use. 
 
 Then mount with the following command:
 
@@ -221,7 +222,7 @@ Then mount with the following command:
 
    cloudfuse <mount_dir>
 
-Or you can specify your username and password as mount options:
+Or you can specify ``username``, ``password``, ``tenant``, ``region`` or ``authurl`` as mount options:
 
 .. code-block:: bash
 
