@@ -54,6 +54,7 @@ Frequently Asked Questions
     - :ref:`why-different-ids`
     - :ref:`can-use-other-us`
     - :ref:`cc-snapshot-doesnt-work`
+    - :ref:`move-images-between-sites`
 
 .. container:: toggle
 
@@ -350,6 +351,33 @@ The cc-snapshot tool doesn't work on previously snapshot images.
 ________________________________________________________________
 
 cc-snapshot is occasionally updated to accommodate changes to the infrastructure and distributions. To replace the script in your image, follow our instructions for :ref:`updating cc-snapshot <updating-snapshot>`.
+
+.. _move-images-between-sites:
+
+How to move images between sites?
+_____________________________________
+
+Chameleon bare-metal sites -- ``CHI@TACC`` and ``CHI@UC`` -- belong to a single OpenStack deployment as two :ref:`independent <bare-metal-sites-independent>` regions.
+You can move images between sites by using the :ref:`command line interface <cli>`. Make sure you have :ref:`installed CLI properly <cli-installing>` and :ref:`configured the environment variables using the rc script <cli-rc-script>`.
+
+#. Download the image from the source site to local
+
+   .. code-block:: shell
+   
+       openstack --os-region-name <source_site [CHI@TACC or CHI@UC]> image save <image_name> --file <filename>
+       
+#. Upload the image to the target site from local
+
+   .. code-block:: shell
+   
+       openstack --os-region-name <target_site [CHI@TACC or CHI@UC]> image create --file <filename> --disk-format <format> <image_name>
+       
+   You can get ``disk-format`` from the output of the following command:
+   
+   .. code-block:: shell
+       
+       openstack --os-region-name <source_site [CHI@TACC or CHI@UC]> image show <image_name>
+
 
 .. _faq-bare-metal:
 
