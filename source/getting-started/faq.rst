@@ -310,7 +310,7 @@ _________________________________________________________________
 
 The new Appliance Catalog allows you to easily publish and share your own appliances so that others can discover them and use them either to reproduce the research of others or as a basis for their own research.  Before creating your own appliance it is advisable to review other appliances on the Chameleon Appliance Catalog in order to get an idea of the categories you will want to contribute and what others have done.
 
-Once you are ready to proceed, an appliance can be contributed to Chameleon in the following steps:
+Two methods exist to submit an appliance to the *Appliance Catalog*. They can be added using the :ref:`simplified process <simple_publish>`available from the *Images* view. They can also be added using the manual process as described below:
 
 #. Create the appliance itself. You may want to test it as well as give some thought to what support you are willing to provide for the appliance (e.g., if your group developed and supports a software package, the appliance may be just a new way of packaging the software and making it available, in which case your standard support channels may be appropriate for the appliance as well).
 #. Upload the appliance to the Chameleon Image Repository (Glance) and make the image public. In order to enter the appliance into the Catalog you will be asked to provide the Glance ID for the image. These IDs are per-cloud, so that there are three options right now: bare metal/CHI at University of Chicago, bare metal/CHI at TACC, and OpenStack/KVM at TACC. You will need to provide at least one appliance, but may want to provide all three.
