@@ -141,11 +141,16 @@ The *Create Appliances* web form will open automatically with most fields pre-po
 Entering a descriptive name, author and support contact information, the version, and an informative description can be helpful down the road. **The description is used by others to determine if an appliance contains the tools needed for their research.** 
 
 .. tip:: To make your description effective you may want to ask the following questions: 
-What does the appliance contain? 
-What are the specific packages and their versions? 
-What is it useful for? 
-Where can it be deployed and/or what restrictions/limitations does it have? 
-How should users connect to it and what accounts are enabled?
+ 
+   What does the appliance contain? 
+   
+   What are the specific packages and their versions? 
+   
+   What is it useful for? 
+   
+   Where can it be deployed and/or what restrictions/limitations does it have? 
+   
+   How should users connect to it and what accounts are enabled?
 
 ________________________________________________
 Managing Images using the CLI
