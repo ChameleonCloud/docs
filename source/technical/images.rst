@@ -128,6 +128,8 @@ The dropdown list in the top right corner allows you to perform various actions 
 
 .. tip:: The *ID* on the image details' page is useful when you work on the image using the CLI.
 
+.. _simple_publish:
+
 Publishing Images to the Appliance Catalog
 __________________________________________
 
