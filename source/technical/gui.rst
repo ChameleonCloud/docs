@@ -26,6 +26,7 @@ You may login to either site using your Chameleon portal username and password.
 
 .. note:: If you are a new user or have just changed your password on http://www.chameleoncloud.org, it takes approximately 10 minutes for changes to propagate to each site.
 
+.. _bare-metal-sites-independent:
 .. attention::
     These two Chameleon bare metal sites---`CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_---**only** share user accounts, but snapshots, keypairs, Swift containers, Gnocchi metrics and other objects at each site are **independent**. For example, a keypair created at the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ site is **not** available at the `CHI@UC <https://chi.uc.chameleoncloud.org>`_ site. In addition, the bare metal resource types vary between `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_.
 
