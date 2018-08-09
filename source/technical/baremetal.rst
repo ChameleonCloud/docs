@@ -74,6 +74,19 @@ To launch an instance with the GUI, follow the steps:
       :alt: Adding a Scheduler Hint
 
       Adding a Scheduler Hint
+      
+#. If you want to customize your instance after it has launched, you can add a customization script in the *Configuration* step. 
+
+   - You can type in the script in *Customization Script*.
+   - Or you can upload your script via *Load script from a file*.
+   
+   .. figure:: baremetal/customizationscript.png
+      :alt: Adding a Customization Script
+      
+      Adding a Customization Script
+      
+      .. tip::
+         You can :ref:`disable and turn off appliance agents <turn-off-appliance-agents>` using a customization script. 
 
 #. Finish configuring and start launching the instance by clicking on the *Launch Instance* button. The instance will show up in the instance list, at first in *Build* status. It takes a few minutes to deploy the instance on bare metal hardware and reboot the machine.
 
@@ -170,6 +183,21 @@ Running a Shell Script on Boot
 ______________________________
 
 You might want to automatically execute some code after launching an instance, whether it is installing packages, changing configuration files, or running an application. OpenStack provides a mechanism called `User Data <https://docs.openstack.org/queens/user/#term-user-data>`_ to pass information to instances. This information can be any data in any format, but if it is a shell script it will be automatically executed after boot by `cloudinit <https://cloudinit.readthedocs.io/en/latest/>`_. You can provide this shell script either via the web interface in the *Configuration* tab when launching an instance, or by providing a file to the nova command line using the ``--user-data`` option.
+
+.. _turn-off-appliance-agents:
+.. tip::
+   Chameleon supported images are configured with appliance agents, including :ref:`collectd <metrics>` and :ref:`Heat agents <all-to-all-info-exchange>`. 
+   To turn off appliance agents on boot, in order to remove the potential impact on experimental measurements, pass the following script as ``user-data``.
+   
+   .. code-block:: bash
+      
+      #!/bin/bash
+      systemctl stop collectd.service
+      systemctl disable collectd.service
+      systemctl stop os-collect-config.service
+      systemctl disable os-collect-config.service
+      
+   Turning off ``collectd`` will **stop** collecting :ref:`Gnocchi metrics <metrics>`, but you can :ref:`turn on and configure the daemon <configure-collectd>` anytime for monitoring your experiment. 
 
 Customizing the Kernel
 ______________________
