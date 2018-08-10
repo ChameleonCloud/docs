@@ -77,10 +77,14 @@ __________________________________
 
 To manage your images, use the *Images* page at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_, by clicking on *Project* > *Compute* > *Images*.
 
-.. figure:: images/imagespage.png
+.. figure:: images/imagespagev3.png
    :alt: The Images page
 
    The Images page
+   
+.. note:: The Chameleon logo next to an image's name indicates that this image is an appliance supported by the Chameleon project, and is part of the Appliance Catalog.
+
+.. tip:: Select *Details* from the dropdown menu to the right of any Chameleon supported appliance to view the relevant entry from the `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_.
 
 .. note:: Images at each site are stored independently. An Image made at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ **will not** be available at `CHI@UC <https://chi.uc.chameleoncloud.org>`_ (or vice versa) unless transferred manually.
 
@@ -123,6 +127,32 @@ To view image details, click on the name of the Image.
 The dropdown list in the top right corner allows you to perform various actions on the selected image, such as *Launch*, *Edit Image*, and *Update Metadata*. 
 
 .. tip:: The *ID* on the image details' page is useful when you work on the image using the CLI.
+
+.. _simple-publish:
+
+Publishing Images to the Appliance Catalog
+__________________________________________
+
+.. figure:: images/publishappliance.png
+   :alt: Publish to Appliance Catalog
+
+The dropdown menu to the right of listed images allows their owners to publish an appliance to the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. Select *Publish to Appliance Catalog*.
+
+The *Create Appliances* web form will open automatically with most fields pre-populated. Complete the form and select *Create an Appliance*.
+
+Entering a descriptive name, author and support contact information, the version, and an informative description can be helpful and is encouraged. **The description is used by others to determine if an appliance contains the tools needed for their research.** 
+
+.. tip:: To make your description effective you may want to ask the following questions: 
+ 
+   - What does the appliance contain? 
+   
+   - What are the specific packages and their versions? 
+   
+   - What is it useful for? 
+   
+   - Where can it be deployed and/or what restrictions/limitations does it have? 
+   
+   - How should users connect to it and what accounts are enabled?
 
 ________________________________________________
 Managing Images using the CLI
