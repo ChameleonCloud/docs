@@ -1,3 +1,4 @@
+.. _metrics:
 =========================
 Monitoring
 =========================
@@ -159,6 +160,8 @@ By default, metrics are stored with an archive policy set to "high", which is de
 - Per hour granularity for a year
 
 However, note that since ``collectd`` is configured to collect metrics only every 10 seconds, there is no metric measurement for each second but every 10 seconds.
+
+.. _configure-collectd:
 
 ________________________
 Configuring ``collectd``

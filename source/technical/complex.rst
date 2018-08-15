@@ -608,6 +608,8 @@ ___________________________
 Advanced Topics
 ___________________________
 
+.. _all-to-all-info-exchange:
+
 All-to-All Information Exchange
 _______________________________
 
