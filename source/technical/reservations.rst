@@ -100,6 +100,22 @@ Fill out the form by specifying the amount of additional time to add to the leas
 .. tip:: 
    If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can submit a ticket on our `help desk <https://www.chameleoncloud.org/user/help/>`_ to request a **one-time exception** of creating a longer lease.
 
+Changing the Number of Nodes of a Lease
+---------------------------------------
+
+It is now possible to change the number of nodes reserved in a lease.
+For advance reservations that haven't yet started, the node count can be increased or decreased.
+For reservations already started, only new nodes can be added.
+
+To change the number of nodes of a lease, click on the *Update Lease* button in *Actions* column.
+
+.. figure:: reservations/updateleasenodecount.png
+   :alt: The Update Lease Parameters dialog, changing the number of reserved nodes
+
+   The Update Lease Parameters dialog, changing the number of reserved nodes
+
+Fill out the form by specifying the new minimum and maximum numbers of hosts. Then, click on the *Update* button to finish your request.
+
 Reserving a Node by UUID
 ________________________
 
