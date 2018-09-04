@@ -168,7 +168,7 @@ Independent Testbed: In this scenario a provider wants to create a testbed that 
 What is in CHI-in-a-box alpha?
 _________________________________________________
 
-CHI-in-a-box (see :ref:`what-chi-in-a-box`) alpha provides an Early Provider version of the Chameleon Associate and Independent Testbed use cases. In both cases, alpha supports only a partial set of functionality that we expect to make available eventually. In particular, the resource discovery services are not yet packaged in this version. 
+CHI-in-a-box alpha provides an Early Provider version of the Chameleon Associate and Independent Testbed use cases. In both cases, alpha supports only a partial set of functionality that we expect to make available eventually. In particular, the resource discovery services are not yet packaged in this version. 
 
 The Chameleon Associate is supported as follows. The Early Provider configures their testbed as an independent cloud (as opposed to Chameleon region which will become supported later), and provides a static web page describing site resources, developed with the assistance of the Chameleon team and linked from the Chameleon web page. During the pre-release period, the Early Provider site provides access only to a small set of selected Chameleon users.
 
