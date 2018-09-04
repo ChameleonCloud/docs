@@ -15,6 +15,8 @@ Frequently Asked Questions
     - :ref:`are-there-limitations`
     - :ref:`how-to-acknowledge`
     - :ref:`what-infrastructures`
+    - :ref:`what-chi-in-a-box`
+    - :ref:`what-chi-in-a-box-alpha`
     
 .. container:: toggle
 
@@ -145,6 +147,35 @@ What infrastructures is Chameleon federated with?
 _________________________________________________
 
 Chameleon supports identity federation with GENI designed to give GENI users immediate access to Chameleon without having to create a Chameleon account or project. GENI users can log in with their GENI credentials and charge their usage to the GENI Federation Project created to provide startup cycles to researchers evaluating Chameleon. To obtain a larger allocation focused on their research needs, GENI users can then go on to create individual Chameleon projects. Chameleon users can also log in to the GENI Experimenter Portal using their Chameleon credentials. When selecting the organization with whom to log in to GENI, search for "Chameleon Cloud" in the list of Identity Providers. You will be redirected to the Chameleon Auth Service to log in and then back to the GENI Experimenter Portal upon successful login.
+
+.. _what-chi-in-a-box:
+What is CHI-in-a-box?
+_________________________________________________
+
+CHI-in-a-box is a packaging of the implementation of the `core services <https://chameleoncloud.readthedocs.io/en/latest/technical/index.html>`_ that together constitute `the Chameleon testbed <https://chi.uc.chameleoncloud.org>`_ for experimental Computer Science research. These services allow Chameleon users to `discover information <https://chameleoncloud.readthedocs.io/en/latest/technical/discovery.html>`_ about Chameleon resources, `allocate those resources <https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html>`_ for present and future use, `configure them <https://chameleoncloud.readthedocs.io/en/latest/technical/baremetal.html>`_ in various ways, and `monitor <https://chameleoncloud.readthedocs.io/en/latest/technical/metrics.html>`_ various types of metrics. 
+
+While a large part of CHI (CHameleon Infrastructure) is based on an open source project (OpenStack), and all the extensions we made are likewise open source, without proper packaging there was no clear recipe on how to combine them and configure a testbed of this type. CHI-in-a-box is composed of the following three components: (a) open source dependencies supported by external projects (e.g., `OpenStack <https://www.openstack.org>`_ and `Grid’5000 <https://www.grid5000.fr>`_), (b) open source extensions made by the Chameleon team, both ones that are scheduled to be integrated into the original project (but have not been yet) and ones that are specific to the testbed, and (c) new code written by the team released under the Apache License 2.0. 
+
+We have identified demand for three types of scenarios in which users would like to use a packaging of Chameleon infrastructure: 
+
+Chameleon Associate: In this scenario a provider wants to add resources to the Chameleon testbed such that they are discoverable and available to all Chameleon users while retaining their own project identity (via branding, usage reports, some of the policies, etc.). This type of provider will provide system administration of their resources (hardware configuration and operation as well as CHI administration with the support of the Chameleon team) and use the Chameleon user services (user/project management, etc.), user portal, resource discovery, and appliance catalog. All user support will be provided by the Chameleon team. 
+
+Chameleon Part-time Associate: This scenario is similar to the Chameleon Associate but while the resources are available to the testbed users most of the time, the provider anticipates that they may want to take them offline for extended periods of time for other uses. In this scenario Chameleon support extends only to the time resources are available to the testbed. 
+
+Independent Testbed: In this scenario a provider wants to create a testbed that is in every way separate from Chameleon. This type of provider will use CHI for the core testbed services only and operate their user services (i.e., manage their own user accounts and/or projects, help desk, mailing lists and other communication channels, etc.), user portal, resource discovery, and appliance catalog (some of those services can in principle be left out at the cost of providing a less friendly interface to users). This scenario will be supported on a best effort basis only. 
+
+.. _what-chi-in-a-box-alpha:
+What is in CHI-in-a-box alpha?
+_________________________________________________
+
+CHI-in-a-box (see :ref:`what-chi-in-a-box`) alpha provides an Early Provider version of the Chameleon Associate and Independent Testbed use cases. In both cases, alpha supports only a partial set of functionality that we expect to make available eventually. In particular, the resource discovery services are not yet packaged in this version. 
+
+The Chameleon Associate is supported as follows. The Early Provider configures their testbed as an independent cloud (as opposed to Chameleon region which will become supported later), and provides a static web page describing site resources, developed with the assistance of the Chameleon team and linked from the Chameleon web page. During the pre-release period, the Early Provider site provides access only to a small set of selected Chameleon users.
+
+The Independent Testbed is supported on an alpha basis but without the discovery services as noted above. 
+
+If you would like to explore becoming an alpha Chameleon Associate site, please contact us at contact@chameleoncloud.org. 
+
 
 .. _faq-project:
 
