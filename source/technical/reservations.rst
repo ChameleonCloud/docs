@@ -51,7 +51,7 @@ Once you have chosen a time period when you want to reserve resources, go back t
    The Create Lease dialog
 
 #. Pick a name for the Lease. The name needs to be unique across your project.
-#. Pick a start and end date and time. If you would like to start your Lease as soon as possible, you may leave these blank and Chameleon will attempt to reserve your nodes to begin immediately with a default Lease duration of 1 day.
+#. Pick a start time and lease duration in days. If you would like to start your Lease as soon as possible, you may leave the start time blank and Chameleon will attempt to reserve your nodes to begin immediately with a default Lease duration of 1 day.
 
    .. note:: 
       If you have not selected a timezone earlier, the default timezone is **UTC**. Therefore, the date must be entered in **UTC**! 
