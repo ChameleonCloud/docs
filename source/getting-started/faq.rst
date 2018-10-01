@@ -7,7 +7,7 @@ Frequently Asked Questions
     .. container:: header
 
         :ref:`faq-general`
-    
+
     - :ref:`what-is-chameleon`
     - :ref:`what-does-chi-mean`
     - :ref:`who-can-use-chameleon`
@@ -17,13 +17,14 @@ Frequently Asked Questions
     - :ref:`what-infrastructures`
     - :ref:`what-chi-in-a-box`
     - :ref:`what-chi-in-a-box-alpha`
-    
+    - :ref:`what-jupyter-notebook`
+
 .. container:: toggle
 
     .. container:: header
 
         :ref:`faq-project`
-    
+
     - :ref:`how-do-i-apply`
     - :ref:`who-is-elligible`
     - :ref:`how-add-users`
@@ -41,13 +42,13 @@ Frequently Asked Questions
     - :ref:`email-already-registered`
     - :ref:`cannot-log-in`
     - :ref:`username-password-unknown`
-    
+
 .. container:: toggle
 
     .. container:: header
 
         :ref:`faq-appliances`
-    
+
     - :ref:`what-is-appliance`
     - :ref:`what-is-catalog`
     - :ref:`how-build-appliance`
@@ -63,7 +64,7 @@ Frequently Asked Questions
     .. container:: header
 
         :ref:`faq-bare-metal`
-    
+
     - :ref:`why-fail-launch`
 
 .. container:: toggle
@@ -71,7 +72,7 @@ Frequently Asked Questions
     .. container:: header
 
         :ref:`faq-kvm-troubleshooting`
-    
+
     - :ref:`why-kvm-fail`
     - :ref:`why-cant-ping`
 
@@ -80,7 +81,7 @@ Frequently Asked Questions
     .. container:: header
 
         :ref:`faq-ssh`
-    
+
     - :ref:`create-ssh`
     - :ref:`why-fail-ssh`
 
@@ -120,7 +121,7 @@ ________________________________________________
 
 In order to promote fairness to all users, we have the following set of Best Practices for using Chameleon bare metal partitions:
 
-- Think Small for Development: If you are just developing or prototyping a system, and not yet running experiments at scale, use only as many nodes as you actually need (e.g., many projects can be developed and tested on 3-4 nodes), and try to take short reservations (e.g., for a work day or two when you actually develop). Always release the reservation if you will not use the testbed for an extended period of time (e.g., when you leave for the weekend or holidays). 
+- Think Small for Development: If you are just developing or prototyping a system, and not yet running experiments at scale, use only as many nodes as you actually need (e.g., many projects can be developed and tested on 3-4 nodes), and try to take short reservations (e.g., for a work day or two when you actually develop). Always release the reservation if you will not use the testbed for an extended period of time (e.g., when you leave for the weekend or holidays).
 - Automation is your Friend: You can always snapshot your work/images between sessions using :ref:`cc-snapshot <cc-snapshot-utility>` to simplify the redeployment of your environment during the next work session. You can also use scripting and environment customization to make it easier to redeploy images. An additional benefit of automation is that it makes it easier for you to reproduce your work and eventually share it with colleagues within your lab and other collaborators.
 - Think Big for Experimentation: Once you are ready to experiment you will want to test your experimental setup on increasingly larger scales. This is possible by taking an advance reservation for many resources for a relatively short time. The more resources you need, the more likely it is that you will need to run experiments at a less attractive time (e.g., during the weekend) — here’s where automation will also help. In justified cases, we will support reserving even the whole bare metal testbed.
 
@@ -149,33 +150,41 @@ _________________________________________________
 Chameleon supports identity federation with GENI designed to give GENI users immediate access to Chameleon without having to create a Chameleon account or project. GENI users can log in with their GENI credentials and charge their usage to the GENI Federation Project created to provide startup cycles to researchers evaluating Chameleon. To obtain a larger allocation focused on their research needs, GENI users can then go on to create individual Chameleon projects. Chameleon users can also log in to the GENI Experimenter Portal using their Chameleon credentials. When selecting the organization with whom to log in to GENI, search for "Chameleon Cloud" in the list of Identity Providers. You will be redirected to the Chameleon Auth Service to log in and then back to the GENI Experimenter Portal upon successful login.
 
 .. _what-chi-in-a-box:
+
 What is CHI-in-a-box?
 _________________________________________________
 
-CHI-in-a-box is a packaging of the implementation of the core services that together constitute `the Chameleon testbed <https://chi.uc.chameleoncloud.org>`_ for experimental Computer Science research. These services allow Chameleon users to `discover information <https://chameleoncloud.readthedocs.io/en/latest/technical/discovery.html>`_ about Chameleon resources, `allocate those resources <https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html>`_ for present and future use, `configure them <https://chameleoncloud.readthedocs.io/en/latest/technical/baremetal.html>`_ in various ways, and `monitor <https://chameleoncloud.readthedocs.io/en/latest/technical/metrics.html>`_ various types of metrics. 
+CHI-in-a-box is a packaging of the implementation of the core services that together constitute `the Chameleon testbed <https://chi.uc.chameleoncloud.org>`_ for experimental Computer Science research. These services allow Chameleon users to `discover information <https://chameleoncloud.readthedocs.io/en/latest/technical/discovery.html>`_ about Chameleon resources, `allocate those resources <https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html>`_ for present and future use, `configure them <https://chameleoncloud.readthedocs.io/en/latest/technical/baremetal.html>`_ in various ways, and `monitor <https://chameleoncloud.readthedocs.io/en/latest/technical/metrics.html>`_ various types of metrics.
 
-While a large part of CHI (CHameleon Infrastructure) is based on an open source project (OpenStack), and all the extensions we made are likewise open source, without proper packaging there was no clear recipe on how to combine them and configure a testbed of this type. CHI-in-a-box is composed of the following three components: (a) open source dependencies supported by external projects (e.g., `OpenStack <https://www.openstack.org>`_ and `Grid’5000 <https://www.grid5000.fr>`_), (b) open source extensions made by the Chameleon team, both ones that are scheduled to be integrated into the original project (but have not been yet) and ones that are specific to the testbed, and (c) new code written by the team released under the Apache License 2.0. 
+While a large part of CHI (CHameleon Infrastructure) is based on an open source project (OpenStack), and all the extensions we made are likewise open source, without proper packaging there was no clear recipe on how to combine them and configure a testbed of this type. CHI-in-a-box is composed of the following three components: (a) open source dependencies supported by external projects (e.g., `OpenStack <https://www.openstack.org>`_ and `Grid’5000 <https://www.grid5000.fr>`_), (b) open source extensions made by the Chameleon team, both ones that are scheduled to be integrated into the original project (but have not been yet) and ones that are specific to the testbed, and (c) new code written by the team released under the Apache License 2.0.
 
-We have identified demand for three types of scenarios in which users would like to use a packaging of Chameleon infrastructure: 
+We have identified demand for three types of scenarios in which users would like to use a packaging of Chameleon infrastructure:
 
-Chameleon Associate: In this scenario a provider wants to add resources to the Chameleon testbed such that they are discoverable and available to all Chameleon users while retaining their own project identity (via branding, usage reports, some of the policies, etc.). This type of provider will provide system administration of their resources (hardware configuration and operation as well as CHI administration with the support of the Chameleon team) and use the Chameleon user services (user/project management, etc.), user portal, resource discovery, and appliance catalog. All user support will be provided by the Chameleon team. 
+Chameleon Associate: In this scenario a provider wants to add resources to the Chameleon testbed such that they are discoverable and available to all Chameleon users while retaining their own project identity (via branding, usage reports, some of the policies, etc.). This type of provider will provide system administration of their resources (hardware configuration and operation as well as CHI administration with the support of the Chameleon team) and use the Chameleon user services (user/project management, etc.), user portal, resource discovery, and appliance catalog. All user support will be provided by the Chameleon team.
 
-Chameleon Part-time Associate: This scenario is similar to the Chameleon Associate but while the resources are available to the testbed users most of the time, the provider anticipates that they may want to take them offline for extended periods of time for other uses. In this scenario Chameleon support extends only to the time resources are available to the testbed. 
+Chameleon Part-time Associate: This scenario is similar to the Chameleon Associate but while the resources are available to the testbed users most of the time, the provider anticipates that they may want to take them offline for extended periods of time for other uses. In this scenario Chameleon support extends only to the time resources are available to the testbed.
 
-Independent Testbed: In this scenario a provider wants to create a testbed that is in every way separate from Chameleon. This type of provider will use CHI for the core testbed services only and operate their user services (i.e., manage their own user accounts and/or projects, help desk, mailing lists and other communication channels, etc.), user portal, resource discovery, and appliance catalog (some of those services can in principle be left out at the cost of providing a less friendly interface to users). This scenario will be supported on a best effort basis only. 
+Independent Testbed: In this scenario a provider wants to create a testbed that is in every way separate from Chameleon. This type of provider will use CHI for the core testbed services only and operate their user services (i.e., manage their own user accounts and/or projects, help desk, mailing lists and other communication channels, etc.), user portal, resource discovery, and appliance catalog (some of those services can in principle be left out at the cost of providing a less friendly interface to users). This scenario will be supported on a best effort basis only.
 
 .. _what-chi-in-a-box-alpha:
+
 What is in CHI-in-a-box alpha?
 _________________________________________________
 
-CHI-in-a-box alpha provides an Early Provider version of the Chameleon Associate and Independent Testbed use cases. In both cases, alpha supports only a partial set of functionality that we expect to make available eventually. In particular, the resource discovery services are not yet packaged in this version. 
+CHI-in-a-box alpha provides an Early Provider version of the Chameleon Associate and Independent Testbed use cases. In both cases, alpha supports only a partial set of functionality that we expect to make available eventually. In particular, the resource discovery services are not yet packaged in this version.
 
 The Chameleon Associate is supported as follows. The Early Provider configures their testbed as an independent cloud (as opposed to Chameleon region which will become supported later), and provides a static web page describing site resources, developed with the assistance of the Chameleon team and linked from the Chameleon web page. During the pre-release period, the Early Provider site provides access only to a small set of selected Chameleon users.
 
-The Independent Testbed is supported on an alpha basis but without the discovery services as noted above. 
+The Independent Testbed is supported on an alpha basis but without the discovery services as noted above.
 
-If you would like to explore becoming an alpha Chameleon Associate site, please contact us at contact@chameleoncloud.org. 
+If you would like to explore becoming an alpha Chameleon Associate site, please contact us at contact@chameleoncloud.org.
 
+.. _what-jupyter-notebook:
+
+What is a Jupyter Notebook?
+___________________________
+
+Developed by `Project Jupyter <https://jupyter.org/>`_, the Jupyter Notebook is an open-source web application where you can create rich documents that marry code, data, documentation, and visualization. Jupyter Notebooks are used in many fields for the collection and analysis of data, and we are now seeing explorations of their use in the research sphere. All Chameleon users can get their own Jupyter Notebook server provisioned automatically by going to the `Chameleon JupyterHub <https://jupyter.chameleoncloud.org>`_ server and logging in with their Chameleon credentials. Chameleon Notebook servers come pre-installed with some convenience libraries to make it easier to interact with the Chameleon testbed. See the :ref:`Jupyter Notebook <jupyter-notebook>` documentation for more details.
 
 .. _faq-project:
 
@@ -394,19 +403,19 @@ You can move images between sites by using the :ref:`command line interface <cli
 #. Download the image from the source site to local
 
    .. code-block:: shell
-   
+
        openstack --os-region-name <source_site [CHI@TACC or CHI@UC]> image save <image_name> --file <filename>
-       
+
 #. Upload the image to the target site from local
 
    .. code-block:: shell
-   
+
        openstack --os-region-name <target_site [CHI@TACC or CHI@UC]> image create --file <filename> --disk-format <format> <image_name>
-       
+
    You can get ``disk-format`` from the output of the following command:
-   
+
    .. code-block:: shell
-       
+
        openstack --os-region-name <source_site [CHI@TACC or CHI@UC]> image show <image_name>
 
 
@@ -546,7 +555,5 @@ At this time, the public key has been created and copied. Now you can now follow
 How to fix "REMOTE HOST IDENTIFICATION HAS CHANGED"
 ___________________________________________________________________
 
-The warning message is the result of reassigning a floating IP to a new instance, and is a normal security precaution built into SSH. 
+The warning message is the result of reassigning a floating IP to a new instance, and is a normal security precaution built into SSH.
 To learn how to address this issue, please see :ref:`connecting-via-ssh`.
-
-
