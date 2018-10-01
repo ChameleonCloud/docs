@@ -24,12 +24,13 @@ Welcome to Chameleon Cloud Documentation's documentation!
    technical/project
    technical/gui
    technical/cli
+   technical/jupyter
    technical/discovery
    technical/reservations
    technical/baremetal
    technical/images
    technical/metrics
-   technical/complex 
+   technical/complex
    technical/swift
    technical/networks
    technical/fpga
