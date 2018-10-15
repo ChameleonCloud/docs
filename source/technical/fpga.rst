@@ -11,10 +11,6 @@ Four nodes are located at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_. Eac
 One node is located at `CHI@UC <https://chi.uc.chameleoncloud.org>`_. The node is fitted with a `Terasic DE5a-Net board <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_ with an `Altera Arria 10 GX 1150 FPGA <https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=231&No=970>`_ (up to 1.5 TFlops), 4 GB DDR3 on-card memory, and four QSFP 10/40 GbE support.
 All FPGA nodes are configured to run OpenCL code, but they can be reconfigured (by a request to our `help desk <https://www.chameleoncloud.org/user/help/>`_) to run compiled designs prepared with Altera Quartus.
 
-.. important::
-   The following tutorials only apply to the FPGA nodes at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_.
-   For now, users of the UC FPGA node should compile their OpenCL codes on their workstation with a Quartus installation using their own license before uploading to the FPGA node -- in the future, we will make the compiler available on the FPGA build node.
-
 Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes. Briefly, the steps for building an FPGA application are:
 
 - Setup Multi-Factor Authentication for TACC Resources by following `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_
@@ -26,7 +22,7 @@ ____________
 Development
 ____________
 
-Chameleon provides a build system that includes the necessary `Altera SDK for OpenCL <https://www.altera.com/products/design-software/embedded-software-developers/opencl/overview.html>`_ tools for developing kernels for use on the `Nallatech 385A cards <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_, using the Altera Arria 10 FPGA.
+Chameleon provides a build system that includes the necessary `Altera SDK for OpenCL <https://www.altera.com/products/design-software/embedded-software-developers/opencl/overview.html>`_ tools for developing kernels for use on the `Nallatech 385A cards <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ and the `Terasic DE5a-Net card <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_, both using the Altera Arria 10 FPGA.
 
 Due to licensing requirements, you must apply for access to the FPGA build system. Submit a ticket through our help system to request access.
 
@@ -43,12 +39,38 @@ Two directories will be extracted: ``common`` and ``hello_world``. Change into t
 .. code-block:: bash
 
    cd hello_world
+   
+Prior to compiling, load the Quartus environment configuration for either the Nallatech or Terasic board.
 
-Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using ``-march=emulator`` in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required, and correctly identifies the FPGA boards available on Chameleon. Do not alter this parameter. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
+Nallatech:
+
+.. code-block:: bash
+
+   module load nallatech
+
+Terasic:
+
+.. code-block:: bash
+
+   module load terasic
+
+.. important::
+   The host code contains the function ``findPlatform(Altera)``, which searches for the "Altera" platform name. This configuration is correct for Nallatech boards, but when compiling for the Terasic board it should be instructed to search for "Intel(R) FPGA". `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made by editing ``../hello_world/host/src/main.cpp``:
+    ``findPlatform(Intel(R) FPGA)``
+
+Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using ``-march=emulator`` in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required for the Nallatech board, and the ``-board=de5a_net_e1`` parameter is required for the Terasic board. These correctly identify the FPGA boards available on Chameleon. Do not alter these parameters or their syntax. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
+
+Nallatech:
 
 .. code-block:: bash
 
    aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx -march=emulator
+   
+Terasic:
+
+.. code-block:: bash
+
+   aoc -board=de5a_net_e1 device/hello_world.cl -o bin/hello_world.aocx -march=emulator
 
 Build the host application, which is used to execute the OpenCL kernel.
 
@@ -58,15 +80,31 @@ Build the host application, which is used to execute the OpenCL kernel.
 
 Now run the emulated kernel.
 
+Nallatech:
+
 .. code-block:: bash
 
    env CL_CONTEXT_EMULATOR_DEVICE_ALTERA=1 ./bin/host
+   
+Terasic:
 
-When debugging is complete, and the code is ready to be compiled for the FPGA hardware, remove the emulation flag. This may take several hours to complete, so we recommend you run it inside a terminal multiplexer, such as screen or tmux which are both installed on the build node.
+.. code-block:: bash
+
+   env CL_CONTEXT_EMULATOR_DEVICE_INTELFPGA=1 ./bin/host
+
+When debugging is complete and the code is ready to be compiled for the FPGA hardware, remove the emulation flag. This may take several hours to complete, so we recommend you run it inside a terminal multiplexer, such as screen or tmux which are both installed on the build node.
+
+Nallatech:
 
 .. code-block:: bash
 
    aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx
+   
+Terasic:
+
+.. code-block:: bash
+
+   aoc -board=de5a_net_e1 device/hello_world.cl -o bin/hello_world.aocx
 
 _________
 Execution
@@ -92,7 +130,7 @@ Compile the host application, if necessary.
 
    make
 
-Program FPGA with the OpenCL kernel, using ``aocl0`` as the device name.
+Program FPGA with the OpenCL kernel, using ``acl0`` as the device name.
 
 .. code-block:: bash
 
