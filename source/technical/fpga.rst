@@ -92,7 +92,7 @@ Terasic:
 
    env CL_CONTEXT_EMULATOR_DEVICE_INTELFPGA=1 ./bin/host
 
-When debugging is complete, and the code is ready to be compiled for the FPGA hardware, remove the emulation flag. This may take several hours to complete, so we recommend you run it inside a terminal multiplexer, such as screen or tmux which are both installed on the build node.
+When debugging is complete and the code is ready to be compiled for the FPGA hardware, remove the emulation flag. This may take several hours to complete, so we recommend you run it inside a terminal multiplexer, such as screen or tmux which are both installed on the build node.
 
 Nallatech:
 
