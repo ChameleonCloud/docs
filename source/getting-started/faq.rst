@@ -13,6 +13,8 @@ Frequently Asked Questions
     - :ref:`who-can-use-chameleon`
     - :ref:`what-are-best-practices`
     - :ref:`are-there-limitations`
+    - :ref:`extend-lease`
+    - :ref:`lease-limit-exceptions`
     - :ref:`how-to-acknowledge`
     - :ref:`what-infrastructures`
     - :ref:`what-chi-in-a-box`
@@ -135,6 +137,20 @@ We have two types of limitations, introduced to promote fair resource usage to a
 
 - Allocation: Chameleon projects are limited to a per-project allocation currently set to 20,000 service units for 6 months. Allocations can be renewed or extended. See the :ref:`project management <project-management>` documentation for more details on Chameleon allocations.
 - Lease: To ensure fairness to all users, resource reservations (leases) are limited to a duration of 7 days. However, an active lease within 48 hours of its end time can be prolonged by up to 7 days from the moment of request if resources are available. To prolong a lease, click on the “Update Lease” button in the Reservations panel of the CHI OpenStack dashboard, and enter the additional duration requested in the “Prolong for” boxes. If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can `contact Chameleon staff via the ticketing system <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to request a one-time exception to create a longer lease.
+
+.. _extend-lease:
+
+How can I extend a Chameleon lease?
+________________________________________________
+
+An active Chameleon lease within 48 hours of its end time can be prolonged by up to 7 days from the moment of request if resources are available. To prolong a lease, click on the “Update Lease” button in the Reservations panel of the CHI OpenStack dashboard, and enter the additional duration requested in the “Prolong for” boxes. If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users.
+
+.. _lease-limit-exceptions:
+
+What if I need a lease that is longer than the limitation (i.e., 7 days)?
+________________________________________________
+
+If you know from the start that your lease has will require more than a week and cannot be broken into two or more 7 day leases because of the nature of the experiment, you can `contact Chameleon staff via the ticketing system <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to request a one-time exception to create a longer lease.
 
 .. _how-to-acknowledge:
 
