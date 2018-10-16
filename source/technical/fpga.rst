@@ -22,7 +22,7 @@ ____________
 Development
 ____________
 
-Chameleon provides a build system that includes the necessary `Altera SDK for OpenCL <https://www.altera.com/products/design-software/embedded-software-developers/opencl/overview.html>`_ tools for developing kernels for use on the `Nallatech 385A cards <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_, as well as the `Terasic DE5a-Net cards <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_, both using the Altera Arria 10 FPGA.
+Chameleon provides a build system that includes the necessary `Altera SDK for OpenCL <https://www.altera.com/products/design-software/embedded-software-developers/opencl/overview.html>`_ tools for developing kernels for use on the `Nallatech 385A cards <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_, as well as the `Terasic DE5a-Net card <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_, both using the Altera Arria 10 FPGA.
 
 Due to licensing requirements, you must apply for access to the FPGA build system. Submit a ticket through our help system to request access.
 
@@ -40,7 +40,7 @@ Two directories will be extracted: ``common`` and ``hello_world``. Change into t
 
    cd hello_world
    
-Since the Quartus software versions used to compile for the Nallatech and Terasic boards are different, both are installed and the right environment must be loaded prior to compiling.
+Prior to compiling, load the Quartus environment configuration for either the Nallatech or Terasic board.
 
 Nallatech:
 
@@ -64,7 +64,7 @@ Nallatech:
    
 Terasic:
 
-As this version of hello_world was developed for use with Altera software, the host code contains a function ``findPlatform()`` which searches for ``Altera``. When compiling for the Terasic board, this function should instead be instructed to look for``Intel(R) FPGA``. This change can be made in ``../host/src/main.cpp``.
+The ``hello_world`` host code contains a function ``findPlatform()`` which searches for the ``Altera`` platform name. When compiling for the Terasic board, this function should be instructed to search for ``Intel(R) FPGA``. `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made in ``../hello_world/host/src/main.cpp``.
 
 .. code-block:: bash
 
