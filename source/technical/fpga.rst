@@ -22,7 +22,7 @@ ____________
 Development
 ____________
 
-Chameleon provides a build system that includes the necessary `Altera SDK for OpenCL <https://www.altera.com/products/design-software/embedded-software-developers/opencl/overview.html>`_ tools for developing kernels for use on the `Nallatech 385A cards <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_, as well as the `Terasic DE5a-Net card <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_, both using the Altera Arria 10 FPGA.
+Chameleon provides a build system that includes the necessary `Altera SDK for OpenCL <https://www.altera.com/products/design-software/embedded-software-developers/opencl/overview.html>`_ tools for developing kernels for use on the `Nallatech 385A cards <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ and the `Terasic DE5a-Net card <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_, both using the Altera Arria 10 FPGA.
 
 Due to licensing requirements, you must apply for access to the FPGA build system. Submit a ticket through our help system to request access.
 
@@ -54,13 +54,13 @@ Terasic:
 
    module load terasic
 
-The ``hello_world`` host code contains a function ``findPlatform()`` which searches for the ``Altera`` platform name. This configuration is correct for Nallatech boards. When compiling for the Terasic board, this function should be instructed to search for ``Intel(R) FPGA``. `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made by editing ``../hello_world/host/src/main.cpp``.
-
-.. code-block:: bash
+.. important::
+   The ``hello_world`` host code contains a function ``findPlatform()`` which searches for the ``Altera`` platform name. This configuration is correct for Nallatech boards, but when compiling for the Terasic board it should be instructed to search for ``Intel(R) FPGA``. `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made by editing ``../hello_world/host/src/main.cpp``.
+   .. code-block:: bash
 
    findPlatform(Intel(R) FPGA)
 
-Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using ``-march=emulator`` in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required for the Nallatech board, and the ``-board=de5a_net_e1`` parameter is required for the Terasic board. These correctly identify the FPGA boards available on Chameleon. Do not alter these parameters. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
+Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using ``-march=emulator`` in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required for the Nallatech board, and the ``-board=de5a_net_e1`` parameter is required for the Terasic board. These correctly identify the FPGA boards available on Chameleon. Do not alter these parameters or their syntax. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
 
 Nallatech:
 
@@ -132,7 +132,7 @@ Compile the host application, if necessary.
 
    make
 
-Program FPGA with the OpenCL kernel, using ``aocl0`` as the device name.
+Program FPGA with the OpenCL kernel, using ``acl0`` as the device name.
 
 .. code-block:: bash
 
