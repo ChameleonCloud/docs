@@ -15,7 +15,7 @@ Step 1: Create a Chameleon account
 
 You will first need to `create a user account <https://www.chameleoncloud.org/register>`_.
 
-This includes agreeing to the `Chameleon terms and conditions <https://www.chameleoncloud.org/terms/view/site-terms/1.00/>`_ which, among others, ask you to acknowledge the use of Chameleon in your publications. As part of creating an account you may request PI status, which means that you will be able to create and lead Chameleon projects. PI status is typically available to faculty members or research scientists at a scientific institution. 
+This includes agreeing to the `Chameleon terms and conditions <https://www.chameleoncloud.org/terms/view/site-terms/1.00/>`_ which, among others, ask you to acknowledge the use of Chameleon in your publications. As part of creating an account you may request PI status, which means that you will be able to create and lead Chameleon projects. PI status is typically available to faculty members or research scientists at a scientific institution.
 
 .. role:: redbold
 
@@ -81,6 +81,8 @@ First, we need to reserve a node for our use. Chameleon provides bare-metal acce
 The reservation will start shortly, at which point you can launch an instance on a bare-metal node.
 
 .. note:: You have created an "on demand" reservation. When you do not specify a start date or time in the future, the reservation will start as soon as possible and will last one day.
+
+.. important:: Do not attempt to stack reservations to circumvent the 7-day lease limitation. Your leases may be deleted. Please refer to our `best practices <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=best%20practices#what-are-the-best-practices-for-chameleon-usage>`_ if you require a longer reservation.
 
 Launching an Instance
 =====================
@@ -156,7 +158,7 @@ Your instance may take approximately ten minutes to launch. The launch process i
    .. figure:: associate_ip.png
       :alt: You have now allocated a floating IP
 
-      You have now allocated a floating IP address 
+      You have now allocated a floating IP address
 
 #. Click the *Associate* button and make note of the public IP address that has been associated to your instance.
 
