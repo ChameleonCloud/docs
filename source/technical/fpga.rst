@@ -54,6 +54,12 @@ Terasic:
 
    module load terasic
 
+The ``hello_world`` host code contains a function ``findPlatform()`` which searches for the ``Altera`` platform name. This configuration is correct for Nallatech boards. When compiling for the Terasic board, this function should be instructed to search for ``Intel(R) FPGA``. `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made by editing ``../hello_world/host/src/main.cpp``.
+
+.. code-block:: bash
+
+   findPlatform(Intel(R) FPGA)
+
 Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using ``-march=emulator`` in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required for the Nallatech board, and the ``-board=de5a_net_e1`` parameter is required for the Terasic board. These correctly identify the FPGA boards available on Chameleon. Do not alter these parameters. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
 
 Nallatech:
@@ -63,8 +69,6 @@ Nallatech:
    aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx -march=emulator
    
 Terasic:
-
-The ``hello_world`` host code contains a function ``findPlatform()`` which searches for the ``Altera`` platform name. When compiling for the Terasic board, this function should be instructed to search for ``Intel(R) FPGA``. `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made in ``../hello_world/host/src/main.cpp``.
 
 .. code-block:: bash
 
