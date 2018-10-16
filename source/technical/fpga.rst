@@ -56,7 +56,7 @@ Terasic:
 
 .. important::
    The ``hello_world`` host code contains a function ``findPlatform()`` which searches for the ``Altera`` platform name. This configuration is correct for Nallatech boards, but when compiling for the Terasic board it should be instructed to search for ``Intel(R) FPGA``. `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made by editing ``../hello_world/host/src/main.cpp``.
-   .. code-block:: bash
+.. code-block:: bash
 
    findPlatform(Intel(R) FPGA)
 
