@@ -34,4 +34,5 @@ Welcome to Chameleon Cloud Documentation's documentation!
    technical/swift
    technical/networks
    technical/fpga
+   technical/ep
    technical/kvm
