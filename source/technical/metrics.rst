@@ -20,6 +20,8 @@ In addition to :ref:`cli-installing`, you must also install the Gnocchi client p
    
 Then, set up your environment for OpenStack command line usage, as described in :ref:`cli-rc-script`.
 
+.. _retrieve-metric:
+
 Retrieving Metrics
 __________________
 
