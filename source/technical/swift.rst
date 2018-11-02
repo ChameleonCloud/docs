@@ -1,3 +1,4 @@
+.. _object-store:
 ===========================
 Object Store
 ===========================
@@ -214,7 +215,7 @@ Before mount, create a ``~/.cloudfuse`` file with the following content:
    region=<regionname> # CHI@TACC or CHI@UC
    authurl=https://chi.tacc.chameleoncloud.org:5000/v2.0
 
-Replace ``username`` and ``password`` with your Chameleon username and password; replace ``projectname`` with your Chameleon project name; and replace ``regionname`` with the regional endpoint to use. 
+Replace ``username`` and ``password`` with your Chameleon username and password; replace ``projectname`` with your Chameleon project name; and replace ``regionname`` with the regional endpoint to use.
 
 Then mount with the following command:
 
