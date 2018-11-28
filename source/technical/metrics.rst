@@ -182,20 +182,28 @@ The ``collectd`` configured to send measurements by batch to minimize network tr
    sudo systemctl stop collectd && sudo systemctl disable collectd
 
 _____________________________________________
-Power Consumption Metrics for Low Power Nodes
+Metrics for Low Power Nodes
 _____________________________________________
 
-In addition to the system and power consumption metrics described above, Chameleon automatically collects power usage data on all low power nodes in the system. Instantaneous power usage data (in watts) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off. Low power nodes for which power usage data are now being collected include all Intel Atoms, low power Xeons, and ARM64s.
+Chameleon automatically collects power usage and temperature data on all low power nodes in the system. Instantaneous power usage data (in watts) and temperature readings (in Celsius) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off.  Low power nodes for which this data are now being collected include all Intel Atoms, low power Xeons, and ARM64s.
 
-As with the system metrics, retrieving the power consumption metrics for a low power node requires the OpenStack CLI and Gnocchi client plugin (see installation instructions `Setting up the Gnocchi CLI`_ above). Retrieve the power usage metrics using the following command:
+.. attention::
+    Temperature metrics are currently collected from the CPU sensor on each node. These temperature readings are only reported while the node is powered on.
+
+As with the system metrics, retrieving these automatically collected metrics for a low power node requires the OpenStack CLI and Gnocchi client plugin (see installation instructions `Setting up the Gnocchi CLI`_ above). Retrieve the power usage metrics using the following command:
 
 .. code-block:: bash
 
    $ openstack metric measures show power --resource-id=<node_uuid> --refresh
 
+To retrieve tempeture readings:
+
+.. code-block:: bash
+
+   $ openstack metric measures show temperature_cpu --resource-id=<node_uuid> --refresh
 
 .. tip::
-   The node UUID and the instance UUID are different. You can get a node's UUID for a reservation from the Horizon GUI (https://chi.tacc.chameleoncloud.org for TACC reservations, https://chi.uc.chameleoncloud.org for UC reservations). Click on your lease name from within the list of leases on the Leases subtab within the Reservations tab. The node UUID is at the very bottom under the ``Nodes`` section.
+   The node UUID and the instance UUID are different. You can get a node's UUID for a reservation from the Horizon GUI (https://chi.tacc.chameleoncloud.org for TACC reservations, https://chi.uc.chameleoncloud.org for UC reservations).  Click on your lease name from within the list of leases on the Leases subtab within the Reservations tab. The node UUID is at the very bottom under the ``Nodes`` section.  You can also find an individual instance node UUID on the instance details page.  Click on your instance name on the Instances tab and see ``Physical Host Name``
 
 For example, issuing the following command:
 
@@ -231,26 +239,32 @@ returns the following power results for node with id ``05dd5e25-440f-4492-b3b8-9
     | 2018-05-07T08:20:43-05:00 |         1.0 |              3.847 |
     +---------------------------+-------------+--------------------+
 
-To retrieve power metrics for a specific time interval, pass the ``start`` and ``stop`` parameters; for example:
+To retrieve a metric for a specific time interval, pass the ``start`` and ``stop`` parameters; for example:
 
 .. code::
 
-    $ openstack metric measures show power --start 2018-05-06T12:35:00 --stop 2018-05-06T12:40:00 --resource-id=05dd5e25-440f-4492-b3b8-9d39af83b8bc --refresh
+    $ openstack metric measures show temperature_cpu --start 2018-11-27T02:00:00 --stop 2018-11-27T03:00:00 --resource-id=f3f47a67-d805-48d4-9584-f0143ae976cf --refresh
 
-returns:
+returns:  
 
 .. code::
 
-    +---------------------------+-------------+--------------------+
-    | timestamp                 | granularity |              value |
-    +---------------------------+-------------+--------------------+
-    | 2018-05-06T12:00:00-05:00 |      3600.0 | 3.6863040935672484 |
-    | 2018-05-06T12:35:00-05:00 |        60.0 | 3.5833333333333335 |
-    | 2018-05-06T12:36:00-05:00 |        60.0 | 3.6870000000000003 |
-    | 2018-05-06T12:37:00-05:00 |        60.0 | 3.5309999999999997 |
-    | 2018-05-06T12:38:00-05:00 |        60.0 |              3.537 |
-    | 2018-05-06T12:39:00-05:00 |        60.0 |              3.692 |
-    +---------------------------+-------------+--------------------+
+    +---------------------------+-------------+---------------+
+    | timestamp                 | granularity |         value |
+    +---------------------------+-------------+---------------+
+    | 2018-11-27T02:00:00-06:00 |       300.0 |          61.0 |
+    | 2018-11-27T02:05:00-06:00 |       300.0 |          61.0 |
+    | 2018-11-27T02:10:00-06:00 |       300.0 |          61.0 |
+    | 2018-11-27T02:15:00-06:00 |       300.0 |          61.0 |
+    | 2018-11-27T02:20:00-06:00 |       300.0 |          58.6 |
+    | 2018-11-27T02:25:00-06:00 |       300.0 | 56.5333333333 |
+    | 2018-11-27T02:30:00-06:00 |       300.0 |          56.0 |
+    | 2018-11-27T02:35:00-06:00 |       300.0 |          56.0 |
+    | 2018-11-27T02:40:00-06:00 |       300.0 |          56.0 |
+    | 2018-11-27T02:45:00-06:00 |       300.0 |          56.0 |
+    | 2018-11-27T02:50:00-06:00 |       300.0 |          56.0 |
+    | 2018-11-27T02:55:00-06:00 |       300.0 |          56.0 |
+    +---------------------------+-------------+---------------+
 
 _________________________________________________________
 Energy and Power Consumption Measurement with ``etrace2``
