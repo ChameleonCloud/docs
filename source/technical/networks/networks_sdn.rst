@@ -130,7 +130,9 @@ Example CLI command used to create the network:
 Port Mapping
 ____________
 
-You will likely need your OpenFlow controller to know which of its ports connects to which of your Chameleon nodes. The uplink port will always match the segmentation ID (VLAN ID) of the network.  The UC site uses a mapping with the UUID of the Chameleon node mapped to the following OpenFlow ports (TACC will soon be updated with a similar static mapping): 
+You will likely need your OpenFlow controller to know which of its ports connects to which of your Chameleon nodes. The uplink port(s) will always match the segmentation ID (VLAN ID) of the network.
+
+The UC site uses a mapping with the UUID of the Chameleon node mapped to the following OpenFlow ports:
 
 .. code::
 
@@ -205,6 +207,47 @@ You will likely need your OpenFlow controller to know which of its ports connect
    8c7b8067-cfa4-49b4-9812-778e78631bf8      10162
    219a58dd-a3b2-4c4f-8517-ab72bc82c741      10163
    03129bbe-330c-4591-bc17-96d7e15d3e74      10164
+
+The TACC site uses a mapping with the UUID of the Chameleon node mapped to the following OpenFlow ports:
+
+.. code::
+
+   # Skylake Nodes on Rack-1
+   # Node                                    OpenFlow Port
+   # UUID                                    Number on the VFC
+   
+   63aea74f-4e42-4f3e-b9b6-c5c473a911fa     10101
+   c8b533e3-2576-4129-90cd-6485dcc85d98     10102
+   8343783f-5429-405e-bc8f-dbfbacc7d1c8     10103
+   9e14111e-2a0c-4cd1-a7c2-b2496a54600a     10104
+   11b0e303-34ee-4da1-afbf-a9ed5263d1fa     10105
+   af9af518-b4c8-4b8f-a80c-a0181a471cee     10106
+   6cccbf68-e772-495d-b60b-46430f3d8884     10107
+   f14b4bca-5db5-4285-87d4-06c849e557b3     10108
+   0ddb2370-cfd4-4396-baf7-7edade40c10d     10109
+   4d49141f-4234-4731-88ca-57e0e0fcb56f     10110
+   7a0678ff-f11e-44c5-9187-2123207209be     10111
+   93b959f3-d668-49cf-a322-d4aac516b46b     10112
+   1bed26c8-642c-4277-b2a3-cda4a8343628     10113
+   618ce8d2-4514-419d-b461-5935a4abd0a7     10114
+   9bd4b3b1-3d39-4b60-950c-8685ad7e7008     10115
+   b0fd7e7a-fec1-4d6e-9f41-94263a5b8267     10116
+   43643723-8142-4b69-8a18-58f4e041c367     10117
+   7571a78a-342f-41ef-816d-cfdb0476c748     10118
+   fad519dd-a0b0-43d2-aef4-c30cd25209f4     10119
+   1ee5e615-2714-4166-82c5-b9b276e09186     10120
+   8b60e999-fd22-4521-8b3a-ae02e79af873     10121
+   1985e4d5-2c16-444e-889d-e92b4b30bfd8     10122
+   9515fa6a-de4b-45b7-a98f-89d8b8831873     10123
+   0b0bceb9-14bf-423e-890f-3ef187511d71     10124
+   2a0aa343-ec4e-4683-aa7d-d28fd2d5c3d0     10125
+   43e67651-3d33-413e-8f77-19f752d99803     10126
+   06b164d5-3514-4ebe-8928-0bd2f9508b80     10127
+   1e2e7689-527a-4608-a91c-287ccfb90b0a     10128
+   58c30415-4421-4247-867c-4199a4ff9eb9     10129
+   e5ab8372-050e-44af-95a4-cc3ed7963cb7     10130
+   9d05db81-05e5-441b-9462-1e17d86e1a6b     10131
+   f59f3140-57a0-4452-98dc-edfbb53f07e1     10132
 
 
 Controllers for Corsa DP2000 series switches
