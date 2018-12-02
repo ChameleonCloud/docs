@@ -249,6 +249,49 @@ The TACC site uses a mapping with the UUID of the Chameleon node mapped to the f
    9d05db81-05e5-441b-9462-1e17d86e1a6b     10131
    f59f3140-57a0-4452-98dc-edfbb53f07e1     10132
 
+Corsa DP2000 Virtual Forwarding Contexts for Isolated Networks
+_______________________________________________________________
+
+Virtual Forwarding Contexts (VFC) are native abstractions used by the Corsa DP2000 switches for virtual OpenFlow Switches. Users can create VFCs by creating isolated networks on Chameleon via CLI. 
+
+In this section, actual rack and switch layout of Skylake Nodes and Corsa DP2000 switches for both Chameleon sites is represented in the following figures. Also, example isolated networks with different controller options are shown along with associated VFCs and tunnels from Skylake Nodes are shown.
+
+Users are able to specify an external OpenFlow controller and can assign a name to their VFCs. If an external controller is not specified, VFC is controlled by the OpenFlow controller (Learning Bridge Application) running on the switch.  
+
+1. Create an isolated network without an external OpenFlow controller and a VFC name:
+
+.. code-block:: bash
+
+   openstack network create --provider-network-type vlan --provider-physical-network exogeni 
+   sdn-network-1
+
+2. Create an isolated network with an external OpenFlow controller and without a VFC name:
+
+.. code-block:: bash
+
+   openstack network create --provider-network-type vlan --provider-physical-network exogeni
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port> sdn-network-2
+
+3. Create an isolated network with an external OpenFlow controller and give a name to the VFC:
+
+.. code-block:: bash
+
+   openstack network create --provider-network-type vlan --provider-physical-network exogeni
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName> 
+   sdn-network-3
+
+A named VFC will be created for the isolated network. Subsequent isolated networks that are created with the same VFC name specification will be attached to the same VFC. (Current implementation lets the user specify only one OpenFlow controller to the VFCs. Also, subsequent isolated network creation commands should include the exactly the same "--description". 
+
+.. code-block:: bash
+
+   openstack network create --provider-network-type vlan --provider-physical-network exogeni
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName> 
+   sdn-network-4
+
+.. figure:: networks/corsa-network-vfc-layout-uc.png
+
+.. figure:: networks/corsa-network-vfc-layout-tacc.png
+
 
 Controllers for Corsa DP2000 series switches
 ____________________________________________
