@@ -33,13 +33,11 @@ BYOC is part of the expanded deployment for Chameleon's phase 2. It enables tena
 
 .. Important:: OpenFlow capabilities are only available on the Skylake nodes. These are the only nodes that are attached to the Corsa DP2000 series switches.
 
-Specifying an OpenFlow controller for your private network is just a special case of creating a private network.  Before proceeding you should become familiar with using regular private VLANs on Chameleon and be able to create your own private VLANs. Background information can be found in the document covering Reconfigurable Networking.
+Specifying an OpenFlow controller for your private network is just a special case of creating a private network. Before proceeding you should become familiar with using regular private VLANs on Chameleon and be able to create your own private VLANs. Background information can be found in the document covering Reconfigurable Networking.
 
 Alert: Currently it is not possible to specify an OpenFlow controller using the Horizon portal.  However, OpenFlow networks with tenant owned controllers can be created using Heat templates which integrate the instructions below.
 
-Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the "--description" field as shown below. Creating the subnet and router is the same as any other Chameleon network.
-
-.. Important:: For now, the OpenFlow functionality at UC is restricted to ExoGENI stitchable VLANs only. OpenFlow is available for all VLANs at the TACC site.
+Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the "--description" field as shown below. Creating the subnet and router is the same as any other Chameleon network. 
 
 .. code-block:: bash
 
@@ -47,7 +45,6 @@ Using the CLI, an external OpenFlow controller (IP and port) can be specified on
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port> <network_name>
 
 The output should look like the following:
-
 
 .. code::
 
@@ -127,10 +124,12 @@ Example CLI command used to create the network:
    | updated_at                | 2018-05-23T14:38:18Z                 |
    +---------------------------+--------------------------------------+
 
+At this point your OpenFlow network switch will have been created and connected to the OpenFlow at the IP/Port that you sepcified.  Using your controller you can explore the OpenFlow switch. There should be only one port on the swtich with is the uplink that connects to the OpenStack services and, optionally, any externally stitched networks such as ExoGENI. The uplink port ID will be the segmentation ID (VLAN ID) of the network shown in the Chameleon portal.  When nodes are created and connected to your network ports will be added to your OpenFlow swtich.  Each compute node will always have the same port ID on the switch.  The mapping of port IDs to compute nodes is in the following section.
+
 Port Mapping
 ____________
 
-You will likely need your OpenFlow controller to know which of its ports connects to which of your Chameleon nodes. The uplink port(s) will always match the segmentation ID (VLAN ID) of the network.
+You will likely need your OpenFlow controller to know which of its ports connects to which of your Chameleon nodes. The uplink port will always match the segmentation ID (VLAN ID) of the network.
 
 The UC site uses a mapping with the UUID of the Chameleon node mapped to the following OpenFlow ports:
 
@@ -249,10 +248,10 @@ The TACC site uses a mapping with the UUID of the Chameleon node mapped to the f
    9d05db81-05e5-441b-9462-1e17d86e1a6b     10131
    f59f3140-57a0-4452-98dc-edfbb53f07e1     10132
 
-Corsa DP2000 Virtual Forwarding Contexts for Isolated Networks
-_______________________________________________________________
+Corsa DP2000 Virtual Forwarding Contexts: Network Layout and Advanced Features
+______________________________________________________________________________
 
-Virtual Forwarding Contexts (VFC) are native abstractions used by the Corsa DP2000 switches for virtual OpenFlow Switches. Users can create VFCs by creating isolated networks on Chameleon via CLI. 
+Virtual Forwarding Contexts (VFC) are the native OpenFlow abstraction used by the Corsa DP2000 series switches. Each VFC can be thought of as a virtual OpenFlow switch.  Chameleon users can create VFCs by creating isolated networks on Chameleon via CLI or using complex appliaces.
 
 In this section, actual rack and switch layout of Skylake Nodes and Corsa DP2000 switches for both Chameleon sites is represented in the following figures. Also, example isolated networks with different controller options are shown along with associated VFCs and tunnels from Skylake Nodes are shown.
 
@@ -262,29 +261,29 @@ Users are able to specify an external OpenFlow controller and can assign a name 
 
 .. code-block:: bash
 
-   openstack network create --provider-network-type vlan --provider-physical-network exogeni 
+   openstack network create --provider-network-type vlan --provider-physical-network physnet1 
    sdn-network-1
 
 2. Create an isolated network with an external OpenFlow controller and without a VFC name:
 
 .. code-block:: bash
 
-   openstack network create --provider-network-type vlan --provider-physical-network exogeni
+   openstack network create --provider-network-type vlan --provider-physical-network physnet1
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port> sdn-network-2
 
 3. Create an isolated network with an external OpenFlow controller and give a name to the VFC:
 
 .. code-block:: bash
 
-   openstack network create --provider-network-type vlan --provider-physical-network exogeni
+   openstack network create --provider-network-type vlan --provider-physical-network physnet1
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName> 
    sdn-network-3
 
-A named VFC will be created for the isolated network. Subsequent isolated networks that are created with the same VFC name specification will be attached to the same VFC. (Current implementation lets the user specify only one OpenFlow controller to the VFCs. Also, subsequent isolated network creation commands should include the exactly the same "--description". 
+A named VFC will be created for the isolated network. Subsequent isolated networks that are created with the same VFC name specification will be attached to the same VFC. Current implementation lets the user specify only one OpenFlow controller to the VFCs. Also, subsequent isolated network creation commands should include the exactly the same "--description". 
 
 .. code-block:: bash
 
-   openstack network create --provider-network-type vlan --provider-physical-network exogeni
+   openstack network create --provider-network-type vlan --provider-physical-network physnet1
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName> 
    sdn-network-4
 
