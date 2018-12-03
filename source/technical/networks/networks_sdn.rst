@@ -292,6 +292,7 @@ A named VFC will be created for the isolated network. Subsequent isolated networ
 
 .. figure:: networks/corsa-network-vfc-layout-uc.png
 
+
 5. Skylake Nodes at TACC:
    CHI@TACC has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section. 
 
