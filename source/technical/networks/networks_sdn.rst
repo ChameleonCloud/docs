@@ -294,7 +294,7 @@ A named VFC will be created for the isolated network. Subsequent isolated networ
 
 
 5. Skylake Nodes at TACC:
-   `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ site has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section. 
+   `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section. 
 
 .. figure:: networks/corsa-network-vfc-layout-tacc.png
 
