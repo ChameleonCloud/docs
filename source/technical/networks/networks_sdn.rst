@@ -288,13 +288,13 @@ A named VFC will be created for the isolated network. Subsequent isolated networ
    sdn-network-4
 
 4. Skylake Nodes at UC: 
-   CHI@UC has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the ports on the VFCs as described in "Port Mapping" section.  
+   `CHI@UC <https://chi.uc.chameleoncloud.org>`_ has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the ports on the VFCs as described in "Port Mapping" section.  
 
 .. figure:: networks/corsa-network-vfc-layout-uc.png
 
 
 5. Skylake Nodes at TACC:
-   CHI@TACC has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section. 
+   `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ site has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section. 
 
 .. figure:: networks/corsa-network-vfc-layout-tacc.png
 
