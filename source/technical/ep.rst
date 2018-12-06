@@ -394,6 +394,8 @@ However, you can tune the pagination by specifying the following parameters:
 
    To show all, set page size to a negative value. If page size is negative, ``page`` parameter will be ignored. Negative value for ``page`` is not allowed. 
 
+.. _ep-filters:
+
 _____________________
 Filters
 _____________________
