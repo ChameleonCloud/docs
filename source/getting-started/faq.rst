@@ -86,6 +86,15 @@ Frequently Asked Questions
 
     - :ref:`create-ssh`
     - :ref:`why-fail-ssh`
+    
+.. container:: toggle
+
+    .. container:: header
+
+        :ref:`faq-experiment-precis`
+
+    - :ref:`what-is-experiment-precis`
+    - :ref:`how-to-get-experiment-precis`
 
 |
 
@@ -574,3 +583,29 @@ ___________________________________________________________________
 
 The warning message is the result of reassigning a floating IP to a new instance, and is a normal security precaution built into SSH.
 To learn how to address this issue, please see :ref:`connecting-via-ssh`.
+
+.. _faq-experiment-precis:
+
+_____________________________
+Experiment Precis
+_____________________________
+
+.. _what-is-experiment-precis:
+
+What is Experiment Precis?
+____________________________
+
+Just like the Linux ``history`` command that you use for figuring out what you did to solve a problem, the Chameleon testbed provides a similar functionality to help you record your experiment setups on Chameleon, so that it becomes easier for you to make your experiment reproducible.
+Experiment Precis, as its name implies, is a summary of your Chameleon experiment. 
+An Experiment Precis includes summaries of events like creating leases and instances and setting up networks, hardware information, and monitoring information collected from Gnocchi. 
+With Experiment Precis, you can understand, analyze or even replay your experiment on Chameleon. You can read more in the :ref:`experiment-precis` documentation. 
+
+.. _how-to-get-experiment-precis:
+
+How can I get the Experiment Precis of a specific experiment?
+_______________________________________________________________
+
+It is easy to print your Experiment Precis with the `CEP Client`. 
+To learn more about the `CEP Client` and the Experiment Precis service, please read the :ref:`experiment-precis` documentation.
+
+
