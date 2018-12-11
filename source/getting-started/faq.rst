@@ -12,6 +12,7 @@ Frequently Asked Questions
     - :ref:`what-does-chi-mean`
     - :ref:`who-can-use-chameleon`
     - :ref:`what-are-best-practices`
+    - :ref:`how-ref-chameleon`
     - :ref:`are-there-limitations`
     - :ref:`extend-lease`
     - :ref:`lease-limit-exceptions`
@@ -136,6 +137,37 @@ In order to promote fairness to all users, we have the following set of Best Pra
 - Always release the reservation if you will not use the testbed for an extended period of time. For example, when you leave for the weekend, holidays, or simply need to take a break from experimentation and analyze your experiment, the resources could be used by others.
 - Automate creating your experimental environment. You can use scripting or some of the tools we provide that let you save your appliances/images between sessions (`cc-snapshot <https://chameleoncloud.readthedocs.io/en/latest/technical/images.html?highlight=cc-snapshot#the-cc-snapshot-utility>`_) or to orchestrate the deployment of complex environments (`Complex Appliances <https://chameleoncloud.readthedocs.io/en/latest/technical/complex.html>`_) – if you need more ideas read our article on `How to Make the Most of your Seven Day Lease <https://www.chameleoncloud.org/blog/2018/03/01/how-make-most-your-seven-day-lease/>`_. This will make reestablishing your experiment in a new lease easier and also makes it easier for you to reproduce your work and eventually share it with colleagues.
 - Please do not try to circumvent the one week lease restriction by “stacking leases”, i.e., creating multiple consecutive leases on the same resource. Experience has shown that long leases are rarely used 100% of the time and other users could be using the resource when you are not. Bear in mind that you can always `extend a lease <https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html#extending-a-lease>`_ if the resource is available, or `request a special lease <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=extend#what-if-i-need-a-lease-that-is-longer-than-the-limitation-i-e-7-days>`_ in justified cases.
+
+.. _how-ref-chameleon:
+
+How should I reference Chameleon?
+____________________________________
+
+If you use Chameleon in a publication, we would appreciate citations and the best reference for Chameleon is:
+
+Chameleon: a Scalable Production Testbed for Computer Science Research, 
+K. Keahey, P. Riteau, D. Stanzione, T. Cockerill, J. Mambretti, P. Rad, P. Ruth, 
+book chapter in "`Contemporary High Performance Computing: From Petascale toward Exascale, Volume 3 <https://www.crcpress.com/Contemporary-High-Performance-Computing-From-Petascale-toward-Exascale/Vetter/p/book/9781138487079>`_", 
+Jeffrey Vetter ed., 2018 
+
+BibTex entry:
+
+.. code:: 
+
+   @incollection{incollection,
+        author       = {Kate Keahey and Pierre Riteau and Dan Stanzione and Tim Cockerill 
+                        and Joe Mambretti and Paul Rad and Paul Ruth}, 
+        title        = {Chameleon: a Scalable Production Testbed for Computer Science Research},
+        booktitle    = {Contemporary High Performance Computing: From Petascale toward Exascale},
+        publisher    = {CRC Press},
+        year         = 2018,
+        editor       = {Jeffrey Vetter},
+        volume       = 3,
+        series       = {Chapman & Hall/CRC Computational Science},
+        chapter      = 5,
+        address      = {Boca Raton, FL},
+        edition      = 1
+   }
 
 .. _are-there-limitations:
 
