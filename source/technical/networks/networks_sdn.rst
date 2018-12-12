@@ -37,7 +37,7 @@ Specifying an OpenFlow controller for your private network is just a special cas
 
 Alert: Currently it is not possible to specify an OpenFlow controller using the Horizon portal.  However, OpenFlow networks with tenant owned controllers can be created using Heat templates which integrate the instructions below.
 
-Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the "--description" field as shown below. Creating the subnet and router is the same as any other Chameleon network. 
+Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the ``--description`` field as shown below. Creating the subnet and router is the same as any other Chameleon network.
 
 .. code-block:: bash
 
@@ -279,7 +279,7 @@ Users are able to specify an external OpenFlow controller and can assign a name 
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName> 
    sdn-network-3
 
-A named VFC will be created for the isolated network. Subsequent isolated networks that are created with the same VFC name specification will be attached to the same VFC. Current implementation lets the user specify only one OpenFlow controller to the VFCs. Also, subsequent isolated network creation commands should include the exactly the same "--description". 
+A named VFC will be created for the isolated network. Subsequent isolated networks that are created with the same VFC name specification will be attached to the same VFC. Current implementation lets the user specify only one OpenFlow controller to the VFCs. Also, subsequent isolated network creation commands should include the exactly the same ``--description``.
 
 .. code-block:: bash
 
