@@ -174,7 +174,7 @@ ______________________________________________________________
    A "stitchable" VLAN tag will be returned and "Physical Network" will appear as "Exogeni" on the dashboard.
    This step will be executed the same way on both UC and TACC sites. 
 
-2. After having stitchable isolated networks on UC and TACC sites, a request should be sent to the Help Desk `Help Desk ticket submission page <https://www.chameleoncloud.org/user/help/ticket/new/guest/>`_ for creation of AL2S circuits. 
+2. After having stitchable isolated networks on UC and TACC sites, a request should be sent to the `Help Desk ticket submission page <https://www.chameleoncloud.org/user/help/ticket/new/guest/>`_ for creation of AL2S circuits. 
 In the request, following information should be specified:
 - Information for the network at UC (Project ID, name of the network, ID of the network)
 - Information for the network at TACC (Project ID, name of the network, ID of the network)
