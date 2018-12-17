@@ -157,8 +157,7 @@ At this point, a layer-2 circuit is created on AL2S. The user-configured network
 
 To obtain an account to access AL2S OESS portal, users should contact Internet2. Information can be found from the links below:
 
-- `AL2S Participants <https://www.internet2.edu/products-services/advanced-networks/layer-2-services/al2s-participants/>`_
+- `AL2S Participants <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/al2s-participants/>`_
 - `AL2S Layer 2 Service Workgroups <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-participate>`_
 - `AL2S FAQ <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-faq>`_
-- `Using OESS <https://docs.globalnoc.iu.edu/sdn/oess/using-oess.html#Multipoint%20Static%20MAC%20Addresses>`_
-
+- `Using OESS <https://docs.globalnoc.iu.edu/sdn/oess/using-oess.html>`_
