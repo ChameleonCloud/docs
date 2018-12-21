@@ -84,13 +84,13 @@ Example CLI command used to create the network:
 
 .. code-block:: bash
 
-   [root@admin02 ~]# NET="exogeni-3294"
-   [root@admin02 ~]# PHYSICAL_NETWORK_TENANT="exogeni"
-   [root@admin02 ~]# NET_TYPE="vlan"
-   [root@admin02 ~]# NET_NAME="${PHYSICAL_NETWORK_TENANT}-${NET}"
-   [root@admin02 ~]# OF_CONTROLLER_IP="162.250.136.46"
-   [root@admin02 ~]# OF_CONTROLLER_PORT="6653"
-   [root@admin02 ~]# openstack network create --provider-network-type ${NET_TYPE} \
+   $ NET="exogeni-3294"
+   $ PHYSICAL_NETWORK_TENANT="exogeni"
+   $ NET_TYPE="vlan"
+   $ NET_NAME="${PHYSICAL_NETWORK_TENANT}-${NET}"
+   $ OF_CONTROLLER_IP="162.250.136.46"
+   $ OF_CONTROLLER_PORT="6653"
+   $ openstack network create --provider-network-type ${NET_TYPE} \
    >                          --provider-physical-network ${PHYSICAL_NETWORK_TENANT} \
    >                          --description OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT} \
    >                          ${NET_NAME}
