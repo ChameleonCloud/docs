@@ -25,7 +25,8 @@ In this documentation, we will describe how to stitch to the ExoGENI testbed:
 
    openstack network create --provider-physical-network exogeni <network_name>
 
-
+.. note::
+   If you made a reservation for a stitchable VLAN segment, the network will have been created automatically.
 
 Connecting Chameleon to ExoGENI
 _______________________________
