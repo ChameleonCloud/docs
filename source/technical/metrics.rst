@@ -182,25 +182,25 @@ The ``collectd`` configured to send measurements by batch to minimize network tr
    sudo systemctl stop collectd && sudo systemctl disable collectd
 
 _____________________________________________
-Metrics for Low Power Nodes
+Metrics for Bare-Metal Nodes
 _____________________________________________
 
-Chameleon automatically collects power usage and temperature data on all low power nodes in the system. Instantaneous power usage data (in watts) and temperature readings (in Celsius) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off.  Low power nodes for which this data are now being collected include all Intel Atoms, low power Xeons, and ARM64s.
+Chameleon automatically collects power usage and temperature data on all nodes in the system. Instantaneous power usage data (in watts) and temperature readings (in Celsius) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off. 
 
 .. attention::
     Temperature metrics are currently collected from the CPU sensor on each node. These temperature readings are only reported while the node is powered on.
 
-As with the system metrics, retrieving these automatically collected metrics for a low power node requires the OpenStack CLI and Gnocchi client plugin (see installation instructions `Setting up the Gnocchi CLI`_ above). Retrieve the power usage metrics using the following command:
+As with the system metrics, retrieving these automatically collected metrics for a node requires the OpenStack CLI and Gnocchi client plugin (see installation instructions `Setting up the Gnocchi CLI`_ above). To get a list of metrics available for a node, use this command:
 
 .. code-block:: bash
 
-   $ openstack metric measures show power --resource-id=<node_uuid> --refresh
+   $ openstack metric resource show <node_uuid>
 
-To retrieve tempeture readings:
+To retrieve a specifc reading:
 
 .. code-block:: bash
 
-   $ openstack metric measures show temperature_cpu --resource-id=<node_uuid> --refresh
+   $ openstack metric measures show <reading-name> --resource-id=<node_uuid> --refresh
 
 .. tip::
    The node UUID and the instance UUID are different. You can get a node's UUID for a reservation from the Horizon GUI (https://chi.tacc.chameleoncloud.org for TACC reservations, https://chi.uc.chameleoncloud.org for UC reservations).  Click on your lease name from within the list of leases on the Leases subtab within the Reservations tab. The node UUID is at the very bottom under the ``Nodes`` section.  You can also find an individual instance node UUID on the instance details page.  Click on your instance name on the Instances tab and see ``Physical Host Name``
@@ -265,7 +265,6 @@ returns:
     | 2018-11-27T02:50:00-06:00 |       300.0 |          56.0 |
     | 2018-11-27T02:55:00-06:00 |       300.0 |          56.0 |
     +---------------------------+-------------+---------------+
-
 _________________________________________________________
 Energy and Power Consumption Measurement with ``etrace2``
 _________________________________________________________
@@ -321,3 +320,4 @@ Note the following caveats:
 - Monitoring periods larger than 10-15 minutes may be inaccurate due to RAPL registers overflowing if they're not read regularly.
 
 This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.
+
