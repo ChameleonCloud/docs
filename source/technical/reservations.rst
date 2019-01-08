@@ -385,3 +385,9 @@ Chameleon :ref:`sdn` features.
 .. code-block:: bash
 
    blazar lease-create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+
+While separate leases can be created to reserve nodes and VLAN segments, it is also possible to combine multiple reservations within a single lease. The following example creates a lease reserving one Haswell compute node and one VLAN segment:
+
+.. code-block:: bash
+
+   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease
