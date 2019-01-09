@@ -12,6 +12,8 @@ Unlike virtual resources on a regular on-demand cloud, physical resources on Cha
 
 Chameleon resources are reserved via `Blazar <https://docs.openstack.org/blazar/latest/>`_ (previously known as *Climate*) which provides Reservation as a Service for OpenStack.
 
+Two main types of resources can be reserved: physical hosts and network segments (VLANs).
+
 ___________________________________________________
 Provisioning and Managing Resources Using the GUI
 ___________________________________________________
@@ -38,10 +40,13 @@ To discover when resources are available, access the lease calendar by clicking 
 .. tip::
    The nodes are identified by their *UUIDs*. The colors are used to indicate different reservations, i.e. the nodes that belong to the same reservation are colored the same. Hovering over the chart provides the details about the reservation. To change the display time frame, click on ``1d``, ``1w``, and ``1m`` buttons or fill in the start and end times.
 
+.. note::
+   Network segments (VLANs) are not yet displayed on the lease calendar.
+
 .. _reservations-create-lease-gui:
 
-Creating a Lease
-________________
+Creating a Lease to Reserve Physical Hosts
+__________________________________________
 
 Once you have chosen a time period when you want to reserve resources, go back to the *Leases* screen and click on the *Create Lease* button. It should bring up the window displayed below:
 
@@ -53,9 +58,9 @@ Once you have chosen a time period when you want to reserve resources, go back t
 #. Pick a name for the Lease. The name needs to be unique across your project.
 #. Pick a start time and lease duration in days. If you would like to start your Lease as soon as possible, you may leave the start time blank and Chameleon will attempt to reserve your nodes to begin immediately with a default Lease duration of 1 day.
 
-   .. note:: 
-      If you have not selected a timezone earlier, the default timezone is **UTC**. Therefore, the date must be entered in **UTC**! 
-      
+   .. note::
+      If you have not selected a timezone earlier, the default timezone is **UTC**. Therefore, the date must be entered in **UTC**!
+
    .. tip:: You can get the UTC time by running ``date -u`` in your terminal.
 
 #. Choose the minimum and maximum number of hosts. The default is 1 node.
@@ -71,7 +76,7 @@ Once created, the lease details will be displayed. At the bottom of the page are
    :alt: Lease details page
 
    Lease details page
-   
+
 Once the start time of the lease is reached, the lease will be started and its reservation will change to ``Active``; you may need to refresh the page to see the updates.
 
 .. tip:: The lease is identified by a *UUID*. You may find it useful when using the CLI or submitting tickets on our `help desk <https://www.chameleoncloud.org/user/help/>`_.
@@ -80,10 +85,10 @@ Once the start time of the lease is reached, the lease will be started and its r
 
 .. _lease-policy:
 
-.. attention:: 
+.. attention::
    To ensure fairness to all users, resource reservations (leases) are limited to a duration of :redbold:`7 days`. However, an active lease within :redbold:`48 hours` of its end time can be prolonged by :redbold:`up to 7 days` from the moment of request if resources are available.
-   
-   Chameleon will send an email reminder to you 48 hours before your lease ends. If your lease duration is less than 48 hours, Chameleon will send you an email right after your lease is created. You can :ref:`disable the email notification by using the command line <disable-blazar-notification>`. 
+
+   Chameleon will send an email reminder to you 48 hours before your lease ends. If your lease duration is less than 48 hours, Chameleon will send you an email right after your lease is created. You can :ref:`disable the email notification by using the command line <disable-blazar-notification>`.
 
 Extending a Lease
 _________________
@@ -97,7 +102,7 @@ To prolong a lease, click on the *Update Lease* button in *Actions* column.
 
 Fill out the form by specifying the amount of additional time to add to the lease. Then, click on the *Update* button to finish your request.
 
-.. tip:: 
+.. tip::
    If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can submit a ticket on our `help desk <https://www.chameleoncloud.org/user/help/>`_ to request a **one-time exception** of creating a longer lease.
 
 Changing the Number of Nodes of a Lease
@@ -128,6 +133,44 @@ You may reserve a specific node by providing its *UUID*. To learn more about how
 
 .. _reservations-extend-lease-gui:
 
+Creating a Lease to Reserve a VLAN Segment
+__________________________________________
+
+On the *Create Lease* window, start filling the form as if reserving physical
+nodes: pick a name, start time, and lease duration. Then:
+
+#. Change the *Resource Type* field to *Network*.  The control to configure the
+   number of hosts will disappear and be replaced by a field to enter the
+   network name.
+
+#. Enter a name for the Neutron network which will be created by Blazar on the
+   reserved VLAN segment.
+
+#. Remove any resource properties.
+
+   .. note:: In the future the controls for *Resource Properties* will be improved to show only those relevant to VLANs.
+
+#. Click on the *Create* button.
+
+Once created, the lease details will be displayed. At the bottom of the page
+are the details about the reservation. Initially the reservation is in the
+``Pending`` status, and stays in this state until it reaches the start time.
+
+.. figure:: reservations/leasedetails_vlan.png
+   :alt: Lease details page for a VLAN reservation
+
+   Lease details page for a VLAN reservation
+
+Once the start time of the lease is reached, the lease will be started and its
+reservation will change to ``Active``; you may need to refresh the page to see
+the updates.
+
+At this stage, Blazar will create a new Neutron network using the reserved VLAN
+segment and the name entered in the form. You can then use Horizon to create a
+subnet, attach a router, and launch instances using the Neutron network created
+by Blazar.
+
+.. note:: When a VLAN segment reservation ends, all Neutron resources attached to the network will be automatically deleted. Bare-metal instances using the network will lose network connectivity.
 
 .. _reservation-cli:
 
@@ -150,12 +193,18 @@ To reserve specific nodes, based on their identifier or their resource specifica
 
 .. note:: We need to install version 1.1.1 or greater to support multi-region clouds.
 
+To reserve VLAN segments, you must use a Chameleon fork of the Blazar client:
+
+.. code-block:: bash
+
+   pip install -e git+https://github.com/ChameleonCloud/python-blazarclient.git@allocatable-vlans#egg=python-blazarclient
+
 Before using *Blazar Client*, You must configure the environment variables for your project via ``source`` :ref:`the OpenStack RC Script <cli-rc-script>` or use the CLI switches every time you run the commands. Type ``blazar`` in your terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in the *Shell Mode*.
 
 .. note:: ``blazar`` is previously known as ``climate``. In Chameleon, ``blazar`` and ``climate`` are used interchangeably, but they have the same functionality.
 
-Creating a Lease
-________________
+Creating a Lease to Reserve Physical Hosts
+__________________________________________
 
 To create a lease, use the ``lease-create`` command. The following arguments are required:
 
@@ -177,15 +226,15 @@ Instead of specifying the node type, you may also reserve a specific node by pro
    blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
 
 .. _disable-blazar-notification:
-.. attention:: 
+.. attention::
    To specify a ``before_end`` action, simply add ``before_end=<action_type>`` to ``physical-reservation`` parameter. For example:
-   
+
    .. code-block:: bash
 
       blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
-   
-   Currently supported ``before_end`` action types include 
-   
+
+   Currently supported ``before_end`` action types include
+
    +-----------------+-------------------------------------------------------------------------------+
    | **Action Type** | **Description**                                                               |
    +-----------------+-------------------------------------------------------------------------------+
@@ -195,16 +244,16 @@ Instead of specifying the node type, you may also reserve a specific node by pro
    +-----------------+-------------------------------------------------------------------------------+
    |    ``''``       | Do nothing                                                                    |
    +-----------------+-------------------------------------------------------------------------------+
-      
-   The default ``before_end`` action is set to ``email``. To disable the email notification, set ``before_end=''``. 
-    
+
+   The default ``before_end`` action is set to ``email``. To disable the email notification, set ``before_end=''``.
+
 
 Actually, you may use any resource property that is in the resource registry to reserve the nodes. To see the list of properties of nodes, first get the full list of nodes with the command:
 
 .. code-block:: bash
 
    blazar host-list
-   
+
 The output should look like:
 
 .. code-block:: text
@@ -271,7 +320,7 @@ To extend your lease, use ``lease-update`` command, and provide time duration vi
 .. code-block:: bash
 
    blazar lease-update --prolong-for "1d" my-first-lease
-   
+
 Chameleon Node Types
 _____________________
 
@@ -306,3 +355,39 @@ The following node types are reservable on Chameleon.
 +--------------------------+------------------------------------------------------------------------------+
 | ARM64 nodes              | ``arm64``                                                                    |
 +--------------------------+------------------------------------------------------------------------------+
+
+.. _reservation-cli-vlan:
+
+Creating a Lease to Reserve a VLAN Segment
+__________________________________________
+
+To create a lease, use the ``lease-create`` command. The following arguments are required:
+
+- ``--reservation`` with the ``resource_type``, ``network_name`` attributes
+- ``--start-date`` in ``"YYYY-MM-DD HH:MM"`` format
+- ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
+- A lease name
+
+An optional attribute ``network_description`` can be added to the ``--reservation`` argument.
+
+For example, the following command will create a lease with the name of
+``my-first-vlan-lease`` and the network name ``my-network`` that starts on June
+17th, 2015 at 4:00pm and ends on June 17th, 2015 at 6:00pm:
+
+.. code-block:: bash
+
+   blazar lease-create --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+
+Adding the ``network_description`` attribute provides its value as the
+description field when creating the Neutron network, allowing to leverage
+Chameleon :ref:`sdn` features.
+
+.. code-block:: bash
+
+   blazar lease-create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+
+While separate leases can be created to reserve nodes and VLAN segments, it is also possible to combine multiple reservations within a single lease. The following example creates a lease reserving one Haswell compute node and one VLAN segment:
+
+.. code-block:: bash
+
+   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease

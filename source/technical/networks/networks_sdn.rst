@@ -44,6 +44,9 @@ Using the CLI, an external OpenFlow controller (IP and port) can be specified on
    openstack network create --provider-network-type vlan --provider-physical-network exogeni
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port> <network_name>
 
+.. note::
+   To reserve a stitchable VLAN segment and use it for OpenFlow, you must use the Blazar CLI. See :ref:`reservation-cli-vlan`.
+
 The output should look like the following:
 
 .. code::
