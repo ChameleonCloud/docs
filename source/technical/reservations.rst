@@ -53,9 +53,9 @@ Once you have chosen a time period when you want to reserve resources, go back t
 #. Pick a name for the Lease. The name needs to be unique across your project.
 #. Pick a start time and lease duration in days. If you would like to start your Lease as soon as possible, you may leave the start time blank and Chameleon will attempt to reserve your nodes to begin immediately with a default Lease duration of 1 day.
 
-   .. note:: 
-      If you have not selected a timezone earlier, the default timezone is **UTC**. Therefore, the date must be entered in **UTC**! 
-      
+   .. note::
+      If you have not selected a timezone earlier, the default timezone is **UTC**. Therefore, the date must be entered in **UTC**!
+
    .. tip:: You can get the UTC time by running ``date -u`` in your terminal.
 
 #. Choose the minimum and maximum number of hosts. The default is 1 node.
@@ -67,11 +67,13 @@ Once you have chosen a time period when you want to reserve resources, go back t
 
 Once created, the lease details will be displayed. At the bottom of the page are the details about the reservation. Initially the reservation is in the ``Pending`` status, and stays in this state until it reaches the start time.
 
+    .. tip:: If you want Blazar to launch an instances or complex appliance as soon as the lease starts, read the ``Advanced Reservation Orchestration`` section our :doc:`complex` documentation.
+
 .. figure:: reservations/leasedetails.png
    :alt: Lease details page
 
    Lease details page
-   
+
 Once the start time of the lease is reached, the lease will be started and its reservation will change to ``Active``; you may need to refresh the page to see the updates.
 
 .. tip:: The lease is identified by a *UUID*. You may find it useful when using the CLI or submitting tickets on our `help desk <https://www.chameleoncloud.org/user/help/>`_.
@@ -80,10 +82,10 @@ Once the start time of the lease is reached, the lease will be started and its r
 
 .. _lease-policy:
 
-.. attention:: 
+.. attention::
    To ensure fairness to all users, resource reservations (leases) are limited to a duration of :redbold:`7 days`. However, an active lease within :redbold:`48 hours` of its end time can be prolonged by :redbold:`up to 7 days` from the moment of request if resources are available.
-   
-   Chameleon will send an email reminder to you 48 hours before your lease ends. If your lease duration is less than 48 hours, Chameleon will send you an email right after your lease is created. You can :ref:`disable the email notification by using the command line <disable-blazar-notification>`. 
+
+   Chameleon will send an email reminder to you 48 hours before your lease ends. If your lease duration is less than 48 hours, Chameleon will send you an email right after your lease is created. You can :ref:`disable the email notification by using the command line <disable-blazar-notification>`.
 
 Extending a Lease
 _________________
@@ -97,7 +99,7 @@ To prolong a lease, click on the *Update Lease* button in *Actions* column.
 
 Fill out the form by specifying the amount of additional time to add to the lease. Then, click on the *Update* button to finish your request.
 
-.. tip:: 
+.. tip::
    If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can submit a ticket on our `help desk <https://www.chameleoncloud.org/user/help/>`_ to request a **one-time exception** of creating a longer lease.
 
 Changing the Number of Nodes of a Lease
@@ -177,15 +179,15 @@ Instead of specifying the node type, you may also reserve a specific node by pro
    blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
 
 .. _disable-blazar-notification:
-.. attention:: 
+.. attention::
    To specify a ``before_end`` action, simply add ``before_end=<action_type>`` to ``physical-reservation`` parameter. For example:
-   
+
    .. code-block:: bash
 
       blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-custom-lease
-   
-   Currently supported ``before_end`` action types include 
-   
+
+   Currently supported ``before_end`` action types include
+
    +-----------------+-------------------------------------------------------------------------------+
    | **Action Type** | **Description**                                                               |
    +-----------------+-------------------------------------------------------------------------------+
@@ -195,16 +197,16 @@ Instead of specifying the node type, you may also reserve a specific node by pro
    +-----------------+-------------------------------------------------------------------------------+
    |    ``''``       | Do nothing                                                                    |
    +-----------------+-------------------------------------------------------------------------------+
-      
-   The default ``before_end`` action is set to ``email``. To disable the email notification, set ``before_end=''``. 
-    
+
+   The default ``before_end`` action is set to ``email``. To disable the email notification, set ``before_end=''``.
+
 
 Actually, you may use any resource property that is in the resource registry to reserve the nodes. To see the list of properties of nodes, first get the full list of nodes with the command:
 
 .. code-block:: bash
 
    blazar host-list
-   
+
 The output should look like:
 
 .. code-block:: text
@@ -271,7 +273,7 @@ To extend your lease, use ``lease-update`` command, and provide time duration vi
 .. code-block:: bash
 
    blazar lease-update --prolong-for "1d" my-first-lease
-   
+
 Chameleon Node Types
 _____________________
 
