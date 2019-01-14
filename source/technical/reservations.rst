@@ -72,6 +72,8 @@ Once you have chosen a time period when you want to reserve resources, go back t
 
 Once created, the lease details will be displayed. At the bottom of the page are the details about the reservation. Initially the reservation is in the ``Pending`` status, and stays in this state until it reaches the start time.
 
+    .. tip:: If you want Blazar to launch an instances or complex appliance as soon as the lease starts, read the ``Advanced Reservation Orchestration`` section our :doc:`complex` documentation.
+
 .. figure:: reservations/leasedetails.png
    :alt: Lease details page
 
