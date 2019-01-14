@@ -754,12 +754,12 @@ _______________________________
 On Chameleon you can configure a Heat Stack to launch as soon as your lease begins. Whether your experiments require a large cluster or a single node, orchestrating an advanced reservation is can save you time configuring your environment or provide a blueprint for your experiment that will run automatically
 when the necessary resources become available.
 
-At present, you will need to use our customized versions the Heat and Blazar CLI tools to implement this feature. We are currently working to provide support for this functionality through the GUI.
+At present, you will need to use our customized versions of the Heat and Blazar CLI tools to implement this feature. We are currently working to provide support for this functionality through the GUI.
 
 Install Custom CLI
 ~~~~~~~~~~~
 
-Clone the Chameleon repositories for ``python-heatclient`` and ``python-blazarclient``. You can then simply run ``python setup.py install`` in the repo folder to override the your existing python client packages if they are already installed. Links and sample code below:
+You can install Chameleon's ``python-heatclient`` and ``python-blazarclient`` packages via ``pip`` by running the following commands:
 
 .. code::
 
