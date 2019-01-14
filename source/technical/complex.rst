@@ -763,17 +763,14 @@ Clone the Chameleon repositories for ``python-heatclient`` and ``python-blazarcl
 
 .. code::
 
-    git clone https://github.com/ChameleonCloud/python-heatclient.git
-    python /path/to/python-heatclient_repo/setup.py install
-
-    git clone https://github.com/ChameleonCloud/python-blazarclient.git
-    python /path/to/python-blazarclient_repo/setup.py install
+    pip install git+https://github.com/ChameleonCloud/python-heatclient.git
+    pip install git+https://github.com/ChameleonCloud/python-blazarclient.git
 
 
 Initialize Stack
 ~~~~~~~~~~~
 
-Next you will need to configure a Heat stack with the ``--initialize`` flag on the CLI and a dummy ``reservation_id`` parameter. This will validate your template and store all the data required to launch a stack without Heat attempting to allocate resources. See example command below:
+Next you will need to configure a Heat stack with the ``--initialize`` flag on the CLI and a dummy ``reservation_id`` parameter. The ``dummy`` id can be anything (even an empty string) so long as the ``reservation_id`` parameter is specified so that Blazar can overwrite it once your advanced reservation is scheduled and the stack is ready to launch. Once your stack is initialized, the status should read ``INIT_COMPLETE``. This indicates that your template was validated and all the data required to launch a stack has been stored. See example command below:
 
 .. code::
 
@@ -783,7 +780,7 @@ Next you will need to configure a Heat stack with the ``--initialize`` flag on t
 Create Reservation with Stack_ID
 ~~~~~~~~~~~
 
-For a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying``orchestration`` as an 'on_start' action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--physical-reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
+For a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying ``orchestration`` as an ``on_start`` action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--physical-reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
 
 .. code::
 
