@@ -50,7 +50,7 @@ Chameleon resources are available at two sites. You may login to the Chameleon D
 
 .. note:: If you change your account password, it can take up to 15 minutes for the change to propagate to each dashboard.
 
-.. figure:: chi_login.png
+.. figure:: chi_sso_login.png
   :alt: The Chameleon Dashboard login
 
   The Chameleon Dashboard login
