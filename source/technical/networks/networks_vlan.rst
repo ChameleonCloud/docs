@@ -237,7 +237,7 @@ To create a router, use the following command:
 
 .. code-block:: bash
 
-   openstack create router <router_name>
+   openstack router create <router_name>
 
 Your output should look like:
 
