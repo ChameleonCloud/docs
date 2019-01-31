@@ -27,21 +27,26 @@ In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 
    The Leases page in the GUI
 
-The Lease Calendar
-__________________
+The Lease Calendars
+____________________
 
-To discover when resources are available, access the lease calendar by clicking on the *Lease Calendar* button. This will display a Gantt chart of the reservations which allows you to find when resources are available. The *Y* axis represents the different physical nodes in the system and the *X* axis represents time.
+To discover when resources are available, You can access the lease calendars by clicking on the *Host Calendar* button for physical hosts and clicking on the *Network Calendar* button for VLANs. 
+This will display a Gantt chart of the reservations which allows you to find when resources are available. 
+The *Y* axis represents the different physical nodes in the system and the *X* axis represents time.
 
-.. figure:: reservations/leasecalendar.png
-   :alt: The Lease Calendar
+.. figure:: reservations/hostcalendar.png
+   :alt: The Host Calendar
 
-   The Lease Calendar
+   The Host Calendar
+   
+.. figure:: reservations/networkcalendar.png
+   :alt: The Network Calendar
+
+   The Network Calendar
 
 .. tip::
-   The nodes are identified by their *UUIDs*. The colors are used to indicate different reservations, i.e. the nodes that belong to the same reservation are colored the same. Hovering over the chart provides the details about the reservation. To change the display time frame, click on ``1d``, ``1w``, and ``1m`` buttons or fill in the start and end times.
+   The nodes and VLANs are identified by their *UUIDs*. The colors are used to indicate different reservations, i.e. the resources that belong to the same reservation are colored the same. Hovering over the chart provides the details about the reservation. To change the display time frame, click on ``1d``, ``1w``, and ``1m`` buttons or fill in the start and end times.
 
-.. note::
-   Network segments (VLANs) are not yet displayed on the lease calendar.
 
 .. _reservations-create-lease-gui:
 
