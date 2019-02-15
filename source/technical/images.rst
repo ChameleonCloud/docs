@@ -228,7 +228,7 @@ Next add the project you wish to share the image with:
 
 .. code-block:: bash
 
-   openstack image add project <image> <projec>
+   openstack image add project <image> <project>
 
 Replace ``image`` and ``project`` with the corresponding *UUIDs*
 
