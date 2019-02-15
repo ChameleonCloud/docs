@@ -214,7 +214,7 @@ You may share images several ways.  If you wish to share an image with everyone,
 
 .. code-block:: bash
 
-   openstack image set --public <image_id>
+   openstack image set --public <image>
 
 Replace ``image`` with the image *UUID*.
 
@@ -222,7 +222,7 @@ If you would like to share an image with another project, first set the image vi
 
 .. code-block:: bash
 
-   openstack image set --shared <image_id>
+   openstack image set --shared <image>
 
 Next add the project you wish to share the image with:
 
