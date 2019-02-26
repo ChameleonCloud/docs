@@ -207,6 +207,42 @@ You may view details of an image with the command:
 
 Replace ``image`` with either an image name or it's *UUID*.
 
+Sharing an Image
+________________
+
+You may share images several ways.  If you wish to share an image with everyone, use:
+
+.. code-block:: bash
+
+   openstack image set --public <image>
+
+Replace ``image`` with the image *UUID*.
+
+If you would like to share an image with another project, first set the image visibility to shared:
+
+.. code-block:: bash
+
+   openstack image set --shared <image>
+
+Next add the project you wish to share the image with:
+
+.. code-block:: bash
+
+   openstack image add project <image> <project>
+
+Replace ``image`` and ``project`` with the corresponding *UUIDs*
+
+Finally the project that the image is shared to must accept the shared image.  Run this command with a user in the second project:
+
+.. code-block:: bash
+
+   openstack image set --accept <image>
+
+Replace ``image`` with the image *UUID* and the second project should now be able to use the image!  
+
+.. important::
+   Only the owner of the image can modify it or any properties.  However a project who has an image shared to it can remove themselves from the list of image members.
+
 Editing an Image
 ________________
 
