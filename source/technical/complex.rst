@@ -622,7 +622,12 @@ This limitation was already apparent in our `NFS share <https://www.chameleonclo
 
 This limitation is even more important if the deployment is not hierarchical, i.e. all instances need to know about all others. For example, a cluster with IP and hostnames populated in ``/etc/hosts`` required each instance to be known by every other instance.
 
-This section presents a more advanced form of contextualization that can perform this kind of information exchange. This is implemented by *Heat* agents running inside instances and communicating with the *Heat* service to send and receive information. This means you will need to use an image bundling these agents. Currently, our `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance and its CUDA version are the only ones supporting this mode of contextualization. If you build your own images using the `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance builder, you will automatically have these agents installed. This contextualization is performed with several Heat resources:
+This section presents a more advanced form of contextualization that can perform this kind of information exchange. 
+This is implemented by *Heat* agents running inside instances and communicating with the *Heat* service to send and receive information. 
+This means you will need to use an image bundling these agents. 
+Currently, our `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliance, 
+as well as their fully-supported CUDA images, are supporting this mode of contextualization. 
+If you build your own images using the `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance or `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliance builder, you will automatically have these agents installed. This contextualization is performed with several Heat resources:
 
 - ``OS::Heat::SoftwareConfig``: This resource describes code to run on an instance. It can be configured with inputs and provide outputs.
 - ``OS::Heat::SoftwareDeployment``: This resource applies a SoftwareConfig to a specific instance.
@@ -749,7 +754,7 @@ You can follow the same template pattern to configure your own deployment requir
 .. _advanced-reservation-orchestration:
 
 Advanced Reservation Orchestration
-_______________________________
+_____________________________________
 
 On Chameleon you can configure a Heat Stack to launch as soon as your lease begins. Whether your experiments require a large cluster or a single node, orchestrating an advanced reservation is can save you time configuring your environment or provide a blueprint for your experiment that will run automatically
 when the necessary resources become available.
@@ -757,7 +762,7 @@ when the necessary resources become available.
 At present, you will need to use our customized versions of the Heat and Blazar CLI tools to implement this feature. We are currently working to provide support for this functionality through the GUI.
 
 Install Custom CLI
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
 You can install Chameleon's ``python-heatclient`` and ``python-blazarclient`` packages via ``pip`` by running the following commands:
 
@@ -768,7 +773,7 @@ You can install Chameleon's ``python-heatclient`` and ``python-blazarclient`` pa
 
 
 Initialize Stack
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 Next you will need to configure a Heat stack with the ``--initialize`` flag on the CLI and a dummy ``reservation_id`` parameter. The ``dummy`` id can be anything (even an empty string) so long as the ``reservation_id`` parameter is specified so that Blazar can overwrite it once your advanced reservation is scheduled and the stack is ready to launch. Once your stack is initialized, the status should read ``INIT_COMPLETE``. This indicates that your template was validated and all the data required to launch a stack has been stored. See example command below:
 
@@ -778,7 +783,7 @@ Next you will need to configure a Heat stack with the ``--initialize`` flag on t
 
 
 Create Reservation with Stack_ID
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying ``orchestration`` as an ``on_start`` action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--physical-reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
 
