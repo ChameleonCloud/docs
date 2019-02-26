@@ -191,7 +191,7 @@ An active Chameleon lease within 48 hours of its end time can be prolonged by up
 What if I need a lease that is longer than the limitation (i.e., 7 days)?
 ___________________________________________________________________________
 
-If you know from the start that your lease has will require more than a week and cannot be broken into two or more 7 day leases because of the nature of the experiment, you can `contact Chameleon staff via the ticketing system <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to request a one-time exception to create a longer lease.
+If you know from the start that your lease has will require more than a week and cannot be broken into two or more 7 day leases because of the nature of the experiment, you can `contact Chameleon staff via the ticketing system <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to request a one-time exception to create a longer lease. The request has to be submitted by the project PI and should contain a detailed justification for why a contiguous lease is needed. Please note, that these requests may take a longer time to consider as needed to understand all the details. 
 
 .. _how-to-acknowledge:
 
