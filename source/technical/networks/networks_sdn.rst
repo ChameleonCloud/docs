@@ -1,8 +1,7 @@
 .. _sdn:
 
-___________________________
 Software Defined Networking
-___________________________
+===========================
 
 
 .. Tip:: A good way to start working with OpenFlow on Chameleon is the `OpenFlow Quick Start`_ appliance.
@@ -19,15 +18,13 @@ OpenFlow switches, like traditional switches, forward network traffic between a 
 
 The basic requirements of an OpenFlow switch are the switch and the controller. The switch is configured with the IP address and port of a controller (software) that manages the switch's rules.  When a packet arrives at the switch, the packet is tested against the rules that are known by the switch to determine what action(s) to take.  Typically, if there are no rules that apply to a packet, the packet is sent to the controller which replies with a set of rules for that type of packet. The new rules are cached in the switch and applied to subsequent packets until the rules expire or are explicitly removed.
 
-.. Note:: **Common OpenFlow Controllers**:
-          Open Daylight: https://www.opendaylight.org/
-          Ryu: https://osrg.github.io/ryu/
-          ONOS: https://onosproject.org/
-          Floodlight: http://www.projectfloodlight.org/floodlight/
-          NOX: https://github.com/noxrepo/nox
+.. Note:: Some common OpenFlow controllers are
+  `Open Daylight <https://www.opendaylight.org>`_, `Ryu <https://osrg.github.io/ryu>`_,
+  `ONOS <https://onosproject.org>`_, `Floodlight <http://www.projectfloodlight.org/floodlight>`_,
+  and `NOX <https://github.com/noxrepo/nox>`_.
 
 Chameleon and OpenFlow
-______________________
+----------------------
 
 BYOC is part of the expanded deployment for Chameleon's phase 2. It enables tenants to allocate OpenFlow switches controlled by their own OpenFlow controller. This capability is limited to the phase 2 hardware additions that include the Corsa DP2000 series OpenFlow switches and Skylake compute nodes. The Corsa switches are key to enabling the BYOC functionality.  These switches allow for the creation of mutually isolated forwarding contexts which can be thought of as virtual OpenFlow switches even though they are the native abstraction used by the Corsa DP2000s. Each isolated forwarding context can be configured to use its own OpenFlow controller. The Chameleon BYOC functionality enables tenants to specify the IP and port of an arbitrary OpenFlow controller when they create private networks.
 
@@ -49,7 +46,7 @@ Using the CLI, an external OpenFlow controller (IP and port) can be specified on
 
 The output should look like the following:
 
-.. code::
+.. code-block:: text
 
    +---------------------------+--------------------------------------+
    | Field                     | Value                                |
@@ -81,22 +78,23 @@ The output should look like the following:
    | updated_at                | 2018-05-23T14:38:18Z                 |
    +---------------------------+--------------------------------------+
 
-
 Example CLI command used to create the network:
-
 
 .. code-block:: bash
 
-   $ NET="exogeni-3294"
-   $ PHYSICAL_NETWORK_TENANT="exogeni"
-   $ NET_TYPE="vlan"
-   $ NET_NAME="${PHYSICAL_NETWORK_TENANT}-${NET}"
-   $ OF_CONTROLLER_IP="162.250.136.46"
-   $ OF_CONTROLLER_PORT="6653"
-   $ openstack network create --provider-network-type ${NET_TYPE} \
-   >                          --provider-physical-network ${PHYSICAL_NETWORK_TENANT} \
-   >                          --description OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT} \
-   >                          ${NET_NAME}
+   NET="exogeni-3294"
+   PHYSICAL_NETWORK_TENANT="exogeni"
+   NET_TYPE="vlan"
+   NET_NAME="${PHYSICAL_NETWORK_TENANT}-${NET}"
+   OF_CONTROLLER_IP="162.250.136.46"
+   OF_CONTROLLER_PORT="6653"
+   openstack network create --provider-network-type ${NET_TYPE} \
+                            --provider-physical-network ${PHYSICAL_NETWORK_TENANT} \
+                            --description OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT} \
+                            ${NET_NAME}
+
+.. code-block:: text
+
    +---------------------------+--------------------------------------+
    | Field                     | Value                                |
    +---------------------------+--------------------------------------+
@@ -130,13 +128,13 @@ Example CLI command used to create the network:
 At this point your OpenFlow network switch will have been created and connected to the OpenFlow at the IP/Port that you sepcified.  Using your controller you can explore the OpenFlow switch. There should be only one port on the swtich with is the uplink that connects to the OpenStack services and, optionally, any externally stitched networks such as ExoGENI. The uplink port ID will be the segmentation ID (VLAN ID) of the network shown in the Chameleon portal.  When nodes are created and connected to your network ports will be added to your OpenFlow swtich.  Each compute node will always have the same port ID on the switch.  The mapping of port IDs to compute nodes is in the following section.
 
 Port Mapping
-____________
+------------
 
 You will likely need your OpenFlow controller to know which of its ports connects to which of your Chameleon nodes. The uplink port will always match the segmentation ID (VLAN ID) of the network.
 
 The UC site uses a mapping with the UUID of the Chameleon node mapped to the following OpenFlow ports:
 
-.. code::
+.. code-block:: text
 
    # Skylake Nodes on Rack-1
    # Node                                    OpenFlow Port
@@ -212,12 +210,11 @@ The UC site uses a mapping with the UUID of the Chameleon node mapped to the fol
 
 The TACC site uses a mapping with the UUID of the Chameleon node mapped to the following OpenFlow ports:
 
-.. code::
+.. code-block:: text
 
    # Skylake Nodes on Rack-1
    # Node                                    OpenFlow Port
    # UUID                                    Number on the VFC
-   
    63aea74f-4e42-4f3e-b9b6-c5c473a911fa     10101
    c8b533e3-2576-4129-90cd-6485dcc85d98     10102
    8343783f-5429-405e-bc8f-dbfbacc7d1c8     10103
@@ -251,20 +248,83 @@ The TACC site uses a mapping with the UUID of the Chameleon node mapped to the f
    9d05db81-05e5-441b-9462-1e17d86e1a6b     10131
    f59f3140-57a0-4452-98dc-edfbb53f07e1     10132
 
+Debugging Your Controller
+-------------------------
+
+To assist you in debugging your OpenFlow controller, Chameleon exposes a limited set of metrics exposed from the actual Corsa DP2000 switches. Currently you can see raw packet counts for each physical port on the switch. The data can be retrieved either from a Grafana web interface, or via a special Gnocchi metric resource accessed with the OpenStack CLI.
+
+.. note::
+   The physical port number can be derived from the OpenFlow Port--it is the last two digits.
+
+Accessing the Grafana Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Log in with your Chameleon username and password to the `Chameleon Grafana instance <https://grafana.chameleon.tacc.utexas.edu>`_. You should be automatically taken to a "Switch Status" dashboard with tables showing the last-known packet counter across all ports on the Corsa switches, both at TACC and UC. This can help you figure out if your controller is allowing traffic to hit the switch at all, or if your nodes are in fact sending traffic through the switch.
+
+.. figure:: networks/grafana-switch-status.png
+   :alt: The Grafana Switch Status dashboard
+
+Accessing via Gnocchi Metrics
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The metrics can also be queried via :ref:`Gnocchi metrics <metrics>`. The metrics are located under specific Gnocchi resources and can be queried by passing the metric UUID.
+
+.. code-block:: bash
+
+  # TACC Corsa #1
+  openstack --os-region CHI@TACC metric resource show 28596c49-0c14-5f08-a9e5-84790a05eef3
+  # UC Corsa #1
+  openstack --os-region CHI@UC metric resource show b72663e7-86fb-5785-82ed-b01ea9e0f282
+  # UC Corsa #2
+  openstack --os-region CHI@UC metric resource show 18e5e81e-798f-5299-9160-0f0ce34c17a9
+
+This command will show all metrics available to view, and their UUID, e.g.:
+
+.. code-block:: text
+
+  +-----------------------+-------------------------------------------------------------------+
+  | Field                 | Value                                                             |
+  +-----------------------+-------------------------------------------------------------------+
+  | created_by_project_id | 4e9f3b6fbaf245e780b25fae2c166d4e                                  |
+  | created_by_user_id    | 5c9803db428c48daa2730892871a9242                                  |
+  | creator               | 5c9803db428c48daa2730892871a9242:4e9f3b6fbaf245e780b25fae2c166d4e |
+  | ended_at              | None                                                              |
+  | id                    | b72663e7-86fb-5785-82ed-b01ea9e0f282                              |
+  | metrics               | switch@if_rx_packets-1: c8144fb6-9a40-4eba-b3d4-c16b1b9dddff      |
+  |                       | switch@if_rx_packets-2: 89947128-f794-4f01-bace-1b5a4fd93d32      |
+  |                       | ...                                                               |
+  |                       | switch@if_tx_packets-1: 4d66dea3-0d7a-4656-bd1e-813c6a4000d6      |
+  |                       | switch@if_tx_packets-2: 6dfc2627-03fe-4ce8-8497-1a40ccea60e3      |
+  |                       | ...                                                               |
+  | original_resource_id  | collectd:chameleon-corsa1                                         |
+  | project_id            | None                                                              |
+  | revision_end          | None                                                              |
+  | revision_start        | 2019-02-26T05:46:25.626125+00:00                                  |
+  | started_at            | 2019-02-26T05:46:25.626103+00:00                                  |
+  | type                  | switch                                                            |
+  | user_id               | None                                                              |
+  +-----------------------+-------------------------------------------------------------------+
+
+You can then query an individual metric's values with:
+
+.. code-block:: bash
+
+  openstack metric measures show $METRIC_UUID
+
 Corsa DP2000 Virtual Forwarding Contexts: Network Layout and Advanced Features
-______________________________________________________________________________
+------------------------------------------------------------------------------
 
 Virtual Forwarding Contexts (VFC) are the native OpenFlow abstraction used by the Corsa DP2000 series switches. Each VFC can be thought of as a virtual OpenFlow switch.  Chameleon users can create VFCs by creating isolated networks on Chameleon via CLI or using complex appliaces.
 
 In this section, actual rack and switch layout of Skylake Nodes and Corsa DP2000 switches for both Chameleon sites is represented in the following figures. Also, example isolated networks with different controller options are shown along with associated VFCs and tunnels from Skylake Nodes are shown.
 
-Users are able to specify an external OpenFlow controller and can assign a name to their VFCs. If an external controller is not specified, VFC is controlled by the OpenFlow controller (Learning Bridge Application) running on the switch.  
+Users are able to specify an external OpenFlow controller and can assign a name to their VFCs. If an external controller is not specified, VFC is controlled by the OpenFlow controller (Learning Bridge Application) running on the switch.
 
 1. Create an isolated network without an external OpenFlow controller and a VFC name:
 
 .. code-block:: bash
 
-   openstack network create --provider-network-type vlan --provider-physical-network physnet1 
+   openstack network create --provider-network-type vlan --provider-physical-network physnet1
    sdn-network-1
 
 2. Create an isolated network with an external OpenFlow controller and without a VFC name:
@@ -279,7 +339,7 @@ Users are able to specify an external OpenFlow controller and can assign a name 
 .. code-block:: bash
 
    openstack network create --provider-network-type vlan --provider-physical-network physnet1
-   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName> 
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName>
    sdn-network-3
 
 A named VFC will be created for the isolated network. Subsequent isolated networks that are created with the same VFC name specification will be attached to the same VFC. Current implementation lets the user specify only one OpenFlow controller to the VFCs. Also, subsequent isolated network creation commands should include exactly the same ``--description``.
@@ -287,23 +347,23 @@ A named VFC will be created for the isolated network. Subsequent isolated networ
 .. code-block:: bash
 
    openstack network create --provider-network-type vlan --provider-physical-network physnet1
-   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName> 
+   --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName>
    sdn-network-4
 
-4. Skylake Nodes at UC: 
-   `CHI@UC <https://chi.uc.chameleoncloud.org>`_ has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the ports on the VFCs as described in "Port Mapping" section.  
+4. Skylake Nodes at UC:
+   `CHI@UC <https://chi.uc.chameleoncloud.org>`_ has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the ports on the VFCs as described in "Port Mapping" section.
 
 .. figure:: networks/corsa-network-vfc-layout-uc.png
 
 
 5. Skylake Nodes at TACC:
-   `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section. 
+   `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section.
 
 .. figure:: networks/corsa-network-vfc-layout-tacc.png
 
 
 Controllers for Corsa DP2000 series switches
-____________________________________________
+--------------------------------------------
 
 OpenFlow controllers often need to be aware of the slight differences in implementation across switch vendors. What follows is a description of the quirks we have found while using the Corsa DP2000 series switches as well as a simple controller configuration that is compatible with Chameleon OpenFlow networks.
 
@@ -321,24 +381,22 @@ The following changes are made to the application:
 
 Added the functions below:
 
-.. code::
+.. code-block:: python
 
    def _port_status_handler(self, ev):
    def delete_flow(self, datapath, port):
 
 Added IDLE_TIMEOUT to flow modification in:
 
-.. code::
+.. code-block:: python
 
    def add_flow(self, datapath, priority, match, actions, buffer_id=None):
 
 Changes are made in the function below to change ``Actions=FLOOD`` to ``actions=ALL`` in packet out message in the ``def _packet_in_handler(self, ev):`` method.
 
-
-
 This controller application can be run by the script below:
 
-.. code::
+.. code-block:: bash
 
    CHAMELEON_RYU_URL="https://github.com/ChameleonCloud/ryu.git"
    CHAMELEON_RYU_APP="simple_switch_13_custom_chameleon.py"
