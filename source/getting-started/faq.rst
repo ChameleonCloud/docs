@@ -177,7 +177,7 @@ _____________________________________________
 We have two types of limitations, introduced to promote fair resource usage to all:
 
 - Allocation: Chameleon projects are limited to a per-project allocation currently set to 20,000 service units for 6 months. Allocations can be renewed or extended. See the :ref:`project management <project-management>` documentation for more details on Chameleon allocations.
-- Lease: To ensure fairness to all users, resource reservations (leases) are limited to a duration of 7 days. See below if you require a `longer lease <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=extend#what-if-i-need-a-lease-that-is-longer-than-the-limitation-i-e-7-days>`_ or if you would like to `extend your current lease <http://127.0.0.1:8000/getting-started/faq.html#how-can-i-extend-a-chameleon-lease>`_.
+- Lease: To ensure fairness to all users, resource reservations (leases) are limited to a duration of 7 days. See below if you require a `longer lease <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=extend#what-if-i-need-a-lease-that-is-longer-than-the-limitation-i-e-7-days>`_ or if you would like to `extend your current lease <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html#how-can-i-extend-a-chameleon-lease>`_.
 
 .. _extend-lease:
 
