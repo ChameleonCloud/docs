@@ -10,10 +10,14 @@ Currently, it is possible to connect user-configured networks to other domains (
 
 This document describes how to stitch Chameleon experiments to external resources including `ExoGENI <http://www.exogeni.net/>`_ and `Internet2 <https://www.internet2.edu/>`_ connected campuses. You will need to know how to create stitchable dynamic VLANs as described in the :doc:`networks` documentation. After you have created such VLAN this document will describe how to create a slice in three cases: connect to ExoGENI, connect to other domains using ExoGENI as an intermediary, or connect to other domains directly.
 
+This document also describes connecting isolated stitchable networks across Chameleon sites (`CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ ) over layer-2 circuits.  
+
 Chameleon has the capability to create dynamically managed VLANs associated with user-configured private IP subnets as described on :doc:`networks`. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. These networks can be created through the web as well as command line interface. User-configured networks (isolated networks) are associated with VLANs by *Segmentation IDs*.
 
 In the following sections, this workflow is described for different settings.
 
+
+.. _network-stitchable-create:
 
 Configuring a Stitchable Network
 ________________________________
@@ -162,3 +166,16 @@ To obtain an account to access AL2S OESS portal, users should contact Internet2.
 - `AL2S Layer 2 Service Workgroups <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-participate>`_
 - `AL2S FAQ <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-faq>`_
 - `Using OESS <https://docs.globalnoc.iu.edu/sdn/oess/using-oess.html>`_
+
+Connecting Stitchable Isolated Networks across Chameleon Sites
+______________________________________________________________
+
+1. Create isolated networks by specifying the "exogeni" provider. Follow the documentation for :ref:`network-stitchable-create`
+   A "stitchable" VLAN tag will be returned and "Physical Network" will appear as "Exogeni" on the dashboard.
+   This step will be executed the same way on both UC and TACC sites. 
+
+2. After having stitchable isolated networks on UC and TACC sites, a request should be sent to the `Help Desk ticket submission page <https://www.chameleoncloud.org/user/help/ticket/new/guest/>`_ for creation of AL2S circuits. 
+In the request, following information should be specified:
+- Information for the network at UC (Project ID, name of the network, ID of the network)
+- Information for the network at TACC (Project ID, name of the network, ID of the network)
+- Duration of the circuit in active state
