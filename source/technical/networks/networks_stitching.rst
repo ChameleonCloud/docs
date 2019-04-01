@@ -6,7 +6,7 @@ _______________________________________
 
 Chameleon provides support for sophisticated networking experiments by providing `GENI-style stitching <http://groups.geni.net/geni/wiki/GeniNetworkStitchingSites>`_. This capability enables users to deploy networking experiments (layer 2 and layer 3) that extend across Chameleon, potentially other testbeds such as `GENI <http://www.geni.net/>`_, and into physical resources on their own campus networks. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. 
 
-Currently, it is possible to connect user-configured networks to other domains (e.g. GENI) over circuits created on Internet2’s Advanced Layer 2 Service (AL2S). In this setup, a pool of VLANs is extended from Chameleon racks to the AL2S endpoint at StarLight. Currently, 10 VLAN tags (3290-3299) are dedicated to this AL2S endpoint. A user-configured network that is associated with one of the dedicated AL2S VLAN tags (segmentation ID must be the same as AL2S VLAN tag) can be stitched to external domains (e.g. GENI). A circuit on AL2S needs to be created.
+Currently, it is possible to connect user-configured networks to other domains (e.g. GENI) over circuits created on Internet2’s Advanced Layer 2 Service (AL2S). In this setup, a pool of VLANs is extended from Chameleon CHI@UC racks to the AL2S endpoint at StarLight. Currently, 10 VLAN tags (3290-3299) are dedicated to this AL2S endpoint, although 3290 is reserved for system use. A user-configured network that is associated with one of the dedicated AL2S VLAN tags (segmentation ID must be the same as AL2S VLAN tag) can be stitched to external domains (e.g. GENI). A circuit on AL2S needs to be created.
 
 This document describes how to stitch Chameleon experiments to external resources including `ExoGENI <http://www.exogeni.net/>`_ and `Internet2 <https://www.internet2.edu/>`_ connected campuses. You will need to know how to create stitchable dynamic VLANs as described in the :doc:`networks` documentation. After you have created such VLAN this document will describe how to create a slice in three cases: connect to ExoGENI, connect to other domains using ExoGENI as an intermediary, or connect to other domains directly.
 
@@ -27,9 +27,10 @@ In this documentation, we will describe how to stitch to the ExoGENI testbed:
 
 .. code-block:: bash
 
-   openstack network create --provider-physical-network exogeni <network_name>
+   openstack network create --provider-network-type vlan --provider-physical-network exogeni <network_name>
 
-
+.. note::
+   If you made a reservation for a stitchable VLAN segment, the network will have been created automatically.
 
 Connecting Chameleon to ExoGENI
 _______________________________
@@ -161,11 +162,10 @@ At this point, a layer-2 circuit is created on AL2S. The user-configured network
 
 To obtain an account to access AL2S OESS portal, users should contact Internet2. Information can be found from the links below:
 
-- `AL2S Participants <https://www.internet2.edu/products-services/advanced-networks/layer-2-services/al2s-participants/>`_
+- `AL2S Participants <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/al2s-participants/>`_
 - `AL2S Layer 2 Service Workgroups <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-participate>`_
 - `AL2S FAQ <https://www.internet2.edu/products-services/advanced-networking/layer-2-services/#service-faq>`_
-- `Using OESS <https://docs.globalnoc.iu.edu/sdn/oess/using-oess.html#Multipoint%20Static%20MAC%20Addresses>`_
-
+- `Using OESS <https://docs.globalnoc.iu.edu/sdn/oess/using-oess.html>`_
 
 Connecting Stitchable Isolated Networks across Chameleon Sites
 ______________________________________________________________
@@ -179,11 +179,3 @@ In the request, following information should be specified:
 - Information for the network at UC (Project ID, name of the network, ID of the network)
 - Information for the network at TACC (Project ID, name of the network, ID of the network)
 - Duration of the circuit in active state
-
-
-
-
-
-
-
-

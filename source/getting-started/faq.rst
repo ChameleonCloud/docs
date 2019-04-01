@@ -177,7 +177,7 @@ _____________________________________________
 We have two types of limitations, introduced to promote fair resource usage to all:
 
 - Allocation: Chameleon projects are limited to a per-project allocation currently set to 20,000 service units for 6 months. Allocations can be renewed or extended. See the :ref:`project management <project-management>` documentation for more details on Chameleon allocations.
-- Lease: To ensure fairness to all users, resource reservations (leases) are limited to a duration of 7 days. See below if you require a `longer lease <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=extend#what-if-i-need-a-lease-that-is-longer-than-the-limitation-i-e-7-days>`_ or if you would like to `extend your current lease <http://127.0.0.1:8000/getting-started/faq.html#how-can-i-extend-a-chameleon-lease>`_.
+- Lease: To ensure fairness to all users, resource reservations (leases) are limited to a duration of 7 days. See below if you require a `longer lease <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=extend#what-if-i-need-a-lease-that-is-longer-than-the-limitation-i-e-7-days>`_ or if you would like to `extend your current lease <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html#how-can-i-extend-a-chameleon-lease>`_.
 
 .. _extend-lease:
 
@@ -191,7 +191,7 @@ An active Chameleon lease within 48 hours of its end time can be prolonged by up
 What if I need a lease that is longer than the limitation (i.e., 7 days)?
 ___________________________________________________________________________
 
-If you know from the start that your lease has will require more than a week and cannot be broken into two or more 7 day leases because of the nature of the experiment, you can `contact Chameleon staff via the ticketing system <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to request a one-time exception to create a longer lease.
+If you know from the start that your lease has will require more than a week and cannot be broken into two or more 7 day leases because of the nature of the experiment, you can `contact Chameleon staff via the ticketing system <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to request a one-time exception to create a longer lease. The request has to be submitted by the project PI and should contain a detailed justification for why a contiguous lease is needed. Please note, that these requests may take a longer time to consider as needed to understand all the details. 
 
 .. _how-to-acknowledge:
 
