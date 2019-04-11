@@ -4,13 +4,13 @@ _______________________________________
 External Layer2 Connections (Stitching)
 _______________________________________
 
-Chameleon provides support for sophisticated networking experiments by providing `GENI-style stitching <http://groups.geni.net/geni/wiki/GeniNetworkStitchingSites>`_. This capability enables users to deploy networking experiments (layer 2 and layer 3) that extend across Chameleon, potentially other testbeds such as `GENI <http://www.geni.net/>`_, and into physical resources on their own campus networks. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. 
+Chameleon provides support for sophisticated networking experiments by providing `GENI-style stitching <http://groups.geni.net/geni/wiki/GeniNetworkStitchingSites>`_. This capability enables users to deploy networking experiments (layer 2 and layer 3) that extend across Chameleon, potentially other testbeds such as `GENI <http://www.geni.net/>`_, and into physical resources on their own campus networks. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections.
 
 Currently, it is possible to connect user-configured networks to other domains (e.g. GENI) over circuits created on Internet2’s Advanced Layer 2 Service (AL2S). In this setup, a pool of VLANs is extended from Chameleon CHI@UC racks to the AL2S endpoint at StarLight. Currently, 10 VLAN tags (3290-3299) are dedicated to this AL2S endpoint, although 3290 is reserved for system use. A user-configured network that is associated with one of the dedicated AL2S VLAN tags (segmentation ID must be the same as AL2S VLAN tag) can be stitched to external domains (e.g. GENI). A circuit on AL2S needs to be created.
 
 This document describes how to stitch Chameleon experiments to external resources including `ExoGENI <http://www.exogeni.net/>`_ and `Internet2 <https://www.internet2.edu/>`_ connected campuses. You will need to know how to create stitchable dynamic VLANs as described in the :doc:`networks` documentation. After you have created such VLAN this document will describe how to create a slice in three cases: connect to ExoGENI, connect to other domains using ExoGENI as an intermediary, or connect to other domains directly.
 
-This document also describes connecting isolated stitchable networks across Chameleon sites (`CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ ) over layer-2 circuits.  
+This document also describes connecting isolated stitchable networks across Chameleon sites (`CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ ) over layer-2 circuits.
 
 Chameleon has the capability to create dynamically managed VLANs associated with user-configured private IP subnets as described on :doc:`networks`. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. These networks can be created through the web as well as command line interface. User-configured networks (isolated networks) are associated with VLANs by *Segmentation IDs*.
 
@@ -22,15 +22,19 @@ In the following sections, this workflow is described for different settings.
 Configuring a Stitchable Network
 ________________________________
 
-Follow the technical documentation for :ref:`network-cli-create` using the CLI, but replace the provider network with the appropriate external testbed (e.g. replace ``physnet1`` with ``exogeni``). 
-In this documentation, we will describe how to stitch to the ExoGENI testbed:
+In this documentation, we will describe how to stitch to the ExoGENI testbed.
+Your first step will require creating a stitchable network. Unlike creating
+other networks on Chameleon, stitchable networks can only be created by first
+reserving a stitchable VLAN segment using the CLI (See
+:ref:`reservation-cli-vlan`). Once you reserve any VLAN segment, your network
+will be created automatically. To reserve a segment on the appropriate
+external testbed make sure to include ``exogeni`` as the ``phyical_network``
+in the ``resource_properties`` attribute. An example is provided below:
 
 .. code-block:: bash
 
-   openstack network create --provider-network-type vlan --provider-physical-network exogeni <network_name>
+   blazar lease-create --reservation resource_type=network,network_name="my-stitchable-network",resource_properties='["==","$physical_network","exogeni"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-stitchable-network-lease
 
-.. note::
-   If you made a reservation for a stitchable VLAN segment, the network will have been created automatically.
 
 Connecting Chameleon to ExoGENI
 _______________________________
@@ -124,13 +128,13 @@ As an example, Chameleon resources can be seen in “Available Resources” sect
 
 The user in the ExoGENI workgroup can create a circuit with two endpoints to connect a local site to Chameleon.
 
-.. code:: 
+.. code::
 
    Endpoint 1 (Local site):
    Node: sdn-sw.rale.net.internet2.edu
    Interface: et-9/0/0
    VLAN: 3998
-   
+
    Endpoint 2 (`CHI@UC <https://chi.uc.chameleoncloud.org>`_):
    Node: sdn-sw.star.net.internet2.edu
    Interface: et-8/0/0
@@ -172,9 +176,9 @@ ______________________________________________________________
 
 1. Create isolated networks by specifying the "exogeni" provider. Follow the documentation for :ref:`network-stitchable-create`
    A "stitchable" VLAN tag will be returned and "Physical Network" will appear as "Exogeni" on the dashboard.
-   This step will be executed the same way on both UC and TACC sites. 
+   This step will be executed the same way on both UC and TACC sites.
 
-2. After having stitchable isolated networks on UC and TACC sites, a request should be sent to the `Help Desk ticket submission page <https://www.chameleoncloud.org/user/help/ticket/new/guest/>`_ for creation of AL2S circuits. 
+2. After having stitchable isolated networks on UC and TACC sites, a request should be sent to the `Help Desk ticket submission page <https://www.chameleoncloud.org/user/help/ticket/new/guest/>`_ for creation of AL2S circuits.
 In the request, following information should be specified:
 - Information for the network at UC (Project ID, name of the network, ID of the network)
 - Information for the network at TACC (Project ID, name of the network, ID of the network)

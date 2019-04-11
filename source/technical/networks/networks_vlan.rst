@@ -182,6 +182,14 @@ The output should look like the following:
    | updated_at                | 2018-03-23T23:45:19Z                 |
    +---------------------------+--------------------------------------+
 
+.. note::
+
+    Note the ``provider:segmentation_id`` field in the above output. Each *Isolated*
+    VLAN Network requires a unique network segment to operate. There are a finite
+    number of valid network segments on Chameleon. If you are unable to create a
+    network because there are no valid network segments available, then you can
+    create a network automatically by :ref:`reservation-cli-vlan`.
+
 Once you have created a Network, you may create a subnet with the command:
 
 .. code-block:: bash
