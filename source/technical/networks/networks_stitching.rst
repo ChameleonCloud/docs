@@ -33,7 +33,7 @@ in the ``resource_properties`` attribute. An example is provided below:
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name="my-stitchable-network",resource_properties='["==","$physical_network","exogeni"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-stitchable-network-lease
+   blazar lease-create --reservation resource_type=network,network_name=my-stitchable-network,resource_properties='["==","$physical_network","exogeni"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-stitchable-network-lease
 
 
 Connecting Chameleon to ExoGENI
