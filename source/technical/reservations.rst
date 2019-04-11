@@ -396,7 +396,7 @@ Chameleon :ref:`sdn` features.
 
    blazar lease-create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
 
-Adding the ``resource_properites`` attribute allows you to reserve a specific
+Adding the ``resource_properties`` attribute allows you to reserve a specific
 *network segment* or *physical network* type. There are currently only two
 physical network types ``physnet1`` and ``exogeni``. You can read more about
 both types in :doc:`networks`. The following two examples show how to reserve
