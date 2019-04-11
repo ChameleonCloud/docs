@@ -404,7 +404,7 @@ a network by ``segment_id`` or ``physical_network``.
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name="my-network",resource_properties='["==","$segment_id","3501"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   blazar lease-create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
 
 .. code-block:: bash
 
