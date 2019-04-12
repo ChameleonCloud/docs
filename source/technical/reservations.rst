@@ -45,12 +45,12 @@ To discover when resources are available, access the lease calendar by clicking 
 
 .. _reservations-create-lease-gui:
 
-Creating a Lease to Reserve Physical Hosts
+Creating a Lease to Reserve Physical Hosts and/or Network
 __________________________________________
 
 Once you have chosen a time period when you want to reserve resources, go back to the *Leases* screen and click on the *Create Lease* button. It should bring up the window displayed below:
 
-.. figure:: reservations/createlease.png
+.. figure:: reservations/createmultipleresourcelease.png
    :alt: The Create Lease dialog
 
    The Create Lease dialog
@@ -63,10 +63,18 @@ Once you have chosen a time period when you want to reserve resources, go back t
 
    .. tip:: You can get the UTC time by running ``date -u`` in your terminal.
 
+#. To reserve a physical host, ensure the "Reserve Physical Host" checkbox is selected.
 #. Choose the minimum and maximum number of hosts. The default is 1 node.
 #. Choose a node type in the drop down menu below the *node_type* and *=* drop down lists.
 
    .. note:: You may only request one type of node in each individual Lease. If you wish to request multiple node types, you must create separate Leases for each node type.
+
+#. To reserve a vlan segment, ensure the `Reserve Network` checkbox is selected.
+#. Enter the network name and description
+
+    .. note:: When a VLAN segment reservation ends, all Neutron resources attached to the network will be automatically deleted. Bare-metal instances using the network will lose network connectivity.
+
+   .. tip:: Select or deselect the ``Reserve Physical Host`` and ``Reserve Network`` checkboxes to include resources as needed.
 
 #. Click on the *Create* button.
 
@@ -134,45 +142,6 @@ You may reserve a specific node by providing its *UUID*. To learn more about how
    Selecting a node by UUID
 
 .. _reservations-extend-lease-gui:
-
-Creating a Lease to Reserve a VLAN Segment
-__________________________________________
-
-On the *Create Lease* window, start filling the form as if reserving physical
-nodes: pick a name, start time, and lease duration. Then:
-
-#. Change the *Resource Type* field to *Network*.  The control to configure the
-   number of hosts will disappear and be replaced by a field to enter the
-   network name.
-
-#. Enter a name for the Neutron network which will be created by Blazar on the
-   reserved VLAN segment.
-
-#. Remove any resource properties.
-
-   .. note:: In the future the controls for *Resource Properties* will be improved to show only those relevant to VLANs.
-
-#. Click on the *Create* button.
-
-Once created, the lease details will be displayed. At the bottom of the page
-are the details about the reservation. Initially the reservation is in the
-``Pending`` status, and stays in this state until it reaches the start time.
-
-.. figure:: reservations/leasedetails_vlan.png
-   :alt: Lease details page for a VLAN reservation
-
-   Lease details page for a VLAN reservation
-
-Once the start time of the lease is reached, the lease will be started and its
-reservation will change to ``Active``; you may need to refresh the page to see
-the updates.
-
-At this stage, Blazar will create a new Neutron network using the reserved VLAN
-segment and the name entered in the form. You can then use Horizon to create a
-subnet, attach a router, and launch instances using the Neutron network created
-by Blazar.
-
-.. note:: When a VLAN segment reservation ends, all Neutron resources attached to the network will be automatically deleted. Bare-metal instances using the network will lose network connectivity.
 
 .. _reservation-cli:
 
