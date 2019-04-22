@@ -2,6 +2,9 @@
 Frequently Asked Questions
 ==========================
 
+.. important::
+   This page will be deprecated on **May 10, 2019**. Please use the `new FAQ page <https://www.chameleoncloud.org/about/frequently-asked-questions/>`_.
+
 .. container:: toggle
 
     .. container:: header
@@ -121,7 +124,7 @@ CHI stands for Chameleon Infrastructure, and refers to the technology powering o
 
 .. _who-can-use-chameleon:
 
-Who can Use Chameleon?
+Who can use Chameleon?
 ______________________
 
 Chameleon is broadly available to members of the US Computer Science research community and its international collaborators working in the open community on cloud research.  By emphasizing “open” we mean that the expectation is that any research performed on Chameleon will result in publication in a broadly available journal or conference.
@@ -610,7 +613,7 @@ At this time, the public key has been created and copied. Now you can now follow
 
 .. _why-fail-ssh:
 
-How to fix "REMOTE HOST IDENTIFICATION HAS CHANGED"
+How to fix "REMOTE HOST IDENTIFICATION HAS CHANGED"?
 ___________________________________________________________________
 
 The warning message is the result of reassigning a floating IP to a new instance, and is a normal security precaution built into SSH.
