@@ -12,7 +12,10 @@ Unlike virtual resources on a regular on-demand cloud, physical resources on Cha
 
 Chameleon resources are reserved via `Blazar <https://docs.openstack.org/blazar/latest/>`_ (previously known as *Climate*) which provides Reservation as a Service for OpenStack.
 
-Two main types of resources can be reserved: physical hosts and network segments (VLANs).
+Three types of resources can be reserved: physical hosts, network segments (VLANs), and floating IPs.
+
+.. note::
+   Floating IP reservation is released as a preview and only available using the CLI. Integration with the Horizon web interface is in progress and will be released in the near future.
 
 ___________________________________________________
 Provisioning and Managing Resources Using the GUI
@@ -30,15 +33,15 @@ In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 The Lease Calendars
 ____________________
 
-To discover when resources are available, You can access the lease calendars by clicking on the *Host Calendar* button for physical hosts and clicking on the *Network Calendar* button for VLANs. 
-This will display a Gantt chart of the reservations which allows you to find when resources are available. 
+To discover when resources are available, You can access the lease calendars by clicking on the *Host Calendar* button for physical hosts and clicking on the *Network Calendar* button for VLANs.
+This will display a Gantt chart of the reservations which allows you to find when resources are available.
 The *Y* axis represents the different physical nodes in the system and the *X* axis represents time.
 
 .. figure:: reservations/hostcalendar.png
    :alt: The Host Calendar
 
    The Host Calendar
-   
+
 .. figure:: reservations/networkcalendar.png
    :alt: The Network Calendar
 
@@ -155,7 +158,7 @@ nodes: pick a name, start time, and lease duration. Then:
 
 #. Remove any resource properties.
 
-   .. note:: In the future the controls for *Resource Properties* will be improved to show only those relevant to VLANs.
+   .. note:: In the future the controls for *Resource Properties* will be improved to show only those relevant to VLANs. If you would like to reserve a specific *network segment* or *physical network type*, we will need to use the CLI to specify resource properties.
 
 #. Click on the *Create* button.
 
@@ -187,7 +190,7 @@ ___________________________________________________
 
 The sections above present the most user friendly mode of usage, with most actions performed via the web interface. However, Chameleon can be accessed via the OpenStack command line tools which provides more capabilities. This section presents some advanced usage using the command line tools.
 
-.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :doc:`cli` is highly recommended before continuing on the following sections.
 
 Blazar Client Installation
 ____________________________
@@ -200,11 +203,11 @@ To reserve specific nodes, based on their identifier or their resource specifica
 
 .. note:: We need to install version 1.1.1 or greater to support multi-region clouds.
 
-To reserve VLAN segments, you must use a Chameleon fork of the Blazar client:
+To reserve VLAN segments or floating IPs, you must use a Chameleon fork of the Blazar client:
 
 .. code-block:: bash
 
-   pip install -e git+https://github.com/ChameleonCloud/python-blazarclient.git@allocatable-vlans#egg=python-blazarclient
+   pip install -e git+https://github.com/ChameleonCloud/python-blazarclient.git@chameleoncloud/stable/rocky#egg=python-blazarclient
 
 Before using *Blazar Client*, You must configure the environment variables for your project via ``source`` :ref:`the OpenStack RC Script <cli-rc-script>` or use the CLI switches every time you run the commands. Type ``blazar`` in your terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in the *Shell Mode*.
 
@@ -370,12 +373,12 @@ __________________________________________
 
 To create a lease, use the ``lease-create`` command. The following arguments are required:
 
-- ``--reservation`` with the ``resource_type``, ``network_name`` attributes
+- ``--reservation`` with the ``resource_type`` and ``network_name`` attributes
 - ``--start-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - A lease name
 
-An optional attribute ``network_description`` can be added to the ``--reservation`` argument.
+Optional attributes include ``network_description`` and ``resource_properties`` which can both be added to the ``--reservation`` argument.
 
 For example, the following command will create a lease with the name of
 ``my-first-vlan-lease`` and the network name ``my-network`` that starts on June
@@ -393,8 +396,50 @@ Chameleon :ref:`sdn` features.
 
    blazar lease-create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
 
+Adding the ``resource_properties`` attribute allows you to reserve a specific
+*network segment* or *physical network* type. There are currently only two
+physical network types ``physnet1`` and ``exogeni``. You can read more about
+both types in :doc:`networks`. The following two examples show how to reserve
+a network by ``segment_id`` or ``physical_network``.
+
+.. code-block:: bash
+
+   blazar lease-create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+
+.. code-block:: bash
+
+   blazar lease-create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+
 While separate leases can be created to reserve nodes and VLAN segments, it is also possible to combine multiple reservations within a single lease. The following example creates a lease reserving one Haswell compute node and one VLAN segment:
 
 .. code-block:: bash
 
    blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_haswell"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease
+
+.. _reservation-cli-fip:
+
+
+Creating a Lease to Reserve Floating IPs
+________________________________________
+
+To create a lease, use the ``lease-create`` command. The following arguments are required:
+
+- ``--reservation`` with the ``resource_type`` and ``network_id`` attributes
+- ``--start-date`` in ``"YYYY-MM-DD HH:MM"`` format
+- ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
+- A lease name
+
+Multiple floating IPs can be reserved using the ``amount`` attribute. If ommitted, only one floating IP is reserved.
+
+For example, the following command will create a lease with the name of
+``my-first-fip-lease`` that starts on June 17th, 2015 at 4:00pm and ends on
+June 17th, 2015 at 6:00pm and reserves three floating IPs:
+
+.. code-block:: bash
+
+   pip install python-openstackclient
+   PUBLIC_NETWORK_ID=$(openstack network show public -c id -f value)
+   blazar lease-create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-fip-lease
+
+.. note::
+   Updating floating IP reservations is not yet supported. Thus, we do not yet recommend creating leases combining floating IPs with other types of resources.
