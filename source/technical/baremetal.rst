@@ -47,7 +47,7 @@ To launch an instance with the GUI, follow the steps:
       :alt: The Flavor configuration step
 
       The Flavor configuration step
-      
+
    .. hint:: If you are familiar with Openstack, other implementations allow for the selection of flavors based on machine disk size and RAM. On Chameleon, the only flavor available is "baremetal" because hardware selection is performed in reservations.
 
 #. In the *Networks* step, select a network by clicking the "up" arrow next to it. About Chameleon default network and how to create your own network, please see :doc:`networks`.
@@ -58,11 +58,11 @@ To launch an instance with the GUI, follow the steps:
       :alt: The Key Pair configuration step
 
       The Key Pair configuration step
-      
+
    .. important::
       It is a good practice to make sure that the instance is launching with the key pair of your choice, or you will not be able to access your instance.
-   
-   .. tip::   
+
+   .. tip::
       You may import or create key pairs directly through this step.
 
 #. Optionally, you may configure *Scheduler Hints*. This is useful if you would like to launch an instance on a specific node in your multi-node reservation by *UUID*.
@@ -70,23 +70,23 @@ To launch an instance with the GUI, follow the steps:
    - In the *Custom* text box, type ``query`` and click the *+* button. This will add a *query* hint to the list on the right.
    - In the *query* hint, enter your scheduler hint. For example, if you require a specific node, type ``["=","$hypervisor_hostname","<node_uuid>"]`` where ``<node_uuid>`` is the node you are requesting.
 
-   .. figure:: baremetal/launchscheduler.png 
+   .. figure:: baremetal/launchscheduler.png
       :alt: Adding a Scheduler Hint
 
       Adding a Scheduler Hint
-      
-#. If you want to customize your instance after it has launched, you can add a customization script in the *Configuration* step. 
+
+#. If you want to customize your instance after it has launched, you can add a customization script in the *Configuration* step.
 
    - You can type in the script in *Customization Script*.
    - Or you can upload your script via *Load script from a file*.
-   
+
    .. figure:: baremetal/customizationscript.png
       :alt: Adding a Customization Script
-      
+
       Adding a Customization Script
-      
+
       .. tip::
-         You can :ref:`disable and turn off appliance agents <turn-off-appliance-agents>` using a customization script. 
+         You can :ref:`disable and turn off appliance agents <turn-off-appliance-agents>` using a customization script.
 
 #. Finish configuring and start launching the instance by clicking on the *Launch Instance* button. The instance will show up in the instance list, at first in *Build* status. It takes a few minutes to deploy the instance on bare metal hardware and reboot the machine.
 
@@ -116,28 +116,28 @@ _______________________
 
 To make your instance publicly accessible over the Internet, you must associate a *Floating IP Address* to it.
 
-#. On the *Instances* page, click the *Associate Floating IP* button next to your bare metal instance. The following *Manage Floating IP Assocations* dialog will show. 
-   
-   .. figure:: baremetal/associate_manage.png
-      :alt: The Manage Floating IP Associations dialog
-
-      The Manage Floating IP Associations dialog
-
-#. If you have previously allocated an IP address to your project that is not currently used, you may select it in the *IP Address* dropdown. Otherwise, click the *+* button to open the *Allocate Floating IP* dialog. In this dialog, you may simply click the *Allocate IP* button.
+#. On the *Floating IPs* page (under the *Networks* section in the left-hand sidebar), ensure that there is a free Floating IP available in your project. If there is not, click the *Allocate IP to Project* button to bring up the *Allocate Floating IP* dialog. In this dialog, you may simply click *Allocate IP*. You can optionally specify a description for the IP for your convenience.
 
    .. figure:: baremetal/associate_pool.png
       :alt: the Allocate Floating IP dialog
 
       The Allocate Floating IP dialog
 
-#. The correct value for "Port to be associated" should already be selected. You may click the *Associate* button.
+#. Once a Floating IP is allocated to your project, it will display in the list view, and you can click the *Associate* button for the Floating IP to assign it to a running or spawning instance. This button will bring up the *Manage Floating IP Associations* dialog.
+
+   .. figure:: baremetal/floating_ip_overview.png
+      :alt: The Floating IP list view with a Floating IP available
+
+      The Floating IP list view with a Floating IP available
+
+#. In the dialog, select an instance from the "Port to be associated" dropdown. Your instance's display name will be displayed here. Click *Associate* to complete the process of assigning the IP to your instance.
 
    .. figure:: baremetal/associate_ip.png
       :alt: The Manage Floating IP Associations dialog with an IP selected
 
       The Manage Floating IP Associations dialog with an IP selected
 
-#. You will be sent back to the instance list, where you can see the *floating IP* attached to the instance (you may need to refresh your browser to see the *floating IP*).
+#. If you go back to the *Instances* page, you should now see the *floating IP* attached to the instance.
 
    .. figure:: baremetal/instanceswithip.png
       :alt: An instance with an allocated Floating IP
@@ -170,13 +170,13 @@ The ID of the ``sharednet1`` network can be obtained using the command:
 .. code-block:: bash
 
    openstack network list
-   
+
 Alternatively, you may look it up in the GUI in the *Network* > *Networks* page. You can obtain your *reservation ID* via the web interface or by running:
 
 .. code-block:: bash
 
    blazar lease-show <lease_name>
-   
+
 .. attention:: The **reservation ID** and the **lease ID** are different
 
 Running a Shell Script on Boot
@@ -186,18 +186,18 @@ You might want to automatically execute some code after launching an instance, w
 
 .. _turn-off-appliance-agents:
 .. tip::
-   Chameleon supported images are configured with appliance agents, including :ref:`collectd <metrics>` and :ref:`Heat agents <all-to-all-info-exchange>`. 
+   Chameleon supported images are configured with appliance agents, including :ref:`collectd <metrics>` and :ref:`Heat agents <all-to-all-info-exchange>`.
    To turn off appliance agents on boot, in order to remove the potential impact on experimental measurements, pass the following script as ``user-data``.
-   
+
    .. code-block:: bash
-      
+
       #!/bin/bash
       systemctl stop collectd.service
       systemctl disable collectd.service
       systemctl stop os-collect-config.service
       systemctl disable os-collect-config.service
-      
-   Turning off ``collectd`` will **stop** collecting :ref:`Gnocchi metrics <metrics>`, but you can :ref:`turn on and configure the daemon <configure-collectd>` anytime for monitoring your experiment. 
+
+   Turning off ``collectd`` will **stop** collecting :ref:`Gnocchi metrics <metrics>`, but you can :ref:`turn on and configure the daemon <configure-collectd>` anytime for monitoring your experiment.
 
 Customizing the Kernel
 ______________________
@@ -208,7 +208,7 @@ However, it is now easy to customize the operating system kernel or modify the k
 
 To do this, you must be using a whole disk image rather than a partition image. Whole disk images contain their own kernel and ramdisk files and do not have ``kernel_id`` and ``ramdisk_id`` properties in the image repository, unlike partition images.
 
-Running Virtual Machines on Bare Metal Hardware 
+Running Virtual Machines on Bare Metal Hardware
 _______________________________________________
 
 For cloud computing and virtualization experiments, you might want to run virtual machines on bare hardware that you fully control rather than use the shared OpenStack KVM cloud. There are many different ways to configure networking for virtual machines. The configuration described below will enable you to connect your virtual machines to the Internet using a `KVM Public Bridge <http://www.linux-kvm.org/page/Networking#public_bridge>`_ which you must first configure manually on your host on the default network interface.
@@ -224,12 +224,12 @@ Then, for each virtual machine you want to run, request a `Neutron <https://docs
 .. code-block:: bash
 
    openstack port-create sharednet1
-   
+
 This should display, among other information:
 
 - A fixed IP in the same private network as the physical nodes
 - A MAC address
-  
+
 Finally, start your virtual machine while assigning it the *MAC address* provided by OpenStack. If your image is configured to use *DHCP*, the virtual machine should receive the allocated IP.
 
 Neutron ports allocated this way are not automatically deleted, so please delete them after your experiment is over using:
@@ -237,13 +237,13 @@ Neutron ports allocated this way are not automatically deleted, so please delete
 .. code-block:: bash
 
    openstack port delete <id>
-   
+
 You may find the ID of your ports using:
 
 .. code-block:: bash
 
    openstack port list
-   
+
 Launching Instances on Specific Nodes
 _____________________________________
 
@@ -260,12 +260,12 @@ If you have a reservation for multiple physical nodes, explicitly identified wit
    --hint query='["=","$hypervisor_hostname","<node_uuid>"]' \
    <instance_name>
 
-From within an instance you have already launched, you can discover which node it is running on by executing 
+From within an instance you have already launched, you can discover which node it is running on by executing
 
 .. code-block:: bash
 
    curl http://169.254.169.254/openstack/latest/vendor_data.json
-   
+
 This will return a JSON dictionary describing site, cluster, and node.
 
 Customizing Networking
@@ -284,7 +284,7 @@ Once your bare metal instance has launched, you may interact with it by using SS
 Connecting via SSH
 __________________
 
-If you have associated a *Floating IP* with the instance and you have the private key in place, you should be able to connect to the instance via SSH using the ``cc`` account. 
+If you have associated a *Floating IP* with the instance and you have the private key in place, you should be able to connect to the instance via SSH using the ``cc`` account.
 
 To access the instance using SSH, type the command in your terminal:
 
@@ -294,21 +294,21 @@ To access the instance using SSH, type the command in your terminal:
 
 .. error::
    If you get errors:
-   
+
    .. code-block:: shell
-   
+
       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
       @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
       IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
       ...
-   
+
    It is likely that you have saved a previous entry for the instance's *Floating IP* in your ``~/.ssh/known_hosts`` file on your computer. Simply removing the entry from the file should solve the issue.
-   
+
    You can remove the entry from the ``~/.ssh/known_hosts`` file by using the command:
-   
+
    .. code-block:: shell
-    
+
       ssh-keygen -R <floating_ip>
 
 You may receive the response below. Type ``yes`` and hit enter:
@@ -327,10 +327,10 @@ When logged in, your prompt may appear like this:
 
 .. note:: If you notice SSH errors such as connection refused, password requests, or failures to accept your key, it is likely that the physical node is still going through the boot process. In that case, please wait before retrying. Also make sure that you use the ``cc`` account. If after 10 minutes you still cannot connect to the machine, please open a ticket with our `help desk <https://www.chameleoncloud.org/user/help/>`_.
 
-You can now check whether the resource matches its known description in the resource registry. For this, simply run: 
-   
+You can now check whether the resource matches its known description in the resource registry. For this, simply run:
+
    .. code-block:: bash
-   
+
       sudo cc-checks -v
 
 The ``cc-checks`` program prints the result of each check in green if it is successful and red if it failed. You can now run your experiment directly on the machine via SSH. You can run commands with root privileges by prefixing them with ``sudo``. To completely switch user and become root, use the ``sudo su - root`` command.

@@ -129,38 +129,26 @@ Associating an IP Address
 
 Your instance may take approximately ten minutes to launch. The launch process includes powering up, loading the operating system over the network, and booting up for the first time on a rack located either at the University of Chicago or the Texas Advanced Computing Center, depending on where you chose to launch your instance. Before you can access your instance, you need to first assign a floating IP address - an IP address that is accessible over the public Internet.
 
-#. If you don't see your instance, go to the *Instances* list by clicking on *Compute* and *Instances* in the sidebar.
-#. Locate your instance. It is probably in the *Spawning* state.
+#. Go to the *Floating IP* dashboard by clicking on *Network* and *Floating IPs* in the sidebar.
 
-   .. figure:: instance_entry.png
-      :alt: The current state of your instance
+    .. figure:: floating_ip_overview.png
+       :alt: The Floating IP dashboard
 
-      Your instance is probably in the "Spawning" state
+#. If you have a Floating IP not currently associated to an instance, click the *Associate* button for the IP. A dialog will load that allows you to assign a publicly accessible IP to your instance. Click the *Associate* button in the dialog to complete the process of associating the public IP to your instance.
 
-#. Click the *Associate Floating IP* button. A dialog will load that allows you to assign a publicly accessible IP.
-
-   .. figure:: associate_manage.png
+   .. figure:: associate_ip.png
       :alt: The Manage Floating IP Associations dialog
-
 
       Here you can assign a floating IP address
 
-#. You may allocate a floating IP for your project by clicking on the *+* button next to the dropdown that says *Select an IP address*. A new dialog will open for allocating floating IP.
+#. If you didn't already have a Floating IP available, you may allocate one to your project by clicking on the *Allocate IP to Project* button along the top row in the Floating IP dashboard. A new dialog will open for allocating the floating IP.
 
    .. figure:: associate_pool.png
       :alt: The Allocate Floating IP dialog
 
       This dialog allows you to allocate an IP address from Chameleon's public IP pool
 
-#. Click the *Allocate IP* button. You will return to the previous dialog and an IP address will be selected for you.
-
-
-   .. figure:: associate_ip.png
-      :alt: You have now allocated a floating IP
-
-      You have now allocated a floating IP address
-
-#. Click the *Associate* button and make note of the public IP address that has been associated to your instance.
+  Click the *Allocate IP* button. The Floating IP dashboard will reload and you should see your new Floating IP appear in the list. You can now go back to step 2.
 
 Accessing Your Instance
 =======================
