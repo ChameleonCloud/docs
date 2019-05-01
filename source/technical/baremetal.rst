@@ -116,7 +116,7 @@ _______________________
 
 To make your instance publicly accessible over the Internet, you must associate a *Floating IP Address* to it.
 
-#. On the *Floating IPs* page (under the *Networks* section in the left-hand sidebar), ensure that there is a free Floating IP available in your project. If there is not, click the *Allocate IP to Project* button to bring up the *Allocate Floating IP* dialog. In this dialog, you may simply click *Allocate IP*. You can optionally specify a description for the IP for your convenience.
+#. On the *Floating IPs* page (under the *Network* section in the left-hand sidebar), ensure that there is a free Floating IP available in your project. If there is not, click the *Allocate IP to Project* button to bring up the *Allocate Floating IP* dialog. In this dialog, you may simply click *Allocate IP*. You can optionally specify a description for the IP for your convenience.
 
    .. figure:: baremetal/associate_pool.png
       :alt: the Allocate Floating IP dialog
