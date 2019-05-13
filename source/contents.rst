@@ -12,7 +12,6 @@ Welcome to Chameleon Cloud Documentation's documentation!
 
    index
    getting-started/index
-   getting-started/faq
    getting-started/community
    getting-started/pi_eligibility
 

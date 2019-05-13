@@ -33,7 +33,7 @@ If you are a PI, you may `apply for a new project <https://www.chameleoncloud.or
 
 If you want to join an existing project, ask the PI of the project to add you to their project. They will need your Chameleon username.
 
-For more information about project management, please see the :ref:`Project Management <project-management>` section or :ref:`FAQs about project management <faq-project>`.
+For more information about project management, please see the :ref:`Project Management <project-management>` section or `FAQs about project management <https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-project-and-allocation-management>`_.
 
 --------------------------------------------
 Step 3: Start using Chameleon!

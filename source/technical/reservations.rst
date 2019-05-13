@@ -54,7 +54,7 @@ The *Y* axis represents the different physical nodes in the system and the *X* a
 .. _reservations-create-lease-gui:
 
 Creating a Lease to Reserve Physical Hosts and/or Network
-__________________________________________
+____________________________________________________________
 
 Once you have chosen a time period when you want to reserve resources, go back to the *Leases* screen and click on the *Create Lease* button. It should bring up the window displayed below:
 
