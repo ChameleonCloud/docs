@@ -248,7 +248,7 @@ You can get details about your *Complex Appliance*, such as *Outputs*, *Events* 
      +---------------------------+--------------------------------------+---------------------------------+-----------------+----------------------+
      | resource_name             | physical_resource_id                 | resource_type                   | resource_status | updated_time         |
      +---------------------------+--------------------------------------+---------------------------------+-----------------+----------------------+
-     | nfs_server_ip_association |                                      | OS::Nova::FloatingIPAssociation | INIT_COMPLETE   | 2018-03-19T18:38:05Z |
+     | nfs_server_ip_association |                                      | OS::Neutron::FloatingIPAssociation | INIT_COMPLETE   | 2018-03-19T18:38:05Z |
      | nfs_server                | 0ab0169c-f762-4d27-8724-b359caa50f1f | OS::Nova::Server                | CREATE_FAILED   | 2018-03-19T18:38:05Z |
      | nfs_server_floating_ip    | ecb391f8-4653-43a6-b2c6-bb93a6d89115 | OS::Nova::FloatingIP            | CREATE_COMPLETE | 2018-03-19T18:38:05Z |
      | nfs_clients               |                                      | OS::Heat::ResourceGroup         | INIT_COMPLETE   | 2018-03-19T18:38:05Z |
@@ -360,10 +360,10 @@ The ``nfs_client`` instance mounts the NFS directory shared by the ``nfs_server`
             systemctl enable nfs-server && systemctl start nfs-server
 
       nfs_server_ip_association:
-        type: OS::Nova::FloatingIPAssociation
+        type: OS::Neutron::FloatingIPAssociation
         properties:
-          floating_ip: { get_resource: nfs_server_floating_ip }
-          server_id: { get_resource: nfs_server }
+          floatingip_id: {get_resource: nfs_server_floating_ip}
+          port_id: {get_attr: [nfs_server, addresses, sharednet1, 0, port]}
 
       nfs_client:
         type: OS::Nova::Server
@@ -591,6 +591,63 @@ Outputs allow template to give information from the deployment to users. This ca
 Generally values will be calls to ``get_attr``, ``get_param``, or some other function to get information from parameters or resources deployed by the
 template and return them in the proper format to the user.
 
+
+Reserved Networks and Floating IPs
+______________________
+
+Chameleon's reservation service allows users to reserve VLAN segments and floating ips. In order to make use of these
+reserved resources in a (HOT) template, follow the guidelines below. For more information on VLAN and floating ip reservations,
+see documentaiton on :ref:`reservation-cli-vlan` and :ref:`reservation-cli-fip`
+
+When you reserve a VLAN segment via blazar, it will automatically create a network for you. However, this network
+is not usable in your template unless a subnet and router have been associated with the network. Once this is done, you can simply
+add the network name as the network parameter for your server as you would ``sharednet1``. The below cli commands
+provides an example of how to complete the setup for your reserved network.
+
+::
+
+    openstack subnet create --subnet-range 192.168.100.0/24 \
+        --allocation-pool start=192.168.100.100,end=192.168.100.108 \
+        --dns-nameserver 8.8.8.8 --dhcp \
+        --network <my_reserved_network_name> \
+        my_subnet_name
+    openstack router create my_router_name
+    openstack router add subnet my_router_name my_subnet_name
+    openstack router set --external-gateway public my_router_name
+
+For reserved floating ips, you need to associate the floating ip with a server using the ``OS::Neutron::FloatingIPAssociation`` object type.
+Many of our older complex appliance templates use the ``OS::Nova::FloatingIPAssociation`` object, but this has since been deprecated. See example below
+for proper usage:
+
+::
+
+    my_server_ip_association:
+      type: OS::Neutron::FloatingIPAssociation
+      properties:
+        floatingip_id: <my_reserved_floating_ip_uuid>
+        port_id: {get_attr: [my_server, addresses, <my_network_name>, 0, port]}
+
+
+If you are having trouble finding the ``uuid`` of the floating ip address then the below command will help you.
+
+::
+
+    openstack floating ip list -c ID -c "Floating IP Address" -c Tags --long
+
+The output should look like the sample output below with the `uuid` listed under the `ID` column. You can check your lease in
+the reservation section of the GUI to find the `reservation id` associated with the floating ip in the `Tags` section of the output.
+
+::
+
+    +--------------------------------------+---------------------+------------------------------------------------------------------+
+    | ID                                   | Floating IP Address | Tags                                                             |
+    +--------------------------------------+---------------------+------------------------------------------------------------------+
+    | 0fe31fad-60ac-462f-bb6c-4d40c1506621 | 192.5.87.206        | [u'reservation:d90ad917-300a-4cf7-a836-083534244f56', u'blazar'] |
+    | 92a347a9-31a5-43c1-80e2-9cdb38ebf66f | 192.5.87.224        | [u'reservation:5f470c97-0166-4934-a813-509b743e2d62', u'blazar'] |
+    | c8480d67-533d-4f55-a197-8271da6d9344 | 192.5.87.71         | []                                                               |
+    +--------------------------------------+---------------------+------------------------------------------------------------------+
+
+
 __________________________
 Sharing Complex Appliances
 __________________________
@@ -622,11 +679,11 @@ This limitation was already apparent in our `NFS share <https://www.chameleonclo
 
 This limitation is even more important if the deployment is not hierarchical, i.e. all instances need to know about all others. For example, a cluster with IP and hostnames populated in ``/etc/hosts`` required each instance to be known by every other instance.
 
-This section presents a more advanced form of contextualization that can perform this kind of information exchange. 
-This is implemented by *Heat* agents running inside instances and communicating with the *Heat* service to send and receive information. 
-This means you will need to use an image bundling these agents. 
-Currently, our `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliance, 
-as well as their fully-supported CUDA images, are supporting this mode of contextualization. 
+This section presents a more advanced form of contextualization that can perform this kind of information exchange.
+This is implemented by *Heat* agents running inside instances and communicating with the *Heat* service to send and receive information.
+This means you will need to use an image bundling these agents.
+Currently, our `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliance,
+as well as their fully-supported CUDA images, are supporting this mode of contextualization.
 If you build your own images using the `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance or `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliance builder, you will automatically have these agents installed. This contextualization is performed with several Heat resources:
 
 - ``OS::Heat::SoftwareConfig``: This resource describes code to run on an instance. It can be configured with inputs and provide outputs.
