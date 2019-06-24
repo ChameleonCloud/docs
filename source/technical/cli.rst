@@ -8,7 +8,7 @@ _______________
 Introduction
 _______________
 
-The Command Line Interface (CLI) provides a way to interact with Chameleon resources using shell and scripting tools. Chameleon uses the `OpenStack Client <https://docs.openstack.org/python-openstackclient/pike/>`_ to provide CLI functionality. This documentation section provides an overview on how to install the `OpenStack Client <https://docs.openstack.org/python-openstackclient/pike/>`_ and configure your shell environment to access Chameleon features.
+The Command Line Interface (CLI) provides a way to interact with Chameleon resources using shell and scripting tools. Chameleon uses the `OpenStack Client <https://docs.openstack.org/python-openstackclient/latest/>`_ to provide CLI functionality. This documentation section provides an overview on how to install the `OpenStack Client <https://docs.openstack.org/python-openstackclient/latest/>`_ and configure your shell environment to access Chameleon features.
 
 .. attention::
     Some of the Chameleon features are **only** accessable via the CLI, such as the Gnocchi metrics and the advanced networking features.

@@ -521,7 +521,7 @@ You may want to write a whole new template, rather than customizing an existing 
 Heat template version
 ~~~~~~~~~~~~~~~~~~~~~
 
-Each Heat template has to include the ``heat_template_version`` key with a valid version of `HOT (Heat Orchestration Template) <https://docs.openstack.org/heat/pike/template_guide/hot_guide.html>`_. Chameleon bare-metal supports any HOT version up to **2015-10-15**, which corresponds to OpenStack Liberty.
+Each Heat template has to include the ``heat_template_version`` key with a valid version of `HOT (Heat Orchestration Template) <https://docs.openstack.org/heat/latest/template_guide/hot_guide.html>`_. Chameleon bare-metal supports any HOT version up to **2015-10-15**, which corresponds to OpenStack Liberty.
 The `Heat documentation <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html#hot-spec-template-version>`_ lists all available versions and their features. We recommended that you always use the latest Chameleon supported version to have access to all supported features:
 
 ``heat_template_version: 2015-10-15``

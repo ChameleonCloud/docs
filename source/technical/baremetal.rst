@@ -182,7 +182,7 @@ Alternatively, you may look it up in the GUI in the *Network* > *Networks* page.
 Running a Shell Script on Boot
 ______________________________
 
-You might want to automatically execute some code after launching an instance, whether it is installing packages, changing configuration files, or running an application. OpenStack provides a mechanism called `User Data <https://docs.openstack.org/queens/user/#term-user-data>`_ to pass information to instances. This information can be any data in any format, but if it is a shell script it will be automatically executed after boot by `cloudinit <https://cloudinit.readthedocs.io/en/latest/>`_. You can provide this shell script either via the web interface in the *Configuration* tab when launching an instance, or by providing a file to the nova command line using the ``--user-data`` option.
+You might want to automatically execute some code after launching an instance, whether it is installing packages, changing configuration files, or running an application. OpenStack provides a mechanism called `User Data <https://docs.openstack.org/latest/user/#term-user-data>`_ to pass information to instances. This information can be any data in any format, but if it is a shell script it will be automatically executed after boot by `cloudinit <https://cloudinit.readthedocs.io/en/latest/>`_. You can provide this shell script either via the web interface in the *Configuration* tab when launching an instance, or by providing a file to the nova command line using the ``--user-data`` option.
 
 .. _turn-off-appliance-agents:
 .. tip::
@@ -213,13 +213,13 @@ _______________________________________________
 
 For cloud computing and virtualization experiments, you might want to run virtual machines on bare hardware that you fully control rather than use the shared OpenStack KVM cloud. There are many different ways to configure networking for virtual machines. The configuration described below will enable you to connect your virtual machines to the Internet using a `KVM Public Bridge <http://www.linux-kvm.org/page/Networking#public_bridge>`_ which you must first configure manually on your host on the default network interface.
 
-First, set up your environment for the OpenStack command line tools by following :doc:`the instructions <cli>`. Install the `Neutron <https://docs.openstack.org/neutron/queens/>`_ client in a virtualenv with:
+First, set up your environment for the OpenStack command line tools by following :doc:`the instructions <cli>`. Install the `Neutron <https://docs.openstack.org/neutron/latest/>`_ client in a virtualenv with:
 
 .. code-block:: bash
 
    pip install python-neutronclient
 
-Then, for each virtual machine you want to run, request a `Neutron <https://docs.openstack.org/neutron/queens/>`_ port with:
+Then, for each virtual machine you want to run, request a `Neutron <https://docs.openstack.org/neutron/latest/>`_ port with:
 
 .. code-block:: bash
 
@@ -271,7 +271,7 @@ This will return a JSON dictionary describing site, cluster, and node.
 Customizing Networking
 ______________________
 
-In its default configuration, the bare metal deployment system used by Chameleon (`OpenStack Ironic <https://docs.openstack.org/ironic/pike/>`_) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On `CHI@UC <https://chi.uc.chameleoncloud.org>`_, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
+In its default configuration, the bare metal deployment system used by Chameleon (`OpenStack Ironic <https://docs.openstack.org/ironic/latest/>`_) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On `CHI@UC <https://chi.uc.chameleoncloud.org>`_, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
 
 __________________________
 Interacting with Instances
