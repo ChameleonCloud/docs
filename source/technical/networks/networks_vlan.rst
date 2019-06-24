@@ -1,9 +1,7 @@
 .. _network-isolation:
 
-______________________
 Isolated Network VLANs
-______________________
-
+======================
 
 By default, bare metal nodes on each Chameleon site share the same local network (shared VLAN and IP subnet). However, some experiments may require more network isolation, which is now supported by Chameleon.
 
@@ -11,13 +9,15 @@ Chameleon's implementation of network isolation is based on dynamically managed 
 
 .. note::
 
-   - Network isolation is now available on both `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_.
    - Strong network isolation is provided at network layer 2 only. Even using separate IP subnetworks, any bare metal node can still communicate with each other and with the Internet through the network's router. We are investigating solutions to provide stronger isolation at network layer 3.
    - Network isolation works on all nodes, including our low-power HP Moonshot nodes (low-power Xeon, Atom, ARM64).
 
-To use this feature, you will need to create a dedicated network and router. You can use a *Heat* template or use the *Network* panel of the GUI. Network isolation using the *Heat* template procedure is explained in this section below. For creating networks and routers using the *Network* panel of the GUI, please continue reading the following sections.
+To use this feature, you will need to create a dedicated network and router. You can use a :ref:`Heat template <complex>`, use the *Network* panel of the GUI, or use the CLI.
 
-#. To create networks and routers using a *Heat* template, go to *Project* > *Orchestration* > *Stacks*.
+Configuring Networking using a Heat template
+--------------------------------------------
+
+#. Go to *Project* > *Orchestration* > *Stacks*.
 #. Click the *Launch Stack* button to open an interactive dialog.
 #. Select *URL* as *Template Source* and paste https://raw.githubusercontent.com/ChameleonCloud/heat-templates/master/network-isolation/network-isolation.yaml to *Template URL*.
 #. Click the *Next* button to navigate to the *Launch Stack* dialog.
@@ -29,10 +29,8 @@ To use this feature, you will need to create a dedicated network and router. You
 
 #. Start creating the network and router by clicking the *Launch* button.
 
-For more information about *Stack*, please read :ref:`complex`.
-
 Creating a Network using the GUI
-________________________________
+--------------------------------
 
 To create a Network from either the *Network Topology* page or the *Networks* page, click the *+Create Network* button to open the *Create Network* dialog.
 
@@ -72,7 +70,7 @@ You may specify *DHCP* and static *Route* information at *Subnet Details* sectio
 Click *Create* button and a new Network will be created. Check if the network is created without error.
 
 Creating a Router
-_________________
+^^^^^^^^^^^^^^^^^
 
 To create a *Router* from either the *Network Topology* page or the *Routers* page, click the *+Create Router* button to open the *Create Router* dialog.
 
@@ -84,7 +82,7 @@ To create a *Router* from either the *Network Topology* page or the *Routers* pa
 In this dialog, specify a *Router Name*. Optionally, you may select *public* as the *External Network* if you want to have external access.  Click *Create Router* to complete the process.
 
 Adding a Router Interface
-_________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Router may have multiple *Interfaces*, each connected to a *Network*. You may add an *Interface* to an existing *Router* by clicking on *Add Interface* from either the *Network Topology* page or the *Routers* page to open the *Add Interface* dialog.
 
@@ -105,8 +103,45 @@ A Router may have multiple *Interfaces*, each connected to a *Network*. You may 
 
 First, select a network and subnet you have created. You can specify an *IP address*; otherwise, Chameleon will attempt to assign an IP address automatically. The gateway IP you assigned to the subnet will be automatically picked.
 
+Adding a Firewall
+^^^^^^^^^^^^^^^^^
+
+A Router can have a *Firewall* optionally configured to allow you to control ingress/egress to/from your *Subnet*. This has the desirable effect of allowing you to control which services you are exposing over the public Internet when you have assigned *Floating IP addresses* to your instances. To do this, you must create a *Firewall Group* that associates a *Firewall Policy* to an *Interface* on your *Router*. You can access the *Firewall* GUI under the *Firewall Groups* section under the *Networks* sidebar.
+
+.. figure:: networks/firewallgroups.png
+   :alt: The Firewall Groups panel
+
+   The Firewall Groups panel
+
+.. note:: There is a default ingress policy named "chameleon default ingress" shared with all Chameleon projects. It provides some basic security rules such as allowing SSH and HTTP(s), as well as ICMP, and can be a good policy for most cases.
+
+To customize your *Firewall*, you should first add some *Firewall Rules*. To do that, click the *Firewall Rules* tab, and then click the *Add Rule* button to bring up the *Add Rule* modal. This modal allows you to configure the rule, such as for which protocols it should be active, as well as source and destination addresses.
+
+.. figure:: networks/firewallrulesadd.png
+   :alt: The Firewall Rules Add Rule model
+
+   The Firewall Rules "Add Rule" modal
+
+Once you have rules defined, the next step is to create a *Firewall Policy* that has rules assigned. Click the *Firewall Policies* tab, and then click *Add Policy* to bring up the *Add Policy* modal. This modal allows you to name the policy and assign *Firewall Rules* via the *Rules* tab. The ordering of rules matters; the first match will apply.
+
+.. figure:: networks/firewallpoliciesadd.png
+   :alt: The Firewall Policies Add Policy modal
+
+   The Firewall Policies "Add Policy" modal
+
+Finally, associate your *Firewall Policy* to a *Router Interface* by creating a *Firewall Group*. Click the *Firewall Groups* tab, and then click *Create Firewall Group* to open the *Add Firewall Group* modal. Here, you can select your ingress and egress *Firewall Policies* to apply. Click the *Ports* tab and assign the port for your *Router Interface* to apply the firewall to the *Subnet* associated with that interface. You may need to re-visit the *Routers* page to get the ID of your *Router Interface*.
+
+.. figure:: networks/firewallgroupsadd.png
+  :alt: The Firewall Groups Add Firewall Group modal
+
+  The Firewall Groups "Add Firewall Group" modal
+
+.. important:: You need to check the **Admin State** box when creating the *Firewall Group*, or else the firewall will never be activated. "Admin State" is a way for the owner of the firewall to say that it should be enabled or disabled quickly.
+
+Once a port is added to your *Firewall Group*, it will be activated and applied. You can modify your *Firewall Policy* while it is associated with a *Firewall Group* and any changes will be automatically applied to traffic immediately.
+
 Deleting Networking Objects
-___________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. attention::
    Network objects such as *Routers* and *Networks* must be deleted in the reverse order of which they were created. Objects **can not** be deleted while other objects are depending on them.
@@ -127,18 +162,17 @@ ___________________________
 #. Go to *Project* > *Network* > *Networks*, and delete the network by using the dropdown in the *Action* column. Alternatively, you may delete the network by selecting the network using the checkbox and click on *Delete Networks* button on the upper right corner. Confirm your deletion to finish the process.
 
 
-
 Configuring Networking using the CLI
-________________________________________________________
+------------------------------------
 
-.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :doc:`cli` is highly recommended before continuing on the following sections.
 
 Before using the CLI, make sure you have configured environment variables using :ref:`cli-rc-script`.
 
 .. _network-cli-create:
 
 Creating a Network
-__________________
+^^^^^^^^^^^^^^^^^^
 
 You can create an *Isolated* VLAN Network using the command:
 
@@ -239,7 +273,7 @@ To see more options when creating a subnet, use the following command:
    openstack subnet create --help
 
 Creating a Router
-_________________
+^^^^^^^^^^^^^^^^^
 
 To create a router, use the following command:
 
@@ -274,7 +308,7 @@ Your output should look like:
    +-------------------------+--------------------------------------+
 
 Adding a Router Interface
-_________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Router Interface can be added and attached to a subnet with the command:
 
@@ -288,8 +322,36 @@ In addition, you can specify an *External Gateway* for your router and connect i
 
    openstack router set --external-gateway public <router_name>
 
+Adding a Firewall
+^^^^^^^^^^^^^^^^^
+
+To configure a *Firewall*, first create *Firewall Rules* that you would like to apply to traffic.
+
+.. code-block:: bash
+
+   openstack firewall group rule create [options] --name <name>
+
+Then, create a *Firewall Policy* that has rules associated:
+
+.. code-block:: bash
+
+   openstack firewall group policy create \
+     --firewall-rule <rule_name_or_id> \
+     --firewall-rule <another_rule_name_or_id> \
+     <policy_name>
+
+Finally, create a *Firewall Group* that applies a policy to one or more *Router Interfaces*:
+
+.. code-block:: bash
+
+   openstack firewall group create --ingress-policy <policy_name_or_id> \
+     --port <router_interface_port_id> \
+     --port <another_router_interface_port_id> \
+     <group_name>
+
+
 Deleting Networking Objects
-___________________________
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To delete a router with an External Gateway and subnets associated to it, use the following commands:
 

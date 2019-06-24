@@ -8,7 +8,7 @@ Basic Networking
 Shared Network
 --------------
 
-All Chameleon Projects have access to the fixed network ``sharednet1`` which is used by most experiments. The ``sharednet1`` is a pre-configured network shared among all Chameleon Projects with a *Subnet* whose address space is ``10.52.0.0/22`` and includes a router providing NAT access to the public Internet. All instances using ``sharednet1`` can communicate directly.
+All Chameleon Projects have access to the fixed network ``sharednet1`` which is used by most experiments. The ``sharednet1`` is a pre-configured network shared among all Chameleon Projects with one *Subnet* and includes a *Router* providing NAT access to the public Internet. All instances using ``sharednet1`` can communicate directly.
 
 Multiple Networks
 -----------------
@@ -26,7 +26,41 @@ The :ref:`getting-started` guide shows how to allocate *Floating IP address* to 
 
 .. important:: The Chameleon floating IP address pool is a shared and finite resource. **Please be responsible and release any unused floating IP address, so other Chameleon users and projects can use them!**
 
-Security Groups
----------------
+Security
+--------
 
-Currently, *Security Groups* are not implemented on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Therefore, all inbound and outbound port traffic is open to the Internet at these sites by default. `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ observes *Security Groups*, which allows inbound and outbound traffic to be filtered by port with a default policy.
+When your instance has a *Floating IP address* assigned, it is reachable directly over the public Internet. For this reason, it is important to consider the security of any services running on your instance. In particular, **ensure that you have not allowed SSH authentication with passwords** (this is disabled by default on Chameleon-supported images.)
+
+There are additional network security mechanisms on the testbed that you should be aware of.
+
+Firewall
+^^^^^^^^
+
+A configurable *Firewall* is available on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. This is built on the `OpenStack Neutron Firewall-as-a-Service (FWaaS) <https://docs.openstack.org/neutron/latest/admin/fwaas.html>`_ system. By default, any instances connected to the ``sharednet1`` or ``sharedwan1`` shared networks automatically have a firewall configured with the following rules:
+
++------------+--------------------+-----------+
+| Source     | Destination port   | Protocol  |
++============+====================+===========+
+| *          | 22                 | TCP       |
++------------+--------------------+-----------+
+| *          | 80                 | TCP       |
++------------+--------------------+-----------+
+| *          | 443                | TCP       |
++------------+--------------------+-----------+
+| *          | n/a                | ICMP      |
++------------+--------------------+-----------+
+| 10./8      | *                  | TCP/UDP   |
++------------+--------------------+-----------+
+| 172.16./12 | *                  | TCP/UDP   |
++------------+--------------------+-----------+
+| 192.168./16| *                  | TCP/UDP   |
++------------+--------------------+-----------+
+| fe80::/10  | *                  | ICMP/UDP  |
++------------+--------------------+-----------+
+
+.. note:: If you think there is a case for allowing additional services/ports on this default firewall, please `open a Help Desk ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to let us know.
+
+Security Groups
+^^^^^^^^^^^^^^^
+
+`KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.
