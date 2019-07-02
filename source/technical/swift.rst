@@ -173,6 +173,8 @@ To delete a container and wipe out all the objects belong to it, use the followi
 Working with Objects
 ______________________
 
+.. tip:: swift can upload objects up to 4GB. Larger objects must be broken into segments no larger than this with the --segment-size option indicating size in bits. ``--segment-size 4831838208`` is close to 4GB and not above this limit. 
+
 You may upload a file from your local machine to a container using the following command:
 
 .. code-block:: bash
@@ -201,6 +203,8 @@ There isn't "folders" when you managing the *Object Store* with the CLI. However
 ________________________________________
 Mounting Object Store as a File System
 ________________________________________
+
+.. tip:: Cloudfuse can upload objects up to 4GB. For larger objects, use the Swift CLI
 
 When logged into an instance using Chameleon-supported images, such as `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_,
 you will see a directory called ``my_mounting_point`` which is a pre-mounted directory to your Chameleon Object Store at the same site of your instance. Each Object Store container that you have access to will appear as a subdirectory inside this mount.
