@@ -134,7 +134,7 @@ To create a *Container*, use the following command:
 
 .. code-block:: bash
 
-   openstack container create <container_name>
+   swift post <container_name>
 
 .. tip:: By default, the *Container* created using the above command will not be visible to the public.
 
@@ -142,7 +142,7 @@ To view all containers that belong to your project, run:
 
 .. code-block:: bash
 
-   openstack container list
+   swift list
 
 .. tip:: You may use ``--prefix <prefix>`` as a filter to list the containers whose name starts with ``<prefix>``.
 
@@ -150,25 +150,25 @@ To see details of a container, use the command:
 
 .. code-block:: bash
 
-   openstack container show <container_name>
+   swift stat <container_name>
 
 To view a list of objects within a container, use the command:
 
 .. code-block:: bash
 
-   openstack object list <container_name>
+   swift list <container_name>
 
 To download a container with all the objects belong to it, use the following command:
 
 .. code-block:: bash
 
-   openstack container save <container_name>
+   swift download <container_name>
 
 To delete a container and wipe out all the objects belong to it, use the following command:
 
 .. code-block:: bash
 
-   openstack container delete <container_name>
+   swift delete <container_name>
 
 Working with Objects
 ______________________
@@ -177,21 +177,21 @@ You may upload a file from your local machine to a container using the following
 
 .. code-block:: bash
 
-   openstack object create <container_name> <local_filename>
+   swift upload <container_name> <local_filename>
 
-.. tip:: Optionally, you may name the object differently from it's original name in your local machine by using the ``--name <object_name>`` parameter.
+.. tip:: Optionally, you may name the object differently from it's original name in your local machine by using the ``--object-name <object_name>`` parameter.
 
 To delete an object from a container, run:
 
 .. code-block:: bash
 
-   openstack object delete <container_name> <object_name>
+   swift delete <container_name> <object_name>
 
 If you wish to download an individual object directly from a container, use the command:
 
 .. code-block:: bash
 
-   openstack object save <container_name> <object_name>
+   swift download <container_name> <object_name> 
 
 Working with Folders
 _______________________
