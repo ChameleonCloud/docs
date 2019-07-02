@@ -204,7 +204,7 @@ ________________________________________
 Mounting Object Store as a File System
 ________________________________________
 
-.. tip:: Cloudfuse can upload objects up to 4GB. For larger objects, use the Swift CLI
+.. tip:: Cloudfuse can upload objects up to 4GB. For larger objects, please use the Swift CLI.
 
 When logged into an instance using Chameleon-supported images, such as `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_,
 you will see a directory called ``my_mounting_point`` which is a pre-mounted directory to your Chameleon Object Store at the same site of your instance. Each Object Store container that you have access to will appear as a subdirectory inside this mount.
