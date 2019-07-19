@@ -131,6 +131,10 @@ The `Help Desk <https://www.chameleoncloud.org/user/help/>`_ allows you to submi
 
 To create a new help ticket, click the `+Create a new ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_ button and fill in the form. A system administrator will respond to your ticket within 3 business days.
 
+.. note::
+   An alternative way of asking for help is sending an email to the `Chameleon users mailing list <mailto:users@chameleoncloud.org>`_, especially when the Help Desk is down or you think it's something worth sharing with all Chameleon users. 
+   A system administrator will reply to your email and, if necessary, create a ticket for you. 
+
 .. _profile-page:
 
 Profile
