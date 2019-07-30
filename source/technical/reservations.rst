@@ -8,14 +8,12 @@ ___________________
 Introduction
 ___________________
 
-Unlike virtual resources on a regular on-demand cloud, physical resources on Chameleon must be reserved before using them for an experiment. Once a reservation has been accepted, users are guaranteed that resources will be available at the time they chose (except in extraordinary circumstances such as hardware or platform failures), which helps to plan large scale experiments.
+Unlike virtual resources on a regular on-demand cloud, physical resources on Chameleon must be reserved before using them for an experiment. 
+Once a reservation has been accepted, users are guaranteed that resources will be available at the time they chose (except in extraordinary circumstances such as hardware or platform failures), which helps to plan large scale experiments.
 
 Chameleon resources are reserved via `Blazar <https://docs.openstack.org/blazar/latest/>`_ (previously known as *Climate*) which provides Reservation as a Service for OpenStack.
 
 Three types of resources can be reserved: physical hosts, network segments (VLANs), and floating IPs.
-
-.. note::
-   Floating IP reservation is released as a preview and only available using the CLI. Integration with the Horizon web interface is in progress and will be released in the near future.
 
 ___________________________________________________
 Provisioning and Managing Resources Using the GUI
@@ -53,12 +51,12 @@ The *Y* axis represents the different physical nodes in the system and the *X* a
 
 .. _reservations-create-lease-gui:
 
-Creating a Lease to Reserve Physical Hosts and/or Network
+Creating a Lease to Reserve Resources
 ____________________________________________________________
 
 Once you have chosen a time period when you want to reserve resources, go back to the *Leases* screen and click on the *Create Lease* button. It should bring up the window displayed below:
 
-.. figure:: reservations/createmultipleresourcelease.png
+.. figure:: reservations/createleasedialog.png
    :alt: The Create Lease dialog
 
    The Create Lease dialog
@@ -84,6 +82,7 @@ Once you have chosen a time period when you want to reserve resources, go back t
 
    .. tip:: Select or deselect the ``Reserve Physical Host`` and ``Reserve Network`` checkboxes to include resources as needed.
 
+#. Choose the number of floating IPs. You don't need to check `Reserve Network` for floating IPs.
 #. Click on the *Create* button.
 
 Once created, the lease details will be displayed. At the bottom of the page are the details about the reservation. Initially the reservation is in the ``Pending`` status, and stays in this state until it reaches the start time.
@@ -409,6 +408,3 @@ June 17th, 2015 at 6:00pm and reserves three floating IPs:
    pip install python-openstackclient
    PUBLIC_NETWORK_ID=$(openstack network show public -c id -f value)
    blazar lease-create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-fip-lease
-
-.. note::
-   Updating floating IP reservations is not yet supported. Thus, we do not yet recommend creating leases combining floating IPs with other types of resources.
