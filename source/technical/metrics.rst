@@ -269,7 +269,9 @@ _________________________________________________________
 Energy and Power Consumption Measurement with ``etrace2``
 _________________________________________________________
 
-The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliances, as well as all Chameleon supported images dervied from them, now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. It is done with the ``etrace2`` utility which relies on the `Intel RAPL (Running Average Power Limit) <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ interface.
+The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_, `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ and `CC-Ubuntu18.04 <https://www.chameleoncloud.org/appliances/69/>`_ appliances, 
+as well as all Chameleon supported images dervied from them, now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. 
+It is done with the ``etrace2`` utility which relies on the `Intel RAPL (Running Average Power Limit) <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ interface.
 
 .. attention:: 
    Currenly, ``etrace2`` requires a kernel feature that is not supported on our ARM nodes.
@@ -321,3 +323,6 @@ Note the following caveats:
 
 This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.
 
+.. note::
+   The Linux kernel version of `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ is too old to use ``etrace2`` on Chameleon **Skylake** nodes. 
+   To solve the problem, simply upgrade the Linux kernel. 
