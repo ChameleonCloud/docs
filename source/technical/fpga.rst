@@ -136,6 +136,16 @@ Program FPGA with the OpenCL kernel, using ``acl0`` as the device name.
 
    aocl program acl0 ./bin/hello_world.aocx
 
+.. attention::
+   If you are at `CHI@UC <https://chi.uc.chameleoncloud.org>`_, please run the following commands (program FPGA as ``root``).
+
+   .. code-block:: bash
+
+      sudo -i
+      source /etc/profile.d/altera.sh
+      cd /home/cc/hello_world
+      aocl program acl0 ./bin/hello_world.aocx
+
 Execute the host application to run on FPGA.
 
 .. code-block:: bash
