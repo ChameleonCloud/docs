@@ -17,3 +17,4 @@ Most experiments will require :ref:`basic-networking` functionality including In
    networks/networks_vlan
    networks/networks_stitching
    networks/networks_sdn
+   networks/networks_jumbo_frames
