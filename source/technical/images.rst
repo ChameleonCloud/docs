@@ -103,7 +103,6 @@ In the *Create Image* dialog:
 #. Enter an *Image Name* and, optionally, a description.
 #. Click *Browse* to select a file on your local machine to upload. 
 #. Select a *Format* of the image. Images created by the ``cc-snapshot`` utility are *QCOW2* images.
-#. For *Image Requirements*, choose *pxe_deploy_kernel* in the *Kernel* dropdown and *pxe_deploy_ramdisk* in the *Ramdisk* dropdown.
 #. To add additional metadata for your image, use the *Metadata* section by clicking *Metadata* in the sidebar.
 #. Click the *Create Image* button to upload your image.
 
