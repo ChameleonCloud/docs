@@ -149,7 +149,8 @@ The Overview page provides a graphical summary of your project's current resourc
 Instances
 _________
 
-The Instances page allows you to work with your instances. You may launch, terminate, monitoring, associate/dissociate a floating IP to a instance. Clicking on the dropdown list in *Action* column to see what you are eligible to do to your instances.
+The Instances page allows you to work with your instances. 
+You may launch, terminate, monitor, or reboot an instance. Clicking on the dropdown list in *Action* column to see what you are eligible to do to your instances.
 
 .. figure:: gui/instances.png
    :alt: The Instances page
