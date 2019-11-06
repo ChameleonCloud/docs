@@ -1,12 +1,10 @@
 .. _complex:
 
-======================
 Complex Appliances
-======================
+==================
 
-___________________________
 Introduction
-___________________________
+------------
 
 Deploying an MPI cluster, an OpenStack installation, or any other type of cluster in which nodes can take on multiple roles can be complex: you have to provision potentially hundreds of nodes, configure them to take on various roles, and make them share information that is generated or assigned only at deployment time, such as hostnames, IP addresses, or security keys. When you want to run a different experiment later you have to redo all this work. When you want to reproduce the experiment, or allow somebody else to reproduce it, you have to take very precise notes and pay great attention to their execution.
 
@@ -19,9 +17,8 @@ This guide will tell you all you need to know in order to use and configure *Com
 .. hint::
    Since *Complex Appliances* in Chameleon are currently implemented using the `OpenStack Heat <https://docs.openstack.org/heat/latest/>`_ orchestration service, we will be using OpenStack terminology and features to work with them. The templates described above are YAML files using the `Heat Orchestration Template (HOT) <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html>`_ format (Heat also supports the AWS CloudFormation template format, but this is not covered here). A deployed complex appliance is referred to as a “stack” – just as a deployed single appliance is typically referred to as an “instance”.
 
-_________________________________
 Complex Appliances in the Catalog
-_________________________________
+---------------------------------
 
 The `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ has several *Complex Appliances* for popular technologies that people want to deploy such as OpenStack or MPI or even more advanced deployments such as efficient SR-IOV enabled MPI in KVM virtual machines. We also provide common building blocks for cluster architectures, such as an NFS share. *Complex Appliances* are identified by a badge in their top-right corner representing a group of machines, as in the screenshot below:
 
@@ -39,9 +36,8 @@ To view the details of a *Complex Appliance*, simply click on it.
 
 .. tip:: You may download the *Template* file or copy the *Template* file URL to clipboard by clicking the *Get Template* button. The *Template* file or it's URL is required when launching a *Complex Appliance*.
 
-__________________________________________________________
 Managing Complex Appliances using the GUI
-__________________________________________________________
+-----------------------------------------
 
 Before launching a *Complex Appliance*, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ stie or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
 
@@ -59,7 +55,7 @@ Before launching a *Complex Appliance*, please make sure that you have a reserva
 
 
 Launching a Complex Appliance
-_____________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To launch a stack, click the *Launch Stack* button in the upper right of the *Stacks* page. Then follow the steps:
 
@@ -88,7 +84,7 @@ To launch a stack, click the *Launch Stack* button in the upper right of the *St
    A Complex Appliance with the Create in Progress status
 
 Monitoring a Complex Appliance
-______________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To monitor and get more details about your *Complex Appliance*, click on it in the *Stacks* page.
 
@@ -132,13 +128,12 @@ To monitor and get more details about your *Complex Appliance*, click on it in t
      The Template tab
 
 Deleting a Complex Appliance
-____________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To delete a *Complex Appliance*, select it in the *Stacks* page and click the *Delete Stacks* button. This will delete all resources of the stack, such as nodes and floating IP addresses.
 
-_____________________________________________________________
 Managing Complex Appliances using the CLI
-_____________________________________________________________
+-----------------------------------------
 
 .. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
 
@@ -165,7 +160,7 @@ The output should look like the following:
    +--------------------------------------+---------------+-------------------+----------------------+----------------------+
 
 Launching a Complex Appliance
-_____________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To launch a *Complex Appliance* using *Template*, run the command on your local machine:
 
@@ -200,7 +195,7 @@ Provide the path to and the name of the *Template* file in your local file syste
 Therefore, in order to use this *Template*, you must provide values for ``nfs_client_count``, ``key_name`` and ``reservation_id``.
 
 Monitoring a Complex Appliance
-______________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can get details about your *Complex Appliance*, such as *Outputs*, *Events* and *Resources*, via the CLI. You will need the *UUID* of the *Complex Appliance*.
 
@@ -261,7 +256,7 @@ You can get details about your *Complex Appliance*, such as *Outputs*, *Events* 
      openstack stack resource show <stack_uuid> <resource_name>
 
 Deleting a Complex Appliance
-____________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the following command to delete a stack:
 
@@ -271,14 +266,13 @@ Use the following command to delete a stack:
 
 It will remove all the resources attached to the stack.
 
-____________________________
 Heat Orchestration Templates
-____________________________
+----------------------------
 
 A *Heat Orchestration Template* is a YAML file that specifies how resources are used and configured in a *Complex Appliance*.
 
 A Case Example: NFS Share
-_________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's look at the `NFS Share Template <https://www.chameleoncloud.org/appliances/api/appliances/25/template>`_. The NFS share appliance deploys:
 
@@ -305,7 +299,7 @@ The ``parameters`` section defines inputs to be used on *Complex Appliance* laun
 The ``outputs`` section defines what values are returned to the user. *Outputs* are declared similarly to *Parameters*: they each have a name, an optional description, and a value. They allow to return information from the stack to the user. You may use the ``get_attr`` function to retrieve a resource's attribute for output.
 
 Heat Template Customization
-______________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Customizing an existing template is a good way to start developing your own. We will use a simpler template than the previous example to start with: it is the `Hello World complex appliance <https://www.chameleoncloud.org/appliances/26/>`_.
 
@@ -508,7 +502,7 @@ Inside the resource group definition, change ``count: 2`` to ``count: { get_p
 At this stage, we have fully recreated the *NFS share* appliance starting from the *Hello World* one! The next section will explain how to write a new template from scratch.
 
 Writing a New Template
-______________________
+~~~~~~~~~~~~~~~~~~~~~~
 
 You may want to write a whole new template, rather than customizing an existing one. Each template should follow the same layout and be composed of the following sections:
 
@@ -519,7 +513,7 @@ You may want to write a whole new template, rather than customizing an existing 
 -  Outputs
 
 Heat template version
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 Each Heat template has to include the ``heat_template_version`` key with a valid version of `HOT (Heat Orchestration Template) <https://docs.openstack.org/heat/latest/template_guide/hot_guide.html>`_. Chameleon bare-metal supports any HOT version up to **2015-10-15**, which corresponds to OpenStack Liberty.
 The `Heat documentation <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html#hot-spec-template-version>`_ lists all available versions and their features. We recommended that you always use the latest Chameleon supported version to have access to all supported features:
@@ -527,7 +521,7 @@ The `Heat documentation <https://docs.openstack.org/heat/latest/template_guide/h
 ``heat_template_version: 2015-10-15``
 
 Description
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 While not mandatory, it is good practice to describe what is deployed and configured by your template. It can be on a single line:
 
@@ -544,7 +538,7 @@ If a longer description is needed, you can provide multi-line text in YAML, for 
       template deploys on Chameleon.
 
 Resources
-~~~~~~~~~
+^^^^^^^^^
 
 The resources section is required and must contain at least one resource definition. A `complete list of resources types known to Heat <https://docs.openstack.org/heat/latest/template_guide/openstack.html>`_ is
 available.
@@ -565,7 +559,7 @@ However, only a subset of them are supported by Chameleon, and some are limited 
 If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare-metal, please let us know via our `help desk <https://www.chameleoncloud.org/user/help/>`_.
 
 Parameters
-~~~~~~~~~~
+^^^^^^^^^^
 
 Parameters allow users to customize the template with necessary or optional values.
 For example, they can customize which Chameleon appliance they want to deploy, or which key pair to install.
@@ -574,7 +568,7 @@ For example, ``custom_constraint: glance.image`` restricts the image selection t
 `More details about constraints <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html#parameter-constraints>`_ are available in the *Heat* documentation.
 
 Outputs
-~~~~~~~
+^^^^^^^
 
 Outputs allow template to give information from the deployment to users. This can include usernames, passwords, IP addresses, hostnames, paths, etc. The outputs declaration is using the following format:
 
@@ -593,7 +587,7 @@ template and return them in the proper format to the user.
 
 
 Reserved Networks and Floating IPs
-______________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Chameleon's reservation service allows users to reserve VLAN segments and floating ips. In order to make use of these
 reserved resources in a (HOT) template, follow the guidelines below. For more information on VLAN and floating ip reservations,
@@ -648,9 +642,8 @@ the reservation section of the GUI to find the `reservation id` associated with 
     +--------------------------------------+---------------------+------------------------------------------------------------------+
 
 
-__________________________
 Sharing Complex Appliances
-__________________________
+--------------------------
 
 If you have written your own *Complex Appliance* or substantially customized an existing one, we would love if you shared them with our user community! The process is very similar to regular appliances: log into the Chameleon portal, go to the appliance catalog, and click on the button in the top-right corner: *Add an appliance* (you need to be logged in to see it).
 
@@ -661,14 +654,13 @@ If you have written your own *Complex Appliance* or substantially customized an 
 
 You will be prompted to enter a name, description, and documentation. Instead of providing appliance IDs, copy your template to the dedicated field. Finally, share your contact information and assign a version string to your appliance. Once submitted, your appliance will be reviewed. We will get in touch if a change is needed, but if it's all good we will publish it right away!
 
-___________________________
 Advanced Topics
-___________________________
+---------------
 
 .. _all-to-all-info-exchange:
 
 All-to-All Information Exchange
-_______________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The previous examples have all used ``user_data`` scripts to provide instances with contextualization information. While it is easy to use, this contextualization method has a major drawback: because it is given to the instance as part of its launch request, it cannot use any context information that is not yet known at this time. In practice, this means that in a client-server deployment, only one of these pattern will be possible:
 
@@ -811,7 +803,7 @@ You can follow the same template pattern to configure your own deployment requir
 .. _advanced-reservation-orchestration:
 
 Advanced Reservation Orchestration
-_____________________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On Chameleon you can configure a Heat Stack to launch as soon as your lease begins. Whether your experiments require a large cluster or a single node, orchestrating an advanced reservation is can save you time configuring your environment or provide a blueprint for your experiment that will run automatically
 when the necessary resources become available.
@@ -819,7 +811,7 @@ when the necessary resources become available.
 At present, you will need to use our customized versions of the Heat and Blazar CLI tools to implement this feature. We are currently working to provide support for this functionality through the GUI.
 
 Install Custom CLI
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 You can install Chameleon's ``python-heatclient`` and ``python-blazarclient`` packages via ``pip`` by running the following commands:
 
@@ -830,7 +822,7 @@ You can install Chameleon's ``python-heatclient`` and ``python-blazarclient`` pa
 
 
 Initialize Stack
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 Next you will need to configure a Heat stack with the ``--initialize`` flag on the CLI and a dummy ``reservation_id`` parameter. The ``dummy`` id can be anything (even an empty string) so long as the ``reservation_id`` parameter is specified so that Blazar can overwrite it once your advanced reservation is scheduled and the stack is ready to launch. Once your stack is initialized, the status should read ``INIT_COMPLETE``. This indicates that your template was validated and all the data required to launch a stack has been stored. See example command below:
 
@@ -840,7 +832,7 @@ Next you will need to configure a Heat stack with the ``--initialize`` flag on t
 
 
 Create Reservation with Stack_ID
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying ``orchestration`` as an ``on_start`` action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--physical-reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
 
