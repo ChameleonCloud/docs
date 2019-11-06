@@ -1,39 +1,35 @@
 .. _kvm:
 
-==============================
 KVM
-==============================
+===
 
-____________
 Introduction
-____________
+------------
 
-OpenStack is an Infrastructure as a Service (IaaS) platform that allows you to create and manage virtual environments. Chameleon provides an installation of OpenStack version 2015.1 (Kilo) using the KVM virtualization technology at the `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used on this cloud, any virtual machines you upload must be compatible with KVM.
+OpenStack is an Infrastructure as a Service (IaaS) platform that allows you to create and manage virtual environments. Chameleon provides an installation of OpenStack `Rocky <https://releases.openstack.org/rocky/index.html>`_ using the KVM virtualization technology at the `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used on this cloud, any virtual machines you upload must be compatible with KVM.
 
 This documentation provide basic information about how to use the OpenStack web interface and provides some information specific to using OpenStack KVM on Chameleon. The interface is similar to the bare metal sites `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. However, the resources that you are using are virtual, rather than being tied to physical nodes. Familiarity with some concepts, such as :ref:`gui-key-pairs` are also required for KVM.
 
-___________________________
+.. warning:: The old `KVM-2015@TACC <https://openstack.tacc.chameleoncloud.org>`_ is now deprecated. Existing projects should work to migrate workloads over to the new `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ site. See :ref:`kvm-migrate` below.
+
 Work with KVM using the GUI
-___________________________
+---------------------------
 
 An easy way to use OpenStack KVM on Chameleon is via the GUI, which is similar to the GUIs for `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. You log into the web interface using your Chameleon username and password. 
-
-.. note::
-   If you change your Chameleon password in the portal, the change will propagate to the OpenStack KVM interface in about 5 minutes.
 
 After a successful log in, you will see the *Overview* page as shown below. This page provides a summary of your current and recent usage and provides links to various other pages. Most of the tasks you will perform are done via the menu on the lower left and will be described below. One thing to note is that on the left, your current project is displayed. If you have multiple Chameleon projects, you can change which of them is your current project. All of the information displayed and actions that you take apply to your current project. So in the screen shot below, the quota and usage apply to the current project you have selected and no information about your other projects is shown.
 
 .. figure:: kvm/overview.png
 
 Managing Virtual Machine Instances
-__________________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 One of the main activities you’ll be performing in the GUI is management of virtual machines, or instances. Go to *Project* > *Compute* > *Instances* in the navigation sidebar. For instances that you have running, you can click on the name of the instance to get more information about it and to access the VNC interface to the console. The dropdown menu to the left of the instance lets you perform a variety of tasks such as suspending, terminating, or rebooting the instance.
 
 .. figure:: kvm/instances.png
 
 Launching Instances
-___________________
+~~~~~~~~~~~~~~~~~~~
 
 To launch an *Instance*, click the *Launch Instance* button. This will open the *Launch Instance* dialog.
 
@@ -67,7 +63,7 @@ Now you can launch your instance by clicking on the *Launch* button and the *Ins
 .. _kvm-associate-ip:
 
 Associating a Floating IP Address
-_________________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You may assign a Floating IP Address to your Instance by selecting *Associate Floating IP* in the dropdown menu next to your Instance on the *Instances* page.
 
@@ -76,16 +72,16 @@ You may assign a Floating IP Address to your Instance by selecting *Associate Fl
 This process is similar to :ref:`baremetal-gui-associate-ip` on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
 
 Key Pairs
-_________
+~~~~~~~~~
 
 You will need to import or create SSH :ref:`gui-key-pairs`. This process is similar to the process performed on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
 
 Security Groups
-_______________
+~~~~~~~~~~~~~~~
 
-*Security Groups* allow you to specify what inbound and outbound traffic is allowed or blocked to Instances. Unlike the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites, `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ observes Security Groups for Instances.
+*Security Groups* allow you to specify what inbound and outbound traffic is allowed or blocked to Instances. Unlike the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites, `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ observes Security Groups for Instances.
 
-.. note:: By default, all inbound traffic is blocked to `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ Instances, including SSH. You must apply a Security Group that allows TCP port 22 inbound to access your instance via SSH.
+.. note:: By default, all inbound traffic is blocked to `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ Instances, including SSH. You must apply a Security Group that allows TCP port 22 inbound to access your instance via SSH.
 
 To create a Security Group, click *Projects* > *Compute* > *Access and Security* in the navigation side bar. 
 
@@ -113,7 +109,7 @@ In this dialog, you can specify *Custom TCP Rule* (or *Custom UDP Rule* or *Cust
 .. _kvm-security-group:
 
 Adding a Security Group to an Instance
-______________________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once you have defined a *Security Group*, you may apply it to an Instance by clicking *Project* > *Compute* > *Instances* in the navigation sidebar and clicking the *Edit Security Groups* option in the *Actions* dropdown.
 
@@ -125,3 +121,13 @@ The *Security Groups* tab in the *Edit Instance* dialog will pop up.
 
 You may click the *+* button next to the Security Group you wish to apply in the *All Security Groups* list on the left. Once you are finished, click *Save* to finish the process.
 
+.. _kvm-migrate:
+
+Migrating from KVM-2015
+-----------------------
+
+The previous iteration of the KVM cloud, KVM-2015, came online at the end of 2015 and runs the 2015.1 "Kilo" release of OpenStack. The KVM-2015 cloud will continue to be operational until 2020, at which point it will be taken offline. As of November 1, 2019, all user key pairs and project images and networks have been migrated automatically to the `new KVM site <https://kvm.tacc.chameleoncloud.org>`_. In most cases, you can migrate to the new KVM cloud simply by using the ``kvm.tacc.chameleoncloud.org`` address instead of the old ``openstack.tacc.chameleoncloud.org`` address in your browser. If you are using OpenStack clients, you can point them to a new authentication URL via your RC file (see the :ref:`command line interface <cli>` documentation for more info). You can continue to use the same login credentials as before.
+
+.. code-block:: shell
+
+  export OS_AUTH_URL=https://kvm.tacc.chameleoncloud.org:5000/v3
