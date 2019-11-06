@@ -165,7 +165,7 @@ Deleting Networking Objects
 Configuring Networking using the CLI
 ------------------------------------
 
-.. tip:: Reading :doc:`cli` is highly recommended before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommended before continuing on the following sections.
 
 Before using the CLI, make sure you have configured environment variables using :ref:`cli-rc-script`.
 
