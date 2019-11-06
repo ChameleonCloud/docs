@@ -6,7 +6,7 @@ ________________
 Introduction
 ________________
 
-Before launching an instance, make sure you own a lease. About how to create a lease, please see :doc:`reservations`. Once your lease is started, you are almost ready to start an instance. But first, you need to make sure that you will be able to connect to it by setting up :ref:`gui-key-pairs`.
+Before launching an instance, make sure you own a lease. About how to create a lease, please see :ref:`reservations`. Once your lease is started, you are almost ready to start an instance. But first, you need to make sure that you will be able to connect to it by setting up :ref:`gui-key-pairs`.
 
 ________________________________
 Launching Instances with the GUI
@@ -50,7 +50,7 @@ To launch an instance with the GUI, follow the steps:
 
    .. hint:: If you are familiar with Openstack, other implementations allow for the selection of flavors based on machine disk size and RAM. On Chameleon, the only flavor available is "baremetal" because hardware selection is performed in reservations.
 
-#. In the *Networks* step, select a network by clicking the "up" arrow next to it. About Chameleon default network and how to create your own network, please see :doc:`networks`.
+#. In the *Networks* step, select a network by clicking the "up" arrow next to it. To learn about the Chameleon default network and how to create your own network, please see :ref:`networking`.
 
 #. In the *Key Pair* step, select one of your SSH key pairs. If you only have one key pair associated with your account, then it is selected by default.
 
@@ -148,7 +148,7 @@ ________________________________
 Launching Instances with the CLI
 ________________________________
 
-.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommanded before continuing on the following sections.
 
 Creating an Instance with the Nova Client
 _________________________________________
@@ -213,7 +213,7 @@ _______________________________________________
 
 For cloud computing and virtualization experiments, you might want to run virtual machines on bare hardware that you fully control rather than use the shared OpenStack KVM cloud. There are many different ways to configure networking for virtual machines. The configuration described below will enable you to connect your virtual machines to the Internet using a `KVM Public Bridge <http://www.linux-kvm.org/page/Networking#public_bridge>`_ which you must first configure manually on your host on the default network interface.
 
-First, set up your environment for the OpenStack command line tools by following :doc:`the instructions <cli>`. Install the `Neutron <https://docs.openstack.org/neutron/latest/>`_ client in a virtualenv with:
+First, set up your environment for the OpenStack command line tools by following :ref:`the instructions <cli>`. Install the `Neutron <https://docs.openstack.org/neutron/latest/>`_ client in a virtualenv with:
 
 .. code-block:: bash
 

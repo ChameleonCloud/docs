@@ -23,4 +23,4 @@ Using Chameleon
 _______________
 
 Chameleon is available to Computer Science researchers and students. To access the system, follow the 
-instructions in :doc:`getting-started/index`. Find out more at https://www.chameleoncloud.org
+instructions in :ref:`getting-started`. Find out more at https://www.chameleoncloud.org.

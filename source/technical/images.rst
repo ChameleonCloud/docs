@@ -157,7 +157,7 @@ ________________________________________________
 Managing Images using the CLI
 ________________________________________________
 
-.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommanded before continuing on the following sections.
 
 Uploading an Image
 __________________

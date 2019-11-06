@@ -1,3 +1,5 @@
+.. _gui:
+
 ==============================
 The Graphical User Interface
 ==============================
@@ -20,7 +22,7 @@ Chameleon also hosts an *OpenStack KVM* implementation where you may work with v
 
     https://openstack.tacc.chameleoncloud.org
 
-This section provides an overview of features available on the GUI for the bare metal sites at the Texas Advanced Computing Center (`CHI@TACC <https://chi.tacc.chameleoncloud.org>`_) and the University of Chicago (`CHI@UC <https://chi.uc.chameleoncloud.org>`_). For information about *OpenStack KVM*, please see :doc:`kvm`.
+This section provides an overview of features available on the GUI for the bare metal sites at the Texas Advanced Computing Center (`CHI@TACC <https://chi.tacc.chameleoncloud.org>`_) and the University of Chicago (`CHI@UC <https://chi.uc.chameleoncloud.org>`_). For information about *OpenStack KVM*, please see :ref:`kvm`.
 
 You may login to either site using your Chameleon portal username and password.
 
@@ -53,10 +55,10 @@ To switch among the projects you belong to, use the project and region menu - th
 
    Switching between projects
 
-.. _gui-user-menu:
-
 .. Attention::
    If you switch from one site to the other, make sure you have selected the site that you want to use before starting an experiment.
+
+.. _gui-user-menu:
 
 User Menu
 __________________________
@@ -234,7 +236,7 @@ __________
 Network
 __________
 
-The Network section allows you to work with virtual network resources, such as configuring routers and virtual networks. For more information, please see :doc:`networks`.
+The Network section allows you to work with virtual network resources, such as configuring routers and virtual networks. For more information, please see :ref:`networking`.
 
 Network Topology
 ________________
@@ -348,7 +350,7 @@ ____________
 Object Store
 ____________
 
-The *Containers* section under *Object Store* gives an easy access to your Chameleon object/blob store. You may create, delete, upload objects to or remove objects from containers via this page. For more information about Chameleon Object Store, please see :doc:`swift`.
+The *Containers* section under *Object Store* gives an easy access to your Chameleon object/blob store. You may create, delete, upload objects to or remove objects from containers via this page. For more information about Chameleon Object Store, please see :ref:`object-store`.
 
 .. figure:: gui/containers.png
    :alt: The Containers page
@@ -361,7 +363,7 @@ ____________
 Reservations
 ____________
 
-The Reservations section allows you to manage your leases of the selected project, including creating and deleting leases. For more information, see :doc:`reservations`.
+The Reservations section allows you to manage your leases of the selected project, including creating and deleting leases. For more information, see :ref:`reservations`.
 
 .. figure:: gui/leases.png
    :alt: The Leases page

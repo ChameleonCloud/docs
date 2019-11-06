@@ -135,7 +135,7 @@ To delete a *Complex Appliance*, select it in the *Stacks* page and click the *D
 Managing Complex Appliances using the CLI
 -----------------------------------------
 
-.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommanded before continuing on the following sections.
 
 In addition to :ref:`cli-installing`, you will need to install the ``python-heatclient`` package using the command:
 

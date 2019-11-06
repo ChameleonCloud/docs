@@ -19,7 +19,7 @@ ___________________________________________________
 Provisioning and Managing Resources Using the GUI
 ___________________________________________________
 
-To make reservations of the resources, first log into the Horizon web interface - either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :doc:`gui`.
+To make reservations of the resources, first log into the Horizon web interface - either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :ref:`gui`.
 
 In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 
@@ -87,7 +87,7 @@ Once you have chosen a time period when you want to reserve resources, go back t
 
 Once created, the lease details will be displayed. At the bottom of the page are the details about the reservation. Initially the reservation is in the ``Pending`` status, and stays in this state until it reaches the start time.
 
-    .. tip:: If you want Blazar to launch an instances or complex appliance as soon as the lease starts, read the ``Advanced Reservation Orchestration`` section our :doc:`complex` documentation.
+    .. tip:: If you want Blazar to launch an instances or complex appliance as soon as the lease starts, read the ``Advanced Reservation Orchestration`` section our :ref:`complex` documentation.
 
 .. figure:: reservations/leasedetails.png
    :alt: Lease details page
@@ -141,7 +141,7 @@ Fill out the form by specifying the new minimum and maximum numbers of hosts. Th
 Reserving a Node by UUID
 ________________________
 
-You may reserve a specific node by providing its *UUID*. To learn more about how to find a node with a specific type, please see :doc:`discovery`. In the *Create Lease* dialog, select *uid* in the *Resource Type* dropdown. Then, choose the *UUID* of the node you would like to reserve.
+You may reserve a specific node by providing its *UUID*. To learn more about how to find a node with a specific type, please see :ref:`resource-discovery`. In the *Create Lease* dialog, select *uid* in the *Resource Type* dropdown. Then, choose the *UUID* of the node you would like to reserve.
 
 .. figure:: reservations/uid.png
    :alt: Selecting a node by UUID
@@ -158,7 +158,7 @@ ___________________________________________________
 
 The sections above present the most user friendly mode of usage, with most actions performed via the web interface. However, Chameleon can be accessed via the OpenStack command line tools which provides more capabilities. This section presents some advanced usage using the command line tools.
 
-.. tip:: Reading :doc:`cli` is highly recommended before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommended before continuing on the following sections.
 
 Blazar Client Installation
 ____________________________
@@ -367,7 +367,7 @@ Chameleon :ref:`sdn` features.
 Adding the ``resource_properties`` attribute allows you to reserve a specific
 *network segment* or *physical network* type. There are currently only two
 physical network types ``physnet1`` and ``exogeni``. You can read more about
-both types in :doc:`networks`. The following two examples show how to reserve
+both types in :ref:`networking`. The following two examples show how to reserve
 a network by ``segment_id`` or ``physical_network``.
 
 .. code-block:: bash

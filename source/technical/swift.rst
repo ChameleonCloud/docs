@@ -1,4 +1,5 @@
 .. _object-store:
+
 ===========================
 Object Store
 ===========================
@@ -117,7 +118,7 @@ _____________________________________
 Managing Object Store using the CLI
 _____________________________________
 
-.. tip:: Reading :doc:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommanded before continuing on the following sections.
 
 In addition to :ref:`cli-installing`, you must also install ``python-swiftclient`` package:
 
@@ -211,8 +212,8 @@ you will see a directory called ``my_mounting_point`` which is a pre-mounted dir
 
 You can also switch to a different site using the ``cc-cloudfuse`` tool.
 
-The ``cc-cloudfuse`` tool (Source: `GitHub <https://github.com/ChameleonCloud/cc-cloudfuse>`_) is pre-installed in Chameleon-supported images. 
-It is based on the ``cloudfuse`` tool (Source: `Github <https://github.com/redbo/cloudfuse>`_), which is used to mount your Chameleon Object Store as a directory on your Linux environment.
+The ``cc-cloudfuse`` tool (Source: `ChameleonCloud/cc-cloudfuse <https://github.com/ChameleonCloud/cc-cloudfuse>`_) is pre-installed in Chameleon-supported images. 
+It is based on the ``cloudfuse`` tool (Source: `redbo/cloudfuse <https://github.com/redbo/cloudfuse>`_), which is used to mount your Chameleon Object Store as a directory on your Linux environment.
 
 Before mounting, you need to configure your Chameleon credentials.
 There are three ways of configuration.
@@ -280,4 +281,3 @@ To unmount, use the following command:
    
 .. note::   
    You may experience persistence issues when using ``cc-cloudfuse``, especially when writing large files or writing many files at the same time. Unmounting and re-mounting usually resolves this.
-

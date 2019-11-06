@@ -1,4 +1,5 @@
 .. _metrics:
+
 =========================
 Monitoring
 =========================
@@ -7,7 +8,7 @@ Chameleon collects monitoring information, representing qualities such as CPU lo
 
 In Chameleon, the aggregation service is implemented using the `Gnocchi time series database <https://gnocchi.xyz>`_. All Chameleon supported images, from which most of our user’s images are derived, are configured to send a selection of system metrics using the `collectd system statistics collection daemon <https://collectd.org>`_. There is a wide range of qualities this daemon can gather; by default only selected metrics are sent but users can configure the daemon (see `Configuring collectd`_) to adapt this set anytime to monitor their experiments better. Another source of metrics is the infrastructure itself, for example the energy and power consumption metrics.
 
-.. tip:: Reading :doc:`cli` is highly recommended before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommended before continuing on the following sections.
 
 Setting up the Gnocchi CLI
 __________________________
@@ -265,6 +266,7 @@ returns:
     | 2018-11-27T02:50:00-06:00 |       300.0 |          56.0 |
     | 2018-11-27T02:55:00-06:00 |       300.0 |          56.0 |
     +---------------------------+-------------+---------------+
+
 _________________________________________________________
 Energy and Power Consumption Measurement with ``etrace2``
 _________________________________________________________
