@@ -131,3 +131,26 @@ The previous iteration of the KVM cloud, KVM-2015, came online at the end of 201
 .. code-block:: shell
 
   export OS_AUTH_URL=https://kvm.tacc.chameleoncloud.org:5000/v3
+  
+Migrating data from instances or volumes from KVM-2015 to instances the new KVM is most easily accomplished using in-instance transfer methods such as rsync over ssh, sftp or similar techniques.
+
+Rsync is a good choice because it can continue interrupted transfers and can do so securely over SSH. Some things to remember when using rsync include:
+
+#. Instance flavors in new KVM do not include an option with 160GB disk. In this case, it is best to create and attach a volume to provide persistent, large storage to your instances. DigitalOcean has a `good guide<https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux>`_ for configuring the storage, once attached.
+#. Both VMs will need a floating IP assigned.
+#. Make sure that the security groups for instances on each of the KVM systems is set appropriately. When using rync over SSH, ingress and egress rules for port 22 will be needed.
+#. The VM that will execute the rsync command will need to have the SSH private key matching the public key used for the remote VM.
+#. Install rsync
+  - CentOS
+  ::
+  
+    sudo yum install rsync
+  - Ubuntu
+  ::
+  
+    sudo apt-get install rsync
+
+Here is an example using a VM on the new KVM to copy data from a VM on KVM-2015:
+  ::
+  
+    rsync -v -e ssh cc@X.X.X.X:/home/cc/remote_directory/ /home/cc/local_directory/
