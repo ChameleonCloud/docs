@@ -136,9 +136,9 @@ Migrating data from instances or volumes from KVM-2015 to instances the new KVM 
 
 Rsync is a good choice because it can continue interrupted transfers and can do so securely over SSH. Some things to remember when using rsync include:
 
-#. Instance flavors in new KVM do not include an option with 160GB disk. In this case, it is best to create and attach a volume to provide persistent, large storage to your instances. DigitalOcean has a `good guide<https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux>`_ for configuring the storage, once attached.
+#. Instance flavors in new KVM do not include an option with 160GB disk. In this case, it is best to create and attach a volume to provide persistent, large storage to your instances. DigitalOcean has a `good guide <https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux>`_. for configuring the storage, once attached.
 #. Both VMs will need a floating IP assigned.
-#. Make sure that the security groups for instances on each of the KVM systems is set appropriately. When using rync over SSH, ingress and egress rules for port 22 will be needed.
+#. Make sure that the security groups for instances on each of the KVM systems are set appropriately. When using rync over SSH, ingress and egress rules for port 22 will be needed.
 #. The VM that will execute the rsync command will need to have the SSH private key matching the public key used for the remote VM.
 #. Install rsync
   - CentOS
