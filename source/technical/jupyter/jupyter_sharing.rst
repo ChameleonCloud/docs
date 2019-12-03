@@ -25,3 +25,8 @@ Whether you're making changes to an existing experiment or creating a new one, y
 
 .. figure:: sharing/sharingportal_3.gif
   :alt: Publishing an artifact (directory of files)
+
+Publishing new versions
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Once your artifact has been published to the sharing portal, it should be indicated in the Jupyter interface with a blue dot over the relevant directory in the file browser. If you make changes to the files in this directory and wish to "commit" those changes as a new published and citable version, you can click the folder and then click "Share"... "Create new version" from the top menu. This will upload the files in their entirety once more to Zenodo and create a new version, which will be semantically linked to the prior versions for posterity. You can also access this option by right-clicking the directory in the file browser and using the context menu.
