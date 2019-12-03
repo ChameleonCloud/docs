@@ -21,7 +21,7 @@ The most powerful feature, though, is the ability to re-launch the artifacts wit
 Publishing Your Artifact
 ------------------------
 
-Whether you're making changes to an existing experiment or creating a new one, you can publish your own artifacts to the Sharing Portal. There is a "Share" menu item in the :ref:`Jupyter interface <jupyter-notebook>`_ that allows you to upload your artifact files straight to Zenodo and then create a new shared artifact on Chameleon. The shared artifact will be created under your Chameleon account and you will be able to edit its metadata directly within the Sharing Portal.
+Whether you're making changes to an existing experiment or creating a new one, you can publish your own artifacts to the Sharing Portal. There is a "Share" menu item in the :ref:`Jupyter interface <jupyter-notebook>` that allows you to upload your artifact files straight to Zenodo and then create a new shared artifact on Chameleon. The shared artifact will be created under your Chameleon account and you will be able to edit its metadata directly within the Sharing Portal.
 
 .. figure:: sharing/sharingportal_3.gif
   :alt: Publishing an artifact (directory of files)
