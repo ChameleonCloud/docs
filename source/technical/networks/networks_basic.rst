@@ -26,6 +26,21 @@ The :ref:`getting-started` guide shows how to allocate *Floating IP address* to 
 
 .. important:: The Chameleon floating IP address pool is a shared and finite resource. **Please be responsible and release any unused floating IP address, so other Chameleon users and projects can use them!**
 
+Floating DNS Records
+^^^^^^^^^^^^^^^^^^^^
+
+Each Floating IP is also contained within a dedicated DNS A record; this means that you can access your instance over the Internet either via its Floating IP or a special hostname. This can be particularly helpful if you want to set up a TLS certificate for HTTPS to secure a service you are exposing over the web, e.g., with `LetsEncrypt <https://letsencrypt.org/>`_.
+
++-----------+-----------------------------------------------------------+
+| Site      | Hostname pattern (for IP `AA.BB.CC.DD`)                   |
++===========+===========================================================+
+| CHI\@TACC | | **chi-dyn-AA-BB-CC-DD.tacc.chameleoncloud.org**         |
+|           | | `e.g., chi-dyn-129-114-108-147.tacc.chameleoncloud.org` |
++-----------+-----------------------------------------------------------+
+| CHI\@UC   | | **chi-dyn-AA-BB-CC-DD.uc.chameleoncloud.org**           |
+|           | | `e.g., chi-dyn-192-5-87-98.uc.chameleoncloud.org`       |
++-----------+-----------------------------------------------------------+
+
 Security
 --------
 
