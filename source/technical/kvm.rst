@@ -131,37 +131,3 @@ The *Security Groups* tab in the *Edit Instance* dialog will pop up.
 .. figure:: kvm/new_editinstance.png
 
 You may click the *+* button next to the Security Group you wish to apply in the *All Security Groups* list on the left. Once you are finished, click *Save* to finish the process.
-
-.. _kvm-migrate:
-
-Migrating from KVM-2015
------------------------
-
-The previous iteration of the KVM cloud, KVM-2015, came online at the end of 2015 and runs the 2015.1 "Kilo" release of OpenStack. The KVM-2015 cloud will continue to be operational until 2020, at which point it will be taken offline. As of November 1, 2019, all user key pairs and project images and networks have been migrated automatically to the `new KVM site <https://kvm.tacc.chameleoncloud.org>`_. In most cases, you can migrate to the new KVM cloud simply by using the ``kvm.tacc.chameleoncloud.org`` address instead of the old ``openstack.tacc.chameleoncloud.org`` address in your browser. If you are using OpenStack clients, you can point them to a new authentication URL via your RC file (see the :ref:`command line interface <cli>` documentation for more info). You can continue to use the same login credentials as before.
-
-.. code-block:: shell
-
-  export OS_AUTH_URL=https://kvm.tacc.chameleoncloud.org:5000/v3
-  
-Migrating data from instances or volumes from KVM-2015 to instances the new KVM is most easily accomplished using in-instance transfer methods such as rsync over ssh, sftp or similar techniques.
-
-Rsync is a good choice because it can continue interrupted transfers and can do so securely over SSH. Some things to remember when using rsync include:
-
-#. Instance flavors in new KVM do not include an option with 160GB disk. In this case, it is best to create and attach a volume to provide persistent, large storage to your instances. DigitalOcean has a `good guide <https://www.digitalocean.com/community/tutorials/how-to-partition-and-format-storage-devices-in-linux>`_ for configuring the storage, once attached.
-#. Both VMs will need a floating IP assigned.
-#. Make sure that the security groups for instances on each of the KVM systems are set appropriately. When using rync over SSH, ingress and egress rules for port 22 will be needed.
-#. The VM that will execute the rsync command will need to have the SSH private key matching the public key used for the remote VM.
-#. Install rsync
-  - CentOS
-  ::
-  
-    sudo yum install rsync
-  - Ubuntu
-  ::
-  
-    sudo apt-get install rsync
-
-Here is an example using a VM on the new KVM to copy data from a VM on KVM-2015:
-  ::
-  
-    rsync -v -e ssh cc@X.X.X.X:/home/cc/remote_directory/ /home/cc/local_directory/
