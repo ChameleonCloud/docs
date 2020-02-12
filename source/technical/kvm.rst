@@ -67,7 +67,7 @@ Set up network using *Network* tab.
 
 .. figure:: kvm/new_launchnetwork.png
 
-#. Select which network should be associated with the instance. Click the ``+`` next to your project’s private network (PROJECT_NAME-net), not ``ext-net``.
+#. Select which network should be associated with the instance. Click the Up arrow next to your project’s private network (PROJECT_NAME-net), not ``ext-net``.
 
 Now you can launch your instance by clicking on the *Launch* button and the *Instances* page will show progress as it starts.
 
