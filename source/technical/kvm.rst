@@ -24,7 +24,7 @@ After a successful log in, you will see the *Overview* page as shown below. This
 Managing Virtual Machine Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-One of the main activities you’ll be performing in the GUI is management of virtual machines, or instances. Go to *Project* > *Compute* > *Instances* in the navigation sidebar. For instances that you have running, you can click on the name of the instance to get more information about it and to access the VNC interface to the console. The dropdown menu to the left of the instance lets you perform a variety of tasks such as suspending, terminating, or rebooting the instance.
+One of the main activities you’ll be performing in the GUI is management of virtual machines, or instances. Go to *Project* > *Compute* > *Instances* in the navigation sidebar. For instances that you have running, you can click on the name of the instance to get more information about it and to access the VNC interface to the console. The dropdown menu to the right of the instance lets you perform a variety of tasks such as suspending, terminating, or rebooting the instance.
 
 .. figure:: kvm/new_instances.png
 
@@ -67,7 +67,7 @@ Set up network using *Network* tab.
 
 .. figure:: kvm/new_launchnetwork.png
 
-#. Select which network should be associated with the instance. Click the Up arrow next to your project’s private network (PROJECT_NAME-net), not ``ext-net``.
+Select which network should be associated with the instance. Click the Up arrow next to your project’s private network (PROJECT_NAME-net), not ``ext-net``.
 
 Now you can launch your instance by clicking on the *Launch* button and the *Instances* page will show progress as it starts.
 
