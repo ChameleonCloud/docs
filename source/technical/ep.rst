@@ -14,11 +14,6 @@ Users can request their experiment records from Chameleon using their Chameleon 
 An *Experiment Precis* is bounded to a lease. Chameleon defines an *experiment* as a series of testbed setup (OpenStack) events a user performed under a lease of a project. 
 Using *Experiment Precis*, users will be able to analyze, understand and even replay their experiments. 
 
-.. warning::
-
-   The *Experiment Precis* service is **only** available at `CHI@UC <https://chi.uc.chameleoncloud.org>`_. 
-   We will make it available at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ soon.
-
 Currently, *Experiment Precis* is provided in JSON format. The following contents are included:
 
 .. code-block:: json
