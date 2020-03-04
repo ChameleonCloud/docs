@@ -140,9 +140,9 @@ For general information on CLI authentication and use, please see the `command-l
 Uploading qcow2 images to raw format for better instance launch performance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-KVM images are stored on our CEPH cluster, which is able to serve raw images much faster than qcow2 for instance launches. Openstack includes the experimental command Glance image-create-via-import, which allows uploading of images in various standard formats including qcow2 to then be automatically converted to raw in the backend.
+KVM images are stored on our Ceph cluster, which is able to serve raw images much faster than qcow2 for instance launches. Openstack includes the experimental command Glance image-create-via-import, which allows uploading of images in various standard formats including qcow2 to then be automatically converted to raw in the backend.
 
-In order to use this method, authenticate to KVM using the OpenStack RC script downloaded from the `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ site as described in `command-line-interface section <https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-command-line-interface>`_.
+In order to use this method, authenticate to KVM using the OpenStack RC script downloaded from the `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ site as described in `command-line-interface section <https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-openstack-rc-script>`_.
 
 Next, issue the following command:
 
@@ -160,5 +160,12 @@ Alternatively, you may convert qcow2 images to raw format before upload. qemu-im
    .. code-block:: shell
  
        qemu-img convert -f qcow2 -O raw <original.qcow2> <converted.img>
+       
+
+Once converted, use glance to upload the image:
+
+   .. code-block:: shell
+ 
+       openstack image create --file </path/to/converted.img> --disk-format raw <image-name>
 
 Details and other options for this command are available within `Openstack documentation <https://docs.openstack.org/image-guide/convert-images.html>`_.
