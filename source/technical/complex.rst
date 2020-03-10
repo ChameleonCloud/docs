@@ -800,15 +800,14 @@ Finally, the instance ``ResourceGroup`` is configured so that each instance uses
 
 You can follow the same template pattern to configure your own deployment requiring all-to-all information exchange.
 
-.. _advanced-reservation-orchestration:
+.. _automated-deployemnt:
 
-Advanced Reservation Orchestration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Automated Deployment
+~~~~~~~~~~~~~~~~~~~~
 
-On Chameleon you can configure a Heat Stack to launch as soon as your lease begins. Whether your experiments require a large cluster or a single node, orchestrating an advanced reservation is can save you time configuring your environment or provide a blueprint for your experiment that will run automatically
-when the necessary resources become available.
+On Chameleon you can configure a Heat Stack to launch as soon as your lease begins. Whether your experiments require a large cluster or a single node, automated deployment saves you time configuring your environment and even allows you to run your entire experiment automatically when the necessary resources become available.
 
-At present, you will need to use our customized versions of the Heat and Blazar CLI tools to implement this feature. We are currently working to provide support for this functionality through the GUI.
+At present, you will need to use our customized versions of the Heat and Blazar CLI tools to implement this feature.
 
 Install Custom CLI
 ^^^^^^^^^^^^^^^^^^
@@ -834,8 +833,10 @@ Next you will need to configure a Heat stack with the ``--initialize`` flag on t
 Create Reservation with Stack_ID
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying ``orchestration`` as an ``on_start`` action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--physical-reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
+Finally, for a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying ``orchestration`` as an ``on_start`` action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--physical-reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
 
 .. code::
 
-    blazar lease-create --physical-reservation min=<min>,max=<max>,on_start=orchestration:<stack_id> --start-date "<start_date>" --end-date "<end_date>" <lease_name>
+    blazar lease-create --start-date "<start_date>" --end-date "<end_date>" \
+      --physical-reservation min=<min>,max=<max>,on_start=orchestration:<stack_id> \
+      <lease_name>
