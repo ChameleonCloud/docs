@@ -13,6 +13,9 @@ In Chameleon, the aggregation service is implemented using the `Gnocchi time ser
 Setting up the Gnocchi CLI
 __________________________
 
+.. attention::
+    `gnocchiclient` supports Python2 only.
+
 In addition to :ref:`cli-installing`, you must also install the Gnocchi client plugin. To install on your local machine, run the following command:
 
 .. code-block:: bash
