@@ -29,11 +29,11 @@ Then, set up your environment for OpenStack command line usage, as described in 
 Retrieving Metrics
 __________________
 
-Now, you can run the ``openstack metric`` command line utility. To show the different kinds of metrics collected for a specific instance, run: 
+Now, you can run the ``gnocchi`` command line utility. To show the different kinds of metrics collected for a specific instance, run:
 
 .. code-block:: bash
 
-   openstack metric resource show <instance_id> 
+   gnocchi resource show <instance_id>
    
 .. tip:: 
    You can get the instance' *ID* from the GUI.
@@ -42,7 +42,7 @@ Now, you can run the ``openstack metric`` command line utility. To show the diff
    
    .. code-block:: bash
    
-      openstack metric resource list
+      gnocchi resource list
       
    It will print out a chart similar to below:
    
@@ -120,13 +120,13 @@ To get all the measurements of a particular metric, run:
 
 .. code-block:: bash
 
-   openstack metric measures show <metric_name> --resource-id <instance_id> --refresh
+   gnocchi measures show <metric_name> --resource-id <instance_id> --refresh
 
 For example, to get measurements of used memory over time for instance ``d17d5191-af60-4407-9ed2-e3d48e86ac6d``, run:
 
 .. code-block:: bash
 
-   openstack metric measures show memory@memory.used --resource-id d17d5191-af60-4407-9ed2-e3d48e86ac6d --refresh
+   gnocchi measures show memory@memory.used --resource-id d17d5191-af60-4407-9ed2-e3d48e86ac6d --refresh
    
 .. tip:: You may notice that each metric has been assigned a *UUID* to it. Therefore, instead of providing ``metric name``, you can provide ``metric uuid``.
 
@@ -198,13 +198,13 @@ As with the system metrics, retrieving these automatically collected metrics for
 
 .. code-block:: bash
 
-   $ openstack metric resource show <node_uuid>
+   $ gnocchi resource show <node_uuid>
 
 To retrieve a specifc reading:
 
 .. code-block:: bash
 
-   $ openstack metric measures show <reading-name> --resource-id=<node_uuid> --refresh
+   $ gnocchi measures show <reading-name> --resource-id=<node_uuid> --refresh
 
 .. tip::
    The node UUID and the instance UUID are different. You can get a node's UUID for a reservation from the Horizon GUI (https://chi.tacc.chameleoncloud.org for TACC reservations, https://chi.uc.chameleoncloud.org for UC reservations).  Click on your lease name from within the list of leases on the Leases subtab within the Reservations tab. The node UUID is at the very bottom under the ``Nodes`` section.  You can also find an individual instance node UUID on the instance details page.  Click on your instance name on the Instances tab and see ``Physical Host Name``
@@ -213,7 +213,7 @@ For example, issuing the following command:
 
 .. code-block:: bash
 
-   $ openstack metric measures show power --resource-id=05dd5e25-440f-4492-b3b8-9d39af83b8bc --refresh
+   $ gnocchi measures show power --resource-id=05dd5e25-440f-4492-b3b8-9d39af83b8bc --refresh
 
 returns the following power results for node with id ``05dd5e25-440f-4492-b3b8-9d39af83b8bc``. The output below has been truncated:
 
@@ -247,7 +247,7 @@ To retrieve a metric for a specific time interval, pass the ``start`` and ``stop
 
 .. code::
 
-    $ openstack metric measures show temperature_cpu --start 2018-11-27T02:00:00 --stop 2018-11-27T03:00:00 --resource-id=f3f47a67-d805-48d4-9584-f0143ae976cf --refresh
+    $ gnocchi measures show temperature_cpu --start 2018-11-27T02:00:00 --stop 2018-11-27T03:00:00 --resource-id=f3f47a67-d805-48d4-9584-f0143ae976cf --refresh
 
 returns:  
 
