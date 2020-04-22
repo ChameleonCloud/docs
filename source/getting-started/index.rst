@@ -98,12 +98,12 @@ Once the reservation starts, you can launch a bare-metal instance on the node th
 
       Enter an instance name and select your reservation
 
-#. Click *Source* in sidebar. Then, find *CC-CentOS7* in the image list and click the *Up* arrow to select it.
+#. Click *Source* in sidebar. Then, find *CC-CentOS8* in the image list and click the *Up* arrow to select it.
 
    .. figure:: launch_source.png
       :alt: Selecting an image
 
-      Select the CC-CentOS7 image
+      Select the CC-CentOS8 image
 
 #. Click *Flavor* in sidebar. Select the *baremetal* flavor.
 

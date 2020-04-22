@@ -674,9 +674,8 @@ This limitation is even more important if the deployment is not hierarchical, i.
 This section presents a more advanced form of contextualization that can perform this kind of information exchange.
 This is implemented by *Heat* agents running inside instances and communicating with the *Heat* service to send and receive information.
 This means you will need to use an image bundling these agents.
-Currently, our `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance and `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliance,
-as well as their fully-supported CUDA images, are supporting this mode of contextualization.
-If you build your own images using the `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_ appliance or `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ appliance builder, you will automatically have these agents installed. This contextualization is performed with several Heat resources:
+Currently, all Chameleon-supported images (CC) are supporting this mode of contextualization.
+If you build your own images using the `CC-CentOS7 <https://github.com/ChameleonCloud/CC-CentOS7>`_ builder, `CC-CentOS <https://github.com/ChameleonCloud/CC-CentOS>`_ builder or `CC-Ubuntu <https://github.com/ChameleonCloud/CC-Ubuntu>`_ builder, you will automatically have these agents installed. This contextualization is performed with several Heat resources:
 
 - ``OS::Heat::SoftwareConfig``: This resource describes code to run on an instance. It can be configured with inputs and provide outputs.
 - ``OS::Heat::SoftwareDeployment``: This resource applies a SoftwareConfig to a specific instance.
@@ -700,7 +699,7 @@ The template below illustrates how it works. It launches a group of instances th
        - custom_constraint: nova.flavor
      image:
        type: string
-       default: CC-CentOS7
+       default: CC-CentOS8
        constraints:
        - custom_constraint: glance.image
      key_name:

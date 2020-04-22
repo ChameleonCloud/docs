@@ -158,7 +158,7 @@ To launch an instance inside a reservation, run:
 .. code-block:: bash
 
    openstack server create \
-   --image CC-CentOS7 \
+   --image CC-CentOS8 \
    --flavor baremetal \
    --key-name <key_name> \
    --nic net-id=<sharednet1_id> \
@@ -252,7 +252,7 @@ If you have a reservation for multiple physical nodes, explicitly identified wit
 .. code-block:: bash
 
    openstack server create \
-   --image CC-CentOS7 \
+   --image CC-CentOS8 \
    --flavor baremetal \
    --key-name <key_name> \
    --nic net-id=<sharednet1_id> \
