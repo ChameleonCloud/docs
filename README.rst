@@ -3,18 +3,20 @@ Chameleon Cloud's Documentation
 ===============================
 
 Quickstart
-----------
+==========
 
-1. Create a Python 3 environment
-2. Install dependencies ``pip install -r requirements.txt``
-3. Build using ``make html`` (Mac/Linux) or ``make.bat html`` (Windows)
+Requires Python 3 and `tox <https://pypi.org/project/tox/>`_.
 
-If you ``pip install sphinx-autobuild``, you can use ``make livehtml`` which
-will start a server that watches for source changes and will rebuild/refresh
-automatically. Go to http://localhost:8000/ to see its output.
+.. code-block:: shell
+
+    # Build HTML output
+    tox
+
+    # Start dev server (refreshes output on change)
+    tox -e watch
 
 reStructuredText help
----------------------
+=====================
 
 rST is a bit more onerous than Markdown, but it includes more advanced features
 like inter-page references/links and a suite of directives.
@@ -34,3 +36,31 @@ like inter-page references/links and a suite of directives.
   - Numpy; note that the landing pages are usually coded in HTML and can be
     found in the templates directory, e.g. `Numpy's landing page
     <https://github.com/numpy/numpy/blob/master/doc/source/_templates/indexcontent.html>`_
+
+Heading styles
+--------------
+
+RST supports arbitrary heading styles; the parser will treat the first style it
+encounters as an h1 heading, the second an h2 heading, and so on. Here are the
+recommended heading styles you can use:
+
+.. code-block:: rst
+
+    ==============
+    Title heading
+    ==============
+
+    h1 heading
+    ==========
+
+    h2 heading
+    ----------
+
+    h3 heading
+    ~~~~~~~~~~
+
+    h4 heading
+    ^^^^^^^^^^
+
+    h5 heading
+    ``````````
