@@ -133,7 +133,7 @@ Port Mapping
 You will likely need your OpenFlow controller to know which of its ports connects to which of your Chameleon nodes. The uplink port will always match the segmentation ID (VLAN ID) of the network. The following tables list the OpenFlow port numberings for each baremetal node; these port values will be stable for every deployment of a particular node.
 
 CHI\@UC
-^^^^^^
+^^^^^^^
 
 .. note::
    Both `compute_haswell` and `compute_skylake` nodes can participate in SDN experiments at CHI\@UC. This is not (yet) the case at CHI\@TACC; at that site, only `compute_skylake` nodes can be part of OpenFlow-enabled networks.
@@ -385,11 +385,11 @@ The metrics can also be queried via :ref:`Gnocchi metrics <metrics>`. The metric
 .. code-block:: bash
 
   # TACC Corsa #1
-  openstack --os-region CHI@TACC metric resource show 28596c49-0c14-5f08-a9e5-84790a05eef3
+  openstack --os-region CHI\@TACC metric resource show 28596c49-0c14-5f08-a9e5-84790a05eef3
   # UC Corsa #1
-  openstack --os-region CHI@UC metric resource show b72663e7-86fb-5785-82ed-b01ea9e0f282
+  openstack --os-region CHI\@UC metric resource show b72663e7-86fb-5785-82ed-b01ea9e0f282
   # UC Corsa #2
-  openstack --os-region CHI@UC metric resource show 18e5e81e-798f-5299-9160-0f0ce34c17a9
+  openstack --os-region CHI\@UC metric resource show 18e5e81e-798f-5299-9160-0f0ce34c17a9
 
 This command will show all metrics available to view, and their UUID, e.g.:
 
@@ -464,13 +464,13 @@ A named VFC will be created for the isolated network. Subsequent isolated networ
    sdn-network-4
 
 4. Skylake Nodes at UC:
-   `CHI@UC <https://chi.uc.chameleoncloud.org>`_ has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the ports on the VFCs as described in "Port Mapping" section.
+   `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the ports on the VFCs as described in "Port Mapping" section.
 
 .. figure:: networks/corsa-network-vfc-layout-uc.png
 
 
 5. Skylake Nodes at TACC:
-   `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section.
+   `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section.
 
 .. figure:: networks/corsa-network-vfc-layout-tacc.png
 

@@ -39,7 +39,7 @@ To view the details of a *Complex Appliance*, simply click on it.
 Managing Complex Appliances using the GUI
 -----------------------------------------
 
-Before launching a *Complex Appliance*, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ stie or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
+Before launching a *Complex Appliance*, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ stie or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
 
 .. figure:: complex/stacks.png
    :alt: The Stacks page
@@ -51,7 +51,7 @@ Before launching a *Complex Appliance*, please make sure that you have a reserva
 
    #. Go to the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ and identify the appliance you want to launch. Click on it to open its details page.
 
-   #. Click on the "Launch Complex Appliance at ``CHI@TACC``" or "Launch Complex Appliance at ``CHI@UC``" button depending on where your reservation is created.
+   #. Click on the "Launch Complex Appliance at ``CHI\@TACC``" or "Launch Complex Appliance at ``CHI\@UC``" button depending on where your reservation is created.
 
 
 Launching a Complex Appliance

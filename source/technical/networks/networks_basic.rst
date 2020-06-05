@@ -20,7 +20,7 @@ When launching a node that supports multiple networks, simply assign multiple ne
 Floating IP Addresses
 ---------------------
 
-Instances on Chameleon are assigned a *fixed* IP address that can be used for local connectivity as well as NAT access to the public Internet. A publicly accessible IPv4 address (*Floating IP address*) is required in order to access Chameleon instances from the Internet or host public services. `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ each have a limited number of public IP addresses that can be allocated to your instances.
+Instances on Chameleon are assigned a *fixed* IP address that can be used for local connectivity as well as NAT access to the public Internet. A publicly accessible IPv4 address (*Floating IP address*) is required in order to access Chameleon instances from the Internet or host public services. `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ each have a limited number of public IP addresses that can be allocated to your instances.
 
 The :ref:`getting-started` guide shows how to allocate *Floating IP address* to your nodes.
 
@@ -51,7 +51,7 @@ There are additional network security mechanisms on the testbed that you should 
 Firewall
 ^^^^^^^^
 
-A configurable *Firewall* is available on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. This is built on the `OpenStack Neutron Firewall-as-a-Service (FWaaS) <https://docs.openstack.org/neutron/latest/admin/fwaas.html>`_ system. By default, any instances connected to the ``sharednet1`` or ``sharedwan1`` shared networks automatically have a firewall configured with the following rules:
+A configurable *Firewall* is available on `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. This is built on the `OpenStack Neutron Firewall-as-a-Service (FWaaS) <https://docs.openstack.org/neutron/latest/admin/fwaas.html>`_ system. By default, any instances connected to the ``sharednet1`` or ``sharedwan1`` shared networks automatically have a firewall configured with the following rules:
 
 +------------+--------------------+-----------+
 | Source     | Destination port   | Protocol  |
@@ -78,4 +78,4 @@ A configurable *Firewall* is available on `CHI@TACC <https://chi.tacc.chameleonc
 Security Groups
 ^^^^^^^^^^^^^^^
 
-`KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.
+`KVM\@TACC <https://openstack.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.

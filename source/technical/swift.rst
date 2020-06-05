@@ -15,10 +15,10 @@ Chameleon provides an object store service through the `OpenStack Swift <https:/
 Availability
 ____________
 
-You can access the *Object Store* from instances running on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Each region has its own store, meaning that objects uploaded to one are not visible to the other. In general you should use the store local to the region where your instances are running for the best performance.  To make it easier for you to use the *Object Store* client, we installed it in all appliances supported by Chameleon. Additionally, you can also access the *Object Store* from the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_ web interfaces under the *Object Store* panel.
+You can access the *Object Store* from instances running on `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. Each region has its own store, meaning that objects uploaded to one are not visible to the other. In general you should use the store local to the region where your instances are running for the best performance.  To make it easier for you to use the *Object Store* client, we installed it in all appliances supported by Chameleon. Additionally, you can also access the *Object Store* from the `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ web interfaces under the *Object Store* panel.
 
 .. hint::
-    `KVM@TACC <https://openstack.tacc.chameleoncloud.org>`_ users can access the TACC store by using their `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ :ref:`OpenStack RC file <cli-rc-script>`.
+    `KVM\@TACC <https://openstack.tacc.chameleoncloud.org>`_ users can access the TACC store by using their `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ :ref:`OpenStack RC file <cli-rc-script>`.
 
 Objects and Containers
 ______________________
@@ -29,9 +29,9 @@ _____________________________________
 Managing Object Store using the GUI
 _____________________________________
 
-.. note:: The Object Store is implemented at TACC. Therefore, only `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ implements a GUI interface for the *Object Store*. However, the CLI works for both `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_.
+.. note:: The Object Store is implemented at TACC. Therefore, only `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ implements a GUI interface for the *Object Store*. However, the CLI works for both `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_.
 
-To access the *Object Store* using the GUI at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, use the navigation sidebar to go to *Project* > *Object Store* > *Containers*.
+To access the *Object Store* using the GUI at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_, use the navigation sidebar to go to *Project* > *Object Store* > *Containers*.
 
 .. figure:: swift/containerspage.png
    :alt: The Containers page
@@ -174,7 +174,7 @@ To delete a container and wipe out all the objects belong to it, use the followi
 Working with Objects
 ______________________
 
-.. tip:: swift can upload objects up to 4GB. Larger objects must be broken into segments no larger than this with the --segment-size option indicating size in bits. ``--segment-size 4831838208`` is close to 4GB and not above this limit. 
+.. tip:: swift can upload objects up to 4GB. Larger objects must be broken into segments no larger than this with the --segment-size option indicating size in bits. ``--segment-size 4831838208`` is close to 4GB and not above this limit.
 
 You may upload a file from your local machine to a container using the following command:
 
@@ -194,7 +194,7 @@ If you wish to download an individual object directly from a container, use the 
 
 .. code-block:: bash
 
-   swift download <container_name> <object_name> 
+   swift download <container_name> <object_name>
 
 Working with Folders
 _______________________
@@ -212,29 +212,29 @@ you will see a directory called ``my_mounting_point`` which is a pre-mounted dir
 
 You can also switch to a different site using the ``cc-cloudfuse`` tool.
 
-The ``cc-cloudfuse`` tool (Source: `ChameleonCloud/cc-cloudfuse <https://github.com/ChameleonCloud/cc-cloudfuse>`_) is pre-installed in Chameleon-supported images. 
+The ``cc-cloudfuse`` tool (Source: `ChameleonCloud/cc-cloudfuse <https://github.com/ChameleonCloud/cc-cloudfuse>`_) is pre-installed in Chameleon-supported images.
 It is based on the ``cloudfuse`` tool (Source: `redbo/cloudfuse <https://github.com/redbo/cloudfuse>`_), which is used to mount your Chameleon Object Store as a directory on your Linux environment.
 
 Before mounting, you need to configure your Chameleon credentials.
 There are three ways of configuration.
 
-1. Source your :ref:`Chameleon RC file <cli-rc-script>`. 
+1. Source your :ref:`Chameleon RC file <cli-rc-script>`.
 2. Create a ``~/.cloudfuse`` file with the following content:
-  
+
   .. code-block:: bash
 
      # using keystone v2
      username=<username>
      password=<password>
      tenant=<project name>
-     region=<region name> # CHI@TACC or CHI@UC
+     region=<region name> # CHI\@TACC or CHI\@UC
      authurl=https://chi.<uc/tacc>.chameleoncloud.org:5000/v2.0
-   
+
      # using keystone v3
      username=<username>
      password=<password>
      projectid=<project id>
-     region=<region name> # CHI@TACC or CHI@UC
+     region=<region name> # CHI\@TACC or CHI\@UC
      authurl=https://chi.<uc/tacc>.chameleoncloud.org:5000/v3
 
 3. Pass Chameleon credentials as command line options (see below)
@@ -251,7 +251,7 @@ If you don't use :ref:`Chameleon RC file <cli-rc-script>` or ``~/.cloudfuse`` fi
 
    # using keystone v2
    cc-cloudfuse mount <mount_dir> -o username=<username>,password=<password>,tenant=<project name>,region=<region name>,authurl=<auth url v2.0>
-   
+
    # using keystone v3
    cc-cloudfuse mount <mount_dir> -o username=<username>,password=<password>,projectid=<project id>,region=<region name>,authurl=<auth url v3>
 
@@ -262,22 +262,22 @@ To unmount, use the following command:
 .. code-block:: bash
 
    cc-cloudfuse unmount <mount_dir>
-   
+
 .. Important::
    **Limitations**
-   
-   The primary usage scenario of the ``cc-cloudfuse`` tool is to allow you to interact with Chameleon Object Store using familiar file system operations. 
-   Because the ``cc-cloudfuse`` runs on top of an object store, it is important to understand that not all functionality will behave identically to a regular file system. 
-   
+
+   The primary usage scenario of the ``cc-cloudfuse`` tool is to allow you to interact with Chameleon Object Store using familiar file system operations.
+   Because the ``cc-cloudfuse`` runs on top of an object store, it is important to understand that not all functionality will behave identically to a regular file system.
+
    #. Symbolic links, file permissions, and POSIX file locking operations are not supported.
    #. Updating an existing file is an expensive operation as it downloads the entire file to local disk before it can modify the contents.
    #. You can mount from multiple nodes, but there is no synchronization between nodes regarding writes to Object Storage.
    #. The mounting root directory can only contain directories, as they are mapped to Object Store containers.
-   #. Renaming directories is not allowed. 
+   #. Renaming directories is not allowed.
    #. It keeps an in-memory cache of the directory structure, so it may not be usable for large file systems. In addition, files added by other applications will not show up until the cache expires.
    #. The maximum number of listings is 10,000 items.
-   
+
    Please keep these limitations in mind when evaluating ``cc-cloudfuse``.
-   
-.. note::   
+
+.. note::
    You may experience persistence issues when using ``cc-cloudfuse``, especially when writing large files or writing many files at the same time. Unmounting and re-mounting usually resolves this.

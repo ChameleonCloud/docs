@@ -25,23 +25,23 @@ To make a snapshot of a bare-metal instance, run the following command from insi
 .. code-block:: bash
 
    sudo cc-snapshot <image_name>
-   
-.. tip:: 
-   You may get warnings, such as "image too large", during snapshotting, and get prompted to confirm. If you are confident about what you are trying to do, you can skip all warnings by using the ``-f`` flag. 
-   
+
+.. tip::
+   You may get warnings, such as "image too large", during snapshotting, and get prompted to confirm. If you are confident about what you are trying to do, you can skip all warnings by using the ``-f`` flag.
+
    .. code-block:: bash
-   
+
       sudo cc-snapshot -f <image_name>
-      
+
    In addition, you can exclude directories by using the ``-e`` flag.
-   
+
    .. code-block:: bash
-   
+
       sudo cc-snapshot -e <dir1> -e <dir2> <image_name>
-      
+
    To see all available options for ``cc-snapshot``, run ``sudo cc-snapshot -h``.
 
-You will be prompted to enter your username and password. 
+You will be prompted to enter your username and password.
 
 .. tip:: You can skip entering username and password by setting the ``OS_USERNAME`` and ``OS_PASSWORD`` environment variables. You can set those environment variables manually or using :ref:`cli-rc-script`.
 
@@ -53,16 +53,16 @@ You will be prompted to enter your username and password.
 
 .. error::
    If you receive the following error:
-   
-   .. code:: 
+
+   .. code::
 
       public endpoint for image service in regionOne not found Unable to contact Glance, check username and password
-      
+
    it means that you have an outdated copy of ``cc-snapshot`` and you will need to update ``cc-snapshot``.
    This usually happens when you use an older images that contains an outdated version of ``cc-snapshot``.
 
    You may also want to get new functionalities added to the latest version of ``cc-snapshot``.
-   
+
    Run the following commands from your instance:
 
    .. code::
@@ -75,18 +75,18 @@ __________________________________
 Managing Images using the GUI
 __________________________________
 
-To manage your images, use the *Images* page at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_, by clicking on *Project* > *Compute* > *Images*.
+To manage your images, use the *Images* page at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_, by clicking on *Project* > *Compute* > *Images*.
 
 .. figure:: images/imagespagev3.png
    :alt: The Images page
 
    The Images page
-   
+
 .. note:: The Chameleon logo next to an image's name indicates that this image is an appliance supported by the Chameleon project, and is part of the Appliance Catalog.
 
 .. tip:: Select *Details* from the dropdown menu to the right of any Chameleon supported appliance to view the relevant entry from the `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_.
 
-.. note:: Images at each site are stored independently. An Image made at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ **will not** be available at `CHI@UC <https://chi.uc.chameleoncloud.org>`_ (or vice versa) unless transferred manually.
+.. note:: Images at each site are stored independently. An Image made at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ **will not** be available at `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ (or vice versa) unless transferred manually.
 
 Uploading an Image
 __________________
@@ -101,7 +101,7 @@ Use *+ Create Image* button to upload an image.
 In the *Create Image* dialog:
 
 #. Enter an *Image Name* and, optionally, a description.
-#. Click *Browse* to select a file on your local machine to upload. 
+#. Click *Browse* to select a file on your local machine to upload.
 #. Select a *Format* of the image. Images created by the ``cc-snapshot`` utility are *QCOW2* images.
 #. To add additional metadata for your image, use the *Metadata* section by clicking *Metadata* in the sidebar.
 #. Click the *Create Image* button to upload your image.
@@ -111,7 +111,7 @@ __________________________________
 
 During the process of :ref:`launching instance <baremetal-gui-launch>` from the *Instance* page, it will ask you to select an image. Alternatively, you can launch instances with a selected image from the *Image* page by simply clicking on the *Launch* button located in the same row of the targeted image.
 
-.. tip:: Other than *Launch*, there are other actions you may perfom on the image. Clicking on the dropdown to explore more on what you can do. 
+.. tip:: Other than *Launch*, there are other actions you may perfom on the image. Clicking on the dropdown to explore more on what you can do.
 
 Viewing Image Details
 _____________________
@@ -123,7 +123,7 @@ To view image details, click on the name of the Image.
 
    Image details
 
-The dropdown list in the top right corner allows you to perform various actions on the selected image, such as *Launch*, *Edit Image*, and *Update Metadata*. 
+The dropdown list in the top right corner allows you to perform various actions on the selected image, such as *Launch*, *Edit Image*, and *Update Metadata*.
 
 .. tip:: The *ID* on the image details' page is useful when you work on the image using the CLI.
 
@@ -139,18 +139,18 @@ The dropdown menu to the right of listed images allows their owners to publish a
 
 The *Create Appliances* web form will open automatically with most fields pre-populated. Complete the form and select *Create an Appliance*.
 
-Entering a descriptive name, author and support contact information, the version, and an informative description can be helpful and is encouraged. **The description is used by others to determine if an appliance contains the tools needed for their research.** 
+Entering a descriptive name, author and support contact information, the version, and an informative description can be helpful and is encouraged. **The description is used by others to determine if an appliance contains the tools needed for their research.**
 
-.. tip:: To make your description effective you may want to ask the following questions: 
- 
-   - What does the appliance contain? 
-   
-   - What are the specific packages and their versions? 
-   
-   - What is it useful for? 
-   
-   - Where can it be deployed and/or what restrictions/limitations does it have? 
-   
+.. tip:: To make your description effective you may want to ask the following questions:
+
+   - What does the appliance contain?
+
+   - What are the specific packages and their versions?
+
+   - What is it useful for?
+
+   - Where can it be deployed and/or what restrictions/limitations does it have?
+
    - How should users connect to it and what accounts are enabled?
 
 ________________________________________________
@@ -181,7 +181,7 @@ Downloading an image file to your local machine is **only** available via the CL
 
 Use ``filename`` to indicate where you would like to save the image in your local file system. Also, replace ``image`` with either the name or the *ID* of the image on Chameleon.
 
-.. important:: 
+.. important::
    If you do not provide the ``--file`` parameter, it will print out the binary image data in your terminal.
 
 Retrieving Images
@@ -237,7 +237,7 @@ Finally the project that the image is shared to must accept the shared image.  R
 
    openstack image set --accept <image>
 
-Replace ``image`` with the image *UUID* and the second project should now be able to use the image!  
+Replace ``image`` with the image *UUID* and the second project should now be able to use the image!
 
 .. important::
    Only the owner of the image can modify it or any properties.  However a project who has an image shared to it can remove themselves from the list of image members.

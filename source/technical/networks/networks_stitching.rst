@@ -6,11 +6,11 @@ _______________________________________
 
 Chameleon provides support for sophisticated networking experiments by providing `GENI-style stitching <http://groups.geni.net/geni/wiki/GeniNetworkStitchingSites>`_. This capability enables users to deploy networking experiments (layer 2 and layer 3) that extend across Chameleon, potentially other testbeds such as `GENI <http://www.geni.net/>`_, and into physical resources on their own campus networks. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections.
 
-Currently, it is possible to connect user-configured networks to other domains (e.g. GENI) over circuits created on Internet2’s Advanced Layer 2 Service (AL2S). In this setup, a pool of VLANs is extended from Chameleon CHI@UC racks to the AL2S endpoint at StarLight. Currently, 10 VLAN tags (3290-3299) are dedicated to this AL2S endpoint, although 3290 is reserved for system use. A user-configured network that is associated with one of the dedicated AL2S VLAN tags (segmentation ID must be the same as AL2S VLAN tag) can be stitched to external domains (e.g. GENI). A circuit on AL2S needs to be created.
+Currently, it is possible to connect user-configured networks to other domains (e.g. GENI) over circuits created on Internet2’s Advanced Layer 2 Service (AL2S). In this setup, a pool of VLANs is extended from Chameleon CHI\@UC racks to the AL2S endpoint at StarLight. Currently, 10 VLAN tags (3290-3299) are dedicated to this AL2S endpoint, although 3290 is reserved for system use. A user-configured network that is associated with one of the dedicated AL2S VLAN tags (segmentation ID must be the same as AL2S VLAN tag) can be stitched to external domains (e.g. GENI). A circuit on AL2S needs to be created.
 
 This document describes how to stitch Chameleon experiments to external resources including `ExoGENI <http://www.exogeni.net/>`_ and `Internet2 <https://www.internet2.edu/>`_ connected campuses. You will need to know how to create stitchable dynamic VLANs as described in the :ref:`network-isolation` documentation. After you have created such VLAN this document will describe how to create a slice in three cases: connect to ExoGENI, connect to other domains using ExoGENI as an intermediary, or connect to other domains directly.
 
-This document also describes connecting isolated stitchable networks across Chameleon sites (`CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ ) over layer-2 circuits.
+This document also describes connecting isolated stitchable networks across Chameleon sites (`CHI\@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ ) over layer-2 circuits.
 
 Chameleon has the capability to create dynamically managed VLANs associated with user-configured private IP subnets as described on :ref:`network-isolation`. Users can create a dedicated network associated with a dynamic VLAN, subnet with own DHCP server, and router for external connections. These networks can be created through the web as well as command line interface. User-configured networks (isolated networks) are associated with VLANs by *Segmentation IDs*.
 
@@ -73,7 +73,7 @@ Layer 2 connections on ExoGENI are provisioned on AL2S by an agent that submits 
 
    .. figure:: networks/createcomplete.png
 
-#. It is also possible to connect ExoGENI nodes to both `CHI@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ with multiple interfaces.
+#. It is also possible to connect ExoGENI nodes to both `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ and `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ with multiple interfaces.
 
    .. figure:: networks/multipleinterfaces.png
 
@@ -135,7 +135,7 @@ The user in the ExoGENI workgroup can create a circuit with two endpoints to con
    Interface: et-9/0/0
    VLAN: 3998
 
-   Endpoint 2 (`CHI@UC <https://chi.uc.chameleoncloud.org>`_):
+   Endpoint 2 (`CHI\@UC <https://chi.uc.chameleoncloud.org>`_):
    Node: sdn-sw.star.net.internet2.edu
    Interface: et-8/0/0
    VLAN: 3290

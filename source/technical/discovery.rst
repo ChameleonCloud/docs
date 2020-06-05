@@ -7,7 +7,7 @@ Resource Discovery
 Introduction
 ============
 
-Chameleon supports fine-grained resource discovery for experimentation, which means that you can identify a specific node, view the node's hardware maintenance history and reserve it for repeated use. 
+Chameleon supports fine-grained resource discovery for experimentation, which means that you can identify a specific node, view the node's hardware maintenance history and reserve it for repeated use.
 
 All physical resources available in Chameleon are described in the Chameleon resource registry. The resource registry is based on the `Reference API from the Grid'5000 project <https://www.grid5000.fr/mediawiki/index.php/API>`_. Users can consult the registry via the resource discovery web interface or directly via REST APIs.
 
@@ -21,7 +21,7 @@ You may use the `Hardware <https://chameleoncloud.org/hardware/>`_ page at the `
 Availability
 ____________
 
-The *CHI@TACC* and *CHI@UC* buttons in the *Availability* section of the Resource Browser allow you to open the Lease Calendars at the Chameleon sites. You must login using your Chameleon account to view these lease calendars.
+The *CHI\@TACC* and *CHI\@UC* buttons in the *Availability* section of the Resource Browser allow you to open the Lease Calendars at the Chameleon sites. You must login using your Chameleon account to view these lease calendars.
 
 .. figure:: discovery/availability.png
    :alt: Resource availability links to the lease calendars
@@ -31,7 +31,7 @@ The *CHI@TACC* and *CHI@UC* buttons in the *Availability* section of the Resourc
 Chameleon Resource Browser
 __________________________
 
-The Chameleon Resource Browser allows you to filter Chameleon resources by node type and view details of each node. 
+The Chameleon Resource Browser allows you to filter Chameleon resources by node type and view details of each node.
 
 .. figure:: discovery/resourcebrowser.png
    :alt: Chameleon Resource Browser
@@ -44,11 +44,11 @@ You may filter for specific node types by selecting the checkboxes that match yo
    :alt: Node details
 
    Node details
-   
+
 .. tip:: To get more precise characteristics of the selected node, search the node at `Intel's CPU database <https://ark.intel.com/>`_.
 
-.. note:: 
-   All the nodes in Chameleon is identified by their *UUIDs*. You will need the *UUID* of a node for making reservations and identifying metrics collected from the node using Gnocchi. In addition, each node also has a *Version UUID*, which is used for retrieving its maintenance history. 
+.. note::
+   All the nodes in Chameleon is identified by their *UUIDs*. You will need the *UUID* of a node for making reservations and identifying metrics collected from the node using Gnocchi. In addition, each node also has a *Version UUID*, which is used for retrieving its maintenance history.
 
 .. attention::
    When we replace faulty hardware on a node, the replacement part typically has the same hardware characteristics. For example, a node with a faulty 250 GB hard drive would be replaced with the same 250 GB hard drive model. However, it may be important for your experimental reproducibility to know about those hardware replacement events, in case it affects your metrics.
@@ -116,13 +116,13 @@ The API entry-point for the resource discovery API is located at https://api.cha
 .. code-block:: shell
 
    curl -i https://api.chameleoncloud.org/
-   
+
 .. tip:: The ``-i`` flag tells cURL to display the HTTP header in addition to the HTTP  body.
 
 Below is what you should see in response:
 
 .. code-block:: javascript
-   
+
    HTTP/1.1 200 OK
    Server: nginx/1.6.2
    Date: Thu, 19 Apr 2018 14:34:01 GMT
@@ -149,13 +149,13 @@ Below is what you should see in response:
 You may notice that the response contains a number of link elements, which advertise other resources that you can access. For example, let's fetch the ``/sites`` resource.
 
 .. code-block:: shell
-   
+
    curl https://api.chameleoncloud.org/sites?pretty
-   
+
 The response should look like:
 
 .. code-block:: json
-   
+
    {
      "total": 2,
      "offset": 0,
@@ -308,7 +308,7 @@ The response should look like:
 Discover Resources
 ___________________________
 
-It is easy to discover resources using REST APIs when you chase down the ``links`` in the responses. 
+It is easy to discover resources using REST APIs when you chase down the ``links`` in the responses.
 
 As seen in the previous section, when you fetch the API root resource, you can find the link to the collection of sites. If you look at the site description, you will find a list of links to other resources. For example, each site has a link named ``clusters``. When you fetch this link, it returns the list of clusters on that site.
 
@@ -323,15 +323,15 @@ Again, you will find ``links`` in each cluster description. There is a link name
 For example, to get nodes on the *Alamo* cluster at *TACC* site:
 
 .. code-block:: shell
-   
+
    curl https://api.chameleoncloud.org/sites/tacc/clusters/alamo/nodes/?pretty
-   
+
 You should get back a big collection of nodes. Each node is described in great details, so that you can programmatically find the cluster and nodes that are most suitable for your experiments.
 
 The following command examples allow you to see that some of the nodes on the *Alamo* cluster at *TACC* have a different disk configuration:
 
 .. code-block:: shell
-   
+
    curl https://api.chameleoncloud.org/sites/tacc/clusters/alamo/nodes/45f0fc6a-a21b-4461-8414-ebf765143aad?pretty | grep -A 10 storage_devices
    curl -s https://api.chameleoncloud.org/sites/tacc/clusters/alamo/nodes/0a5b61b2-dc1c-4bee-86f7-247c9689ea88?pretty | grep -A 10 storage_devices
 
@@ -342,7 +342,7 @@ ___________________________
 Let's go back to the site's description. In Chameleon, resources are added, updated, or removed over time. If you want to keep an eye on those changes, you can fetch the latest changes that occurred on a specific site:
 
 .. code-block:: shell
-   
+
    curl https://api.chameleoncloud.org/sites/tacc/versions/?pretty
-   
+
 Each version listed in the response represents a change to some resources of the Chameleon testbed.

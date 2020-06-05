@@ -61,8 +61,8 @@ You may specify *DHCP* and static *Route* information at *Subnet Details* sectio
 - *DNS Name Servers* section allows you to specify a list of DNS servers.
 
   .. note::
-     At `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_, use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
-     At `CHI@UC <https://chi.uc.chameleoncloud.org>`_, use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
+     At `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_, use ``129.114.97.1`` and ``129.114.97.2`` for your DNS servers
+     At `CHI\@UC <https://chi.uc.chameleoncloud.org>`_, use ``130.202.101.6`` and ``130.202.101.37`` for your DNS servers
 - *Host Routes* section allows you to specify static routing information for the subnet in the format of ``<subnet CIDR>,<router IP address>``. For example, ``192.168.3.0/24,10.56.1.254`` means all traffic from this Subnet to ``192.168.3.0`` will be forwarded to the Router Interface at ``10.56.1.254``.
 
 .. note:: All three sections above are line separated.

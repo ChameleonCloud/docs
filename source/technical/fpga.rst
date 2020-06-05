@@ -6,9 +6,9 @@ ____________
 Introduction
 ____________
 
-Chameleon provides access to five FPGA nodes. 
-Four nodes are located at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_. Each of these nodes is fitted with a `Nallatech 385A board <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support. 
-One node is located at `CHI@UC <https://chi.uc.chameleoncloud.org>`_. The node is fitted with a `Terasic DE5a-Net board <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_ with an `Altera Arria 10 GX 1150 FPGA <https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=231&No=970>`_ (up to 1.5 TFlops), 4 GB DDR3 on-card memory, and four QSFP 10/40 GbE support.
+Chameleon provides access to five FPGA nodes.
+Four nodes are located at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_. Each of these nodes is fitted with a `Nallatech 385A board <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support.
+One node is located at `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. The node is fitted with a `Terasic DE5a-Net board <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_ with an `Altera Arria 10 GX 1150 FPGA <https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=231&No=970>`_ (up to 1.5 TFlops), 4 GB DDR3 on-card memory, and four QSFP 10/40 GbE support.
 All FPGA nodes are configured to run OpenCL code, but they can be reconfigured (by a request to our `help desk <https://www.chameleoncloud.org/user/help/>`_) to run compiled designs prepared with Altera Quartus.
 
 Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes. Briefly, the steps for building an FPGA application are:
@@ -26,7 +26,7 @@ Chameleon provides a build system that includes the necessary `Altera SDK for Op
 
 Due to licensing requirements, you must apply for access to the FPGA build system. Submit a ticket through our help system to request access.
 
-FPGA resources are only available at `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_. Due to TACC’s security requirements, multi-factor authentication must be used to access the FPGA build system. You can either use a smartphone app (Apple iOS or Android) or SMS messaging: follow `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_ to set it up. Once you have set up multi-factor authentication, you can SSH to fpga01.tacc.chameleoncloud.org with your Chameleon username and password; you will also be asked for a TACC security token, which will be provided to you via the app or SMS.
+FPGA resources are only available at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_. Due to TACC’s security requirements, multi-factor authentication must be used to access the FPGA build system. You can either use a smartphone app (Apple iOS or Android) or SMS messaging: follow `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_ to set it up. Once you have set up multi-factor authentication, you can SSH to fpga01.tacc.chameleoncloud.org with your Chameleon username and password; you will also be asked for a TACC security token, which will be provided to you via the app or SMS.
 
 Each user's home directory will contain an archive file containing a Hello World OpenCL example: ``exm_opencl_hello_world_x64_linux_16.0.tgz``. Extract the archive with the following command:
 
@@ -39,7 +39,7 @@ Two directories will be extracted: ``common`` and ``hello_world``. Change into t
 .. code-block:: bash
 
    cd hello_world
-   
+
 Prior to compiling, load the Quartus environment configuration for either the Nallatech or Terasic board.
 
 Nallatech:
@@ -65,7 +65,7 @@ Nallatech:
 .. code-block:: bash
 
    aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx -march=emulator
-   
+
 Terasic:
 
 .. code-block:: bash
@@ -85,7 +85,7 @@ Nallatech:
 .. code-block:: bash
 
    env CL_CONTEXT_EMULATOR_DEVICE_ALTERA=1 ./bin/host
-   
+
 Terasic:
 
 .. code-block:: bash
@@ -99,7 +99,7 @@ Nallatech:
 .. code-block:: bash
 
    aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx
-   
+
 Terasic:
 
 .. code-block:: bash
@@ -112,7 +112,7 @@ _________
 
 After completing development of an OpenCL kernel on our build node, the kernel and host application must be transferred and executed on a node with an FPGA accelerator.
 
-When using `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ GUI to reserve nodes, use the *Node Type to Reserve* selector and choose *FPGA*. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the *with FPGA* button, and clicking *Reserve* at the bottom of the selection. Copy the generated CLI command and use it to create your reservation. 
+When using `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ GUI to reserve nodes, use the *Node Type to Reserve* selector and choose *FPGA*. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the *with FPGA* button, and clicking *Reserve* at the bottom of the selection. Copy the generated CLI command and use it to create your reservation.
 
 In order to have access to the required runtime environment for using the FPGAs, use the image **CC-CentOS7-FPGA** when launching your instance.
 
@@ -137,7 +137,7 @@ Program FPGA with the OpenCL kernel, using ``acl0`` as the device name.
    aocl program acl0 ./bin/hello_world.aocx
 
 .. attention::
-   If you are at `CHI@UC <https://chi.uc.chameleoncloud.org>`_, please run the following commands (program FPGA as ``root``).
+   If you are at `CHI\@UC <https://chi.uc.chameleoncloud.org>`_, please run the following commands (program FPGA as ``root``).
 
    .. code-block:: bash
 
@@ -161,7 +161,7 @@ You should see an output like the following:
    CL_PLATFORM_NAME                         = Altera SDK for OpenCL
    CL_PLATFORM_VENDOR                       = Altera Corporation
    CL_PLATFORM_VERSION                      = OpenCL 1.0 Altera SDK for OpenCL, Version 16.0
-   
+
    Querying device for info:
    ========================
    CL_DEVICE_NAME                           = p385a_sch_ax115 : nalla_pcie (aclnalla_pcie0)
@@ -194,11 +194,10 @@ You should see an output like the following:
    Command queue profiling enabled?         = true
    Using AOCX: hello_world.aocx
    Reprogramming device with handle 1
-   
+
    Kernel initialization is complete.
    Launching the kernel...
-   
+
    Thread #2: Hello from Altera's OpenCL Compiler!
-   
+
    Kernel execution is complete.
-   

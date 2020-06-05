@@ -8,7 +8,7 @@ ___________________
 Introduction
 ___________________
 
-Unlike virtual resources on a regular on-demand cloud, physical resources on Chameleon must be reserved before using them for an experiment. 
+Unlike virtual resources on a regular on-demand cloud, physical resources on Chameleon must be reserved before using them for an experiment.
 Once a reservation has been accepted, users are guaranteed that resources will be available at the time they chose (except in extraordinary circumstances such as hardware or platform failures), which helps to plan large scale experiments.
 
 Chameleon resources are reserved via `Blazar <https://docs.openstack.org/blazar/latest/>`_ (previously known as *Climate*) which provides Reservation as a Service for OpenStack.
@@ -19,7 +19,7 @@ ___________________________________________________
 Provisioning and Managing Resources Using the GUI
 ___________________________________________________
 
-To make reservations of the resources, first log into the Horizon web interface - either `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI@UC <https://chi.uc.chameleoncloud.org>`_. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :ref:`gui`.
+To make reservations of the resources, first log into the Horizon web interface - either `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :ref:`gui`.
 
 In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 

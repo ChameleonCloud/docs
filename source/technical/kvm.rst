@@ -6,16 +6,16 @@ KVM
 Introduction
 ------------
 
-OpenStack is an Infrastructure as a Service (IaaS) platform that allows you to create and manage virtual environments. Chameleon provides an installation of OpenStack `Rocky <https://releases.openstack.org/rocky/index.html>`_ using the KVM virtualization technology at the `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used on this cloud, any virtual machines you upload must be compatible with KVM.
+OpenStack is an Infrastructure as a Service (IaaS) platform that allows you to create and manage virtual environments. Chameleon provides an installation of OpenStack `Rocky <https://releases.openstack.org/rocky/index.html>`_ using the KVM virtualization technology at the `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used on this cloud, any virtual machines you upload must be compatible with KVM.
 
-This documentation provide basic information about how to use the OpenStack web interface and provides some information specific to using OpenStack KVM on Chameleon. The interface is similar to the bare metal sites `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. However, the resources that you are using are virtual, rather than being tied to physical nodes. Familiarity with some concepts, such as :ref:`gui-key-pairs` are also required for KVM.
+This documentation provide basic information about how to use the OpenStack web interface and provides some information specific to using OpenStack KVM on Chameleon. The interface is similar to the bare metal sites `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. However, the resources that you are using are virtual, rather than being tied to physical nodes. Familiarity with some concepts, such as :ref:`gui-key-pairs` are also required for KVM.
 
-.. warning:: The old `KVM-2015@TACC <https://openstack.tacc.chameleoncloud.org>`_ is now deprecated. 
+.. warning:: The old `KVM-2015@TACC <https://openstack.tacc.chameleoncloud.org>`_ is now deprecated.
 
 Work with KVM using the GUI
 ---------------------------
 
-An easy way to use OpenStack KVM on Chameleon is via the GUI, which is similar to the GUIs for `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_. You log into the web interface using your Chameleon username and password. 
+An easy way to use OpenStack KVM on Chameleon is via the GUI, which is similar to the GUIs for `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. You log into the web interface using your Chameleon username and password.
 
 After a successful log in, you will see the *Overview* page as shown below. This page provides a summary of your current and recent usage and provides links to various other pages. Most of the tasks you will perform are done via the menu on the lower left and will be described below. One thing to note is that on the left, your current project is displayed. If you have multiple Chameleon projects, you can change which of them is your current project. All of the information displayed and actions that you take apply to your current project. So in the screen shot below, the quota and usage apply to the current project you have selected and no information about your other projects is shown.
 
@@ -48,7 +48,7 @@ Go to the *Flavor* Tab and select the amount of resources (Flavor) to allocate t
 .. figure:: kvm/new_launchflavor.png
 
 Flavors refer to the virtual machine's assigned memory and and disk size. Different images and snapshots may require a larger Flavor. For example, the ``CC-CentOS7`` image requires at least an ``m1.small`` flavor.
-   
+
    .. tip:: If you select different flavors from the Flavor dropdown, their characteristics are displayed on the right.
 
 When you are finished with this step, go to the *Key Pair* Tab.
@@ -80,21 +80,21 @@ You may assign a Floating IP Address to your Instance by selecting *Associate Fl
 
 .. figure:: kvm/new_associatemenu.png
 
-This process is similar to :ref:`baremetal-gui-associate-ip` on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
+This process is similar to :ref:`baremetal-gui-associate-ip` on `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
 
 Key Pairs
 ~~~~~~~~~
 
-You will need to import or create SSH :ref:`gui-key-pairs`. This process is similar to the process performed on `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
+You will need to import or create SSH :ref:`gui-key-pairs`. This process is similar to the process performed on `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
 
 Security Groups
 ~~~~~~~~~~~~~~~
 
-*Security Groups* allow you to specify what inbound and outbound traffic is allowed or blocked to Instances. Unlike the `CHI@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites, `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ observes Security Groups for Instances.
+*Security Groups* allow you to specify what inbound and outbound traffic is allowed or blocked to Instances. Unlike the `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites, `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ observes Security Groups for Instances.
 
-.. note:: By default, all inbound traffic is blocked to `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ Instances, including SSH. You must apply a Security Group that allows TCP port 22 inbound to access your instance via SSH.
+.. note:: By default, all inbound traffic is blocked to `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ Instances, including SSH. You must apply a Security Group that allows TCP port 22 inbound to access your instance via SSH.
 
-To create a Security Group, click *Projects* > *Network* > *Security Groups* in the navigation side bar. 
+To create a Security Group, click *Projects* > *Network* > *Security Groups* in the navigation side bar.
 
 .. figure:: kvm/new_securitytab.png
 
@@ -102,7 +102,7 @@ Click the *+Create Security Group* button to open the *Create Security Group* pa
 
 .. figure:: kvm/new_createsecurity.png
 
-Enter a *Name* for your *Security Group*, and optionally provide a *Description*. Then click the *Create Security Group* button. 
+Enter a *Name* for your *Security Group*, and optionally provide a *Description*. Then click the *Create Security Group* button.
 Now, you should see your *Security Group* listed on the *Access and Security* page.
 
 .. figure:: kvm/new_grouplist.png
@@ -126,7 +126,7 @@ Once you have defined a *Security Group*, you may apply it to an Instance by cli
 
 .. figure:: kvm/new_editaction.png
 
-The *Security Groups* tab in the *Edit Instance* dialog will pop up. 
+The *Security Groups* tab in the *Edit Instance* dialog will pop up.
 
 .. figure:: kvm/new_editinstance.png
 
@@ -142,12 +142,12 @@ Uploading qcow2 images to raw format for better instance launch performance
 
 KVM images are stored on our Ceph cluster, which is able to serve raw images much faster than qcow2 for instance launches. Openstack includes the experimental command Glance image-create-via-import, which allows uploading of images in various standard formats including qcow2 to then be automatically converted to raw in the backend.
 
-In order to use this method, authenticate to KVM using the OpenStack RC script downloaded from the `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`_ site as described in `command-line-interface section <https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-openstack-rc-script>`_.
+In order to use this method, authenticate to KVM using the OpenStack RC script downloaded from the `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ site as described in `command-line-interface section <https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-openstack-rc-script>`_.
 
 Next, issue the following command:
 
    .. code-block:: shell
- 
+
        glance image-create-via-import --container-format bare --disk-format qcow2 --file </path/to/image> --name <image name>
 
 Details and other options for this command are available via the Glance `image-create-via-import documentation <https://docs.openstack.org/python-glanceclient/train/cli/details.html#glance-image-create-via-import>`_.
@@ -158,14 +158,14 @@ Details and other options for this command are available via the Glance `image-c
 Alternatively, you may convert qcow2 images to raw format before upload. qemu-img is one tool that is able to this with the following command:
 
    .. code-block:: shell
- 
+
        qemu-img convert -f qcow2 -O raw <original.qcow2> <converted.img>
-       
+
 
 Once converted, use glance to upload the image:
 
    .. code-block:: shell
- 
+
        openstack image create --file </path/to/converted.img> --disk-format raw <image-name>
 
 Details and other options for this command are available within `Openstack documentation <https://docs.openstack.org/image-guide/convert-images.html>`_.
