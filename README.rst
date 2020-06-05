@@ -9,11 +9,11 @@ Requires Python 3 and `tox <https://pypi.org/project/tox/>`_.
 
 .. code-block:: shell
 
-    # Build HTML output
+    # Start dev server (refreshes output on change)
     tox
 
-    # Start dev server (refreshes output on change)
-    tox -e watch
+    # Build just HTML output
+    tox -- html
 
 reStructuredText help
 =====================
