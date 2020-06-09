@@ -1,3 +1,6 @@
+.. _CHI@TACC: https://chi.tacc.chameleoncloud.org
+.. _CHI@UC: https://chi.uc.chameleoncloud.org
+
 .. _gui:
 
 ===============================
@@ -37,16 +40,13 @@ see :ref:`kvm`.
 
 You may login to either site using your Chameleon portal username and password.
 
-.. TODO(jason): [federation] adjust this note
-
 .. _bare-metal-sites-independent:
 .. attention::
-    These two Chameleon bare metal sites---|CHI@TACC| and |CHI@UC|---**only**
-    share user accounts, but snapshots, keypairs, Swift containers, Gnocchi
-    metrics and other objects at each site are **independent**. For example, a
-    keypair created at the CHI\@TACC site is **not** available at the CHI\@UC
-    site. In addition, the bare metal resource types vary between CHI\@TACC and
-    CHI\@UC.
+    Each Chameleon testbed sites---|CHI@TACC|, |CHI@UC|, and |KVM@TACC|---are
+    **independent**, so snapshots, keypairs, Swift containers, Gnocchi
+    metrics and other objects are unique to each site. For example, a
+    keypair created at the |CHI@TACC| site is **not** available at the |CHI@UC|
+    site. In addition, the bare metal resource types vary between sites.
 
 GUI Features
 ============
@@ -73,10 +73,6 @@ to easily perform multi-site experiments.
    :alt: Switching between projects
 
    Switching between projects
-
-.. attention::
-   If you switch from one site to the other, make sure you have selected the
-   site that you want to use before starting an experiment.
 
 .. _gui-user-menu:
 
@@ -106,7 +102,8 @@ Timezone.
    User settings
 
 .. note::
-   Updating your Timezone is **highly** recommended. When you make reservations
+
+   Updating your timezone is **highly** recommended. When you make reservations
    for bare metal resources, your local time will be used. UTC is the default
    Timezone.
 
@@ -139,11 +136,9 @@ Sign Out
 
 Use the *sign out* menu item to sign out from your current site.
 
-.. NOTE(jason): [federation] adjust this note
-
 .. note::
 
-   If you do not sign out manually, your session will expire in 30 minutes.
+   If you do not sign out manually, your session will expire in one hour.
 
 
 Navigating the GUI
@@ -154,13 +149,26 @@ The navigation sidebar allows you to access different sections.
 .. figure:: gui/sidebar.png
    :alt: The GUI sidebar
 
+.. _gui-api-access:
+
+API Access
+==========
+
+The API Access page lists all the available REST APIs that are used for
+configuring the :ref:`Command Line Interface <cli>`. In addition, you may
+download :ref:`OpenStack RC <cli-rc-script>` scripts via this page.
+
+.. figure:: gui/api_access.png
+   :alt: The API Access page
+
+   The API Access page
+
 .. _gui-compute:
 
 Compute
 =======
 
 Use *Compute* section for reserving, configuring and managing your instances.
-
 
 Overview
 --------
@@ -280,15 +288,15 @@ API Access
 ----------
 
 The API Access page lists all the available REST APIs that are used for
-configuring the :ref:`Command Line Interface <cli>`. In addition, you may
-download :ref:`OpenStack RC <cli-rc-script>` scripts via this page.
+configuring the :ref:`cli`. In addition, you may download :ref:`cli-rc-script`
+scripts via this page.
 
-.. NOTE(jason): [federation] update screenshot
+.. note::
 
-.. figure:: gui/api_access.png
-   :alt: The API Access page
-
-   The API Access page
+   Typically, the key generated from your computer will be at
+   ``~/.ssh/id_rsa.pub``. On Mac OS X, you can run in a terminal: ``cat
+   ~/.ssh/id_rsa.pub | pbcopy``. It copies the content of the public key to your
+   copy/paste buffer. Then you can simply paste in the "Public Key" box.
 
 Network
 =======
@@ -346,10 +354,8 @@ of the selected project.
    The Security Groups page
 
 .. attention::
-   Chameleon bare metal sites - `CHI\@TACC
-   <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC
-   <https://chi.uc.chameleoncloud.org>`_ - **do not** support security groups
-   (i.e. all ports are open to the public).
+   Chameleon bare metal sites---|CHI@TACC| and |CHI@UC|---**do not** support
+   security groups, i.e., all ports are open to the public.
 
 
 Floating IPs
@@ -369,6 +375,7 @@ Releasing Floating IP Addresses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. important::
+
    The Chameleon Floating IP address pool is a shared and finite resource.
    **Please be responsible and release the Floating IP addresses that are not
    used, so other Chameleon users and projects can use them!**
@@ -403,10 +410,12 @@ allows you to launch, rebuild, or terminate stacks.
    The Stacks page
 
 .. tip::
+
    After launching a stack, all the instances launched with the stack can be
    viewed at :ref:`Compute - Instances <gui-compute-instances>` section as well.
 
 .. note::
+
    When you terminate a stack, all instances launched with the stack will be
    terminated.
 
@@ -462,6 +471,10 @@ project, including creating and deleting leases. For more information, see
    The Leases page
 
 .. tip::
+<<<<<<< HEAD
+=======
+
+>>>>>>> dddb489... Update docs on CLI usage for federation
    Check *Lease Calendar*, so you can schedule your experiments efficiently.
 
 Identity
