@@ -102,6 +102,14 @@ The `man page for ufw
 <http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html>`_ has more
 examples.
 
+CentOS environments can install ``ufw`` via the EPEL repository, which is
+enabled by default on Chameleon base images.
+
+.. code-block:: shell
+
+   yum install ufw  # CentOS 7
+   dnf install ufw  # CentOS 8
+
 Security Groups
 ^^^^^^^^^^^^^^^
 
