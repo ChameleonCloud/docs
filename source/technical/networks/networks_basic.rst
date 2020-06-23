@@ -62,7 +62,7 @@ attached. You have a few options of how to mitigate risk of compromise.
    the security needs of your experiment when selecting what systems you need
    to install on your node, particularly when exposing the node to the Internet.
 
-.. info::
+.. note::
 
    We're here to help! If you want advice on how to securely run your
    experiment, feel free to file a `Help Desk
@@ -86,7 +86,7 @@ inbound connections on a few ports. The following example allows only SSH from
 the public Internet, but any internal traffic on private subnets is still
 permitted.
 
-.. code-block::
+.. code-block:: shell
 
    # Establish firewall rules--until ufw is enabled, this is a no-op
    ufw limit ssh
