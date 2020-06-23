@@ -10,8 +10,6 @@ OpenStack is an Infrastructure as a Service (IaaS) platform that allows you to c
 
 This documentation provide basic information about how to use the OpenStack web interface and provides some information specific to using OpenStack KVM on Chameleon. The interface is similar to the bare metal sites `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. However, the resources that you are using are virtual, rather than being tied to physical nodes. Familiarity with some concepts, such as :ref:`gui-key-pairs` are also required for KVM.
 
-.. warning:: The old `KVM-2015@TACC <https://openstack.tacc.chameleoncloud.org>`_ is now deprecated.
-
 Work with KVM using the GUI
 ---------------------------
 

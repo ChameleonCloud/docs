@@ -44,38 +44,65 @@ Each Floating IP is also contained within a dedicated DNS A record; this means t
 Security
 --------
 
-When your instance has a *Floating IP address* assigned, it is reachable directly over the public Internet. For this reason, it is important to consider the security of any services running on your instance. In particular, **ensure that you have not allowed SSH authentication with passwords** (this is disabled by default on Chameleon-supported images.)
+When your instance has a *Floating IP address* assigned, it is reachable
+directly over the public Internet. For this reason, it is important to consider
+the security of any services running on your instance. In particular, **ensure
+that you have not allowed SSH authentication with passwords** (this is disabled
+by default on Chameleon-supported images.)
 
-There are additional network security mechanisms on the testbed that you should be aware of.
+Currently Chameleon base images do not come with baked-in firewall rules. This
+may change in the future. For now, realize that any network services can
+potentially be exposed to the public Internet if your instance has a Floating IP
+attached. You have a few options of how to mitigate risk of compromise.
+
+.. warning::
+
+   Some commodity systems such as Apache Spark and Hadoop have in the past
+   shipped with *very insecure* default settings. Pay particular attention to
+   the security needs of your experiment when selecting what systems you need
+   to install on your node, particularly when exposing the node to the Internet.
+
+.. info::
+
+   We're here to help! If you want advice on how to securely run your
+   experiment, feel free to file a `Help Desk
+   <https://www.chameleoncloud.org/user/help/>`_ ticket.
+
+Limit bound interfaces
+^^^^^^^^^^^^^^^^^^^^^^
+
+Instead of binding a web service to all interfaces (e.g. ``0.0.0.0`` for IPv4,
+``::`` for IPv6), consider listening only on the node's private IP, which is not
+routable from the public Internet. If you can, listening on localhost
+(``127.0.0.1``) is even safer. Most web services have a way to specify the bind
+address and some default to binding on all interfaces, which is often insecure.
 
 Firewall
 ^^^^^^^^
 
-A configurable *Firewall* is available on `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. This is built on the `OpenStack Neutron Firewall-as-a-Service (FWaaS) <https://docs.openstack.org/neutron/latest/admin/fwaas.html>`_ system. By default, any instances connected to the ``sharednet1`` or ``sharedwan1`` shared networks automatically have a firewall configured with the following rules:
+Ubuntu ships with a simple firewall utility called ``ufw``. When setting up your
+environment, it is easy to add a few rules to ensure that your node only allows
+inbound connections on a few ports. The following example allows only SSH from
+the public Internet, but any internal traffic on private subnets is still
+permitted.
 
-+------------+--------------------+-----------+
-| Source     | Destination port   | Protocol  |
-+============+====================+===========+
-| *          | 22                 | TCP       |
-+------------+--------------------+-----------+
-| *          | 80                 | TCP       |
-+------------+--------------------+-----------+
-| *          | 443                | TCP       |
-+------------+--------------------+-----------+
-| *          | n/a                | ICMP      |
-+------------+--------------------+-----------+
-| 10./8      | *                  | TCP/UDP   |
-+------------+--------------------+-----------+
-| 172.16./12 | *                  | TCP/UDP   |
-+------------+--------------------+-----------+
-| 192.168./16| *                  | TCP/UDP   |
-+------------+--------------------+-----------+
-| fe80::/10  | *                  | ICMP/UDP  |
-+------------+--------------------+-----------+
+.. code-block::
 
-.. note:: If you think there is a case for allowing additional services/ports on this default firewall, please `open a Help Desk ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_ to let us know.
+   # Establish firewall rules--until ufw is enabled, this is a no-op
+   ufw limit ssh
+   ufw allow from 10.0.0.0/8
+   ufw allow from 172.16.0.0/12
+   ufw allow from 192.168.0.0/16
+   ufw default deny incoming
+
+   # Enable ufw--you only need to do this once
+   ufw enable
+
+The `man page for ufw
+<http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html>`_ has more
+examples.
 
 Security Groups
 ^^^^^^^^^^^^^^^
 
-`KVM\@TACC <https://openstack.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.
+`KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.
