@@ -49,6 +49,8 @@ You will be prompted to enter your username and password.
 
 .. note:: If you choose an *Image* name that already exists, the previous one **will not** be overwritten. A new *Image* with the same name but a different *UUID* will be generated.
 
+.. note:: If you install a custom kernel, please make sure the size of your running kernel (``/lib/modules/<kernel_version>``) is less than 4GB. To find out which kernel version you're running, run ``uname -r``.
+
 .. _updating-snapshot:
 
 .. error::
