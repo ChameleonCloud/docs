@@ -453,10 +453,6 @@ Object Store, please see :ref:`object-store`.
 
    The Containers page
 
-.. note::
-   Currently, **only** `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_
-   maintains *Object Store*.
-
 Reservations
 ============
 
