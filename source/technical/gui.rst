@@ -64,21 +64,20 @@ Overview page.
 
 .. _gui-project-menu:
 
-Project and Region Menu
------------------------
+Project and Site Menu
+---------------------
 
-To switch among the projects you belong to, use the project and region
-menu---the dropdown on the upper left of the screen next to the Chameleon logo.
-You can also use this menu to switch from one Chameleon site to the other (sites
-are called *regions* in OpenStack terminology). This allows you to easily
-perform multi-site experiments without logging in twice.
+To switch among the projects you belong to, use the project and site menu---the
+dropdown on the upper left of the screen next to the Chameleon logo. You can
+also use this menu to switch from one Chameleon site to another. This allows you
+to easily perform multi-site experiments.
 
 .. figure:: gui/project_dropdown.png
    :alt: Switching between projects
 
    Switching between projects
 
-.. Attention::
+.. attention::
    If you switch from one site to the other, make sure you have selected the
    site that you want to use before starting an experiment.
 
@@ -88,7 +87,7 @@ User Menu
 ---------
 
 To access user specific settings and download *OpenStack RC* files, use the user
-menu - the dropdown on the upper right of the screen where you will see your
+menu---the dropdown on the upper right of the screen where you will see your
 account name.
 
 .. figure:: gui/user_dropdown.png
@@ -101,14 +100,15 @@ account name.
 Settings
 --------
 
-In the settings menu, you can change user specific settings such as the Timezone.
+In the settings menu, you can change user specific settings such as the
+Timezone.
 
 .. figure:: gui/user_settings.png
    :alt: User settings
 
    User settings
 
-.. Note::
+.. note::
    Updating your Timezone is **highly** recommended. When you make reservations
    for bare metal resources, your local time will be used. UTC is the default
    Timezone.
