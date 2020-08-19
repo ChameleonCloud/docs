@@ -100,7 +100,7 @@ You can enable communication over a specifc port using the command:
 
 .. code-block:: shell
 
-sudo ufw allow <port>
+        sudo ufw allow <port>
 
 You can also permit connections from a specific ip or network:
 
