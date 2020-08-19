@@ -73,7 +73,7 @@ your instance has a Floating IP attached.
 Firewall
 ^^^^^^^^
 
-Chameleon supported Ubuntu and CentOS images are preconfigured with a firewall
+Chameleon-supported Ubuntu and CentOS images are preconfigured with a firewall
 utility called ``ufw`` enabled and the following rules set:
 
 .. code-block:: shell
