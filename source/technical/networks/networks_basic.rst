@@ -50,10 +50,12 @@ the security of any services running on your instance. In particular, **ensure
 that you have not allowed SSH authentication with passwords** (this is disabled
 by default on Chameleon-supported images.)
 
-Currently Chameleon base images do not come with baked-in firewall rules. This
-may change in the future. For now, realize that any network services can
-potentially be exposed to the public Internet if your instance has a Floating IP
-attached. You have a few options of how to mitigate risk of compromise.
+In order to better protect Chameleon instances, Chameleon Ubuntu and CentOS 
+base images come with baked-in firewall rules which allow all communication 
+within Chameleon private networks, but severely restrict connections over the public 
+internet. If using a different image or if you disable firewall rules, realize 
+that any network services can potentially be exposed to the public Internet if 
+your instance has a Floating IP attached.
 
 .. warning::
 
@@ -68,6 +70,53 @@ attached. You have a few options of how to mitigate risk of compromise.
    experiment, feel free to file a `Help Desk
    <https://www.chameleoncloud.org/user/help/>`_ ticket.
 
+Firewall
+^^^^^^^^
+
+Chameleon-supported Ubuntu and CentOS images are preconfigured with a firewall
+utility called ``ufw`` enabled and the following rules set:
+
+.. code-block:: shell
+
+    ufw limit ssh
+    ufw allow http
+    ufw allow https
+    ufw allow from 10.0.0.0/8
+    ufw allow from 172.16.0.0/12
+    ufw allow from 192.168.0.0/16
+    ufw default deny incoming
+
+These rules allow ssh traffic on port 22 over the public internet, but will 
+limit the number of attempts to 6 for every 30 seconds.
+
+HTTP/HTTPS on port 80 and 443 are allowed.
+
+Communication is fully allowed over the 3 private network ranges use by
+Chameleon.
+
+Any other incomming connections will be denied.
+
+You can enable communication over a specifc port using the command:
+
+.. code-block:: shell
+
+        sudo ufw allow <port>
+
+You can also permit connections from a specific ip or network:
+
+.. code-block:: shell
+
+        sudo ufw allow from <ip address or network> 
+
+The `man page for ufw
+<http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html>`_ has more
+examples.
+
+Security Groups
+^^^^^^^^^^^^^^^
+
+`KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.
+
 Limit bound interfaces
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -76,41 +125,3 @@ Instead of binding a web service to all interfaces (e.g. ``0.0.0.0`` for IPv4,
 routable from the public Internet. If you can, listening on localhost
 (``127.0.0.1``) is even safer. Most web services have a way to specify the bind
 address and some default to binding on all interfaces, which is often insecure.
-
-Firewall
-^^^^^^^^
-
-Ubuntu ships with a simple firewall utility called ``ufw``. When setting up your
-environment, it is easy to add a few rules to ensure that your node only allows
-inbound connections on a few ports. The following example allows only SSH from
-the public Internet, but any internal traffic on private subnets is still
-permitted.
-
-.. code-block:: shell
-
-   # Establish firewall rules--until ufw is enabled, this is a no-op
-   ufw limit ssh
-   ufw allow from 10.0.0.0/8
-   ufw allow from 172.16.0.0/12
-   ufw allow from 192.168.0.0/16
-   ufw default deny incoming
-
-   # Enable ufw--you only need to do this once
-   ufw enable
-
-The `man page for ufw
-<http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html>`_ has more
-examples.
-
-CentOS environments can install ``ufw`` via the EPEL repository, which is
-enabled by default on Chameleon base images.
-
-.. code-block:: shell
-
-   yum install ufw  # CentOS 7
-   dnf install ufw  # CentOS 8
-
-Security Groups
-^^^^^^^^^^^^^^^
-
-`KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.
