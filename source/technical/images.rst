@@ -77,7 +77,7 @@ __________________________________
 Managing Images using the GUI
 __________________________________
 
-To manage your images, use the *Images* page at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_, by clicking on *Project* > *Compute* > *Images*.
+To manage your images, use the *Images* page at |CHI@TACC| or |CHI@UC|, by clicking on *Project* > *Compute* > *Images*.
 
 .. figure:: images/imagespagev3.png
    :alt: The Images page
@@ -88,7 +88,7 @@ To manage your images, use the *Images* page at `CHI\@TACC <https://chi.tacc.cha
 
 .. tip:: Select *Details* from the dropdown menu to the right of any Chameleon supported appliance to view the relevant entry from the `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_.
 
-.. note:: Images at each site are stored independently. An Image made at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ **will not** be available at `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ (or vice versa) unless transferred manually.
+.. note:: Images at each site are stored independently. An Image made at |CHI@TACC| **will not** be available at |CHI@UC| (or vice versa) unless transferred manually.
 
 Uploading an Image
 __________________

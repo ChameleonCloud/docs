@@ -64,7 +64,7 @@ The OpenStack RC Script
 
 You must use the *OpenStack RC Scripts* to configure the environment variables for accessing Chameleon features. You can downloaded the script from the Chameleon GUI at the :ref:`gui-api-access`.
 
-#. Log in to the GUI at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_.
+#. Log in to the GUI at |CHI@TACC| or |CHI@UC|.
 
    .. important::
 

@@ -20,7 +20,7 @@ When launching a node that supports multiple networks, simply assign multiple ne
 Floating IP Addresses
 ---------------------
 
-Instances on Chameleon are assigned a *fixed* IP address that can be used for local connectivity as well as NAT access to the public Internet. A publicly accessible IPv4 address (*Floating IP address*) is required in order to access Chameleon instances from the Internet or host public services. `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ each have a limited number of public IP addresses that can be allocated to your instances.
+Instances on Chameleon are assigned a *fixed* IP address that can be used for local connectivity as well as NAT access to the public Internet. A publicly accessible IPv4 address (*Floating IP address*) is required in order to access Chameleon instances from the Internet or host public services. |CHI@TACC| and |CHI@UC| each have a limited number of public IP addresses that can be allocated to your instances.
 
 The :ref:`getting-started` guide shows how to allocate *Floating IP address* to your nodes.
 
@@ -67,8 +67,7 @@ your instance has a Floating IP attached.
 .. note::
 
    We're here to help! If you want advice on how to securely run your
-   experiment, feel free to file a `Help Desk
-   <https://www.chameleoncloud.org/user/help/>`_ ticket.
+   experiment, feel free to file a |Help Desk| ticket.
 
 Firewall
 ^^^^^^^^

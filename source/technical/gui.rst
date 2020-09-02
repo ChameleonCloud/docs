@@ -7,9 +7,6 @@ The Graphical User Interface
 Introduction
 ============
 
-.. _CHI@TACC: https://chi.tacc.chameleoncloud.org
-.. _CHI@UC: https://chi.uc.chameleoncloud.org
-
 The Graphical User Interface (GUI) provides a point-and-click experience for
 working with Chameleon resources. From the GUI, you may perform tasks such as
 manage and launch instances, and configure custom networking. Additionally, you
@@ -34,8 +31,8 @@ is available at:
     https://kvm.tacc.chameleoncloud.org
 
 This section provides an overview of features available on the GUI for the bare
-metal sites at the Texas Advanced Computing Center (`CHI@TACC`_) and the
-University of Chicago (`CHI@UC`_). For information about *OpenStack KVM*, please
+metal sites at the Texas Advanced Computing Center (|CHI@TACC|) and the
+University of Chicago (|CHI@UC|). For information about *OpenStack KVM*, please
 see :ref:`kvm`.
 
 You may login to either site using your Chameleon portal username and password.
@@ -44,7 +41,7 @@ You may login to either site using your Chameleon portal username and password.
 
 .. _bare-metal-sites-independent:
 .. attention::
-    These two Chameleon bare metal sites---`CHI@TACC`_ and `CHI@UC`_---**only**
+    These two Chameleon bare metal sites---|CHI@TACC| and |CHI@UC|---**only**
     share user accounts, but snapshots, keypairs, Swift containers, Gnocchi
     metrics and other objects at each site are **independent**. For example, a
     keypair created at the CHI\@TACC site is **not** available at the CHI\@UC
@@ -180,8 +177,7 @@ resource usage.
 	However, at the OpenStack KVM site, your project is limited to a certain
 	number of virtual machines. By default, each project is allowed to allocate
 	50 *Floating IP addresses* and use 10 *Security Groups*. You may request
-	additional resources by submitting a ticket on the `help desk
-	<https://www.chameleoncloud.org/user/help/>`_.
+	additional resources by submitting a ticket on the |Help Desk|.
 
 .. _gui-compute-instances:
 

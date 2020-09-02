@@ -271,7 +271,7 @@ This will return a JSON dictionary describing site, cluster, and node.
 Customizing Networking
 ______________________
 
-In its default configuration, the bare metal deployment system used by Chameleon (`OpenStack Ironic <https://docs.openstack.org/ironic/latest/>`_) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On `CHI\@UC <https://chi.uc.chameleoncloud.org>`_, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
+In its default configuration, the bare metal deployment system used by Chameleon (`OpenStack Ironic <https://docs.openstack.org/ironic/latest/>`_) is restricted to using a single shared network per site. The network configuration features available in the dashboard are not supported (Networks and Routers). On |CHI@UC|, network layer 2 isolation is optionally available for compute nodes. You may find more details on the documentation for :ref:`networking`.
 
 __________________________
 Interacting with Instances
@@ -325,7 +325,7 @@ When logged in, your prompt may appear like this:
 
       [cc@my-first-instance ~]$
 
-.. note:: If you notice SSH errors such as connection refused, password requests, or failures to accept your key, it is likely that the physical node is still going through the boot process. In that case, please wait before retrying. Also make sure that you use the ``cc`` account. If after 10 minutes you still cannot connect to the machine, please open a ticket with our `help desk <https://www.chameleoncloud.org/user/help/>`_.
+.. note:: If you notice SSH errors such as connection refused, password requests, or failures to accept your key, it is likely that the physical node is still going through the boot process. In that case, please wait before retrying. Also make sure that you use the ``cc`` account. If after 10 minutes you still cannot connect to the machine, please open a ticket with our |Help Desk|.
 
 You can now check whether the resource matches its known description in the resource registry. For this, simply run:
 

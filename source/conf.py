@@ -82,6 +82,11 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+rst_prolog = """
+.. |CHI@TACC| replace:: `CHI@TACC <https://chi.tacc.chameleoncloud.org>`__
+.. |CHI@UC| replace:: `CHI@UC <https://chi.uc.chameleoncloud.org>`__
+.. |Help Desk| replace:: `Help Desk <https://www.chameleoncloud.org/user/help/>`__
+"""
 
 # -- Options for HTML output ----------------------------------------------
 

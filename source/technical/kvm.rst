@@ -8,12 +8,12 @@ Introduction
 
 OpenStack is an Infrastructure as a Service (IaaS) platform that allows you to create and manage virtual environments. Chameleon provides an installation of OpenStack `Rocky <https://releases.openstack.org/rocky/index.html>`_ using the KVM virtualization technology at the `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used on this cloud, any virtual machines you upload must be compatible with KVM.
 
-This documentation provide basic information about how to use the OpenStack web interface and provides some information specific to using OpenStack KVM on Chameleon. The interface is similar to the bare metal sites `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. However, the resources that you are using are virtual, rather than being tied to physical nodes. Familiarity with some concepts, such as :ref:`gui-key-pairs` are also required for KVM.
+This documentation provide basic information about how to use the OpenStack web interface and provides some information specific to using OpenStack KVM on Chameleon. The interface is similar to the bare metal sites |CHI@TACC| and |CHI@UC|. However, the resources that you are using are virtual, rather than being tied to physical nodes. Familiarity with some concepts, such as :ref:`gui-key-pairs` are also required for KVM.
 
 Work with KVM using the GUI
 ---------------------------
 
-An easy way to use OpenStack KVM on Chameleon is via the GUI, which is similar to the GUIs for `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. You log into the web interface using your Chameleon username and password.
+An easy way to use OpenStack KVM on Chameleon is via the GUI, which is similar to the GUIs for |CHI@TACC| and |CHI@UC|. You log into the web interface using your Chameleon username and password.
 
 After a successful log in, you will see the *Overview* page as shown below. This page provides a summary of your current and recent usage and provides links to various other pages. Most of the tasks you will perform are done via the menu on the lower left and will be described below. One thing to note is that on the left, your current project is displayed. If you have multiple Chameleon projects, you can change which of them is your current project. All of the information displayed and actions that you take apply to your current project. So in the screen shot below, the quota and usage apply to the current project you have selected and no information about your other projects is shown.
 
@@ -78,17 +78,17 @@ You may assign a Floating IP Address to your Instance by selecting *Associate Fl
 
 .. figure:: kvm/new_associatemenu.png
 
-This process is similar to :ref:`baremetal-gui-associate-ip` on `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
+This process is similar to :ref:`baremetal-gui-associate-ip` on |CHI@TACC| and |CHI@UC| bare metal sites.
 
 Key Pairs
 ~~~~~~~~~
 
-You will need to import or create SSH :ref:`gui-key-pairs`. This process is similar to the process performed on `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites.
+You will need to import or create SSH :ref:`gui-key-pairs`. This process is similar to the process performed on |CHI@TACC| and |CHI@UC| bare metal sites.
 
 Security Groups
 ~~~~~~~~~~~~~~~
 
-*Security Groups* allow you to specify what inbound and outbound traffic is allowed or blocked to Instances. Unlike the `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ and `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ bare metal sites, `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ observes Security Groups for Instances.
+*Security Groups* allow you to specify what inbound and outbound traffic is allowed or blocked to Instances. Unlike the |CHI@TACC| and |CHI@UC| bare metal sites, `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ observes Security Groups for Instances.
 
 .. note:: By default, all inbound traffic is blocked to `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ Instances, including SSH. You must apply a Security Group that allows TCP port 22 inbound to access your instance via SSH.
 

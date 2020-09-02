@@ -19,7 +19,7 @@ ___________________________________________________
 Provisioning and Managing Resources Using the GUI
 ___________________________________________________
 
-To make reservations of the resources, first log into the Horizon web interface - either `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :ref:`gui`.
+To make reservations of the resources, first log into the Horizon web interface - either |CHI@TACC| or |CHI@UC|. Then, choose a project and configure your local timezone. For details on how to choose a project and update personalized settings, please see :ref:`gui`.
 
 In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 
@@ -96,7 +96,7 @@ Once created, the lease details will be displayed. At the bottom of the page are
 
 Once the start time of the lease is reached, the lease will be started and its reservation will change to ``Active``; you may need to refresh the page to see the updates.
 
-.. tip:: The lease is identified by a *UUID*. You may find it useful when using the CLI or submitting tickets on our `help desk <https://www.chameleoncloud.org/user/help/>`_.
+.. tip:: The lease is identified by a *UUID*. You may find it useful when using the CLI or submitting tickets on our |Help Desk|.
 
 .. role:: redbold
 
@@ -120,7 +120,7 @@ To prolong a lease, click on the *Update Lease* button in *Actions* column.
 Fill out the form by specifying the amount of additional time to add to the lease. Then, click on the *Update* button to finish your request.
 
 .. tip::
-   If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can submit a ticket on our `help desk <https://www.chameleoncloud.org/user/help/>`_ to request a **one-time exception** of creating a longer lease.
+   If there is an advance reservation blocking your lease prolongation that could potentially be moved, you can interact through the users mailing list to coordinate with others users. Additionally, if you know from the start that your lease will require longer than a week and can justify it, you can submit a ticket on our |Help Desk| to request a **one-time exception** of creating a longer lease.
 
 Changing the Number of Nodes of a Lease
 ---------------------------------------

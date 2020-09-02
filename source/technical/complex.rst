@@ -39,7 +39,7 @@ To view the details of a *Complex Appliance*, simply click on it.
 Managing Complex Appliances using the GUI
 -----------------------------------------
 
-Before launching a *Complex Appliance*, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ stie or `CHI\@UC <https://chi.uc.chameleoncloud.org>`_ site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
+Before launching a *Complex Appliance*, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At |CHI@TACC| site or |CHI@UC| site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
 
 .. figure:: complex/stacks.png
    :alt: The Stacks page
@@ -556,7 +556,7 @@ However, only a subset of them are supported by Chameleon, and some are limited 
 -  OS::Nova::Keypair
 -  OS::Nova::Server
 
-If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare-metal, please let us know via our `help desk <https://www.chameleoncloud.org/user/help/>`_.
+If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare-metal, please let us know via our |Help Desk|.
 
 Parameters
 ^^^^^^^^^^

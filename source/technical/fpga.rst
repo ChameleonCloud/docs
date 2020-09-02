@@ -1,20 +1,20 @@
-========================
-Using FPGAs on Chameleon
-========================
+======
+FPGAs
+======
 
 ____________
 Introduction
 ____________
 
 Chameleon provides access to five FPGA nodes.
-Four nodes are located at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_. Each of these nodes is fitted with a `Nallatech 385A board <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support.
-One node is located at `CHI\@UC <https://chi.uc.chameleoncloud.org>`_. The node is fitted with a `Terasic DE5a-Net board <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_ with an `Altera Arria 10 GX 1150 FPGA <https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=231&No=970>`_ (up to 1.5 TFlops), 4 GB DDR3 on-card memory, and four QSFP 10/40 GbE support.
-All FPGA nodes are configured to run OpenCL code, but they can be reconfigured (by a request to our `help desk <https://www.chameleoncloud.org/user/help/>`_) to run compiled designs prepared with Altera Quartus.
+Four nodes are located at |CHI@TACC|. Each of these nodes is fitted with a `Nallatech 385A board <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support.
+One node is located at |CHI@UC|. The node is fitted with a `Terasic DE5a-Net board <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_ with an `Altera Arria 10 GX 1150 FPGA <https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=231&No=970>`_ (up to 1.5 TFlops), 4 GB DDR3 on-card memory, and four QSFP 10/40 GbE support.
+All FPGA nodes are configured to run OpenCL code, but they can be reconfigured (by a request to our |Help Desk|) to run compiled designs prepared with Altera Quartus.
 
 Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes. Briefly, the steps for building an FPGA application are:
 
 - Setup Multi-Factor Authentication for TACC Resources by following `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_
-- Request access to the FPGA Build Node project at the `Help Desk <https://www.chameleoncloud.org/user/help/>`_
+- Request access to the FPGA Build Node project at the |Help Desk|
 - SSH to the ``fpga01.tacc.chameleoncloud.org`` host to build your FPGA application
 - Use ``scp`` to copy your FPGA application from ``fpga01.tacc.chameleoncloud.org`` to the FPGA node you wish to run it on
 
@@ -26,7 +26,7 @@ Chameleon provides a build system that includes the necessary `Altera SDK for Op
 
 Due to licensing requirements, you must apply for access to the FPGA build system. Submit a ticket through our help system to request access.
 
-FPGA resources are only available at `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_. Due to TACC’s security requirements, multi-factor authentication must be used to access the FPGA build system. You can either use a smartphone app (Apple iOS or Android) or SMS messaging: follow `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_ to set it up. Once you have set up multi-factor authentication, you can SSH to fpga01.tacc.chameleoncloud.org with your Chameleon username and password; you will also be asked for a TACC security token, which will be provided to you via the app or SMS.
+FPGA resources are only available at |CHI@TACC|. Due to TACC’s security requirements, multi-factor authentication must be used to access the FPGA build system. You can either use a smartphone app (Apple iOS or Android) or SMS messaging: follow `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_ to set it up. Once you have set up multi-factor authentication, you can SSH to fpga01.tacc.chameleoncloud.org with your Chameleon username and password; you will also be asked for a TACC security token, which will be provided to you via the app or SMS.
 
 Each user's home directory will contain an archive file containing a Hello World OpenCL example: ``exm_opencl_hello_world_x64_linux_16.0.tgz``. Extract the archive with the following command:
 
@@ -112,7 +112,7 @@ _________
 
 After completing development of an OpenCL kernel on our build node, the kernel and host application must be transferred and executed on a node with an FPGA accelerator.
 
-When using `CHI\@TACC <https://chi.tacc.chameleoncloud.org>`_ GUI to reserve nodes, use the *Node Type to Reserve* selector and choose *FPGA*. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the *with FPGA* button, and clicking *Reserve* at the bottom of the selection. Copy the generated CLI command and use it to create your reservation.
+When using |CHI@TACC| GUI to reserve nodes, use the *Node Type to Reserve* selector and choose *FPGA*. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the *with FPGA* button, and clicking *Reserve* at the bottom of the selection. Copy the generated CLI command and use it to create your reservation.
 
 In order to have access to the required runtime environment for using the FPGAs, use the image **CC-CentOS7-FPGA** when launching your instance.
 
@@ -137,7 +137,7 @@ Program FPGA with the OpenCL kernel, using ``acl0`` as the device name.
    aocl program acl0 ./bin/hello_world.aocx
 
 .. attention::
-   If you are at `CHI\@UC <https://chi.uc.chameleoncloud.org>`_, please run the following commands (program FPGA as ``root``).
+   If you are at |CHI@UC|, please run the following commands (program FPGA as ``root``).
 
    .. code-block:: bash
 
