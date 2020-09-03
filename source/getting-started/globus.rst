@@ -68,12 +68,14 @@ Migrating testbed data
 Linking your Chameleon account to Globus will cause some testbed resources to
 become unavailable, namely:
 
-- Any disk image snapshots published historically via :ref:`cc-snapshot <cc-snapshot-utility>`.
+- Any disk image snapshots published historically to your project(s) via
+  :ref:`cc-snapshot <cc-snapshot-utility>`.
 - Any server keypairs associated with your user.
-- Experimental metrics and Experiment Precis for old experiments and leases.
-- Still-active server instances and leases. Note that your server instances and
-  leases will **not** be deleted; you just will not be able to see them in the
-  GUI, nor enumerate them in the CLI.
+- :ref:`Experimental metrics <metrics>` and :ref:`experiment-precis` for old
+  experiments and leases.
+- Still-active server instances and leases. Please note that your server
+  instances and leases have **not** been deleted; you just will not be able to
+  see them in the GUI, nor enumerate them in the command-line interface.
 
 If you wish to have some of this data transferred to your Globus-linked account,
 please create a |Help Desk| ticket and a member of the Chameleon team will
