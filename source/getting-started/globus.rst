@@ -12,6 +12,16 @@ to Globus via your host institution, it is always possible to log in with any
 Google account or else create a `Globus ID <https://globusid.org/>`_ tied to an
 email and password that you provide.
 
+.. important::
+
+   Sign in with Globus is in **early user beta**. In order to enable this
+   functionality, you must opt-in via a special web address. You can opt-out
+   at any time and revert to the old sign in method (and your old user account
+   and settings.)
+
+     - Opt in: https://www.chameleoncloud.org/new-login-experience
+     - Opt out: https://www.chameleoncloud.org/new-login-experience?opt-out
+
 Migrating to Globus from an old Chameleon account
 =================================================
 
@@ -34,7 +44,7 @@ To link your old account to Globus:
 1. Sign in to the `Chameleon identity management interface
    <https://auth.chameleoncloud.org/auth/realms/chameleon/account/identity>`_.
    When prompted to sign in, click the "Looking to log in with your old
-   Chameleon account?" link, rather than the Globus button. This will bring
+   Chameleon account?" link rather than the Globus button. This will bring
    you to a page where you can log in with your old Chameleon username and
    password.
 
