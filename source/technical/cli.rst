@@ -32,6 +32,8 @@ OpenStack Client Installation
 #. Verify that it has installed correctly by typing ``openstack``. You will enter the Openstack Client in interactive mode and your prompt should change to ``(openstack)``.
 #. Exit the client by typing ``exit``.
 
+.. _cli-authentication:
+
 CLI authentication
 ==================
 
@@ -43,6 +45,8 @@ Using your Chameleon password
 -----------------------------
 
 The simplest way to authenticate is to use your Chameleon password. However, this can come with some security risk; if you accidentally commit your CLI code with your password included in to source control, an attacker would know your password and could potentially take over your account (or other accounts that share the same password.) Be sure you never commit your :ref:`RC files <cli-rc-script>` in to source control for this reason.
+
+.. _cli-application-credential:
 
 Creating an application credential
 ----------------------------------

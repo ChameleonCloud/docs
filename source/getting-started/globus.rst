@@ -52,7 +52,39 @@ To link your old account to Globus:
       :alt: Adding a Globus account to an existing Chameleon user.
       :figclass: screenshot
 
-Current limitations
--------------------
+Migrating testbed data
+----------------------
 
-TODO: note current limitations of account linking.
+Linking your Chameleon account to Globus will cause some testbed resources to
+become unavailable, namely:
+
+- Any disk image snapshots published historically via :ref:`cc-snapshot <cc-snapshot-utility>`.
+- Any server keypairs associated with your user.
+- Experimental metrics and Experiment Precis for old experiments and leases.
+- Still-active server instances and leases. Note that your server instances and
+  leases will **not** be deleted; you just will not be able to see them in the
+  GUI, nor enumerate them in the CLI.
+
+If you wish to have some of this data transferred to your Globus-linked account,
+please create a |Help Desk| ticket and a member of the Chameleon team will
+assist you.
+
+.. note::
+
+   **2020-09-03**: Over time we hope to improve the migration process and make
+   it easier to migrate your old disk images and key pairs without contacting
+   the Help Desk.
+
+Using the CLI
+-------------
+
+If you use the :ref:`command line interface <cli>` when interacting with
+Chameleon (or use another tool that interfaces directly with Chameleon's APIs),
+you will no longer be able to authenticate with a username and password. You
+should re-download your :ref:`RC file <cli-rc-script>` and use it when invoking
+the CLI, as it will have new authentication parameters compatible with your
+account pre-filled.
+
+You can also look in to generating an :ref:`application credential
+<cli-application-credential>` for your command line client or app, which may be
+simpler.
