@@ -210,50 +210,14 @@ ________________________________________
 When logged into an instance using Chameleon-supported images, such as `CC-CentOS8 <https://www.chameleoncloud.org/appliances/83/>`_ and `CC-Ubuntu18.04 <https://www.chameleoncloud.org/appliances/69/>`_,
 you will see a directory called ``my_mounting_point`` which is a pre-mounted directory to your Chameleon Object Store at the same site of your instance. Each Object Store container that you have access to will appear as a subdirectory inside this mount.
 
-You can also switch to a different site using the ``cc-cloudfuse`` tool.
-
 The ``cc-cloudfuse`` tool (Source: `ChameleonCloud/cc-cloudfuse <https://github.com/ChameleonCloud/cc-cloudfuse>`_) is pre-installed in Chameleon-supported images.
 It is based on the ``cloudfuse`` tool (Source: `redbo/cloudfuse <https://github.com/redbo/cloudfuse>`_), which is used to mount your Chameleon Object Store as a directory on your Linux environment.
-
-Before mounting, you need to configure your Chameleon credentials.
-There are three ways of configuration.
-
-1. Source your :ref:`Chameleon RC file <cli-rc-script>`.
-2. Create a ``~/.cloudfuse`` file with the following content:
-
-  .. code-block:: bash
-
-     # using keystone v2
-     username=<username>
-     password=<password>
-     tenant=<project name>
-     region=<region name> # CHI\@TACC or CHI\@UC
-     authurl=https://chi.<uc/tacc>.chameleoncloud.org:5000/v2.0
-
-     # using keystone v3
-     username=<username>
-     password=<password>
-     projectid=<project id>
-     region=<region name> # CHI\@TACC or CHI\@UC
-     authurl=https://chi.<uc/tacc>.chameleoncloud.org:5000/v3
-
-3. Pass Chameleon credentials as command line options (see below)
 
 To mount, use the following command:
 
 .. code-block:: bash
 
    cc-cloudfuse mount <mount_dir>
-
-If you don't use :ref:`Chameleon RC file <cli-rc-script>` or ``~/.cloudfuse`` file, you can pass your Chameleon credentials as command line options:
-
-.. code-block:: bash
-
-   # using keystone v2
-   cc-cloudfuse mount <mount_dir> -o username=<username>,password=<password>,tenant=<project name>,region=<region name>,authurl=<auth url v2.0>
-
-   # using keystone v3
-   cc-cloudfuse mount <mount_dir> -o username=<username>,password=<password>,projectid=<project id>,region=<region name>,authurl=<auth url v3>
 
 Now you can access your Chameleon Object Store as your local file system.
 
