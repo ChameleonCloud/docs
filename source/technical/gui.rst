@@ -1,6 +1,3 @@
-.. _CHI@TACC: https://chi.tacc.chameleoncloud.org
-.. _CHI@UC: https://chi.uc.chameleoncloud.org
-
 .. _gui:
 
 ===============================
