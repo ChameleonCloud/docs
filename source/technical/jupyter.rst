@@ -1,8 +1,8 @@
 .. _jupyter:
 
-============================
-Jupyter workbench interface
-============================
+=================
+Jupyter interface
+=================
 
 Jupyter Notebooks are an excellent tool for prototyping, exploring, and
 ultimately documenting the entire experimental process. They combine the
