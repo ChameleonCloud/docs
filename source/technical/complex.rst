@@ -1,6 +1,6 @@
 .. _complex:
 
-Complex Appliances
+Complex appliances
 ==================
 
 Introduction

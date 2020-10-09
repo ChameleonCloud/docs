@@ -1,9 +1,9 @@
 
 .. _getting-started:
 
-==================
-Getting Started
-==================
+================
+Getting started
+================
 
 This guide will walk you through the initial steps of getting an account, joining a project and working with your first instance.
 

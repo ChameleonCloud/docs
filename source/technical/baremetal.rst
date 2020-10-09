@@ -1,5 +1,5 @@
 ========================
-Bare-metal Instances
+Bare-metal instances
 ========================
 
 ________________

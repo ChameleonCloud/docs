@@ -1,27 +1,29 @@
-.. Chameleon documentation master file, created by
-   sphinx-quickstart on Tue Jan 30 12:03:46 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 =====================
 Welcome to Chameleon
 =====================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Introduction
 
    index
    getting-started/index
-   getting-started/community
-   getting-started/pi_eligibility
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Technical Guide
+   :maxdepth: 1
+   :caption: Users and Projects
+
+   user/federation
+   user/pi_eligibility
+   user/project
+   user/profile
+   user/help
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Testbed interfaces
 
    technical/index
-   technical/project
    technical/gui
    technical/cli
    technical/jupyter

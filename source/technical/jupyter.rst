@@ -1,9 +1,15 @@
 .. _jupyter:
 
-Jupyter Notebooks
+=================
+Jupyter interface
 =================
 
-Jupyter Notebooks are an excellent tool for prototyping, exploring, and ultimately documenting the entire experimental process. They combine the benefits of explanatory text, executable code, and rich visualization/interaction. There are many ways that you can use Jupyter Notebooks in your experiments on Chameleon; this section should give you a good place to start from.
+Jupyter Notebooks are an excellent tool for prototyping, exploring, and
+ultimately documenting the entire experimental process. They combine the
+benefits of explanatory text, executable code, and rich
+visualization/interaction. There are many ways that you can use Jupyter
+Notebooks in your experiments on Chameleon; this section should give you a good
+place to start from.
 
 .. toctree::
    :maxdepth: 1
