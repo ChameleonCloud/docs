@@ -24,53 +24,74 @@ removal of support for the legacy accounts.
    account, if we cannot match the email address on your federated account to
    the one you used when registering for Chameleon.
 
-To migrate your old account:
+Step-by-step instructions
+=========================
 
-1. Sign in to the `Chameleon identity management interface
-   <https://auth.chameleoncloud.org/auth/realms/chameleon/account/identity>`_.
-   When prompted to sign in, click the "Looking to log in with your old
-   Chameleon account?" link rather than the Globus Auth button. This will bring
-   you to a page where you can log in with your old Chameleon username and
-   password.
+1. **Sign in** to the `Chameleon identity management interface
+   <https://auth.chameleoncloud.org/auth/realms/chameleon/protocol/openid-connect/auth?client_id=account&redirect_uri=https%3A%2F%2Fauth.chameleoncloud.org%2Fauth%2Frealms%2Fchameleon%2Faccount%2Fidentity&response_type=code&scope=openid&kc_idp_hint=tacc>`_.
+   You will see a screen that prompts you for your existing Chameleon username
+   and password.
 
-   .. figure:: federation_migration/globus_link_account_login.png
-      :alt: Logging in via an existing Chameleon account.
+   .. figure:: federation_migration/idp-tas-authenticate.png
+      :alt: Sign in to identity management with your Chameleon credentials
       :figclass: screenshot
 
-2. Once logged in, you can explicitly associate your federated identity. Click
-   the "Add" button and log in to your federated account (if you are not
-   already.) Your Chameleon account will be automatically linked to your
-   federated identity, allowing you to log in to your existing Chameleon account
-   via this federated identity in the future.
+2. Once authenticated, you will be taken to a page showing all the identities
+   (credentials) linked to your Chameleon user account. **Click the "Add"
+   button** next to the entry for the Globus identity to iniate another login
+   via federated identity. You can pick whichever login method you choose; your
+   federated identity need not be tied to the same email address or username as
+   your existing Chameleon account if you wish.
 
-   .. figure:: federation_migration/globus_link_account.png
-      :alt: Adding a federated account to an existing Chameleon user.
+   .. figure:: federation_migration/idp-link-identity.png
+      :alt: Link your Chameleon user account to a federated identity
       :figclass: screenshot
 
-Migrating testbed data
-======================
+   Once added, your linked federated identity can be used to log in to your
+   existing Chameleon account in the future, and you no longer need to use your
+   Chameleon username and password to login to any part of the Chameleon
+   infrastructure.
 
-Linking your Chameleon account to a federated identity will cause some testbed
-resources to become unavailable, namely:
+3. If you try to log in to any of the testbed sites with your linked federated
+   identity, you may notice that some of your data is missing, namely:
 
-- Any disk image snapshots published historically to your project(s) via
-  :ref:`cc-snapshot <cc-snapshot-utility>`.
-- Any server keypairs associated with your user.
-- :ref:`Experimental metrics <metrics>` and :ref:`experiment-precis` for old
-  experiments and leases.
-- Still-active server instances and leases. Please note that your server
-  instances and leases have **not** been deleted; you just will not be able to
-  see them in the GUI, nor enumerate them in the command-line interface.
+   - *disk images* and *snapshots* you or other project members have created in
+     the past,
+   - *active or pending leases* you made,
+   - *SSH keypairs* you previously associated with your account, and
+   - *active server instances* launched recently
 
-If you wish to have some of this data transferred to your federated account,
-please create a |Help Desk| ticket and a member of the Chameleon team will
-assist you.
+   Migrating to federated identity effectively creates a new account for you in
+   the system, so in order to retain access to some of your saved data, a short
+   data migration is necessary.
 
-.. note::
+   **Go to the `migration page
+   <https://www.chameleoncloud.org/user/migrate/>`_** in the Chameleon user
+   portal to start this process (**note**: ensure you now log in to the user
+   portal using federated login, and not the old sign-in page!)
 
-   **2020-09-03**: Over time we hope to improve the migration process and make
-   it easier to migrate your old disk images and key pairs without contacting
-   the Help Desk.
+   You should see a page that looks like the following.
+
+   .. figure:: federation_migration/account-migration-page.png
+      :alt: The account migration helper page.
+      :figclass: screenshot
+
+   .. important::
+
+      Not all data can be migrated to your new account. Leases and active server
+      instances will remain on your old account. If you wish to access these,
+      you can log in to the testbed site using the old sign in method.
+
+4. **Trigger a migration of your user** to copy over any SSH keypairs you
+   previously associated with your account.
+
+5. **Trigger migrations of projects** you are a member of to associate any disk
+   images and snapshots to your new account. This only needs to be done once by
+   any member of the project, but can also be re-run in the event that you or
+   other project members create disk images/snapshots under their old account.
+
+6. You should now have access to your old data via your new account linked to
+   your federated identity!
 
 Using the CLI
 =============
