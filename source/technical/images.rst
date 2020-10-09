@@ -4,7 +4,7 @@
 Images
 ====================
 
-All instances in Chameleon, whether KVM or bare-metal, are running off disk images. The content of these disk images can be snapshotted at any point in time, which allows you to save your work and launch new instances from updated images later. While OpenStack KVM has built-in support for snapshotting in the Horizon web interface and via the command line, bare-metal instances require a more complex process.
+All instances in Chameleon, whether KVM or bare metal, are running off disk images. The content of these disk images can be snapshotted at any point in time, which allows you to save your work and launch new instances from updated images later. While OpenStack KVM has built-in support for snapshotting in the Horizon web interface and via the command line, bare metal instances require a more complex process.
 
 To work around this limitation, we provide the ``cc-snapshot`` utility that you can execute from inside your running instance. The ``cc-snapshot`` utility is pre-installed in all Chameleon supported appliances. You can find our appliances from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_.
 
@@ -16,11 +16,11 @@ _________________________________________________
 The ``cc-snapshot`` Utility
 _________________________________________________
 
-The ``cc-snapshot`` utility implements snapshotting a bare-metal instance from command line and uploads it to `Glance <https://docs.openstack.org/glance/latest/>`_, so that it can be immediately used to boot a new bare-metal instance. The snapshot images created with this tool are whole disk images.
+The ``cc-snapshot`` utility implements snapshotting a bare metal instance from command line and uploads it to `Glance <https://docs.openstack.org/glance/latest/>`_, so that it can be immediately used to boot a new bare metal instance. The snapshot images created with this tool are whole disk images.
 
 For ease of use, ``cc-snapshot`` has been installed in all the appliances supported by the Chameleon project. If you would like to use it in a different setting, it can be downloaded and installed from the `github repository <https://github.com/ChameleonCloud/cc-snapshot>`_.
 
-To make a snapshot of a bare-metal instance, run the following command from inside the instance:
+To make a snapshot of a bare metal instance, run the following command from inside the instance:
 
 .. code-block:: bash
 

@@ -276,7 +276,7 @@ A Case Example: NFS Share
 
 Let's look at the `NFS Share Template <https://www.chameleoncloud.org/appliances/api/appliances/25/template>`_. The NFS share appliance deploys:
 
-- An NFS server instance, that exports the directory ``/exports/example`` to any instance running on Chameleon bare-metal,
+- An NFS server instance, that exports the directory ``/exports/example`` to any instance running on Chameleon bare metal,
 - One or several NFS client instances, which configure ``/etc/fstab`` to mount this NFS share to ``/mnt`` (and can subsequently read from and write to it).
 
 This template is reproduced further below, and includes inline comments starting with the ``#`` character. There are three main sections:
@@ -288,7 +288,7 @@ This template is reproduced further below, and includes inline comments starting
 The ``resources`` section is the most important part of the template: it defines which OpenStack *Resources* to create and configure. Inside this section you can see four resources defined:
 
 - ``nfs_server_floating_ip``: creates a *Floating IP* on the ``ext-net`` public network. It is not attached to any instance yet.
-- ``nfs_server``: creates the NFS server instance (an instance is defined with the type ``OS::Nova::Server`` in *Heat*). It is a bare-metal instance (``flavor: baremetal``) using the ``CC-CentOS7`` image and connected to the private network named ``sharednet1``. We set the key pair to use the value of the parameter defined earlier, using the ``get_param`` function. Similarly, the reservation to use is passed to the scheduler. Finally, a ``user_data`` script is given to the instance, which configures it as an NFS server exporting ``/exports/example`` to Chameleon instances.
+- ``nfs_server``: creates the NFS server instance (an instance is defined with the type ``OS::Nova::Server`` in *Heat*). It is a bare metal instance (``flavor: baremetal``) using the ``CC-CentOS7`` image and connected to the private network named ``sharednet1``. We set the key pair to use the value of the parameter defined earlier, using the ``get_param`` function. Similarly, the reservation to use is passed to the scheduler. Finally, a ``user_data`` script is given to the instance, which configures it as an NFS server exporting ``/exports/example`` to Chameleon instances.
 - ``nfs_server_ip_association``: associates the floating IP created earlier with the NFS server instance.
 - ``nfs_clients``: defines a resource group containing instance configured to be NFS clients and mount the directory exported by the NFS server defined earlier. The IP of the NFS server is gathered using the ``get_attr`` function, and placed into ``user_data`` using the ``str_replace`` function.
 
@@ -515,7 +515,7 @@ You may want to write a whole new template, rather than customizing an existing 
 Heat template version
 ^^^^^^^^^^^^^^^^^^^^^
 
-Each Heat template has to include the ``heat_template_version`` key with a valid version of `HOT (Heat Orchestration Template) <https://docs.openstack.org/heat/latest/template_guide/hot_guide.html>`_. Chameleon bare-metal supports any HOT version up to **2015-10-15**, which corresponds to OpenStack Liberty.
+Each Heat template has to include the ``heat_template_version`` key with a valid version of `HOT (Heat Orchestration Template) <https://docs.openstack.org/heat/latest/template_guide/hot_guide.html>`_. Chameleon bare metal supports any HOT version up to **2015-10-15**, which corresponds to OpenStack Liberty.
 The `Heat documentation <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html#hot-spec-template-version>`_ lists all available versions and their features. We recommended that you always use the latest Chameleon supported version to have access to all supported features:
 
 ``heat_template_version: 2015-10-15``
@@ -556,7 +556,7 @@ However, only a subset of them are supported by Chameleon, and some are limited 
 -  OS::Nova::Keypair
 -  OS::Nova::Server
 
-If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare-metal, please let us know via our |Help Desk|.
+If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare metal, please let us know via our |Help Desk|.
 
 Parameters
 ^^^^^^^^^^
@@ -667,7 +667,7 @@ The previous examples have all used ``user_data`` scripts to provide instances w
 - The server has to be deployed first, and once it is deployed, the clients can be launched and contextualized with information from the server. The server won’t know about the clients unless there is a mechanism (not managed by *Heat*) for the client to contact the server.
 - The clients have to be deployed first, and once they are deployed, the server can be launched and contextualized with information from the clients. The clients won’t know about the server unless there is a mechanism (not managed by *Heat*) for the server to contact the clients.
 
-This limitation was already apparent in our `NFS share <https://www.chameleoncloud.org/appliances/25/>`_ appliance: this is why the server instance exports the file system to all bare-metal instances on Chameleon, because it doesn’t know which specific IP addresses are allocated to the clients.
+This limitation was already apparent in our `NFS share <https://www.chameleoncloud.org/appliances/25/>`_ appliance: this is why the server instance exports the file system to all bare metal instances on Chameleon, because it doesn’t know which specific IP addresses are allocated to the clients.
 
 This limitation is even more important if the deployment is not hierarchical, i.e. all instances need to know about all others. For example, a cluster with IP and hostnames populated in ``/etc/hosts`` required each instance to be known by every other instance.
 
