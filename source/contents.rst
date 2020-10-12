@@ -23,10 +23,15 @@ Welcome to Chameleon
    :maxdepth: 1
    :caption: Testbed interfaces
 
-   technical/index
    technical/gui
    technical/cli
    technical/jupyter
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Technical guide
+
+   technical/index
    technical/discovery
    technical/reservations
    technical/baremetal

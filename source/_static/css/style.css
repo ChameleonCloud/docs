@@ -8,4 +8,6 @@
     border: 1px solid #eeeeee;
     box-shadow: 0 .1rem .5rem rgba(0, 0, 0, 0.1);
     padding: .5rem;
+} .figure.screenshot .caption {
+    text-align: center;
 }
