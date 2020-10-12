@@ -9,35 +9,52 @@ This guide will walk you through the initial steps of getting an account, joinin
 
 .. contents:: :local:
 
---------------------------------------------
+.. _getting-started-user:
+
 Step 1: Create a Chameleon account
---------------------------------------------
+==================================
 
-You will first need to `create a user account <https://www.chameleoncloud.org/register>`_.
+You will first need to `create a user account
+<https://www.chameleoncloud.org/register>`_.
 
-This includes agreeing to the `Chameleon terms and conditions <https://www.chameleoncloud.org/terms/view/site-terms/1.00/>`_ which, among others, ask you to acknowledge the use of Chameleon in your publications. As part of creating an account you may request PI status, which means that you will be able to create and lead Chameleon projects. PI status is typically available to faculty members or research scientists at a scientific institution.
+This includes agreeing to the `Chameleon terms and conditions
+<https://www.chameleoncloud.org/terms/view/site-terms/1.00/>`_ which, among
+others, ask you to acknowledge the use of Chameleon in your publications. As
+part of creating an account you may request PI status, which means that you will
+be able to create and lead Chameleon projects. PI status is typically available
+to faculty members or research scientists at a scientific institution.
 
 .. role:: redbold
 
 .. important::  If you are a student, :redbold:`do not` request PI status.
 
-After you have verified your account using the link sent via e-mail, you may continue to create a project if you are a PI, or join a PI's project if you are a student.
+After you have verified your account using the link sent via email, you may
+continue to create a project if you are a PI, or join a PI's project if you are
+a student or collaborator.
 
---------------------------------------------
+.. _getting-started-project:
+
 Step 2: Create or join a project
---------------------------------------------
+================================
 
-To use Chameleon, you will need to be associated with a *project* that is assigned an *allocation*.
+To use Chameleon, you will need to be associated with a *project* that is
+assigned an *allocation*.
 
-If you are a PI, you may `apply for a new project <https://www.chameleoncloud.org/user/projects/new/>`_. A project application typically consists of a description of your intended research and takes one business day to process. Once your project has been approved, you may add users to your project.
+If you are a PI, you may `apply for a new project
+<https://www.chameleoncloud.org/user/projects/new/>`_. A project application
+typically consists of a description of your intended research and takes one
+business day to process. Once your project has been approved, you may add users
+to your project.
 
-If you want to join an existing project, ask the PI of the project to add you to their project. They will need your Chameleon username.
+If you want to join an existing project, ask the PI of the project to add you to
+their project. They will need your Chameleon username.
 
-For more information about project management, please see the :ref:`Project Management <project-management>` section or `FAQs about project management <https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-project-and-allocation-management>`_.
+For more information about project management, please see the :ref:`Project
+Management <project-management>` section or `FAQs about project management
+<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-project-and-allocation-management>`_.
 
---------------------------------------------
 Step 3: Start using Chameleon!
---------------------------------------------
+==============================
 
 Congratulations, you are now ready to launch your first instance! Instances are
 much like what you may expect to find in a virtual machine, except here the
@@ -47,29 +64,27 @@ is going to be a bare metal node that has been launched with an operating system
 image. Follow these steps to make a reservation for a node, launch an instance
 and log in to it.
 
-.. note:: Chameleon also offers a multi-tenant, virtualized cloud, with fewer functionalities and a smaller scale. See :ref:`kvm` for more details.
+.. note::
 
-The Chameleon Dashboard
-=======================
+   Chameleon also offers a multi-tenant, virtualized cloud, with fewer
+   functionalities and a smaller scale. See :ref:`kvm` for more details.
 
-Chameleon resources are available at two sites. You may login to the Chameleon Dashboard for resources at `the University of Chicago <https://chi.uc.chameleoncloud.org>`_ or `the Texas Advanced Computing Center <https://chi.tacc.chameleoncloud.org>`_. Use the account name and password that you signed up with.
+The Chameleon dashboard
+-----------------------
 
-.. note:: If you change your account password, it can take up to 15 minutes for the change to propagate to each dashboard.
-
-.. figure:: chi_sso_login.png
-  :alt: The Chameleon Dashboard login
-
-  The Chameleon Dashboard login
-
-Once you are logged in, you should see a summary of your project's current resource usage. It should look like this:
+Chameleon resources are available at multiple sites, e.g., |CHI@TACC| and
+|CHI@UC|. When you access one of the sites, you are first taken to a dashboard,
+which shows a summary of your project's current resource usage and get quick
+access to each of the sites. The dashboard looks something like this:
 
 .. figure:: dashboard.png
-  :alt: The Chameleon Dashboard's resource usage summary
+   :alt: The Chameleon Dashboard's resource usage summary
+   :figclass: screenshot
 
-  An overview of your project's current resource usage
+   An overview of your project's current resource usage
 
-Reserving a Node
-================
+Reserving a node
+----------------
 
 First, we need to reserve a node for our use. Chameleon provides bare metal
 access to nodes. When you create a reservation for one or more nodes, only you
@@ -85,6 +100,7 @@ the most common types of nodes available on Chameleon.
 
 .. figure:: create_lease.png
   :alt: The Create Lease dialog
+  :figclass: screenshot
 
   The Create Lease dialog - be sure to select compute_haswell in the dropdown below node_type
 
@@ -104,8 +120,8 @@ a bare metal node.
    <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=best%20practices#what-are-the-best-practices-for-chameleon-usage>`_
    if you require a longer reservation.
 
-Launching an Instance
-=====================
+Launching an instance
+---------------------
 
 Once the reservation starts, you can launch a bare metal instance on the node
 that has been leased to you.
@@ -120,6 +136,7 @@ that has been leased to you.
 
    .. figure:: launch_details.png
       :alt: Launch details
+      :figclass: screenshot
 
       Enter an instance name and select your reservation
 
@@ -128,24 +145,18 @@ that has been leased to you.
 
    .. figure:: launch_source.png
       :alt: Selecting an image
+      :figclass: screenshot
 
       Select the CC-CentOS8 image
-
-#. Click *Flavor* in sidebar. Select the *baremetal* flavor.
-
-   .. figure:: launch_flavor.png
-      :alt: Select the baremetal flavor
-
-      Select the baremetal flavor
 
 #. Click *Keypair* in sidebar. Click the *+ Create Key Pair* button and enter
    ``mychameleonkey`` for the key name. This will automatically start a download
    for a file named ``mychameleonkey.pem``. This is your private key pair that
    you will use to access your instance.
 
-
    .. figure:: launch_keypair.png
       :alt: Create a keypair to secure your instance
+      :figclass: screenshot
 
       You can create or import a public/private keypair for accessing your
       instance.
@@ -154,8 +165,8 @@ that has been leased to you.
 
 Congratulations, you have launched an instance on a bare metal node!
 
-Associating an IP Address
-=========================
+Associating an IP address
+-------------------------
 
 Your instance may take approximately ten minutes to launch. The launch process
 includes powering up, loading the operating system over the network, and booting
@@ -169,6 +180,7 @@ floating IP address - an IP address that is accessible over the public Internet.
 
     .. figure:: floating_ip_overview.png
        :alt: The Floating IP dashboard
+       :figclass: screenshot
 
 #. If you have a Floating IP not currently associated to an instance, click the
    *Associate* button for the IP. A dialog will load that allows you to assign a
@@ -177,6 +189,7 @@ floating IP address - an IP address that is accessible over the public Internet.
 
    .. figure:: associate_ip.png
       :alt: The Manage Floating IP Associations dialog
+      :figclass: screenshot
 
       Here you can assign a floating IP address
 
@@ -187,6 +200,7 @@ floating IP address - an IP address that is accessible over the public Internet.
 
    .. figure:: associate_pool.png
       :alt: The Allocate Floating IP dialog
+      :figclass: screenshot
 
       This dialog allows you to allocate an IP address from Chameleon's public
       IP pool
@@ -196,7 +210,7 @@ floating IP address - an IP address that is accessible over the public Internet.
    step 2.
 
 Accessing Your Instance
-=======================
+-----------------------
 
 Once your instance has launched with an associated floating IP address, it can
 be accessed via SSH using the private key that you downloaded during the
@@ -231,7 +245,6 @@ To log in to your instance, follow these steps:
    .. code-block:: bash
 
       ssh cc@129.114.108.102
-
 
    .. note::
 

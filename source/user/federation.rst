@@ -8,7 +8,7 @@ Sign in with federated identity
 
 Federated login enables users to use a single set of credentials to log into
 many different services. For example, federated login allows you to use your
-university or other institutional credentials to log into Chameleon -- there is
+university or other institutional credentials to log into Chameleon--there is
 no need to create a new account. In addition, since federated login is supported
 by many testbeds and services across scientific infrastructures you will be able
 to sign in once and use multiple services.
@@ -34,6 +34,12 @@ To log in to any of the testbed sites (|CHI@TACC|, |CHI@UC|, |KVM@TACC|) or the
 :ref:`Jupyter environment <jupyter>`, just click their item in the "Experiment"
 dropdown on |Home|. The login process is triggered
 automatically.
+
+.. important::
+
+   You must be part of project with an active allocation to use the testbed
+   sites! Refer to our :ref:`"getting started" guide <getting-started-project>`
+   for more info.
 
 .. note::
 

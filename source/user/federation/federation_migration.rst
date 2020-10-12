@@ -4,23 +4,30 @@
 Migrating to federated identity
 ================================
 
-Chameleon considers federation to be a more secure and long-term authentication
-mechanism and will eventually drop support for signing in via legacy Chameleon
-accounts, which use a username and password. Existing Chameleon users can link
-their federated identity account to their old Chameleon account so that they
+Federated login enables users to use a single set of credentials to log into
+many different services. For example, federated login allows you to use your
+institutional credentials to log into Chameleon--there is no need to create a
+new account. To leverage its `many benefits
+<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-why-did-chameleon-move-to-federated-login->`_,
+Chameleon is migrating to federated identity and will eventually drop support
+for signing in via legacy Chameleon accounts. Existing Chameleon users can link
+their existing Chameleon account to a federated identity account so that they
 preserve their project memberships, disk images, SSH key pairs, and other data
 saved over time.
 
-To ease the transition, we still enable you to log in via your old Chameleon
-username and password. Existing users however are highly encouraged to migrate
-to a proper federated account, as over time we will announce a deprecation and
-removal of support for the legacy accounts.
+To ease the transition, during the `migration period
+<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-what-is-the-schedule-for-migration-to-federated-identity->`_
+you can log in via your old Chameleon account as well as the federated account.
+Existing users however are highly encouraged to migrate to a federated account
+as soon as possible. Read more about federated identity, how it has been
+implemented, as well as the migration schedule in `our FAQ
+<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-federated-login>`_.
 
 .. important::
 
-   Existing Chameleon users should go through the account linking process
-   **before** attempting to sign in with federated identity. Signing in before
-   linking accounts can lead to you accidentally creating a new Chameleon
+   Existing Chameleon users should go through the following account linking
+   process **before** attempting to sign in with federated identity. Signing in
+   before linking accounts can lead to you accidentally creating a new Chameleon
    account, if we cannot match the email address on your federated account to
    the one you used when registering for Chameleon.
 
@@ -65,8 +72,12 @@ Step-by-step instructions
    the system, so in order to retain access to some of your saved data, a short
    data migration is necessary.
 
-   **Go to the `migration page
-   <https://www.chameleoncloud.org/user/migrate/>`_** in the Chameleon user
+   ..
+      The following is a hack to ensure that the link becomes bold.
+   .. _migration page: https://www.chameleoncloud.org/user/migrate/
+   .. |migration page| replace:: **migration page**
+
+   **Go to the** |migration page|_ in the Chameleon user
    portal to start this process (**note**: ensure you now log in to the user
    portal using federated login, and not the old sign-in page!)
 
