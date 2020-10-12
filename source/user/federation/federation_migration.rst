@@ -1,38 +1,8 @@
-.. _federation:
+.. _federation-migration:
 
-=============================
-Sign in with Federated login
-=============================
-
-Federated login enables users to use a single set of credentials to log into
-many services. For example, it will enable you to log into Chameleon using your
-institutional credentials. Since many testbeds and academic infrastructures
-support federated login you will be able to use all of them with just one set of
-credentials. Because of the many advantages federated login offers we will
-eventually drop support for signing in via legacy Chameleon accounts.
-
-Chameleon uses `Globus Auth <https://globus.org>`_, a popular authentication
-service, to implement federated login. New users can sign up via their existing
-host institution account, use their Google account, or else create a `Globus ID
-<https://globusid.org/what>`_ tied to an email and password that you provide.
-
-To ease the transition, we still enable you to log in via your old Chameleon
-username and password. Existing users however are highly encouraged to migrate
-to a proper federated account, as over time we will announce a deprecation and
-removal of support for the legacy accounts.
-
-.. important::
-
-   Federated sign in is in **early user beta**. In order to enable this
-   functionality, you must opt-in via a special web address. You can opt-out
-   at any time and revert to the old sign in method (and your old user account
-   and settings.)
-
-     - Opt in: https://www.chameleoncloud.org/new-login-experience
-     - Opt out: https://www.chameleoncloud.org/new-login-experience?opt-out
-
-Migrating an old Chameleon account to a federated account
-=========================================================
+================================
+Migrating to federated identity
+================================
 
 Chameleon considers federation to be a more secure and long-term authentication
 mechanism and will eventually drop support for signing in via legacy Chameleon
@@ -40,6 +10,11 @@ accounts, which use a username and password. Existing Chameleon users can link
 their federated identity account to their old Chameleon account so that they
 preserve their project memberships, disk images, SSH key pairs, and other data
 saved over time.
+
+To ease the transition, we still enable you to log in via your old Chameleon
+username and password. Existing users however are highly encouraged to migrate
+to a proper federated account, as over time we will announce a deprecation and
+removal of support for the legacy accounts.
 
 .. important::
 
@@ -58,7 +33,7 @@ To migrate your old account:
    you to a page where you can log in with your old Chameleon username and
    password.
 
-   .. figure:: federation/globus_link_account_login.png
+   .. figure:: federation_migration/globus_link_account_login.png
       :alt: Logging in via an existing Chameleon account.
       :figclass: screenshot
 
@@ -68,12 +43,12 @@ To migrate your old account:
    federated identity, allowing you to log in to your existing Chameleon account
    via this federated identity in the future.
 
-   .. figure:: federation/globus_link_account.png
+   .. figure:: federation_migration/globus_link_account.png
       :alt: Adding a federated account to an existing Chameleon user.
       :figclass: screenshot
 
 Migrating testbed data
-----------------------
+======================
 
 Linking your Chameleon account to a federated identity will cause some testbed
 resources to become unavailable, namely:
@@ -98,7 +73,7 @@ assist you.
    the Help Desk.
 
 Using the CLI
--------------
+=============
 
 If you use the :ref:`command line interface <cli>` when interacting with
 Chameleon (or use another tool that interfaces directly with Chameleon's APIs),

@@ -85,6 +85,9 @@ todo_include_todos = True
 rst_prolog = """
 .. |CHI@TACC| replace:: `CHI@TACC <https://chi.tacc.chameleoncloud.org>`__
 .. |CHI@UC| replace:: `CHI@UC <https://chi.uc.chameleoncloud.org>`__
+.. |KVM@TACC| replace:: `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`__
+.. |Appliance Catalog| replace:: `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`__
+.. |Home| replace:: `chameleoncloud.org <https://www.chameleoncloud.org/>`__
 .. |Help Desk| replace:: `Help Desk <https://www.chameleoncloud.org/user/help/>`__
 """
 

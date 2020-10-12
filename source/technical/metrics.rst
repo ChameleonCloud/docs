@@ -18,7 +18,7 @@ In addition to :ref:`cli-installing`, you must also install the Gnocchi client p
 .. code-block:: bash
 
    pip install gnocchiclient
-   
+
 Then, set up your environment for OpenStack command line usage, as described in :ref:`cli-rc-script`.
 
 .. _retrieve-metric:
@@ -31,18 +31,18 @@ Now, you can run the ``gnocchi`` command line utility. To show the different kin
 .. code-block:: bash
 
    gnocchi resource show <instance_id>
-   
-.. tip:: 
+
+.. tip::
    You can get the instance' *ID* from the GUI.
-   
+
    You can get your list of instances by running:
-   
+
    .. code-block:: bash
-   
+
       gnocchi resource list
-      
+
    It will print out a chart similar to below:
-   
+
    .. code::
 
       +--------------------------------------+---------+------------+
@@ -124,7 +124,7 @@ For example, to get measurements of used memory over time for instance ``d17d519
 .. code-block:: bash
 
    gnocchi measures show memory@memory.used --resource-id d17d5191-af60-4407-9ed2-e3d48e86ac6d --refresh
-   
+
 .. tip:: You may notice that each metric has been assigned a *UUID* to it. Therefore, instead of providing ``metric name``, you can provide ``metric uuid``.
 
 This will show the latest measurements of that metric with granularity set to 1.0, as well as aggregate values (by default, the mean) over one minute and one hour. Other aggregation methods can be used with the ``--aggregation`` option, such as ``std``, ``count``, ``min``, ``max`` and ``sum``. Your results may appear like this:
@@ -183,10 +183,10 @@ The ``collectd`` configured to send measurements by batch to minimize network tr
    sudo systemctl stop collectd && sudo systemctl disable collectd
 
 _____________________________________________
-Metrics for Bare-Metal Nodes
+Metrics for bare metal nodes
 _____________________________________________
 
-Chameleon automatically collects power usage and temperature data on all nodes in the system. Instantaneous power usage data (in watts) and temperature readings (in Celsius) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off. 
+Chameleon automatically collects power usage and temperature data on all nodes in the system. Instantaneous power usage data (in watts) and temperature readings (in Celsius) are collected through the IPMI interface on the chassis controller for the nodes. This “out-of-band” approach does not consume additional power on the node itself and runs even when the node is powered off.
 
 .. attention::
     Temperature metrics are currently collected from the CPU sensor on each node. These temperature readings are only reported while the node is powered on.
@@ -246,7 +246,7 @@ To retrieve a metric for a specific time interval, pass the ``start`` and ``stop
 
     $ gnocchi measures show temperature_cpu --start 2018-11-27T02:00:00 --stop 2018-11-27T03:00:00 --resource-id=f3f47a67-d805-48d4-9584-f0143ae976cf --refresh
 
-returns:  
+returns:
 
 .. code::
 
@@ -271,13 +271,13 @@ _________________________________________________________
 Energy and Power Consumption Measurement with ``etrace2``
 _________________________________________________________
 
-The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_, `CC-CentOS8 <https://www.chameleoncloud.org/appliances/83/>`_, `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ and `CC-Ubuntu18.04 <https://www.chameleoncloud.org/appliances/69/>`_ appliances, 
-as well as all Chameleon supported images dervied from them, now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs. 
+The `CC-CentOS7 <https://www.chameleoncloud.org/appliances/1/>`_, `CC-CentOS8 <https://www.chameleoncloud.org/appliances/83/>`_, `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ and `CC-Ubuntu18.04 <https://www.chameleoncloud.org/appliances/69/>`_ appliances,
+as well as all Chameleon supported images dervied from them, now include support for reporting energy and power consumption of each CPU socket and of memory DIMMs.
 It is done with the ``etrace2`` utility which relies on the `Intel RAPL (Running Average Power Limit) <https://01.org/blogs/2014/running-average-power-limit-%E2%80%93-rapl>`_ interface.
 
-.. attention:: 
+.. attention::
    Currenly, ``etrace2`` requires a kernel feature that is not supported on our ARM nodes.
-   
+
 To spawn your program and print energy consumption:
 
 .. code-block:: bash
@@ -289,7 +289,7 @@ To print power consumption every 0.5 second:
 .. code-block:: bash
 
    etrace2 -i 0.5 <your_program>
-   
+
 To print power consumption every 1 second for 10 seconds:
 
 .. code-block:: bash
@@ -326,5 +326,5 @@ Note the following caveats:
 This `utility <https://github.com/coolr-hpc/intercoolr>`_  was contributed by Chameleon user `Kazutomo Yoshii <http://www.mcs.anl.gov/person/kazutomo-yoshii>`_ of `Argonne National Laboratory <http://www.anl.gov/>`_.
 
 .. note::
-   The Linux kernel version of `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ is too old to use ``etrace2`` on Chameleon **Skylake** nodes. 
-   To solve the problem, simply upgrade the Linux kernel. 
+   The Linux kernel version of `CC-Ubuntu16.04 <https://www.chameleoncloud.org/appliances/19/>`_ is too old to use ``etrace2`` on Chameleon **Skylake** nodes.
+   To solve the problem, simply upgrade the Linux kernel.

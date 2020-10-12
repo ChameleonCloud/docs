@@ -1,7 +1,7 @@
 .. _resource-discovery:
 
 ===================
-Resource Discovery
+Resource discovery
 ===================
 
 Introduction
