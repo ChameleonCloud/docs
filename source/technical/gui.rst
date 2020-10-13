@@ -468,10 +468,6 @@ project, including creating and deleting leases. For more information, see
    The Leases page
 
 .. tip::
-<<<<<<< HEAD
-=======
-
->>>>>>> dddb489... Update docs on CLI usage for federation
    Check *Lease Calendar*, so you can schedule your experiments efficiently.
 
 Identity
