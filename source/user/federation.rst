@@ -1,6 +1,6 @@
-.. _federation:
-
 .. _InCommon: https://incommon.org/federation
+
+.. _federation:
 
 ================================
 Sign in with federated identity

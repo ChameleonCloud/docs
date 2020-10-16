@@ -1,11 +1,14 @@
 
+.. _InCommon: https://incommon.org/federation
+
 .. _getting-started:
 
 ================
 Getting started
 ================
 
-This guide will walk you through the initial steps of getting an account, joining a project and working with your first instance.
+This guide will walk you through the initial steps of getting an account,
+joining a project and working with your first instance.
 
 .. contents:: :local:
 
@@ -14,44 +17,54 @@ This guide will walk you through the initial steps of getting an account, joinin
 Step 1: Create a Chameleon account
 ==================================
 
-You will first need to `create a user account
-<https://www.chameleoncloud.org/register>`_.
+Good news: chances are that you won’t even need to create an account to log into
+Chameleon. This is because Chameleon supports federated login: if your
+institution is a member of `InCommon`_ (most US research and education
+institutions are) or if you have a Google account you can use a federated login.
+Otherwise, you will be guided to create an account. Our login pages will guide
+you through the process, or you can :ref:`read more about logging into Chameleon
+via federated login <federation>`.
 
-This includes agreeing to the `Chameleon terms and conditions
-<https://www.chameleoncloud.org/terms/view/site-terms/1.00/>`_ which, among
-others, ask you to acknowledge the use of Chameleon in your publications. As
-part of creating an account you may request PI status, which means that you will
-be able to create and lead Chameleon projects. PI status is typically available
-to faculty members or research scientists at a scientific institution.
+On your first Chameleon login you will be asked to accept `terms and conditions
+<https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use. Please,
+note that as part of those terms and conditions you are requested to acknowledge
+Chameleon in publications you produced using the testbed: see our FAQ for
+information on `how to reference Chameleon in your publications
+<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-how-should-i-reference-chameleon->`_
+and the suggested `acknowledgement text
+<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-how-should-i-acknowledge-chameleon-in-my-publications->`_.
 
-.. role:: redbold
-
-.. important::  If you are a student, :redbold:`do not` request PI status.
-
-After you have verified your account using the link sent via email, you may
-continue to create a project if you are a PI, or join a PI's project if you are
-a student or collaborator.
+Once you log in, you will be able to :ref:`edit your Chameleon profile
+<profile-page>`, sign up for webinars, and participate in our community.
+However, to actually use the testbed you will first need to join or create a
+project.
 
 .. _getting-started-project:
 
 Step 2: Create or join a project
 ================================
 
-To use Chameleon, you will need to be associated with a *project* that is
-assigned an *allocation*.
+To get access to Chameleon resources, you will need to be associated with a
+**project** that is assigned a **resource allocation**.
 
-If you are a PI, you may `apply for a new project
-<https://www.chameleoncloud.org/user/projects/new/>`_. A project application
-typically consists of a description of your intended research and takes one
-business day to process. Once your project has been approved, you may add users
-to your project.
+If you want to join an existing Chameleon project, you will need to ask the PI
+of the project to add you. You can find your username in `your Chameleon profile
+<https://www.chameleoncloud.org/user/profile/>`_--it is also displayed in the
+top-right corner when you are logged in.
 
-If you want to join an existing project, ask the PI of the project to add you to
-their project. They will need your Chameleon username.
+If you want to create a project, you will first either need to obtain a PI
+status or work with somebody who has PI status. To determine if you can obtain
+PI status, please see a :ref:`list of PI eligibility criteria <pi-eligibility>`.
+If you do not meet these criteria (e.g., students generally do not), you will
+need to ask your advisor or other scientist supervising your research to create
+the project for you. You can request PI status by checking a box in `your
+Chameleon profile <https://www.chameleoncloud.org/user/profile/>`_. Chameleon PI
+status requests are typically reviewed within one business day.
 
-For more information about project management, please see the :ref:`Project
-Management <project-management>` section or `FAQs about project management
-<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-project-and-allocation-management>`_.
+Once you have PI status, you may apply for a new project with an initial
+allocation. A project application typically consists of a short description of
+your intended research and takes one business day to process. Once your project
+has been approved, you will be able to utilize the testbed sites.
 
 Step 3: Start using Chameleon!
 ==============================
