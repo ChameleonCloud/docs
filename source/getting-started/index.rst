@@ -130,7 +130,7 @@ a bare metal node.
 
    Do not attempt to stack reservations to circumvent the 7-day lease
    limitation. Your leases may be deleted. Please refer to our `best practices
-   <https://chameleoncloud.readthedocs.io/en/latest/getting-started/faq.html?highlight=best%20practices#what-are-the-best-practices-for-chameleon-usage>`_
+   <https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-what-are-the-best-practices-of-chameleon-usage->`_
    if you require a longer reservation.
 
 Launching an instance
