@@ -6,11 +6,11 @@ Project management
 
 Project management tasks, such as adding users to your project or requesting a
 renewal, is performed through the portal at https://chameleoncloud.org. After
-you have `created a user account
-<https://www.chameleoncloud.org/user/register/>`_ and verified your email
-address, you may `login to the portal <https://www.chameleoncloud.org/login/>`_.
-Once logged in, you should be at *Dashboard* page automatically. If not, you can
-access your *Dashboard* via the dropdown list on top right of the screen.
+you have `registered <https://www.chameleoncloud.org/user/register/>`_ and
+verified your email address, you may `login to the portal
+<https://www.chameleoncloud.org/login/>`_. Once logged in, you should be at
+*Dashboard* page automatically. If not, you can access your *Dashboard* via the
+dropdown list on top right of the screen.
 
 .. _dashboard-page:
 

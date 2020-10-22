@@ -14,8 +14,8 @@ joining a project and working with your first instance.
 
 .. _getting-started-user:
 
-Step 1: Create a Chameleon account
-==================================
+Step 1: Log in to Chameleon
+===========================
 
 Good news: chances are that you won’t even need to create an account to log into
 Chameleon. This is because Chameleon supports federated login: if your
