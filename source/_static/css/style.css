@@ -9,5 +9,8 @@
     box-shadow: 0 .1rem .5rem rgba(0, 0, 0, 0.1);
     padding: .5rem;
 } .figure.screenshot .caption {
-    text-align: center;
+    text-align: left;
+    margin-top: .5rem;
+    font-size: 12px;
+    line-height: 1em;
 }

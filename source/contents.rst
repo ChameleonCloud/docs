@@ -42,4 +42,5 @@ Welcome to Chameleon
    technical/networks
    technical/fpga
    technical/ep
+   technical/sharing
    technical/kvm
