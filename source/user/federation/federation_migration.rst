@@ -12,8 +12,8 @@ new account. To leverage its `many benefits
 Chameleon is migrating to federated identity and will eventually drop support
 for signing in via legacy Chameleon accounts. Existing Chameleon users can link
 their existing Chameleon account to a federated identity account so that they
-preserve their project memberships, disk images, SSH key pairs, and other data
-saved over time.
+preserve their project memberships, disk images, volumes, SSH key pairs, and 
+other data saved over time.
 
 To ease the transition, during the `migration period
 <https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-what-is-the-schedule-for-migration-to-federated-identity->`_
@@ -62,8 +62,8 @@ Step-by-step instructions
 3. If you try to log in to any of the testbed sites with your linked federated
    identity, you may notice that some of your data is missing, namely:
 
-   - *disk images* and *snapshots* you or other project members have created in
-     the past,
+   - *disk images*, *snapshots* and *volumes* you or other project members have 
+     created in the past,
    - *active or pending leases* you made,
    - *SSH keypairs* you previously associated with your account, and
    - *active server instances* launched recently
@@ -97,9 +97,10 @@ Step-by-step instructions
    previously associated with your account.
 
 5. **Trigger migrations of projects** you are a member of to associate any disk
-   images and snapshots to your new account. This only needs to be done once by
-   any member of the project, but can also be re-run in the event that you or
-   other project members create disk images/snapshots under their old account.
+   images, snapshots and volumes to your new account. This only needs to be
+   done once by any member of the project, but can also be re-run in the event 
+   that you or other project members create disk images/snapshots under their 
+   old account.
 
 6. You should now have access to your old data via your new account linked to
    your federated identity!
