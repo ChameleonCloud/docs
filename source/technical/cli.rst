@@ -36,8 +36,8 @@ Prerequisites
 
 #. **Python** - Check if you have Python installed.
 
-#. **pip** - If you’re using Python 2.7.9 (or greater) or Python 3.4 (or
-   greater), then pip comes installed with Python by default.
+#. **pip** - If you’re using Python 3.4 (or greater), then pip comes installed
+   with Python by default.
 
 OpenStack Client Installation
 -----------------------------
@@ -50,6 +50,14 @@ OpenStack Client Installation
    to ``(openstack)``.
 
 #. Exit the client by typing ``exit``.
+
+#. There are some clients with new features or bugfixes not yet in the upstream
+   release branches, notably the Blazar CLI client. If you want to make
+   reservations via the CLI, you should install that here:
+
+   .. code-block:: shell
+
+      pip install git+https://github.com/chameleoncloud/blazar@chameleoncloud/stable/train
 
 .. _cli-authentication:
 

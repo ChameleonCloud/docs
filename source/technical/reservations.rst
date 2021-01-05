@@ -11,8 +11,8 @@ available at the time they chose (except in extraordinary circumstances such as
 hardware or platform failures), which helps to plan large scale experiments.
 
 Chameleon resources are reserved via `Blazar
-<https://docs.openstack.org/blazar/latest/>`_ (previously known as *Climate*)
-which provides Reservation as a Service for OpenStack.
+<https://docs.openstack.org/blazar/latest/>`_ which provides Reservation as a
+Service for OpenStack.
 
 Three types of resources can be reserved: physical bare metal hosts, network
 segments (VLANs), and floating IPs.
@@ -244,29 +244,17 @@ CLI, you must install the ``python-blazarclient``. To install
 
 .. code-block:: bash
 
-   pip install 'python-blazarclient>=1.1.1'
+   pip install git+https://github.com/ChameleonCloud/python-blazarclient.git@chameleoncloud/stable/train
 
 .. note::
-
-   We need to install version 1.1.1 or greater to support multi-region clouds.
-
-To reserve VLAN segments or floating IPs, you must use a Chameleon fork of the
-Blazar client:
-
-.. code-block:: bash
-
-   pip install git+https://github.com/ChameleonCloud/python-blazarclient.git@chameleoncloud/stable/train
+   To reserve VLAN segments or floating IPs, you must use a Chameleon fork of
+   the Blazar client, as above.
 
 Before using *Blazar Client*, You must configure the environment variables for
 your project via ``source`` :ref:`the OpenStack RC Script <cli-rc-script>` or
 use the CLI switches every time you run the commands. Type ``blazar`` in your
 terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in
 the *Shell Mode*.
-
-.. note::
-
-   ``blazar`` is previously known as ``climate``. In Chameleon, ``blazar`` and
-   ``climate`` are used interchangeably, but they have the same functionality.
 
 Creating a Lease to Reserve Physical Hosts
 __________________________________________
