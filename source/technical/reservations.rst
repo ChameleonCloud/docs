@@ -255,7 +255,7 @@ Blazar client:
 
 .. code-block:: bash
 
-   pip install -e git+https://github.com/ChameleonCloud/python-blazarclient.git@chameleoncloud/stable/rocky#egg=python-blazarclient
+   pip install git+https://github.com/ChameleonCloud/python-blazarclient.git@chameleoncloud/stable/train
 
 Before using *Blazar Client*, You must configure the environment variables for
 your project via ``source`` :ref:`the OpenStack RC Script <cli-rc-script>` or
