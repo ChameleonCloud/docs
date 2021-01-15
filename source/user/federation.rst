@@ -88,7 +88,7 @@ Signing in to your legacy account
 ---------------------------------
 
 Until `December 1st, 2020
-<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-what-is-the-schedule-for-migration-to-federated-identity->`_,
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-is-the-schedule-for-migration-to-federated-identity->`_,
 you will be able to log in to your legacy Chameleon account to access leases or
 server instances you created in the past. Use the login option "Go to the old
 sign in page" to access your legacy account via the old username/password login.

@@ -30,9 +30,9 @@ On your first Chameleon login you will be asked to accept `terms and conditions
 note that as part of those terms and conditions you are requested to acknowledge
 Chameleon in publications you produced using the testbed: see our FAQ for
 information on `how to reference Chameleon in your publications
-<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-how-should-i-reference-chameleon->`_
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-reference-chameleon->`_
 and the suggested `acknowledgement text
-<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-how-should-i-acknowledge-chameleon-in-my-publications->`_.
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-acknowledge-chameleon-in-my-publications->`_.
 
 Once you log in, you will be able to :ref:`edit your Chameleon profile
 <profile-page>`, sign up for webinars, and participate in our community.
@@ -130,7 +130,7 @@ a bare metal node.
 
    Do not attempt to stack reservations to circumvent the 7-day lease
    limitation. Your leases may be deleted. Please refer to our `best practices
-   <https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-what-are-the-best-practices-of-chameleon-usage->`_
+   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-best-practices-of-chameleon-usage->`_
    if you require a longer reservation.
 
 Launching an instance
