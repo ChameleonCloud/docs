@@ -8,7 +8,7 @@ Federated login enables users to use a single set of credentials to log into
 many different services. For example, federated login allows you to use your
 institutional credentials to log into Chameleon--there is no need to create a
 new account. To leverage its `many benefits
-<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-why-did-chameleon-move-to-federated-login->`_,
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-why-did-chameleon-move-to-federated-login->`_,
 Chameleon is migrating to federated identity and will eventually drop support
 for signing in via legacy Chameleon accounts. Existing Chameleon users can link
 their existing Chameleon account to a federated identity account so that they
@@ -16,12 +16,12 @@ preserve their project memberships, disk images, volumes, SSH key pairs, and
 other data saved over time.
 
 To ease the transition, during the `migration period
-<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-what-is-the-schedule-for-migration-to-federated-identity->`_
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-is-the-schedule-for-migration-to-federated-identity->`_
 you can log in via your old Chameleon account as well as the federated account.
 Existing users however are highly encouraged to migrate to a federated account
 as soon as possible. Read more about federated identity, how it has been
 implemented, as well as the migration schedule in `our FAQ
-<https://www.chameleoncloud.org/about/frequently-asked-questions/#toc-federated-login>`_.
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-federated-login>`_.
 
 .. important::
 
