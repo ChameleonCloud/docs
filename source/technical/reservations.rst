@@ -244,7 +244,7 @@ CLI, you must install the ``python-blazarclient``. To install
 
 .. code-block:: bash
 
-   pip install git+https://github.com/ChameleonCloud/python-blazarclient.git@chameleoncloud/stable/train
+   pip install git+https://github.com/ChameleonCloud/python-blazarclient.git@chameleoncloud/train
 
 .. note::
    To reserve VLAN segments or floating IPs, you must use a Chameleon fork of
