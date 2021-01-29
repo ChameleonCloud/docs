@@ -17,9 +17,8 @@ Service for OpenStack.
 Three types of resources can be reserved: physical bare metal hosts, network
 segments (VLANs), and floating IPs.
 
-___________________________________________________
 Provisioning and Managing Resources Using the GUI
-___________________________________________________
+=================================================
 
 To make reservations of the resources, first log into the Horizon web interface
 - either |CHI@TACC| or |CHI@UC|. Then, choose a project and configure your local
@@ -34,7 +33,7 @@ In the navigation sidebar, go to the *Reservations* section and click *Leases*.
    The Leases page in the GUI
 
 The Lease Calendars
-____________________
+-------------------
 
 To discover when resources are available, You can access the lease calendars by
 clicking on the *Host Calendar* button for physical hosts and clicking on the
@@ -65,7 +64,7 @@ represents time.
 .. _reservations-create-lease-gui:
 
 Creating a Lease to Reserve Resources
-____________________________________________________________
+-------------------------------------
 
 Once you have chosen a time period when you want to reserve resources, go back
 to the *Leases* screen and click on the *Create Lease* button. It should bring
@@ -162,7 +161,7 @@ the updates.
    notification by using the command line <disable-blazar-notification>`.
 
 Extending a Lease
-_________________
+-----------------
 
 To prolong a lease, click on the *Update Lease* button in *Actions* column.
 
@@ -184,7 +183,7 @@ lease. Then, click on the *Update* button to finish your request.
    creating a longer lease.
 
 Changing the Number of Nodes of a Lease
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is now possible to change the number of nodes reserved in a lease. For
 advance reservations that haven't yet started, the node count can be increased
@@ -203,7 +202,7 @@ Fill out the form by specifying the new minimum and maximum numbers of hosts.
 Then, click on the *Update* button to finish your request.
 
 Reserving a Node by UUID
-________________________
+------------------------
 
 You may reserve a specific node by providing its *UUID*. To learn more about how
 to find a node with a specific type, please see :ref:`resource-discovery`. In
@@ -219,9 +218,8 @@ choose the *UUID* of the node you would like to reserve.
 
 .. _reservation-cli:
 
-___________________________________________________
 Provisioning and Managing Resources Using the CLI
-___________________________________________________
+=================================================
 
 The sections above present the most user friendly mode of usage, with most
 actions performed via the web interface. However, Chameleon can be accessed via
@@ -234,7 +232,7 @@ presents some advanced usage using the command line tools.
    sections.
 
 Blazar Client Installation
-____________________________
+--------------------------
 
 To reserve specific nodes, based on their identifier or their resource
 specifications, you must use the `Blazar
@@ -257,7 +255,7 @@ terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in
 the *Shell Mode*.
 
 Creating a Lease to Reserve Physical Hosts
-__________________________________________
+------------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are
 required:
@@ -394,7 +392,7 @@ For example, you can use ``resource_properties='["=", "$architecture.smp_size",
 .. note:: Remember to use ``$`` in front of the property.
 
 Extending a Lease
-_________________
+-----------------
 
 To extend your lease, use ``lease-update`` command, and provide time duration
 via ``--prolong-for`` switch. The format of the duration is a number followed by
@@ -407,7 +405,7 @@ a letter specifying the time unit. ``w`` is for weeks, ``d`` is for days and
    blazar lease-update --prolong-for "1d" my-first-lease
 
 Chameleon Node Types
-_____________________
+--------------------
 
 The following node types are reservable on Chameleon.
 
@@ -446,7 +444,7 @@ The following node types are reservable on Chameleon.
 .. _reservation-cli-vlan:
 
 Creating a Lease to Reserve a VLAN Segment
-__________________________________________
+------------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are
 required:
@@ -499,7 +497,7 @@ While separate leases can be created to reserve nodes and VLAN segments, it is a
 
 
 Creating a Lease to Reserve Floating IPs
-________________________________________
+----------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are required:
 
