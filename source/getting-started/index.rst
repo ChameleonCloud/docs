@@ -17,18 +17,19 @@ joining a project and working with your first instance.
 Step 1: Log in to Chameleon
 ===========================
 
-Good news: chances are that you won’t even need to create an account to log into
-Chameleon. This is because Chameleon supports federated login: if your
-institution is a member of `InCommon`_ (most US research and education
-institutions are) or if you have a Google account you can use a federated login.
-Otherwise, you will be guided to create an account. Our login pages will guide
-you through the process, or you can :ref:`read more about logging into Chameleon
-via federated login <federation>`.
+Just click the “Log in” button situated in the top right corner of `our main page
+<https://www.chameleoncloud.org>`_ -- you probably won’t even need to create an account! 
+
+If your institution is a member of `InCommon`_ (most US research and education
+institutions are) -- or if you have a Google account -- you can log in with your
+institutional/Google credentials via the federated login. Otherwise, the log in process 
+will guide you to create an account (:ref:`read more about logging into Chameleon
+via federated login <federation>`).
 
 On your first Chameleon login you will be asked to accept `terms and conditions
 <https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use. Please,
 note that as part of those terms and conditions you are requested to acknowledge
-Chameleon in publications you produced using the testbed: see our FAQ for
+Chameleon in publications produced using the testbed: see our FAQ for
 information on `how to reference Chameleon in your publications
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-reference-chameleon->`_
 and the suggested `acknowledgement text
@@ -36,8 +37,8 @@ and the suggested `acknowledgement text
 
 Once you log in, you will be able to :ref:`edit your Chameleon profile
 <profile-page>`, sign up for webinars, and participate in our community.
-However, to actually use the testbed you will first need to join or create a
-project.
+However, to actually use the testbed you will first need to **join or create a
+project** (see below).
 
 .. _getting-started-project:
 
@@ -47,12 +48,12 @@ Step 2: Create or join a project
 To get access to Chameleon resources, you will need to be associated with a
 **project** that is assigned a **resource allocation**.
 
-If you want to join an existing Chameleon project, you will need to ask the PI
-of the project to add you. You can find your username in `your Chameleon profile
+If you want to **join an existing Chameleon project**, you will need to ask the PI
+of the project to add your username. You can find your username in `your Chameleon profile
 <https://www.chameleoncloud.org/user/profile/>`_--it is also displayed in the
 top-right corner when you are logged in.
 
-If you want to create a project, you will first either need to obtain a PI
+If you want to **create a project**, you will first either need to obtain a PI
 status or work with somebody who has PI status. To determine if you can obtain
 PI status, please see a :ref:`list of PI eligibility criteria <pi-eligibility>`.
 If you do not meet these criteria (e.g., students generally do not), you will
