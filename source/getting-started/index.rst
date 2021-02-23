@@ -21,8 +21,8 @@ Just click the “Log in” button situated in the top right corner of `our main
 <https://www.chameleoncloud.org>`_ -- you probably won’t even need to create an account! 
 
 If your institution is a member of `InCommon`_ (most US research and education
-institutions are) -- or if you have a Google account -- you can log in with your i
-nstitutional/Google credentials via the federated login. Otherwise, the log in process 
+institutions are) -- or if you have a Google account -- you can log in with your
+institutional/Google credentials via the federated login. Otherwise, the log in process 
 will guide you to create an account (:ref:`read more about logging into Chameleon
 via federated login <federation>`).
 
