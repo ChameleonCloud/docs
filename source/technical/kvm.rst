@@ -245,6 +245,7 @@ An *Operating Status* of "*Offline*" or "*Error*" indicates that the load balanc
 You can assign a Floating IP address to the load balancer by clicking on the down arrow button next to *Edit Load Balancer*, and selecting *Associate Floating IP*. This process is similar to associatig af Floating IP to a virtual machine instnace.
 Making changes to the various components of the load balancer by clicking on the blue-colord name of the load balancer in the list. From here, the *listeners*, *pools*, and *health monitors* can be updated, if needed.
 
+To learn more about how to use the Octavia Load Balancer, refer to the `Basic Load Balancing Cookbook <https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html>`_ on the official OpenStack documentation
 
 Work with KVM using the CLI
 ---------------------------
