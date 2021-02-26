@@ -235,7 +235,7 @@ Click *Create Load Balancer*
 
 .. figure:: kvm/lbaas_monitor_http.png
 
-While the load balancer is being created, the dashboard will show a *Provisioning Status" of *Pending Create* . Once the process is complete, once the status is *Active*, and the *Operating Status* should be *Online*.
+While the load balancer is being created, the dashboard will show a *Provisioning Status* of *Pending Create* . Once the process is complete, the status should be *Active*, and *Operating Status* should be *Online*.
 An *Operating Status* of "*Offline*" or "*Error*" indicates that the load balancer cannot satisfy the service check specified in *Monitor Details*. Ensure that the services are running on each VM, and that they return the expected status.
 
 .. figure:: kvm/lbaas_create_pending.png
