@@ -292,9 +292,17 @@ mount.
 
 The ``cc-cloudfuse`` tool (Source: `ChameleonCloud/cc-cloudfuse
 <https://github.com/ChameleonCloud/cc-cloudfuse>`_) is pre-installed in
-Chameleon-supported images (update before using, otherwise may generate authentication error). It is based on the ``cloudfuse`` tool (Source:
+Chameleon-supported images It is based on the ``cloudfuse`` tool (Source:
 `redbo/cloudfuse <https://github.com/redbo/cloudfuse>`_), which is used to mount
 your Chameleon Object Store as a directory on your Linux environment.
+
+.. important::
+
+   Some older Chameleon-supported images have an outdated version of this tool
+   installed, which is not compatible with authentication using federated identity.
+   If you wish to continue using a historical image, you should update the tool
+   by following the `installation instructions 
+   <https://github.com/ChameleonCloud/cc-cloudfuse#installation>`_.
 
 To mount, use the following command:
 
