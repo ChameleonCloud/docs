@@ -152,6 +152,8 @@ You may browse your folder and upload files to it by clicking on the folder.
    :figclass: screenshot
 
    A Folder within the Container
+   
+.. _object-store-cli:
 
 Managing Object Store using the CLI
 ====================================
@@ -274,6 +276,8 @@ Working with Folders
 There isn't "folders" when you managing the *Object Store* with the CLI.
 However, when you create an object, you may use the delimiter ``/`` to specify
 the path.
+
+.. _cc-cloudfuse:
 
 Mounting Object Store as a File System
 ======================================
