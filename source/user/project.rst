@@ -123,6 +123,7 @@ user of a *Project* **does not** require a :ref:`PI eligibility
    For *Project* PIs, it is highly recommended that your *Project* users should
    have their own non-PI Chameleon accounts and should be added to your project.
 
-You may add a user to your account by filling out their user name and clicking
-the *Add user* button. You may remove a user from your project by locating their
-user name in the user list and clicking the *-* button next to their user name.
+You may add a user to your account by filling out their user name or email
+address and clicking the *Add user* button. You may remove a user from your
+project by locating their user name in the user list and clicking the *-* button
+next to their user name.
