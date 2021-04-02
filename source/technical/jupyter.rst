@@ -54,33 +54,6 @@ the Jupyter interface can cause your server to be re-built.
    :alt: The JupyterLab interface
    :figclass: screenshot
 
-.. _shared_drive:
-
-Shared Swift drive
-^^^^^^^^^^^^^^^^^^
-
-In addition to the default filesystem interface, which allows you to share
-Notebooks and other files (such as Python scripts or visualization figures), the
-Jupyter interface also includes a special file mount specific to your project on
-Chameleon. You can recognize this file system mount because it is indicated with
-a Chameleon icon. Clicking on this icon launches a view into a filesystem
-mounted via :ref:`Swift <object-store>`, which is by default shared with all
-members of your active Chameleon project.
-
-This means that any Notebook or other files saved here can be seen and edited by
-collaborators on your project. This can be useful in particular if you wish to
-receive feedback on an experiment, or request some suggestions or changes from
-another project member.
-
-.. figure:: jupyter/shared_drive.png
-  :alt: The shared drive file system in the JupyterLab interface
-
-.. warning::
-   If changes are made to the same file concurrently, the last edit will take
-   priority. You should try to coordinate with your project members to ensure
-   you're not overwriting each other's work, or perhaps make a copy of the file
-   you're working on to avoid conflicts during saving.
-
 .. _notebooks:
 
 Working with Notebooks
