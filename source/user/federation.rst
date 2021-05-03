@@ -64,7 +64,7 @@ to authenticate. The options are:
   go back to the old sign in page, where you sign in with your Chameleon
   username and password.
 
-.. figure:: federation/login-october.png
+.. figure:: federation/sso-login.png
    :alt: Single Sign On (SSO) portal login
    :figclass: screenshot
 
