@@ -70,29 +70,14 @@ to authenticate. The options are:
 
    The Single Sign On (SSO) portal login page.
 
-Existing users
-==============
+Legacy users (created before November 2020)
+===========================================
 
-We encourage users who signed up for a Chameleon account prior to November 2020
-to migrate their account to use federated identity. Refer to the following
-step-by-step guide for more details.
+Users who signed up for a Chameleon account prior to November 2020 must migrate
+their account to use federated identity. Refer to the following step-by-step
+guide for more details.
 
 .. toctree::
    :maxdepth: 1
 
-   federation/federation_migration
-
-.. _legacy-sign-in::
-
-Signing in to your legacy account
----------------------------------
-
-Until `December 1st, 2020
-<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-is-the-schedule-for-migration-to-federated-identity->`_,
-you will be able to log in to your legacy Chameleon account to access leases or
-server instances you created in the past. Use the login option "Go to the old
-sign in page" to access your legacy account via the old username/password login.
-
-.. figure:: federation/login-october-legacy.png
-   :alt: Accessing legacy accounts from the login page.
-   :figclass: screenshot
+   federation/federation_migratio
