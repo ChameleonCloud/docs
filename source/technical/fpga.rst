@@ -13,6 +13,7 @@ All FPGA nodes are configured to run OpenCL code, but they can be reconfigured (
 
 Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes. Briefly, the steps for building an FPGA application are:
 
+- Create a TACC account at the `TACC Portal <https://portal.tacc.utexas.edu/>`_
 - Setup Multi-Factor Authentication for TACC Resources by following `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_
 - Request access to the FPGA Build Node project at the |Help Desk|
 - SSH to the ``fpga01.tacc.chameleoncloud.org`` host to build your FPGA application
