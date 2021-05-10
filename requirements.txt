@@ -1,4 +1,4 @@
-rstcheck
+doc8
 sphinx
 sphinx-autobuild
 sphinx-rtd-theme
