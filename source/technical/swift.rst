@@ -152,7 +152,7 @@ You may browse your folder and upload files to it by clicking on the folder.
    :figclass: screenshot
 
    A Folder within the Container
-   
+
 .. _object-store-cli:
 
 Managing Object Store using the CLI
@@ -257,6 +257,7 @@ supported using a separate Swift interface, which must be installed via Git in
 order to have support for authentication methods used by Chameleon:
 
 .. code-block:: bash
+
    pip install git+https://opendev.org/openstack/python-swiftclient.git
 
 Instead of invoking commands via ``openstack``, you will instead use the
@@ -268,6 +269,7 @@ There is also a ``--changed`` flag, which prevents uploading of the object if
 the checksum has not changed:
 
 .. code-block:: bash
+
    swift upload --changed --segment-size 4831838208 <container_name> <path>
 
 Working with Folders
@@ -305,7 +307,7 @@ your Chameleon Object Store as a directory on your Linux environment.
    Some older Chameleon-supported images have an outdated version of this tool
    installed, which is not compatible with authentication using federated identity.
    If you wish to continue using a historical image, you should update the tool
-   by following the `installation instructions 
+   by following the `installation instructions
    <https://github.com/ChameleonCloud/cc-cloudfuse#installation>`_.
 
 To mount, use the following command:
