@@ -253,12 +253,13 @@ Large object support
 
 The Swift CLI only supports objects up to 4GB. Larger objects are supported,
 provided they are uploaded in segments. This advanced functionality is only
-supported using a separate Swift interface, which must be installed via Git in
-order to have support for authentication methods used by Chameleon:
+supported using a separate Swift interface. For a version compatible with
+Chameleon's authentication, you need `python-swiftclient >= 3.11.1`, and
+to generate and use an :ref:`Application Credential <cli-application-credential>`
 
 .. code-block:: bash
 
-   pip install git+https://opendev.org/openstack/python-swiftclient.git
+   pip install "python-swiftclient>=3.11.1"
 
 Instead of invoking commands via ``openstack``, you will instead use the
 ``swift`` command, which supports a ``--segment-size`` parameter, specifying
@@ -270,7 +271,11 @@ the checksum has not changed:
 
 .. code-block:: bash
 
-   swift upload --changed --segment-size 4831838208 <container_name> <path>
+   swift --os-auth-type v3applicationcredential \
+   --os-application-credential-id <credential_id> \
+   --os-application-credential-secret <credential_secret> \
+   upload --changed --segment-size 4831838208 \
+   <container_name> <path>
 
 Working with Folders
 --------------------
