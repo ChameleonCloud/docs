@@ -73,7 +73,7 @@ Service Units
 
 One Service Unit (SU) is equivalent to one hour of usage of one allocatable
 resource (physical hosts, network segments, or floating IPs). For example, a
-reservation for 5 Haswell compute nodes for 8 hours would use 40 SUs. However,
+reservation for 5 Skylake compute nodes for 8 hours would use 40 SUs. However,
 for certain types of resources, more SUs will be charged. For more details about
 allocation charges, please see `here
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged->`_.

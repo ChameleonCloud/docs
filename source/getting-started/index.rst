@@ -109,14 +109,14 @@ the most common types of nodes available on Chameleon.
 #. In the sidebar, click *Reservations*, then click *Leases*
 #. Click on the *+ Create Lease* button in the toolbar
 #. Type *my_first_lease* for the lease name
-#. Find the *Resource Properties* section. In the dropdown below *node_type*, select *compute_haswell*
+#. Find the *Resource Properties* section. In the dropdown below *node_type*, select *compute_skylake*
 #. Click the *Create* button
 
 .. figure:: create_lease.png
   :alt: The Create Lease dialog
   :figclass: screenshot
 
-  The Create Lease dialog - be sure to select compute_haswell in the dropdown below node_type
+  The Create Lease dialog - be sure to select compute_skylake in the dropdown below node_type
 
 The reservation will start shortly, at which point you can launch an instance on
 a bare metal node.

@@ -273,7 +273,7 @@ The following is an example of ``cep print`` output:
 	                    "vendor": "Broadcom Corporation"
 	                }
 	            ], 
-	            "node_type": "compute_haswell", 
+	            "node_type": "compute_skylake", 
 	            "placement": {
 	                "node": 14, 
 	                "rack": 1
