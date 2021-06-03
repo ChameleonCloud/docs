@@ -91,9 +91,11 @@ resource usage. The dashboard looks  something like this:
 
 Setting up networking
 ---------------------
-Your container will need to run a network security group. Below is a brief
-introduction to security groups in Chameleon, or you can find a more in depth 
-explanation `here <../technical/kvm.html#security-groups>`_.
+If you are planning to make your container accessible over the Internet with a
+Floating IP, your container will need to run a security group in order to expose
+the ports needed. Below is a brief introduction to security groups in Chameleon, 
+or you can find a more in depth explanation 
+`here <../technical/kvm.html#security-groups>`_.
 
 #. First, in the sidebar click *Network*, then click *Security Groups*. You can 
    examine an existing group's rules by clicking *Manage Rules* next to it. If 
@@ -127,7 +129,8 @@ To start launching a container, follow the following steps:
 
 3. Type *my_first_container* for the container name. Then, enter the name of an 
    image you want to launch from Docker Hub. You must use the full name of the 
-   image.
+   image. Optionally, you can supply a custom command to override the default
+   command run by Docker.
 
   .. note::
     You may also use a Glance ID for your image, by selecting *Glance* under the
@@ -218,13 +221,20 @@ Access to your container
 
 Once your container has launched, there are a few ways to interact with it. 
 
+If your container communicates over the network, you can use the assigned
+floating IP to access it. For example, if your container is running a web server
+on port ``8888``, with floating IP ``129.114.108.102``, you canconnect to it by
+going to ``http://129.114.108.102:8888`` in your browser.
+
 By selecting your container name from the list of containers, you will be taken
 to an overview page for your container. Here, you can select the logs tab to
 see the output from your container. In the top right of this page, next to the
 button labeled *Refresh*, you can select the drop-down arrow. One of the options
 in this drop-down menu is *Execute Command*. Clicking this will open a window,
 allowing you to enter a command to execute on your container. The output from
-this command will then be displayed, after the command runs.
+this command will then be displayed, after the command runs. In the future, 
+you will be able to connect to your container via the *Console* tab, but for the 
+moment this is not supported.
 
    .. figure:: execute_command.png
       :alt: The Execute Command window
@@ -232,8 +242,4 @@ this command will then be displayed, after the command runs.
 
       This dialog allows you to execute a command on your container.
 
-If your container communicates over the network, you can use the assigned
-floating IP to access it. For example, if your container is running a web server
-on port ``8888``, with floating IP ``129.114.108.102``, you canconnect to it by
-going to ``http://129.114.108.102:8888`` in your browser.
 
