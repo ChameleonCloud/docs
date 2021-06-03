@@ -105,7 +105,30 @@ In the *Allocations* section of your :ref:`project-details`, you may view your
 project start and end dates, current *Service Unit* usage and request a *Service
 Unit* recharge or project extension. To request a *Service Unit* recharge or
 *Project* extension, click the link next to your project in the *Actions* column
-of this section.
+of this section. When requesting renewal or recharge of the allocations, we may
+ask you to update your :ref:`publications dashboard <manage-publications>`, so
+keeping it up to date now can save you time later! 
+
+.. _manage-publications:
+
+Manage Publications
+--------------------
+
+To add publications to a project, click the *Add Publications* button in the
+:ref:`project-details` page. Please enter the publications in BibTex format. All
+regular BibTex publication types are supported. If you can provide a link,
+please enter as *note* or *howpublished* using the url package.
+
+
+To manage the publications you have entered, use the *Publications Dashboard*.
+
+.. figure:: project/publication.png
+  :alt: Publications dashboard
+  
+  Publications dashboard
+  
+In the dashboard, you may remove a publication of a project by clicking the -
+button next to the publication text. 
 
 .. _manage-users:
 
