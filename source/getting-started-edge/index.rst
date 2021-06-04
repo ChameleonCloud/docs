@@ -4,7 +4,7 @@
 .. _getting-started:
 
 =============================
-Getting started with CHI@EDGE
+Getting started with CHI@Edge
 =============================
 
 This guide will walk you through the initial steps of getting an account,
@@ -75,11 +75,11 @@ are a simple way to deploy applications. Learn more about what containers are
 with `this guide from docker <https://www.docker.com/resources/what-container>`_.
 Follow these steps to launch a container and manage it.
 
-The CHI\@EDGE dashboard
+The CHI\@Edge dashboard
 ----------------------
 
 Chameleon edge resources are available through 
-`CHI@EDGE <https://chi.edge.chameleoncloud.org>`_. When you access this site, you are 
+`CHI@Edge <https://chi.edge.chameleoncloud.org>`_. When you access this site, you are 
 first taken to a dashboard, which shows a summary of your project's current 
 resource usage. The dashboard looks  something like this:
 
@@ -127,18 +127,21 @@ To start launching a container, follow the following steps:
 2. Click on the *Create Container* button in the toolbar and the *Create
    Container* wizard will load
 
-3. Type *my_first_container* for the container name. Then, enter the name of an 
+3. Give your container a name. For example, since it's your first container, 
+   *my_first_container* may be a good name. Then, enter the name of an 
    image you want to launch from Docker Hub. You must use the full name of the 
    image. Optionally, you can supply a custom command to override the default
    command run by Docker.
 
   .. note::
     You may also use a Glance ID for your image, by selecting *Glance* under the
-    *Image Driver* field.
+    *Image Driver* field. You should only provide a Glance ID if you've 
+    previously created a container snapshot, which stores the snapshot as a 
+    Glance image.
 
-  .. note::
+  .. important::
     Only the ARM architecture is currently supported. Make sure the image used 
-    is compatible with ARM.
+    is compatible with ARM. `Here is a list of such images on Docker Hub <https://hub.docker.com/search?type=image&architecture=arm64>`_.
 
   .. figure:: create_container.png
     :alt: Create Container wizard
@@ -167,7 +170,8 @@ To start launching a container, follow the following steps:
 6. Click the *Create* button.
 
 Congratulations, you have launched an container! It may take a few minutes for
-your container to become active, while the image downloads.
+your container to become active if the image is not yet downloaded to the
+target device.
 
 Associating an IP address
 -------------------------
@@ -223,7 +227,7 @@ Once your container has launched, there are a few ways to interact with it.
 
 If your container communicates over the network, you can use the assigned
 floating IP to access it. For example, if your container is running a web server
-on port ``8888``, with floating IP ``129.114.108.102``, you canconnect to it by
+on port ``8888``, with floating IP ``129.114.108.102``, you can connect to it by
 going to ``http://129.114.108.102:8888`` in your browser.
 
 By selecting your container name from the list of containers, you will be taken
