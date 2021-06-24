@@ -136,6 +136,8 @@ Key Pairs
 You will need to import or create SSH :ref:`gui-key-pairs`. This process is
 similar to the process performed on |CHI@TACC| and |CHI@UC| bare metal sites.
 
+.. _kvm-security-groups:
+
 Security Groups
 ~~~~~~~~~~~~~~~
 

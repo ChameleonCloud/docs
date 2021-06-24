@@ -1,7 +1,7 @@
 
 .. _InCommon: https://incommon.org/federation
 
-.. _getting-started:
+.. _getting-started-edge:
 
 =============================
 Getting started with CHI@Edge
@@ -12,7 +12,7 @@ joining a project and working with your first container.
 
 .. contents:: :local:
 
-.. _getting-started-user:
+.. _getting-started-edge-user:
 
 Step 1: Log in to Chameleon
 ===========================
@@ -40,7 +40,7 @@ Once you log in, you will be able to :ref:`edit your Chameleon profile
 However, to actually use the testbed you will first need to **join or create a
 project** (see below).
 
-.. _getting-started-project:
+.. _getting-started-edge-project:
 
 Step 2: Create or join a project
 ================================
@@ -94,7 +94,7 @@ Setting up CLI
 
 Right now, edge device reservations can only be made through the command line 
 interface. This means that you must follow the instructions
-`here <../technical/cli.html>`_ to set up your blazar client. If you have
+:ref:`here <cli>` to set up your blazar client. If you have
 previously installed blazar, you will need to reinstall in order to add in the
 new changes for edge devices
 
@@ -105,7 +105,7 @@ new changes for edge devices
 Be sure to use the the OpenStack RC file downloaded from the Edge site, which
 means you should be logged into the GUI at
 `CHI@Edge <https://chi.edge.chameleoncloud.org>`_. Once there, you can follow
-the `same instructions <../technical/cli.html#the-openstack-rc-script>`_
+the :ref:`same instructions <cli-rc-script>`
 as is done on the other sites to download this file.
 
 The Lease Calendar
@@ -120,7 +120,7 @@ axis of this chart represents the different edge devices in the system, and the
    :alt: The edge device calendar
    :figclass: screenshot
 
-   A Gantt chart displaying when devices are available.
+   A chart displaying when devices are available.
 
 Create a Reservation
 --------------------
@@ -223,6 +223,11 @@ the above example, this is *500e0c36-2089-46a5-bf7c-cc46e5f65a0d*. Save this
 value someone, as it will be used later. Note that this is not the value from the
 row with *id* in the left column.
 
+.. note::
+
+  It may take up to a minute for your reservation to change from PENDING to 
+  ACTIVE status. One the lease becomes ACTIVE, you can use it.
+
 At this point you can return to the GUI to continue setting up your container.
 
 Setting up networking
@@ -231,7 +236,7 @@ If you are planning to make your container accessible over the Internet with a
 Floating IP, your container will need to run a security group in order to expose
 the ports needed. Below is a brief introduction to security groups in Chameleon, 
 or you can find a more in depth explanation 
-`here <../technical/kvm.html#security-groups>`_.
+:ref:`here <kvm-security-groups>`.
 
 #. First, in the sidebar click *Network*, then click *Security Groups*. You can 
    examine an existing group's rules by clicking *Manage Rules* next to it. If 
