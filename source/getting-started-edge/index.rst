@@ -125,6 +125,11 @@ axis of this chart represents the different edge devices in the system, and the
 Create a Reservation
 --------------------
 
+In order to guarentee access to an edge device, you can reserve it.
+Alternatively, you can create a container on demand, provided there are
+available devices at the time of creation. Here, we provide instructions for
+using reservations, which can be skipped if a reservation is not needed.
+
 To create a lease, use the ``lease-create`` command. The following arguments are
 required:
 
@@ -310,7 +315,8 @@ To start launching a container, follow the following steps:
 
 6. Click *Scheduler Hints* in the sidebar. Next to custom, enter "reservation"
    and click the *+* sign. It will move to the right, and there enter the
-   reservation ID saved from the ``lease-create`` step.
+   reservation ID saved from the ``lease-create`` step. If you are launching
+   a container on demand, you can skip this step.
 
    .. figure:: scheduler_hints.png
       :alt: Enter the reservation ID in Scheduler Hints
