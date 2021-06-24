@@ -1,7 +1,7 @@
 
 .. _InCommon: https://incommon.org/federation
 
-.. _getting-started:
+.. _getting-started-edge:
 
 =============================
 Getting started with CHI@Edge
@@ -12,7 +12,7 @@ joining a project and working with your first container.
 
 .. contents:: :local:
 
-.. _getting-started-user:
+.. _getting-started-edge-user:
 
 Step 1: Log in to Chameleon
 ===========================
@@ -40,7 +40,7 @@ Once you log in, you will be able to :ref:`edit your Chameleon profile
 However, to actually use the testbed you will first need to **join or create a
 project** (see below).
 
-.. _getting-started-project:
+.. _getting-started-edge-project:
 
 Step 2: Create or join a project
 ================================
@@ -89,13 +89,154 @@ resource usage. The dashboard looks  something like this:
 
    An overview of your project's current resource usage
 
+Setting up CLI
+--------------
+
+Right now, edge device reservations can only be made through the command line 
+interface. This means that you must follow the instructions
+:ref:`here <cli>` to set up your blazar client. If you have
+previously installed blazar, you will need to reinstall in order to add in the
+new changes for edge devices
+
+.. code-block:: shell
+
+  pip install git+https://github.com/chameleoncloud/blazar@chameleoncloud/train
+
+Be sure to use the the OpenStack RC file downloaded from the Edge site, which
+means you should be logged into the GUI at
+`CHI@Edge <https://chi.edge.chameleoncloud.org>`_. Once there, you can follow
+the :ref:`same instructions <cli-rc-script>`
+as is done on the other sites to download this file.
+
+The Lease Calendar
+------------------
+
+Visit the calendar for edge devices by going to `this link <https://chi.edge.chameleoncloud.org/project/leases/device_calendar/>`_.
+This calendar lets you discover when resources are available to use. The *Y* 
+axis of this chart represents the different edge devices in the system, and the
+*X* axis represents time.
+
+.. figure:: device_calendar.png
+   :alt: The edge device calendar
+   :figclass: screenshot
+
+   A chart displaying when devices are available.
+
+Create a Reservation
+--------------------
+
+To create a lease, use the ``lease-create`` command. The following arguments are
+required:
+
+- ``--reservation`` with ``resource_type=device``, ``min``, ``max``, and ``resource_properties`` attributes
+- ``--start-date`` in ``YYYY-MM-DD HH:MM`` format
+- ``--end-date`` in ``YYYY-MM-DD HH:MM`` format
+- A lease name.
+
+The attribute ``resource_properties`` may be used to specify what sort of edge
+device you want to reserve. For example, to reserve a Raspberry Pi from June 24, 
+2021 at 3:00pm to June 25, 2021 at 1:00pm, with the name ``my-first-lease``, you
+may use the following command:
+
+.. code-block:: shell
+
+  blazar lease-create \
+    --reservation resource_type=device,min=1,max=1,resource_properties='["==", "$vendor", "Raspberry Pi"]' \
+    --start-date "2021-06-24 15:00" --end-date "2021-06-25 13:00" \
+    my-first-lease
+
+You may also use the device name to reserve a specific device. For example, to 
+reserve the device named ``rpi3-01``, you can change your command like below:
+
+.. code-block:: shell
+
+  blazar lease-create \
+    --reservation resource_type=device,min=1,max=1,resource_properties='["==", "$name", "rpi3-01"]' \
+    --start-date "2021-06-24 15:00" --end-date "2021-06-25 13:00" \
+    my-first-lease
+
+
+The output of ``lease-create`` should look like
+
+.. code-block:: shell
+
+    +--------------+-----------------------------------------------------------------------+
+    | Field        | Value                                                                 |
+    +--------------+-----------------------------------------------------------------------+
+    | created_at   | 2021-06-24 15:43:36                                                   |
+    | degraded     | False                                                                 |
+    | end_date     | 2021-06-25T13:00:00.000000                                            |
+    | events       | {                                                                     |
+    |              |     "created_at": "2021-06-24 15:43:36",                              |
+    |              |     "updated_at": null,                                               |
+    |              |     "id": "243988c9-5e04-484e-991e-e9a19bc107f9",                     |
+    |              |     "lease_id": "8aad6912-2eb5-4140-812f-123e5cb56ca3",               |
+    |              |     "event_type": "end_lease",                                        |
+    |              |     "time": "2021-06-25T13:00:00.000000",                             |
+    |              |     "status": "UNDONE"                                                |
+    |              | }                                                                     |
+    |              | {                                                                     |
+    |              |     "created_at": "2021-06-24 15:43:36",                              |
+    |              |     "updated_at": null,                                               |
+    |              |     "id": "8aa2f211-9434-4ae0-a01a-e454e0a045e7",                     |
+    |              |     "lease_id": "8aad6912-2eb5-4140-812f-123e5cb56ca3",               |
+    |              |     "event_type": "before_end_lease",                                 |
+    |              |     "time": "2021-06-24T15:45:00.000000",                             |
+    |              |     "status": "UNDONE"                                                |
+    |              | }                                                                     |
+    |              | {                                                                     |
+    |              |     "created_at": "2021-06-24 15:43:36",                              |
+    |              |     "updated_at": null,                                               |
+    |              |     "id": "e8892924-649a-4beb-aa46-9e16f6331dab",                     |
+    |              |     "lease_id": "8aad6912-2eb5-4140-812f-123e5cb56ca3",               |
+    |              |     "event_type": "start_lease",                                      |
+    |              |     "time": "2021-06-24T15:45:00.000000",                             |
+    |              |     "status": "UNDONE"                                                |
+    |              | }                                                                     |
+    | id           | 8aad6912-2eb5-4140-812f-123e5cb56ca3                                  |
+    | name         | my-first-lease                                                        |
+    | project_id   | a5f0758da4a5404bbfcef0a64206614c                                      |
+    | reservations | {                                                                     |
+    |              |     "created_at": "2021-06-24 15:43:36",                              |
+    |              |     "updated_at": "2021-06-24 15:43:36",                              |
+    |              |     "id": "500e0c36-2089-46a5-bf7c-cc46e5f65a0d",                     |
+    |              |     "lease_id": "8aad6912-2eb5-4140-812f-123e5cb56ca3",               |
+    |              |     "resource_id": "48001fa1-ccb5-4e30-b511-a90455930776",            |
+    |              |     "resource_type": "device",                                        |
+    |              |     "status": "pending",                                              |
+    |              |     "missing_resources": false,                                       |
+    |              |     "resources_changed": false,                                       |
+    |              |     "resource_properties": "[\"==\", \"$vendor\", \"Raspberry Pi\"]", |
+    |              |     "before_end": "default",                                          |
+    |              |     "min": 1,                                                         |
+    |              |     "max": 1                                                          |
+    |              | }                                                                     |
+    | start_date   | 2021-06-24T15:45:00.000000                                            |
+    | status       | PENDING                                                               |
+    | trust_id     | ec2a893aa0494d72bcc5fbb3b73e7e66                                      |
+    | updated_at   | 2021-06-24 15:43:36                                                   |
+    | user_id      | b8f54aa95b96b9fb69e31a3e39df6a7bad29581439cf8bd8c9d59d9d7d048f3a      |
+    +--------------+-----------------------------------------------------------------------+
+
+Look for the *reservations* entry, and within this item find the *id* entry. In
+the above example, this is *500e0c36-2089-46a5-bf7c-cc46e5f65a0d*. Save this
+value someone, as it will be used later. Note that this is not the value from the
+row with *id* in the left column.
+
+.. note::
+
+  It may take up to a minute for your reservation to change from PENDING to 
+  ACTIVE status. One the lease becomes ACTIVE, you can use it.
+
+At this point you can return to the GUI to continue setting up your container.
+
 Setting up networking
 ---------------------
 If you are planning to make your container accessible over the Internet with a
 Floating IP, your container will need to run a security group in order to expose
 the ports needed. Below is a brief introduction to security groups in Chameleon, 
 or you can find a more in depth explanation 
-`here <../technical/kvm.html#security-groups>`_.
+:ref:`here <kvm-security-groups>`.
 
 #. First, in the sidebar click *Network*, then click *Security Groups*. You can 
    examine an existing group's rules by clicking *Manage Rules* next to it. If 
@@ -167,7 +308,17 @@ To start launching a container, follow the following steps:
 
       You select your desired security group.
 
-6. Click the *Create* button.
+6. Click *Scheduler Hints* in the sidebar. Next to custom, enter "reservation"
+   and click the *+* sign. It will move to the right, and there enter the
+   reservation ID saved from the ``lease-create`` step.
+
+   .. figure:: scheduler_hints.png
+      :alt: Enter the reservation ID in Scheduler Hints
+      :figclass: screenshot
+
+      Enter "reservation" and then the reservation ID.
+
+7. Click the *Create* button.
 
 Congratulations, you have launched an container! It may take a few minutes for
 your container to become active if the image is not yet downloaded to the
@@ -176,7 +327,7 @@ target device.
 Associating an IP address
 -------------------------
 
-For your container to be accessible over the Internet, you need to 
+For your container to be accessible over the Internet, you need to
 first assign a floating IP address.
 
 #. First, select your container name in the *Containers* page, which will
@@ -236,8 +387,8 @@ see the output from your container. In the top right of this page, next to the
 button labeled *Refresh*, you can select the drop-down arrow. One of the options
 in this drop-down menu is *Execute Command*. Clicking this will open a window,
 allowing you to enter a command to execute on your container. The output from
-this command will then be displayed, after the command runs. In the future, 
-you will be able to connect to your container via the *Console* tab, but for the 
+this command will then be displayed, after the command runs. In the future,
+you will be able to connect to your container via the *Console* tab, but for the
 moment this is not supported.
 
    .. figure:: execute_command.png
