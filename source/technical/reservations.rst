@@ -290,6 +290,18 @@ following:
      --end-date "2015-06-17 18:00" \
      my-custom-lease
 
+To create a lease with multiple resource properties, you must combine them like
+``["and", [property1], [property2], [...] ]``. For example, to reserve a node
+with *$architecture.smt_size* of *48* and *node_type* of *compute_haswell*:
+
+.. code-block:: bash
+
+   blazar lease-create \
+     --physical-reservation min=1,max=1,resource_properties='["and", ["=", "$architecture.smt_size", "48"], ["=", "$node_type", "compute_haswell"]]' \
+     --start-date "2015-06-17 16:00" \
+     --end-date "2015-06-17 18:00" \
+     my-custom-lease
+
 .. _disable-blazar-notification:
 .. attention::
 
