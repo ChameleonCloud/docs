@@ -80,4 +80,4 @@ guide for more details.
 .. toctree::
    :maxdepth: 1
 
-   federation/federation_migratio
+   federation/federation_migration
