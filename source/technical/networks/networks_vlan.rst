@@ -286,33 +286,6 @@ In addition, you can specify an *External Gateway* for your router and connect i
 
    openstack router set --external-gateway public <router_name>
 
-Adding a Firewall
-^^^^^^^^^^^^^^^^^
-
-To configure a *Firewall*, first create *Firewall Rules* that you would like to apply to traffic.
-
-.. code-block:: bash
-
-   openstack firewall group rule create [options] --name <name>
-
-Then, create a *Firewall Policy* that has rules associated:
-
-.. code-block:: bash
-
-   openstack firewall group policy create \
-     --firewall-rule <rule_name_or_id> \
-     --firewall-rule <another_rule_name_or_id> \
-     <policy_name>
-
-Finally, create a *Firewall Group* that applies a policy to one or more *Router Interfaces*:
-
-.. code-block:: bash
-
-   openstack firewall group create --ingress-policy <policy_name_or_id> \
-     --port <router_interface_port_id> \
-     --port <another_router_interface_port_id> \
-     <group_name>
-
 
 Deleting Networking Objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
