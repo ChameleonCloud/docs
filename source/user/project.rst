@@ -150,3 +150,10 @@ You may add a user to your account by filling out their user name or email
 address and clicking the *Add user* button. You may remove a user from your
 project by locating their user name in the user list and clicking the *-* button
 next to their user name.
+
+If there is no user associated with an email address, an invitation will be sent
+with a link. When someone clicks on this link, they will be prompted to sign in
+or create an account, and then automatically added to the project. Invitations
+show up under *Pending Invitations*, and can be deleted or resent if needed.
+After an invitation is accepted, the user will show up under the *Project Users*
+section.
