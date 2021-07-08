@@ -1,0 +1,25 @@
+name: lint
+
+on:
+  push:
+
+jobs:
+  doc8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: Install Deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install tox
+      - uses: reviewdog/action-setup@v1
+      - name: lint with reviewdog
+        env:
+            REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tox q -e lint | reviewdog \
+          -efm "%f:%l: %m" \
+          -diff "git diff FETCH_HEAD" \
+          -filter-mode file \
+          -reporter=github-check
