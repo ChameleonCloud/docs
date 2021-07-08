@@ -89,9 +89,14 @@ up the window displayed below:
 
    .. tip:: You can get the UTC time by running ``date -u`` in your terminal.
 
-#. To reserve a bare metal node, ensure the "Reserve Physical Host" checkbox is selected.
+#. To reserve a bare metal node, navigate to the "Hosts" tab.
 
-#. Choose the minimum and maximum number of hosts. The default is 1 node.
+	.. figure:: reservations/nodereservationdialog.png
+	   :alt: The Create Lease dialog Host reservation tab
+	
+	   The Create Lease dialog Host reservation tab
+
+#. Choose the minimum and maximum number of hosts.
 
 #. Choose a node type in the drop down menu below the *node_type* and *=* drop down lists.
 
@@ -101,7 +106,12 @@ up the window displayed below:
       wish to request multiple node types, you must create separate Leases for
       each node type.
 
-#. To reserve a vlan segment, ensure the `Reserve Network` checkbox is selected.
+#. To reserve a vlan segment, navigate to the "Networks" tab.
+
+	.. figure:: reservations/networkreservationdialog.png
+	   :alt: The Create Lease dialog Network reservation tab
+	
+	   The Create Lease dialog Network reservation tab
 
 #. Enter the network name and description
 
@@ -113,10 +123,9 @@ up the window displayed below:
 
    .. tip::
 
-      Select or deselect the ``Reserve Physical Host`` and ``Reserve Network``
-      checkboxes to include resources as needed.
+      Network name is required when reserving VLAN segment.
 
-#. Choose the number of floating IPs. You don't need to check `Reserve Network` for floating IPs.
+#. Choose the number of floating IPs.
 
 #. Click on the *Create* button.
 
