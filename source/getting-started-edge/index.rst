@@ -89,25 +89,6 @@ resource usage. The dashboard looks  something like this:
 
    An overview of your project's current resource usage
 
-Setting up CLI
---------------
-
-Right now, edge device reservations can only be made through the command line 
-interface. This means that you must follow the instructions
-:ref:`here <cli>` to set up your blazar client. If you have
-previously installed blazar, you will need to reinstall in order to add in the
-new changes for edge devices
-
-.. code-block:: shell
-
-  pip install git+https://github.com/chameleoncloud/blazar@chameleoncloud/train
-
-Be sure to use the the OpenStack RC file downloaded from the Edge site, which
-means you should be logged into the GUI at
-`CHI@Edge <https://chi.edge.chameleoncloud.org>`_. Once there, you can follow
-the :ref:`same instructions <cli-rc-script>`
-as is done on the other sites to download this file.
-
 The Lease Calendar
 ------------------
 
@@ -128,7 +109,59 @@ Create a Reservation
 In order to guarentee access to an edge device, you can reserve it.
 Alternatively, you can create a container on demand, provided there are
 available devices at the time of creation. Here, we provide instructions for
-using reservations, which can be skipped if a reservation is not needed.
+using reservations, which can be skipped if a reservation is not needed. We
+include instructions for using either the dashboard interface, or with the CLI.
+
+Create a Reservation Using the Dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After navigating to the CHI@Edge dashboard, follow these instructions to create
+a reservation.
+
+#. In the sidebar, click *Reservations*, then click *Leases*
+#. Click on the *+ Create Lease* button in the toolbar
+#. Enter a name, for example *my_first_lease*
+#. Update the start date and time, along with the end date and time.
+#. Next to *General* at the top, select *Devices*. Here, enter 1 for both the
+   minimum and maximum number of devices. You can also add a device filter
+   for a specific type of edge device.
+#. Click *Create*.
+
+.. figure:: create_lease.png
+   :alt: The Create Lease dialog
+   :figclass: screenshot
+
+    The Create Lease dialog
+
+Your reservation will show in the list of leases. Once the status changes from
+*PENDING* to *ACTIVE*, you will be able to launch a container. Before you can
+do this, you must get the reservation ID of a device. Click on your lease name
+from the Leases overview to see the *Lease Detail* page. Under the
+*Reservations* header, you will see an *id* field. Note this value. For example
+in the following figure, the value is `0e4a0c01-c597-4294-a926-6350af77c5d4`.
+
+.. figure:: lease_detail.png
+   :alt: The Lease Detail page
+   :figclass: screenshot
+
+    The Lease Detail page, with the reservation ID highlighted in blue.
+
+
+Create a Reservation Using the CLI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you have previously installed blazar, you will need to reinstall in order to
+add in the new changes for edge devices
+
+.. code-block:: shell
+
+  pip install git+https://github.com/chameleoncloud/blazar@chameleoncloud/train
+
+Be sure to use the the OpenStack RC file downloaded from the Edge site, which
+means you should be logged into the GUI at
+`CHI@Edge <https://chi.edge.chameleoncloud.org>`_. Once there, you can follow
+the :ref:`same instructions <cli-rc-script>`
+as is done on the other sites to download this file.
 
 To create a lease, use the ``lease-create`` command. The following arguments are
 required:
