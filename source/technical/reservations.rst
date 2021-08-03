@@ -96,15 +96,17 @@ up the window displayed below:
 	
 	   The Create Lease dialog Host reservation tab
 
-#. Choose the minimum and maximum number of hosts.
+    a. Check "Reserve Hosts".
 
-#. Choose a node type in the drop down menu below the *node_type* and *=* drop down lists.
+    b. Choose the minimum and maximum number of hosts.
 
-   .. note::
+    c. Choose a node type in the drop down menu below the *node_type* and *=* drop down lists.
 
-      You may only request one type of node in each individual lease. If you
-      wish to request multiple node types, you must create separate Leases for
-      each node type.
+       .. note::
+
+          You may only request one type of node in each individual lease. If you
+          wish to request multiple node types, you must create separate Leases for
+          each node type.
 
 #. To reserve a vlan segment, navigate to the "Networks" tab.
 
@@ -113,19 +115,24 @@ up the window displayed below:
 	
 	   The Create Lease dialog Network reservation tab
 
-#. Enter the network name and description
+    a. Check "Reserve Network"
 
-    .. note::
+    b. Enter the network name and description
 
-       When a VLAN segment reservation ends, all Neutron resources attached to
-       the network will be automatically deleted. Bare metal instances using the
-       network will lose network connectivity.
+        .. note::
 
-   .. tip::
+           When a VLAN segment reservation ends, all Neutron resources attached to
+           the network will be automatically deleted. Bare metal instances using the
+           network will lose network connectivity.
 
-      Network name is required when reserving VLAN segment.
+        .. tip::
 
-#. Choose the number of floating IPs.
+           Network name is required when reserving VLAN segment.
+
+#. To reserve floating IPs, navigate to the "Networks" tab.
+
+    a. Check "Reserve Floating IPs".
+    b. Choose the number of floating IPs.
 
 #. Click on the *Create* button.
 
@@ -202,13 +209,13 @@ To change the number of nodes of a lease, click on the *Update Lease* button in
 *Actions* column.
 
 .. figure:: reservations/updateleasenodecount.png
-   :alt: The Update Lease Parameters dialog, changing the number of reserved
-   nodes
+   :alt: The Update Lease Parameters dialog, changing the number of reserved nodes
 
    The Update Lease Parameters dialog, changing the number of reserved nodes
 
-Fill out the form by specifying the new minimum and maximum numbers of hosts.
-Then, click on the *Update* button to finish your request.
+
+Navigate to the "Hosts" tab,  and fill out the form by specifying the new minimum 
+and maximum numbers of hosts. Then, click on the *Update* button to finish your request.
 
 Reserving a Node by UUID
 ------------------------
