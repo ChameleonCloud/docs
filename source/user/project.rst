@@ -130,12 +130,42 @@ To manage the publications you have entered, use the *Publications Dashboard*.
 In the dashboard, you may remove a publication of a project by clicking the -
 button next to the publication text. 
 
+.. _manage-roles:
+
+Manage User Roles
+------------------
+
+To manage user roles of a *Project*, use the *Project Members* section in the 
+:ref:`project-details`. The table below shows the types of roles and their
+privileges. 
+
++---------+---------------------------------------------------------------------------+
+| Role    | Description                                                               |
++=========+===========================================================================+
+| PI      | Each project has only one PI. PI can manage roles of the project members. |
++---------+---------------------------------------------------------------------------+
+| Manager | Each project can have multiple Managers. Managers can manage the          | 
+|         | membership of the project.                                                |
++---------+---------------------------------------------------------------------------+
+| Member  | Members can only view the list of the project members.                    |
++---------+---------------------------------------------------------------------------+
+
+To change the role of a project member, click the *gear* button at the end of the
+user row, and then click *Change Role*. It will enable the role dropdown.
+Choose a new role and click the *Submit* button to apply the new role to the user, or
+use the *Cancel* button to cancel the action.
+
+.. figure:: project/managerole.png
+  :alt: Manage Role of a User
+  
+  Manage Role of a User
+
 .. _manage-users:
 
 Manage Users
 ------------
 
-To manage users of a *Project*, use the *Project Users* section in the
+To manage users of a *Project*, use the *Project Members* section in the
 :ref:`project-details`. While each user has their own Chameleon User account
 independent of your project, they may be added to one or more projects. Being a
 user of a *Project* **does not** require a :ref:`PI eligibility
@@ -143,17 +173,17 @@ user of a *Project* **does not** require a :ref:`PI eligibility
 
 .. important::
 
-   For *Project* PIs, it is highly recommended that your *Project* users should
+   For *Project* Managers, it is highly recommended that your *Project* users should
    have their own non-PI Chameleon accounts and should be added to your project.
 
-You may add a user to your account by filling out their user name or email
+You may add a user to your project by filling out their user name or email
 address and clicking the *Add user* button. You may remove a user from your
-project by locating their user name in the user list and clicking the *-* button
-next to their user name.
+project by locating the user in the user list; clicking the *gear* button
+at the end of the row; and clicking *Remove user*.
 
 If there is no user associated with an email address, an invitation will be sent
 with a link. When someone clicks on this link, they will be prompted to sign in
 or create an account, and then automatically added to the project. Invitations
-show up under *Pending Invitations*, and can be deleted or resent if needed.
-After an invitation is accepted, the user will show up under the *Project Users*
+show up at the bottom of the members list, and can be deleted or resent if needed.
+After an invitation is accepted, the user will show up under the *Project Members*
 section.
