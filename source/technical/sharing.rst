@@ -203,7 +203,8 @@ requests, and the hours to reproduce.
 
 After these items are saved, an allocation request is automatically made. Your
 artifact should now appear with a "Request Day Pass" button below the "Launch"
-button.
+button. The "Launch" button will not appear for users that are not a member
+in an active Chameleon project.
 
 Requesting a Day Pass
 ^^^^^^^^^^^^^^^^^^^^^
@@ -213,6 +214,10 @@ are asked to submit their name, institution, and a reason why they want to
 reproduce the artifact. The goal with this form is to show the PIwhy the user
 is interested in reproducing the artifact, as the PI is still responsible
 for overseeing the proper use of Chameleon resources.
+
+.. figure:: sharing/request_day_pass_button.png
+   :alt: An image showing the "Request Day Pass" button
+   :figclass: screenshot
 
 After submitting the form, the managers (and PI) of the project associated with
 the artifact will receive an email informing them of the request.
@@ -224,6 +229,10 @@ After recieving an email with the day pass request, PIs and project managers
 can navigate to the review page by clicking the link in the email. Here, they
 will see all of the details submitting with the request. A decision can be made
 by choosing "approved" or "rejected" in the selector, and then clicking submit.
+
+.. figure:: sharing/review_day_pass_request.png
+   :alt: An image showing the "Review Day Pass" screen
+   :figclass: screenshot
 
 After this decision is made, an email is sent to the requestor with the result.
 If the request is approved, an invitation is sent to the user.
@@ -241,5 +250,5 @@ may be needed to configure an artifact.
 Next, you can navigate back to the original artifact URL you were given. The
 "Launch" button can be used now to start running the artifact.
 
-After the duration of the invite has passed, you will be automatically removed
+After the duration for the invite has passed, you will be automatically removed
 from the project.
