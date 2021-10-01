@@ -187,10 +187,11 @@ Allowing Reproducibility Requests
 First, the owner of an artifact must permit reproducibility requests. This can
 be revoked at any time, preventing future requests. Additionally, you must also
 give your artifact a value for "Hours a user has to reproduce." This value
-specifies how long a user will have access to Chameleon for. The artifact
-owner must also assign their artifact to a project via the dropdown selector.
-As these requests are granting access to Chameleon resources, this is needed
-to tie granted requests to a PI.
+specifies how long a user will have access to Chameleon for. Consider how
+long it takes to run your experiment from start to finish as a lower bound for
+this value. The artifact owner must also assign their artifact to a project via
+the dropdown selector. As these requests are granting access to Chameleon
+resources, this is needed to tie granted requests to a PI.
 
 These fields can be accessed by navigating to an artifact's detail page, and
 then selecting "Share." At the bottom of the share page, you will see the
