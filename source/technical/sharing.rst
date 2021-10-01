@@ -176,7 +176,7 @@ for a limited amount of time, using a small, separate allocation tied to your
 allocation. People interested in reproducing your project will send requests
 to the managers of a project. If approved, the initial user will recieve an
 email invitation to join the reproducibility project. When they accept, they
-can use this project to run your artifact. After the specified time is limit,
+can use this project to run your artifact. After the specified time limit,
 they will be automatically removed from this project.
 
 .. _sharing-enable-day-pass:
@@ -209,11 +209,12 @@ in an active Chameleon project.
 Requesting a Day Pass
 ^^^^^^^^^^^^^^^^^^^^^
 
-When a user selects "Request Day Pass", they will be taken a form, where they
-are asked to submit their name, institution, and a reason why they want to
-reproduce the artifact. The goal with this form is to show the PIwhy the user
-is interested in reproducing the artifact, as the PI is still responsible
-for overseeing the proper use of Chameleon resources.
+When you select "Request Day Pass", you will be taken a form where you are asked
+to submit your name, institution, and a reason why you want to
+reproduce the artifact. The goal of this form is to explain to the PI why you
+are interested in reproducing the artifact, as the PI is still responsible
+for overseeing the proper use of Chameleon resources, and the PI may be a
+stranger to you.
 
 .. figure:: sharing/request_day_pass_button.png
    :alt: An image showing the "Request Day Pass" button
@@ -227,7 +228,7 @@ Reviewing a Day Pass Request
 
 After recieving an email with the day pass request, PIs and project managers
 can navigate to the review page by clicking the link in the email. Here, they
-will see all of the details submitting with the request. A decision can be made
+will see all of the details submitted with the request. A decision can be made
 by choosing "approved" or "rejected" in the selector, and then clicking submit.
 
 .. figure:: sharing/review_day_pass_request.png
