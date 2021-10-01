@@ -174,7 +174,7 @@ view Trovi artifacts. To allow anyone to launch an artifact, we also provide
 day passes. This allows for a non-Chameleon user to have access to Chameleon
 for a limited amount of time, using a small, separate allocation tied to your
 allocation. People interested in reproducing your project will send requests
-to the managers of a project. If approved, the initial user will recieve an
+to the managers of a project. If approved, the requesting user will recieve an
 email invitation to join the reproducibility project. When they accept, they
 can use this project to run your artifact. After the specified time limit,
 they will be automatically removed from this project.
