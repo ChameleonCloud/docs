@@ -102,7 +102,12 @@ Editing artifacts
 -----------------
 
 You can edit an artifact's metadata, including its title, description, and list
-of authors at any time via the Jupyter interface.
+of authors at any time via the Jupyter interface. To delete single artifact
+versions, click the "trashcan" icon next to it in the edit view. To delete the
+entire artifact, click the red "Delete All" button. 
+
+.. note::
+   Any artifacts published to :ref:`Zenodo <trovi-zenodo>` cannot be deleted.
 
 .. figure:: sharing/sharing_edit_meta.gif
    :alt: Animation of editing an artifact's metadata.
