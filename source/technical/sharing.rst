@@ -270,28 +270,28 @@ experiments.
 Things to Do
 ------------
 
-Provide a background of your experiment in a succient paragraph. Provide any
+**Provide a background** of your experiment in a succinct paragraph. Provide any
 relevant citations to credit original authors.
 
-Seperate your notebook into parts that make sense. For example, have one file
+**Separate your notebook** into parts that make sense. For example, have one file
 that reproduces the experiment, and another file that runs the analysis. This
 allows replicators to choose what parts they want to run. It can be helpful to
 have a clear file where a user should start, such as a README, that gives an
 overview of your notebook.
 
-Give an outline of the features of your notebook, explaining the purpose of
+**Give an outline** of the features of your notebook, explaining the purpose of
 each file.
 
-In each file, explain what the methodology is, and the preconditions. If your
-notebook requires connectivity to other services (e.g. Kaggle), be sure to
-mention this.
+In each file, explain what the methodology is, and **call out preconditions**.
+If your notebook requires connectivity to other services (e.g. Kaggle), be sure
+to mention this.
 
-Explain what a user should expect. How long will the experiment take? Where
+**Explain what a user should expect**. How long will the experiment take? Where
 might errors happen? If they occur, how should a user proceed? If a step may
 take a while, mention the time it will take. What should the user expect as a
 result of each step?
 
-Make code cells idempotent. This can reduce user error and confusion. For
+**Make code cells idempotent**. This can reduce user error and confusion. For
 example, don't re-create a lease if an active lease already exists for the
 project. Make sure that a user running cells out of order provides clear
 errors.
@@ -299,18 +299,20 @@ errors.
 Things to Avoid
 ---------------
 
-Avoid printing everything. Replicating users may not be familiar with Chameleon,
+**Avoid printing everything**. Replicating users may not be familiar with Chameleon,
 and some messages printed by standard operations, like creating a reservation,
 may confuse users. Only show needed information. Expect errors and parse them in
 your notebook, and from this print a useful message.
 
-Avoid side effects (or at least colliding side effects). Users may rerun code
+**Avoid side effects** (or at least colliding side effects). Users may rerun code
 cells, resulting in recreated resources. Multiple users from the same project
 may be running your notebook (this is especially true for day pass). Keep
 lease and instance names unique, and at the very least include the username in
 it.
 
-Avoid using more resources than needed. If your experiment only takes an hour
+**Avoid using more resources than needed**. If your experiment only takes an hour
 to run, make the default lease duration for a couple hours, rather than days.
 If a user needs more than this, they can manually adjust the setting. After,
-make sure to provide an easy way to tear down the created instances.
+make sure to provide an easy way to tear down the created instances. By using
+fewer resources, it will be easier for a user to obtain the required leases to
+run the experiment too.
