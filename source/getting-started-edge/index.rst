@@ -155,7 +155,7 @@ add in the new changes for edge devices
 
 .. code-block:: shell
 
-  pip install git+https://github.com/chameleoncloud/blazar@chameleoncloud/train
+  pip install git+https://github.com/chameleoncloud/python-blazarclient@chameleoncloud/stable/train
 
 Be sure to use the the OpenStack RC file downloaded from the Edge site, which
 means you should be logged into the GUI at
