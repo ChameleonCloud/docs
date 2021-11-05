@@ -363,6 +363,23 @@ Congratulations, you have launched an container! It may take a few minutes for
 your container to become active if the image is not yet downloaded to the
 target device.
 
+Launching with a Device Profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For some functions, extra setup must take place while a container is launched.
+For example, to use a camera, docker needs to load the device. This setup is
+handled by launching your container with a device profile. You can see what
+device profiles work with each device on our `table of current hardware <https://chameleoncloud.org/experiment/chiedge/hardware-info/>`_.
+
+Additionally, all devices support the profile ``cap_net_admin``, which gives
+adds the capability ``CAP_NET_ADMIN`` to a container.
+
+To use a device profile, you must launch your container using the CLI or
+the python interface, python-chi. In the CLI, a device profile is used by
+adding the argument ``--device-profile "<profile_name>"``. With python-chi,
+you can include ``device_profiles=["<profile_name>"]`` as a keyword argument to
+``container.create_container``.
+
 Associating an IP address
 -------------------------
 
