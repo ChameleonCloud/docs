@@ -76,7 +76,7 @@ with `this guide from docker <https://www.docker.com/resources/what-container>`_
 Follow these steps to launch a container and manage it.
 
 The CHI\@Edge dashboard
-----------------------
+-----------------------
 
 Chameleon edge resources are available through 
 `CHI@Edge <https://chi.edge.chameleoncloud.org>`_. When you access this site, you are 
@@ -131,7 +131,7 @@ a reservation.
    :alt: The Create Lease dialog
    :figclass: screenshot
 
-    The Create Lease dialog
+   The Create Lease dialog
 
 Your reservation will show in the list of leases. Once the status changes from
 *PENDING* to *ACTIVE*, you will be able to launch a container. Before you can
@@ -144,7 +144,7 @@ in the following figure, the value is `0e4a0c01-c597-4294-a926-6350af77c5d4`.
    :alt: The Lease Detail page
    :figclass: screenshot
 
-    The Lease Detail page, with the reservation ID highlighted in blue.
+   The Lease Detail page, with the reservation ID highlighted in blue.
 
 
 Create a Reservation Using the CLI
@@ -326,7 +326,7 @@ To start launching a container, follow the following steps:
     :alt: Create Container wizard
     :figclass: screenshot
 
-     Enter a name and image name.
+    Enter a name and image name.
 
 4. Click *Networks* in sidebar. Then, find *containernet1* in the image list and
    click the *Up* arrow to select it.

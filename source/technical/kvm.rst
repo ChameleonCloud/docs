@@ -267,8 +267,7 @@ converted to raw in the backend.
 
 In order to use this method, authenticate to KVM using the OpenStack RC script
 downloaded from the `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ site as
-described in `command-line-interface section
-<https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-openstack-rc-script>`_.
+described in :ref:`cli-rc-script`.
 
 Next, issue the following command:
 

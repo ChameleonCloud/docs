@@ -7,8 +7,8 @@ Collaboration Strategies
 ========================
 
 It is often desirable to share your in-progress Notebooks with peers or
-supervisors for feedback, perhaps before publishing in the
-:ref:`jupyter-sharing`. This can be accomplished in many different ways, each
+supervisors for feedback, perhaps before publishing in :ref:`trovi`. 
+This can be accomplished in many different ways, each
 suiting different use-cases. We have identified a few current tools that offer
 the best range of functionality.
 
