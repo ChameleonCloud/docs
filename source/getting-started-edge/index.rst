@@ -474,6 +474,7 @@ How do I upload files to my container?
 Using the jupyter interface, you can do:
 
 .. code-block:: python
+
   from chi import container
   container.upload(container_uuid, local_path, remote_path)
 
