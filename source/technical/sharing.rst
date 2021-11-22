@@ -170,13 +170,13 @@ Zenodo and check "Request DOI", then click "Save."
 This also creates a DOI, which you can easily include in your
 paper. The artifacts shared on Zenodo also appear on Trovi.
 
-.. _sharing-day-passes:
+.. _sharing-daypasses:
 
-Using Day Passes
-================
+Using Daypass
+=============
 Normally, only Chameleon users with active allocations are able to launch and
 view Trovi artifacts. To allow anyone to launch an artifact, we also provide
-day passes. This allows for a non-Chameleon user to have access to Chameleon
+daypass. This allows for a non-Chameleon user to have access to Chameleon
 for a limited amount of time, using a small, separate allocation tied to your
 allocation. People interested in reproducing your project will send requests
 to the managers of a project. If approved, the requesting user will recieve an
@@ -184,7 +184,7 @@ email invitation to join the reproducibility project. When they accept, they
 can use this project to run your artifact. After the specified time limit,
 they will be automatically removed from this project.
 
-.. _sharing-enable-day-pass:
+.. _sharing-enable-daypass:
 
 Allowing Reproducibility Requests
 ---------------------------------
@@ -208,37 +208,37 @@ requests, and the hours to reproduce.
    :figclass: screenshot
 
 After these items are saved, an allocation request is automatically made. Your
-artifact should now appear with a "Request Day Pass" button below the "Launch"
+artifact should now appear with a "Request Daypass" button below the "Launch"
 button. The "Launch" button will not appear for users that are not a member
 in an active Chameleon project.
 
-Requesting a Day Pass
+Requesting a Daypass
 ^^^^^^^^^^^^^^^^^^^^^
 
-When you select "Request Day Pass", you will be taken a form where you are asked
+When you select "Request Daypass", you will be taken a form where you are asked
 to submit your name, institution, and a reason why you want to
 reproduce the artifact. The goal of this form is to explain to the PI why you
 are interested in reproducing the artifact, as the PI is still responsible
 for overseeing the proper use of Chameleon resources, and the PI may be a
 stranger to you.
 
-.. figure:: sharing/request_day_pass_button.png
-   :alt: An image showing the "Request Day Pass" button
+.. figure:: sharing/request_daypass_button.png
+   :alt: An image showing the "Request Daypass" button
    :figclass: screenshot
 
 After submitting the form, the managers (and PI) of the project associated with
 the artifact will receive an email informing them of the request.
 
-Reviewing a Day Pass Request
+Reviewing a Daypass Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After recieving an email with the day pass request, PIs and project managers
+After recieving an email with the daypass request, PIs and project managers
 can navigate to the review page by clicking the link in the email. Here, they
 will see all of the details submitted with the request. A decision can be made
 by choosing "approved" or "rejected" in the selector, and then clicking submit.
 
-.. figure:: sharing/review_day_pass_request.png
-   :alt: An image showing the "Review Day Pass" screen
+.. figure:: sharing/review_daypass_request.png
+   :alt: An image showing the "Review Daypass" screen
    :figclass: screenshot
 
 After this decision is made, an email is sent to the requestor with the result.
@@ -247,7 +247,7 @@ If the request is approved, an invitation is sent to the user.
 Using an Invitation
 ^^^^^^^^^^^^^^^^^^^
 
-If your day pass request is approved, an email will be sent to you with an
+If your daypass request is approved, an email will be sent to you with an
 invite link. After clicking this link, you will be automatically added to the
 project. The email will also mention how long the invitation is for. When the
 invite is accepted, you will be taken to the project page for the
