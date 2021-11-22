@@ -363,6 +363,8 @@ Congratulations, you have launched an container! It may take a few minutes for
 your container to become active if the image is not yet downloaded to the
 target device.
 
+ .. _device-profile:
+
 Launching with a Device Profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -427,6 +429,9 @@ first assign a floating IP address.
    should see your new Floating IP appear in the list. You can now go back to
    step 3.
 
+
+.. _access-to-your-container:
+
 Access to your container
 ------------------------
 
@@ -452,5 +457,68 @@ moment this is not supported.
       :figclass: screenshot
 
       This dialog allows you to execute a command on your container.
+
+FAQs
+====
+
+How do I access my container?
+-----------------------------
+See :ref:`Access to your container <access-to-your-container>`.
+
+You may wish to `install an ssh server <https://stackoverflow.com/questions/18136389/using-ssh-keys-inside-docker-container/43318322#43318322>`_ 
+on your container. If you do so, please ensure that password access is disabled
+in order to keep your container secure.
+
+How do I upload files to my container?
+--------------------------------------
+Using the Jupyter interface, you can do:
+
+.. code-block:: python
+
+  from chi import container
+  container.upload(container_uuid, local_path, remote_path)
+
+This method is limited to a small file size per each upload.
+
+If your container runs an SSH server, you can copy files using tools like
+``scp``.
+
+Can I use a private image from DockerHub?
+-----------------------------------------
+We do not support pulling from private Docker registries, but you can use
+Glance to do this, which is the image service used for Chameleon's baremetal
+and KVM sites. Run a command:
+
+.. code-block:: shell
+      docker save <image> | openstack image create --container-format=docker --disk-format=raw <name>
+
+When you launch a container, you can select "Glance" as the image driver, with
+the name of your image.
+
+Can I launch my container with runtime capabilities or in privileged mode?
+--------------------------------------------------------------------------
+Containers can only be launched with a set of approved capabilities for
+security reasons. See :ref:`this section <device-profile>` for how to use
+capabilities and what capabilties are available.
+
+How do I check GPU memory usage on the Jetsons?
+-----------------------------------------------
+This can be done with ``tegrastats``. This is included in Nvidia's L4T base image,
+or you can follow these steps to get the binary, which can be copied to your
+image.
+
+First, get the `tegrastats binary from Nvidia <https://repo.download.nvidia.com/jetson/>`_
+which is in the `nvidia-l4t-tools package <https://repo.download.nvidia.com/jetson/t210/pool/main/n/nvidia-l4t-tools/nvidia-l4t-tools_32.5.1-20210614115125_arm64.deb>`_.
+
+Extract the file ``dpkg-deb -x <filename>.deb <output_dir>"``, and then you
+can find the single tegrastats binary in ``./usr/bin``. 
+
+My container stops with status ``Exited(1)``
+--------------------------------------------
+Check the "Logs" tab for more information on what actually went wrong.
+
+If you see the error ``exec user process caused: exec format error``, the issue
+most likely an architecture issue. Make sure your container is built for the
+proper CPU type, which is ``linux/arm64`` on most of our devices.
 
 
