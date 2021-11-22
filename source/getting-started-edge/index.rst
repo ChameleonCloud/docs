@@ -471,7 +471,7 @@ in order to keep your container secure.
 
 How do I upload files to my container?
 --------------------------------------
-Using the jupyter interface, you can do:
+Using the Jupyter interface, you can do:
 
 .. code-block:: python
 
@@ -485,7 +485,7 @@ If your container runs an SSH server, you can copy files using tools like
 
 Can I use a private image from DockerHub?
 -----------------------------------------
-We do not support pulling from private docker registries, but you can use
+We do not support pulling from private Docker registries, but you can use
 Glance to do this, which is the image service used for Chameleon's baremetal
 and KVM sites. Run a command:
 
@@ -503,7 +503,7 @@ capabilities and what capabilties are available.
 
 How do I check GPU memory usage on the Jetsons?
 -----------------------------------------------
-This can be done with tegrastats This is included in Nvidia's L4T base image,
+This can be done with ``tegrastats``. This is included in Nvidia's L4T base image,
 or you can follow these steps to get the binary, which can be copied to your
 image.
 
@@ -519,6 +519,6 @@ Check the "Logs" tab for more information on what actually went wrong.
 
 If you see the error ``exec user process caused: exec format error``, the issue
 most likely an architecture issue. Make sure your container is built for the
-propery CPU type, which is ``linux/arm64`` on most of our devices.
+proper CPU type, which is ``linux/arm64`` on most of our devices.
 
 
