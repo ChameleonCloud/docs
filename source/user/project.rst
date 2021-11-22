@@ -132,8 +132,8 @@ button next to the publication text.
 
 .. _manage-roles:
 
-Manage User Roles
-------------------
+Manage User Roles (PI Delegate)
+-------------------------------
 
 To manage user roles of a *Project*, use the *Project Members* section in the 
 :ref:`project-details`. The table below shows the types of roles and their
@@ -170,11 +170,6 @@ To manage users of a *Project*, use the *Project Members* section in the
 independent of your project, they may be added to one or more projects. Being a
 user of a *Project* **does not** require a :ref:`PI eligibility
 <pi-eligibility>`.
-
-.. important::
-
-   For *Project* Managers, it is highly recommended that your *Project* users should
-   have their own non-PI Chameleon accounts and should be added to your project.
 
 You may add a user to your project by filling out their user name or email
 address and clicking the *Add user* button. You may remove a user from your
