@@ -93,21 +93,42 @@ Clicking on a project from either the :ref:`dashboard-page` main page or the
   Project details
 
 In the details page of your project, you may :ref:`recharge or extend your
-allocation <recharge-extend-allocation>` and :ref:`manage users <manage-users>`
-of your project.
+allocation <recharge-extend-allocation>`, :ref:`view allocation usage details <view-charge>`,
+and :ref:`manage users <manage-users>` of your project.
 
 .. _recharge-extend-allocation:
 
 Recharge or Extend Your Allocation
 ----------------------------------
 
+.. figure:: project/allocationactions.png
+  :alt: Allocation Actions
+
+  Allocation actions
+
 In the *Allocations* section of your :ref:`project-details`, you may view your
-project start and end dates, current *Service Unit* usage and request a *Service
-Unit* recharge or project extension. To request a *Service Unit* recharge or
-*Project* extension, click the link next to your project in the *Actions* column
-of this section. When requesting renewal or recharge of the allocations, we may
+project start and end dates, current *Service Unit* usage and request a
+*Service Unit* recharge or project extension. To request a *Service Unit* recharge or
+*Project* extension, click the *gear* button at the end of the
+allocation row, and then click *Recharge/Extend Allocation*. 
+When requesting renewal or recharge of the allocations, we may
 ask you to update your :ref:`publications dashboard <manage-publications>`, so
 keeping it up to date now can save you time later! 
+
+.. _view-charge:
+
+View Allocation Usage Details
+------------------------------
+
+.. figure:: project/allocationusagedetails.png
+  :alt: Allocation Usage Details
+
+  Allocation usage details
+
+To view the allocation usage details, in the *Allocations* section,
+click the *gear* button at the end of the
+allocation row, and then click *View Charge*. 
+
 
 .. _manage-publications:
 
