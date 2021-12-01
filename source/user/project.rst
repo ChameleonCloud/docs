@@ -127,7 +127,10 @@ View Allocation Usage Details
 
 To view the allocation usage details, in the *Allocations* section,
 click the *gear* button at the end of the
-allocation row, and then click *View Charge*. 
+allocation row, and then click *View Charge*. This will open a modal
+displaying a list of all charges against your allocation, including
+who initiated the charge, how many *Service Units* were charged, and
+what type of charge it was. 
 
 
 .. _manage-publications:
