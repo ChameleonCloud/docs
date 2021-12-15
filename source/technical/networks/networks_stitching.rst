@@ -32,8 +32,7 @@ in the ``resource_properties`` attribute. An example is provided below:
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name=my-stitchable-network,resource_properties='["==","$physical_network","exogeni"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-stitchable-network-lease
-
+   blazar lease-create --reservation resource_type=network,network_name=my-stitchable-network,resource_properties='["==","$stitch_provider","exogeni"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-stitchable-network-lease
 
 Connecting Chameleon to user owned domains
 __________________________________________
@@ -108,8 +107,8 @@ To obtain an account to access AL2S OESS portal, users should contact Internet2.
 Connecting Stitchable Isolated Networks across Chameleon Sites
 ______________________________________________________________
 
-1. Create isolated networks by specifying the "exogeni" provider. Follow the documentation for :ref:`network-stitchable-create`
-   A "stitchable" VLAN tag will be returned and "Physical Network" will appear as "Exogeni" on the dashboard.
+1. Create isolated networks by specifying the "exogeni" stitch_provider. Follow the documentation for :ref:`network-stitchable-create`
+   A "stitchable" VLAN tag will be returned.
    This step will be executed the same way on both UC and TACC sites.
 
 2. After having stitchable isolated networks on UC and TACC sites, a request should be sent to the |Help Desk| for creation of AL2S circuits.
