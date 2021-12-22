@@ -27,12 +27,16 @@ other networks on Chameleon, stitchable networks can only be created by first
 reserving a stitchable VLAN segment using the CLI (See
 :ref:`reservation-cli-vlan`). Once you reserve any VLAN segment, your network
 will be created automatically. To reserve a segment on the appropriate
-external testbed make sure to include ``exogeni`` as the ``phyical_network``
+external testbed make sure to include ``exogeni`` as the ``stitch_provider``
 in the ``resource_properties`` attribute. An example is provided below:
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name=my-stitchable-network,resource_properties='["==","$stitch_provider","exogeni"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-stitchable-network-lease
+   blazar lease-create --reservation \
+   resource_type=network,network_name=my-stitchable-network,\
+   resource_properties='["==","$stitch_provider","exogeni"]' \
+   --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" \
+   my-stitchable-network-lease
 
 Connecting Chameleon to user owned domains
 __________________________________________
@@ -110,9 +114,9 @@ ______________________________________________________________
 1. Create isolated networks by specifying the "exogeni" stitch_provider. Follow the documentation for :ref:`network-stitchable-create`
    A "stitchable" VLAN tag will be returned.
    This step will be executed the same way on both UC and TACC sites.
-
 2. After having stitchable isolated networks on UC and TACC sites, a request should be sent to the |Help Desk| for creation of AL2S circuits.
-In the request, following information should be specified:
-- Information for the network at UC (Project ID, name of the network, ID of the network)
-- Information for the network at TACC (Project ID, name of the network, ID of the network)
-- Duration of the circuit in active state
+   In the request, following information should be specified:
+
+   - Information for the network at UC (Project ID, name of the network, ID of the network)
+   - Information for the network at TACC (Project ID, name of the network, ID of the network)
+   - Duration of the circuit in active state
