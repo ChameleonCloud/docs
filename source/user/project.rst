@@ -93,37 +93,116 @@ Clicking on a project from either the :ref:`dashboard-page` main page or the
   Project details
 
 In the details page of your project, you may :ref:`recharge or extend your
-allocation <recharge-extend-allocation>` and :ref:`manage users <manage-users>`
-of your project.
+allocation <recharge-extend-allocation>`, :ref:`view allocation usage details <view-charge>`,
+and :ref:`manage users <manage-users>` of your project.
 
 .. _recharge-extend-allocation:
 
 Recharge or Extend Your Allocation
 ----------------------------------
 
+.. figure:: project/allocationactions.png
+  :alt: Allocation Actions
+
+  Allocation actions
+
 In the *Allocations* section of your :ref:`project-details`, you may view your
-project start and end dates, current *Service Unit* usage and request a *Service
-Unit* recharge or project extension. To request a *Service Unit* recharge or
-*Project* extension, click the link next to your project in the *Actions* column
-of this section.
+project start and end dates, current *Service Unit* usage and request a
+*Service Unit* recharge or project extension. To request a *Service Unit* recharge or
+*Project* extension, click the *gear* button at the end of the
+allocation row, and then click *Recharge/Extend Allocation*. 
+When requesting renewal or recharge of the allocations, we may
+ask you to update your :ref:`publications dashboard <manage-publications>`, so
+keeping it up to date now can save you time later! 
+
+.. _view-charge:
+
+View Allocation Usage Details
+------------------------------
+
+.. figure:: project/allocationusagedetails.png
+  :alt: Allocation Usage Details
+
+  Allocation usage details
+
+To view the allocation usage details, in the *Allocations* section,
+click the *gear* button at the end of the
+allocation row, and then click *View Charge*. This will open a modal
+displaying a list of all charges against your allocation, including
+who initiated the charge, how many *Service Units* were charged, and
+what type of charge it was. 
+
+
+.. _manage-publications:
+
+Manage Publications
+--------------------
+
+To add publications to a project, click the *Add Publications* button in the
+:ref:`project-details` page. Please enter the publications in BibTex format. All
+regular BibTex publication types are supported. If you can provide a link,
+please enter as *note* or *howpublished* using the url package.
+
+
+To manage the publications you have entered, use the *Publications Dashboard*.
+
+.. figure:: project/publication.png
+  :alt: Publications dashboard
+  
+  Publications dashboard
+  
+In the dashboard, you may remove a publication of a project by clicking the -
+button next to the publication text. 
+
+.. _manage-roles:
+
+Manage User Roles (PI Delegate)
+-------------------------------
+
+To manage user roles of a *Project*, use the *Project Members* section in the 
+:ref:`project-details`. The table below shows the types of roles and their
+privileges. 
+
++---------+---------------------------------------------------------------------------+
+| Role    | Description                                                               |
++=========+===========================================================================+
+| PI      | Each project has only one PI. PI can manage roles of the project members. |
++---------+---------------------------------------------------------------------------+
+| Manager | Each project can have multiple Managers. Managers can manage the          | 
+|         | membership of the project.                                                |
++---------+---------------------------------------------------------------------------+
+| Member  | Members can only view the list of the project members.                    |
++---------+---------------------------------------------------------------------------+
+
+To change the role of a project member, click the *gear* button at the end of the
+user row, and then click *Change Role*. It will enable the role dropdown.
+Choose a new role and click the *Submit* button to apply the new role to the user, or
+use the *Cancel* button to cancel the action.
+
+.. figure:: project/managerole.png
+  :alt: Manage Role of a User
+  
+  Manage Role of a User
 
 .. _manage-users:
 
 Manage Users
 ------------
 
-To manage users of a *Project*, use the *Project Users* section in the
+To manage users of a *Project*, use the *Project Members* section in the
 :ref:`project-details`. While each user has their own Chameleon User account
 independent of your project, they may be added to one or more projects. Being a
 user of a *Project* **does not** require a :ref:`PI eligibility
 <pi-eligibility>`.
 
-.. important::
-
-   For *Project* PIs, it is highly recommended that your *Project* users should
-   have their own non-PI Chameleon accounts and should be added to your project.
-
-You may add a user to your account by filling out their user name or email
+You may add a user to your project by filling out their user name or email
 address and clicking the *Add user* button. You may remove a user from your
-project by locating their user name in the user list and clicking the *-* button
-next to their user name.
+project by locating the user in the user list; clicking the *gear* button
+at the end of the row; and clicking *Remove user*.
+
+If there is no user associated with an email address, an invitation will be sent
+with a link. When someone clicks on this link, they will be prompted to sign in
+or create an account, and then automatically added to the project. Invitations
+show up at the bottom of the members list, and can be deleted or resent if needed.
+After an invitation is accepted, the user will show up under the *Project Members*
+section.

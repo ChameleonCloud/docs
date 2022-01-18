@@ -136,6 +136,8 @@ Key Pairs
 You will need to import or create SSH :ref:`gui-key-pairs`. This process is
 similar to the process performed on |CHI@TACC| and |CHI@UC| bare metal sites.
 
+.. _kvm-security-groups:
+
 Security Groups
 ~~~~~~~~~~~~~~~
 
@@ -265,8 +267,7 @@ converted to raw in the backend.
 
 In order to use this method, authenticate to KVM using the OpenStack RC script
 downloaded from the `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ site as
-described in `command-line-interface section
-<https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-openstack-rc-script>`_.
+described in :ref:`cli-rc-script`.
 
 Next, issue the following command:
 

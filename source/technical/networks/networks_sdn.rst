@@ -3,19 +3,39 @@
 Software Defined Networking
 ===========================
 
-.. Tip:: A good way to start working with OpenFlow on Chameleon is the `OpenFlow Quick Start`_ appliance.
+.. tip::
+   A good way to start working with OpenFlow on Chameleon is the `OpenFlow Quick Start`_
+   appliance.
 
 .. _OpenFlow Quick Start: https://www.chameleoncloud.org/appliances/56/
 
-Chameleon's Bring Your Own Controller (BYOC) functionality enables tenants to create isolated network switches managed using an OpenFlow controller provided by the tenant.  This feature is targeted at users wishing to experiment with software-defined networking (SDN) as well as enabling custom network appliances supporting experiments that have non-standard networking requirements. This document focuses on how to use OpenFlow networks on Chameleon. A complete discussion of OpenFlow and SDN is beyond the scope of this document.
+Chameleon's Bring Your Own Controller (BYOC) functionality enables tenants to create
+isolated network switches managed using an OpenFlow controller provided by the tenant.
+This feature is targeted at users wishing to experiment with software-defined networking
+(SDN) as well as enabling custom network appliances supporting experiments that have
+non-standard networking requirements. This document focuses on how to use OpenFlow
+networks on Chameleon. A complete discussion of OpenFlow and SDN is beyond the scope of
+this document.
 
 .. Note::  **More information on OpenFlow**:
            https://www.sdxcentral.com/sdn/definitions/what-is-openflow/  and
            https://www.opennetworking.org/technical-communities/areas/specification/open-datapath/
 
-OpenFlow switches, like traditional switches, forward network traffic between a number of ports used to connect other networks and devices. The primary difference is that OpenFlow switches rely on external software (a "controller") to dynamically manage the rules (or "flows") that determine how and where the traffic is forwarded. In addition, OpenFlow enables a much larger set of possible rules which can be imposed on the traffic.
+OpenFlow switches, like traditional switches, forward network traffic between a number
+of ports used to connect other networks and devices. The primary difference is that
+OpenFlow switches rely on external software (a "controller") to dynamically manage the
+rules (or "flows") that determine how and where the traffic is forwarded. In addition,
+OpenFlow enables a much larger set of possible rules which can be imposed on the
+traffic.
 
-The basic requirements of an OpenFlow switch are the switch and the controller. The switch is configured with the IP address and port of a controller (software) that manages the switch's rules.  When a packet arrives at the switch, the packet is tested against the rules that are known by the switch to determine what action(s) to take.  Typically, if there are no rules that apply to a packet, the packet is sent to the controller which replies with a set of rules for that type of packet. The new rules are cached in the switch and applied to subsequent packets until the rules expire or are explicitly removed.
+The basic requirements of an OpenFlow switch are the switch and the controller. The
+switch is configured with the IP address and port of a controller (software) that
+manages the switch's rules.  When a packet arrives at the switch, the packet is tested
+against the rules that are known by the switch to determine what action(s) to take.
+Typically, if there are no rules that apply to a packet, the packet is sent to the
+controller which replies with a set of rules for that type of packet. The new rules are
+cached in the switch and applied to subsequent packets until the rules expire or are
+explicitly removed.
 
 .. Note:: Some common OpenFlow controllers are
   `Open Daylight <https://www.opendaylight.org>`_, `Ryu <https://osrg.github.io/ryu>`_,
@@ -25,16 +45,34 @@ The basic requirements of an OpenFlow switch are the switch and the controller. 
 Chameleon and OpenFlow
 ----------------------
 
-BYOC is part of the expanded deployment for Chameleon's phase 2. It enables tenants to allocate OpenFlow switches controlled by their own OpenFlow controller. This capability is limited to the phase 2 hardware additions that include the Corsa DP2000 series OpenFlow switches and Skylake compute nodes. The Corsa switches are key to enabling the BYOC functionality.  These switches allow for the creation of mutually isolated forwarding contexts which can be thought of as virtual OpenFlow switches even though they are the native abstraction used by the Corsa DP2000s. Each isolated forwarding context can be configured to use its own OpenFlow controller. The Chameleon BYOC functionality enables tenants to specify the IP and port of an arbitrary OpenFlow controller when they create private networks.
+BYOC is part of the expanded deployment for Chameleon's phase 2. It enables tenants to
+allocate OpenFlow switches controlled by their own OpenFlow controller. This capability
+is limited to the phase 2 hardware additions that include the Corsa DP2000 series
+OpenFlow switches and Skylake compute nodes. The Corsa switches are key to enabling the
+BYOC functionality.  These switches allow for the creation of mutually isolated
+forwarding contexts which can be thought of as virtual OpenFlow switches even though
+they are the native abstraction used by the Corsa DP2000s. Each isolated forwarding
+context can be configured to use its own OpenFlow controller. The Chameleon BYOC
+functionality enables tenants to specify the IP and port of an arbitrary OpenFlow
+controller when they create private networks.
 
-.. Important:: OpenFlow capabilities are site-dependent. At UC and TACC, only Skylakes are supported.
+.. Important::
+   Currently (June 2021) only Skylake nodes can participate in OpenFlow
+   experiments while we install new hardware as part of Chameleon Phase 3.
 
-Specifying an OpenFlow controller for your private network is just a special case of creating a private network. Before proceeding you should become familiar with using regular private VLANs on Chameleon and be able to create your own private VLANs. Background information can be found in the document covering Reconfigurable Networking.
+Specifying an OpenFlow controller for your private network is just a special case of
+creating a private network. Before proceeding you should become familiar with using
+regular private VLANs on Chameleon and be able to create your own private VLANs.
+Background information can be found in the document covering Reconfigurable Networking.
 
 .. attention::
-   Currently it is not possible to specify an OpenFlow controller using the Horizon portal.  However, OpenFlow networks with tenant owned controllers can be created using Heat templates which integrate the instructions below.
+   Currently it is not possible to specify an OpenFlow controller using the Horizon
+   portal.  However, OpenFlow networks with tenant owned controllers can be created
+   using Heat templates which integrate the instructions below.
 
-Using the CLI, an external OpenFlow controller (IP and port) can be specified on the command line using the ``--description`` field as shown below. Creating the subnet and router is the same as any other Chameleon network.
+Using the CLI, an external OpenFlow controller (IP and port) can be specified on the
+command line using the ``--description`` field as shown below. Creating the subnet and
+router is the same as any other Chameleon network.
 
 .. code-block:: bash
 
@@ -42,7 +80,8 @@ Using the CLI, an external OpenFlow controller (IP and port) can be specified on
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port> <network_name>
 
 .. note::
-   To reserve a stitchable VLAN segment and use it for OpenFlow, you must use the Blazar CLI. See :ref:`reservation-cli-vlan`.
+   To reserve a stitchable VLAN segment and use it for OpenFlow, you must use the Blazar
+   CLI. See :ref:`reservation-cli-vlan`.
 
 The output should look like the following:
 
@@ -125,18 +164,124 @@ Example CLI command used to create the network:
    | updated_at                | 2018-05-23T14:38:18Z                 |
    +---------------------------+--------------------------------------+
 
-At this point your OpenFlow network switch will have been created and connected to the OpenFlow at the IP/Port that you sepcified.  Using your controller you can explore the OpenFlow switch. There should be only one port on the swtich with is the uplink that connects to the OpenStack services and, optionally, any externally stitched networks such as ExoGENI. The uplink port ID will be the segmentation ID (VLAN ID) of the network shown in the Chameleon portal.  When nodes are created and connected to your network ports will be added to your OpenFlow swtich.  Each compute node will always have the same port ID on the switch.  The mapping of port IDs to compute nodes is in the following section.
+At this point your OpenFlow network switch will have been created and connected to the
+OpenFlow at the IP/Port that you sepcified.  Using your controller you can explore the
+OpenFlow switch. There should be only one port on the swtich with is the uplink that
+connects to the OpenStack services and, optionally, any externally stitched networks
+such as ExoGENI. The uplink port ID will be the segmentation ID (VLAN ID) of the network
+shown in the Chameleon portal.  When nodes are created and connected to your network
+ports will be added to your OpenFlow swtich.  Each compute node will always have the
+same port ID on the switch.  The mapping of port IDs to compute nodes is in the
+following section.
 
 Port Mapping
 ------------
 
-You will likely need your OpenFlow controller to know which of its ports connects to which of your Chameleon nodes. The uplink port will always match the segmentation ID (VLAN ID) of the network. The following tables list the OpenFlow port numberings for each baremetal node; these port values will be stable for every deployment of a particular node.
+You will likely need your OpenFlow controller to know which of its ports connects to
+which of your Chameleon nodes. The uplink port will always match the segmentation ID
+(VLAN ID) of the network. The following tables list the OpenFlow port numberings for
+each baremetal node; these port values will be stable for every deployment of a
+particular node.
 
 CHI\@UC
 ^^^^^^^
 
 .. note::
+<<<<<<< HEAD
    Only `compute_skylake` nodes can participate in SDN experiments at CHI\@UC and CHI\@TACC.
+=======
+   Both `compute_haswell` and `compute_skylake` nodes can participate in SDN experiments
+   at CHI\@UC. This is not (yet) the case at CHI\@TACC; at that site, only
+   `compute_skylake` nodes can be part of OpenFlow-enabled networks.
+
++--------------------------------------+-------+--------------------------------------+-------+
+| Node UUID (compute_haswell rack 1)   | Port  | Node UUID (compute_haswell rack 2)   | Port  |
++======================================+=======+======================================+=======+
+| c9f98cc9-25e9-424e-8a89-002989054ec2 | 10201 | b6278484-5520-4b1f-aefa-579c5615ef42 | 10243 |
++--------------------------------------+-------+--------------------------------------+-------+
+| d5641882-f7e5-4b92-9423-7e8157586218 | 10202 | b5aa99f8-c05f-41bf-819d-a3dee44f141b | 10244 |
++--------------------------------------+-------+--------------------------------------+-------+
+| e5fcdcf3-8355-4705-9a0b-371e75ea1732 | 10203 | 8095ac4f-f8be-4f8a-8727-fc2eaca74b0f | 10245 |
++--------------------------------------+-------+--------------------------------------+-------+
+| b6073cd3-30df-42bc-b2f8-4c9842fd4776 | 10204 | 9c4a409d-188c-46c1-8eb2-cd209a962f63 | 10246 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 3dee65c0-db5a-4fc8-a186-9ee35f1f4089 | 10205 | f587599a-7216-4937-90e0-cd3d16aff299 | 10247 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 27850427-9fb7-4285-8462-2d0077148b14 | 10206 | 227ef3d9-5a92-4146-ba6d-149116703aa8 | 10248 |
++--------------------------------------+-------+--------------------------------------+-------+
+| d65b0cf3-6eac-4e36-ba0f-5cd5de95cddc | 10207 | 7cf9fe65-42a5-4bad-9d52-c90c0f5d85f9 | 10249 |
++--------------------------------------+-------+--------------------------------------+-------+
+| c91ce73f-2e0a-4d31-a043-07e80abec92f | 10208 | 8efdfbb7-4093-47db-8157-bae62efc3261 | 10250 |
++--------------------------------------+-------+--------------------------------------+-------+
+| dca167ed-d507-4d93-8c2f-82b59b141b30 | 10209 | 74b5b876-b58a-4fba-ab45-91902ed78d42 | 10251 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 35264966-4a36-44a8-a840-39560a8a5528 | 10210 | 00c04eeb-ad2d-4c2d-aabf-a2fdbda5a752 | 10252 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 1c63ecc0-1101-434a-9023-0fca32de828a | 10211 | 1095fe89-74b8-4261-ab4e-277f6dedb36d | 10253 |
++--------------------------------------+-------+--------------------------------------+-------+
+| defe3e8a-1dcc-4b12-a537-a9f4e92bd478 | 10212 | 224e4adf-e622-4d1d-8981-01082867b561 | 10254 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 7d298ad5-41ae-4d89-8f6a-57c4ece5dc7a | 10213 | a6f54db9-dcb8-46a5-b7e1-612dc981a08b | 10255 |
++--------------------------------------+-------+--------------------------------------+-------+
+| b0525159-5c95-4b71-83f2-b8d6bdd2acd2 | 10214 | 9b16abe6-3350-4794-92c7-3a170db59725 | 10256 |
++--------------------------------------+-------+--------------------------------------+-------+
+| cf9f15e1-1c1e-4ce7-abbe-ad933f906182 | 10215 | aaf65314-213a-4103-8470-b96abad71fee | 10257 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 61c8f82f-b2c1-4441-b1b2-1197ae00fcae | 10216 | 5b2bb13c-acd7-465e-8466-a41ee4507e87 | 10258 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 0129d2fc-0e5c-4b5b-a73b-01844d913957 | 10217 | ca40f2a8-7ce8-4da5-b49a-194937dc9e48 | 10259 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 8eccc666-72d3-4346-bcbd-c1cadadabba1 | 10218 | 5bd8c7bb-ec5d-4100-b70e-6f5c4b1a3fbe | 10260 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 06ba5c30-2ab7-4c93-978e-7fc13c2f0585 | 10219 | ec7da18b-ed66-48c7-951d-d9858a786a0a | 10261 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 6b8b4932-6cf4-4cf4-9668-efdd2de11954 | 10220 | 15a37657-65bb-4a39-8f2d-c308e7226651 | 10262 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 6ad2bf8e-4098-40c2-b68c-05b69d2f5cd4 | 10221 | 04d5f7c8-5239-41ae-b0e8-7e67b74aab26 | 10263 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 4b8ef8b4-ef7d-40ae-add6-ab5f72d73cd4 | 10222 | eb160fa5-ecb5-43dd-b76e-38834a969184 | 10264 |
++--------------------------------------+-------+--------------------------------------+-------+
+| ec24befc-29c9-4a5f-887f-3ae3d95503e0 | 10223 | 8b4b8129-3c77-4b47-a84f-94d570ad3763 | 10265 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 93e5be0c-16fc-4e41-9789-b112963be2c9 | 10224 | a6b31d60-0656-4462-9410-3504f0dae232 | 10266 |
++--------------------------------------+-------+--------------------------------------+-------+
+| d5a25825-6312-44e0-8130-87a17a1b00d6 | 10225 | ddd36153-f522-4622-9ede-136d5d457ea6 | 10267 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 5c6af0a0-11a5-48c1-b618-cd64c9abded7 | 10226 | 64bc7530-cc11-4725-be70-d4a91f976c6e | 10268 |
++--------------------------------------+-------+--------------------------------------+-------+
+| a3365780-a99b-4c87-aec0-1ad8bbabc5bf | 10227 | 15b4298a-52aa-44d4-8318-7b1a708e8ea5 | 10269 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 2f57c329-9461-4ada-b95f-1963fe80732f | 10228 | 12985e8f-e3ae-4440-b971-cceefe047958 | 10271 |
++--------------------------------------+-------+--------------------------------------+-------+
+| fefd772a-0542-411f-95c3-45b3e2bf14fd | 10229 | b1f1eaf2-d745-43af-9478-e809f2beba8e | 10272 |
++--------------------------------------+-------+--------------------------------------+-------+
+| c03b5a7d-6b47-43d7-ab69-75ad943482d4 | 10230 | 45593d29-91b2-41f8-b281-d2a3c333a4d8 | 10273 |
++--------------------------------------+-------+--------------------------------------+-------+
+| f50dcc35-4913-4667-a9fa-d130659c5661 | 10231 | cc1649b1-0f7d-481e-b1b3-1d3b4087b361 | 10274 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 7ccc132f-2351-4285-9827-cda792f3d6e4 | 10232 | 5732fa6c-18d2-4604-b2ac-e50f92c24ee5 | 10275 |
++--------------------------------------+-------+--------------------------------------+-------+
+| c2d495ef-76bc-42fe-a9df-aafd7f9f43bb | 10233 | dabb6358-ef3d-4e36-a6ed-987c645710d6 | 10276 |
++--------------------------------------+-------+--------------------------------------+-------+
+| e6065981-733d-4c08-8798-144a918bbc56 | 10234 | 5c13b830-58d0-4d4a-bbdb-4313a1b33a52 | 10277 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 9c81036f-b389-4933-9882-9e6013798845 | 10235 | 05eac27a-e3df-4fa0-a642-fe6c5e278e44 | 10278 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 18d9b8eb-38ec-42c7-b646-26ab78b4c4ca | 10236 | 37d9111d-4397-4a89-aaf9-19837259d11a | 10279 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 60f65717-a665-4b0d-af50-1ac46e77e587 | 10237 | 84454f7e-ad98-4873-90a7-f8ddb60a2864 | 10280 |
++--------------------------------------+-------+--------------------------------------+-------+
+| b0b5d1c1-11de-4641-9b26-0b217c08b81e | 10238 | b9f40c59-d9fa-4daa-8ef2-a8cb7fef2607 | 10281 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 5daf2f56-c578-4f4f-96ff-43cbf2d1cdb0 | 10239 | b64905fb-54cc-4123-8d3c-fccacafed1c8 | 10282 |
++--------------------------------------+-------+--------------------------------------+-------+
+| d300558f-7dc1-4e77-b538-6d5b7ce7ab40 | 10240 | d381bea3-8768-4f12-a9b3-abf750ba918f | 10283 |
++--------------------------------------+-------+--------------------------------------+-------+
+| dd193eac-ddb4-4484-aadf-0f5cbf15a53b | 10241 | 8a3db843-dba9-4e9d-8758-9aa1a887bb4d | 10284 |
++--------------------------------------+-------+--------------------------------------+-------+
+| 7c06b072-b099-4d32-94ab-c477307451b0 | 10242 |                                              |
++--------------------------------------+-------+----------------------------------------------+
+>>>>>>> master
 
 +--------------------------------------+-------+--------------------------------------+-------+
 | Node UUID (compute_skylake rack 1)   | Port  | Node UUID (compute_skylake rack 2)   | Port  |
@@ -279,20 +424,17 @@ CHI\@TACC
 Debugging Your Controller
 -------------------------
 
-To assist you in debugging your OpenFlow controller, Chameleon exposes a limited set of metrics exposed from the actual Corsa DP2000 switches. Currently you can see raw packet counts for each physical port on the switch. The data can be retrieved either from a Grafana web interface, or via a special Gnocchi metric resource accessed with the OpenStack CLI.
-
-Accessing the Grafana Interface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Log in with your Chameleon username and password to the `Chameleon Grafana instance <https://grafana.chameleon.tacc.utexas.edu>`_. You should be automatically taken to a "Switch Status" dashboard with tables showing the last-known packet counter across all ports on the Corsa switches, both at TACC and UC. This can help you figure out if your controller is allowing traffic to hit the switch at all, or if your nodes are in fact sending traffic through the switch.
-
-.. figure:: networks/grafana-switch-status.png
-   :alt: The Grafana Switch Status dashboard
+To assist you in debugging your OpenFlow controller, Chameleon exposes a limited set of
+metrics exposed from the actual Corsa DP2000 switches. Currently you can see raw packet
+counts for each physical port on the switch. The data can be retrieved either from a
+Grafana web interface, or via a special Gnocchi metric resource accessed with the
+OpenStack CLI.
 
 Accessing via Gnocchi Metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The metrics can also be queried via :ref:`Gnocchi metrics <metrics>`. The metrics are located under specific Gnocchi resources and can be queried by passing the metric UUID.
+The metrics can also be queried via :ref:`Gnocchi metrics <metrics>`. The metrics are
+located under specific Gnocchi resources and can be queried by passing the metric UUID.
 
 .. code-block:: bash
 
@@ -339,11 +481,19 @@ You can then query an individual metric's values with:
 Corsa DP2000 Virtual Forwarding Contexts: Network Layout and Advanced Features
 ------------------------------------------------------------------------------
 
-Virtual Forwarding Contexts (VFC) are the native OpenFlow abstraction used by the Corsa DP2000 series switches. Each VFC can be thought of as a virtual OpenFlow switch.  Chameleon users can create VFCs by creating isolated networks on Chameleon via CLI or using complex appliaces.
+Virtual Forwarding Contexts (VFC) are the native OpenFlow abstraction used by the Corsa
+DP2000 series switches. Each VFC can be thought of as a virtual OpenFlow switch.
+Chameleon users can create VFCs by creating isolated networks on Chameleon via CLI or
+using complex appliaces.
 
-In this section, actual rack and switch layout of Skylake Nodes and Corsa DP2000 switches for both Chameleon sites is represented in the following figures. Also, example isolated networks with different controller options are shown along with associated VFCs and tunnels from Skylake Nodes are shown.
+In this section, actual rack and switch layout of Skylake Nodes and Corsa DP2000
+switches for both Chameleon sites is represented in the following figures. Also, example
+isolated networks with different controller options are shown along with associated VFCs
+and tunnels from Skylake Nodes are shown.
 
-Users are able to specify an external OpenFlow controller and can assign a name to their VFCs. If an external controller is not specified, VFC is controlled by the OpenFlow controller (Learning Bridge Application) running on the switch.
+Users are able to specify an external OpenFlow controller and can assign a name to their
+VFCs. If an external controller is not specified, VFC is controlled by the OpenFlow
+controller (Learning Bridge Application) running on the switch.
 
 1. Create an isolated network without an external OpenFlow controller and a VFC name:
 
@@ -367,7 +517,11 @@ Users are able to specify an external OpenFlow controller and can assign a name 
    --description OFController=<OF_Controller_IP>:<OF_Controller_Port>,VSwitchName=<VFCName>
    sdn-network-3
 
-A named VFC will be created for the isolated network. Subsequent isolated networks that are created with the same VFC name specification will be attached to the same VFC. Current implementation lets the user specify only one OpenFlow controller to the VFCs. Also, subsequent isolated network creation commands should include exactly the same ``--description``.
+A named VFC will be created for the isolated network. Subsequent isolated networks that
+are created with the same VFC name specification will be attached to the same VFC.
+Current implementation lets the user specify only one OpenFlow controller to the VFCs.
+Also, subsequent isolated network creation commands should include exactly the same
+``--description``.
 
 .. code-block:: bash
 
@@ -376,13 +530,17 @@ A named VFC will be created for the isolated network. Subsequent isolated networ
    sdn-network-4
 
 4. Skylake Nodes at UC:
-   |CHI@UC| has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the ports on the VFCs as described in "Port Mapping" section.
+   |CHI@UC| has two racks with Skylake Nodes. Each rack has a TOR Corsa DP2000 series
+   switch. VFCs for isolated networks are created on Corsa-1. Nodes on the second rack
+   are connected to the VFC via statically provisioned VFCs on Corsa-2. You will see the
+   ports on the VFCs as described in "Port Mapping" section.
 
 .. figure:: networks/corsa-network-vfc-layout-uc.png
 
 
 5. Skylake Nodes at TACC:
-   |CHI@TACC| has one rack with Skylake Nodes. You will see the ports on the VFCs as described in "Port Mapping" section.
+   |CHI@TACC| has one rack with Skylake Nodes. You will see the ports on the VFCs as
+   described in "Port Mapping" section.
 
 .. figure:: networks/corsa-network-vfc-layout-tacc.png
 
@@ -390,17 +548,36 @@ A named VFC will be created for the isolated network. Subsequent isolated networ
 Controllers for Corsa DP2000 series switches
 --------------------------------------------
 
-OpenFlow controllers often need to be aware of the slight differences in implementation across switch vendors. What follows is a description of the quirks we have found while using the Corsa DP2000 series switches as well as a simple controller configuration that is compatible with Chameleon OpenFlow networks.
+OpenFlow controllers often need to be aware of the slight differences in implementation
+across switch vendors. What follows is a description of the quirks we have found while
+using the Corsa DP2000 series switches as well as a simple controller configuration that
+is compatible with Chameleon OpenFlow networks.
 
-We have used Ryu and OpenDaylight controllers for the VFCs (Virtual Forwarding Context) on Corsa switches.  We have provided a sample OpenFlow Ryu controller application that is available on GitHub. In addition, we have provided a Chameleon appliance that creates a Ryu controller based on these code modifications.
+We have used Ryu and OpenDaylight controllers for the VFCs (Virtual Forwarding Context)
+on Corsa switches.  We have provided a sample OpenFlow Ryu controller application that
+is available on GitHub. In addition, we have provided a Chameleon appliance that creates
+a Ryu controller based on these code modifications.
 
-This controller is derived from the Ryu simple_switch_13.py with the following considerations. If you want use any other OpenFlow controller you will have to make similar considerations.
+This controller is derived from the Ryu simple_switch_13.py with the following
+considerations. If you want use any other OpenFlow controller you will have to make
+similar considerations.
 
-1. VFCs on Corsa switches are created by allocating specific amounts of system resources. Each VFC has a limited amount of resources in order to accommodate the requests of all Chameleon users. This limits the number of flows that can be put in the flow tables. Controllers will need to be careful not to fill up the flow tables. In our example, an idle timeout (defaulting to 5 minutes) to any rule inserted into the VFC via the controller is added to ensure the flow tables are cleaned up. This way, the switch removes the rule itself, once traffic matching the rule stops passing (for the specified interval).
+1. VFCs on Corsa switches are created by allocating specific amounts of system
+   resources. Each VFC has a limited amount of resources in order to accommodate the
+   requests of all Chameleon users. This limits the number of flows that can be put in
+   the flow tables. Controllers will need to be careful not to fill up the flow tables.
+   In our example, an idle timeout (defaulting to 5 minutes) to any rule inserted into
+   the VFC via the controller is added to ensure the flow tables are cleaned up. This
+   way, the switch removes the rule itself, once traffic matching the rule stops passing
+   (for the specified interval).
 
-2. The Corsa switches do not support Actions=FLOOD since this reserved port type is only for hybrid switches and it is optional. Corsa is an Openflow-only switch which supports the required port ALL. Controllers must replace the Actions=FLOOD to Actions=ALL in packet out messages.
+2. The Corsa switches do not support Actions=FLOOD since this reserved port type is only
+   for hybrid switches and it is optional. Corsa is an Openflow-only switch which
+   supports the required port ALL. Controllers must replace the Actions=FLOOD to
+   Actions=ALL in packet out messages.
 
-3. Flow tables are modified according to the status of the ports being added or deleted from the VFC.
+3. Flow tables are modified according to the status of the ports being added or deleted
+   from the VFC.
 
 The following changes are made to the application:
 
@@ -417,7 +594,8 @@ Added IDLE_TIMEOUT to flow modification in:
 
    def add_flow(self, datapath, priority, match, actions, buffer_id=None):
 
-Changes are made in the function below to change ``Actions=FLOOD`` to ``actions=ALL`` in packet out message in the ``def _packet_in_handler(self, ev):`` method.
+Changes are made in the function below to change ``Actions=FLOOD`` to ``actions=ALL`` in
+packet out message in the ``def _packet_in_handler(self, ev):`` method.
 
 This controller application can be run by the script below:
 

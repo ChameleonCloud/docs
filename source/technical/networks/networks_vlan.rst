@@ -103,42 +103,6 @@ A Router may have multiple *Interfaces*, each connected to a *Network*. You may 
 
 First, select a network and subnet you have created. You can specify an *IP address*; otherwise, Chameleon will attempt to assign an IP address automatically. The gateway IP you assigned to the subnet will be automatically picked.
 
-Adding a Firewall
-^^^^^^^^^^^^^^^^^
-
-A Router can have a *Firewall* optionally configured to allow you to control ingress/egress to/from your *Subnet*. This has the desirable effect of allowing you to control which services you are exposing over the public Internet when you have assigned *Floating IP addresses* to your instances. To do this, you must create a *Firewall Group* that associates a *Firewall Policy* to an *Interface* on your *Router*. You can access the *Firewall* GUI under the *Firewall Groups* section under the *Networks* sidebar.
-
-.. figure:: networks/firewallgroups.png
-   :alt: The Firewall Groups panel
-
-   The Firewall Groups panel
-
-.. note:: There is a default ingress policy named "chameleon default ingress" shared with all Chameleon projects. It provides some basic security rules such as allowing SSH and HTTP(s), as well as ICMP, and can be a good policy for most cases.
-
-To customize your *Firewall*, you should first add some *Firewall Rules*. To do that, click the *Firewall Rules* tab, and then click the *Add Rule* button to bring up the *Add Rule* modal. This modal allows you to configure the rule, such as for which protocols it should be active, as well as source and destination addresses.
-
-.. figure:: networks/firewallrulesadd.png
-   :alt: The Firewall Rules Add Rule model
-
-   The Firewall Rules "Add Rule" modal
-
-Once you have rules defined, the next step is to create a *Firewall Policy* that has rules assigned. Click the *Firewall Policies* tab, and then click *Add Policy* to bring up the *Add Policy* modal. This modal allows you to name the policy and assign *Firewall Rules* via the *Rules* tab. The ordering of rules matters; the first match will apply.
-
-.. figure:: networks/firewallpoliciesadd.png
-   :alt: The Firewall Policies Add Policy modal
-
-   The Firewall Policies "Add Policy" modal
-
-Finally, associate your *Firewall Policy* to a *Router Interface* by creating a *Firewall Group*. Click the *Firewall Groups* tab, and then click *Create Firewall Group* to open the *Add Firewall Group* modal. Here, you can select your ingress and egress *Firewall Policies* to apply. Click the *Ports* tab and assign the port for your *Router Interface* to apply the firewall to the *Subnet* associated with that interface. You may need to re-visit the *Routers* page to get the ID of your *Router Interface*.
-
-.. figure:: networks/firewallgroupsadd.png
-  :alt: The Firewall Groups Add Firewall Group modal
-
-  The Firewall Groups "Add Firewall Group" modal
-
-.. important:: You need to check the **Admin State** box when creating the *Firewall Group*, or else the firewall will never be activated. "Admin State" is a way for the owner of the firewall to say that it should be enabled or disabled quickly.
-
-Once a port is added to your *Firewall Group*, it will be activated and applied. You can modify your *Firewall Policy* while it is associated with a *Firewall Group* and any changes will be automatically applied to traffic immediately.
 
 Deleting Networking Objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -321,33 +285,6 @@ In addition, you can specify an *External Gateway* for your router and connect i
 .. code-block:: bash
 
    openstack router set --external-gateway public <router_name>
-
-Adding a Firewall
-^^^^^^^^^^^^^^^^^
-
-To configure a *Firewall*, first create *Firewall Rules* that you would like to apply to traffic.
-
-.. code-block:: bash
-
-   openstack firewall group rule create [options] --name <name>
-
-Then, create a *Firewall Policy* that has rules associated:
-
-.. code-block:: bash
-
-   openstack firewall group policy create \
-     --firewall-rule <rule_name_or_id> \
-     --firewall-rule <another_rule_name_or_id> \
-     <policy_name>
-
-Finally, create a *Firewall Group* that applies a policy to one or more *Router Interfaces*:
-
-.. code-block:: bash
-
-   openstack firewall group create --ingress-policy <policy_name_or_id> \
-     --port <router_interface_port_id> \
-     --port <another_router_interface_port_id> \
-     <group_name>
 
 
 Deleting Networking Objects

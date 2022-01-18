@@ -89,34 +89,50 @@ up the window displayed below:
 
    .. tip:: You can get the UTC time by running ``date -u`` in your terminal.
 
-#. To reserve a bare metal node, ensure the "Reserve Physical Host" checkbox is selected.
+#. To reserve a bare metal node, navigate to the "Hosts" tab.
 
-#. Choose the minimum and maximum number of hosts. The default is 1 node.
+	.. figure:: reservations/nodereservationdialog.png
+	   :alt: The Create Lease dialog Host reservation tab
+	
+	   The Create Lease dialog Host reservation tab
 
-#. Choose a node type in the drop down menu below the *node_type* and *=* drop down lists.
+    a. Check "Reserve Hosts".
 
-   .. note::
+    b. Choose the minimum and maximum number of hosts.
 
-      You may only request one type of node in each individual lease. If you
-      wish to request multiple node types, you must create separate Leases for
-      each node type.
+    c. Choose a node type in the drop down menu below the *node_type* and *=* drop down lists.
 
-#. To reserve a vlan segment, ensure the `Reserve Network` checkbox is selected.
+       .. note::
 
-#. Enter the network name and description
+          You may only request one type of node in each individual lease. If you
+          wish to request multiple node types, you must create separate Leases for
+          each node type.
 
-    .. note::
+#. To reserve a vlan segment, navigate to the "Networks" tab.
 
-       When a VLAN segment reservation ends, all Neutron resources attached to
-       the network will be automatically deleted. Bare metal instances using the
-       network will lose network connectivity.
+	.. figure:: reservations/networkreservationdialog.png
+	   :alt: The Create Lease dialog Network reservation tab
+	
+	   The Create Lease dialog Network reservation tab
 
-   .. tip::
+    a. Check "Reserve Network"
 
-      Select or deselect the ``Reserve Physical Host`` and ``Reserve Network``
-      checkboxes to include resources as needed.
+    b. Enter the network name and description
 
-#. Choose the number of floating IPs. You don't need to check `Reserve Network` for floating IPs.
+        .. note::
+
+           When a VLAN segment reservation ends, all Neutron resources attached to
+           the network will be automatically deleted. Bare metal instances using the
+           network will lose network connectivity.
+
+        .. tip::
+
+           Network name is required when reserving VLAN segment.
+
+#. To reserve floating IPs, navigate to the "Networks" tab.
+
+    a. Check "Reserve Floating IPs".
+    b. Choose the number of floating IPs.
 
 #. Click on the *Create* button.
 
@@ -193,13 +209,13 @@ To change the number of nodes of a lease, click on the *Update Lease* button in
 *Actions* column.
 
 .. figure:: reservations/updateleasenodecount.png
-   :alt: The Update Lease Parameters dialog, changing the number of reserved
-   nodes
+   :alt: The Update Lease Parameters dialog, changing the number of reserved nodes
 
    The Update Lease Parameters dialog, changing the number of reserved nodes
 
-Fill out the form by specifying the new minimum and maximum numbers of hosts.
-Then, click on the *Update* button to finish your request.
+
+Navigate to the "Hosts" tab,  and fill out the form by specifying the new minimum 
+and maximum numbers of hosts. Then, click on the *Update* button to finish your request.
 
 Reserving a Node by UUID
 ------------------------
@@ -286,6 +302,18 @@ following:
 
    blazar lease-create \
      --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' \
+     --start-date "2015-06-17 16:00" \
+     --end-date "2015-06-17 18:00" \
+     my-custom-lease
+
+To create a lease with multiple resource properties, you must combine them like
+``["and", [property1], [property2], [...] ]``. For example, to reserve a node
+with *$architecture.smt_size* of *48* and *node_type* of *compute_haswell*:
+
+.. code-block:: bash
+
+   blazar lease-create \
+     --physical-reservation min=1,max=1,resource_properties='["and", ["=", "$architecture.smt_size", "48"], ["=", "$node_type", "compute_haswell"]]' \
      --start-date "2015-06-17 16:00" \
      --end-date "2015-06-17 18:00" \
      my-custom-lease
