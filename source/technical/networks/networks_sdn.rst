@@ -56,9 +56,9 @@ context can be configured to use its own OpenFlow controller. The Chameleon BYOC
 functionality enables tenants to specify the IP and port of an arbitrary OpenFlow
 controller when they create private networks.
 
-.. important::
-   OpenFlow capabilities are site-dependent. At UC, both Haswell and Skylake node types
-   can participate in an OpenFlow network; at TACC, only Skylakes are supported.
+.. Important::
+   Currently (June 2021) only Skylake nodes can participate in OpenFlow
+   experiments while we install new hardware as part of Chameleon Phase 3.
 
 Specifying an OpenFlow controller for your private network is just a special case of
 creating a private network. Before proceeding you should become familiar with using
@@ -187,6 +187,9 @@ CHI\@UC
 ^^^^^^^
 
 .. note::
+<<<<<<< HEAD
+   Only `compute_skylake` nodes can participate in SDN experiments at CHI\@UC and CHI\@TACC.
+=======
    Both `compute_haswell` and `compute_skylake` nodes can participate in SDN experiments
    at CHI\@UC. This is not (yet) the case at CHI\@TACC; at that site, only
    `compute_skylake` nodes can be part of OpenFlow-enabled networks.
@@ -278,6 +281,7 @@ CHI\@UC
 +--------------------------------------+-------+--------------------------------------+-------+
 | 7c06b072-b099-4d32-94ab-c477307451b0 | 10242 |                                              |
 +--------------------------------------+-------+----------------------------------------------+
+>>>>>>> master
 
 +--------------------------------------+-------+--------------------------------------+-------+
 | Node UUID (compute_skylake rack 1)   | Port  | Node UUID (compute_skylake rack 2)   | Port  |
