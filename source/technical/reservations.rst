@@ -217,6 +217,27 @@ To change the number of nodes of a lease, click on the *Update Lease* button in
 Navigate to the "Hosts" tab,  and fill out the form by specifying the new minimum 
 and maximum numbers of hosts. Then, click on the *Update* button to finish your request.
 
+Changing the Number of Floating IPs in a Lease
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to change the number of floating IPs in a lease, whether the
+lease is pending or active. In some situations, you cannot renew a lease due to
+another user reserving the same floating IP in your lease. In this case, you
+can set your lease to have 0 floating IPs, and instead use an
+:ref:`ad-hoc IP <associating-an_ip>`.
+
+To change the number of floating IPs, click on the *Update Lease* button in
+*Actions* column.
+
+.. figure:: reservations/updateleasefloatingipcount.png
+   :alt: The Update Lease Parameters dialog, changing the number of reserved IPs
+
+   The Update Lease Parameters dialog, changing the number of reserved IPs
+
+
+Navigate to the "Floating IPs" tab,  and fill out the form by specifying the
+amount of floating IPs. Then, click on the *Update* button to finish your request.
+
 Reserving a Node by UUID
 ------------------------
 
