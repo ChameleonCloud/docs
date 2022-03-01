@@ -179,6 +179,8 @@ that has been leased to you.
 
 Congratulations, you have launched an instance on a bare metal node!
 
+.. _associating-an_ip:
+
 Associating an IP address
 -------------------------
 
