@@ -223,8 +223,8 @@ Changing the Number of Floating IPs in a Lease
 It is possible to change the number of floating IPs in a lease, whether the
 lease is pending or active. In some situations, you cannot renew a lease due to
 another user reserving the same floating IP in your lease. In this case, you
-can set your lease to have 0 floating IPs, and instead use an
-:ref:`ad-hoc IP <associating-an_ip>`.
+can set your lease to have 0 floating IPs, and create a second lease just for
+reserving floating IPs.
 
 To change the number of floating IPs, click on the *Update Lease* button in
 *Actions* column.
