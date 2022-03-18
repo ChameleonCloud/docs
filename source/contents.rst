@@ -43,4 +43,5 @@ Welcome to Chameleon
    technical/fpga
    technical/ep
    technical/sharing
+   technical/daypass
    technical/kvm
