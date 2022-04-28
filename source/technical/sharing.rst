@@ -192,3 +192,20 @@ git remote URL, and choose which commit to tie the version to.
 
 To update the artifact, you must create a :ref:`new version <create-git-version>`.
 This ensures that a given version of your artifact always has the same contents.
+
+Exporting via git
+-----------------
+
+If you wish to move your code and notebooks outside of your Jupyter notebook,
+one option is to export it into a git repository.
+
+#. Click the "+" button on the top left of your notebook, and choose "Terminal".
+
+#. Run the command ``cd work``. If there is a specific directory you wish to
+   export, you can ``cd`` again into it.
+
+#. Follow the instructions to set up a repository per your git host. For GitHub
+   see `this document <https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github>`_.
+
+#. After the repository is setup, you should be able to commit and push with
+   the git CLI.
