@@ -31,8 +31,7 @@ Browsing artifacts
 ==================
 
 Trovi allows you to browse artifacts, presented in a scrolling list format. On
-the right hand side, there are multiple filtering options. By clicking on the
-project name, you can see all the artifacts that belong to that project. The
+the right hand side, there are multiple filtering options. The
 "All" choice shows you all of the artifacts you have access to. You can also see
 how many times people have downloaded and launched your notebook with the icons
 in the bottom left corner of an artifact.
@@ -115,6 +114,17 @@ entire artifact, click the red "Delete All" button.
 
 This edit view is also available from Trovi via the "Edit" button.
 
+.. _create-git-version:
+
+Creating a version from Git
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Under an artifact's edit settings, you will also see a button for creating a
+new version from Git. This will allow you to enter a Git URL, the same one used
+to clone your repository, and also a reference (lease as HEAD for the latest
+commit). When a user launches your artifact, their notebook will checkout the
+specified commit.
+
 .. _trovi-sharing:
 
 Adjusting sharing settings
@@ -135,8 +145,6 @@ visible you want it to be.
 3. **Share via private link**: this option allows you to share the experiment to
    select people, like individual colleagues, advisors, or students. Anybody in
    possession of the link can view and launch any version of the artifact.
-4. **Share with projects**: this option allows you to share the experiment with
-   members of a Chameleon Project. You can also share amongst multiple projects.
 
 To make your artifact shareable follow the actions shown in the animation below:
 first select how your want to share and then your sharing destination.
@@ -170,3 +178,34 @@ Zenodo and check "Request DOI", then click "Save."
 This also creates a DOI, which you can easily include in your
 paper. The artifacts shared on Zenodo also appear on Trovi.
 
+Importing an artifact
+---------------------
+
+Instead of creating an artifact inside Jupyterhub, you can package an existing
+Git repository into an artifact. When a user launches the artifact, the
+contents of the repository will be added to a Jupyter notebook.
+
+To create an artifact, click "Import Artifact" on the sidebar of Trovi. You are
+first asked for the artifact's metadata. At the bottom of the form, there is
+a button for "Import from Git." After clicking this, you will need to enter a
+git remote URL, and choose which commit to tie the version to.
+
+To update the artifact, you must create a :ref:`new version <create-git-version>`.
+This ensures that a given version of your artifact always has the same contents.
+
+Exporting via git
+-----------------
+
+If you wish to move your code and notebooks outside of your Jupyter notebook,
+one option is to export it into a git repository.
+
+#. Click the "+" button on the top left of your notebook, and choose "Terminal".
+
+#. Run the command ``cd work``. If there is a specific directory you wish to
+   export, you can ``cd`` again into it.
+
+#. Follow the instructions to set up a repository per your git host. For GitHub
+   see `this document <https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github>`_.
+
+#. After the repository is setup, you should be able to commit and push with
+   the git CLI.
