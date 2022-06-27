@@ -564,3 +564,17 @@ June 17th, 2015 at 6:00pm and reserves three floating IPs:
    pip install python-openstackclient
    PUBLIC_NETWORK_ID=$(openstack network show public -c id -f value)
    blazar lease-create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-fip-lease
+
+
+Reallocating a Node in Your Lease
+---------------------------------
+
+After creating your lease, you can view its details in the Horizon web
+interface. On this page, at the bottom, you can see a list of nodes in your
+lease. If you wish to reallocate one of the nodes in your lease, you can run
+the command that follows, entering your lease ID and the node ID where
+appropriate.
+
+.. code-block:: bash
+
+    openstack reservation host reallocate --lease-id LEASE_ID NODE_ID
