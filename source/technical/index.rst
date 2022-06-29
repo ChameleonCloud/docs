@@ -16,6 +16,8 @@ features.
 - :doc:`complex`: Work with Complex Appliances, which automate the process of
   deploying multiple Instances with reconfigurable networking.
 - :doc:`swift`: Store user data such as files as Objects in portable Containers.
+- :doc:`shares`: Provide file storage to an instance with the OpenStack Shared
+  File System service.
 - :doc:`networks`: Create Isolated virtual networks within Chameleon.
 - :doc:`fpga`: Configure and work with FPGA nodes.
 - :doc:`kvm`: Use non-bare metal virtual machine resources in Chameleon's

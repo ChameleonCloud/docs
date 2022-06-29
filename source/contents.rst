@@ -39,6 +39,7 @@ Welcome to Chameleon
    technical/metrics
    technical/complex
    technical/swift
+   technical/shares
    technical/networks
    technical/fpga
    technical/ep
