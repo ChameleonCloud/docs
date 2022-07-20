@@ -4,11 +4,6 @@
 Shares
 ====================
 
-  .. important::
-  
-    The shared file system service is *only* available at `CHI@UC <https://chi.uc.chameleoncloud.org/>`_.
-    This service at `CHI@TACC <https://chi.tacc.chameleoncloud.org/>`_ is coming soon!
-
 Chameleon provides a shared file system service through the `OpenStack Manila <https://docs.openstack.org/manila/latest/>`_ interface.
 With the service, you can create a shared file system, mount to the bare metal instances, and manage some of its properties, such as visibility.
 
