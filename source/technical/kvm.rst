@@ -8,7 +8,7 @@ Introduction
 
 OpenStack is an Infrastructure as a Service (IaaS) platform that allows you to
 create and manage virtual environments. Chameleon provides an installation of
-OpenStack `Train <https://releases.openstack.org/train/index.html>`_ using the
+OpenStack `Xena <https://releases.openstack.org/xena/index.html>`_ using the
 KVM virtualization technology at the `KVM\@TACC
 <https://kvm.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used
 on this cloud, any virtual machines you upload must be compatible with KVM.
@@ -277,7 +277,7 @@ Next, issue the following command:
 
 Details and other options for this command are available via the Glance
 `image-create-via-import documentation
-<https://docs.openstack.org/python-glanceclient/train/cli/details.html#glance-image-create-via-import>`_.
+<https://docs.openstack.org/python-glanceclient/xena/cli/details.html#glance-image-create-via-import>`_.
 
 .. attention::
    Glance image-create-via-import is currently unable to handle conversion of

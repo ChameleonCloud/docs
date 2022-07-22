@@ -57,7 +57,7 @@ OpenStack Client Installation
 
    .. code-block:: shell
 
-      pip install git+https://github.com/chameleoncloud/python-blazarclient@chameleoncloud/stable/train
+      pip install git+https://github.com/chameleoncloud/python-blazarclient@chameleoncloud/xena
 
 .. _cli-authentication:
 
