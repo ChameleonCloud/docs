@@ -836,6 +836,6 @@ Finally, for a stack to launch when your reservation begins, we need to let Blaz
 
 .. code::
 
-    blazar lease-create --start-date "<start_date>" --end-date "<end_date>" \
+    openstack reservation lease create --start-date "<start_date>" --end-date "<end_date>" \
       --physical-reservation min=<min>,max=<max>,on_start=orchestration:<stack_id> \
       <lease_name>

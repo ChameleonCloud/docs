@@ -308,7 +308,7 @@ For example, the following command will create a lease with the name of
 
 .. code-block:: bash
 
-   blazar lease-create \
+   openstack reservation lease create \
      --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' \
      --start-date "2015-06-17 16:00" \
      --end-date "2015-06-17 18:00" \
@@ -321,7 +321,7 @@ following:
 
 .. code-block:: bash
 
-   blazar lease-create \
+   openstack reservation lease create \
      --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' \
      --start-date "2015-06-17 16:00" \
      --end-date "2015-06-17 18:00" \
@@ -333,7 +333,7 @@ with *$architecture.smt_size* of *48* and *node_type* of *compute_haswell*:
 
 .. code-block:: bash
 
-   blazar lease-create \
+   openstack reservation lease create \
      --physical-reservation min=1,max=1,resource_properties='["and", ["=", "$architecture.smt_size", "48"], ["=", "$node_type", "compute_haswell"]]' \
      --start-date "2015-06-17 16:00" \
      --end-date "2015-06-17 18:00" \
@@ -347,7 +347,7 @@ with *$architecture.smt_size* of *48* and *node_type* of *compute_haswell*:
 
    .. code-block:: bash
 
-      blazar lease-create \
+      openstack reservation lease create \
         --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email \
         --start-date "2015-06-17 16:00" \
         --end-date "2015-06-17 18:00" \
@@ -376,7 +376,7 @@ list of nodes with the command:
 
 .. code-block:: bash
 
-   blazar host-list
+   openstack reservation host list
 
 The output should look like:
 
@@ -403,7 +403,7 @@ host 151,  run:
 
 .. code-block:: bash
 
-   blazar host-show 151
+   openstack reservation host show 151
 
 The output should look like:
 
@@ -451,7 +451,7 @@ a letter specifying the time unit. ``w`` is for weeks, ``d`` is for days and
 
 .. code-block:: bash
 
-   blazar lease-update --prolong-for "1d" my-first-lease
+   openstack reservation lease update --prolong-for "1d" my-first-lease
 
 Chameleon Node Types
 --------------------
@@ -510,7 +510,7 @@ For example, the following command will create a lease with the name of
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
 
 Adding the ``network_description`` attribute provides its value as the
 description field when creating the Neutron network, allowing to leverage
@@ -518,7 +518,7 @@ Chameleon :ref:`sdn` features.
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
 
 Adding the ``resource_properties`` attribute allows you to reserve a specific
 *network segment* or *physical network* type. There are currently only two
@@ -528,17 +528,17 @@ a network by ``segment_id`` or ``physical_network``.
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
 
 While separate leases can be created to reserve nodes and VLAN segments, it is also possible to combine multiple reservations within a single lease. The following example creates a lease reserving one Skylake compute node and one VLAN segment:
 
 .. code-block:: bash
 
-   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease
+   openstack reservation lease create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease
 
 .. _reservation-cli-fip:
 
@@ -563,7 +563,7 @@ June 17th, 2015 at 6:00pm and reserves three floating IPs:
 
    pip install python-openstackclient
    PUBLIC_NETWORK_ID=$(openstack network show public -c id -f value)
-   blazar lease-create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-fip-lease
+   openstack reservation lease create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-fip-lease
 
 
 Reallocating a Node in Your Lease
