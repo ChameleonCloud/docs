@@ -297,7 +297,7 @@ Creating a Lease to Reserve Physical Hosts
 To create a lease, use the ``lease-create`` command. The following arguments are
 required:
 
-- ``--physical-reservation`` with the ``min``, ``max``, and ``resource_properties`` attributes
+- ``--reservation`` with the ``min``, ``max``, ``resource_type``, and ``resource_properties`` attributes
 - ``--start-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - A lease name
@@ -309,7 +309,7 @@ For example, the following command will create a lease with the name of
 .. code-block:: bash
 
    openstack reservation lease create \
-     --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' \
+     --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$node_type", "compute_skylake"]' \
      --start-date "2015-06-17 16:00" \
      --end-date "2015-06-17 18:00" \
      my-first-lease
@@ -322,7 +322,7 @@ following:
 .. code-block:: bash
 
    openstack reservation lease create \
-     --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' \
+     --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' \
      --start-date "2015-06-17 16:00" \
      --end-date "2015-06-17 18:00" \
      my-custom-lease
@@ -334,7 +334,7 @@ with *$architecture.smt_size* of *48* and *node_type* of *compute_haswell*:
 .. code-block:: bash
 
    openstack reservation lease create \
-     --physical-reservation min=1,max=1,resource_properties='["and", ["=", "$architecture.smt_size", "48"], ["=", "$node_type", "compute_haswell"]]' \
+     --reservation min=1,max=1,resource_type=physical:host,resource_properties='["and", ["=", "$architecture.smt_size", "48"], ["=", "$node_type", "compute_haswell"]]' \
      --start-date "2015-06-17 16:00" \
      --end-date "2015-06-17 18:00" \
      my-custom-lease
@@ -343,12 +343,12 @@ with *$architecture.smt_size* of *48* and *node_type* of *compute_haswell*:
 .. attention::
 
    To specify a ``before_end`` action, simply add ``before_end=<action_type>``
-   to ``physical-reservation`` parameter. For example:
+   to ``reservation`` parameter. For example:
 
    .. code-block:: bash
 
       openstack reservation lease create \
-        --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email \
+        --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email \
         --start-date "2015-06-17 16:00" \
         --end-date "2015-06-17 18:00" \
         my-custom-lease
@@ -538,7 +538,7 @@ While separate leases can be created to reserve nodes and VLAN segments, it is a
 
 .. code-block:: bash
 
-   openstack reservation lease create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease
+   openstack reservation lease create --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease
 
 .. _reservation-cli-fip:
 

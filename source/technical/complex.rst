@@ -832,10 +832,10 @@ Next you will need to configure a Heat stack with the ``--initialize`` flag on t
 Create Reservation with Stack_ID
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Finally, for a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying ``orchestration`` as an ``on_start`` action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--physical-reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
+Finally, for a stack to launch when your reservation begins, we need to let Blazar know which stack to notify Heat to update. This is done via the command line by specifying ``orchestration`` as an ``on_start`` action with a stack_id (e.g. ``on_start=orchestration:<stack_id>``) under the ``--reservation`` flag. Under the hood, Blazar will update your initialized Heat stack with the reservation_id assigned to the lease. See example below:
 
 .. code::
 
     openstack reservation lease create --start-date "<start_date>" --end-date "<end_date>" \
-      --physical-reservation min=<min>,max=<max>,on_start=orchestration:<stack_id> \
+      --reservation min=<min>,max=<max>,resource_type=physical:host,on_start=orchestration:<stack_id> \
       <lease_name>
