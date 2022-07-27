@@ -302,6 +302,8 @@ required:
 - ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - A lease name
 
+If ``--start-date`` is ommitted, then the current date and time will be used by default.
+
 For example, the following command will create a lease with the name of
 ``my-first-lease`` and the node type of ``compute_skylake`` that starts on June
 17th, 2022 at 4:00pm and ends on June 17th, 2022 at 6:00pm:
