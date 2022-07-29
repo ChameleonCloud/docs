@@ -585,3 +585,7 @@ entering your lease ID and the node ID where appropriate.
 .. code-block:: bash
 
     openstack reservation host reallocate --lease-id LEASE_ID NODE_ID
+
+If you re-allocate a host because it is malfunctioning, please make sure to
+report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that 
+we can fix it.
