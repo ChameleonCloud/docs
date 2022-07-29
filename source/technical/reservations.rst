@@ -571,10 +571,21 @@ Reallocating a Node in Your Lease
 
 After creating your lease, you can view its details in the Horizon web
 interface. On this page, at the bottom, you can see a list of nodes in your
-lease. If you wish to reallocate one of the nodes in your lease, you can run
-the command that follows, entering your lease ID and the node ID where
-appropriate.
+lease. If you wish to reallocate one of the nodes in your lease, you can press
+the red "Re-Allocate Host" button next to it.
+
+.. figure:: reservations/reallocatehost.png
+   :alt: The re-allocate buttons on the lease detail page
+   
+   The nodes on the lease detail page.
+
+You can also do the same on the command-line. Run the command that follows, 
+entering your lease ID and the node ID where appropriate.
 
 .. code-block:: bash
 
     openstack reservation host reallocate --lease-id LEASE_ID NODE_ID
+
+If you re-allocate a host because it is malfunctioning, please make sure to
+report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that 
+we can fix it.
