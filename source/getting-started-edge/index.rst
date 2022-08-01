@@ -178,7 +178,7 @@ may use the following command:
 
 .. code-block:: shell
 
-  blazar lease-create \
+  openstack reservation lease create \
     --reservation resource_type=device,min=1,max=1,resource_properties='["==", "$vendor", "Raspberry Pi"]' \
     --start-date "2021-06-24 15:00" --end-date "2021-06-25 13:00" \
     my-first-lease
@@ -188,13 +188,13 @@ reserve the device named ``rpi3-01``, you can change your command like below:
 
 .. code-block:: shell
 
-  blazar lease-create \
+  openstack reservation lease create \
     --reservation resource_type=device,min=1,max=1,resource_properties='["==", "$name", "rpi3-01"]' \
     --start-date "2021-06-24 15:00" --end-date "2021-06-25 13:00" \
     my-first-lease
 
 
-The output of ``lease-create`` should look like
+The output of ``reservation lease create`` should look like
 
 .. code-block:: shell
 

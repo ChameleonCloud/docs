@@ -297,21 +297,23 @@ Creating a Lease to Reserve Physical Hosts
 To create a lease, use the ``lease-create`` command. The following arguments are
 required:
 
-- ``--physical-reservation`` with the ``min``, ``max``, and ``resource_properties`` attributes
+- ``--reservation`` with the ``min``, ``max``, ``resource_type``, and ``resource_properties`` attributes
 - ``--start-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - A lease name
 
+If ``--start-date`` is ommitted, then the current date and time will be used by default.
+
 For example, the following command will create a lease with the name of
 ``my-first-lease`` and the node type of ``compute_skylake`` that starts on June
-17th, 2015 at 4:00pm and ends on June 17th, 2015 at 6:00pm:
+17th, 2022 at 4:00pm and ends on June 17th, 2022 at 6:00pm:
 
 .. code-block:: bash
 
-   blazar lease-create \
-     --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' \
-     --start-date "2015-06-17 16:00" \
-     --end-date "2015-06-17 18:00" \
+   openstack reservation lease create \
+     --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$node_type", "compute_skylake"]' \
+     --start-date "2022-06-17 16:00" \
+     --end-date "2022-06-17 18:00" \
      my-first-lease
 
 Instead of specifying the node type, you may also reserve a specific node by
@@ -321,10 +323,10 @@ following:
 
 .. code-block:: bash
 
-   blazar lease-create \
-     --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' \
-     --start-date "2015-06-17 16:00" \
-     --end-date "2015-06-17 18:00" \
+   openstack reservation lease create \
+     --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]' \
+     --start-date "2022-06-17 16:00" \
+     --end-date "2022-06-17 18:00" \
      my-custom-lease
 
 To create a lease with multiple resource properties, you must combine them like
@@ -333,24 +335,24 @@ with *$architecture.smt_size* of *48* and *node_type* of *compute_haswell*:
 
 .. code-block:: bash
 
-   blazar lease-create \
-     --physical-reservation min=1,max=1,resource_properties='["and", ["=", "$architecture.smt_size", "48"], ["=", "$node_type", "compute_haswell"]]' \
-     --start-date "2015-06-17 16:00" \
-     --end-date "2015-06-17 18:00" \
+   openstack reservation lease create \
+     --reservation min=1,max=1,resource_type=physical:host,resource_properties='["and", ["=", "$architecture.smt_size", "48"], ["=", "$node_type", "compute_haswell"]]' \
+     --start-date "2022-06-17 16:00" \
+     --end-date "2022-06-17 18:00" \
      my-custom-lease
 
 .. _disable-blazar-notification:
 .. attention::
 
    To specify a ``before_end`` action, simply add ``before_end=<action_type>``
-   to ``physical-reservation`` parameter. For example:
+   to ``reservation`` parameter. For example:
 
    .. code-block:: bash
 
-      blazar lease-create \
-        --physical-reservation min=1,max=1,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email \
-        --start-date "2015-06-17 16:00" \
-        --end-date "2015-06-17 18:00" \
+      openstack reservation lease create \
+        --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$uid", "c9f98cc9-25e9-424e-8a89-002989054ec2"]',before_end=email \
+        --start-date "2022-06-17 16:00" \
+        --end-date "2022-06-17 18:00" \
         my-custom-lease
 
    Currently supported ``before_end`` action types include
@@ -376,7 +378,7 @@ list of nodes with the command:
 
 .. code-block:: bash
 
-   blazar host-list
+   openstack reservation host list
 
 The output should look like:
 
@@ -403,7 +405,7 @@ host 151,  run:
 
 .. code-block:: bash
 
-   blazar host-show 151
+   openstack reservation host show 151
 
 The output should look like:
 
@@ -415,14 +417,14 @@ The output should look like:
    | architecture.platform_type       | x86_64                                      |
    | architecture.smp_size            | 2                                           |
    | architecture.smt_size            | 48                                          |
-   | bios.release_date                | 03/09/2015                                  |
+   | bios.release_date                | 03/09/2022                                  |
    | bios.vendor                      | Dell Inc.                                   |
    | bios.version                     | 1.2                                         |
    | chassis.manufacturer             | Dell Inc.                                   |
    | chassis.name                     | PowerEdge R630                              |
    | chassis.serial                   | 4VJGD42                                     |
    | cpu_info                         | baremetal cpu                               |
-   | created_at                       | 2015-06-26 20:50:58                         |
+   | created_at                       | 2022-06-26 20:50:58                         |
    | gpu.gpu                          | False                                       |
    | hypervisor_hostname              | 00401ba8-4fb0-4f1e-a7dc-e93065ebdd15        |
    | hypervisor_type                  | ironic                                      |
@@ -451,7 +453,7 @@ a letter specifying the time unit. ``w`` is for weeks, ``d`` is for days and
 
 .. code-block:: bash
 
-   blazar lease-update --prolong-for "1d" my-first-lease
+   openstack reservation lease update --prolong-for "1d" my-first-lease
 
 Chameleon Node Types
 --------------------
@@ -506,11 +508,11 @@ which can both be added to the ``--reservation`` argument.
 
 For example, the following command will create a lease with the name of
 ``my-first-vlan-lease`` and the network name ``my-network`` that starts on June
-17th, 2015 at 4:00pm and ends on June 17th, 2015 at 6:00pm:
+17th, 2022 at 4:00pm and ends on June 17th, 2022 at 6:00pm:
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name="my-network" --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 Adding the ``network_description`` attribute provides its value as the
 description field when creating the Neutron network, allowing to leverage
@@ -518,7 +520,7 @@ Chameleon :ref:`sdn` features.
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name="my-network",network_description="OFController=${OF_CONTROLLER_IP}:${OF_CONTROLLER_PORT}" --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 Adding the ``resource_properties`` attribute allows you to reserve a specific
 *network segment* or *physical network* type. There are currently only two
@@ -528,17 +530,17 @@ a network by ``segment_id`` or ``physical_network``.
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 .. code-block:: bash
 
-   blazar lease-create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 While separate leases can be created to reserve nodes and VLAN segments, it is also possible to combine multiple reservations within a single lease. The following example creates a lease reserving one Skylake compute node and one VLAN segment:
 
 .. code-block:: bash
 
-   blazar lease-create --physical-reservation min=1,max=1,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-combined-lease
+   openstack reservation lease create --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-combined-lease
 
 .. _reservation-cli-fip:
 
@@ -556,14 +558,14 @@ To create a lease, use the ``lease-create`` command. The following arguments are
 Multiple floating IPs can be reserved using the ``amount`` attribute. If ommitted, only one floating IP is reserved.
 
 For example, the following command will create a lease with the name of
-``my-first-fip-lease`` that starts on June 17th, 2015 at 4:00pm and ends on
-June 17th, 2015 at 6:00pm and reserves three floating IPs:
+``my-first-fip-lease`` that starts on June 17th, 2022 at 4:00pm and ends on
+June 17th, 2022 at 6:00pm and reserves three floating IPs:
 
 .. code-block:: bash
 
    pip install python-openstackclient
    PUBLIC_NETWORK_ID=$(openstack network show public -c id -f value)
-   blazar lease-create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2015-06-17 16:00" --end-date "2015-06-17 18:00" my-first-fip-lease
+   openstack reservation lease create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-fip-lease
 
 
 Reallocating a Node in Your Lease

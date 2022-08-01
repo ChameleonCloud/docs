@@ -217,7 +217,7 @@ You can obtain your *reservation ID* via the web interface or by running:
 
 .. code-block:: bash
 
-   blazar lease-show <lease_name>
+   openstack reservation lease show <lease_name>
 
 .. attention:: The **reservation ID** and the **lease ID** are different
 
