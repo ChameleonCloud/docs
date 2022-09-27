@@ -56,7 +56,7 @@ Please note that this will only effect newly created baremetal instances.
 Enabling Jumbo Frames on Existing Instances
 -------------------------------------------
 
-Setting the MTU on your Chameleon network only effects instances on boot to set
+Setting the MTU on your Chameleon network only affects instances on boot to set
 the first Ethernet interface. If you already have a live baremetal instance
 then you can simply use the command below on the instance to set MTU manually.
 
