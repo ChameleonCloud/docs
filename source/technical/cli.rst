@@ -72,7 +72,7 @@ Setting a CLI password
 ----------------------
 
 You can set a CLI password via the `Chameleon Authentication Portal
-<https://auth.chameleoncloud.org/auth/realms/chameleon/account/password>`_. The
+<https://auth.chameleoncloud.org/auth/realms/chameleon/account/#/security/signingin>`_. The
 password you associate with your account can not be used to log in to the GUI or
 Jupyter interfaces and can only be used to authenticate a command-line client.
 
