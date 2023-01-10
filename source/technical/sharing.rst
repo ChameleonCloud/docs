@@ -146,8 +146,7 @@ visible you want it to be.
    select people, like individual colleagues, advisors, or students. Anybody in
    possession of the link can view and launch any version of the artifact.
 
-To make your artifact shareable follow the actions shown in the animation below:
-first select how your want to share and then your sharing destination.
+To make your artifact shareable, select it in Trovi, click "Share", and check the box before "Enable all users to find and share".
 
 .. _trovi-zenodo:
 
