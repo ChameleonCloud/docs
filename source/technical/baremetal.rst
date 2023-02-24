@@ -435,6 +435,8 @@ machine via SSH. You can run commands with root privileges by prefixing them
 with ``sudo``. To completely switch user and become root, use the ``sudo su -
 root`` command.
 
+.. attention:: ``cc-checks`` is only available on legacy CentOS7 images!
+
 Connecting via serial console
 -----------------------------
 
