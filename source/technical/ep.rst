@@ -4,11 +4,14 @@
 Experiment Precis
 ==============================
 
+.. warning::
+	Precis is no longer supported on the testbed! 
+
+
 .. _ep-introduction:
 
 Introduction
 ____________
-
 Chameleon records experiment setup (OpenStack) events that users performed on the testbed, such as creating leases, creating instances, and setting up networks. 
 Users can request their experiment records from Chameleon using their Chameleon credentials. A report on those experiment records is known as the *Experiment Precis*. 
 An *Experiment Precis* is bounded to a lease. Chameleon defines an *experiment* as a series of testbed setup (OpenStack) events a user performed under a lease of a project. 
