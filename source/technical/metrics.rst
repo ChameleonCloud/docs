@@ -4,6 +4,9 @@
 Monitoring
 =========================
 
+.. warning::
+	Gnocchi is not supported on the testbed. If you are interested in power monitoring, you should see `this trovi artifact <https://chameleoncloud.org/experiment/share/370ce99a-3e03-43e9-83e3-b61fd9692dc0>`_
+
 Chameleon collects monitoring information, representing qualities such as CPU load or power consumption data, from various sources into an *aggregation service*. Data is kept in this service with resolution that decreases over time. Users can retrieve those metrics via a *command line interface (CLI)*.
 
 In Chameleon, the aggregation service is implemented using the `Gnocchi time series database <https://gnocchi.xyz>`_. All Chameleon supported images, from which most of our user’s images are derived, are configured to send a selection of system metrics using the `collectd system statistics collection daemon <https://collectd.org>`_. There is a wide range of qualities this daemon can gather; by default only selected metrics are sent but users can configure the daemon (see `Configuring collectd`_) to adapt this set anytime to monitor their experiments better. Another source of metrics is the infrastructure itself, for example the energy and power consumption metrics.
