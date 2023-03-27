@@ -148,6 +148,25 @@ visible you want it to be.
 
 To make your artifact shareable, select it in Trovi, click "Share", and check the box before "Enable all users to find and share".
 
+.. _trovi-roles:
+
+Assigning Roles to Other Users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. figure:: sharing/sharing_edit_roles.png
+   :alt: Screenshot of the artifact role menu
+   :figclass: screenshot
+
+You can assign roles to other users which allow them to collaborate on your artifacts.
+There are two roles: **Collaborator** and **Administrator**.
+
+**Collaborators** are allowed to edit artifact metadata, upload new versions,
+delete old versions, and share private artifacts.
+
+**Administrators** have full control over the artifact, including
+assigning roles to other users.
+
+Artifact owners cannot have their Adminstrator privileges removed.
+
 .. _trovi-zenodo:
 
 Publishing to Zenodo
