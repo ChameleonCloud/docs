@@ -200,6 +200,10 @@ address and clicking the *Add user* button. You may remove a user from your
 project by locating the user in the user list; clicking the *gear* button
 at the end of the row; and clicking *Remove user*.
 
+It is possible to bulk-add a large list of users by clicking the "Add multiple users"
+button, or remove all users without the Manager role by clicking the "Remove multiple users"
+button.
+
 If there is no user associated with an email address, an invitation will be sent
 with a link. When someone clicks on this link, they will be prompted to sign in
 or create an account, and then automatically added to the project. Invitations
