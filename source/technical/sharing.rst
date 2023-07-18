@@ -193,6 +193,10 @@ Zenodo and check "Request DOI", then click "Save."
    artifact private later on if you wish; this is not possible when publishing
    to Zenodo.
 
+   You can only request a DOI one time per artifact. If you want to update your
+   experiment files and request a second DOI, you should instead create a new
+   artifact.
+
 This also creates a DOI, which you can easily include in your
 paper. The artifacts shared on Zenodo also appear on Trovi.
 
