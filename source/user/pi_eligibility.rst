@@ -8,7 +8,7 @@ Chameleon PIs carry significant responsibility for the users on their projects;
 we therefore limit PI eligibility to individual from the following groups:
 
 - **Academic institutions**: This eligibility criterion covers research
-  scientists, staff or faculty members in those institutions.
+  scientists, research staff or faculty members in those institutions.
 - **Federal agencies such as national labs, R&D centers, and institutes**:
   Research staff employed by federal agencies or non-NSF Federally Funded R&D
   Centers (FFRDCs) are eligible to apply for an allocation.
