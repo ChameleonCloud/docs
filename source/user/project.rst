@@ -169,7 +169,7 @@ privileges.
 | PI      | Each project has only one PI. PI can manage roles of the project members. |
 +---------+---------------------------------------------------------------------------+
 | Manager | Each project can have multiple Managers. Managers can manage the          | 
-|         | membership of the project.                                                |
+|         | membership and renew allocations of the project.                          |
 +---------+---------------------------------------------------------------------------+
 | Member  | Members can only view the list of the project members.                    |
 +---------+---------------------------------------------------------------------------+
