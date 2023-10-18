@@ -88,8 +88,8 @@ To launch an instance with the GUI, follow the steps:
    - In the *Custom* text box, type ``query`` and click the *+* button. This
      will add a *query* hint to the list on the right.
    - In the *query* hint, enter your scheduler hint. For example, if you require
-     a specific node, type ``["=","$hypervisor_hostname","<node_uuid>"]`` where
-     ``<node_uuid>`` is the node you are requesting.
+     a specific node, type ``["=","$hypervisor_hostname","<node_name>"]`` where
+     ``<node_name>`` is the node you are requesting.
 
    .. figure:: baremetal/launchscheduler.png
       :alt: Adding a Scheduler Hint
