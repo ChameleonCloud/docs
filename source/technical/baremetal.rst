@@ -81,21 +81,6 @@ To launch an instance with the GUI, follow the steps:
    .. tip::
       You may import or create key pairs directly through this step.
 
-#. Optionally, you may configure *Scheduler Hints*. This is useful if you would
-   like to launch an instance on a specific node in your multi-node reservation
-   by *UUID*.
-
-   - In the *Custom* text box, type ``query`` and click the *+* button. This
-     will add a *query* hint to the list on the right.
-   - In the *query* hint, enter your scheduler hint. For example, if you require
-     a specific node, type ``["=","$hypervisor_hostname","<node_uuid>"]`` where
-     ``<node_uuid>`` is the node you are requesting.
-
-   .. figure:: baremetal/launchscheduler.png
-      :alt: Adding a Scheduler Hint
-
-      Adding a Scheduler Hint
-
 #. If you want to customize your instance after it has launched, you can add a
    customization script in the *Configuration* step.
 
@@ -318,24 +303,9 @@ You may find the ID of your ports using:
 
    openstack port list
 
-Launching instances on specific nodes
--------------------------------------
 
-If you have a reservation for multiple physical nodes, explicitly identified
-with their *UUIDs*, you might want to force an instance to be launched on a
-specific node rather than letting the scheduler select one. This can be done
-with the CLI using a scheduler hint:
-
-.. code-block:: bash
-
-   openstack server create \
-   --image CC-CentOS8 \
-   --flavor baremetal \
-   --key-name <key_name> \
-   --nic net-id=<sharednet1_id> \
-   --hint reservation=<reservation_id> \
-   --hint query='["=","$hypervisor_hostname","<node_uuid>"]' \
-   <instance_name>
+Inspecting your node
+--------------------
 
 From within an instance you have already launched, you can discover which node
 it is running on by executing
