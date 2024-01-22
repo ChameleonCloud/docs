@@ -286,6 +286,81 @@ the path.
 
 .. _cc-cloudfuse:
 
+Managing Chameleon Cloud Object Store with AWS CLI
+==================================================
+
+Chameleon Cloud Object Store supports managing your object store resources using the AWS Command Line Interface (AWS CLI) with the S3 API. This section provides instructions on configuring the AWS CLI for use with Chameleon Cloud Object Store.
+
+Prerequisites
+-------------
+
+Before you begin, make sure you have the AWS CLI installed on your local machine. You can download it from the `official AWS CLI website <https://aws.amazon.com/cli/>`_.
+
+Configuration
+-------------
+
+1. **Obtain Chameleon Cloud Object Store Access Credentials:**
+
+   To use the AWS CLI with Chameleon Cloud Object Store, you need to obtain your access credentials using the following command:
+
+   .. code-block:: bash
+
+      openstack ec2 create
+
+   This command will provide you with an Access Key ID and Secret Access Key, which you will use to configure the AWS CLI.
+
+2. **Configure AWS CLI:**
+
+   Run the following command to configure the AWS CLI with the obtained credentials:
+
+   .. code-block:: bash
+
+      aws configure
+
+   You will be prompted to enter the Access Key ID, Secret Access Key, default region, and output format. Enter the values accordingly.
+
+   Example:
+
+   .. code-block:: bash
+
+      AWS Access Key ID [None]: <your-access-id-from-openstack-ec2-create>
+      AWS Secret Access Key [None]: <your-secret-from-openstack-ec2-create>
+      Default region name [None]: <region-can-be-anything>
+      Default output format [None]: json
+
+3. **Set Endpoint for Chameleon Cloud Object Store:**
+
+   The endpoint for Chameleon Cloud Object Store is:
+
+   - For UC: ``https://chi.uc.chameleoncloud.org:7480``
+   - For TACC: ``https://chi.tacc.chameleoncloud.org:7480``
+
+   Run the following command to set the endpoint:
+
+   .. code-block:: bash
+
+      aws configure set endpoint_url <endpoint-url>
+
+   Replace ``<endpoint-url>`` with the appropriate endpoint based on your Chameleon Cloud site.
+
+Usage
+-----
+
+Once configured, you can use the AWS CLI commands to interact with Chameleon Cloud Object Store as you would with any S3-compatible storage service.
+
+Example:
+
+.. code-block:: bash
+
+   # List S3 buckets
+   aws s3 ls
+
+   # Upload a file to a bucket
+   aws s3 cp local-file.txt s3://<your-bucket>/
+
+Replace ``<endpoint-url>`` with the appropriate bucket name.
+That's it! You have successfully configured the AWS CLI to work with Chameleon Cloud Object Store. For more information `this article <https://openmetal.io/docs/manuals/openstack-admin/use-aws-client-to-access-swift-s3-api>`_. should help
+
 Mounting Object Store as a File System
 ======================================
 
