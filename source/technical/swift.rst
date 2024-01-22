@@ -350,16 +350,16 @@ Once configured, you can use the AWS CLI commands to interact with Chameleon Clo
 
 Example:
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   # List S3 buckets
-   aws s3 ls
+      # List S3 buckets
+      aws s3 ls
 
-   # Upload a file to a bucket
-   aws s3 cp local-file.txt s3://<your-bucket>/
+      # Upload a file to a bucket
+      aws s3 cp local-file.txt s3://<your-bucket>/
 
-Replace ``<endpoint-url>`` with the appropriate bucket name.
-That's it! You have successfully configured the AWS CLI to work with Chameleon Cloud Object Store. For more information `this article <https://openmetal.io/docs/manuals/openstack-admin/use-aws-client-to-access-swift-s3-api>`_. should help
+   Replace ``<endpoint-url>`` with the appropriate bucket name.
+That's it! You have successfully configured the AWS CLI to work with Chameleon Cloud Object Store. For more information `this article <https://openmetal.io/docs/manuals/openstack-admin/use-aws-client-to-access-swift-s3-api>`_ should help
 
 Mounting Object Store as a File System
 ======================================
