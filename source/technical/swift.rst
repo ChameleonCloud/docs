@@ -305,7 +305,7 @@ Configuration
 
    .. code-block:: bash
 
-      openstack ec2 create
+      openstack ec2 credential create
 
    This command will provide you with an Access Key ID and Secret Access Key, which you will use to configure the AWS CLI.
 
