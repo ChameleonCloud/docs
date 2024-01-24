@@ -202,7 +202,9 @@ at the end of the row; and clicking *Remove user*.
 
 It is possible to bulk-add a large list of users by clicking the "Add multiple users"
 button, or remove all users without the Manager role by clicking the "Remove multiple users"
-button.
+button. Additionally, under this option there is a link which you can send to
+users which will allow them to request to join your project. Once a request is made,
+the managers of a project will be notified, and will need to confirm the user.
 
 If there is no user associated with an email address, an invitation will be sent
 with a link. When someone clicks on this link, they will be prompted to sign in
