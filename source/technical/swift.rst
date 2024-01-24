@@ -289,7 +289,9 @@ the path.
 Managing Chameleon Cloud Object Store with AWS CLI
 ==================================================
 
-Chameleon Cloud Object Store supports managing your object store resources using the AWS Command Line Interface (AWS CLI) with the S3 API. This section provides instructions on configuring the AWS CLI for use with Chameleon Cloud Object Store.
+In addition to the Openstack Swift API, Chameleon's object store can be accessed via an S3 compatible API. Although we don't directly support them, you can use most s3 compatible clients Chameleon, so long as they allow you to set the endpoint, `as well as the "path-style" access url <https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html#path-style-access>`_.
+
+As an example, this sections provides instructions on configuring the AWS CLI to connect to our object store.
 
 Prerequisites
 -------------
