@@ -51,8 +51,7 @@ that you have not allowed SSH authentication with passwords** (this is disabled
 by default on Chameleon-supported images.)
 
 In order to better protect Chameleon instances, Chameleon Ubuntu and CentOS 
-base images come with baked-in firewall rules which allow all communication 
-within Chameleon private networks, but severely restrict connections over the public 
+base images come with baked-in firewall rules which severely restrict connections over the public 
 internet. If using a different image or if you disable firewall rules, realize 
 that any network services can potentially be exposed to the public Internet if 
 your instance has a Floating IP attached.
@@ -73,43 +72,75 @@ Firewall
 ^^^^^^^^
 
 Chameleon-supported Ubuntu and CentOS images are preconfigured with a firewall
-utility called ``ufw`` enabled and the following rules set:
+utility called ``firewalld`` enabled and the following rules set:
 
 .. code-block:: shell
 
-    ufw limit ssh
-    ufw allow http
-    ufw allow https
-    ufw allow from 10.0.0.0/8
-    ufw allow from 172.16.0.0/12
-    ufw allow from 192.168.0.0/16
-    ufw default deny incoming
+   # sudo firewall-cmd --zone=public --list-services
+   dhcpv6-client ssh
 
-These rules allow ssh traffic on port 22 over the public internet, but will 
-limit the number of attempts to 6 for every 30 seconds.
+These rules allow ssh traffic on port 22 over the public internet.
 
-HTTP/HTTPS on port 80 and 443 are allowed.
+.. warning::
 
-Communication is fully allowed over the 3 private network ranges use by
-Chameleon.
+   By default, all firewall changes are **temporary**, and will be lost 
+   on instance reboot. This is a saftey mechanism 
+   to avoid locking yourself out. To make changes **permanent**, execute:
+
+   .. code-block:: shell
+
+      sudo firewall-cmd --runtime-to-permanent
+      sudo firewall-cmd --reload
+
+
+
+To enable HTTP/HTTPS on port 80 and 443:
+
+.. code-block:: shell
+
+   sudo firewall-cmd --zone=public --add-service http
+   sudo firewall-cmd --zone=public --add-service https
+
+
+Firewalld has many "built-in" rules for common services, but you can also enable communication 
+over a specifc port using the command:
+
+.. code-block:: shell
+
+   # list all open ports
+   sudo firewall-cmd --zone=public --list-ports
+
+   # open a new port
+   sudo firewall-cmd --zone=public --add-port=<port>/<protocol>
+
+   # example
+   sudo firewall-cmd --zone=public --add-port=9001/tcp
+
+
+You can also permit connections from a specific ip or network, such as a trusted endpoint, 
+or within your own isolated networks on Chameleon.
+
+.. code-block:: shell
+   
+   sudo firewall-cmd --zone=trusted --add-source=<your_subnet_cidr/netmask>
+
+To enable this by default for all private IP ranges, you can do the following, but please note that this can be
+insecure on shared or routed networks (sharednet1, sharedwan1 and similar).
+
+.. code-block:: shell
+
+        sudo firewall-cmd --zone=trusted --add-source=192.168.0.0/16
+        sudo firewall-cmd --zone=trusted --add-source=172.16.0.0/12
+        sudo firewall-cmd --zone=trusted --add-source=10.0.0.0/8
 
 Any other incomming connections will be denied.
 
-You can enable communication over a specifc port using the command:
+For more examples and information, please see:
 
-.. code-block:: shell
+- `Ubuntu's man page for firewalld <https://manpages.ubuntu.com/manpages/jammy/en/man1/firewall-cmd.1.html>`_
+- `Fedora Linux Guide <https://fedoraproject.org/wiki/Firewalld>`_
+- `Rocky Linux Guide <https://docs.rockylinux.org/guides/security/firewalld-beginners/#firewalld-for-beginners>`_
 
-        sudo ufw allow <port>
-
-You can also permit connections from a specific ip or network:
-
-.. code-block:: shell
-
-        sudo ufw allow from <ip address or network> 
-
-The `man page for ufw
-<http://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html>`_ has more
-examples.
 
 Security Groups
 ^^^^^^^^^^^^^^^
