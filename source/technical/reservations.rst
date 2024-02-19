@@ -17,6 +17,33 @@ Service for OpenStack.
 Three types of resources can be reserved: physical bare metal hosts, network
 segments (VLANs), and floating IPs.
 
+.. attention::
+   **A note on lease stacking**
+
+   Chameleon is a shared experimental platform. We serve a growing community of
+   researchers and educators with diverse needs. Specialized hardware on the
+   platform can be in high demand and short supply. While we seek to expand the
+   hardware that we offer, we are constrained in the short term to our current
+   inventories. Like fishing boats all harvesting from a single pond, we must
+   beware to avoid a tragedy of the commons. Adopting community practices that
+   encourage efficient and fair resource use is critical to our success as an
+   open platform.
+
+   Toward this end, **we actively discourage “lease stacking”** on Chameleon.
+   **Lease stacking refers to the practice of obtaining multiple overlapping
+   reservations for Chameleon resources (e.g., compute instances, storage, or
+   networking components) under a single project to extend usage beyond typical
+   limits or to ensure continuous access to resources.** Engaging in lease
+   stacking without clear communication or in violation of terms of use could
+   potentially lead to resource hoarding, impacting the availability for other
+   users. Our experience has shown that such conduct results in idle hardware
+   capacity and creates negative incentives for all users to “overfish” the
+   pond out of fear that others will do so first.
+
+   Please carefully review our :ref:`lease stacking policy
+   <lease_stacking_policy>` before you begin creating leases to ensure that
+   your reservations are in alignment.
+
 Provisioning and Managing Resources Using the GUI
 =================================================
 
@@ -536,7 +563,10 @@ a network by ``segment_id`` or ``physical_network``.
 
    openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
-While separate leases can be created to reserve nodes and VLAN segments, it is also possible to combine multiple reservations within a single lease. The following example creates a lease reserving one Skylake compute node and one VLAN segment:
+While separate leases can be created to reserve nodes and VLAN segments, it is
+also possible to combine multiple reservations within a single lease. The
+following example creates a lease reserving one Skylake compute node and one
+VLAN segment:
 
 .. code-block:: bash
 
@@ -555,7 +585,8 @@ To create a lease, use the ``lease-create`` command. The following arguments are
 - ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
 - A lease name
 
-Multiple floating IPs can be reserved using the ``amount`` attribute. If ommitted, only one floating IP is reserved.
+Multiple floating IPs can be reserved using the ``amount`` attribute. If
+ommitted, only one floating IP is reserved.
 
 For example, the following command will create a lease with the name of
 ``my-first-fip-lease`` that starts on June 17th, 2022 at 4:00pm and ends on
@@ -591,3 +622,70 @@ entering your lease ID and the node ID where appropriate.
 If you re-allocate a host because it is malfunctioning, please make sure to
 report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that 
 we can fix it.
+
+.. _lease_stacking_policy:
+
+Lease Stacking Policy
+=====================
+
+Chameleon has in place lease stacking policies for our resource reservations to
+ensure fair and efficient resource use among our community. Please review these
+policies and reach out to our `Help Desk
+<https://chameleoncloud.org/user/help/>`_ if you have any questions.
+
+Lease duration limits
+---------------------
+
+**We limit all resource reservations to a duration of 7 days or less**. Users
+may extend an active lease within 48 hours of its expiration by up to 7 days if
+resources are available. Chameleon will send an email reminder to users 48
+hours before their lease ends. If lease duration is less than 48 hours,
+Chameleon will send an email right after a lease is created. You can disable
+the email notification by using the command line.
+
+Multiple leases for a single resource type
+------------------------------------------
+
+**We discourage projects from creating multiple consecutive or overlapping
+leases on a single resource type over an extended period of time**. We monitor
+the number and duration of leases that each project holds for a given resource
+type. Projects that have reserved a significant portion of a resource type
+(measured by time or host coverage) will be flagged and reviewed internally for
+compliance with our fair use policies. When projects are determined to violate
+our policy, the PI of the project will receive an email from the Technical
+Project Manager notifying them of the observed behavior, identifying the
+violating leases, and requesting justification. PIs must respond within 3
+business days with either a justification explaining their unique
+research/educational need or by deleting the violating leases. Failure to
+respond in a timely manner will result in the violating leases being terminated
+by Chameleon staff.
+
+Exceptions to the policy
+------------------------
+
+.. attention::
+   Please bear in mind that exceptions will be made sparingly. Chameleon offers
+   other tools and methods for saving your work at the end of a lease and
+   automating relaunching on a new lease. See documentation on :ref:`cc-snapshot <cc-snapshot-utility>`
+   (which simplifies the process of saving the state of a bare-metal instance)
+   and our `blog post <https://www.chameleoncloud.org/blog/2018/01/17/making-instance-snapshots-chameleon/>`_
+   on making instance snapshots on Chameleon.
+
+Chameleon recognizes that some projects might require extended access to a
+resource or depend on provisioning lots of nodes for multiple users
+simultaneously (in a university course, for example). Thus, we do occasionally
+provide exceptions to this policy. If you have a question about the policy and
+how it might affect your projects on the platform or would like to request an
+exception for your project, please reach out to our :ref:`Help Desk
+<help-desk-page>`.
+
+Exceptions to the policy against lease stacking on Chameleon Cloud may be
+considered for projects that require extensive computational resources for
+large-scale experiments, infrastructure development testing, educational
+programs, or benchmarking activities, provided these efforts align with
+Chameleon's `mission <https://chameleoncloud.org/about/chameleon/>`_ and
+demonstrate a clear need for extended or intensive resource utilization.
+Detailed proposals must outline the project's objectives, its necessity for
+additional resources, and plans for responsible and equitable resource
+management to ensure minimal impact on the broader user community.
+
