@@ -20,25 +20,17 @@ segments (VLANs), and floating IPs.
 .. attention::
    **A note on lease stacking**
 
-   Chameleon is a shared experimental platform. We serve a growing community of
-   researchers and educators with diverse needs. Specialized hardware on the
-   platform can be in high demand and short supply. While we seek to expand the
-   hardware that we offer, we are constrained in the short term to our current
-   inventories. Like fishing boats all harvesting from a single pond, we must
-   beware to avoid a tragedy of the commons. Adopting community practices that
-   encourage efficient and fair resource use is critical to our success as an
-   open platform.
-
-   Toward this end, **we actively discourage “lease stacking”** on Chameleon.
-   **Lease stacking refers to the practice of obtaining multiple overlapping
-   reservations for Chameleon resources (e.g., compute instances, storage, or
-   networking components) under a single project to extend usage beyond typical
-   limits or to ensure continuous access to resources.** Engaging in lease
-   stacking without clear communication or in violation of terms of use could
-   potentially lead to resource hoarding, impacting the availability for other
-   users. Our experience has shown that such conduct results in idle hardware
-   capacity and creates negative incentives for all users to “overfish” the
-   pond out of fear that others will do so first.
+   Specialized hardware on Chameleon can sometimes be in high demand and low
+   supply. Like fishing boats sharing a pond, we must beware to avoid a tragedy
+   of the commons and adopt community practices that encourage efficient and
+   fair resource use. **We actively discourage “lease stacking”—the practice of
+   obtaining multiple overlapping reservations for resources (e.g., compute
+   instances, storage, or networking components) to extend project usage beyond
+   typical limits or to ensure continuous access**. Engaging in lease stacking
+   could lead to resource hoarding, impacting the availability for other users.
+   Our experience has shown that such conduct results in idle hardware capacity
+   and creates negative incentives for all users to “overfish” the pond out of
+   fear that others will do so first.
 
    Please carefully review our :ref:`lease stacking policy
    <lease_stacking_policy>` before you begin creating leases to ensure that
@@ -636,10 +628,11 @@ policies and reach out to our `Help Desk
 Lease duration limits
 ---------------------
 
-**We limit all resource reservations to a duration of 7 days or less**. Users
-may extend an active lease within 48 hours of its expiration by up to 7 days if
-resources are available. Chameleon will send an email reminder to users 48
-hours before their lease ends. If lease duration is less than 48 hours,
+**We limit all resource reservations to a duration of 7 days or less**.
+
+Users may extend an active lease within 48 hours of its expiration by up to 7
+days if resources are available. Chameleon will send an email reminder to users
+48 hours before their lease ends. If lease duration is less than 48 hours,
 Chameleon will send an email right after a lease is created. You can disable
 the email notification by using the command line.
 
@@ -647,18 +640,19 @@ Multiple leases for a single resource type
 ------------------------------------------
 
 **We discourage projects from creating multiple consecutive or overlapping
-leases on a single resource type over an extended period of time**. We monitor
-the number and duration of leases that each project holds for a given resource
-type. Projects that have reserved a significant portion of a resource type
-(measured by time or host coverage) will be flagged and reviewed internally for
-compliance with our fair use policies. When projects are determined to violate
-our policy, the PI of the project will receive an email from the Technical
-Project Manager notifying them of the observed behavior, identifying the
-violating leases, and requesting justification. PIs must respond within 3
-business days with either a justification explaining their unique
-research/educational need or by deleting the violating leases. Failure to
-respond in a timely manner will result in the violating leases being terminated
-by Chameleon staff.
+leases on a single resource type over an extended period of time**.
+
+We monitor the number and duration of leases that each project holds for a
+given resource type. Projects that have reserved a significant portion of a
+resource type (measured by time or host coverage) will be flagged and reviewed
+internally for compliance with our fair use policies. When projects are
+determined to violate our policy, the PI of the project will receive an email
+from the Technical Project Manager notifying them of the observed behavior,
+identifying the violating leases, and requesting justification. PIs must
+respond within 3 business days with either a justification explaining their
+unique research/educational need or by deleting the violating leases. Failure
+to respond in a timely manner will result in the violating leases being
+terminated by Chameleon staff.
 
 Exceptions to the policy
 ------------------------
