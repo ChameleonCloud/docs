@@ -57,5 +57,5 @@ form. A system administrator will respond to your ticket within 3 business days.
 Webinars
 ========
 
-The `Webinars <https://www.chameleoncloud.org/user/webinar/>`_ page provides a
+The `Webinars <https://www.chameleoncloud.org/learn/webinars/>`_ page provides a
 list of upcoming webinars for Chameleon user training.
