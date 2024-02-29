@@ -189,8 +189,8 @@ CHI\@UC
    Only `compute_skylake` nodes in rack 4 at CHI\@UC can participate in SDN experiments.
 
 
-+----------------------+-------+
-| Node UUID (rack 4)   | Port  |
++--------------------------------------+-------+
+| Node UUID (rack 4)                   | Port  |
 +======================================+=======+
 | e7388428-f23f-4404-9222-57e77ccef41b | 10133 |
 +--------------------------------------+-------+

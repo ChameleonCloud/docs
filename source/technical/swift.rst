@@ -361,6 +361,7 @@ Example:
       aws s3 cp local-file.txt s3://<your-bucket>/
 
    Replace ``<endpoint-url>`` with the appropriate bucket name.
+
 That's it! You have successfully configured the AWS CLI to work with Chameleon Cloud Object Store. For more information `this article <https://openmetal.io/docs/manuals/openstack-admin/use-aws-client-to-access-swift-s3-api>`_ should help
 
 Mounting Object Store as a File System
