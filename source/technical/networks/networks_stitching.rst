@@ -1,9 +1,7 @@
 .. _stitching:
 
-_______________________________________
-
 External Layer2 Connections (Stitching)
-_______________________________________
+=======================================
 
 
 Chameleon provides support for sophisticated networking experiments by providing `GENI-style stitching <http://groups.geni.net/geni/wiki/GeniNetworkStitchingSites>`_. This capability enables users to deploy networking experiments (layer 2 and layer 3) that span Chameleon and other facilities such as `FABRIC <https://fabric-testbed.net/>`_.  Users can create dedicated Chameleon networks directly connected to external facilities and configure custom subnets and routers for handling these external connections. This capability is essential to users interested in experimenting with wide-area networks in a controlled environment or lower-level wide-area protocols (e.g.  BGP or other routing protocols) that are not typically configurable by experimenters.
