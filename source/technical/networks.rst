@@ -19,5 +19,6 @@ networking capabilities including :ref:`network-isolation`, :ref:`stitching`, an
    networks/networks_basic
    networks/networks_vlan
    networks/networks_stitching
+   networks/networks_fabnet
    networks/networks_sdn
    networks/networks_jumbo_frames
