@@ -23,7 +23,7 @@ segments (VLANs), and floating IPs.
    
    To prevent resource hoarding and ensure fair access to specialized hardware,
    Chameleon discourages "lease stacking" or making multiple overlapping
-   reservations. Review our :ref:`lease stacking policy <lease_stacking_policy>`
+   reservations. Review our `lease stacking policy <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`
    to align your reservations with community practices for efficient resource use.
 
 Provisioning and Managing Resources Using the GUI
@@ -604,66 +604,3 @@ entering your lease ID and the node ID where appropriate.
 If you re-allocate a host because it is malfunctioning, please make sure to
 report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that 
 we can fix it.
-
-.. _lease_stacking_policy:
-
-Lease Stacking Policy
-=====================
-
-Specialized hardware on Chameleon can sometimes be in high demand and low
-supply. Like fishing boats sharing a pond, we must beware to avoid a tragedy of
-the commons and adopt community practices that encourage efficient and fair
-resource use. **We actively discourage “lease stacking”—the practice of
-obtaining multiple overlapping reservations for resources (e.g., compute
-instances, storage, or networking components) to extend project usage beyond
-typical limits or to ensure continuous access.**
-
-Engaging in lease stacking could lead to resource hoarding, impacting the
-availability for other users. Our experience has shown that such conduct
-results in idle hardware capacity and creates negative incentives for all users
-to “overfish” the pond out of fear that others will do so first.
-
-Please review these policies and reach out to our `Help Desk
-<https://chameleoncloud.org/user/help/>`_ if you have any questions.
-
-Policy Overview
----------------
-
-**Maximum reservation period is 7 days**
-
-* Active leases can be extended by up to 7 days if resources are available,
-  provided the extension request is made within 48 hours of lease expiration.
-* Email reminders are sent 48 hours before lease expiration, or immediately for
-  leases shorter than 48 hours.
-
-**Numerous consecutive or overlapping leases on the same resource type are
-discouraged to prevent resource monopolization**
-
-*  We monitor the number and duration of leases that each project holds for a
-   given resource type.
-*  Projects with excessive reservations will be flagged for review.
-*  The project's Principal Investigator (PI) will be contacted to provide
-   justification or remove the violating leases within 3 business days.
-*  Failure to respond in a timely manner will result in the violating leases
-   being terminated by Chameleon staff.
-
-Policy Exceptions
------------------
-
-.. note::
-   
-   Exceptions will be made sparingly. Chameleon offers
-   other tools and methods for saving your work at the end of a lease and
-   automating relaunching on a new lease. See documentation on :ref:`cc-snapshot <cc-snapshot-utility>`
-   (which simplifies the process of saving the state of a bare-metal instance)
-   and our `blog post <https://www.chameleoncloud.org/blog/2018/01/17/making-instance-snapshots-chameleon/>`_
-   on making instance snapshots on Chameleon.
-
-Exceptions for extended access or intensive resource use may be granted for
-projects with significant computational needs, such as large-scale experiments
-and educational use cases. Requests for exceptions must detail the project's
-goals, the need for additional resources, and how impact on the broader user
-community will be minimized. **Users can submit exception requests through the**
-`Help Desk <https://chameleoncloud.org/user/help/>`_.
-
-
