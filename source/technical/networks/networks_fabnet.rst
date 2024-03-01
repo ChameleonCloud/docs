@@ -3,7 +3,7 @@
 External Layer 3 Connectivity
 ===============================
 
-In addition to configuring networks on a vlan within a given site :ref:`networks_vlan`, we provide a shared network named
+In addition to configuring networks and floating IPs within a given site (see :ref:`basic-networking`), we provide a shared network named
 "fabnetv4", which can route traffic via the FABRIC testbed's layer3 experimental network. Nodes attached to this network may
 send traffic to "fabnetv4" on other Chameleon sites, or to anythign in the FABNET IPv4 address space, without needing public
 IPs or traversing a Neutron router.
