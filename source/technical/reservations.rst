@@ -23,7 +23,7 @@ segments (VLANs), and floating IPs.
    
    To prevent resource hoarding and ensure fair access to specialized hardware,
    Chameleon discourages "lease stacking" or making multiple overlapping
-   reservations. Review our `lease stacking policy <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`
+   reservations. Review our `lease stacking policy <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
    to align your reservations with community practices for efficient resource use.
 
 Provisioning and Managing Resources Using the GUI
