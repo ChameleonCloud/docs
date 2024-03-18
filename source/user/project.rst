@@ -174,17 +174,38 @@ privileges.
 | Member  | Members can only view the list of the project members.                    |
 +---------+---------------------------------------------------------------------------+
 
-To change the role of a project member, click the *gear* button at the end of the
-user row, and then click *Change Role*. It will enable the role dropdown.
-Choose a new role and click the *Submit* button to apply the new role to the user, or
+To change the role of a project member, choose a new role from the dropdown and
+click the *Submit* button to apply the new role to the user, or
 use the *Cancel* button to cancel the action.
 
 .. figure:: project/managerole.png
   :alt: Manage Role of a User
-  
+
   Manage Role of a User
 
 .. _manage-users:
+
+Manage User SU Budgets in a Chameleon Project
+-------------------------------
+
+Every user within a Chameleon project can have a service unit (SU) budget allocated to them.
+This budget determines the resources they can utilize within the project.
+Managing these budgets ensures fair distribution of resources and effective utilization of project resources.
+A project can have a default budget, that is applied on all the members except managers.
+All new users added to the project will have those default SU budget enforced.
+
+.. figure:: project/defaultbudget.png
+  :alt: Set project default budget
+
+Viewing User SU Budgets - Each user listed will have their SU budget displayed next to their name.
+This represents the allocation of resources that they can utilize within the project.
+
+Project managers can set limits on the maximum SU budget allocated to each user.
+This helps in preventing resource hoarding and ensures fair distribution of resources among project members.
+To adjust the SU budget for a specific user, use the slider or the SU Budget field to *Set* budget for user
+
+.. figure:: project/subudgetslider.png
+  :alt: Adjust SU budget for user
 
 Manage Users
 ------------
