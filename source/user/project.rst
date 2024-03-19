@@ -154,21 +154,30 @@ To manage the publications you have entered, use the *Publications Dashboard*.
 In the dashboard, you may remove a publication of a project by clicking the -
 button next to the publication text. 
 
-.. _manage-roles:
+.. _manage-users:
 
-Manage User Roles (PI Delegate)
--------------------------------
+Manage Users
+------------
 
-To manage user roles of a *Project*, use the *Project Members* section in the 
-:ref:`project-details`. The table below shows the types of roles and their
-privileges. 
+In the dashboard, you can add or remove users (or "members") from your
+projects, manage your project members' user roles, and allocate how many SUs
+each project member can consume on your project allocation.
+
+.. _user_roles:
+
+User Roles
+~~~~~~~~~~
+
+To manage user roles for a *Project*, scroll down to the *Project Members*
+section in the :ref:`project-details` page of your dashboard. The table below
+shows the types of roles that members can have and their privileges.
 
 +---------+---------------------------------------------------------------------------+
 | Role    | Description                                                               |
 +=========+===========================================================================+
 | PI      | Each project has only one PI. PI can manage roles of the project members. |
 +---------+---------------------------------------------------------------------------+
-| Manager | Each project can have multiple Managers. Managers can manage the          | 
+| Manager | Each project can have multiple Managers. Managers can manage project      | 
 |         | membership and renew allocations of the project.                          |
 +---------+---------------------------------------------------------------------------+
 | Member  | Members can only view the list of the project members.                    |
@@ -183,60 +192,70 @@ use the *Cancel* button to cancel the action.
 
   Manage Role of a User
 
-.. _manage-users:
+.. _set-SU-budgets:
 
-Manage User SU Budgets in a Chameleon Project
--------------------------------
+Set SU Budgets for Project Members
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Every user within a Chameleon project can have a service unit (SU) budget allocated to them.
-This budget determines the resources they can utilize within the project.
-Managing these budgets ensures fair distribution of resources and effective utilization of project resources.
-A project can have a default budget, that is applied on all the members except managers.
-All new users added to the project will have those default SU budget enforced.
+The PI or project managers can set a service unit (SU) budget for each project
+member. This budget limits the resources that a project member can utilize from
+the project's total SU allocation. Managing these budgets ensures fair
+distribution of resources and effective utilization of project resources across
+multiple project members. Setting a user-specific budget can help when managing
+resources for a project with lots of members (a large collaborative research
+project or a classroom project, for instance) and ensure that project
+allocations are shared effectively between project members.
+
+Project managers (including PIs) can set a default SU budget that is applied to
+all project members except managers. All new users added to the project will
+receive the same default SU budget upon joining.
 
 .. figure:: project/defaultbudget.png
   :alt: Set project default budget
 
-Viewing User SU Budgets - Each user listed will have their SU budget displayed next to their name.
-This represents the allocation of resources that they can utilize within the project.
+**Viewing User SU Budgets** - Project members will have their SU budget
+displayed next to their name in the *Project Members* table. This represents
+the allocation of resources that they can utilize within the project.
 
-Project managers can set limits on the maximum SU budget allocated to each user.
-This helps in preventing resource hoarding and ensures fair distribution of resources among project members.
-To adjust the SU budget for a specific user, use the slider or the SU Budget field to *Set* budget for user
+Project managers may also set different limits for different users. To adjust
+the SU budget for a specific user, use the slider or the SU Budget field to
+*Set* the new budget for an individual user.
 
 .. figure:: project/subudgetslider.png
   :alt: Adjust SU budget for user
 
-Manage Users
-------------
+.. _add-remove-members:
 
-To manage users of a *Project*, use the *Project Members* section in the
-:ref:`project-details`. While each user has their own Chameleon User account
-independent of your project, they may be added to one or more projects. Being a
-user of a *Project* **does not** require a :ref:`PI eligibility
-<pi-eligibility>`.
+Adding and Removing New Members
+~~~~~~~~~~~~~~~~~~
 
-You may add a user to your project by filling out their user name or email
-address and clicking the *Add user* button. You may remove a user from your
-project by locating the user in the user list; clicking the *gear* button
-at the end of the row; and clicking *Remove user*.
+To add or remove users of a *Project*, use the *Project Members* section in the
+:ref:`project-details` page on your dashboard.
 
-It is possible to bulk-add a large list of users by clicking the "Add multiple users"
-button, or remove all users without the Manager role by clicking the "Remove multiple users"
-button. Additionally, under this option there is a link which you can send to
-users which will allow them to request to join your project after they sign in.
-Once a request is made, the managers of a project will be notified, and will
-need to confirm the user.
+You may add a user to your project by filling out their username or email
+address and clicking the *Add user* button. While each user has their own
+Chameleon User account independent of your project, they may be added to one or
+more projects. Being a user of a *Project* **does not** require a :ref:`PI
+eligibility <pi-eligibility>`.
+
+You may remove a user from your project by locating the user in the user list;
+clicking the *gear* button at the end of the row; and clicking *Remove user*.
+
+It is also possible to bulk-add a large list of users by clicking the "Add
+multiple users" button, or remove all users without the Manager role by
+clicking the "Remove multiple users" button. Additionally, under this option
+there is a link which you can send to users that will allow them to request to
+join your project after they sign in to Chameleon. Once a request is made, the
+managers of a project will be notified, and will need to confirm the user.
 
 .. figure:: project/multiple_users.png
   :alt: Adding multiple users.
   
   Adding multiple users
 
-
-If there is no user associated with an email address, an invitation will be sent
-with a link. When someone clicks on this link, they will be prompted to sign in
-or create an account, and then automatically added to the project. Invitations
-show up at the bottom of the members list, and can be deleted or resent if needed.
-After an invitation is accepted, the user will show up under the *Project Members*
-section.
+If there is no user associated with an email address, an invitation will be
+sent with a link. When someone clicks on this link, they will be prompted to
+sign in or create an account, and then automatically added to the project.
+Invitations show up at the bottom of the members list, and can be deleted or
+resent if needed. After an invitation is accepted, the user will show up under
+the *Project Members* section.
