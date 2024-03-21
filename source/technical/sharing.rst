@@ -172,6 +172,10 @@ Artifact owners cannot have their Adminstrator privileges removed.
 Publishing to Zenodo
 ^^^^^^^^^^^^^^^^^^^^
 
+.. attention::
+   You can only request a DOI for artifacts uploaded via the Jupyter interface.
+   You cannot request a DOI for an artifact version uploaded via git.
+
 Trovi is intended for sharing work in progress with a limited group of "friends
 and family". However, once you complete your experiment package you may want to
 publish it so that you can reference it from your paper. To do that Chameleon
