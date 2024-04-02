@@ -451,6 +451,40 @@ For example, you can use ``resource_properties='["=", "$architecture.smp_size",
 
 .. note:: Remember to use ``$`` in front of the property.
 
+
+Showing Lease Details
+---------------------
+
+To display detailed information about a specific lease,
+you can use the `openstack reservation lease show` command.
+By default, this command provides basic lease information
+such as name, status, and duration. However, if you want to
+view all the resources allocated within the lease,
+you can use the `--detail` option.
+
+.. code-block:: bash
+
+   openstack reservation lease show LEASE_NAME_OR_ID
+
+To display all resource allocations within the lease, use the `--detail` option:
+
+.. code-block:: bash
+
+   openstack reservation lease show --detail LEASE_NAME_OR_ID
+
+Example:
+
+.. code-block:: bash
+
+   openstack reservation lease show --detail my-first-lease
+
+Expected Output:
+
+The output will include detailed information about the lease, including the
+resources reserved within it such as hosts, networks, and devices.
+
+
+
 Extending a Lease
 -----------------
 
