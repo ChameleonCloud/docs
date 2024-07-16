@@ -227,7 +227,7 @@ the SU budget for a specific user, use the slider or the SU Budget field to
 .. _add-remove-members:
 
 Adding and Removing New Members
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To add or remove users of a *Project*, use the *Project Members* section in the
 :ref:`project-details` page on your dashboard.
