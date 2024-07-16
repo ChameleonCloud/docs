@@ -1,9 +1,9 @@
 .tox/
 *.py[cod]
 .venv
-
+venv
 .ipynb_checkpoints
 .python-version
 .vscode
-
+.DS_Store
 build
