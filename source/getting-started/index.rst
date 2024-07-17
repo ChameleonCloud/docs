@@ -26,9 +26,11 @@
 Getting started
 ================
 
+.. image:: ../_static/imgs/getting_started/chameleon-at-work.jpg
+
 **Welcome to the Chameleon testbed! We're excited your here.**
 
-Get a quick start on leveraging the power of Chameleon for your research
+Get a head start on leveraging the power of Chameleon for your research
 projects by following our guide below.
 
 At the end of this tutorial, you will have learned how to:
@@ -39,14 +41,14 @@ At the end of this tutorial, you will have learned how to:
 - Use Chameleon's `Hardware Discovery Catalog`_ and the :ref:`Host Calendars
   <the-lease-calendars>` to search for available hardware that meets your
   research needs.
-- Reserve Chameleon resources with using leases.
+- Reserve Chameleon resources using leases.
 - Configure, launch, and connect to an instance running on a bare metal server.
 
 Let's get started!
 
 .. note::
-   If you already have a Chameleon account and project, you can skip to 
-   :ref:`this section below <start-using-chameleon>`.
+   If you already have a Chameleon account and project, you can skip the pre-reqs 
+   to :ref:`this section below <start-using-chameleon>`.
 
 .. contents:: :local:
 
@@ -55,13 +57,12 @@ Let's get started!
 Pre-Req: Creating a Chameleon Account
 =====================================
 
-Before you can get started using Chameleon, you will need to create a user
-account.
+Before you can get started using Chameleon, you will need to create a **user
+account**.
 
 Don't worry! Creating an account is easy and free. We use Globus_, a platform
 for secure and reliable data transfer, sharing, and management across various
-storage systems and computing environments, to enable Single Sign-On on
-Chameleon.
+storage systems and computing environments, to enable SSO on Chameleon.
 
 To create an account (and to log in for future sessions), go to the Chameleon_
 home page and click on the "Log In" button at the top right corner of the
@@ -107,22 +108,22 @@ Pre-Req: Create or Join a Project
 ================================
 
 **Projects** are user-created workspaces on Chameleon that allow you to manage
-project resources and members, create hardware and network reservations, and
-share project outcomes (like publications). All Chameleon projects have an
-assigned **project ID** (``CHI-XXXXXX``), a project leader (what we call a
-**Principal Investigator (PI)** on Chameleon), and an **allocation** of compute
-resources. First-time projects are automatically granted six months of compute
-(20,000 `service hours`_).
+testbed resources and project members, create hardware and network
+reservations, and share project outcomes (like publications). All Chameleon
+projects have an assigned **project ID** (``CHI-XXXXXX``), a project leader
+(what we call a **Principal Investigator (PI)** 🕵️ on Chameleon), and an
+**allocation** of compute resources. First-time projects are automatically
+granted six months of compute (20,000 `service hours`_).
 
 .. note::
    Projects can request renewals after the first allocation to receive more
    compute. Read more about renewals :ref:`here <recharge-extend-allocation>`.
    
-   A PI can have multiple projects on Chameleon to isolate their research
-   projects and compute. We ask that users create a new project when
-   starting a new research endeavor, rather than reusing a previous one. This user behavior also helps us report the magnificent
-   impact and value that Chameleon provides and helps keep the lights on so you
-   can keep doing your research.
+   A PI can have multiple projects on Chameleon to isolate their research projects
+   and compute. We ask that users create a new project when starting a new
+   research endeavor, rather than reusing a previous one. This user behavior also
+   helps us report the magnificent impact and value that Chameleon provides and
+   helps keep the lights on so you can keep doing your research.
 
 There are two ways to join a project:
 
@@ -156,7 +157,7 @@ be able to utilize the testbed sites.
 
 Read more about :ref:`creating projects <creating-a-project>` on Chameleon.
 
-Joining an existing project
+Joining an Existing Project
 ---------------------------
 
 .. image:: ../_static/imgs/getting_started/project-members-section.png
@@ -173,22 +174,21 @@ Read more about :ref:`user management <manage-users>` on Chameleon.
 
 .. _start-using-chameleon:
 
-Start Using Chameleon
-=====================
+Start Using Chameleon Hardware
+===============================
 
 Congratulations, you are now ready to launch your first instance! Instances are
 much like what you may expect to find in a virtual machine, except here the
-instances are on bare metal nodes - the core feature of Chameleon. A bare metal
-node is a whole physical server that you have exclusive access to. An instance
-is going to be a bare metal node that has been launched with an operating
-system image.
+instances are on bare metal nodes - the core feature of Chameleon 😎. A bare
+metal node is a whole physical server to which you, and you alone, have
+exclusive root access.
 
 .. note::
 
    Chameleon also offers a multi-tenant, virtualized cloud, with fewer
    functionalities and a smaller scale. See :ref:`kvm` for more details.
 
-Below, we will walk through the steps on how to make a reservation using the
+Below, we will walk through the steps on how to launch a bare metal instance using the
 grahpical user interface (GUI) or web application on the Chameleon_ portal.
 
 See the :ref:`final section <remix>` to complete the same steps using Jupyter
@@ -217,8 +217,8 @@ place to start your hardware discovery.
    
    For example, if you want to use a `GPU v100`_ node, you must use the |CHI@UC| 
    site, which is the only site where the node is available. Some hardware is 
-   available at multiple sites, but it is always a good idea to check at which 
-   site your preferred hardware is located to save yourself some confusion or 
+   available at multiple sites, but it is always a good idea to check where 
+   your preferred hardware is located to save yourself some confusion or 
    trouble later down the line.
 
 In this getting started demo, we will work with the ``Compute Cascadelake R``
@@ -257,9 +257,9 @@ or |CHI@TACC|, so you can select one of those.
 
    Select a site to use.
 
-When you access one of the sites, you are first taken to a dashboard, which
-shows a summary of your project's current resource usage and get quick access
-to each of the sites. The dashboard looks something like this:
+When you access one of the sites, you are first taken to a site dashboard,
+which shows a summary of your project's current resource usage. The dashboard
+looks something like this:
 
 .. figure:: dashboard.png
    :alt: The Chameleon Dashboard's resource usage summary
@@ -272,6 +272,10 @@ specific domain for the testbed site we chose. You can also see which site you
 are currently on by clicking on the dropdown next to the Chameleon logo at the
 top left of the window.
 
+.. figure:: ../_static/imgs/getting_started/change-site-project-menu.png
+   :figwidth: 80 %
+   :align: center
+
 This section tells you which project you are currently using and which site. By
 clicking on the dropdown menu, you can change to another Chameleon site or
 change to another project.
@@ -280,7 +284,9 @@ change to another project.
    Projects will only appear as an option in this menu if they have a current
    active allocation of compute resources.
 
-.. image:: ../_static/imgs/getting_started/change-site-project-menu.png
+.. figure:: ../_static/imgs/getting_started/leases-side-bar.png
+   :figwidth: 20 %
+   :align: left
 
 Step 2: Go to the Reservations Dashboard
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -291,13 +297,12 @@ bar and then click "Leases." Doing so will open a new page showing a table of
 your lease activity. If you are a first-time user of Chameleon, the table will
 be blank. Let's change that now!
 
-.. image:: ../_static/imgs/getting_started/reservations-page.png
-
 Step 3: Creating a New Lease
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before we create a lease, it is a good idea to check the `Host Calendar`_
-available on the Leases page to see if another user has the hardware reserved.
+Before we create a lease, it is a good idea to check the :ref:`Host Calendars
+<the-lease-calendars>` available on the Leases page to see if another user has
+the hardware reserved.
 
 .. figure:: ../_static/imgs/getting_started/host-calendar-button.png
 
@@ -384,14 +389,14 @@ reservation required)
 
 **SUBMIT!**
 
-Click "Create." Chameleon provides bare metal access to nodes. When you create
+.. image:: ../_static/imgs/getting_started/leases-pending.png
+
+Click "**Create**". Chameleon provides bare metal access to nodes. When you create
 a reservation for one or more nodes, only you and other users on your project
 will be able to use those nodes for the time specified.
 
 The reservation will start shortly, at which point you can launch an instance
 on a bare metal node.
-
-.. image:: ../_static/imgs/getting_started/leases-pending.png
 
 When the lease is created, it will appear on your Leases page with a status of
 "PENDING." Once the lease is active, the status will change to "ACTIVE" and you
@@ -400,6 +405,7 @@ view more details about your lease.
 
 .. figure:: ../_static/imgs/getting_started/lease-details.png
    :figwidth: 50 %
+   :align: left
 
 .. important::
 
@@ -675,14 +681,13 @@ In this last section of our Getting Started guide, we will briefly touch on how
 to do the exact same thing we did above through a Jupyter Notebook connected to
 the testbed compute environment.
 
-
-Jupyter on Chameleon
---------------------
-
 .. figure:: ../_static/imgs/getting_started/jupyter-interface-button.png
    :figwidth: 20 %
    :width: 100 %
    :align: left
+
+Jupyter on Chameleon
+--------------------
 
 Chameleon is integrated with :ref:`JupyterHub <jupyter>`, so you can launch a
 Jupyter server (on KVM) with an environment pre-configured with python-chi_ and
@@ -714,13 +719,13 @@ appear in your file system.
 You can also download and import files from Jupyter as well as integrate with
 git.
 
-Trovi
------
-
 .. figure:: ../_static/imgs/getting_started/trovi-button.png
    :figwidth: 20 %
    :width: 100 %
    :align: left
+
+Trovi
+-----
 
 One benefit of having an interface like Jupyter available is that users can use
 it to package their project materials, scripts, code, and datasets as artifacts
@@ -952,3 +957,9 @@ the guide helpful and producitive as you begin your researching journey on the
 testbed. If you have questions for us, :ref:`please see our documentation on seeking
 help <help>`. If you have any feedback on this guide or would like to share some
 suggestions with us, reach out at contact@chameleoncloud.org.
+
+As mentioned above, check out our `tutorials
+<https://chameleoncloud.org/experiment/share/?filter=tag%3Aexperiment+pattern>`_
+on Trovi for more experiment patterns that you can use in your research. You
+can also find more live tutorials and webinars on our `webinar page
+<https://chameleoncloud.org/learn/webinars/>`_.
