@@ -53,6 +53,8 @@ Each individual *Project* has its own:
   *Instances*
 - Assets such as snapshots, object containers, metrics and network configuration
 
+.. _creating-a-project:
+
 Creating a Project
 ------------------
 
