@@ -128,7 +128,7 @@ granted six months of compute (20,000 `service hours`_).
 There are two ways to join a project:
 
 1. Create a new project (requires PI status)
-2. Join a new project (requires project invitation from current project member)
+2. Join an existing project (requires project invitation from current project member)
 
 Creating a New Project
 ----------------------
@@ -136,7 +136,7 @@ Creating a New Project
 To create a new project on Chameleon, you will need to apply for and receive PI
 status on Chameleon. To determine if you can obtain PI status, please see a
 :ref:`list of PI eligibility criteria <pi-eligibility>`. If you do not meet
-these criteria (e.g., students generally do not), you will need to ask your
+these criteria (**graduate students often do not**), you will need to ask your
 advisor or other scientist supervising your research to create the project for
 you.
 
@@ -162,13 +162,16 @@ Joining an Existing Project
 
 .. image:: ../_static/imgs/getting_started/project-members-section.png
 
-If you want to join an existing Chameleon project, you will need to ask the PI
-or a manager of the project to add your username. You can find your username in
-`your Chameleon profile <https://www.chameleoncloud.org/user/profile/>`_ - it
-is also displayed in the top-right corner when you are logged in. You will
-receive an email with an invitation link to join the project. Once you have
-joined the project, you will then be able to use the compute allocation to make
-resource reservations.
+If you want to join an existing Chameleon project, you will need to join an existing project. There are three ways to add a user to a project.
+
+#. The project PI/manager adds your username or email directly
+#. The project PI/manager sends you an invitation (automatic if the email from above doesn't exist in our system yet)
+#. the project PI/manager shares an invite link with you, which sends a join request for a project when you click it
+
+To find your username, go to `your Chameleon profile page
+<https://www.chameleoncloud.org/user/profile/>`_ - it is also displayed in the
+top-right corner when you are logged in. Once you join a project, you will then
+be able to use the project's compute allocation to make resource reservations.
 
 Read more about :ref:`user management <manage-users>` on Chameleon.
 
@@ -189,7 +192,7 @@ exclusive root access.
    functionalities and a smaller scale. See :ref:`kvm` for more details.
 
 Below, we will walk through the steps on how to launch a bare metal instance using the
-grahpical user interface (GUI) or web application on the Chameleon_ portal.
+graphical user interface (GUI) or web application on the Chameleon_ portal.
 
 See the :ref:`final section <remix>` to complete the same steps using Jupyter
 and python-chi_, Chameleon's Python library with custom utilities to help with
@@ -484,14 +487,14 @@ will tell the system to use them image for the instance source.
 
 On the next section, we can allocate a network to provide communication
 channels for instances in the cloud. Chameleon currently offers two
-networks, `sharednet1` and `fabnetv4`. We will use the `sharednet1`, which
+public networks, `sharednet1` and `fabnetv4`. We will use the `sharednet1`, which
 is the default network for providing connectivity to a Chameleon instance.
-The `fabnetv4` network is specifically for accessing the FABRIC testbed
+The `fabnetv4 <https://www.chameleoncloud.org/blog/2024/03/18/tips-and-tricks-understanding-the-fabric-layer-3-connection/>`_ network is specifically for accessing the FABRIC testbed
 resources from Chameleon sites and from cross-site stitching. Read more
 here! We will use the `sharednet1` since we aren't doing any fancy
 networking right now.
 
-**Network Ports and Key Pairs**
+**Key Pairs**
 
 .. figure:: ../_static/imgs/getting_started/launch-instance-key-pair.png
    :figwidth: 80 %
@@ -499,10 +502,9 @@ networking right now.
 
    Add a key pair to the instance.
 
-As a final step to create our instance, we can assign network ports and set
-up a key pair. Assigning network ports is optional, so we will skip that for
-now. (Read more here!). However, we absolutely need to add a key pair if we
-want to remotely access the instance after it is running.
+As a final step to create our instance, we can set up a key pair. We absolutely
+need to add a key pair if we want to remotely access the instance after it is
+running.
 
 .. figure:: ../_static/imgs/getting_started/instance-details.png
    :figwidth: 50 %
@@ -511,7 +513,7 @@ want to remotely access the instance after it is running.
 To add a key pair, we can either add a new one using "Create Key Pair" and
 storing the credentials on our local machine, or import an existing key using
 the "Import Key Pair". If you have previously uploaded a key pair to Chameleon,
-this key pair will appear in the "Avaiable" section below. You can then reuse
+this key pair will appear in the "Available" section below. You can then reuse
 that key pair.
 
 Finally, we are ready to click **"Launch Instance"**. Doing so will take us back
@@ -526,13 +528,13 @@ options to view logs, open a console (once the instance is running), and more.
 First Contact: Associating an IP Address & SSH
 ----------------------------------------------
 
-Your instance may take approximately ten minutes to launch. The launch process
-includes powering up, loading the operating system over the network, and
-booting up for the first time on a rack located either at the University of
-Chicago or the Texas Advanced Computing Center, depending on where you chose to
-launch your instance. Before you can access your instance, you need to first
-assign a floating IP address - an IP address that is accessible over the public
-Internet.
+Your instance may take approximately ten to fifteen minutes to launch depending
+on the node type. The launch process includes powering up, loading the
+operating system over the network, and booting up for the first time on a rack
+located either at the University of Chicago or the Texas Advanced Computing
+Center, depending on where you chose to launch your instance. Before you can
+access your instance, you need to first assign a floating IP address - an IP
+address that is accessible over the public Internet.
 
 Step 1: Associate an IP
 ~~~~~~~~~~~~~~~
