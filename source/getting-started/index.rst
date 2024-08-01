@@ -76,7 +76,10 @@ account.
 
 Clicking on the federated login button will then take you to the Globus website
 where you can enter your institution details. You will then be prompted to sign
-in through your institution as you would normally.
+in through your institution as you would normally. You can also create an
+account directly with Globus using the `Globus ID
+<https://www.globusid.org/>`_ service. This option is useful in the event you
+don't want anything external.
 
 .. image:: ../_static/imgs/getting_started/globus-login.png
 
@@ -607,8 +610,9 @@ To log in to your instance with SSH, follow these steps:
 
    .. note::
 
-      Change the IP address in this command to match your instance's floating IP
-      address!
+      Change the IP address in this command to match your instance's floating
+      IP address! **New to SSH keys?** Check out this guide `here
+      <https://www.sectigo.com/resource-library/what-is-an-ssh-key>`_.
 
 Once you connect successfully, you will then be able to run commands on your
 instance.
