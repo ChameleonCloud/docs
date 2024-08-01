@@ -41,6 +41,8 @@ In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 
    The Leases page in the GUI
 
+.. _the-lease-calendars:
+
 The Lease Calendars
 -------------------
 
