@@ -90,6 +90,10 @@ Different images and snapshots may require a larger Flavor. For example, the
       If you select different flavors from the Flavor dropdown, their
       characteristics are displayed on the right.
 
+      If your VM needs differ from our defaults, you can request a custom
+      flavor for your project from the
+      `help desk <https://www.chameleoncloud.org/user/help/>`__
+
 When you are finished with this step, go to the *Key Pair* Tab.
 
 .. figure:: kvm/new_launchaccess.png
