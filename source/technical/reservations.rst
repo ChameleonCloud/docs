@@ -58,6 +58,14 @@ represents time.
 
    The Host Calendar
 
+.. tip::
+   Education projects may require "sub-leases" to facillitate student access to a
+   node during a project, while keeping that node available to the project. This
+   ensures that resources required for a class are not unavailable before a deadline.
+   If this is required for your usage, we can temporarily grant exclusive access to
+   a node to your project. Please create a lease for the node, and contact the |Help Desk|
+   to request exclusive node access for your project.
+
 .. figure:: reservations/networkcalendar.png
    :alt: The Network Calendar
 
@@ -207,7 +215,9 @@ lease. Then, click on the *Update* button to finish your request.
    to coordinate with others users. Additionally, if you know from the start
    that your lease will require longer than a week and can justify it, you can
    submit a ticket on our |Help Desk| to request a **one-time exception** of
-   creating a longer lease.
+   creating a longer lease. You may also other exceptions to our other policies,
+   such as idle lease termination, by submitting a request.
+
 
 Changing the Number of Nodes of a Lease
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
