@@ -2,195 +2,119 @@
 FPGAs
 ======
 
+.. attention::
+   **Our previously supported FPGA nodes at CHI@UC and CHI@TACC are in the process of being decommissioned.**
+   
+   We are working on a new FPGA offering, which will be available soon. Please stay tuned for updates. Users can still access our Xilinx FGPAs on Chameleon by following the documentation below. However, at this time, we are not supporting workflows for compilation or flashing of FPGA images. Users may still reserve Xilinx FPGA hardware and launch instances to run pre-compiled FPGA images.
+
 ____________
 Introduction
 ____________
 
-Chameleon provides access to five FPGA nodes.
-Four nodes are located at |CHI@TACC|. Each of these nodes is fitted with a `Nallatech 385A board <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ with an Altera Arria 10 1150 GX FPGA (up to 1.5 TFlops), 8 GB DDR3 on-card memory, and dual QSFP 10/40 GbE support.
-One node is located at |CHI@UC|. The node is fitted with a `Terasic DE5a-Net board <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_ with an `Altera Arria 10 GX 1150 FPGA <https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=231&No=970>`_ (up to 1.5 TFlops), 4 GB DDR3 on-card memory, and four QSFP 10/40 GbE support.
-All FPGA nodes are configured to run OpenCL code, but they can be reconfigured (by a request to our |Help Desk|) to run compiled designs prepared with Altera Quartus.
+Chameleon provides access to two `Xilinx Alveo U280 <https://docs.amd.com/r/en-US/ug1120-alveo-platforms/U280>`_ FPGA nodes, both of which are available at |CHI@UC|. Each node is equipped with:
 
-Due to export control limitations, access to the development toolchain requires verification of your user profile. This guide explains how to gain access to the development toolchain and execute code on the FPGA nodes. Briefly, the steps for building an FPGA application are:
+- Memory:
+   - 32 GB DDR4 memory (two 16 GB channels)
+   - 8 GB HBM (High Bandwidth Memory)
+   - On-chip PLRAM memory
+- Connectivity:
+   - PCIe Gen3 x16 interface
+   - Two QSFP28 ports supporting up to 100Gbps network access (*Note: These ports are not configured currently but will be available in a future update*)
+- Additional Specifications:
+   - 300 MHz default clock
+   - Three Super Logic Regions (SLRs) with dedicated compute and memory resources
 
-- Create a TACC account at the `TACC Portal <https://portal.tacc.utexas.edu/>`_
-- Setup Multi-Factor Authentication for TACC Resources by following `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_
-- Request access to the FPGA Build Node project at the |Help Desk|
-- SSH to the ``fpga01.tacc.chameleoncloud.org`` host to build your FPGA application
-- Use ``scp`` to copy your FPGA application from ``fpga01.tacc.chameleoncloud.org`` to the FPGA node you wish to run it on
+The workflow for using these FPGAs on Chameleon consists of four main steps:
 
-____________
-Development
-____________
-
-Chameleon provides a build system that includes the necessary `Altera SDK for OpenCL <https://www.altera.com/products/design-software/embedded-software-developers/opencl/overview.html>`_ tools for developing kernels for use on the `Nallatech 385A cards <http://www.nallatech.com/store/pcie-accelerator-cards/nallatech-385a-arria10-1150-fpga/>`_ and the `Terasic DE5a-Net card <https://www.intel.com/content/www/us/en/programmable/solutions/partners/partner-profile/terasic-inc-/board/arria-10-device-family---de5a-net--fpga-development-kit.html>`_, both using the Altera Arria 10 FPGA.
-
-Due to licensing requirements, you must apply for access to the FPGA build system. Submit a ticket through our help system to request access.
-
-FPGA resources are only available at |CHI@TACC|. Due to TACC’s security requirements, multi-factor authentication must be used to access the FPGA build system. You can either use a smartphone app (Apple iOS or Android) or SMS messaging: follow `this documentation <https://portal.tacc.utexas.edu/tutorials/multifactor-authentication>`_ to set it up. Once you have set up multi-factor authentication, you can SSH to fpga01.tacc.chameleoncloud.org with your Chameleon username and password; you will also be asked for a TACC security token, which will be provided to you via the app or SMS.
-
-Each user's home directory will contain an archive file containing a Hello World OpenCL example: ``exm_opencl_hello_world_x64_linux_16.0.tgz``. Extract the archive with the following command:
-
-.. code-block:: bash
-
-   tar -zxf exm_opencl_hello_world_x64_linux_16.0.tgz
-
-Two directories will be extracted: ``common`` and ``hello_world``. Change into the ``hello_world`` directory.
-
-.. code-block:: bash
-
-   cd hello_world
-
-Prior to compiling, load the Quartus environment configuration for either the Nallatech or Terasic board.
-
-Nallatech:
-
-.. code-block:: bash
-
-   module load nallatech
-
-Terasic:
-
-.. code-block:: bash
-
-   module load terasic
+1. Reserve a bare metal node with FPGA hardware
+2. Launch an instance using a supported base image
+3. Install required Xilinx software tools in your environment
+4. Load your pre-compiled bistream onto the FPGA and run your application
 
 .. important::
-   The host code contains the function ``findPlatform(Altera)``, which searches for the "Altera" platform name. It should instead be instructed to search for "Intel(R) FPGA". `This change <https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/solutions/fb409015.html>`_ can be made by editing ``../hello_world/host/src/main.cpp``:
-    ``findPlatform("Intel(R) FPGA")``
+   Chameleon does not provide FPGA compilation services or development tools. Users need to compile their code elsewhere before running it on Chameleon's FPGAs. If you need compilation services, consider using partner facilities such as the `Open Cloud Testbed (OCT) <https://octestbed.org/>`_, which provides development environments for Xilinx FPGAs.
 
-Compiling an OpenCL kernel often takes a very long time, so it is essential to debug by using the emulation feature of the compiler using ``-march=emulator`` in the compiler command. Note that the ``--board p385a_sch_ax115`` parameter is required for the Nallatech board, and the ``-board=de5a_net_e1`` parameter is required for the Terasic board. These correctly identify the FPGA boards available on Chameleon. Do not alter these parameters or their syntax. In this example, the host application requires the output name to be ``hello_world.aocx``, so this parameter must also be unchanged.
+__________________________
+Reserverving FPGA Hardware
+__________________________
 
-Nallatech:
+CHI@UC provides two `compute_cascadelake_r` nodes equipped with Xilinx Alveo U280 FPGAs:
 
-.. code-block:: bash
+- Node ``P3-CPU-038`` (UUID: ``89e48f7e-d04f-4455-b093-2a4318fb7026``)
+- Node ``P3-CPU-042`` (UUID: ``926a9c99-3b27-45a7-818c-e6525b9ce89c``)
 
-   aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx -march=emulator
+To ensure you get the correct hardware, reserve these nodes specifically by UUID, `as explained here in our documentation <https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html#reserving-a-node-by-uuid>`_.
 
-Terasic:
+_________________________
+Launching Your Instance
+_________________________
 
-.. code-block:: bash
+After your reservation becomes active:
 
-   aoc -board=de5a_net_e1 device/hello_world.cl -o bin/hello_world.aocx -march=emulator
+- Launch an instance using the Chameleon-supported CC-Ubuntu 24.04 base image. Advances users may also choose to upload and use any upstream image that Xilinx supports. Find a list of supported upstream images `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_.
+- Connect to your instance via SSH
 
-Build the host application, which is used to execute the OpenCL kernel.
+_______________________
+Installing Xilinx Tools
+_______________________
 
-.. code-block:: bash
+After you have reserved and provisioned your instance, you will need to install the AMD Vitis™ software platform to work with the FPGA resources on the host. Vitis provides command-line tools for scripted or manual application development.
 
-   make
+AMD documentation provides the installation requirements for both Ubuntu and CentOS, which can be found `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_.
 
-Now run the emulated kernel.
+Once you have satisfied the installation requirements for your image, you can proceed to install the Vitis platform following AMD’s documentation `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Vitis-Software-Platform-Installation>`_.
 
-.. code-block:: bash
+___________________________
+Loading Your Bitstream
+___________________________
 
-   env CL_CONTEXT_EMULATOR_DEVICE_INTELFPGA=1 ./bin/host
+After installing the required tools, you can program the Xilinx Alveo U280 FPGA with your pre-compiled bitstream using the `Xilinx Runtime (XRT) tools <https://xilinx.github.io/XRT/master/html/index.html>`_. Generally, you will follow these steps, but we encourage users to review the AMD documentation linked at the bottom of this page as well:
 
-When debugging is complete and the code is ready to be compiled for the FPGA hardware, remove the emulation flag. This may take several hours to complete, so we recommend you run it inside a terminal multiplexer, such as screen or tmux which are both installed on the build node.
-
-Nallatech:
-
-.. code-block:: bash
-
-   aoc --board p385a_sch_ax115 device/hello_world.cl -o bin/hello_world.aocx
-
-Terasic:
-
-.. code-block:: bash
-
-   aoc -board=de5a_net_e1 device/hello_world.cl -o bin/hello_world.aocx
-
-_________
-Execution
-_________
-
-After completing development of an OpenCL kernel on our build node, the kernel and host application must be transferred and executed on a node with an FPGA accelerator.
-
-When using |CHI@TACC| GUI to reserve nodes, use the *Node Type to Reserve* selector and choose *FPGA*. Alternatively, use the `Resource Discovery web interface <https://www.chameleoncloud.org/user/discovery/>`_ to reserve a node equipped with an FPGA accelerator card by filtering the node selection using the *with FPGA* button, and clicking *Reserve* at the bottom of the selection. Copy the generated CLI command and use it to create your reservation.
-
-In order to have access to the required runtime environment for using the FPGAs, use the image **CC-CentOS7-FPGA** when launching your instance.
-
-Log in to the instance, download the application code (both ``common`` and ``hello_world`` directories) from the build system using ``scp``, and change into the ``hello_world`` directory:
+**1. Verify the FPGA Device**
+   
+First, ensure that the FPGA device is recognized and ready. Use the ``xbmgmt`` tool to examine the device status:
 
 .. code-block:: bash
 
-   scp -r <username>@fpga01.tacc.chameleoncloud.org:~/common .
-   scp -r <username>@fpga01.tacc.chameleoncloud.org:~/hello_world .
-   cd hello_world
+   sudo xbmgmt examine --verbose
 
-Compile the host application, if necessary.
+Look for the device BDF (Bus:Device.Function) identifier, which you'll need in the next steps. For example, it might be ``0000:81:00.0``.
 
-.. code-block:: bash
+**2. Program the FPGA with Your Bitstream**
 
-   make
-
-Program FPGA with the OpenCL kernel, using ``acl0`` as the device name.
+Use the ``xbmgmt`` tool to program the FPGA with your bitstream. Replace ``<device_BDF>`` with your device's BDF and ``<path_to_your_bitstream>`` with the path to your ``.xclbin`` file:
 
 .. code-block:: bash
 
-   aocl program acl0 ./bin/hello_world.aocx
+   sudo xbmgmt program --device <device_BDF> --base --image <path_to_your_bitstream>
 
-.. attention::
-   If you are at |CHI@UC|, please run the following commands (program FPGA as ``root``).
-
-   .. code-block:: bash
-
-      sudo -i
-      source /etc/profile.d/altera.sh
-      cd /home/cc/hello_world
-      aocl program acl0 ./bin/hello_world.aocx
-
-Execute the host application to run on FPGA.
+For example:
 
 .. code-block:: bash
 
-   ./bin/host
+   sudo xbmgmt program --device 0000:81:00.0 --base --image /path/to/your_bitstream.xclbin
 
-You should see an output like the following:
+This command will program the FPGA with your specified bitstream.
 
-.. code::
+**3. Reboot the System**
 
-   Querying platform for info:
-   ==========================
-   CL_PLATFORM_NAME                         = Altera SDK for OpenCL
-   CL_PLATFORM_VENDOR                       = Altera Corporation
-   CL_PLATFORM_VERSION                      = OpenCL 1.0 Altera SDK for OpenCL, Version 16.0
+After programming the FPGA, it's recommended to perform a cold reboot to ensure the new image is properly loaded:
 
-   Querying device for info:
-   ========================
-   CL_DEVICE_NAME                           = p385a_sch_ax115 : nalla_pcie (aclnalla_pcie0)
-   CL_DEVICE_VENDOR                         = Nallatech ltd
-   CL_DEVICE_VENDOR_ID                      = 4466
-   CL_DEVICE_VERSION                        = OpenCL 1.0 Altera SDK for OpenCL, Version 16.0
-   CL_DRIVER_VERSION                        = 16.0
-   CL_DEVICE_ADDRESS_BITS                   = 64
-   CL_DEVICE_AVAILABLE                      = true
-   CL_DEVICE_ENDIAN_LITTLE                  = true
-   CL_DEVICE_GLOBAL_MEM_CACHE_SIZE          = 32768
-   CL_DEVICE_GLOBAL_MEM_CACHELINE_SIZE      = 0
-   CL_DEVICE_GLOBAL_MEM_SIZE                = 8589934592
-   CL_DEVICE_IMAGE_SUPPORT                  = true
-   CL_DEVICE_LOCAL_MEM_SIZE                 = 16384
-   CL_DEVICE_MAX_CLOCK_FREQUENCY            = 1000
-   CL_DEVICE_MAX_COMPUTE_UNITS              = 1
-   CL_DEVICE_MAX_CONSTANT_ARGS              = 8
-   CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE       = 2147483648
-   CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS       = 3
-   CL_DEVICE_MEM_BASE_ADDR_ALIGN            = 8192
-   CL_DEVICE_MIN_DATA_TYPE_ALIGN_SIZE       = 1024
-   CL_DEVICE_PREFERRED_VECTOR_WIDTH_CHAR    = 4
-   CL_DEVICE_PREFERRED_VECTOR_WIDTH_SHORT   = 2
-   CL_DEVICE_PREFERRED_VECTOR_WIDTH_INT     = 1
-   CL_DEVICE_PREFERRED_VECTOR_WIDTH_LONG    = 1
-   CL_DEVICE_PREFERRED_VECTOR_WIDTH_FLOAT   = 1
-   CL_DEVICE_PREFERRED_VECTOR_WIDTH_DOUBLE  = 0
-   Command queue out of order?              = false
-   Command queue profiling enabled?         = true
-   Using AOCX: hello_world.aocx
-   Reprogramming device with handle 1
+.. code-block:: bash
 
-   Kernel initialization is complete.
-   Launching the kernel...
+   sudo reboot
 
-   Thread #2: Hello from Altera's OpenCL Compiler!
+**4. Verify the New Configuration**
 
-   Kernel execution is complete.
+Once the system restarts, verify that the new configuration is active:
+
+.. code-block:: bash
+   sudo xbmgmt examine --verbose
+
+Ensure that the device is ready and the new platform UUID matches your programmed bitstream.
+
+.. important::
+   - Ensure that your bitstream (``.xclbin`` file) is compatible with the Alveo U280 FPGA.
+   - The ``xbmgmt`` tool is part of the XRT installation and is used for managing FPGA devices.
+   - For detailed instructions and troubleshooting, refer to the `XRT documentation <https://xilinx.github.io/XRT/master/html/xbmgmt.html>`_.
+   - Additional AMD instructions for bringing up and validating your card `here <https://docs.amd.com/r/en-US/ug1301-getting-started-guide-alveo-accelerator-cards/Card-Bring-Up-and-Validation>`_.
