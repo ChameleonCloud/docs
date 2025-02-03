@@ -3,9 +3,16 @@ FPGAs
 ======
 
 .. attention::
-   **Our previously supported FPGA nodes at CHI@UC and CHI@TACC are in the process of being decommissioned.**
+   **Our previously supported Altera FPGA nodes at CHI@UC and CHI@TACC are in the process of being decommissioned.**
+
+   We are actively enhancing our FPGA capabilities with new offerings in development. **Altera nodes** previously supported on Chameleon **will be unavailable after Feb. 7, 2025**.
    
-   We are working on a new FPGA offering, which will be available soon. Please stay tuned for updates. Users can still access our Xilinx FGPAs on Chameleon by following the documentation below. However, at this time, we are not supporting workflows for compilation or flashing of FPGA images. Users may still reserve Xilinx FPGA hardware and launch instances to run pre-compiled FPGA images.
+   While these updates are in progress, users can **continue accessing** our existing **Xilinx FPGA resources** **using documentation below**. Our team is working on implementing improved workflows to streamline current FPGA development and deployment processes. These enhancements will provide more efficient ways to utilize this hardware.
+
+   **If you have ideas or suggestions regarding the use of FPGAs on Chameleon, please reach out to us at**
+   contact@chameleoncloud.org.
+   
+   We will provide additional updates as new features and hardware become available. Stay connected with our platform for the latest announcements.
 
 ____________
 Introduction
@@ -32,7 +39,7 @@ The workflow for using these FPGAs on Chameleon consists of four main steps:
 4. Load your pre-compiled bistream onto the FPGA and run your application
 
 .. important::
-   Chameleon does not provide FPGA compilation services or development tools. Users need to compile their code elsewhere before running it on Chameleon's FPGAs. If you need compilation services, consider using partner facilities such as the `Open Cloud Testbed (OCT) <https://octestbed.org/>`_, which provides development environments for Xilinx FPGAs.
+   Chameleon does not provide FPGA compilation services or development tools. Users need to compile their code elsewhere before running it on Chameleon's FPGAs. We are currently exploring new ways to provide FPGA development tools and workflows in the future.
 
 __________________________
 Reserverving FPGA Hardware
@@ -51,24 +58,26 @@ _________________________
 
 After your reservation becomes active:
 
-- Launch an instance using the Chameleon-supported CC-Ubuntu 24.04 base image. Advances users may also choose to upload and use any upstream image that Xilinx supports. Find a list of supported upstream images `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_.
+- Launch an instance using a supported upstream image for the Xilinx Runtime. Chameleon suggests using our supported CC-Ubuntu 24.04 as a base image. Advanced users may choose to use any upstream image that Xilinx supports. Find a list of supported upstream images `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_
 - Connect to your instance via SSH
 
 _______________________
 Installing Xilinx Tools
 _______________________
 
-After you have reserved and provisioned your instance, you will need to install the AMD Vitis™ software platform to work with the FPGA resources on the host. Vitis provides command-line tools for scripted or manual application development.
+Compiling code for FPGAs requires the Xilinx Vitis™ software platform, which provides a comprehensive development environment for creating FPGA-accelerated applications. The Vitis platform includes the Vitis Unified Software Platform, Vitis Core Development Kit, and Vitis AI Development Kit.
 
-AMD documentation provides the installation requirements for both Ubuntu and CentOS, which can be found `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_.
+Flashing the FPGA with your bitstream requires the Xilinx Runtime (XRT) tools, which are part of the Vitis platform. The XRT tools provide a command-line interface for managing FPGA devices, including programming the FPGA with your bitstream. You can also install the XRT environment separately from the Vitis platform.
 
-Once you have satisfied the installation requirements for your image, you can proceed to install the Vitis platform following AMD’s documentation `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Vitis-Software-Platform-Installation>`_.
+Guidelines for installing the Vitis platform can be found in the `AMD documentation <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Vitis-Software-Platform-Installation>`_. The installation requirements for Ubuntu are also provided in the documentation `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_.
+
+Guidelines for installing the Xilinx Runtime (XRT) tools can be found in the `XRT documentation <https://xilinx.github.io/XRT/master/html/index.html>`_.
 
 ___________________________
 Loading Your Bitstream
 ___________________________
 
-After installing the required tools, you can program the Xilinx Alveo U280 FPGA with your pre-compiled bitstream using the `Xilinx Runtime (XRT) tools <https://xilinx.github.io/XRT/master/html/index.html>`_. Generally, you will follow these steps, but we encourage users to review the AMD documentation linked at the bottom of this page as well:
+After installing the required tools, you can program the Xilinx Alveo U280 FPGA with your pre-compiled bitstream using the `Xilinx Runtime (XRT) tools <https://xilinx.github.io/XRT/master/html/index.html>`_. The steps below are the basic workflow for flashing, but we encourage users to review the AMD documentation for more detailed instructions.
 
 **1. Verify the FPGA Device**
    
