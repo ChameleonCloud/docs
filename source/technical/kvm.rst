@@ -20,6 +20,11 @@ Chameleon. The interface is similar to the bare metal sites |CHI@TACC| and
 being tied to physical nodes. Familiarity with some concepts, such as
 :ref:`gui-key-pairs` are also required for KVM.
 
+.. note::
+   **GPU Access on KVM**
+
+   KVM now has GPUs available on `CHI@KVM`. Due to popular demand, launching an instance on a GPU-enabled flavor requires a reservation, similar to bare metal resources on Chameleon. Unlike bare metal reservations, these VM reservations require the user to select a particular GPU-enabled `flavor`, rather than a physical resource type. In the documentation below, we explicitly call out, where relevant, the different steps needed for creating GPU-enabled instances. KVM access for non-GPU instances is still available without a reservation.
+
 Work with KVM using the GUI
 ---------------------------
 
@@ -51,6 +56,26 @@ you perform a variety of tasks such as suspending, terminating, or rebooting the
 instance.
 
 .. figure:: kvm/new_instances.png
+
+Creating Leases for VMs with GPUs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _kvm-create-lease:
+
+.. attention::
+   This section is only relevant for users who wish to launch GPU-enabled instances on KVM.
+
+Before launching a GPU-enabled instance, you must have an active lease for a GPU-enabled flavor.
+
+Create a lease by navigating to the *Reservations* panel and clicking *Create Lease*. In the new lease form:
+   
+- Complete the *Lease Name* and *Description* fields.
+- In the *flavor* tab, select a GPU-enabled flavor (e.g., a 64 vCPU flavor with a 1 GPU slice). Note that GPU reservations are subject to hardware limits (up to 7 VMs per GPU).
+- Confirm your reservation after submitting the lease request. If capacity is insufficient, the GUI will display an error message and the lease will not be created.
+
+.. figure::
+   [image placeholder]
+.. note::
+   We do not have a way for users to check the availability of GPU resources before creating a lease. If you are unable to create a lease, you may need to wait and check back later. We are currently working on a hardware calendar to provide more visibility into GPU availability.
 
 Launching Instances
 ~~~~~~~~~~~~~~~~~~~
@@ -85,6 +110,8 @@ to the instance.
 Flavors refer to the virtual machine's assigned memory and and disk size.
 Different images and snapshots may require a larger Flavor. For example, the
 ``CC-CentOS7`` image requires at least an ``m1.small`` flavor.
+
+**If you have a lease for a GPU-enabled flavor**, you will see a special flavor associated with your active lease in this menu. Select this flavor to launch your GPU-enabled instance. See the section on `Creating Leases for VMs with GPUs <#kvm-create-lease>`_ for more information.
 
    .. tip::
       If you select different flavors from the Flavor dropdown, their
