@@ -9,7 +9,7 @@ Networking on Chameleon is implemented using `OpenStack Neutron <https://docs.op
 Most experiments will require :ref:`basic-networking` functionality including Internet access and connectivity between nodes.
 Chameleon provides basic networking capabilities via a pre-configured shared network called ``sharednet1``.
 Many experiments require additional connectivity and control of the network.  These experiments can utilize Chameleon's advanced
-networking capabilities including :ref:`network-isolation`, :ref:`stitching`, and :ref:`sdn`.
+networking capabilities including :ref:`network-isolation`, :ref:`stitching`, :ref:`multisitelayer3`, and :ref:`sdn`.
 
 
 .. toctree::

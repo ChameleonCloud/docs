@@ -4,20 +4,27 @@
 Project management
 ==================
 
-Project management tasks, such as adding users to your project or requesting a
-renewal, is performed through the portal at https://chameleoncloud.org. After
-you have `registered <https://www.chameleoncloud.org/user/register/>`_ and
-verified your email address, you may `login to the portal
-<https://www.chameleoncloud.org/login/>`_. Once logged in, you should be at
-*Dashboard* page automatically. If not, you can access your *Dashboard* via the
-dropdown list on top right of the screen.
+In this section, we discuss how to manage your Chameleon projects through the
+portal --- everything from creating a new project and adding your collaborators
+to extending your resource allocations. Go to your `user dashboard
+<https://www.chameleoncloud.org/user/dashboard/>`_ on the Chameleon portal to
+access the project management interface.
+
+.. figure:: project/getting_to_dashboard.png
+  :alt: Getting to the dashboard
+
+  Getting to the dashboard
+
+.. attention::
+
+  TODO: Restructure headings slightly to show more section headers in the sidebar.
 
 .. _dashboard-page:
 
 Dashboard
 =========
 
-The Dashboard's main page consists of two control panels - the *Active Projects*
+On the dashboard's main page, you'll see two control panels - the *Active Projects*
 control panel and the *Open Tickets* panel.
 
 .. figure:: project/dashboard.png
@@ -26,11 +33,8 @@ control panel and the *Open Tickets* panel.
   The project dashboard
 
 The *Active Projects* control panel allows you to view all your active projects
-and their current usage. You may click on a project to view details.
-
-The *Open Tickets* panel lists all your active help desk tickets. In addition,
-you can `Open a Ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_
-via the *Open Tickets* panel.
+and their current usage. You may click on a project to view individual details or click
+`Manage your Projects` to view all projects.
 
 .. _projects-page:
 
@@ -45,23 +49,28 @@ allows you to manage your current projects.
 
   Project list
 
-Each individual *Project* has its own:
+Each of your *Projects* on Chameleon has its own:
 
-- Service Unit allocations
-- Users that have access to the project
+- PI (Principal Investigator; you)
+- Project members with various management roles and access to the project resources
+- Service Unit allocations (resource budget for the project; see :ref:`service-units`)
 - System resources such as *Security Groups*, *Floating IP Addresses* and
   *Instances*
 - Assets such as snapshots, object containers, metrics and network configuration
+- Publications associated with the project (see :ref:`manage-publications`)
 
 .. _creating-a-project:
 
 Creating a Project
 ------------------
 
-To create a project, click the *+Create a Project* button. After filling out and
-submit the request form, a system administrator will review your request and
-notify you once your project get approved. Project durations are six months with
-a default allocation of 20,000 :ref:`service-units`.
+To create a project, click the *+Create a Project* button. Fill out and submit
+the `request form <https://www.chameleoncloud.org/user/projects/new/>`_. Please
+note that your project will not be created and available immediately. A system
+administrator will first review your request within one business day and notify
+you once your project is approved (pending review decision). Once approved,
+your project will appear in your "Active Projects" on the dashboard with an
+initial six-month allocation and default budget of 20,000 :ref:`service-units`.
 
 .. figure:: project/createproject.png
   :alt: The Create a New Project form
@@ -160,6 +169,10 @@ button next to the publication text.
 
 Manage Users
 ------------
+
+.. attention::
+
+  TODO: We need to add a section on the new export feature for project member data.
 
 In the dashboard, you can add or remove users (or "members") from your
 projects, manage your project members' user roles, and allocate how many SUs
@@ -261,3 +274,10 @@ sign in or create an account, and then automatically added to the project.
 Invitations show up at the bottom of the members list, and can be deleted or
 resent if needed. After an invitation is accepted, the user will show up under
 the *Project Members* section.
+
+Exporting Project Members
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. attention::
+
+  TODO: DRAFT

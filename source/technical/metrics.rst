@@ -5,7 +5,7 @@ Monitoring
 =========================
 
 .. warning::
-	Gnocchi is not supported on the testbed. If you are interested in power monitoring, you should see `this trovi artifact <https://chameleoncloud.org/experiment/share/370ce99a-3e03-43e9-83e3-b61fd9692dc0>`_
+	Gnocchi is not supported on the testbed. If you are interested in power monitoring, refer to our Tips & Tricks blog on `power measurement and management <https://chameleoncloud.org/blog/2024/06/18/power-measurement-and-management-on-chameleon/>`_ and see this `Trovi artifact <https://chameleoncloud.org/experiment/share/50692573-4094-466c-b4fe-0ed3471f8993/>`_ for a simple experiment pattern involving power measurement.
 
 Chameleon collects monitoring information, representing qualities such as CPU load or power consumption data, from various sources into an *aggregation service*. Data is kept in this service with resolution that decreases over time. Users can retrieve those metrics via a *command line interface (CLI)*.
 
