@@ -47,6 +47,15 @@ At this point your Chameleon network is connected to a FABRIC ``facility port`` 
 FABRIC slice and specify the Chameleon ``segmentation_id`` to use.  This is a layer 2 connection and you can configure
 higher-level protocols, such as IP, in any way you desire.
 
+Alternately, if you know the desired vlan_id in advance, say it's already configured on the FABRIC ``facility port``, you can create your lease as follows:
+
+.. code-block:: bash
+
+    # in this example, we happened to know 3490 was the vlan ID we wanted
+    openstack reservation lease create --reservation \
+    resource_type=network,network_name=foo_bar,\
+    resource_properties='["and",["==","$stitch_provider","fabric"],["==","$segment_id","3490"]]' \
+    segment_lease_3490
 
 Connecting Stitchable Isolated Networks across Chameleon Sites
 ______________________________________________________________
