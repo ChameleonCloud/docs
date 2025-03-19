@@ -21,7 +21,7 @@ Welcome to Chameleon
 
 .. toctree::
    :maxdepth: 1
-   :caption: Testbed interfaces
+   :caption: Testbed Interfaces
 
    technical/gui
    technical/cli
@@ -29,7 +29,7 @@ Welcome to Chameleon
 
 .. toctree::
    :maxdepth: 1
-   :caption: Technical guide
+   :caption: Technical Guide
 
    technical/index
    technical/discovery
