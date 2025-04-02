@@ -386,6 +386,14 @@ that map to containers you've mounted. If there is a directory inside
 ``THIS_IS_NOT_MOUNTED`` in it. Once you mount the container, the file
 will no longer be visible until the container is unmounted.
 
+The tool can mount existing containers in the object store, or create them
+if they don't exist. The containers are from the specific site where the
+instance is located and only work at sites that have an object store
+(currently ``CHI@UC`` and ``CHI@TACC``). For example, instances running at
+``CHI@UC`` will interact with the object store also at ``CHI@UC``. You will
+not be able to interact with object store data at other sites using this
+method.
+
 .. important::
 
    Some older Chameleon-supported images have an outdated mechanism for mounting
