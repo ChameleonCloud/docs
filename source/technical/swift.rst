@@ -284,7 +284,7 @@ There isn't "folders" when you managing the *Object Store* with the CLI.
 However, when you create an object, you may use the delimiter ``/`` to specify
 the path.
 
-.. _cc-cloudfuse:
+.. _cc-rclone:
 
 Managing Chameleon Cloud Object Store with AWS CLI
 ==================================================
@@ -368,51 +368,64 @@ Mounting Object Store as a File System
 ======================================
 
 .. tip::
-   Cloudfuse can upload objects up to 4GB. For larger objects, please use the
-   Swift CLI.
+   rclone can upload small and large files to the object store, however,
+   if you have trouble uploading larger objects, you may need to use the
+   Swift CLI instead.
 
 When logged into an instance using Chameleon-supported images, such as
-`CC-CentOS8 <https://www.chameleoncloud.org/appliances/83/>`_ and
-`CC-Ubuntu18.04 <https://www.chameleoncloud.org/appliances/69/>`_, you will see
-a directory called ``my_mounting_point`` which is a pre-mounted directory to
-your Chameleon Object Store at the same site of your instance. Each Object Store
-container that you have access to will appear as a subdirectory inside this
-mount.
-
-The ``cc-cloudfuse`` tool (Source: `ChameleonCloud/cc-cloudfuse
-<https://github.com/ChameleonCloud/cc-cloudfuse>`_) is pre-installed in
-Chameleon-supported images. It is based on the ``cloudfuse`` tool (Source:
-`redbo/cloudfuse <https://github.com/redbo/cloudfuse>`_), which is used to mount
-your Chameleon Object Store as a directory on your Linux environment.
+`CC-CentOS9-Stream <https://www.chameleoncloud.org/appliances/112/>`_ and
+`CC-Ubuntu24.04 <https://www.chameleoncloud.org/appliances/122/>`_, you will
+find a README in the home directory for the `cc` user. The README describes
+how to mount containers in the Chameleon Object Store into a directory
+called ``cc_my_mounting_point`` in your home directory. Mounts are facilitated
+by the `rclone <https://rclone.org/>`_ tool. If the directory does not exist,
+this directory will be created the first time you mount a container.
+Inside the ``cc_my_mounting_point`` directory, you will find directories
+that map to containers you've mounted. If there is a directory inside
+``cc_my_mounting_point`` that is not mounted it should have a file named
+``THIS_IS_NOT_MOUNTED`` in it. Once you mount the container, the file
+will no longer be visible until the container is unmounted.
 
 .. important::
 
-   Some older Chameleon-supported images have an outdated version of this tool
-   installed, which is not compatible with authentication using federated identity.
-   If you wish to continue using a historical image, you should update the tool
-   by following the `installation instructions
-   <https://github.com/ChameleonCloud/cc-cloudfuse#installation>`_.
+   Some older Chameleon-supported images have an outdated mechanism for mounting
+   the object store using ``cc-cloudfuse``. This mechanism for mounting
+   the object store is no longer recommended or supported. On older images
+   you should use the Swift CLI directory to use the object store.
 
 To mount, use the following command:
 
 .. code-block:: bash
 
-   cc-cloudfuse mount <mount_dir>
+   cc-mount-object-store start your_container_name
 
-Now you can access your Chameleon Object Store as your local file system.
+Now you can access your Chameleon Object Store as your local file system at:
+`~/cc_my_mounting_point/your_container_name`.
+
+You can investigate if a mount is running for a container with:
+
+.. code-block:: bash
+
+   cc-mount-object-store status your_container_name
+
+You can also list all running mounts with:
+
+.. code-block:: bash
+
+   cc-mount-object-store list
 
 To unmount, use the following command:
 
 .. code-block:: bash
 
-   cc-cloudfuse unmount <mount_dir>
+   cc-mount-object-store stop your_container_name
 
 .. important::
    **Limitations**
 
-   The primary usage scenario of the ``cc-cloudfuse`` tool is to allow you to
+   The primary usage scenario of the ``rclone`` tool is to allow you to
    interact with Chameleon Object Store using familiar file system operations.
-   Because the ``cc-cloudfuse`` runs on top of an object store, it is important
+   Because the tool runs on top of an object store, it is important
    to understand that not all functionality will behave identically to a regular
    file system.
 
@@ -434,11 +447,18 @@ To unmount, use the following command:
       usable for large file systems. In addition, files added by other
       applications will not show up until the cache expires.
 
-   #. The maximum number of listings is 10,000 items.
+   Please keep these limitations in mind when considering the use of this tool
+   to interact with the object store.
 
-   Please keep these limitations in mind when evaluating ``cc-cloudfuse``.
+.. warning::
+   The use of ``rclone`` to sync files between your instance
+   and the object store is a best effort tool. It is the responsibilty
+   of the user to verify the files sync'd correctly and are valid.
 
-.. note::
-   You may experience persistence issues when using ``cc-cloudfuse``, especially
-   when writing large files or writing many files at the same time. Unmounting
-   and re-mounting usually resolves this.
+   Given the challenges of mapping files in a file system to an object
+   store over a network, numerous problems can occur that may impact
+   the availability of files on the object store. If you attempt
+   to copy files into the mount point and receive errors, it is
+   important that you verify the existence and contents of the file
+   in the object store and not simply assume the file has been
+   persisted there (even if it is present in the mount point).
