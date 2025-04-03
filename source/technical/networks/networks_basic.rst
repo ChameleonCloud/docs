@@ -76,9 +76,11 @@ utility called ``firewalld`` enabled.
 
 .. note::
 
-   The firewall is disabled on instances deployed on KVM since those instances
-   use security groups for the firewall. ``firewalld`` is enabled on all bare
-   metal instances in all other regions.
+   For Chameleon supported images (e.g., CC-Ubuntu24.04) built in April 2025 or
+   later, the firewall is disabled on instances deployed on KVM since those
+   instances use security groups for the firewall. ``firewalld`` is enabled on
+   all bare metal instances in all other regions. Images built before April 2025
+   all have ``firewalld`` enabled by default.
 
 It has the following rules set:
 
