@@ -18,9 +18,9 @@ Three types of resources can be reserved: physical bare metal hosts, network
 segments (VLANs), and floating IPs.
 
 .. attention::
-   
+
    **A note on lease stacking**
-   
+
    To prevent resource hoarding and ensure fair access to specialized hardware,
    Chameleon discourages "lease stacking" or making multiple overlapping
    reservations. Review our `lease stacking policy <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
@@ -112,7 +112,7 @@ up the window displayed below:
 
 	.. figure:: reservations/nodereservationdialog.png
 	   :alt: The Create Lease dialog Host reservation tab
-	
+
 	   The Create Lease dialog Host reservation tab
 
     a. Check "Reserve Hosts".
@@ -127,11 +127,16 @@ up the window displayed below:
           wish to request multiple node types, you must create separate Leases for
           each node type.
 
+       .. warning::
+
+          You must select = when matching the node_type to a specific selection.
+          Using other operators like >= may yield unexpected results.
+
 #. To reserve a vlan segment, navigate to the "Networks" tab.
 
 	.. figure:: reservations/networkreservationdialog.png
 	   :alt: The Create Lease dialog Network reservation tab
-	
+
 	   The Create Lease dialog Network reservation tab
 
     a. Check "Reserve Network"
@@ -235,7 +240,7 @@ To change the number of nodes of a lease, click on the *Update Lease* button in
    The Update Lease Parameters dialog, changing the number of reserved nodes
 
 
-Navigate to the "Hosts" tab,  and fill out the form by specifying the new minimum 
+Navigate to the "Hosts" tab,  and fill out the form by specifying the new minimum
 and maximum numbers of hosts. Then, click on the *Update* button to finish your request.
 
 Changing the Number of Floating IPs in a Lease
@@ -603,10 +608,10 @@ the red "Re-Allocate Host" button next to it.
 
 .. figure:: reservations/reallocatehost.png
    :alt: The re-allocate buttons on the lease detail page
-   
+
    The nodes on the lease detail page.
 
-You can also do the same on the command-line. Run the command that follows, 
+You can also do the same on the command-line. Run the command that follows,
 entering your lease ID and the node ID where appropriate.
 
 .. code-block:: bash
@@ -614,5 +619,5 @@ entering your lease ID and the node ID where appropriate.
     openstack reservation host reallocate --lease-id LEASE_ID NODE_ID
 
 If you re-allocate a host because it is malfunctioning, please make sure to
-report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that 
+report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that
 we can fix it.
