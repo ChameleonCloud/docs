@@ -28,7 +28,7 @@ Getting started
 
 .. image:: ../_static/imgs/getting_started/chameleon-at-work.jpg
 
-**Welcome to the Chameleon testbed! We're excited your here.**
+**Welcome to the Chameleon testbed! We're excited you're here.**
 
 Get a head start on leveraging the power of Chameleon for your research
 projects by following our guide below.
@@ -165,11 +165,11 @@ Joining an Existing Project
 
 .. image:: ../_static/imgs/getting_started/project-members-section.png
 
-If you want to join an existing Chameleon project, you will need to join an existing project. There are three ways to add a user to a project.
+If you want to join an existing Chameleon project, there are three ways to do so.
 
 #. The project PI/manager adds your username or email directly
 #. The project PI/manager sends you an invitation (automatic if the email from above doesn't exist in our system yet)
-#. the project PI/manager shares an invite link with you, which sends a join request for a project when you click it
+#. The project PI/manager shares an invite link with you, which sends a join request for a project when you click it
 
 To find your username, go to `your Chameleon profile page
 <https://www.chameleoncloud.org/user/profile/>`_ - it is also displayed in the
@@ -238,10 +238,10 @@ guide to reserve any hardware on Chameleon.
 Once we have found the hardware we want to use and the site where it is
 located, we are now ready to make our first reservation!
 
-My First Reservation: Reseving a Node
+My First Reservation: Reserving a Node
 -------------------------------------
 
-On Chameleon, as opposed to other testbeds or commerical clouds, you must
+On Chameleon, as opposed to other testbeds or commercial clouds, you must
 reserve your resources before you can launch an instance on them. Chameleon
 supports both *on-demand* and *advanced* reservations. We will use an on-demand
 reservation for this guide, but note that you can reserve resources in advance,
@@ -281,6 +281,8 @@ top left of the window.
 .. figure:: ../_static/imgs/getting_started/change-site-project-menu.png
    :figwidth: 80 %
    :align: center
+   
+   The site and project selector in the Chameleon interface
 
 This section tells you which project you are currently using and which site. By
 clicking on the dropdown menu, you can change to another Chameleon site or
@@ -364,7 +366,7 @@ required fields. We will start with just one node and will set the minimum and
 maximum number of hosts to 1. In the Resource Property field, we can use
 different attributes of Chameleon resources (such as "node type") to specify
 the exact kind of hardware we want to reserve with this lease. We can add
-multiple fitlers with different properties, but we only care about the node
+multiple filters with different properties, but we only care about the node
 type right now.
 
 .. important::
@@ -740,8 +742,8 @@ sharing?
 
 Chameleon provides the :ref:`Trovi <trovi>` service as a repository to share and access
 artifacts from other users on the testbed. Trovi is integrated with the Jupyter
-Interface, so you can launch Trovi artfacts directly onto the Jupyter Interface
-and start using them. You can also take your Jupyter artfacts and upload them
+Interface, so you can launch Trovi artifacts directly onto the Jupyter Interface
+and start using them. You can also take your Jupyter artifacts and upload them
 to Trovi from Jupyter, allowing others to see and use them.
 
 To get to the Trovi repository from the Chameleon_ home page, go to the
@@ -776,16 +778,13 @@ Click on the "**Launch on Chameleon**" button to start Jupyter. This loading pag
 should look familiar to the loading page when we launched the Jupyter Interface
 above.
 
-.. image::
-
 Once Jupyter has loaded, we will have the artifact directory available in our
 workspace. Your directory should include the following files:
 
 .. code-block:: bash
 
    $ ls
-   Analysis.ipynb             Experiment.ipynb   out            run_experiment.sh
-   latest.tar.gz      README.ipynb   setup.sh
+   Analysis.ipynb  Experiment.ipynb  README.ipynb     latest.tar.gz  out  run_experiment.sh  setup.sh
 
 We can click on the directory and open the ``README.ipynb`` file, which
 provides some documentation on this artifact, including approximately how long
@@ -831,7 +830,7 @@ launching instances.) Replace ``Chameleon`` with your project code.
 **Create a Reservation**
 
 .. note::
-   python-chi_ does not currently support hardware discovery, but we are 
+   ``python-chi`` does not currently support hardware discovery, but we are 
    working to fix that soon. Stay tuned!
 
 After we set our site and project code, we can now create a lease. The code
@@ -918,22 +917,11 @@ utility to connect to the instance.
    server.associate_floating_ip(s.id, floating_ip_address=floating_ip)
 
    print(f"Waiting for SSH connectivity on {floating_ip} ...")
-   timeout = 60*2
-   import socket
-   import time
-   # Repeatedly try to connect via SSH.
-   start_time = time.perf_counter()
-   while True:
-      try:
-         with socket.create_connection((floating_ip, 22), timeout=timeout):
-               print("Connection successful")
-               break
-      except OSError as ex:
-         time.sleep(10)
-         if time.perf_counter() - start_time >= timeout:
-               print(f"After {timeout} seconds, could not connect via SSH. Please try again.")
-
    from chi import ssh
+   
+   # Wait for SSH connectivity (simplified here for readability)
+   timeout = 120  # seconds
+   ssh.wait_for_connection(floating_ip, timeout=timeout)
 
    with ssh.Remote(floating_ip) as conn:
       # Upload the script

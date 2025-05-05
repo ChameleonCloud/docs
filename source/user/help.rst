@@ -4,8 +4,21 @@
 Getting help
 =============
 
+Forums
+======
+
+.. attention::
+  TODO: DRAFT
+
+
 Mailing lists
 =============
+
+.. attention::
+
+  TODO: Update to reflect new use of Users, direct users to forums for posting to user community. 
+
+  TODO: Users have expressed frustration about the opt out process, we need to clarify this.
 
 You can communicate with other Chameleon users by sending email to
 users@chameleoncloud.org. We also use this mailing list to communicate minor
@@ -23,6 +36,10 @@ The `Outages <https://www.chameleoncloud.org/user/outages/>`_ page of the
 Dashboard contains a list of system outage announcements. You may subscribe to
 an RSS feed of these outages by clicking on the *RSS* icon.
 
+.. attention::
+
+  TODO: Update screenshot
+
 .. figure:: help/outages.png
   :alt: The Outages announcement page
 
@@ -36,6 +53,9 @@ Help Desk
 The |Help Desk| allows you to submit help request tickets and view the status of
 any open tickets.
 
+.. attention::
+  TODO: Update Screenshot
+
 .. figure:: help/helpdesk.png
   :alt: The Help Desk page
 
@@ -44,6 +64,10 @@ any open tickets.
 To create a new help ticket, click the `+Create a new ticket
 <https://www.chameleoncloud.org/user/help/ticket/new/>`_ button and fill in the
 form. A system administrator will respond to your ticket within 3 business days.
+
+.. attention::
+
+  TODO: Delete, obviated by Forums
 
 .. note::
    An alternative way of asking for help is sending an email to the `Chameleon

@@ -1,7 +1,7 @@
 .. _trovi:
 
 ====================
-Trovi sharing portal
+Trovi Sharing Portal
 ====================
 
 `Chameleon Trovi <https://www.chameleoncloud.org/experiment/share>`_ is a
