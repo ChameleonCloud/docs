@@ -3,6 +3,19 @@
     <li><a href="/">Chameleon Documentation</a> &raquo;</li>
     {# {{ super() }} #}
 {% endblock %}
+{# Google Analytics #}
+{% block extrahead %}
+{{ super() }}
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RDT5Y9504Z"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RDT5Y9504Z');
+</script>
+<!-- End Google Analytics -->
+{% endblock %}
 {% block footer %}
  <script type="text/javascript">
     $(document).ready(function() {

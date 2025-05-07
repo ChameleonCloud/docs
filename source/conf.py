@@ -35,7 +35,7 @@ sys.path.insert(0, os.path.abspath('_ext'))
 extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
-    'sphinx.ext.githubpages',
+    'sphinx.ext.githubpages'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
