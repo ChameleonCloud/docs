@@ -36,7 +36,11 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
     'sphinx.ext.githubpages',
+    'sphinxcontrib.gtagjs',
 ]
+
+# Google Analytics configuration
+gtagjs_ids = ['G-RDT5Y9504Z']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
