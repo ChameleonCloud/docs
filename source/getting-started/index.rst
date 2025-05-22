@@ -57,53 +57,26 @@ Let's get started!
 Pre-Req: Creating a Chameleon Account
 =====================================
 
-Before you can get started using Chameleon, you will need to create a **user
-account**.
+Before you can use Chameleon, you need to create a free **user account**. 
 
-Don't worry! Creating an account is easy and free. We use Globus_, a platform
-for secure and reliable data transfer, sharing, and management across various
-storage systems and computing environments, to enable SSO on Chameleon.
-
-To create an account (and to log in for future sessions), go to the Chameleon_
-home page and click on the "Log In" button at the top right corner of the
-window.
+Creating an account is easy! Simply go to the Chameleon_ home page and click 
+**"Log In"** at the top right corner. You'll be redirected to our authentication 
+page where you can sign up using your institution credentials, Google account, 
+or other federated identity options.
 
 .. image:: ../_static/imgs/getting_started/chameleon-login.png
 
-You will then be redirected to separate authentication page, with an option to
-"Sign in via federated login." We recommend using this option to create your
-account.
+**We recommend using federated login** (sign in via your institution) as it's the 
+fastest way to get started and helps with PI eligibility verification if you plan 
+to create projects later.
 
-Clicking on the federated login button will then take you to the Globus website
-where you can enter your institution details. You will then be prompted to sign
-in through your institution as you would normally. You can also create an
-account directly with Globus using the `Globus ID
-<https://www.globusid.org/>`_ service. This option is useful in the event you
-don't want anything external.
+.. note::
+   **Need detailed login help?** See our comprehensive :doc:`federated authentication guide <../user/federation>` 
+   for step-by-step instructions, authentication options, and troubleshooting tips.
 
-.. image:: ../_static/imgs/getting_started/globus-login.png
-
-.. warning::
-   You may not find your institution on Globus. If so, you can still create an
-   account with another identity, such as GitHub, Google, or ORCID iD. However,
-   we encourage users to sign up using their institution, as it helps the 
-   Chameleon operators verify user identity, which is an essential step 
-   to getting Principal Investigator status on the testbed. More on this below!
-   (:ref:`Read more about logging into Chameleon via federated login <federation>`.)
-
-.. attention::
-   When creating an account, you will be asked to accept `terms and conditions
-   <https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use. Please,
-   note that as part of those terms and conditions you are requested to
-   acknowledge Chameleon in publications produced using the testbed. See our FAQ
-   for information on `how to reference Chameleon in your publications
-   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-cite-chameleon->`_
-   and the suggested `acknowledgement text
-   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-acknowledge-chameleon->`_.
-
-Once you log in, you will be able to :ref:`edit your Chameleon profile
-<profile-page>` and participate in our community. However, to actually use the
-testbed you will first need to **join or create a project**. Let's learn how!
+Once you log in, you can :ref:`edit your Chameleon profile <profile-page>` and 
+participate in our community. However, to actually use the testbed you'll first 
+need to **join or create a project**. Let's learn how!
 
 .. _getting-started-project:
 

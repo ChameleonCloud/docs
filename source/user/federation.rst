@@ -74,6 +74,13 @@ Authentication Options
    first - most universities and research institutions support this method, making it the fastest 
    way to get started with Chameleon.
 
+.. warning::
+   You may not find your institution on Globus. If so, you can still create an
+   account with another identity, such as GitHub, Google, or ORCiD. However,
+   we encourage users to sign up using their institution, as it helps the 
+   Chameleon operators verify user identity, which is an essential step 
+   to getting Principal Investigator status on the testbed.
+
 .. note::
    Chameleon has fully migrated to federated identity authentication. Legacy 
    Chameleon username/password accounts are no longer supported.
@@ -83,6 +90,18 @@ Authentication Options
    :figclass: screenshot
 
    The Single Sign On (SSO) portal login page.
+
+Terms and Conditions
+====================
+
+When creating an account, you will be asked to accept `terms and conditions
+<https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use. Please,
+note that as part of those terms and conditions you are requested to
+acknowledge Chameleon in publications produced using the testbed. See our FAQ
+for information on `how to reference Chameleon in your publications
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-cite-chameleon->`_
+and the suggested `acknowledgement text
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-acknowledge-chameleon->`_.
 
 Troubleshooting Login Issues
 ============================
