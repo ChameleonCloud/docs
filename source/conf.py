@@ -52,7 +52,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = 'Chameleon Cloud Documentation'
-copyright = '2018, Chameleon Cloud'
+copyright = '2025, Chameleon Cloud'
 author = 'Chameleon Cloud'
 
 # The version info for the project you're documenting, acts as replacement for

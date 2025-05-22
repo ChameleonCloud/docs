@@ -36,13 +36,12 @@ Welcome to Chameleon
    technical/reservations
    technical/baremetal
    technical/images
-   technical/metrics
+   technical/power_monitoring
    technical/complex
    technical/swift
    technical/shares
    technical/networks
    technical/fpga
-   technical/ep
    technical/sharing
    technical/daypass
    technical/kvm

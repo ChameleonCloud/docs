@@ -73,11 +73,5 @@ to authenticate. The options are:
 Legacy users (created before November 2020)
 ===========================================
 
-Users who signed up for a Chameleon account prior to November 2020 must migrate
-their account to use federated identity. Refer to the following step-by-step
-guide for more details.
-
-.. toctree::
-   :maxdepth: 1
-
-   federation/federation_migration
+Users who signed up for a Chameleon account prior to November 2020 were required to migrate
+their account to use federated identity. This migration process was completed in 2021.

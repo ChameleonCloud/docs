@@ -11,8 +11,8 @@ features.
 - :doc:`baremetal`: Launch and manage Instances on Chameleon bare metal
   resources. This is a core feature of Chameleon.
 - :doc:`images`: Create images of Instances.
-- :doc:`metrics`: Collect, manage and view experimental data from Chameleon
-  Instances.
+- :doc:`power_monitoring`: Monitor power consumption and energy usage of your
+  experiments.
 - :doc:`complex`: Work with Complex Appliances, which automate the process of
   deploying multiple Instances with reconfigurable networking.
 - :doc:`swift`: Store user data such as files as Objects in portable Containers.
