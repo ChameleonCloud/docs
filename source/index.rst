@@ -88,13 +88,14 @@ About the Testbed
 Chameleon operates multiple sites providing different capabilities:
 
 **Core Sites:**
+
 * **CHI@TACC** (Texas): Large-scale bare metal cloud with diverse Intel/AMD hardware
 * **CHI@UC** (Chicago): Networking-focused site with specialized hardware and GPU/FPGA resources
 * **CHI@NCAR** (Colorado): ARM ThunderX2 nodes for edge computing and atmospheric science research
-* **KVM@TACC** (Texas): Traditional OpenStack cloud for development and testing
+* **KVM@TACC** (Texas): Traditional OpenStack cloud
 
 **Associate Sites:**
-* Electronic Visualization Laboratory (UIC) and other academic partners providing additional specialized resources
+Electronic Visualization Laboratory (UIC) and other academic partners providing additional specialized resources
 
 The testbed serves hundreds of research projects annually, supporting publications 
 in systems, networking, distributed computing, cybersecurity, edge computing, and 
