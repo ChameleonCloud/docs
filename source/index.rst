@@ -21,8 +21,8 @@ security. Chameleon's features include:
 * A powerful set of networking capabilities, including:
 
   * Isolated layer-2 networks
-  * SDN/OpenFlow
   * Dedicated WAN layer-2 links
+  * FABRIC connectivity
 
 Using Chameleon
 ===============

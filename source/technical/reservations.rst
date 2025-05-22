@@ -541,8 +541,7 @@ For example, the following command will create a lease with the name of
    openstack reservation lease create --reservation resource_type=network,network_name="my-network" --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 Adding the ``network_description`` attribute provides its value as the
-description field when creating the Neutron network, allowing to leverage
-Chameleon :ref:`sdn` features.
+description field when creating the Neutron network for advanced networking configurations.
 
 .. code-block:: bash
 
