@@ -4,15 +4,29 @@
 Getting help
 =============
 
-Mailing lists
-=============
+Chameleon offers several support channels to assist users with their
+questions and issues. Depending on the nature of your inquiry, you can choose
+from the following options:
 
-You can communicate with other Chameleon users by sending email to
-users@chameleoncloud.org. We also use this mailing list to communicate minor
-announcements or provide early access to some new hardware or features. All
-Chameleon users are registered by default: we recommend that you stay
-registered. However, if you really want to opt-out, you can do so via `your user
-profile <https://www.chameleoncloud.org/user/profile/>`_.
+Community Forum
+===============
+
+.. note::
+   For immediate assistance or urgent issues, please use the Help Desk rather 
+   than the community forum. The Help Desk ensures your request receives prompt 
+   attention from Chameleon staff.
+
+Join the `Chameleon Community Forums <https://forum.chameleoncloud.org/>`_ to connect 
+with other users, ask questions, and share experiences. The forum provides a space for:
+
+* User discussions and community support
+* Non-urgent questions about using Chameleon
+* Sharing best practices and experimental approaches
+* Announcements of new features and capabilities
+
+The forum is actively monitored by Chameleon staff and experienced community members 
+who provide assistance on a best-effort basis. For immediate help or urgent issues, 
+please use the Help Desk instead.
 
 .. _outages-page:
 
@@ -44,13 +58,6 @@ any open tickets.
 To create a new help ticket, click the `+Create a new ticket
 <https://www.chameleoncloud.org/user/help/ticket/new/>`_ button and fill in the
 form. A system administrator will respond to your ticket within 3 business days.
-
-.. note::
-   An alternative way of asking for help is sending an email to the `Chameleon
-   users mailing list <mailto:users@chameleoncloud.org>`_, especially when the
-   Help Desk is down or you think it's something worth sharing with all
-   Chameleon users. A system administrator will reply to your email and, if
-   necessary, create a ticket for you.
 
 .. _webinars-page:
 
