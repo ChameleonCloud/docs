@@ -39,11 +39,12 @@ You may login to either site using your Chameleon portal username and password.
 
 .. _bare-metal-sites-independent:
 .. attention::
-    Each Chameleon testbed sites---|CHI@TACC|, |CHI@UC|, and |KVM@TACC|---are
-    **independent**, so snapshots, keypairs, Swift containers, Gnocchi
-    metrics and other objects are unique to each site. For example, a
-    keypair created at the |CHI@TACC| site is **not** available at the |CHI@UC|
-    site. In addition, the bare metal resource types vary between sites.
+
+   Each Chameleon testbed sites---|CHI@TACC|, |CHI@UC|, and |KVM@TACC|---are
+   **independent**, so snapshots, keypairs, Swift containers, and other objects
+   are unique to each site. For example, a keypair created at the |CHI@TACC|
+   site is **not** available at the |CHI@UC| site. In addition, the bare metal
+   resource types vary between sites.
 
 GUI Features
 ============

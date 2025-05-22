@@ -48,7 +48,7 @@ You may filter for specific node types by selecting the checkboxes that match yo
 .. tip:: To get more precise characteristics of the selected node, search the node at `Intel's CPU database <https://ark.intel.com/>`_.
 
 .. note::
-   All the nodes in Chameleon is identified by their *UUIDs*. You will need the *UUID* of a node for making reservations and identifying metrics collected from the node using Gnocchi. In addition, each node also has a *Version UUID*, which is used for retrieving its maintenance history.
+   All the nodes in Chameleon is identified by their *UUIDs*. You will need the *UUID* of a node for making reservations and for power monitoring. In addition, each node also has a *Version UUID*, which is used for retrieving its maintenance history.
 
 .. attention::
    When we replace faulty hardware on a node, the replacement part typically has the same hardware characteristics. For example, a node with a faulty 250 GB hard drive would be replaced with the same 250 GB hard drive model. However, it may be important for your experimental reproducibility to know about those hardware replacement events, in case it affects your metrics.

@@ -16,7 +16,7 @@ the client and configure your shell environment to access Chameleon features.
 .. attention::
 
    Some of the Chameleon features are **only** accessable via the CLI, such as
-   the Gnocchi metrics and the advanced networking features.
+   power monitoring tools and the advanced networking features.
 
 .. note::
 

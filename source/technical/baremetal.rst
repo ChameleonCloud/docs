@@ -224,7 +224,7 @@ instance, or by providing a file to the nova command line using the
 .. tip::
 
    Chameleon supported images are configured with appliance agents, including
-   :ref:`collectd <metrics>` and :ref:`Heat agents <all-to-all-info-exchange>`.
+   ``collectd`` (for system monitoring) and :ref:`Heat agents <all-to-all-info-exchange>`.
    To turn off appliance agents on boot, in order to remove the potential impact
    on experimental measurements, pass the following script as ``user-data``.
 
@@ -236,9 +236,9 @@ instance, or by providing a file to the nova command line using the
       systemctl stop os-collect-config.service
       systemctl disable os-collect-config.service
 
-   Turning off ``collectd`` will **stop** collecting :ref:`Gnocchi metrics
-   <metrics>`, but you can :ref:`turn on and configure the daemon
-   <configure-collectd>` anytime for monitoring your experiment.
+   Turning off ``collectd`` will **stop** collecting system metrics, but you can
+   restart and configure the daemon anytime for monitoring your experiment. For power
+   monitoring capabilities, see :ref:`power-monitoring`.
 
 Customizing the Kernel
 ----------------------
