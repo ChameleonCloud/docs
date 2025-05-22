@@ -94,7 +94,7 @@ a default allocation of 20,000 :ref:`service-units`.
 .. _service-units:
 
 Service Units
--------------
+~~~~~~~~~~~~~~
 
 One Service Unit (SU) is equivalent to one hour of usage of one allocatable
 resource (physical hosts, network segments, or floating IPs). For example, a
@@ -106,7 +106,7 @@ allocation charges, please see `here
 .. _project-details:
 
 Project Details
----------------
+~~~~~~~~~~~~~~~
 
 Clicking on a project from either the :ref:`dashboard-page` main page or the
 :ref:`projects-page` page will allow you to manage one of your approved
