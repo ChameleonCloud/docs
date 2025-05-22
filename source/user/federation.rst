@@ -15,8 +15,9 @@ to sign in once and use multiple services.
 
 Chameleon uses `Globus Auth <https://globus.org>`_, a popular authentication
 service, to implement federated login and federates with entities supported by
-Globus. Users can sign in using their existing institutional account if their
-institution is an `InCommon`_ member, use their Google account, or create a
+Globus. **We strongly recommend using federated login as it's the simplest and most 
+convenient way to access Chameleon.** Users can sign in using their existing institutional 
+account if their institution is an `InCommon`_ member, use their Google account, or create a
 `Globus ID <https://globusid.org/what>`_ tied to an email and password that they
 provide. In addition, Chameleon also federates with the TAS entity.
 
@@ -30,7 +31,7 @@ user profile, and submit |Help Desk| tickets, use the "Log in" button.
    :alt: Login button for the Chameleon user portal
    :figclass: screenshot
 
-To log in to any of the testbed sites (|CHI@TACC|, |CHI@UC|, |KVM@TACC|) or the
+To log in to any of the testbed sites (|CHI@TACC|, |CHI@UC|, |CHI@NCAR|, |KVM@TACC|) or the
 :ref:`Jupyter environment <jupyter>`, just click their item in the "Experiment"
 dropdown on |Home|. The login process is triggered
 automatically.
@@ -50,19 +51,32 @@ automatically.
    :alt: Links for accessing testbed sites and the Jupyter interface
    :figclass: screenshot
 
-You will be taken to a Single Sign On (SSO) page with a few options for how
-to authenticate. The options are:
+You will be taken to a Single Sign On (SSO) page with several authentication options.
+**We recommend choosing "Sign in via federated identity" for the easiest experience.**
 
-- **Sign in via federated identity**: this option allows you to re-use your
-  existing institution, research lab, or university credentials to log in to
-  Chameleon. It requires your host institution to participate in the `InCommon`_
-  federation.
-- **Google**: this option allows you to sign in with any Google account.
-- **ORCiD**: you can also sign in with a valid ORCiD account.
-- **TAS**: sign in via the TAS entity.
-- For the time being, if you are an existing user, you can also leave SSO and
-  go back to the old sign in page, where you sign in with your Chameleon
-  username and password.
+Authentication Options
+---------------------
+
+- **Sign in via federated identity** ⭐ **RECOMMENDED**: This is the simplest way to access 
+  Chameleon! Use your existing institution, research lab, or university credentials to log in. 
+  This requires your host institution to participate in the `InCommon`_ federation. Most major 
+  universities and research institutions are already members.
+
+- **Google**: Sign in with any Google account if your institution isn't part of InCommon or 
+  if you prefer using your Google credentials.
+
+- **ORCiD**: Sign in with a valid ORCiD account for research credential integration.
+
+- **TAS**: Sign in via the TAS entity (primarily for TACC users).
+
+.. tip::
+   **New users**: If you're unsure which option to choose, try "Sign in via federated identity" 
+   first - most universities and research institutions support this method, making it the fastest 
+   way to get started with Chameleon.
+
+.. note::
+   Chameleon has fully migrated to federated identity authentication. Legacy 
+   Chameleon username/password accounts are no longer supported.
 
 .. figure:: federation/sso-login.png
    :alt: Single Sign On (SSO) portal login
@@ -70,8 +84,28 @@ to authenticate. The options are:
 
    The Single Sign On (SSO) portal login page.
 
-Legacy users (created before November 2020)
-===========================================
+Troubleshooting Login Issues
+============================
 
-Users who signed up for a Chameleon account prior to November 2020 were required to migrate
-their account to use federated identity. This migration process was completed in 2021.
+If you experience difficulty logging in, try these solutions:
+
+**Common Authentication Issues:**
+
+- **Institutional credentials not working**: Ensure your institutional credentials are 
+  up-to-date and correctly linked to your Chameleon account
+- **Account linking problems**: Contact the :doc:`Help Desk <help>` to verify your 
+  identity and manually relink accounts if needed
+- **Browser issues**: Clear your browser cache and cookies, then try logging in again
+- **Password reset problems**: Use the password reset links provided in the portal
+
+**Getting Help:**
+
+For persistent login issues, contact our :doc:`Help Desk <help>` with details about:
+- Which authentication method you're trying to use
+- Any error messages you're seeing
+- Your institutional affiliation (if using federated login)
+
+.. note::
+   Users who had legacy Chameleon accounts (created before November 2020) successfully 
+   completed migration to federated identity in 2021. All current authentication uses 
+   federated identity providers.
