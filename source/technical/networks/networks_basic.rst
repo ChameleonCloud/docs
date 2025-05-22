@@ -26,6 +26,17 @@ The :ref:`getting-started` guide shows how to allocate *Floating IP address* to 
 
 .. important:: The Chameleon floating IP address pool is a shared and finite resource. **Please be responsible and release any unused floating IP address, so other Chameleon users and projects can use them!**
 
+Releasing Floating IP Addresses via GUI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To release floating IP addresses through the web interface:
+
+1. Navigate to *Network* > *Floating IPs* in the sidebar
+2. To release a single IP: click the dropdown in the *Actions* column and select *Release Floating IP*
+3. To release multiple IPs: select them via checkboxes and click the *Release Floating IPs* button
+
+You can also release floating IP addresses via the command line using ``openstack floating ip delete <floating-ip>``.
+
 Floating DNS Records
 ^^^^^^^^^^^^^^^^^^^^
 

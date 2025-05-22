@@ -81,6 +81,31 @@ To launch an instance with the GUI, follow the steps:
    .. tip::
       You may import or create key pairs directly through this step.
 
+   **Creating a New Key Pair**
+
+   To create a key pair through the interface:
+
+   1. Click *+ Create Key Pair* button
+   2. Provide a name for your new key pair and click *Create Key Pair*
+   3. A ``.pem`` file containing the private key will be automatically downloaded
+   4. The public key is saved automatically to Chameleon
+   5. Save the private key to a secure location (your home directory is recommended for macOS/Linux)
+
+   **Importing an Existing Key Pair**
+
+   To import a key pair you've generated on your computer:
+
+   1. Click *Import Key Pair* button
+   2. Provide a name for your imported key pair
+   3. Paste your public key (typically found at ``~/.ssh/id_rsa.pub``)
+
+   .. note::
+      Chameleon **only** stores the public key for each SSH key pair. **Never** upload 
+      your private key! Private keys begin with ``-----BEGIN RSA PRIVATE KEY-----``
+
+   .. tip::
+      On macOS, you can copy your public key with: ``cat ~/.ssh/id_rsa.pub | pbcopy``
+
 #. If you want to customize your instance after it has launched, you can add a
    customization script in the *Configuration* step.
 
