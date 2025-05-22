@@ -110,67 +110,23 @@ testbed you will first need to **join or create a project**. Let's learn how!
 Pre-Req: Create or Join a Project
 ================================
 
-**Projects** are user-created workspaces on Chameleon that allow you to manage
-testbed resources and project members, create hardware and network
-reservations, and share project outcomes (like publications). All Chameleon
-projects have an assigned **project ID** (``CHI-XXXXXX``), a project leader
-(what we call a **Principal Investigator (PI)** 🕵️ on Chameleon), and an
-**allocation** of compute resources. First-time projects are automatically
-granted six months of compute (20,000 `service hours`_).
+To use Chameleon resources, you need to be a member of an active **project**. Projects are 
+workspaces that provide compute allocations and manage team access to testbed resources.
+
+There are two ways to get project access:
+
+**Option 1: Create a New Project** (if you're eligible to be a PI)
+  - Requires PI eligibility status on Chameleon
+  - See our :doc:`PI eligibility guide <../user/pi_eligibility>` for requirements
+  - Graduate students typically need their advisor to create the project
+
+**Option 2: Join an Existing Project** (most common for new users)  
+  - Ask a current project member to add you
+  - Provide your Chameleon username (found in your `profile <https://www.chameleoncloud.org/user/profile/>`_)
 
 .. note::
-   Projects can request renewals after the first allocation to receive more
-   compute. Read more about renewals :ref:`here <recharge-extend-allocation>`.
-   
-   A PI can have multiple projects on Chameleon to isolate their research projects
-   and compute. We ask that users create a new project when starting a new
-   research endeavor, rather than reusing a previous one. This user behavior also
-   helps us report the magnificent impact and value that Chameleon provides and
-   helps keep the lights on so you can keep doing your research.
-
-There are two ways to join a project:
-
-1. Create a new project (requires PI status)
-2. Join an existing project (requires project invitation from current project member)
-
-Creating a New Project
-----------------------
-
-To create a new project on Chameleon, you will need to apply for and receive PI
-status on Chameleon. See our :doc:`PI eligibility guide <../user/pi_eligibility>` 
-for detailed eligibility criteria and step-by-step instructions on how to request 
-PI status. If you do not meet these criteria (**graduate students often do not**), 
-you will need to ask your advisor or other scientist supervising your research to 
-create the project for you.
-
-.. image:: ../_static/imgs/getting_started/new-project-form.png
-   :width: 80 %
-
-Once you have PI status, you may apply for a new project with an initial
-allocation. Create a new project by going to the `Projects Dashboard`_ and
-click the "Create a Project" in the right corner of the window. Complete the
-form and click "Create Project." Once your project has been approved, you will
-be able to utilize the testbed sites.
-
-Read more about :ref:`creating projects <creating-a-project>` on Chameleon.
-
-Joining an Existing Project
----------------------------
-
-.. image:: ../_static/imgs/getting_started/project-members-section.png
-
-If you want to join an existing Chameleon project, you will need to join an existing project. There are three ways to add a user to a project.
-
-#. The project PI/manager adds your username or email directly
-#. The project PI/manager sends you an invitation (automatic if the email from above doesn't exist in our system yet)
-#. the project PI/manager shares an invite link with you, which sends a join request for a project when you click it
-
-To find your username, go to `your Chameleon profile page
-<https://www.chameleoncloud.org/user/profile/>`_ - it is also displayed in the
-top-right corner when you are logged in. Once you join a project, you will then
-be able to use the project's compute allocation to make resource reservations.
-
-Read more about :ref:`user management <manage-users>` on Chameleon.
+   **New to projects?** Read our comprehensive :doc:`project management guide <../user/project>` 
+   for details on project concepts, user roles, allocations, and management.
 
 .. _start-using-chameleon:
 
