@@ -137,17 +137,11 @@ Creating a New Project
 ----------------------
 
 To create a new project on Chameleon, you will need to apply for and receive PI
-status on Chameleon. To determine if you can obtain PI status, please see a
-:ref:`list of PI eligibility criteria <pi-eligibility>`. If you do not meet
-these criteria (**graduate students often do not**), you will need to ask your
-advisor or other scientist supervising your research to create the project for
-you.
-
-You can request PI status by checking a box in `your Chameleon profile
-<https://www.chameleoncloud.org/user/profile/>`_. Once on your profile page,
-click the "Edit Profile" action. You can then click on the checkbox "Request PI
-Eligibility" and save your profile. Chameleon PI status requests are typically
-reviewed within one business day.
+status on Chameleon. See our :doc:`PI eligibility guide <../user/pi_eligibility>` 
+for detailed eligibility criteria and step-by-step instructions on how to request 
+PI status. If you do not meet these criteria (**graduate students often do not**), 
+you will need to ask your advisor or other scientist supervising your research to 
+create the project for you.
 
 .. image:: ../_static/imgs/getting_started/new-project-form.png
    :width: 80 %
