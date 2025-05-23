@@ -7,7 +7,7 @@ By default, Ethernet frames for networks created on each Chameleon site
 default to 1500 byte MTU (maximum transmission unit). However, all TOR
 switches on Chameleon are configured to allow for payloads of up to 9000 bytes.
 If you would like to experiment with jumbo frames on your private networks or
-over Layer 2 connections then please follow the steps below to implement.
+over Layer 2 connections then follow the steps below to implement.
 
 .. note::
 
@@ -46,7 +46,7 @@ Enabling Jumbo Frames on Existing Network
 -----------------------------------------
 
 You can also modify the MTU of an existing network using the command below.
-Please note that this will only effect newly created baremetal instances.
+Note that this will only affect newly created bare metal instances.
 
 .. code-block:: bash
 

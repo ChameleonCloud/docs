@@ -1,8 +1,8 @@
 .. _profile-page:
 
-=============
-User profile
-=============
+============
+User Profile
+============
 
 The `Profile <https://www.chameleoncloud.org/user/profile/>`_ page in the
 Dashboard allows you to manage your biographical information and membership to

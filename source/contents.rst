@@ -3,14 +3,14 @@ Welcome to Chameleon
 =====================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Introduction
 
    index
    getting-started/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Users and Projects
 
    user/federation
@@ -20,29 +20,28 @@ Welcome to Chameleon
    user/help
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Testbed interfaces
 
-   technical/gui
-   technical/cli
-   technical/jupyter
+   technical/gui/index
+   technical/cli/index
+   technical/jupyter/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Technical guide
 
    technical/index
-   technical/discovery
-   technical/reservations
-   technical/baremetal
-   technical/images
-   technical/metrics
-   technical/complex
-   technical/swift
-   technical/shares
-   technical/networks
-   technical/fpga
-   technical/ep
-   technical/sharing
-   technical/daypass
-   technical/kvm
+   technical/discovery/index
+   technical/reservations/index
+   technical/baremetal/index
+   technical/images/index
+   technical/power_monitoring/index
+   technical/complex/index
+   technical/swift/index
+   technical/shares/index
+   technical/networks/index
+   technical/fpga/index
+   technical/sharing/index
+   technical/daypass/index
+   technical/kvm/index

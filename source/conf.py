@@ -52,7 +52,7 @@ master_doc = 'contents'
 
 # General information about the project.
 project = 'Chameleon Cloud Documentation'
-copyright = '2018, Chameleon Cloud'
+copyright = '2025, Chameleon Cloud'
 author = 'Chameleon Cloud'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -85,6 +85,9 @@ todo_include_todos = True
 rst_prolog = """
 .. |CHI@TACC| replace:: `CHI@TACC <https://chi.tacc.chameleoncloud.org>`__
 .. |CHI@UC| replace:: `CHI@UC <https://chi.uc.chameleoncloud.org>`__
+.. |CHI@NCAR| replace:: `CHI@NCAR <https://chi.hpc.ucar.edu>`__
+.. |CHI@Edge| replace:: `CHI@Edge <https://chi.edge.chameleoncloud.org>`__
+.. |CHI@NRP| replace:: `CHI@NRP <https://chi.nrp.ai>`__
 .. |KVM@TACC| replace:: `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`__
 .. |Appliance Catalog| replace:: `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`__
 .. |Home| replace:: `chameleoncloud.org <https://www.chameleoncloud.org/>`__
@@ -104,9 +107,6 @@ html_short_title = 'Chameleon Documentation'
 # html_theme = 'classic'
 #html_theme = 'sphinxdoc'
 html_theme = 'sphinx_rtd_theme'
-
-def setup(app):
-    app.add_css_file("css/style.css")
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -196,3 +196,38 @@ latex_elements = {
 #      author, 'ChameleonCloudDocumentation', 'One line description of project.',
 #      'Miscellaneous'),
 # ]
+
+html_context = {
+    "display_github": True,
+    "github_user": "ChameleonCloud",
+    "github_repo": "docs",
+    "github_version": "master",
+    "conf_py_path": "/source/",
+}
+
+from docutils import nodes
+from docutils.parsers.rst import Directive
+
+class DocumentationFeedbackDirective(Directive):
+    def run(self):
+        github_url = "https://github.com/ChameleonCloud/docs/issues/new?template=documentation-feedback.md"
+        node = nodes.raw('', f'''
+        <div class="feedback-box" style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-left: 4px solid #0066cc;">
+            <p><strong>Improve this page:</strong> 
+            <a href="{github_url}&title=[DOCS] Issue with {{{{ pagename }}}}" target="_blank">
+                Report an issue or suggest improvements
+            </a></p>
+        </div>
+        ''', format='html')
+        return [node]
+    
+rst_epilog = """
+.. documentation-feedback::
+"""
+    
+
+def setup(app):
+    app.add_css_file("css/style.css")
+    app.add_js_file("https://unpkg.com/rate-the-docs")
+    app.add_js_file("js/rate-the-docs-config.js")
+    app.add_directive("documentation-feedback", DocumentationFeedbackDirective)
