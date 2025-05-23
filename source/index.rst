@@ -52,30 +52,30 @@ Getting Started
 **Ready to use the testbed?**
   Choose your interface:
   
-  * :doc:`Web Interface <technical/gui>` - Point-and-click access to all features
-  * :doc:`Command Line <technical/cli>` - Programmatic access and automation
-  * :doc:`Jupyter Environment <technical/jupyter>` - Interactive notebooks and data analysis
+  * :doc:`Web Interface <technical/gui/index>` - Point-and-click access to all features
+  * :doc:`Command Line <technical/cli/index>` - Programmatic access and automation
+  * :doc:`Jupyter Environment <technical/jupyter/index>` - Interactive notebooks and data analysis
 
 Quick Navigation
 ================
 
 **Core Workflow**
-  1. :doc:`Discover resources <technical/discovery>` - Find the right hardware for your experiment
-  2. :doc:`Make reservations <technical/reservations>` - Reserve nodes and networks
-  3. :doc:`Launch instances <technical/baremetal>` - Deploy your experimental environment
-  4. :doc:`Monitor and collect data <technical/power_monitoring>` - Measure performance and energy usage
+  1. :doc:`Discover resources <technical/discovery/index>` - Find the right hardware for your experiment
+  2. :doc:`Make reservations <technical/reservations/index>` - Reserve nodes and networks
+  3. :doc:`Launch instances <technical/baremetal/index>` - Deploy your experimental environment
+  4. :doc:`Monitor and collect data <technical/power_monitoring/index>` - Measure performance and energy usage
 
 **Advanced Features**
-  * :doc:`Custom images <technical/images>` - Create reproducible software environments
-  * :doc:`Complex deployments <technical/complex>` - Multi-node orchestration with Heat
-  * :doc:`Networking <technical/networks>` - Advanced network topologies and isolation
-  * :doc:`FPGA programming <technical/fpga>` - Hardware acceleration experiments
-  * :doc:`Share your work <technical/sharing>` - Publish experiments via Trovi
+  * :doc:`Custom images <technical/images/index>` - Create reproducible software environments
+  * :doc:`Complex deployments <technical/complex/index>` - Multi-node orchestration with Heat
+  * :doc:`Networking <technical/networks/index>` - Advanced network topologies and isolation
+  * :doc:`FPGA programming <technical/fpga/index>` - Hardware acceleration experiments
+  * :doc:`Share your work <technical/sharing/index>` - Publish experiments via Trovi
 
 **Data & Storage**
-  * :doc:`Object storage <technical/swift>` - Scalable data storage and sharing
-  * :doc:`Shared file systems <technical/shares>` - NFS-mounted storage for instances
-  * :doc:`KVM instances <technical/kvm>` - Traditional virtual machines when needed
+  * :doc:`Object storage <technical/swift/index>` - Scalable data storage and sharing
+  * :doc:`Shared file systems <technical/shares/index>` - NFS-mounted storage for instances
+  * :doc:`KVM instances <technical/kvm/index>` - Traditional virtual machines when needed
 
 **Getting Help**
   * :doc:`Help desk <user/help>` - Submit tickets and view system status

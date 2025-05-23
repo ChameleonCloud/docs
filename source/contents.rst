@@ -23,25 +23,25 @@ Welcome to Chameleon
    :maxdepth: 1
    :caption: Testbed interfaces
 
-   technical/gui
-   technical/cli
-   technical/jupyter
+   technical/gui/index
+   technical/cli/index
+   technical/jupyter/index
 
 .. toctree::
    :maxdepth: 1
    :caption: Technical guide
 
    technical/index
-   technical/discovery
-   technical/reservations
-   technical/baremetal
-   technical/images
-   technical/power_monitoring
-   technical/complex
-   technical/swift
-   technical/shares
-   technical/networks
-   technical/fpga
-   technical/sharing
-   technical/daypass
-   technical/kvm
+   technical/discovery/index
+   technical/reservations/index
+   technical/baremetal/index
+   technical/images/index
+   technical/power_monitoring/index
+   technical/complex/index
+   technical/swift/index
+   technical/shares/index
+   technical/networks/index
+   technical/fpga/index
+   technical/sharing/index
+   technical/daypass/index
+   technical/kvm/index
