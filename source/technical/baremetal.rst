@@ -1,3 +1,5 @@
+.. _baremetal:
+
 =====================
 Bare metal instances
 =====================

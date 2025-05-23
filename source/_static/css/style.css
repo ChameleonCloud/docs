@@ -6,7 +6,10 @@
 /* Uniform styling for all documentation images */
 img {
     max-width: 800px;
+    max-height: 500px;
+    width: auto;
     height: auto;
+    object-fit: contain;
     border: 1px solid #d1d5da;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
