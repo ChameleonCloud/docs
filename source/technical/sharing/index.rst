@@ -29,7 +29,7 @@ those artifacts or upload your own.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Trovi Sharing Portal Topics
 
    browsing_artifacts
    packaging_artifacts

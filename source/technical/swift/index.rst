@@ -48,6 +48,7 @@ such as downloading an entire *Container*.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Object Store Topics
 
    swift_gui
    swift_cli

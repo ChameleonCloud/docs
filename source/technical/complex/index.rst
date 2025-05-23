@@ -16,7 +16,7 @@ This guide will tell you all you need to know in order to use and configure *Com
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Complex Appliances Topics
 
    catalog
    gui_management

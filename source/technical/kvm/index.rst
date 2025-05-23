@@ -20,6 +20,7 @@ being tied to physical nodes. Familiarity with some concepts, such as
 
 .. toctree::
    :maxdepth: 2
+   :caption: KVM Topics
 
    kvm_gui
    kvm_lbaas

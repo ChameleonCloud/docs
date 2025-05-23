@@ -12,6 +12,7 @@ The image service on Chameleon uses `OpenStack Glance <https://docs.openstack.or
 
 .. toctree::
    :maxdepth: 2
+   :caption: Images Topics
 
    supported_images
    cc_snapshot
