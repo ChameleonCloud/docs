@@ -1,8 +1,8 @@
 .. _pi-eligibility:
 
-===============
-PI eligibility
-===============
+==============
+PI Eligibility
+==============
 
 Overview
 ========

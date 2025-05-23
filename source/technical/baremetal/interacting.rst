@@ -1,4 +1,4 @@
-Interacting with instances
+Interacting with Instances
 ==========================
 
 Once your bare metal instance has launched, you may interact with it by using

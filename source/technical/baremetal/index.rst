@@ -1,8 +1,8 @@
 .. _baremetal:
 
-=====================
-Bare metal instances
-=====================
+====================
+Bare Metal Instances
+====================
 
 Bare metal instances on Chameleon provide you with exclusive access to physical hardware resources. This allows you to run experiments with full control over the compute environment, from the hypervisor level down to the bare metal. Bare metal instances are ideal for systems research, performance evaluation, and experiments that require specific hardware features or configurations.
 

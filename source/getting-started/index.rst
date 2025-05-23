@@ -23,7 +23,7 @@
 .. _getting-started:
 
 ================
-Getting started
+Getting Started
 ================
 
 .. image:: ../_static/imgs/getting_started/chameleon-at-work.jpg
@@ -81,7 +81,7 @@ need to **join or create a project**. Let's learn how!
 .. _getting-started-project:
 
 Pre-Req: Create or Join a Project
-================================
+=================================
 
 To use Chameleon resources, you need to be a member of an active **project**. Projects are 
 workspaces that provide compute allocations and manage team access to testbed resources.
@@ -463,7 +463,7 @@ access your instance, you need to first assign a floating IP address - an IP
 address that is accessible over the public Internet.
 
 Step 1: Associate an IP
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 To associate an IP address with your instance, follow these steps. Note, it is
 best to wait until your instance is running before doing this step to ensure no
@@ -504,7 +504,7 @@ issues.
    step 2.
 
 Step 2: Accessing Your Instance
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once your instance has launched with an associated floating IP address, it can
 be accessed via SSH using the private key that you added when creating an
@@ -698,8 +698,6 @@ To launch the artifact, click on the title. On the next page, you will see the f
 Click on the "**Launch on Chameleon**" button to start Jupyter. This loading page
 should look familiar to the loading page when we launched the Jupyter Interface
 above.
-
-.. image::
 
 Once Jupyter has loaded, we will have the artifact directory available in our
 workspace. Your directory should include the following files:

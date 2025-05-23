@@ -1,4 +1,4 @@
-Launching instances with the GUI
+Launching Instances with the GUI
 ================================
 
 .. _baremetal-gui-launch:

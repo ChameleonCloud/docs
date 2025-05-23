@@ -1,8 +1,8 @@
 .. _resource-discovery:
 
-===================
-Resource discovery
-===================
+==================
+Resource Discovery
+==================
 
 Resource discovery on Chameleon allows you to explore and identify the specific hardware resources available for your experiments. You can discover nodes by their hardware characteristics, view detailed specifications, check maintenance history, and reserve specific resources that meet your experimental requirements.
 

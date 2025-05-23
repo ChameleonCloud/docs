@@ -4,7 +4,7 @@
 .. _jupyter:
 
 =================
-Jupyter interface
+Jupyter Interface
 =================
 
 Jupyter Notebooks are an excellent tool for prototyping, exploring, and

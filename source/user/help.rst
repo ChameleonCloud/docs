@@ -1,8 +1,8 @@
 .. _help:
 
-=============
-Getting help
-=============
+============
+Getting Help
+============
 
 Chameleon offers several support channels to assist users with their
 questions and issues. Depending on the nature of your inquiry, you can choose

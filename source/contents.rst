@@ -3,14 +3,14 @@ Welcome to Chameleon
 =====================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Introduction
 
    index
    getting-started/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Users and Projects
 
    user/federation
@@ -20,7 +20,7 @@ Welcome to Chameleon
    user/help
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Testbed interfaces
 
    technical/gui/index
@@ -28,7 +28,7 @@ Welcome to Chameleon
    technical/jupyter/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Technical guide
 
    technical/index

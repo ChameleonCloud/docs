@@ -1,7 +1,7 @@
 .. _project-management:
 
 ==================
-Project management
+Project Management
 ==================
 
 Overview

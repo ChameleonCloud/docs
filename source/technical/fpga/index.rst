@@ -41,9 +41,9 @@ The workflow for using these FPGAs on Chameleon consists of four main steps:
 .. important::
    Chameleon does not provide FPGA compilation services or development tools. Users need to compile their code elsewhere before running it on Chameleon's FPGAs. We are currently exploring new ways to provide FPGA development tools and workflows in the future.
 
-__________________________
-Reserverving FPGA Hardware
-__________________________
+_________________________
+Reserving FPGA Hardware
+_________________________
 
 CHI@UC provides two `compute_cascadelake_r` nodes equipped with Xilinx Alveo U280 FPGAs:
 
@@ -118,6 +118,7 @@ After programming the FPGA, it's recommended to perform a cold reboot to ensure 
 Once the system restarts, verify that the new configuration is active:
 
 .. code-block:: bash
+
    sudo xbmgmt examine --verbose
 
 Ensure that the device is ready and the new platform UUID matches your programmed bitstream.

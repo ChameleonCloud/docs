@@ -2,9 +2,9 @@
 
 .. _federation:
 
-================================
-Sign in with federated identity
-================================
+===============================
+Sign In with Federated Identity
+===============================
 
 Federated login enables users to use a single set of credentials to log into
 many different services. For example, federated login allows you to use your
@@ -21,7 +21,7 @@ account if their institution is an `InCommon`_ member, use their Google account,
 `Globus ID <https://globusid.org/what>`_ tied to an email and password that they
 provide. In addition, Chameleon also federates with the TAS entity.
 
-Logging in
+Logging In
 ==========
 
 To log in to the Chameleon user portal, where you can manage your projects,
@@ -54,8 +54,8 @@ automatically.
 You will be taken to a Single Sign On (SSO) page with several authentication options.
 **We recommend choosing "Sign in via federated identity" for the easiest experience.**
 
-Authentication Options
----------------------
+Authentication options
+----------------------
 
 - **Sign in via federated identity** ⭐ **RECOMMENDED**: This is the simplest way to access 
   Chameleon! Use your existing institution, research lab, or university credentials to log in. 

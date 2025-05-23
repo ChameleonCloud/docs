@@ -1,7 +1,12 @@
+.. _shares-concepts:
+
+Shares Concepts
+===============
+
 .. _storage_network:
 
 Storage Networks
-================
+----------------
 
 To provide isolation among shares created by different projects, accessing a share requires a storage network, which are special networks you can
 reserve to use. When reserving a storage network, add `usage_type=storage` to the resource properties. To learn more about reserving networks, read
@@ -15,7 +20,7 @@ shares.
   router and connecting subnet, read :ref:`isolated network VLANs <network-isolation>`.
 
 Shares
-======
+------
 
 Visibility
 ----------

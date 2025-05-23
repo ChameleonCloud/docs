@@ -1,8 +1,8 @@
 .. _cc-snapshot-utility:
 
-==========================
+===========================
 The ``cc-snapshot`` Utility
-==========================
+===========================
 
 The ``cc-snapshot`` utility implements snapshotting a bare metal instance from command line and uploads it to `Glance <https://docs.openstack.org/glance/latest/>`_, so that it can be immediately used to boot a new bare metal instance. The snapshot images created with this tool are whole disk images.
 
