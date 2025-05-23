@@ -2,8 +2,8 @@
 Overview
 =========
 
-This section provides in-depth knowledge for utilizing Chameleon's advanced
-features.
+The following sections contain in-depth knowledge for utilizing Chameleon's
+advanced features.
 
 - :doc:`discovery`: Discover Chameleon bare metal resources by node type and
   view node information.
@@ -20,5 +20,9 @@ features.
   File System service.
 - :doc:`networks`: Create Isolated virtual networks within Chameleon.
 - :doc:`fpga`: Configure and work with FPGA nodes.
+- :doc:`sharing`: Share reproducible experiments and artifacts using the Trovi
+  Sharing Portal.
+- :doc:`daypass`: Enable temporary access to your experiments for collaborators
+  or reviewers.
 - :doc:`kvm`: Use non-bare metal virtual machine resources in Chameleon's
   OpenStack implementation.
