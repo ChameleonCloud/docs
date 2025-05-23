@@ -31,7 +31,7 @@ user profile, and submit |Help Desk| tickets, use the "Log in" button.
    :alt: Login button for the Chameleon user portal
    :figclass: screenshot
 
-To log in to any of the testbed sites (|CHI@TACC|, |CHI@UC|, |CHI@NCAR|, |KVM@TACC|) or the
+To log in to any of the testbed sites (|CHI@TACC|, |CHI@UC|, |CHI@NCAR|, |CHI@Edge|, |KVM@TACC|) or the
 :ref:`Jupyter environment <jupyter>`, just click their item in the "Experiment"
 dropdown on |Home|. The login process is triggered
 automatically.
@@ -95,7 +95,7 @@ Terms and Conditions
 ====================
 
 When creating an account, you will be asked to accept `terms and conditions
-<https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use. Please,
+<https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use,
 note that as part of those terms and conditions you are requested to
 acknowledge Chameleon in publications produced using the testbed. See our FAQ
 for information on `how to reference Chameleon in your publications

@@ -29,10 +29,10 @@ segments (VLANs), and floating IPs.
 Provisioning and Managing Resources Using the GUI
 =================================================
 
-To make reservations of the resources, first log into the Horizon web interface
+To make reservations of the resources, first log into the Horizon GUI
 - either |CHI@TACC| or |CHI@UC|. Then, choose a project and configure your local
 timezone. For details on how to choose a project and update personalized
-settings, please see :ref:`gui`.
+settings, see :ref:`gui`.
 
 In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 
@@ -63,7 +63,7 @@ represents time.
    node during a project, while keeping that node available to the project. This
    ensures that resources required for a class are not unavailable before a deadline.
    If this is required for your usage, we can temporarily grant exclusive access to
-   a node to your project. Please create a lease for the node, and contact the |Help Desk|
+   a node to your project. Create a lease for the node, and contact the |Help Desk|
    to request exclusive node access for your project.
 
 .. figure:: reservations/networkcalendar.png
@@ -268,7 +268,7 @@ Reserving a Node by UUID
 ------------------------
 
 You may reserve a specific node by providing its *UUID*. To learn more about how
-to find a node with a specific type, please see :ref:`resource-discovery`. In
+to find a node with a specific type, see :ref:`resource-discovery`. In
 the *Create Lease* dialog, select *uid* in the *Resource Type* dropdown. Then,
 choose the *UUID* of the node you would like to reserve.
 
@@ -285,7 +285,7 @@ Provisioning and Managing Resources Using the CLI
 =================================================
 
 The sections above present the most user friendly mode of usage, with most
-actions performed via the web interface. However, Chameleon can be accessed via
+actions performed via the GUI. However, Chameleon can be accessed via
 the OpenStack command line tools which provides more capabilities. This section
 presents some advanced usage using the command line tools.
 

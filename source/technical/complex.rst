@@ -34,12 +34,12 @@ To view the details of a *Complex Appliance*, simply click on it.
 
    A Complex Appliance page
 
-.. tip:: You may download the *Template* file or copy the *Template* file URL to clipboard by clicking the *Get Template* button. The *Template* file or it's URL is required when launching a *Complex Appliance*.
+.. tip:: You may download the *Template* file or copy the *Template* file URL to clipboard by clicking the *Get Template* button. The *Template* file or its URL is required when launching a *Complex Appliance*.
 
 Managing Complex Appliances using the GUI
 -----------------------------------------
 
-Before launching a *Complex Appliance*, please make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At |CHI@TACC| site or |CHI@UC| site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
+Before launching a *Complex Appliance*, make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At |CHI@TACC| site or |CHI@UC| site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
 
 .. figure:: complex/stacks.png
    :alt: The Stacks page
@@ -51,7 +51,7 @@ Before launching a *Complex Appliance*, please make sure that you have a reserva
 
    #. Go to the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ and identify the appliance you want to launch. Click on it to open its details page.
 
-   #. Click on the "Launch Complex Appliance at ``CHI\@TACC``" or "Launch Complex Appliance at ``CHI\@UC``" button depending on where your reservation is created.
+   #. Click on the "Launch Complex Appliance at ``CHI@TACC``" or "Launch Complex Appliance at ``CHI\@UC``" button depending on where your reservation is created.
 
 
 Launching a Complex Appliance
@@ -135,7 +135,7 @@ To delete a *Complex Appliance*, select it in the *Stacks* page and click the *D
 Managing Complex Appliances using the CLI
 -----------------------------------------
 
-.. tip:: Reading :ref:`cli` is highly recommanded before continuing on the following sections.
+.. tip:: Reading :ref:`cli` is highly recommended before continuing on the following sections.
 
 In addition to :ref:`cli-installing`, you will need to install the ``python-heatclient`` package using the command:
 
@@ -478,7 +478,7 @@ Multiple outputs can be defined in the outputs section. Each of them needs to ha
         description: Private IP addresses of the NFS clients
         value: { get_attr: [nfs_clients, first_address] }
 
-The image below shows the resulting outputs as viewed from the web interface. Of course IP addresses will be specific to each deployment.
+The image below shows the resulting outputs as viewed from the GUI. Of course IP addresses will be specific to each deployment.
 
    .. figure:: complex/helloworldoutputs.png
       :alt: The Outputs of customized Hello World appliance
@@ -556,7 +556,7 @@ However, only a subset of them are supported by Chameleon, and some are limited 
 -  OS::Nova::Keypair
 -  OS::Nova::Server
 
-If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare metal, please let us know via our |Help Desk|.
+If you know of another resource that you would like to use and think it should be supported by the OpenStack services on Chameleon bare metal, let us know via our |Help Desk|.
 
 Parameters
 ^^^^^^^^^^
@@ -564,7 +564,7 @@ Parameters
 Parameters allow users to customize the template with necessary or optional values.
 For example, they can customize which Chameleon appliance they want to deploy, or which key pair to install.
 Default values can be provided with the ``default`` key, as well as constraints to ensure that only valid OpenStack resources can be selected.
-For example, ``custom_constraint: glance.image`` restricts the image selection to an available OpenStack image, while providing a pre-filled selection box in the web interface.
+For example, ``custom_constraint: glance.image`` restricts the image selection to an available OpenStack image, while providing a pre-filled selection box in the GUI.
 `More details about constraints <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html#parameter-constraints>`_ are available in the *Heat* documentation.
 
 Outputs
@@ -596,7 +596,7 @@ see documentaiton on :ref:`reservation-cli-vlan` and :ref:`reservation-cli-fip`
 When you reserve a VLAN segment via blazar, it will automatically create a network for you. However, this network
 is not usable in your template unless a subnet and router have been associated with the network. Once this is done, you can simply
 add the network name as the network parameter for your server as you would ``sharednet1``. The below cli commands
-provides an example of how to complete the setup for your reserved network.
+provides an example of how to complete the configuration for your reserved network.
 
 ::
 

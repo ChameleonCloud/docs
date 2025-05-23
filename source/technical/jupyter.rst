@@ -32,7 +32,7 @@ JupyterLab interface overview
 -----------------------------
 
 When you are logged in, you will land in the JupyterLab application environment.
-For up-to-date documentation about the JupyterLab interface, please see the
+For up-to-date documentation about the JupyterLab interface, see the
 `official JupyterLab documentation
 <https://jupyterlab.readthedocs.io/en/stable/user/interface.html>`_. You will
 see a file browser on the left-hand side - this is your working directory. It's

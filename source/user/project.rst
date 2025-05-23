@@ -32,7 +32,7 @@ dropdown list on top right of the screen.
 **Related Documentation**
 
 - :doc:`PI eligibility requirements <pi_eligibility>` - Criteria for creating projects
-- :doc:`User authentication <federation>` - Login and account setup
+- :doc:`User authentication <federation>` - Login and account configuration
 - :doc:`Getting help <help>` - Support channels and community resources
 
 .. _dashboard-page:
@@ -83,7 +83,7 @@ Creating a Project
 
 To create a project, click the *+Create a Project* button. After filling out and
 submit the request form, a system administrator will review your request and
-notify you once your project get approved. Project durations are six months with
+notify you once your project gets approved. Project durations are six months with
 a default allocation of 20,000 :ref:`service-units`.
 
 .. figure:: project/createproject.png
@@ -100,7 +100,7 @@ One Service Unit (SU) is equivalent to one hour of usage of one allocatable
 resource (physical hosts, network segments, or floating IPs). For example, a
 reservation for 5 Skylake compute nodes for 8 hours would use 40 SUs. However,
 for certain types of resources, more SUs will be charged. For more details about
-allocation charges, please see `here
+allocation charges, see `here
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged->`_.
 
 .. _project-details:
@@ -166,9 +166,9 @@ Manage Publications
 --------------------
 
 To add publications to a project, click the *Add Publications* button in the
-:ref:`project-details` page. Please enter the publications in BibTex format. All
+:ref:`project-details` page. Enter the publications in BibTex format. All
 regular BibTex publication types are supported. If you can provide a link,
-please enter as *note* or *howpublished* using the url package.
+enter as *note* or *howpublished* using the url package.
 
 
 To manage the publications you have entered, use the *Publications Dashboard*.

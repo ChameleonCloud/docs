@@ -36,7 +36,7 @@ shares.
   
     To attach floating IP to your instance created on a storage network, you need to create a router with `public` external network. Then connect
     the storage subnet to the router. You must specify an unused IP address which belongs to the selected subnet. To learn more about creating
-    router and connecting subnet, please read :ref:`isolated network VLANs <network-isolation>`.
+    router and connecting subnet, read :ref:`isolated network VLANs <network-isolation>`.
 
 Shares
 ================================
@@ -59,7 +59,7 @@ Quotas
 
 We do not charge SUs for the storage spaces of your shares. However, we do limit the total size and the number of shares you can create within
 your project. The maximum number of shares is 10 and the maximum size allowed for all shares in a project is 2000 GiB. If you need to increase
-the default quota, please submit a ticket via the `Help Desk <https://chameleoncloud.org/user/help/>`_.
+the default quota, submit a ticket via the |Help Desk|.
 
 Managing Shares using GUI
 ================================
@@ -139,7 +139,7 @@ Then, you must set environment variables for your account and project using :ref
 
   .. tip::
 
-    If you get HTTP 406 error of ``version is not supported by the API``, please add ``--os-share-api-version 2.65`` to
+    If you get HTTP 406 error of ``version is not supported by the API``, add ``--os-share-api-version 2.65`` to
     the command to specify manila minor version.
 
 List Shares

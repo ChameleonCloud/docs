@@ -48,7 +48,7 @@ Launching an artifact
 The most powerful feature available via Trovi is the ability to re-launch the
 available artifacts within Chameleon. Clicking "Launch with JupyterHub" will
 open a new Jupyter Notebook server with the artifacts downloaded (we support
-artifacts up to 500MB in total size, please contact the |Help Desk| if you need
+artifacts up to 500MB in total size, contact the |Help Desk| if you need
 more space). The animation below shows how easy it is:
 
 .. figure:: sharing/sharing_launching.gif
@@ -233,5 +233,5 @@ one option is to export it into a git repository.
 #. Follow the instructions to set up a repository per your git host. For GitHub
    see `this document <https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github>`_.
 
-#. After the repository is setup, you should be able to commit and push with
+#. After the repository is set up, you should be able to commit and push with
    the git CLI.

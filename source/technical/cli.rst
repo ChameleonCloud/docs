@@ -15,13 +15,13 @@ the client and configure your shell environment to access Chameleon features.
 
 .. attention::
 
-   Some of the Chameleon features are **only** accessable via the CLI, such as
+   Some of the Chameleon features are **only** accessible via the CLI, such as
    power monitoring tools and the advanced networking features.
 
 .. note::
 
    Chameleon Cloud is primarily designed to support Unix-like environments.
-   Threfore, it is highly recommended using CLI in a Unix-like system. For
+   Therefore, it is highly recommended using CLI in a Unix-like system. For
    Windows 10 users, you may want to enable `Windows Subsystem for Linux
    <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`_ to get better
    experience with the Chameleon CLI.
@@ -46,7 +46,7 @@ OpenStack Client Installation
    terminal.
 
 #. Verify that it has installed correctly by typing ``openstack``. You will
-   enter the Openstack Client in interactive mode and your prompt should change
+   enter the OpenStack Client in interactive mode and your prompt should change
    to ``(openstack)``.
 
 #. Exit the client by typing ``exit``.
@@ -91,7 +91,7 @@ site.
    by an attacker who has possibly obtained your password from another breached
    service. We **highly** recommend using a password manager e.g., `BitWarden
    <https://bitwarden.com/>`_, `LastPass
-   <https://www.lastpass.com/password-manager>`, or `1Password
+   <https://www.lastpass.com/password-manager>`_, or `1Password
    <https://1password.com/>`_ to assist.
 
 .. _cli-application-credential:
@@ -221,7 +221,7 @@ Chameleon GUI at the :ref:`gui-api-access`.
 
    .. error::
 
-      If you get permission error at this step, please check that:
+      If you get permission error at this step, check that:
 
       - the terminal session has been configured correctly with the environment
         variables

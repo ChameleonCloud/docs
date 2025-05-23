@@ -24,7 +24,7 @@ Work with KVM using the GUI
 ---------------------------
 
 An easy way to use OpenStack KVM on Chameleon is via the GUI, which is similar
-to the GUIs for |CHI@TACC| and |CHI@UC|. You log into the web interface using
+to the GUIs for |CHI@TACC| and |CHI@UC|. You log into the GUI using
 your Chameleon username and password.
 
 After a successful log in, you will see the *Overview* page as shown below. This
@@ -98,8 +98,8 @@ When you are finished with this step, go to the *Key Pair* Tab.
 
 .. figure:: kvm/new_launchaccess.png
 
-Select an SSH keypair that will be inserted into your virtual machine. You will
-need to select a keypair here to be able to access an instance created from one
+Select an SSH key pair that will be inserted into your virtual machine. You will
+need to select a key pair here to be able to access an instance created from one
 of the public images Chameleon provides. These images are not configured with a
 default root password and you will not be able to log in to them without
 configuring an SSH key.
@@ -256,7 +256,7 @@ To learn more about how to use the Octavia Load Balancer, refer to the `Basic Lo
 Work with KVM using the CLI
 ---------------------------
 
-For general information on CLI authentication and use, please see the
+For general information on CLI authentication and use, see the
 `command-line-interface section
 <https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-command-line-interface>`_.
 

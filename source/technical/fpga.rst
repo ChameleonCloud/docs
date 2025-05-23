@@ -36,7 +36,7 @@ The workflow for using these FPGAs on Chameleon consists of four main steps:
 1. Reserve a bare metal node with FPGA hardware
 2. Launch an instance using a supported base image
 3. Install required Xilinx software tools in your environment
-4. Load your pre-compiled bistream onto the FPGA and run your application
+4. Load your pre-compiled bitstream onto the FPGA and run your application
 
 .. important::
    Chameleon does not provide FPGA compilation services or development tools. Users need to compile their code elsewhere before running it on Chameleon's FPGAs. We are currently exploring new ways to provide FPGA development tools and workflows in the future.

@@ -29,7 +29,7 @@ are not visible to the other. In general you should use the store local to the
 region where your instances are running for the best performance.  To make it
 easier for you to use the *Object Store* client, we installed it in all
 appliances supported by Chameleon. Additionally, you can also access the *Object
-Store* from the |CHI@TACC| or |CHI@UC| web interfaces under the *Object Store*
+Store* from the |CHI@TACC| or |CHI@UC| GUIs under the *Object Store*
 panel.
 
 .. hint::
@@ -159,7 +159,7 @@ Managing Object Store using the CLI
 ====================================
 
 .. tip::
-   Reading :ref:`cli` is highly recommanded before continuing on the following
+   Reading :ref:`cli` is highly recommended before continuing on the following
    sections.
 
 In addition to :ref:`cli-installing`, you must also install
@@ -377,7 +377,7 @@ To unmount, use the following command:
       usable for large file systems. In addition, files added by other
       applications will not show up until the cache expires.
 
-   Please keep these limitations in mind when considering the use of this tool
+   Keep these limitations in mind when considering the use of this tool
    to interact with the object store.
 
 .. warning::

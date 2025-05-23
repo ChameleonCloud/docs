@@ -24,12 +24,12 @@ Instances on Chameleon are assigned a *fixed* IP address that can be used for lo
 
 The :ref:`getting-started` guide shows how to allocate *Floating IP address* to your nodes.
 
-.. important:: The Chameleon floating IP address pool is a shared and finite resource. **Please be responsible and release any unused floating IP address, so other Chameleon users and projects can use them!**
+.. important:: The Chameleon floating IP address pool is a shared and finite resource. **Be responsible and release any unused floating IP address, so other Chameleon users and projects can use them!**
 
 Releasing Floating IP Addresses via GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To release floating IP addresses through the web interface:
+To release floating IP addresses through the GUI:
 
 1. Navigate to *Network* > *Floating IPs* in the sidebar
 2. To release a single IP: click the dropdown in the *Actions* column and select *Release Floating IP*
@@ -105,7 +105,7 @@ These rules allow ssh traffic on port 22 over the public internet.
 .. warning::
 
    By default, all firewall changes are **temporary**, and will be lost
-   on instance reboot. This is a saftey mechanism
+   on instance reboot. This is a safety mechanism
    to avoid locking yourself out. To make changes **permanent**, execute:
 
    .. code-block:: shell
@@ -145,7 +145,7 @@ or within your own isolated networks on Chameleon.
 
    sudo firewall-cmd --zone=trusted --add-source=<your_subnet_cidr/netmask>
 
-To enable this by default for all private IP ranges, you can do the following, but please note that this can be
+To enable this by default for all private IP ranges, you can do the following, but note that this can be
 insecure on shared or routed networks (sharednet1, sharedwan1 and similar).
 
 .. code-block:: shell
@@ -154,9 +154,9 @@ insecure on shared or routed networks (sharednet1, sharedwan1 and similar).
         sudo firewall-cmd --zone=trusted --add-source=172.16.0.0/12
         sudo firewall-cmd --zone=trusted --add-source=10.0.0.0/8
 
-Any other incomming connections will be denied.
+Any other incoming connections will be denied.
 
-For more examples and information, please see:
+For more examples and information, see:
 
 - `Ubuntu's man page for firewalld <https://manpages.ubuntu.com/manpages/jammy/en/man1/firewall-cmd.1.html>`_
 - `Fedora Linux Guide <https://fedoraproject.org/wiki/Firewalld>`_

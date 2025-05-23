@@ -86,6 +86,8 @@ rst_prolog = """
 .. |CHI@TACC| replace:: `CHI@TACC <https://chi.tacc.chameleoncloud.org>`__
 .. |CHI@UC| replace:: `CHI@UC <https://chi.uc.chameleoncloud.org>`__
 .. |CHI@NCAR| replace:: `CHI@NCAR <https://chi.hpc.ucar.edu>`__
+.. |CHI@Edge| replace:: `CHI@Edge <https://chi.edge.chameleoncloud.org>`__
+.. |CHI@NRP| replace:: `CHI@NRP <https://chi.nrp.ai>`__
 .. |KVM@TACC| replace:: `KVM@TACC <https://kvm.tacc.chameleoncloud.org>`__
 .. |Appliance Catalog| replace:: `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`__
 .. |Home| replace:: `chameleoncloud.org <https://www.chameleoncloud.org/>`__

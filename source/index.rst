@@ -18,7 +18,7 @@ Key Features
 **Hardware Access**
   * **Bare metal instances**: Full control over physical servers without virtualization overhead
   * **Virtual machines**: Traditional OpenStack KVM instances for development and testing
-  * **Diverse hardware**: Intel/AMD CPUs, ARM ThunderX2, GPUs, FPGAs, Atom processors, high-memory nodes
+  * **Diverse hardware**: Intel/AMD CPUs (with ROCm support), ARM ThunderX2, GPUs, FPGAs, Atom processors, high-memory nodes
   * **Storage options**: NVMe SSDs, traditional spinning disks, shared file systems
   * **High-performance networking**: InfiniBand, 25/100 Gigabit Ethernet
 
@@ -89,13 +89,17 @@ Chameleon operates multiple sites providing different capabilities:
 
 **Core Sites:**
 
-* **CHI@TACC** (Texas): Large-scale bare metal cloud with diverse Intel/AMD hardware
+* **CHI@TACC** (Texas): Large-scale bare metal cloud with diverse Intel/AMD hardware including GigaIO nodes
 * **CHI@UC** (Chicago): Networking-focused site with specialized hardware and GPU/FPGA resources
 * **CHI@NCAR** (Colorado): ARM ThunderX2 nodes for edge computing and atmospheric science research
+* **CHI@Edge**: Distributed edge computing with Raspberry Pi devices (including Raspberry Pi 5)
 * **KVM@TACC** (Texas): Traditional OpenStack cloud
 
 **Associate Sites:**
-Electronic Visualization Laboratory (UIC) and other academic partners providing additional specialized resources
+
+* **CHI@NRP**: National Research Platform integration
+* **CHI@NU**: Northwestern University integration
+* **CHI@EVL**: Electronic Visualization Laboratory (UIC) integration
 
 The testbed serves hundreds of research projects annually, supporting publications 
 in systems, networking, distributed computing, cybersecurity, edge computing, and 

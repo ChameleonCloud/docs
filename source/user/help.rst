@@ -12,7 +12,7 @@ Community Forum
 ===============
 
 .. note::
-   For immediate assistance or urgent issues, please use the Help Desk rather 
+   For immediate assistance or urgent issues, use the Help Desk rather 
    than the community forum. The Help Desk ensures your request receives prompt 
    attention from Chameleon staff.
 
@@ -26,7 +26,7 @@ with other users, ask questions, and share experiences. The forum provides a spa
 
 The forum is actively monitored by Chameleon staff and experienced community members 
 who provide assistance on a best-effort basis. For immediate help or urgent issues, 
-please use the Help Desk instead.
+use the Help Desk instead.
 
 .. _outages-page:
 

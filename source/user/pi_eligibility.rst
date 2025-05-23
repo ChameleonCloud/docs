@@ -42,4 +42,4 @@ If you meet the eligibility criteria above, you can request PI status on Chamele
    This is the most common approach for student researchers.
 
 For questions about PI eligibility or if you believe you have a special case that warrants 
-consideration, please contact our :doc:`Help Desk <help>`.
+consideration, contact our :doc:`Help Desk <help>`.

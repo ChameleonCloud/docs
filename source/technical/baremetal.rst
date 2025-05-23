@@ -5,7 +5,7 @@ Bare metal instances
 =====================
 
 Before launching an instance, make sure you own a lease. About how to create a
-lease, please see :ref:`reservations`. Once your lease is started, you are
+lease, see :ref:`reservations`. Once your lease is started, you are
 almost ready to start an instance. But first, you need to make sure that you
 will be able to connect to it by setting up :ref:`gui-key-pairs`.
 
@@ -65,7 +65,7 @@ To launch an instance with the GUI, follow the steps:
 
 #. In the *Networks* step, select a network by clicking the "up" arrow next to
    it. To learn about the Chameleon default network and how to create your own
-   network, please see :ref:`networking`.
+   network, see :ref:`networking`.
 
 #. In the *Key Pair* step, select one of your SSH key pairs. If you only have
    one key pair associated with your account, then it is selected by default.
@@ -200,7 +200,7 @@ Launching Instances with the CLI
 
 .. tip::
 
-   Reading :ref:`cli` is highly recommanded before continuing on the following
+   Reading :ref:`cli` is highly recommended before continuing on the following
    sections.
 
 Creating an instance with the CLI
@@ -225,7 +225,7 @@ The ID of the ``sharednet1`` network can be obtained using the command:
    openstack network list
 
 Alternatively, you may look it up in the GUI in the *Network* > *Networks* page.
-You can obtain your *reservation ID* via the web interface or by running:
+You can obtain your *reservation ID* via the GUI or by running:
 
 .. code-block:: bash
 
@@ -243,7 +243,7 @@ application. OpenStack provides a mechanism called `User Data
 to instances. This information can be any data in any format, but if it is a
 shell script it will be automatically executed after boot by `cloudinit
 <https://cloudinit.readthedocs.io/en/latest/>`_. You can provide this shell
-script either via the web interface in the *Configuration* tab when launching an
+script either via the GUI in the *Configuration* tab when launching an
 instance, or by providing a file to the nova command line using the
 ``--user-data`` option.
 
@@ -317,7 +317,7 @@ Finally, start your virtual machine while assigning it the *MAC address*
 provided by OpenStack. If your image is configured to use *DHCP*, the virtual
 machine should receive the allocated IP.
 
-Neutron ports allocated this way are not automatically deleted, so please delete
+Neutron ports allocated this way are not automatically deleted, so delete
 them after your experiment is over using:
 
 .. code-block:: bash
@@ -415,9 +415,9 @@ When logged in, your prompt may appear like this:
 
    If you notice SSH errors such as connection refused, password requests, or
    failures to accept your key, it is likely that the physical node is still
-   going through the boot process. In that case, please wait before retrying.
+   going through the boot process. In that case, wait before retrying.
    Also make sure that you use the ``cc`` account. If after 10 minutes you still
-   cannot connect to the machine, please open a ticket with our |Help Desk|.
+   cannot connect to the machine, open a ticket with our |Help Desk|.
 
 You can now check whether the resource matches its known description in the
 resource registry. For this, simply run:

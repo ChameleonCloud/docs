@@ -83,7 +83,7 @@ If your daypass request is approved, an email will be sent to you with an
 invite link. After clicking this link, you will be automatically added to the
 project. The email will also mention how long the invitation is for. When the
 invite is accepted, you will be taken to the project page for the
-reproducibility project. Please note the ID of the project (CHI-XXXXX), which
+reproducibility project. Note the ID of the project (CHI-XXXXX), which
 may be needed to configure an artifact.
 
 Next, you can navigate back to the original artifact URL you were given. The

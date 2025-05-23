@@ -9,7 +9,7 @@ Introduction
 
 Chameleon supports fine-grained resource discovery for experimentation, which means that you can identify a specific node, view the node's hardware maintenance history and reserve it for repeated use.
 
-All physical resources available in Chameleon are described in the Chameleon resource registry. The resource registry is based on the `Reference API from the Grid'5000 project <https://www.grid5000.fr/mediawiki/index.php/API>`_. Users can consult the registry via the resource discovery web interface or directly via REST APIs.
+All physical resources available in Chameleon are described in the Chameleon resource registry. The resource registry is based on the `Reference API from the Grid'5000 project <https://www.grid5000.fr/mediawiki/index.php/API>`_. Users can consult the registry via the resource discovery GUI or directly via REST APIs.
 
 .. note:: Some resource discovery features are available through the `Chameleon Portal <https://chameleoncloud.org>`_, while others are available **only** through the REST APIs.
 
@@ -70,7 +70,7 @@ After the form is submitted by clicking the *Generate Script* button, a new dial
 
    An auto-generated reservation script
 
-For node reservation using auto-generated command, please see :ref:`reservation-cli`.
+For node reservation using auto-generated command, see :ref:`reservation-cli`.
 
 Using the REST APIs for Resource Discovery
 ===================================================
