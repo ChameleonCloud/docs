@@ -205,29 +205,9 @@ html_context = {
     "conf_py_path": "/source/",
 }
 
-from docutils import nodes
-from docutils.parsers.rst import Directive
 
-class DocumentationFeedbackDirective(Directive):
-    def run(self):
-        github_url = "https://github.com/ChameleonCloud/docs/issues/new?template=documentation-feedback.md"
-        node = nodes.raw('', f'''
-        <div class="feedback-box" style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-left: 4px solid #0066cc;">
-            <p><strong>Improve this page:</strong> 
-            <a href="{github_url}&title=[DOCS] Issue with {{{{ pagename }}}}" target="_blank">
-                Report an issue or suggest improvements
-            </a></p>
-        </div>
-        ''', format='html')
-        return [node]
-    
-rst_epilog = """
-.. documentation-feedback::
-"""
-    
 
 def setup(app):
     app.add_css_file("css/style.css")
     app.add_js_file("https://unpkg.com/rate-the-docs")
     app.add_js_file("js/rate-the-docs-config.js")
-    app.add_directive("documentation-feedback", DocumentationFeedbackDirective)
