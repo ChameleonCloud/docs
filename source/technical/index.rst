@@ -20,5 +20,7 @@ features.
   File System service.
 - :doc:`networks`: Create Isolated virtual networks within Chameleon.
 - :doc:`fpga`: Configure and work with FPGA nodes.
+- :doc:`sharing`: Upload and share artifacts with other users.
+- :doc:`daypass`: Grant access to other users to run your experiments.
 - :doc:`kvm`: Use non-bare metal virtual machine resources in Chameleon's
   OpenStack implementation.

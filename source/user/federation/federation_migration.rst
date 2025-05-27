@@ -1,5 +1,10 @@
 .. _federation-migration:
 
+.. attention::
+
+   TODO: Archive this page. The migration period is over and we should no longer
+   need to support users migrating to federated identity.
+
 ================================
 Migrating to federated identity
 ================================

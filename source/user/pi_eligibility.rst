@@ -1,5 +1,9 @@
 .. _pi-eligibility:
 
+.. attention::
+
+    TODO: Update page to include instructions for how users can request PI status.
+
 ===============
 PI eligibility
 ===============
