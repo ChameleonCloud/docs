@@ -1,16 +1,39 @@
 .. _project-management:
 
 ==================
-Project management
+Project Management
 ==================
 
-Project management tasks, such as adding users to your project or requesting a
-renewal, is performed through the portal at https://chameleoncloud.org. After
+Overview
+========
+
+Projects are the fundamental organizing unit for research on Chameleon. Each project provides:
+
+- **Resource allocations** measured in Service Units (SUs) for computational time
+- **User management** with role-based access control (PI, Manager, Member)
+- **Resource isolation** with dedicated security groups, networks, and storage
+- **Usage tracking** and billing management for fair resource sharing
+
+All project management tasks are performed through the `Chameleon portal <https://www.chameleoncloud.org>`_. After
 you have `registered <https://www.chameleoncloud.org/user/register/>`_ and
 verified your email address, you may `login to the portal
 <https://www.chameleoncloud.org/login/>`_. Once logged in, you should be at
 *Dashboard* page automatically. If not, you can access your *Dashboard* via the
 dropdown list on top right of the screen.
+
+**Quick Navigation**
+
+- :ref:`Dashboard overview <dashboard-page>` - View projects and tickets
+- :ref:`Creating a project <creating-a-project>` - Start a new research project  
+- :ref:`Managing users <manage-users>` - Add/remove team members and set roles
+- :ref:`Allocation management <recharge-extend-allocation>` - Request renewals and recharges
+- :ref:`Publications tracking <manage-publications>` - Maintain research output records
+
+**Related Documentation**
+
+- :doc:`PI eligibility requirements <pi_eligibility>` - Criteria for creating projects
+- :doc:`User authentication <federation>` - Login and account configuration
+- :doc:`Getting help <help>` - Support channels and community resources
 
 .. _dashboard-page:
 
@@ -60,7 +83,7 @@ Creating a Project
 
 To create a project, click the *+Create a Project* button. After filling out and
 submit the request form, a system administrator will review your request and
-notify you once your project get approved. Project durations are six months with
+notify you once your project gets approved. Project durations are six months with
 a default allocation of 20,000 :ref:`service-units`.
 
 .. figure:: project/createproject.png
@@ -71,19 +94,19 @@ a default allocation of 20,000 :ref:`service-units`.
 .. _service-units:
 
 Service Units
--------------
+~~~~~~~~~~~~~~
 
 One Service Unit (SU) is equivalent to one hour of usage of one allocatable
 resource (physical hosts, network segments, or floating IPs). For example, a
 reservation for 5 Skylake compute nodes for 8 hours would use 40 SUs. However,
 for certain types of resources, more SUs will be charged. For more details about
-allocation charges, please see `here
+allocation charges, see `here
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged->`_.
 
 .. _project-details:
 
 Project Details
----------------
+~~~~~~~~~~~~~~~
 
 Clicking on a project from either the :ref:`dashboard-page` main page or the
 :ref:`projects-page` page will allow you to manage one of your approved
@@ -115,7 +138,9 @@ project start and end dates, current *Service Unit* usage and request a
 allocation row, and then click *Recharge/Extend Allocation*. 
 When requesting renewal or recharge of the allocations, we may
 ask you to update your :ref:`publications dashboard <manage-publications>`, so
-keeping it up to date now can save you time later! 
+keeping it up to date now can save you time later! For questions about allocation
+management, visit our `Community Forum <https://forum.chameleoncloud.org>`_ or
+contact the :doc:`Help Desk <help>`. 
 
 .. _view-charge:
 
@@ -141,9 +166,9 @@ Manage Publications
 --------------------
 
 To add publications to a project, click the *Add Publications* button in the
-:ref:`project-details` page. Please enter the publications in BibTex format. All
+:ref:`project-details` page. Enter the publications in BibTex format. All
 regular BibTex publication types are supported. If you can provide a link,
-please enter as *note* or *howpublished* using the url package.
+enter as *note* or *howpublished* using the url package.
 
 
 To manage the publications you have entered, use the *Publications Dashboard*.
@@ -237,8 +262,8 @@ To add or remove users of a *Project*, use the *Project Members* section in the
 You may add a user to your project by filling out their username or email
 address and clicking the *Add user* button. While each user has their own
 Chameleon User account independent of your project, they may be added to one or
-more projects. Being a user of a *Project* **does not** require a :ref:`PI
-eligibility <pi-eligibility>`.
+more projects. Being a user of a *Project* **does not** require PI eligibility
+(see our :doc:`PI eligibility guide <pi_eligibility>` for details on project creation requirements).
 
 You may remove a user from your project by locating the user in the user list;
 clicking the *gear* button at the end of the row; and clicking *Remove user*.

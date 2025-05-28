@@ -23,7 +23,7 @@
 .. _getting-started:
 
 ================
-Getting started
+Getting Started
 ================
 
 .. image:: ../_static/imgs/getting_started/chameleon-at-work.jpg
@@ -57,126 +57,49 @@ Let's get started!
 Pre-Req: Creating a Chameleon Account
 =====================================
 
-Before you can get started using Chameleon, you will need to create a **user
-account**.
+Before you can use Chameleon, you need to create a free **user account**. 
 
-Don't worry! Creating an account is easy and free. We use Globus_, a platform
-for secure and reliable data transfer, sharing, and management across various
-storage systems and computing environments, to enable SSO on Chameleon.
-
-To create an account (and to log in for future sessions), go to the Chameleon_
-home page and click on the "Log In" button at the top right corner of the
-window.
+Creating an account is easy! Simply go to the Chameleon_ home page and click 
+**"Log In"** at the top right corner. You'll be redirected to our authentication 
+page where you can sign up using your institution credentials, Google account, 
+or other federated identity options.
 
 .. image:: ../_static/imgs/getting_started/chameleon-login.png
 
-You will then be redirected to separate authentication page, with an option to
-"Sign in via federated login." We recommend using this option to create your
-account.
+**We recommend using federated login** (sign in via your institution) as it's the 
+fastest way to get started and helps with PI eligibility verification if you plan 
+to create projects later.
 
-Clicking on the federated login button will then take you to the Globus website
-where you can enter your institution details. You will then be prompted to sign
-in through your institution as you would normally. You can also create an
-account directly with Globus using the `Globus ID
-<https://www.globusid.org/>`_ service. This option is useful in the event you
-don't want anything external.
+.. note::
+   **Need detailed login help?** See our comprehensive :doc:`federated authentication guide <../user/federation>` 
+   for step-by-step instructions, authentication options, and troubleshooting tips.
 
-.. image:: ../_static/imgs/getting_started/globus-login.png
-
-.. warning::
-   You may not find your institution on Globus. If so, you can still create an
-   account with another identity, such as GitHub, Google, or ORCID iD. However,
-   we encourage users to sign up using their institution, as it helps the 
-   Chameleon operators verify user identity, which is an essential step 
-   to getting Principal Investigator status on the testbed. More on this below!
-   (:ref:`Read more about logging into Chameleon via federated login <federation>`.)
-
-.. attention::
-   When creating an account, you will be asked to accept `terms and conditions
-   <https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use. Please,
-   note that as part of those terms and conditions you are requested to
-   acknowledge Chameleon in publications produced using the testbed. See our FAQ
-   for information on `how to reference Chameleon in your publications
-   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-cite-chameleon->`_
-   and the suggested `acknowledgement text
-   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-acknowledge-chameleon->`_.
-
-Once you log in, you will be able to :ref:`edit your Chameleon profile
-<profile-page>` and participate in our community. However, to actually use the
-testbed you will first need to **join or create a project**. Let's learn how!
+Once you log in, you can :ref:`edit your Chameleon profile <profile-page>` and 
+participate in our community. However, to actually use the testbed you'll first 
+need to **join or create a project**. Let's learn how!
 
 .. _getting-started-project:
 
 Pre-Req: Create or Join a Project
-================================
+=================================
 
-**Projects** are user-created workspaces on Chameleon that allow you to manage
-testbed resources and project members, create hardware and network
-reservations, and share project outcomes (like publications). All Chameleon
-projects have an assigned **project ID** (``CHI-XXXXXX``), a project leader
-(what we call a **Principal Investigator (PI)** 🕵️ on Chameleon), and an
-**allocation** of compute resources. First-time projects are automatically
-granted six months of compute (20,000 `service hours`_).
+To use Chameleon resources, you need to be a member of an active **project**. Projects are 
+workspaces that provide compute allocations and manage team access to testbed resources.
+
+There are two ways to get project access:
+
+**Option 1: Create a New Project** (if you're eligible to be a PI)
+  - Requires PI eligibility status on Chameleon
+  - See our :doc:`PI eligibility guide <../user/pi_eligibility>` for requirements
+  - Graduate students typically need their advisor to create the project
+
+**Option 2: Join an Existing Project** (most common for new users)  
+  - Ask a current project member to add you
+  - Provide your Chameleon username (found in your `profile <https://www.chameleoncloud.org/user/profile/>`_)
 
 .. note::
-   Projects can request renewals after the first allocation to receive more
-   compute. Read more about renewals :ref:`here <recharge-extend-allocation>`.
-   
-   A PI can have multiple projects on Chameleon to isolate their research projects
-   and compute. We ask that users create a new project when starting a new
-   research endeavor, rather than reusing a previous one. This user behavior also
-   helps us report the magnificent impact and value that Chameleon provides and
-   helps keep the lights on so you can keep doing your research.
-
-There are two ways to join a project:
-
-1. Create a new project (requires PI status)
-2. Join an existing project (requires project invitation from current project member)
-
-Creating a New Project
-----------------------
-
-To create a new project on Chameleon, you will need to apply for and receive PI
-status on Chameleon. To determine if you can obtain PI status, please see a
-:ref:`list of PI eligibility criteria <pi-eligibility>`. If you do not meet
-these criteria (**graduate students often do not**), you will need to ask your
-advisor or other scientist supervising your research to create the project for
-you.
-
-You can request PI status by checking a box in `your Chameleon profile
-<https://www.chameleoncloud.org/user/profile/>`_. Once on your profile page,
-click the "Edit Profile" action. You can then click on the checkbox "Request PI
-Eligibility" and save your profile. Chameleon PI status requests are typically
-reviewed within one business day.
-
-.. image:: ../_static/imgs/getting_started/new-project-form.png
-   :width: 80 %
-
-Once you have PI status, you may apply for a new project with an initial
-allocation. Create a new project by going to the `Projects Dashboard`_ and
-click the "Create a Project" in the right corner of the window. Complete the
-form and click "Create Project." Once your project has been approved, you will
-be able to utilize the testbed sites.
-
-Read more about :ref:`creating projects <creating-a-project>` on Chameleon.
-
-Joining an Existing Project
----------------------------
-
-.. image:: ../_static/imgs/getting_started/project-members-section.png
-
-If you want to join an existing Chameleon project, you will need to join an existing project. There are three ways to add a user to a project.
-
-#. The project PI/manager adds your username or email directly
-#. The project PI/manager sends you an invitation (automatic if the email from above doesn't exist in our system yet)
-#. the project PI/manager shares an invite link with you, which sends a join request for a project when you click it
-
-To find your username, go to `your Chameleon profile page
-<https://www.chameleoncloud.org/user/profile/>`_ - it is also displayed in the
-top-right corner when you are logged in. Once you join a project, you will then
-be able to use the project's compute allocation to make resource reservations.
-
-Read more about :ref:`user management <manage-users>` on Chameleon.
+   **New to projects?** Read our comprehensive :doc:`project management guide <../user/project>` 
+   for details on project concepts, user roles, allocations, and management.
 
 .. _start-using-chameleon:
 
@@ -540,7 +463,7 @@ access your instance, you need to first assign a floating IP address - an IP
 address that is accessible over the public Internet.
 
 Step 1: Associate an IP
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 To associate an IP address with your instance, follow these steps. Note, it is
 best to wait until your instance is running before doing this step to ensure no
@@ -581,7 +504,7 @@ issues.
    step 2.
 
 Step 2: Accessing Your Instance
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once your instance has launched with an associated floating IP address, it can
 be accessed via SSH using the private key that you added when creating an
@@ -775,8 +698,6 @@ To launch the artifact, click on the title. On the next page, you will see the f
 Click on the "**Launch on Chameleon**" button to start Jupyter. This loading page
 should look familiar to the loading page when we launched the Jupyter Interface
 above.
-
-.. image::
 
 Once Jupyter has loaded, we will have the artifact directory available in our
 workspace. Your directory should include the following files:
