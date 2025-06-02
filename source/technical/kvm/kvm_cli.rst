@@ -5,8 +5,7 @@ For general information on CLI authentication and use, see the
 `command-line-interface section
 <https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-command-line-interface>`_.
 
-Uploading qcow2 images to raw format for better instance launch performance
----------------------------------------------------------------------------
+**Uploading qcow2 images to raw format for better instance launch performance**
 
 KVM images are stored on our Ceph cluster, which is able to serve raw images
 much faster than qcow2 for instance launches. Openstack includes the

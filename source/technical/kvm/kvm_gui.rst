@@ -17,19 +17,6 @@ you have selected and no information about your other projects is shown.
 
 .. figure:: new_overview.png
 
-Managing Virtual Machine Instances
-----------------------------------
-
-One of the main activities you'll be performing in the GUI is management of
-virtual machines, or instances. Go to *Project* > *Compute* > *Instances* in the
-navigation sidebar. For instances that you have running, you can click on the
-name of the instance to get more information about it and to access the VNC
-interface to the console. The dropdown menu to the right of the instance lets
-you perform a variety of tasks such as suspending, terminating, or rebooting the
-instance.
-
-.. figure:: new_instances.png
-
 Creating Leases for VMs with GPUs
 ---------------------------------
 .. _kvm-create-lease:
@@ -39,16 +26,47 @@ Creating Leases for VMs with GPUs
 
 Before launching a GPU-enabled instance, you must have an active lease for a GPU-enabled flavor.
 
-Create a lease by navigating to the *Reservations* panel and clicking *Create Lease*. In the new lease form:
+Checking GPU Availability
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before creating a lease, you can check GPU availability using the *Flavor Calendar*. To access the Flavor Calendar:
+
+1. Navigate to *Project* > *Reservations* > *Leases* in the navigation sidebar.
+2. Click the *Flavor Calendar* button in the top right of the Leases table.
+
+.. figure:: leases_table_flavor_calendar.png
+   :alt: Leases table showing the Flavor Calendar button
+
+   The Leases table with the Flavor Calendar button highlighted
+
+The Flavor Calendar shows availability over time for GPU-enabled flavors, allowing you to see when resources are available for reservation.
+
+.. figure:: flavor_calendar_view.png
+   :alt: Flavor Calendar interface showing GPU availability
+
+   The Flavor Calendar displaying GPU flavor availability over time
+
+Creating a GPU Lease
+~~~~~~~~~~~~~~~~~~~~
+
+Once you've confirmed availability, create a lease by navigating to the *Reservations* panel and clicking *Create Lease*. In the new lease form:
    
 - Complete the *Lease Name* and *Description* fields.
 - In the *flavor* tab, select a GPU-enabled flavor (e.g., a 64 vCPU flavor with a 1 GPU slice). Note that GPU reservations are subject to hardware limits (up to 7 VMs per GPU).
+
+.. figure:: gpu_flavor_selection.png
+   :alt: GPU flavor selection in lease creation
+
+   Selecting a GPU-enabled flavor during lease creation
+
 - Confirm your reservation after submitting the lease request. If capacity is insufficient, the GUI will display an error message and the lease will not be created.
 
-.. figure::
-   [image placeholder]
 .. note::
-   We do not have a way for users to check the availability of GPU resources before creating a lease. If you are unable to create a lease, you may need to wait and check back later. We are currently working on a hardware calendar to provide more visibility into GPU availability.
+   
+   Use the Flavor Calendar to check GPU availability before creating a lease. If
+   you are unable to create a lease, you may need to wait for resources to become
+   available.
+
 
 Launching Instances
 -------------------
@@ -85,7 +103,9 @@ Different images and snapshots may require a larger Flavor. For example, the
 ``CC-CentOS7`` image requires at least an ``m1.small`` flavor.
 
 **If you have a lease for a GPU-enabled flavor**, you will see a special flavor
-associated with your active lease in this menu. Select this flavor to launch
+associated with your active lease in this menu. GPU-enabled flavors are displayed 
+with the prefix ``reservation:`` followed by the lease identifier (e.g., 
+``reservation:aa46132b-5d2a-4d13-b234-46684b02399f``). Select this flavor to launch
 your GPU-enabled instance. See the section on `Creating Leases for VMs with
 GPUs <#kvm-create-lease>`_ for more information.
 
@@ -123,6 +143,19 @@ next to your project's private network (PROJECT_NAME-net), not ``ext-net``.
 
 Now you can launch your instance by clicking on the *Launch* button and the
 *Instances* page will show progress as it starts.
+
+Managing Virtual Machine Instances
+----------------------------------
+
+One of the main activities you'll be performing in the GUI is management of
+virtual machines, or instances. Go to *Project* > *Compute* > *Instances* in the
+navigation sidebar. For instances that you have running, you can click on the
+name of the instance to get more information about it and to access the VNC
+interface to the console. The dropdown menu to the right of the instance lets
+you perform a variety of tasks such as suspending, terminating, or rebooting the
+instance.
+
+.. figure:: new_instances.png
 
 .. _kvm-associate-ip:
 
