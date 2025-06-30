@@ -34,5 +34,6 @@ being tied to physical nodes. Familiarity with some concepts, such as
    :caption: KVM Topics
 
    kvm_gui
-   kvm_lbaas
    kvm_cli
+   kvm_lbaas
+   kvm_volumes
