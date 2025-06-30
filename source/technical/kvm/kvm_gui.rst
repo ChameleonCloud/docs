@@ -17,19 +17,15 @@ you have selected and no information about your other projects is shown.
 
 .. figure:: new_overview.png
 
-Creating Leases for VMs with GPUs
----------------------------------
-.. _kvm-create-lease:
+Creating Leases for VMs
+-----------------------
 
-.. attention::
-   This section is only relevant for users who wish to launch GPU-enabled instances on KVM.
+Before launching an instance, you must have an active lease.
 
-Before launching a GPU-enabled instance, you must have an active lease for a GPU-enabled flavor.
+Checking Availability
+~~~~~~~~~~~~~~~~~~~~~
 
-Checking GPU Availability
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Before creating a lease, you can check GPU availability using the *Flavor Calendar*. To access the Flavor Calendar:
+Before creating a lease, you can check availability using the *Flavor Calendar*. To access the Flavor Calendar:
 
 1. Navigate to *Project* > *Reservations* > *Leases* in the navigation sidebar.
 2. Click the *Flavor Calendar* button in the top right of the Leases table.
@@ -39,20 +35,22 @@ Before creating a lease, you can check GPU availability using the *Flavor Calend
 
    The Leases table with the Flavor Calendar button highlighted
 
-The Flavor Calendar shows availability over time for GPU-enabled flavors, allowing you to see when resources are available for reservation.
+The Flavor Calendar shows availability over time for flavors, allowing you to see when resources are available for reservation.
 
 .. figure:: flavor_calendar_view.png
-   :alt: Flavor Calendar interface showing GPU availability
+   :alt: Flavor Calendar interface showing availability
 
-   The Flavor Calendar displaying GPU flavor availability over time
+   The Flavor Calendar displaying flavor availability over time
 
-Creating a GPU Lease
-~~~~~~~~~~~~~~~~~~~~
+.. _kvm-create-lease:
+
+Creating a Lease
+~~~~~~~~~~~~~~~~
 
 Once you've confirmed availability, create a lease by navigating to the *Reservations* panel and clicking *Create Lease*. In the new lease form:
    
 - Complete the *Lease Name* and *Description* fields.
-- In the *flavor* tab, select a GPU-enabled flavor (e.g., a 64 vCPU flavor with a 1 GPU slice). Note that GPU reservations are subject to hardware limits (up to 7 VMs per GPU).
+- In the *flavor* tab, select a flavor.
 
 .. figure:: gpu_flavor_selection.png
    :alt: GPU flavor selection in lease creation
@@ -63,10 +61,11 @@ Once you've confirmed availability, create a lease by navigating to the *Reserva
 
 .. note::
    
-   Use the Flavor Calendar to check GPU availability before creating a lease. If
+   Use the Flavor Calendar to check availability before creating a lease. If
    you are unable to create a lease, you may need to wait for resources to become
    available.
 
+.. _kvm-launch-instance:
 
 Launching Instances
 -------------------
@@ -244,3 +243,32 @@ The *Security Groups* tab in the *Edit Instance* dialog will pop up.
 You may click the *+* button next to the Security Group you wish to apply in the
 *All Security Groups* list on the left. Once you are finished, click *Save* to
 finish the process.
+
+
+.. _kvm-create-snapshot:
+
+Creating a Instance Snapshot
+----------------------------
+
+Unlike the baremetal sites, where you must use the cc-snapshot tool inside your instance to create a snapshot, on KVM@TACC you can create a snapshot directly from the GUI.
+
+First, navigate to the Instances page by clicking "Compute > Instances" in the navigation sidebar.
+Click the "Create Snapshot" action next to your instance on the right size of the instance's row.
+Enter a snapshot name that is meaningful to you.
+On the Instances overview page, you'll now see a running task with the status of the snapshot job.
+You can see a corresponding Image in the Images page by clicking "Compute > Images" in the navigation sidebar and searching for your snapshot's name.
+
+It may some time for the snapshot to complete. Once you see the Image is "Active," it is safe to delete the instance if you no longer need it.
+
+.. _kvm-launch-snapshot:
+
+Launching an Instance from a Snapshot
+-------------------------------------
+
+To launch an instance from a snapshot, follow the instructions from the guide above, but under the "Source" tab, select "Instance Snapshot" instead of "Image" in the dropdown.
+Then you can find the name of your snapshot in the table below and select it.
+
+.. figure:: launch_snapshot.png
+
+Alternatively, if you find your snapshot in the Images page (from "Compute > Images"), you can click "Launch" next to the snapshot's name.
+This will open the "Launch Instance" dialog with the snapshot preselected.
