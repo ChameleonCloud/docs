@@ -152,7 +152,7 @@ place to start your hardware discovery.
 
 In this getting started demo, we will work with the ``Compute Cascadelake R``
 nodes (see, e.g. `here
-<https://www.chameleoncloud.org/hardware/node/sites/tacc/clusters/chameleon/nodes/05e4d546-6c73-4d66-8b83-3fad392d149a/>`_)
+<https://www.chameleoncloud.org/hardware/node/sites/tacc/clusters/chameleon/nodes/05e4d546-6c73-4d66-8b83-3fad392d149a/>`__)
 available through both the |CHI@UC| and |CHI@TACC| sites. These nodes are
 plentiful on the platform and tend to be available on demand (which is
 convenient for a demo!). However, bear in mind that you can follow this same
@@ -535,7 +535,7 @@ To log in to your instance with SSH, follow these steps:
 
       Change the IP address in this command to match your instance's floating
       IP address! **New to SSH keys?** Check out this guide `here
-      <https://www.sectigo.com/resource-library/what-is-an-ssh-key>`_.
+      <https://www.sectigo.com/resource-library/what-is-an-ssh-key>`__.
 
 Once you connect successfully, you will then be able to run commands on your
 instance.
@@ -715,7 +715,7 @@ it takes to run and any additional requirements.
 Let's now open the ``Experiment.ipynb`` file.
 
 Getting Started with ``python-chi``: Bare Metal Experiment Pattern
------------------------------------
+------------------------------------------------------------------
 
 .. image:: ../_static/imgs/getting_started/bare-metal-notebook.png
 

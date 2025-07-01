@@ -101,7 +101,7 @@ resource (physical hosts, network segments, or floating IPs). For example, a
 reservation for 5 Skylake compute nodes for 8 hours would use 40 SUs. However,
 for certain types of resources, more SUs will be charged. For more details about
 allocation charges, see `here
-<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged->`_.
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged->`__.
 
 .. _project-details:
 

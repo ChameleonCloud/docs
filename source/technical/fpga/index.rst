@@ -58,7 +58,7 @@ _________________________
 
 After your reservation becomes active:
 
-- Launch an instance using a supported upstream image for the Xilinx Runtime. Chameleon suggests using our supported CC-Ubuntu 24.04 as a base image. Advanced users may choose to use any upstream image that Xilinx supports. Find a list of supported upstream images `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_
+- Launch an instance using a supported upstream image for the Xilinx Runtime. Chameleon suggests using our supported CC-Ubuntu 24.04 as a base image. Advanced users may choose to use any upstream image that Xilinx supports. Find a list of supported upstream images `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`__
 - Connect to your instance via SSH
 
 _______________________
@@ -69,9 +69,9 @@ Compiling code for FPGAs requires the Xilinx Vitis™ software platform, which p
 
 Flashing the FPGA with your bitstream requires the Xilinx Runtime (XRT) tools, which are part of the Vitis platform. The XRT tools provide a command-line interface for managing FPGA devices, including programming the FPGA with your bitstream. You can also install the XRT environment separately from the Vitis platform, although functionality may be limited.
 
-Guidelines for installing the Vitis platform can be found in the `AMD documentation <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Vitis-Software-Platform-Installation>`_. The installation requirements for Ubuntu are also provided in the documentation `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`_.
+Guidelines for installing the Vitis platform can be found in the `AMD documentation <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Vitis-Software-Platform-Installation>`_. The installation requirements for Ubuntu are also provided in the documentation `here <https://docs.amd.com/r/en-US/ug1742-vitis-release-notes/Installation-Requirements>`__.
 
-Guidelines for installing the Xilinx Runtime (XRT) tools can be found in the `XRT documentation <https://xilinx.github.io/XRT/master/html/index.html>`_.
+Guidelines for installing the Xilinx Runtime (XRT) tools can be found in the `XRT documentation <https://xilinx.github.io/XRT/master/html/index.html>`__.
 
 ___________________________
 Loading Your Bitstream
@@ -126,5 +126,5 @@ Ensure that the device is ready and the new platform UUID matches your programme
 .. important::
    - Ensure that your bitstream (``.xclbin`` file) is compatible with the Alveo U280 FPGA.
    - The ``xbmgmt`` tool is part of the XRT installation and is used for managing FPGA devices.
-   - For detailed instructions and troubleshooting, refer to the `XRT documentation <https://xilinx.github.io/XRT/master/html/xbmgmt.html>`_.
-   - Additional AMD instructions for bringing up and validating your card `here <https://docs.amd.com/r/en-US/ug1301-getting-started-guide-alveo-accelerator-cards/Card-Bring-Up-and-Validation>`_.
+   - For detailed instructions and troubleshooting, refer to the `XRT documentation <https://xilinx.github.io/XRT/master/html/xbmgmt.html>`__.
+   - Additional AMD instructions for bringing up and validating your card `here <https://docs.amd.com/r/en-US/ug1301-getting-started-guide-alveo-accelerator-cards/Card-Bring-Up-and-Validation>`__.
