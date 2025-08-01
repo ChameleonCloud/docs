@@ -21,13 +21,7 @@ being tied to physical nodes. Familiarity with some concepts, such as
 .. note::
    **GPU Access on KVM**
 
-   We have GPUs available NOW on `KVM\@TACC`. Launching an instance on a
-   GPU-enabled flavor requires a reservation, similar to bare metal resources
-   on Chameleon. But, unlike bare metal reservations, VM reservations require
-   selecting a particular GPU-enabled `flavor`, rather than a physical resource
-   type. In the documentation for KVM topics, we explicitly call out, where
-   relevant, the different steps needed for creating GPU-enabled instances. KVM
-   access for non-GPU instances is still available without a reservation.
+   We have GPUs available NOW on `KVM\@TACC`. See below for details on GPU hardware available through KVM!
 
 .. _kvm-hardware:
 
