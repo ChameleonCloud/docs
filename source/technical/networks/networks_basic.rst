@@ -26,6 +26,12 @@ The :ref:`getting-started` guide shows how to allocate *Floating IP address* to 
 
 .. important:: The Chameleon floating IP address pool is a shared and finite resource. **Be responsible and release any unused floating IP address, so other Chameleon users and projects can use them!**
 
+Note that in order to use a *Floating IP address*, your instance must be connected to a network with a router providing external connectivity. 
+The default network ``sharednet1`` is one such network, but it will also work with isolated networks that you create. For more information about VLAN and isolated networks, see :doc:`networks_vlan`.
+When associating a floating IP, if you do not see your instance in the dropdown, double-check that it is connected to an appropriate network.
+
+In addition to the ad-hoc method described above, Floating IP addresses can also be reserved via the Reservation :ref:`GUI <reservations-create-lease-gui>` or :ref:`CLI <reservation-cli-fip>`. These ad-hoc and reserved addresses are drawn from separate pools, if all addresses from one pool are in use, we recommend trying the other method.
+
 Releasing Floating IP Addresses via GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
