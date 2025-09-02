@@ -104,9 +104,13 @@ and the suggested `acknowledgement text
 Account linking
 ===============
 
-Chameleon accounts are linked to a federated identity provider, Globus and (previously) TACC.
-If you are no longer wish to/are able to log in via your original account source (e.g. you move institutions)
-You can re-link your Chameleon account assuming you have access to same email.
+Chameleon accounts are linked to a federated identity provider, Globus.
+If you are no longer wish to/are able to log in via your original account source (e.g. you move institutions),
+you can re-link your Chameleon account assuming you have access to same email.
+
+.. note::
+   Previously Chameleon also supported federated identity via TACC, but this is no longer supported after January 2026.
+   If you previously were using TACC to login to Chameleon, we recommend following the steps below to link your account to Globus.
 
 1. Log out of the Chameleon site via the menu on the top right of the web page on whatever platform you are using.
 
