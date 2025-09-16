@@ -339,3 +339,51 @@ entering your lease ID and the node ID where appropriate.
 If you re-allocate a host because it is malfunctioning, please make sure to
 report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that
 we can fix it.
+
+Creating a Lease for a Flavor (on KVM@TACC)
+-------------------------------------------
+
+Since KVM@TACC is virtualized, instead of creating a lease for a physical host,
+you create a lease for a VM flavor. First, this requires finding what flavor you
+wish to create an instance of. You can find the list of available flavors by
+running the command:
+
+.. code-block:: bash
+
+   openstack flavor list
+
+which should return something like:
+
+.. code-block:: bash
+
+   +--------------------------------------+---------------+--------+------+-----------+-------+-----------+
+   | ID                                   | Name          |    RAM | Disk | Ephemeral | VCPUs | Is Public |
+   +--------------------------------------+---------------+--------+------+-----------+-------+-----------+
+   | 1                                    | m1.tiny       |    512 |    1 |         0 |     1 | True      |
+   | 2                                    | m1.small      |   2048 |   20 |         0 |     1 | True      |
+   | 3                                    | m1.medium     |   4096 |   40 |         0 |     2 | True      |
+   | 4                                    | m1.large      |   8192 |   40 |         0 |     4 | True      |
+   | 5                                    | m1.xlarge     |  16384 |   40 |         0 |     8 | True      |
+   | 6                                    | m1.xxlarge    |  32768 |   40 |         0 |    16 | True      |
+   | e81f12f8-de06-4107-acfd-e649217036ef | g1.h100.pci.1 | 250000 |   40 |         0 |    48 | True      |
+   +--------------------------------------+---------------+--------+------+-----------+-------+-----------+
+
+Note the ID of the flavor you wish to create a lease for. Then to create a lease,
+use the ``lease-create`` command. The following arguments are
+required:
+
+- ``--reservation`` with ``resource_type=flavor:instance``, ``flavor_id`` and ``amount`` attributes
+- ``--start-date`` in ``"YYYY-MM-DD HH:MM"`` format
+- ``--end-date`` in ``"YYYY-MM-DD HH:MM"`` format
+
+For example, the following command will create a lease with the name of
+``my-first-lease`` for 2 ``m1.large`` instances that starts on June
+17th, 2022 at 4:00pm and ends on June 17th, 2022 at 6:00pm:
+
+.. code-block:: bash
+
+   openstack reservation lease create \
+     --reservation "resource_type=flavor:instance,flavor_id=4,amount=2" \
+     --start-date "2022-06-17 16:00" \
+     --end-date "2022-06-17 18:00" \
+     my-first-lease
