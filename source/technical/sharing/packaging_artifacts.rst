@@ -67,6 +67,17 @@ to clone your repository, and also a reference (lease as HEAD for the latest
 commit). When a user launches your artifact, their notebook will checkout the
 specified commit.
 
+Editing related artifacts
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From the artifact edit page on the Trovi dashboard, you can also add links to other related artifacts on Trovi. This can be useful if you have multiple artifacts that are part of a related project, or if you'd like to showcase a collection of artifacts on a broad topic, e.g., a series of assignments supporting a course on machine learning operations. All artifacts that you link to your artifact will appear under "Related Artifacts" after the artifact's description.
+
+.. figure:: ../sharing/link_table.png
+   :alt: Browsing the table of artifacts to link.
+   :figclass: screenshot
+
+While editing an artifact, under "Linked Artifacts", you will see a table of all artifacts. Search or scroll to find the artifact you wish to link, and click the checkbox next to it. Below this table, you can rearrange the order of linked artifacts by dragging and dropping them. Click "Save Links" to save your changes.
+
 .. _trovi-sharing:
 
 Adjusting sharing settings
