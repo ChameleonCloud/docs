@@ -28,110 +28,145 @@ Getting Started
 
 .. image:: ../_static/imgs/getting_started/chameleon-at-work.jpg
 
-**Welcome to the Chameleon testbed! We're excited your here.**
+**Welcome to the Chameleon testbed! We're excited you're here.**
+   
+In this getting started guide, we walk through first steps to begin using
+Chameleon resources, including account creation, project setup, resource
+allocation, and configuration options.
 
-Get a head start on leveraging the power of Chameleon for your research
-projects by following our guide below.
+At the end of this tutorial, you'll have learned how to:
 
-At the end of this tutorial, you will have learned how to:
-
-- Create a free user account on Chameleon and link it with your own
-  institution Single Sign-On (SSO) through the Globus_ Auth service.
-- Apply for a project on Chameleon_ and add users to projects.
-- Use Chameleon's `Hardware Discovery Catalog`_ and the :ref:`Host Calendars
-  <the-lease-calendars>` to search for available hardware that meets your
-  research needs.
-- Reserve Chameleon resources using leases.
-- Configure, launch, and connect to an instance running on a bare metal server.
+- Create a user account on Chameleon
+- Apply for a project on Chameleon_ and add collaborators
+- Find networking, storage, and compute resources using the `Hardware Discovery
+  Catalog`_ and search resource availability via the :ref:`Resource Calendars
+  <the-lease-calendars>`
+- Make :doc:`advanced reservations<../technical/reservations/index>` for
+  Chameleon resources
+- Configure, launch, and connect to an instance running on a bare metal server
+- Orchestrate a Chameleon experiment using Jupyter and python-chi_
 
 Let's get started!
 
 .. note::
-   If you already have a Chameleon account and project, you can skip the pre-reqs 
-   to :ref:`this section below <start-using-chameleon>`.
+   
+   To get the most out of this guide, we recommend that you **first complete the
+   pre-requisite sections to obtain a Chameleon account and project access**. If you
+   are starting from scratch and do not have a collaborator to add you to an
+   active project, **these steps can take at least a day** due to review and approval
+   processes.
+
+   **Already have an account and active project?** You can :ref:`skip the
+   pre-reqs <start-using-chameleon>` and start launching instances now.
 
 .. contents:: :local:
 
 .. _getting-started-user:
 
-Pre-Req: Creating a Chameleon Account
+Pre-Reqs: Creating a Chameleon Account
 =====================================
 
-Before you can use Chameleon, you need to create a free **user account**. 
+Create a **user account** on the Chameleon_ portal. Creating an account is
+simple with our federated identity service provided by Globus_ Auth. 
 
-Creating an account is easy! Simply go to the Chameleon_ home page and click 
-**"Log In"** at the top right corner. You'll be redirected to our authentication 
-page where you can sign up using your institution credentials, Google account, 
-or other federated identity options.
+Go to the Chameleon_ webpage and click **"Log In"** at the top right corner.
+You'll be redirected to an authentication page where you can select from the
+following login options:
+
+- Your affiliate institution via Globus_ Auth **(recommended)**
+- Google
+- GitHub
+
+.. note::
+   If your institution is part of the InCommon_ Federation, you can use your
+   institutional credentials to log in. We recommend this option as it helps verify
+   your :doc:`eligibility <../user/pi_eligibility>` to create :doc:`projects
+   <../user/project>` on Chameleon.
+
+See our :doc:`federated authentication guide <../user/federation>` to read more.
 
 .. image:: ../_static/imgs/getting_started/chameleon-login.png
 
-**We recommend using federated login** (sign in via your institution) as it's the 
-fastest way to get started and helps with PI eligibility verification if you plan 
-to create projects later.
-
-.. note::
-   **Need detailed login help?** See our comprehensive :doc:`federated authentication guide <../user/federation>` 
-   for step-by-step instructions, authentication options, and troubleshooting tips.
-
-Once you log in, you can :ref:`edit your Chameleon profile <profile-page>` and 
-participate in our community. However, to actually use the testbed you'll first 
-need to **join or create a project**. Let's learn how!
+Once you log in, you can :ref:`edit your Chameleon profile <profile-page>` and
+**create or join a project**.
 
 .. _getting-started-project:
 
-Pre-Req: Create or Join a Project
-=================================
+Pre-Req: Project Access
+=======================
 
-To use Chameleon resources, you need to be a member of an active **project**. Projects are 
-workspaces that provide compute allocations and manage team access to testbed resources.
+To use Chameleon resources, you need to be a member of a **project** with an
+**active allocation**. Projects are workspaces on Chameleon where you can
+organize your work, add collaborators, track publications, and manage resource
+allocations and usage of testbed resources.
 
 There are two ways to get project access:
 
-**Option 1: Create a New Project** (if you're eligible to be a PI)
-  - Requires PI eligibility status on Chameleon
-  - See our :doc:`PI eligibility guide <../user/pi_eligibility>` for requirements
-  - Graduate students typically need their advisor to create the project
+**Option 1**: Create a New Project
+  - Requires **Principal Investigator (PI) eligibility** status on Chameleon
+  - See our :doc:`PI eligibility guide <../user/pi_eligibility>` for
+    requirements and instructions
+  - Once approved for PI status (up to 1 business day), you can create a new project from your `Projects Dashboard
+    <https://www.chameleoncloud.org/user/projects/>`_
+  - Projects must adhere to Chameleon's `Acceptable Use Policy
+    <https://chameleoncloud.org/terms/view/user-terms/1.00/>`_
 
-**Option 2: Join an Existing Project** (most common for new users)  
-  - Ask a current project member to add you
-  - Provide your Chameleon username (found in your `profile <https://www.chameleoncloud.org/user/profile/>`_)
+.. attention::
+   Except in rare circumstances, **students and postdocs are not PI eligible and will need to
+   use option 2**.
+
+**Option 2**: Join an Existing Project (most common for new users)  
+  - Ask a current project PI or a project manager to add you to an existing
+    project
+  - Requires providing your email or Chameleon username (found in your `profile
+    <https://www.chameleoncloud.org/user/profile/>`_)
 
 .. note::
-   **New to projects?** Read our comprehensive :doc:`project management guide <../user/project>` 
-   for details on project concepts, user roles, allocations, and management.
+   **New to projects?** Read our comprehensive :doc:`project management guide
+   <../user/project>` for details on project concepts, user roles, allocations,
+   and management.
 
 .. _start-using-chameleon:
 
 Start Using Chameleon Hardware
 ===============================
 
-Congratulations, you are now ready to launch your first instance! Instances are
-much like what you may expect to find in a virtual machine, except here the
-instances are on bare metal nodes - the core feature of Chameleon 😎. A bare
-metal node is a whole physical server to which you, and you alone, have
-exclusive root access.
+Congratulations, you are now ready to launch your first instance!
 
-.. note::
+You can deploy Chameleon instances on bare metal nodes - our original
+specialization - at |CHI@TACC| (Austin, TX), |CHI@UC| (Chicago, IL), and
+|CHI@NCAR| (Boulder, CO) or virtual machines through the |KVM@TACC| site. In
+this quick start, we'll work through launching your first instance on a **bare
+metal** node. However, you can apply most of the same steps below to launch
+instances on KVM as well.
 
-   Chameleon also offers a multi-tenant, virtualized cloud, with fewer
-   functionalities and a smaller scale. See :ref:`kvm` for more details.
+.. important::
+   **Bare metal** instances are physical servers that you have exclusive access to
+   during your reservation. This is different from virtualized clouds, where
+   multiple users share the same physical hardware through virtualization
+   technologies. Chameleon's bare metal approach provides users with direct access     
+   to the underlying hardware, allowing for greater customization, performance, and power monitoring.
 
-Below, we will walk through the steps on how to launch a bare metal instance using the
-graphical user interface (GUI) or web application on the Chameleon_ portal.
+   Chameleon also offers a multi-tenant, virtualized cloud, with KVM-based
+   configurations. See :ref:`kvm` for more details as well as our blog
+   explaining the `differences between bare metal and virtualized instances
+   <https://chameleoncloud.org/blog/2025/10/21/bare-metal-or-kvm-which-should-you-choose-and-when/>`_.
 
-See the :ref:`final section <remix>` to complete the same steps using Jupyter
-and python-chi_, Chameleon's Python library with custom utilities to help with
-experiment orchestration.
+Below, we will walk through the steps on how to launch a bare metal instance
+using the graphical user interface (GUI) on the Chameleon_ portal.
+
+In the:ref:`final section <remix>`, we'll use Jupyter and python-chi_,
+Chameleon's Python library with custom utilities to help with experiment
+orchestration, to complete the same steps programmatically.
 
 Warm Up: Pick Your Hardware
 ---------------------------
 
-Chameleon resources are available at multiple sites, e.g., |CHI@TACC| and
-|CHI@UC|. Check out our `Hardware Discovery Catalog`_, where you can search and
-filter for hardware across all Chameleon sites based on multiple criteria,
-including memory, thread count, CPUs, GPUs, and more. This catalog is the best
-place to start your hardware discovery.
+To view a comprehensive overview of bare metal resources, browse our `Hardware
+Discovery Catalog`_, where you can search and filter for hardware across all
+Chameleon sites based on multiple criteria, including memory, thread count,
+CPUs, GPUs, and more. This catalog is the best place to start your hardware
+discovery.
 
 .. image:: ../_static/imgs/getting_started/hardware-discovery.png
 
@@ -143,6 +178,7 @@ place to start your hardware discovery.
 
    - **Texas Advanced Computing Center (TACC)**: Austin, TX - ``CHI@TACC``
    - **University of Chicago (UC)**: Chicago, IL - ``CHI@UC``
+   - **National Center for Atmospheric Research (NCAR)**: Boulder, CO - ``CHI@NCAR``
    
    For example, if you want to use a `GPU v100`_ node, you must use the |CHI@UC| 
    site, which is the only site where the node is available. Some hardware is 
@@ -150,25 +186,24 @@ place to start your hardware discovery.
    your preferred hardware is located to save yourself some confusion or 
    trouble later down the line.
 
-In this getting started demo, we will work with the ``Compute Cascadelake R``
-nodes (see, e.g. `here
+We will work with the ``Compute Cascadelake R`` nodes (see, e.g. `here
 <https://www.chameleoncloud.org/hardware/node/sites/tacc/clusters/chameleon/nodes/05e4d546-6c73-4d66-8b83-3fad392d149a/>`__)
 available through both the |CHI@UC| and |CHI@TACC| sites. These nodes are
 plentiful on the platform and tend to be available on demand (which is
 convenient for a demo!). However, bear in mind that you can follow this same
 guide to reserve any hardware on Chameleon.
 
-Once we have found the hardware we want to use and the site where it is
-located, we are now ready to make our first reservation!
+Now that we have the hardware we want to use and the site where it is located,
+we can make our first reservation.
 
 My First Reservation: Reseving a Node
 -------------------------------------
 
-On Chameleon, as opposed to other testbeds or commerical clouds, you must
-reserve your resources before you can launch an instance on them. Chameleon
-supports both *on-demand* and *advanced* reservations. We will use an on-demand
-reservation for this guide, but note that you can reserve resources in advance,
-which is often necessary to get access to popular, scarce hardware like GPUs.
+On Chameleon, you must reserve your resources before you can launch an instance
+on them. Chameleon supports both *on-demand* and *advanced* reservations. We
+will use an on-demand reservation for this guide, but note that you can reserve
+resources in advance, which is often necessary to get access to popular, scarce
+hardware like GPUs.
 
 Step 1: Access a Testbed Site
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
