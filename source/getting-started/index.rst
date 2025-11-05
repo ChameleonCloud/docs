@@ -63,7 +63,7 @@ Let's get started!
 
 .. _getting-started-user:
 
-Pre-Reqs: Creating a Chameleon Account
+Pre-Req: Creating a Chameleon Account
 =====================================
 
 Create a **user account** on the Chameleon_ portal. Creating an account is
