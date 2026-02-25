@@ -33,7 +33,15 @@ To make a snapshot of a bare metal instance, run the following command from insi
 
       sudo cc-snapshot -o <image_name>
 
-   You can use the faster zstd compression (default is zlib) by using the ``-z`` flag. Note that launching images compressed with zstd won't work on sites running OpenStack Xena or earlier. zstd should work on most sites like CHI@UC and CHI@TACC, but may not work on older sites like CHI@NU. Make sure any image you create with this compression you are able to launch.
+   You can use the faster zstd compression (default is zlib) by using the ``-z`` flag. Note that
+   launching images compressed with zstd won't work on sites running OpenStack Xena or earlier.
+   All core sites like CHI@UC and CHI@TACC are up-to-date, but some associate sites, such as
+   CHI@NU, may fail to launch new instances with a zstd compressed image. If you are using an
+   associate site, we suggest checking that you can launch a new instance with the image from
+   your snapshot. You can check the compression type of an image by running
+   `openstack image show <image_uuid>` and checking the "compression_type" property. Images
+   set to `zstd` are using the new method, and images without a `compression_type` property
+   or with it set to `zlib` are using the old method.
 
    .. code-block:: bash
 
