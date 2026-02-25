@@ -27,6 +27,18 @@ To make a snapshot of a bare metal instance, run the following command from insi
 
       sudo cc-snapshot -e <dir1> -e <dir2> <image_name>
 
+   You can use existing OpenStack environment credentials instead of vendordata by using the ``-o`` flag.
+
+   .. code-block:: bash
+
+      sudo cc-snapshot -o <image_name>
+
+   You can use the faster zstd compression (default is zlib) by using the ``-z`` flag. Note that launching images compressed with zstd won't work on sites running OpenStack Xena or earlier. zstd should work on most sites like CHI@UC and CHI@TACC, but may not work on older sites like CHI@NU. Make sure any image you create with this compression you are able to launch.
+
+   .. code-block:: bash
+
+      sudo cc-snapshot -z <image_name>
+
    To see all available options for ``cc-snapshot``, run ``sudo cc-snapshot -h``.
 
 You will be prompted to enter your username and password.
