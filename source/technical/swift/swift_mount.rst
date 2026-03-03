@@ -9,8 +9,7 @@ Mounting Object Store as a File System
    Swift CLI instead.
 
 When logged into an instance using Chameleon-supported images, such as
-`CC-CentOS9-Stream <https://www.chameleoncloud.org/appliances/112/>`_ and
-`CC-Ubuntu24.04 <https://www.chameleoncloud.org/appliances/122/>`_, you will
+`CC-CentOS9-Stream <https://trovi.chameleoncloud.org/dashboard/artifacts/98de71d6-4c27-47d5-8a37-79e7847f90e8>_` and `CC-Ubuntu24.04 <https://trovi.chameleoncloud.org/dashboard/artifacts/b97e5f97-beeb-4109-9438-19c9c3886624>_`, you will
 find a README in the home directory for the `cc` user. The README describes
 how to mount containers in the Chameleon Object Store into a directory
 called ``cc_my_mounting_point`` in your home directory. Mounts are facilitated

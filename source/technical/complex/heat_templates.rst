@@ -8,7 +8,7 @@ A *Heat Orchestration Template* is a YAML file that specifies how resources are 
 A Case Example: NFS Share
 -------------------------
 
-Let's look at the `NFS Share Template <https://www.chameleoncloud.org/appliances/api/appliances/25/template>`_. The NFS share appliance deploys:
+Let's look at the NFS Share Template (available on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/729fc749-15da-419f-952a-0d3457baa09e>`_). The NFS share appliance deploys:
 
 - An NFS server instance, that exports the directory ``/exports/example`` to any instance running on Chameleon bare metal,
 - One or several NFS client instances, which configure ``/etc/fstab`` to mount this NFS share to ``/mnt`` (and can subsequently read from and write to it).
@@ -35,7 +35,7 @@ The ``outputs`` section defines what values are returned to the user. *Outputs* 
 Heat Template Customization
 ---------------------------
 
-Customizing an existing template is a good way to start developing your own. We will use a simpler template than the previous example to start with: it is the `Hello World complex appliance <https://www.chameleoncloud.org/appliances/26/>`_.
+Customizing an existing template is a good way to start developing your own. We will use a simpler template than the previous example to start with: the Hello World complex appliance, which you can find on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/7cf9ebda-9c10-486a-8e78-0f1f2bee3315>`_.
 
 First, delete the stack you launched, because we will need all three nodes to be free. To do this, go back to the *Project* > *Orchestration* > *Stacks* page, select your stack, and then click on the *Delete Stacks* button. You will be asked to confirm, so click on the *Delete Stacks* button.
 
@@ -44,7 +44,7 @@ First, delete the stack you launched, because we will need all three nodes to be
 
       Confirm deleting stack dialog
 
-The template for the `Hello World complex appliance <https://www.chameleoncloud.org/appliances/26/>`_ is reproduced below. It is similar to the NFS share appliance, except that it deploys only a single client. You can see that it has four resources defined:
+The template for the Hello World complex appliance is reproduced below. It is similar to the NFS share appliance, except that it deploys only a single client. You can see that it has four resources defined:
 
 -  ``nfs_server_floating_ip``
 -  ``nfs_server``
@@ -126,7 +126,7 @@ The ``nfs_client`` instance mounts the NFS directory shared by the ``nfs_server`
         constraints:
         - custom_constraint: blazar.reservation
 
-Download `this template <https://www.chameleoncloud.org/appliances/api/appliances/26/template>`_ to your local machine, and open it in your favorite text editor.
+Copy the template from the artifact's detail page on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/729fc749-15da-419f-952a-0d3457baa09e>`_ to your local machine, and open it in your favorite text editor.
 
 We will customize the template to add a second NFS client by creating a new resource called ``another_nfs_client``. Add the following text to your template inside the resources section. Make sure to respect the level of indentation, which is important in YAML.
 

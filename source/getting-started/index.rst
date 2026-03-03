@@ -18,7 +18,7 @@
 
 .. _`Bare Metal Experiment Pattern`: https://chameleoncloud.org/experiment/share/370ce99a-3e03-43e9-83e3-b61fd9692dc0
 
-.. _`Appliances Catalog`: https://chameleoncloud.org/appliances/
+.. _`Appliances Catalog (now on Trovi)`: https://www.chameleoncloud.org/experiment/share/?tag=appliance
 
 .. _getting-started:
 
@@ -850,7 +850,7 @@ We can now configure and launch our instance on the node that we reserved.
 This code uses the ``server`` utility to spin up an instance. We can specify
 which image we want to use by referring to it's name (in this case
 ``CC-CentOS8-stream``). (To see the name of an image, you can look it up in the
-`Appliances Catalog`_.) We also need to provide the reservation ID from our
+`Appliances Catalog`_ on Trovi by filtering for the **appliance** tag.) We also need to provide the reservation ID from our
 lease, which we can grab using the ``get_node_reservation`` method.
 
 .. note::

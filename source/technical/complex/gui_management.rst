@@ -3,7 +3,7 @@
 Managing Complex Appliances using the GUI
 =========================================
 
-Before launching a *Complex Appliance*, make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. At |CHI@TACC| site or |CHI@UC| site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
+Before launching a *Complex Appliance*, make sure that you have a reservation for the appropriate node types and a key pair configured. Since most *Complex Appliances* will consist of multiple nodes, make sure you have set the *Minimum Number of Hosts* in your Lease. You will also need a *Template* file or the URL for a *Template* file. Templates for Chameleon-supported complex appliances can be found on `Trovi <https://www.chameleoncloud.org/experiment/share/>`_ by filtering for the **appliance** tag. At |CHI@TACC| site or |CHI@UC| site, go to *Project* > *Orchestration* > *Stacks* use the navigation side bar.
 
 .. figure:: ../complex/stacks.png
    :alt: The Stacks page
@@ -11,11 +11,11 @@ Before launching a *Complex Appliance*, make sure that you have a reservation fo
    The Stacks page
 
 .. tip::
-   You can go to *Stacks* page directly from the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_.
+   You can find complex appliance templates on `Trovi <https://www.chameleoncloud.org/experiment/share/>`_ by filtering for the **appliance** tag.
 
-   #. Go to the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ and identify the appliance you want to launch. Click on it to open its details page.
+   #. Go to `Trovi <https://www.chameleoncloud.org/experiment/share/>`_, filter by the **appliance** tag, and identify the appliance you want to launch. Click on it to open its details page.
 
-   #. Click on the "Launch Complex Appliance at ``CHI@TACC``" or "Launch Complex Appliance at ``CHI\@UC``" button depending on where your reservation is created.
+   #. Download the template file or copy its URL from the artifact's detail page, then use it when launching a stack.
 
 
 Launching a Complex Appliance

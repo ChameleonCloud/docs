@@ -11,9 +11,7 @@ To manage your images, use the *Images* page at |CHI@TACC| or |CHI@UC|, by click
 
    The Images page
 
-.. note:: The Chameleon logo next to an image's name indicates that this image is an appliance supported by the Chameleon project, and is part of the Appliance Catalog.
-
-.. tip:: Select *Details* from the dropdown menu to the right of any Chameleon supported appliance to view the relevant entry from the `Chameleon Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_.
+.. note:: The Chameleon logo next to an image's name indicates that this image is an appliance supported by the Chameleon project. Chameleon-supported appliances can be found on `Trovi <https://www.chameleoncloud.org/experiment/share/>`_ by filtering for the **appliance** tag.
 
 .. note:: Images at each site are stored independently. An Image made at |CHI@TACC| **will not** be available at |CHI@UC| (or vice versa) unless transferred manually.
 
@@ -58,17 +56,20 @@ The dropdown list in the top right corner allows you to perform various actions 
 
 .. _simple-publish:
 
-Publishing Images to the Appliance Catalog
-==========================================
+Publishing Images as Appliances via Trovi
+=========================================
 
-.. figure:: publishappliance.png
-   :alt: Publish to Appliance Catalog
+.. note::
+   New appliances can no longer be submitted to the Appliance Catalog.
+   Appliances are now published through `Trovi <https://www.chameleoncloud.org/experiment/share/>`_.
 
-The dropdown menu to the right of listed images allows their owners to publish an appliance to the `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_. Select *Publish to Appliance Catalog*.
+To share an image as a Chameleon appliance, upload or locate your artifact in
+Trovi and open its **Edit** menu. Add the **appliance** tag along with a
+descriptive name, author and support contact information, version, and an
+informative description. Once published, your appliance will be discoverable by
+other Chameleon users when they filter Trovi by the **appliance** tag.
 
-The *Create Appliances* web form will open automatically with most fields pre-populated. Complete the form and select *Create an Appliance*.
-
-Entering a descriptive name, author and support contact information, the version, and an informative description can be helpful and is encouraged. **The description is used by others to determine if an appliance contains the tools needed for their research.**
+Entering a descriptive name and an informative description is encouraged. **The description is used by others to determine if an appliance contains the tools needed for their research.**
 
 .. tip:: To make your description effective you may want to ask the following questions:
 

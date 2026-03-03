@@ -3,11 +3,12 @@
 Sharing Complex Appliances
 ==========================
 
-If you have written your own *Complex Appliance* or substantially customized an existing one, we would love if you shared them with our user community! The process is very similar to regular appliances: log into the Chameleon portal, go to the appliance catalog, and click on the button in the top-right corner: *Add an appliance* (you need to be logged in to see it).
+If you have written your own *Complex Appliance* or substantially customized an existing one, we would love if you shared them with our user community! Appliances are now published through `Trovi <https://www.chameleoncloud.org/experiment/share/>`_ — the Appliance Catalog no longer accepts new submissions.
 
-.. figure:: ../complex/addappliance.png
-   :alt: The Add an Appliance button
+To publish a new appliance, first create or find your artifact in Trovi, then open its **Edit** menu. From there you can add the **appliance** tag and provide a name, description, heat template, and other relevant metadata. Once published, your appliance will be discoverable by other Chameleon users when they filter Trovi by the **appliance** tag.
 
-   The Add an Appliance button
-
-You will be prompted to enter a name, description, and documentation. Instead of providing appliance IDs, copy your template to the dedicated field. Finally, share your contact information and assign a version string to your appliance. Once submitted, your appliance will be reviewed. We will get in touch if a change is needed, but if it's all good we will publish it right away!
+.. note::
+   The `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ is
+   still accessible for browsing existing appliances, but it is no longer
+   possible to add new appliances there. It will eventually be retired.
+   Please use Trovi for all new appliance submissions.

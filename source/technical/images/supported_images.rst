@@ -16,13 +16,14 @@ specifically:
 - CC-Ubuntu22.04-ARM64
 - CC-Centos9-Stream
 
-The CUDA images, such as `Ubuntu24.04-CUDA <https://chameleoncloud.org/appliances/123/>`_,
+The CUDA images, such as `Ubuntu24.04-CUDA <https://trovi.chameleoncloud.org/dashboard/artifacts/52c5de1e-5ee4-4341-a9af-7d835572a08e>`_,
 contain various settings, software, and drivers specifically
 for NVIDIA GPU nodes. The ROCm images contain similar settings, software,
 and drivers for AMD GPU nodes. And finally, the ARM64 images, such as
-`Ubuntu22.04-ARM64 <https://chameleoncloud.org/appliances/110/>`_,
+`Ubuntu24.04-ARM64 <https://trovi.chameleoncloud.org/dashboard/artifacts/634cf4db-3096-4ab3-b483-432629b98a20>`_,
 are images specifically built with ARM support for ARM nodes. Non-ARM
-images all assume x86-based architectures.
+images all assume x86-based architectures. All Chameleon-supported images can
+be found on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts?tags=appliance>`_ under the **appliance** tag.
 
 .. warning::
    Any images with operating system versions that are end-of-life, such as

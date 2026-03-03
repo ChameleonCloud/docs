@@ -15,6 +15,13 @@ in the bottom left corner of an artifact.
    with a small Chameleon logo. You can contact the |Help Desk| if you are
    using these artifacts and encounter issues.
 
+.. tip::
+
+   Chameleon appliances — including Chameleon-supported OS images and heat
+   templates — are now published on Trovi. Filter artifacts by the **appliance**
+   tag to find them. Whether you are looking for a Jupyter notebook or a
+   bare-metal image, you can find either one via Trovi.
+
 Launching an artifact
 ---------------------
 

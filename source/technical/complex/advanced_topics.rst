@@ -13,7 +13,7 @@ The previous examples have all used ``user_data`` scripts to provide instances w
 - The server has to be deployed first, and once it is deployed, the clients can be launched and contextualized with information from the server. The server won't know about the clients unless there is a mechanism (not managed by *Heat*) for the client to contact the server.
 - The clients have to be deployed first, and once they are deployed, the server can be launched and contextualized with information from the clients. The clients won't know about the server unless there is a mechanism (not managed by *Heat*) for the server to contact the clients.
 
-This limitation was already apparent in our `NFS share <https://www.chameleoncloud.org/appliances/25/>`_ appliance: this is why the server instance exports the file system to all bare metal instances on Chameleon, because it doesn't know which specific IP addresses are allocated to the clients.
+This limitation was already apparent in our NFS share appliance (available on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/729fc749-15da-419f-952a-0d3457baa09e>`_): this is why the server instance exports the file system to all bare metal instances on Chameleon, because it doesn't know which specific IP addresses are allocated to the clients.
 
 This limitation is even more important if the deployment is not hierarchical, i.e. all instances need to know about all others. For example, a cluster with IP and hostnames populated in ``/etc/hosts`` required each instance to be known by every other instance.
 

@@ -36,7 +36,7 @@ To launch a *Complex Appliance* using *Template*, run the command on your local 
 
    openstack stack create --template <template_file> --parameter <parameter>=<value> <stack_name>
 
-Provide the path to and the name of the *Template* file in your local file system via the ``template`` switch.  The ``<stack_name>`` is the name of the *Complex Appliance*. In addition, you may provide the parameters required in the *Template* file with their values by ``parameter`` switch. For example, the `NFS Server Template <https://www.chameleoncloud.org/appliances/api/appliances/25/template>`_ lists the following ``parameters`` section:
+Provide the path to and the name of the *Template* file in your local file system via the ``template`` switch.  The ``<stack_name>`` is the name of the *Complex Appliance*. In addition, you may provide the parameters required in the *Template* file with their values by ``parameter`` switch. For example, the NFS Server Template (find it on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/729fc749-15da-419f-952a-0d3457baa09e>`_ by filtering for the **appliance** tag) lists the following ``parameters`` section:
 
 .. code::
 
@@ -75,7 +75,7 @@ You can get details about your *Complex Appliance*, such as *Outputs*, *Events* 
 
      openstack stack output list <uuid>
 
-  For example, the list of the outputs for the `NFS Share <https://www.chameleoncloud.org/appliances/25/>`_ stack is:
+  For example, the list of the outputs for the NFS Share stack is:
 
   .. code::
 
