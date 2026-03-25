@@ -16,6 +16,13 @@ Chameleon GUI at the :ref:`gui-api-access`.
    directly, as well as the
    :ref:`cc-snapshot utility <cc-snapshot-utility>` tool.
 
+.. note::
+
+   On an instance running a CC-* image, you can use the :ref:`cc-login <cli-cc-login>`
+   command to generate a new openrc file or clouds.yaml entry with an application
+   credential. This is useful for creating fresh credentials without
+   accessing the Chameleon GUI.
+
 #. Log in to the GUI at |CHI@TACC| or |CHI@UC|.
 
    .. important::
