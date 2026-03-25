@@ -30,4 +30,5 @@ the client and configure your shell environment to access Chameleon features.
    installation
    authentication
    rc_script
+   cc_login
    usage
