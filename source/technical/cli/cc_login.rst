@@ -9,6 +9,18 @@ application credential for reuse, and can generate OpenStack ``openrc`` files
 or entries for ``clouds.yaml`` so the OpenStack CLI and libraries can use the
 cached credential.
 
+The device authentication flow directs you to a URL in your browser where you
+log in with your Chameleon credentials and approve the device request. Once
+approved, ``cc-login`` creates an application credential on your behalf and
+caches it for reuse, so subsequent OpenStack operations do not require
+authentication.
+
+.. warning::
+
+   Authentication information provided through instance vendor-data is
+   being deprecated. Use ``cc-login`` to obtain fresh application credentials
+   instead.
+
 Usage
 ~~~~~
 
@@ -38,20 +50,38 @@ and output format. Some of the most commonly used ones are:
 Examples
 ~~~~~~~~
 
-Generate an ``openrc`` file for sourcing:
+Complete workflow: Authenticating and running OpenStack commands
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To authenticate and run commands like ``openstack image list``, you have two options
+to use credentials obtained via ``cc-login``:
+
+**Option 1: Source an openrc file**
+
+Generate an ``openrc`` file and source it in your shell session:
 
 .. code-block:: bash
 
     cc-login --output-openrc ~/openrc_chameleon
+    source ~/openrc_chameleon
+    openstack image list
 
-Add or update a cloud entry in ``clouds.yaml``:
+**Option 2: Use clouds.yaml**
+
+Alternatively, generate or update an entry in ``clouds.yaml`` and use the
+``OS_CLOUD`` environment variable:
 
 .. code-block:: bash
 
     cc-login --output-clouds-yaml ~/.config/openstack/clouds.yaml \
       --cloud-name chameleon
+    export OS_CLOUD=chameleon
+    openstack image list
 
-Force a fresh device authentication (ignoring cache):
+Other examples
++++++++++++++++
+
+Force a fresh device authentication (ignoring the local cache):
 
 .. code-block:: bash
 
