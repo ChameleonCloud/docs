@@ -52,7 +52,7 @@ Below is what you should see in response:
    HTTP/1.1 200 OK
    Server: nginx/1.6.2
    Date: Thu, 19 Apr 2018 14:34:01 GMT
-   Content-Type: application/vnd.grid5000.item+json; charset=utf-8
+   Content-Type: application/json
    Content-Length: 757
    Connection: keep-alive
    Allow: GET
@@ -64,7 +64,7 @@ Below is what you should see in response:
    X-UA-Compatible: IE=Edge,chrome=1
    X-Runtime: 0.034541
 
-   {"type":"grid","uid":"chameleoncloud","version":"ee0253a05223dd0f5b88df7f78fb988e67f7b039","release":"3.5.7","timestamp":1524148441,"links":[{"rel":"sites","href":"/sites","type":"application/vnd.grid5000.collection+json"},{"rel":"self","type":"application/vnd.grid5000.item+json","href":"/"},{"rel":"parent","type":"application/vnd.grid5000.item+json","href":"/"},{"rel":"version","type":"application/vnd.grid5000.item+json","href":"/versions/ee0253a05223dd0f5b88df7f78fb988e67f7b039"},{"rel":"versions","type":"application/vnd.grid5000.collection+json","href":"/versions"},{"rel":"users","type":"application/vnd.grid5000.collection+json","href":"/users"},{"rel":"notifications","type":"application/vnd.grid5000.collection+json","href":"/notifications"}]}
+   {"type":"grid","uid":"chameleoncloud","version":"ee0253a05223dd0f5b88df7f78fb988e67f7b039","release":"3.5.7","timestamp":1524148441,"links":[{"rel":"sites","href":"/sites"},{"rel":"self","href":"/"},{"rel":"parent","href":"/"},{"rel":"version","href":"/versions/ee0253a05223dd0f5b88df7f78fb988e67f7b039"},{"rel":"versions","href":"/versions"},{"rel":"users","href":"/users"},{"rel":"notifications","href":"/notifications"}]}
 
 .. note:: The HTTP status of ``200 OK`` indicates that the server is able to process your request and that everything is fine.
 
@@ -104,51 +104,41 @@ The response should look like:
            {
              "rel": "clusters",
              "href": "/sites/tacc/clusters",
-             "type": "application/vnd.grid5000.collection+json"
            },
            {
              "rel": "self",
-             "type": "application/vnd.grid5000.item+json",
              "href": "/sites/tacc"
            },
            {
              "rel": "parent",
-             "type": "application/vnd.grid5000.item+json",
               "href": "/"
            },
            {
              "rel": "version",
-             "type": "application/vnd.grid5000.item+json",
              "href": "/sites/tacc/versions/ee0253a05223dd0f5b88df7f78fb988e67f7b039"
            },
            {
              "rel": "versions",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/tacc/versions"
            },
            {
              "rel": "jobs",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/tacc/jobs"
            },
            {
              "rel": "deployments",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/tacc/deployments"
            },
            {
              "rel": "vlans",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/tacc/vlans"
            },
            {
              "rel": "metrics",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/tacc/metrics"
            },
            {
              "rel": "status",
-             "type": "application/vnd.grid5000.item+json",
              "href": "/sites/tacc/status"
            }
          ]
@@ -171,51 +161,41 @@ The response should look like:
            {
              "rel": "clusters",
              "href": "/sites/uc/clusters",
-             "type": "application/vnd.grid5000.collection+json"
            },
            {
              "rel": "self",
-             "type": "application/vnd.grid5000.item+json",
              "href": "/sites/uc"
            },
            {
              "rel": "parent",
-             "type": "application/vnd.grid5000.item+json",
              "href": "/"
            },
            {
              "rel": "version",
-             "type": "application/vnd.grid5000.item+json",
              "href": "/sites/uc/versions/ee0253a05223dd0f5b88df7f78fb988e67f7b039"
            },
            {
              "rel": "versions",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/uc/versions"
            },
            {
              "rel": "jobs",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/uc/jobs"
            },
            {
              "rel": "deployments",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/uc/deployments"
            },
            {
              "rel": "vlans",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/uc/vlans"
            },
            {
              "rel": "metrics",
-             "type": "application/vnd.grid5000.collection+json",
              "href": "/sites/uc/metrics"
            },
            {
              "rel": "status",
-             "type": "application/vnd.grid5000.item+json",
              "href": "/sites/uc/status"
            }
          ]
@@ -225,11 +205,12 @@ The response should look like:
      "links": [
        {
          "rel": "self",
-         "type": "application/vnd.grid5000.collection+json",
          "href": "/sites"
        }
      ]
    }
+
+.. note:: Previous versions of the API included a ``"type"`` field (e.g. ``"type": "application/vnd.grid5000.collection+json"``) on every link object in responses. This field has since been removed and no longer appears in API responses.
 
 Discover Resources
 ___________________________
