@@ -55,6 +55,10 @@ When creating a *Subnet*, you must specify a  *Subnet Name* and a `CIDR <https:/
 
    Subnet details
 
+.. tip::
+
+   If you plan to run your own DHCP server on this network, either skip creating a subnet, or uncheck *Enable DHCP* in the *Subnet Details* below. Neutron's built-in DHCP will conflict with your own DHCP server if both are active on the same network. This can also be handy if you're setting static IPs, and just want to avoid noise in the logs when running e.g. tcpdump.
+
 You may specify *DHCP* and static *Route* information at *Subnet Details* section:
 
 - *Allocation Pools* section allows you to specify *DHCP* address ranges in the format of ``<first address>,<last address>``. For example, entering ``192.168.1.2,192.168.1.100`` will create a *Subnet* with IP ranges from ``192.168.1.2`` to ``192.168.1.100``.
@@ -189,6 +193,10 @@ The output should look like the following:
     create a network automatically by :ref:`reservation-cli-vlan`.
 
 Once you have created a Network, you may create a subnet with the command:
+
+.. tip::
+
+   If you plan to run your own DHCP server on this network, either skip creating a subnet, or use ``--no-dhcp`` instead of ``--dhcp`` below. Neutron's built-in DHCP will conflict with your own DHCP server if both are active on the same network segment.
 
 .. code-block:: bash
 
