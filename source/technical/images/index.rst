@@ -10,6 +10,59 @@ To work around this limitation, we provide the ``cc-snapshot`` utility that you 
 
 The image service on Chameleon uses `OpenStack Glance <https://docs.openstack.org/glance/latest/>`_. This documentation demonstrates how to accomplish common tasks with *Images* using the GUI and the CLI.
 
+The following matrix shows which Chameleon-supported images are compatible with the hardware available at each site.
+For example, CHI@UC does not have nodes with the ARM64 architecture, so the ARM64 image variants are not useful at that site.
+
+.. list-table:: Supported images by site
+    :header-rows: 1
+    :widths: 30 10 10 10 10
+
+    * - Image
+       - CHI@TACC
+       - CHI@UC
+       - KVM@TACC
+       - CHI@NCAR
+    * - ``CC-CentOS9-Stream``
+       - Yes
+       - Yes
+       - Yes
+       - Yes
+    * - ``CC-Ubuntu22.04``
+       - Yes
+       - Yes
+       - Yes
+       - Yes
+    * - ``CC-Ubuntu22.04-ARM64``
+       - Yes
+       - No
+       - No
+       - Yes
+    * - ``CC-Ubuntu22.04-CUDA``
+       - Yes
+       - Yes
+       - Yes
+       - No
+    * - ``CC-Ubuntu24.04``
+       - Yes
+       - Yes
+       - Yes
+       - Yes
+    * - ``CC-Ubuntu24.04-ARM64``
+       - Yes
+       - No
+       - No
+       - Yes
+    * - ``CC-Ubuntu24.04-CUDA``
+       - Yes
+       - Yes
+       - Yes
+       - No
+    * - ``CC-Ubuntu24.04-ROCm``
+       - Yes
+       - No
+       - No
+       - No
+
 .. toctree::
    :maxdepth: 2
    :caption: Images Topics
