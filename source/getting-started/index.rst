@@ -18,26 +18,39 @@
 
 .. _`Bare Metal Experiment Pattern`: https://chameleoncloud.org/experiment/share/370ce99a-3e03-43e9-83e3-b61fd9692dc0
 
-.. _`Appliances Catalog (now on Trovi)`: https://www.chameleoncloud.org/experiment/share/?tag=appliance
+.. _`Appliances Catalog`: https://trovi.chameleoncloud.org/dashboard/artifacts?tags=appliance
 
 .. _getting-started:
+
+.. image:: ../_static/imgs/Chameleon_background_transparent.png
+   :align: center
+
+----
 
 ================
 Getting Started
 ================
 
-.. image:: ../_static/imgs/getting_started/chameleon-at-work.jpg
-
 **Welcome to the Chameleon testbed! We're excited you're here.**
-   
-In this getting started guide, we walk through first steps to begin using
-Chameleon resources, including account creation, project setup, resource
-allocation, and configuration options.
+
+In this guide, we walk through the core steps to begin using Chameleon
+resources: discovering hardware, making a reservation, and launching and
+connecting to your first instance.
+
+.. important::
+
+   **Before you begin**, make sure you have the following:
+
+   - A **Chameleon user account** — see our :doc:`federated authentication
+     guide <../user/federation>` to create one
+   - Membership in an **active Chameleon project** — see our :doc:`project
+     guide <../user/project>` to create a project or join an existing one
+
+   Project setup can take time due to review and approval processes. Complete
+   these steps before continuing with this guide.
 
 At the end of this tutorial, you'll have learned how to:
 
-- Create a user account on Chameleon
-- Apply for a project on Chameleon_ and add collaborators
 - Find networking, storage, and compute resources using the `Hardware Discovery
   Catalog`_ and search resource availability via the :ref:`Resource Calendars
   <the-lease-calendars>`
@@ -48,97 +61,19 @@ At the end of this tutorial, you'll have learned how to:
 
 Let's get started!
 
-.. note::
-   
-   To get the most out of this guide, we recommend that you **first complete the
-   pre-requisite sections to obtain a Chameleon account and project access**. If you
-   are starting from scratch and do not have a collaborator to add you to an
-   active project, **these steps can take at least a day** due to review and approval
-   processes.
-
-   **Already have an account and active project?** You can :ref:`skip the
-   pre-reqs <start-using-chameleon>` and start launching instances now.
-
 .. contents:: :local:
-
-.. _getting-started-user:
-
-Pre-Req: Creating a Chameleon Account
-=====================================
-
-Create a **user account** on the Chameleon_ portal. Creating an account is
-simple with our federated identity service provided by Globus_ Auth. 
-
-Go to the Chameleon_ webpage and click **"Log In"** at the top right corner.
-You'll be redirected to an authentication page where you can select from the
-following login options:
-
-- Your affiliate institution via Globus_ Auth **(recommended)**
-- Google
-- GitHub
-
-.. note::
-   If your institution is part of the InCommon_ Federation, you can use your
-   institutional credentials to log in. We recommend this option as it helps verify
-   your :doc:`eligibility <../user/pi_eligibility>` to create :doc:`projects
-   <../user/project>` on Chameleon.
-
-See our :doc:`federated authentication guide <../user/federation>` to read more.
-
-.. image:: ../_static/imgs/getting_started/chameleon-login.png
-
-Once you log in, you can :ref:`edit your Chameleon profile <profile-page>` and
-**create or join a project**.
-
-.. _getting-started-project:
-
-Pre-Req: Project Access
-=======================
-
-To use Chameleon resources, you need to be a member of a **project** with an
-**active allocation**. Projects are workspaces on Chameleon where you can
-organize your work, add collaborators, track publications, and manage resource
-allocations and usage of testbed resources.
-
-There are two ways to get project access:
-
-**Option 1**: Create a New Project
-  - Requires **Principal Investigator (PI) eligibility** status on Chameleon
-  - See our :doc:`PI eligibility guide <../user/pi_eligibility>` for
-    requirements and instructions
-  - Once approved for PI status (up to 1 business day), you can create a new project from your `Projects Dashboard
-    <https://www.chameleoncloud.org/user/projects/>`_
-  - Projects must adhere to Chameleon's `Acceptable Use Policy
-    <https://chameleoncloud.org/terms/view/user-terms/1.00/>`_
-
-.. attention::
-   Except in rare circumstances, **students and postdocs are not PI eligible and will need to
-   use option 2**.
-
-**Option 2**: Join an Existing Project (most common for new users)  
-  - Ask a current project PI or a project manager to add you to an existing
-    project
-  - Requires providing your email or Chameleon username (found in your `profile
-    <https://www.chameleoncloud.org/user/profile/>`_)
-
-.. note::
-   **New to projects?** Read our comprehensive :doc:`project management guide
-   <../user/project>` for details on project concepts, user roles, allocations,
-   and management.
 
 .. _start-using-chameleon:
 
-Start Using Chameleon Hardware
-===============================
+Introduction to Chameleon
+==========================
 
-Congratulations, you are now ready to launch your first instance!
-
-You can deploy Chameleon instances on bare metal nodes - our original
+You can deploy instances on Chameleon bare metal nodes - our original
 specialization - at |CHI@TACC| (Austin, TX), |CHI@UC| (Chicago, IL), and
-|CHI@NCAR| (Boulder, CO) or virtual machines through the |KVM@TACC| site. In
-this quick start, we'll work through launching your first instance on a **bare
-metal** node. However, you can apply most of the same steps below to launch
-instances on KVM as well.
+|CHI@NCAR| (Boulder, CO) or on virtual machines through the |KVM@TACC| site. In
+this quick start, we will work through launching your first instance on a **bare
+metal** node. However, you can apply most of the same steps below to launch both
+virtual instances on |KVM@TACC| and containers on |CHI@Edge| as well.
 
 .. important::
    **Bare metal** instances are physical servers that you have exclusive access to
@@ -155,7 +90,7 @@ instances on KVM as well.
 Below, we will walk through the steps on how to launch a bare metal instance
 using the graphical user interface (GUI) on the Chameleon_ portal.
 
-In the:ref:`final section <remix>`, we'll use Jupyter and python-chi_,
+In the :ref:`final section <remix>`, we'll use Jupyter and python-chi_,
 Chameleon's Python library with custom utilities to help with experiment
 orchestration, to complete the same steps programmatically.
 
@@ -196,8 +131,8 @@ guide to reserve any hardware on Chameleon.
 Now that we have the hardware we want to use and the site where it is located,
 we can make our first reservation.
 
-My First Reservation: Reseving a Node
--------------------------------------
+My First Reservation: Reserving a Node
+---------------------------------------
 
 On Chameleon, you must reserve your resources before you can launch an instance
 on them. Chameleon supports both *on-demand* and *advanced* reservations. We
@@ -322,7 +257,7 @@ required fields. We will start with just one node and will set the minimum and
 maximum number of hosts to 1. In the Resource Property field, we can use
 different attributes of Chameleon resources (such as "node type") to specify
 the exact kind of hardware we want to reserve with this lease. We can add
-multiple fitlers with different properties, but we only care about the node
+multiple filters with different properties, but we only care about the node
 type right now.
 
 .. important::
@@ -433,10 +368,10 @@ In the next section, we can configure a source that we will use for our
 instance. This can be an image, a snapshotted image, a volume, or some other
 appliance. Chameleon staff maintain some images for users (identified with a
 Chameleon badge). There are also user-uploaded images and appliances. For
-our demo, we'll use the supported `CC-Ubuntu20.04` image. We can see a list
+our demo, we'll use the supported `CC-Ubuntu22.04` image. We can see a list
 of all available images below on this section. If we scroll down, we can
 find the image and click the up arrow icon next to our desired image. This
-will tell the system to use them image for the instance source.
+will tell the system to use that image for the instance source.
 
 **Networks**
 
@@ -637,7 +572,7 @@ interface is a great place to start, as it provides lots of context and helpful
 hints to guide you through the core features of Chameleon.
 
 However, you might find the process a bit tedious. Perhaps, you wonder, there
-is a way to do all this programatically without needing to touch the web
+is a way to do all this programmatically without needing to touch the web
 application. Well, you're in luck! Because Chameleon offers just such an
 development environment along with a trusty tool to accommodate!
 
@@ -698,8 +633,8 @@ sharing?
 
 Chameleon provides the :ref:`Trovi <trovi>` service as a repository to share and access
 artifacts from other users on the testbed. Trovi is integrated with the Jupyter
-Interface, so you can launch Trovi artfacts directly onto the Jupyter Interface
-and start using them. You can also take your Jupyter artfacts and upload them
+Interface, so you can launch Trovi artifacts directly onto the Jupyter Interface
+and start using them. You can also take your Jupyter artifacts and upload them
 to Trovi from Jupyter, allowing others to see and use them.
 
 To get to the Trovi repository from the Chameleon_ home page, go to the
@@ -798,6 +733,7 @@ used to create a lease on the GUI.
 
 .. code-block:: python
 
+   import os
    from chi import lease
 
    reservations = []
@@ -835,7 +771,7 @@ We can now configure and launch our instance on the node that we reserved.
 
    from chi import server
 
-   image = "CC-CentOS8-stream"
+   image = "CC-Ubuntu22.04"
 
    s = server.create_server(
       f"{os.getenv('USER')}-power-management", 
@@ -848,8 +784,8 @@ We can now configure and launch our instance on the node that we reserved.
    print("Done")
 
 This code uses the ``server`` utility to spin up an instance. We can specify
-which image we want to use by referring to it's name (in this case
-``CC-CentOS8-stream``). (To see the name of an image, you can look it up in the
+which image we want to use by referring to its name (in this case
+``CC-Ubuntu22.04``). (To see the name of an image, you can look it up in the
 `Appliances Catalog`_ on Trovi by filtering for the **appliance** tag.) We also need to provide the reservation ID from our
 lease, which we can grab using the ``get_node_reservation`` method.
 

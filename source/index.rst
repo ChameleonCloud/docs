@@ -1,9 +1,11 @@
-====================
-Welcome to Chameleon
-====================
+.. image:: ../_static/imgs/Chameleon_background_transparent.png
+   :align: center
 
-What is Chameleon?
-==================
+----
+
+===============
+About Chameleon
+===============
 
 Chameleon is an NSF-funded testbed system for Computer Science experimentation. 
 It provides researchers with deeply reconfigurable cloud infrastructure for systems, 
@@ -82,8 +84,8 @@ Quick Navigation
   * :doc:`User profile <user/profile>` - Manage your account settings
   * :doc:`Daypass access <technical/daypass>` - Temporary access for artifact reproduction
 
-About the Testbed
-=================
+About the Infrastructure
+=========================
 
 Chameleon operates multiple sites providing different capabilities:
 
