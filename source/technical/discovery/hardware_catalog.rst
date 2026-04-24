@@ -1,7 +1,7 @@
 The Hardware Catalog on the Chameleon Portal
 ============================================
 
-You may use the `Hardware <https://chameleoncloud.org/hardware/>`_ page at the `Chameleon Portal <https://chameleoncloud.org>`_ to see the different hardware resource types available at each Chameleon site.
+You may use the `Hardware Discovery <https://chameleoncloud.org/hardware/>`_ page at the `Chameleon Portal <https://chameleoncloud.org>`_ to see the different hardware resource types available at each Chameleon site.
 
 Availability
 ____________
@@ -41,7 +41,7 @@ You may filter for specific node types by selecting the checkboxes that match yo
 Generating a Reservation Script
 _______________________________
 
-The `Chameleon Portal <https://chameleoncloud.org>`_  does not support a direct reservation from the `Hardware <https://chameleoncloud.org/hardware/>`_ page. However, you may generate a script for reserving the selected nodes by clicking on the *Reserve* button and use the auto-generated script later for the reservation.
+The `Chameleon Portal <https://chameleoncloud.org>`_  does not support a direct reservation from the `Hardware Discovery <https://chameleoncloud.org/hardware/>`_ page. However, you may generate a script for reserving the selected nodes by clicking on the *Reserve* button and use the auto-generated script later for the reservation.
 
 .. figure:: reserve.png
    :alt: Generating a reservation script

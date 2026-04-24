@@ -1,6 +1,6 @@
 .. _`service hours`: https://chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged-
 
-.. _`Hardware Discovery Catalog`: https://chameleoncloud.org/hardware/
+.. _`Hardware Discovery`: https://chameleoncloud.org/hardware/
 
 .. _globus: https://www.globus.org/
 
@@ -51,15 +51,12 @@ connecting to your first instance.
 
 At the end of this tutorial, you'll have learned how to:
 
-- Find networking, storage, and compute resources using the `Hardware Discovery
-  Catalog`_ and search resource availability via the :ref:`Resource Calendars
-  <the-lease-calendars>`
+- Find compute resources using the `Hardware Discovery`_ page and check availability via
+  the :ref:`Resource Calendars <the-lease-calendars>`
 - Make :doc:`advanced reservations<../technical/reservations/index>` for
   Chameleon resources
 - Configure, launch, and connect to an instance running on a bare metal server
 - Orchestrate a Chameleon experiment using Jupyter and python-chi_ *(advanced — see our* :doc:`companion guide <jupyter-python-chi>` *)*
-
-Let's get started!
 
 .. contents:: :local:
 
@@ -90,43 +87,43 @@ virtual instances on |KVM@TACC| and containers on |CHI@Edge| as well.
 Below, we will walk through the steps on how to launch a bare metal instance
 using the graphical user interface (GUI) on the Chameleon_ portal.
 
-Once you've completed this guide, our :doc:`companion guide <jupyter-python-chi>`
-walks through the same steps using Jupyter and python-chi_, Chameleon's Python
-library for programmatic experiment orchestration.
+Once you've completed this guide, our :doc:`companion guide
+<jupyter-python-chi>` walks through the same steps using Jupyter and
+python-chi_, Chameleon's Python library for programmatic experiment
+orchestration.
 
-Warm Up: Pick Your Hardware
----------------------------
+Pick Your Hardware
+-------------------
 
-To view a comprehensive overview of bare metal resources, browse our `Hardware
-Discovery Catalog`_, where you can search and filter for hardware across all
-Chameleon sites based on multiple criteria, including memory, thread count,
-CPUs, GPUs, and more. This catalog is the best place to start your hardware
-discovery.
+Start at the `Hardware Discovery`_ page on the Chameleon Portal. The **Chameleon Resource
+Browser** lets you filter nodes by type and view detailed specifications for
+each node, including CPU, memory, storage, and networking. See
+:doc:`../technical/discovery/index` for a full walkthrough of the discovery
+tools.
 
 .. image:: ../_static/imgs/getting_started/hardware-discovery.png
 
+The **Availability** section of each node type links directly to the Lease
+Calendars at each site, so you can check whether hardware is free before making
+a reservation.
+
 .. important::
-   Chameleon resources are available *per site*, which means that you **must**
-   use a specific site to access certain hardware.
+   Chameleon resources are available *per site*, which means you **must** select
+   the correct site to access specific hardware.
 
-   Chameleon Infrastructure (CHI) is offered at the following main sites:
+   The main Chameleon Infrastructure (CHI) sites are:
 
-   - **Texas Advanced Computing Center (TACC)**: Austin, TX - ``CHI@TACC``
-   - **University of Chicago (UC)**: Chicago, IL - ``CHI@UC``
-   - **National Center for Atmospheric Research (NCAR)**: Boulder, CO - ``CHI@NCAR``
-   
-   For example, if you want to use a `GPU v100`_ node, you must use the |CHI@UC| 
-   site, which is the only site where the node is available. Some hardware is 
-   available at multiple sites, but it is always a good idea to check where 
-   your preferred hardware is located to save yourself some confusion or 
-   trouble later down the line.
+   - **Texas Advanced Computing Center (TACC)**: Austin, TX — ``CHI@TACC``
+   - **University of Chicago (UC)**: Chicago, IL — ``CHI@UC``
+   - **National Center for Atmospheric Research (NCAR)**: Boulder, CO — ``CHI@NCAR``
 
-We will work with the ``Compute Cascadelake R`` nodes (see, e.g. `here
-<https://www.chameleoncloud.org/hardware/node/sites/tacc/clusters/chameleon/nodes/05e4d546-6c73-4d66-8b83-3fad392d149a/>`__)
-available through both the |CHI@UC| and |CHI@TACC| sites. These nodes are
-plentiful on the platform and tend to be available on demand (which is
-convenient for a demo!). However, bear in mind that you can follow this same
-guide to reserve any hardware on Chameleon.
+   For example, the `GPU v100`_ node is only available at |CHI@UC|. Always
+   confirm which site hosts your preferred hardware before making a reservation.
+
+For this guide we'll use ``Compute Cascadelake R`` nodes, available at both
+|CHI@UC| and |CHI@TACC|. They're plentiful and typically available on demand,
+which makes them a good choice for a first experiment. You can follow the same
+steps below for any hardware on Chameleon.
 
 Now that we have the hardware we want to use and the site where it is located,
 we can make our first reservation.
@@ -569,8 +566,7 @@ you're ready to start running experiments on Chameleon.
 - **Go programmatic**: Our :doc:`JupyterHub and python-chi guide
   <jupyter-python-chi>` walks through the same workflow using Chameleon's
   Python library inside a Jupyter Notebook — no GUI required.
-- **Explore more hardware**: Browse the `Hardware Discovery Catalog
-  <https://chameleoncloud.org/hardware/>`_ and the :doc:`reservations guide
+- **Explore more hardware**: Browse `Hardware Discovery`_ and the :doc:`reservations guide
   <../technical/reservations/index>` to learn about advanced reservation
   options.
 - **Browse experiment templates**: Check out `tutorials on Trovi
