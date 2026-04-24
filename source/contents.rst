@@ -8,6 +8,7 @@ Welcome to Chameleon
 
    index
    getting-started/index
+   getting-started/jupyter-python-chi
 
 .. toctree::
    :maxdepth: 2

@@ -4,7 +4,7 @@
 Trovi Sharing Portal
 ====================
 
-`Chameleon Trovi <https://www.chameleoncloud.org/experiment/share>`_ is a
+`Chameleon Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts>`_ is a
 sharing portal that allows you to share digital research and education
 artifacts, such as packaged experiments, workshop tutorials, or class materials.
 Each research artifact is represented as a deposition (a remotely accessible

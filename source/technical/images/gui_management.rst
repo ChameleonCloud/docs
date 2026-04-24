@@ -11,7 +11,7 @@ To manage your images, use the *Images* page at |CHI@TACC| or |CHI@UC|, by click
 
    The Images page
 
-.. note:: The Chameleon logo next to an image's name indicates that this image is an appliance supported by the Chameleon project. Chameleon-supported appliances can be found on `Trovi <https://www.chameleoncloud.org/experiment/share/>`_ by filtering for the **appliance** tag.
+.. note:: The Chameleon logo next to an image's name indicates that this image is an appliance supported by the Chameleon project. Chameleon-supported appliances can be found on `Trovi <https://www.trovi.chameleoncloud.org/dashboard/artifacts/>`_ by filtering for the **appliance** tag.
 
 .. note:: Images at each site are stored independently. An Image made at |CHI@TACC| **will not** be available at |CHI@UC| (or vice versa) unless transferred manually.
 
@@ -61,7 +61,7 @@ Publishing Images as Appliances via Trovi
 
 .. note::
    New appliances can no longer be submitted to the Appliance Catalog.
-   Appliances are now published through `Trovi <https://www.chameleoncloud.org/experiment/share/>`_.
+   Appliances are now published through `Trovi <https://www.trovi.chameleoncloud.org/dashboard/artifacts/>`_.
 
 To share an image as a Chameleon appliance, upload or locate your artifact in
 Trovi and open its **Edit** menu. Add the **appliance** tag along with a
