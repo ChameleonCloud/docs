@@ -103,6 +103,8 @@ tools.
 
 .. image:: ../_static/imgs/getting_started/hardware-discovery.png
 
+.. image:: ../_static/imgs/getting_started/hardware-discovery-availability.png
+
 The **Availability** section of each node type links directly to the Lease
 Calendars at each site, so you can check whether hardware is free before making
 a reservation.
@@ -122,8 +124,14 @@ a reservation.
 
 For this guide we'll use ``Compute Cascadelake R`` nodes, available at both
 |CHI@UC| and |CHI@TACC|. They're plentiful and typically available on demand,
-which makes them a good choice for a first experiment. You can follow the same
-steps below for any hardware on Chameleon.
+which makes them a good choice for a first experiment. You can follow
+the same steps below for any bare metal hardware on Chameleon.
+
+.. note::
+   Bare metal isn't the only option. Chameleon also supports:
+
+   - **Virtual machines** via |KVM@TACC| — see :doc:`../technical/kvm/index`
+   - **Edge devices** (e.g. Raspberry Pi) via |CHI@Edge| — see `CHI@Edge - Getting Started <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_
 
 Now that we have the hardware we want to use and the site where it is located,
 we can make our first reservation.
