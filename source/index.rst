@@ -94,7 +94,7 @@ Chameleon operates multiple sites providing different capabilities:
 * **CHI@TACC** (Texas): Large-scale bare metal cloud with diverse Intel/AMD hardware including GigaIO nodes
 * **CHI@UC** (Chicago): Networking-focused site with specialized hardware and GPU/FPGA resources
 * **CHI@NCAR** (Colorado): ARM ThunderX2 nodes for edge computing and atmospheric science research
-* **CHI@Edge**: Distributed edge computing with Raspberry Pi devices (including Raspberry Pi 5)
+* **CHI@Edge**: Distributed edge computing with Raspberry Pi devices (including Raspberry Pi 5) — `docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_
 * **KVM@TACC** (Texas): Traditional OpenStack cloud
 
 **Associate Sites:**
