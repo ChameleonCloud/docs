@@ -2,9 +2,23 @@
 
 .. _Chameleon: https://chameleoncloud.org/
 
-.. _`Bare Metal Experiment Pattern`: https://trovi.chameleoncloud.org/dashboard/artifacts/370ce99a-3e03-43e9-83e3-b61fd9692dc0
+.. _`Hardware Discovery`: https://chameleoncloud.org/hardware/
+
+.. _`Bare Metal Experiment Pattern`: https://trovi.chameleoncloud.org/dashboard/artifacts/50692573-4094-466c-b4fe-0ed3471f8993
 
 .. _`Appliances Catalog`: https://trovi.chameleoncloud.org/dashboard/artifacts?tags=appliance
+
+.. _`chi.context module`: https://python-chi.readthedocs.io/en/latest/modules/context.html
+
+.. _`chi.hardware module`: https://python-chi.readthedocs.io/en/latest/modules/hardware.html
+
+.. _`chi.lease module`: https://python-chi.readthedocs.io/en/latest/modules/lease.html
+
+.. _`chi.server module`: https://python-chi.readthedocs.io/en/latest/modules/server.html
+
+.. _`python-chi 1.0 blog post`: https://blog.chameleoncloud.org/posts/packaging-your-experiments-on-chameleon-with-python-chi-1-0
+
+.. _`Trovi tips blog post`: https://blog.chameleoncloud.org/posts/from-github-to-publication-using-trovi-effectively/
 
 .. _remix:
 
@@ -78,6 +92,13 @@ To get to the Trovi repository from the Chameleon_ home page, go to the
 "Experiment" tab and click the "Trovi" menu item. Here, you can see all the
 public artifacts available on the testbed.
 
+.. TODO: Update the prose above and below to match the new Trovi dashboard UI
+   (launched September 2025). The redesign includes improved search and filtering,
+   a new layout, and an "Import" button for GitHub repositories. Verify that the
+   navigation path ("Experiment" tab → "Trovi") is still accurate.
+
+.. TODO: Replace trovi-main.png with a screenshot of the new Trovi dashboard.
+
 .. image:: ../_static/imgs/getting_started/trovi-main.png
 
 Chameleon offers tutorials and experimental pattern notebooks on Trovi. We'll
@@ -91,14 +112,26 @@ You can also filter for this artifact by selecting the Chameleon badge icon
 (|chameleon badge|) on the side bar to view all of the Chameleon-supported
 artifacts. We can also filter by tag, for example the "experiment pattern" tag.
 
+.. image:: ../_static/imgs/getting_started/search-trovi.png
+
+
 .. |chameleon badge| image:: ../_static/imgs/getting_started/chameleon-badge.png
 
-.. note::
-   There are additional artifacts to check out that will help you with more
-   advanced topics. And the best part about these templates is that we can easily
-   reuse the code to start our own artifacts.
-
+.. tip::
+   Want to publish your own experiment on Trovi or import an existing GitHub
+   repository? See our `Trovi tips blog post`_ for a **step-by-step walkthrough of
+   the full artifact lifecycle, from packaging to publication**.
+   
+   Be sure to **check out our additional templates** `with more advanced topics on Trovi
+   <https://trovi.chameleoncloud.org/dashboard/artifacts?tags=experiment+pattern>`_.
+   The best part about these templates is that you can easily reuse the code
+   to start writing your own artifacts.
+   
 To launch the artifact, click on the title. On the next page, you will see the following:
+
+.. TODO: Replace bare-metal-pattern.png with a screenshot of the artifact detail
+   page in the new Trovi dashboard. Verify that the "Launch on Chameleon" button
+   name and placement are still accurate.
 
 .. image:: ../_static/imgs/getting_started/bare-metal-pattern.png
 
@@ -139,31 +172,60 @@ As required when working through the Chameleon GUI, we need to set our active
 project and pick a testbed site to use before we can continue. This requires a
 Chameleon account and membership to an active project.
 
-Once we have our project and site, we can use python-chi_ to set these parameters.
+Once we have our project and site, we can use python-chi_ to set these
+parameters via the ``chi.context`` module.
 
 .. code-block:: python
 
    import chi
 
    chi.use_site("CHI@UC")
+   chi.use_project("CHI-XXXXXX")  # Replace with your project name
 
-   # Change to your project (CHI-XXXXXX)
-   chi.set("project_name", "Chameleon")
+This code imports the python-chi_ module, calls ``use_site`` to target a
+Chameleon site, and ``use_project`` to set the active project. All subsequent
+API calls — leases, instances, networks — will be sent to that site and billed
+to that project. You can call these again at any point to switch context.
 
-This code imports the python-chi_ module, calls the ``use_site`` method with
-the desired site (|CHI@UC|) inputted as a string, and calls the ``set`` method
-to update the configuration to use our project code. (Note: this is necessary
-so that the system knows which project to reference when creating leases and
-launching instances.) Replace ``Chameleon`` with your project code.
+.. tip::
+   In a Jupyter Notebook, you can use ``chi.context.choose_site()`` and
+   ``chi.context.choose_project()`` for interactive dropdown menus instead
+   of hard-coding the values. See the `chi.context module`_ docs for the
+   full API, and our `python-chi 1.0 blog post`_ for a walkthrough of all
+   the new Jupyter widget features introduced in that release.
+
+**Discover Hardware**
+
+python-chi_ now supports hardware discovery via the ``chi.hardware`` module,
+mirroring what you can do on the `Hardware Discovery`_ web page. This is
+useful for finding available nodes and checking when specific hardware is free
+before committing to a reservation.
+
+.. code-block:: python
+
+   from chi import hardware
+
+   # Display an interactive, filterable table of all nodes at the current site
+   hardware.show_nodes()
+
+   # Or filter programmatically — e.g. only GPU nodes with at least 32 CPUs
+   nodes = hardware.get_nodes(gpu=True, min_number_cpu=32)
+
+To check when a specific node is next available, use ``next_free_timeslot``:
+
+.. code-block:: python
+
+   node = hardware.get_nodes(node_type="compute_cascadelake_r")[0]
+   start, end = node.next_free_timeslot(minimum_hours=3)
+   print(f"Next free slot: {start} → {end}")
+
+See the `chi.hardware module`_ docs for the full list of filter options and
+methods available on ``Node`` objects.
 
 **Create a Reservation**
 
-.. note::
-   python-chi_ does not currently support hardware discovery, but we are
-   working to fix that soon. Stay tuned!
-
 After we set our site and project code, we can now create a lease. The code
-below uses the ``lease`` utility to create a reservation for one floating IP
+below uses the ``Lease`` class to create a reservation for one floating IP
 and one bare metal host with the node type ``compute_cascadelake_r``. Notice
 that we are setting the same parameters that we had to include in the form we
 used to create a lease on the GUI.
@@ -172,33 +234,19 @@ used to create a lease on the GUI.
 
    import os
    from chi import lease
+   from datetime import timedelta
 
-   reservations = []
-   lease_node_type = "compute_cascadelake_r"
+   l = lease.Lease(
+      name=f"{os.getenv('USER')}-power-management",
+      duration=timedelta(hours=3)
+   )
+   l.add_node_reservation(node_type="compute_cascadelake_r", amount=1)
+   l.add_fip_reservation(amount=1)
+   l.submit(wait_for_active=True)
 
-   try:
-      print("Creating lease...")
-      lease.add_fip_reservation(reservations, count=1)
-      lease.add_node_reservation(reservations, node_type=lease_node_type, count=1)
-
-      start_date, end_date = lease.lease_duration(hours=3)
-
-      l = lease.create_lease(
-         f"{os.getenv('USER')}-power-management",
-         reservations,
-         start_date=start_date,
-         end_date=end_date
-      )
-
-We can use the ``wait_for_active`` method to pause until our lease is active
-before running further code cells in the notebook.
-
-.. code-block:: python
-
-   lease_id = l["id"]
-   print("Waiting for lease to start ...")
-   lease.wait_for_active(lease_id)
-   print("Lease is now active!")
+See the `chi.lease module`_ docs for advanced options, including network
+reservations, KVM flavor reservations, and setting explicit start/end times
+for advanced scheduling.
 
 **Create an Instance**
 
@@ -208,32 +256,30 @@ We can now configure and launch our instance on the node that we reserved.
 
    from chi import server
 
-   image = "CC-Ubuntu22.04"
-
-   s = server.create_server(
-      f"{os.getenv('USER')}-power-management",
-      image_name=image,
-      reservation_id=lease.get_node_reservation(lease_id)
+   s = server.Server(
+      name=f"{os.getenv('USER')}-power-management",
+      reservation_id=l.node_reservations[0]["id"],
+      image_name="CC-Ubuntu24.04"
    )
+   s.submit(wait_for_active=True)
 
-   print("Waiting for server to start ...")
-   server.wait_for_active(s.id)
-   print("Done")
-
-This code uses the ``server`` utility to spin up an instance. We can specify
+This code uses the ``Server`` class to spin up an instance. We can specify
 which image we want to use by referring to its name (in this case
-``CC-Ubuntu22.04``). (To see the name of an image, you can look it up in the
-`Appliances Catalog`_ on Trovi by filtering for the **appliance** tag.) We also need to provide the reservation ID from our
-lease, which we can grab using the ``get_node_reservation`` method.
+``CC-Ubuntu24.04``). (To see the name of an image, you can look it up in the
+`Appliances Catalog`_ on Trovi by filtering for the **appliance** tag.) We
+also need to provide the reservation ID from our lease, which we can access
+from the lease's ``node_reservations`` list. See the `chi.server module`_ docs
+for the full ``Server`` class API, including ``flavor_name``, ``network_name``,
+and ``keypair`` parameters.
 
 .. note::
    We are *not* specifying a key pair here, because when you use Chameleon through
    the Jupyter Interface, a key pair is automatically generated in the Jupyter
    environment and associated with your Chameleon account. By default, the
-   ``create_server`` method will include this key pair in any instance you create
+   ``Server`` class will include this key pair in any instance you create
    from the Jupyter Interface and will use it in other methods that allow you to
-   SSH to the instance. You can specify a different key pair using the ``key_name
-   (str)`` parameter.
+   SSH to the instance. You can specify a different key pair using the ``key_name``
+   parameter.
 
 **SSHing and Running Scripts on the Instance**
 
@@ -243,7 +289,7 @@ utility to connect to the instance.
 
 .. code-block:: python
 
-   floating_ip = lease.get_reserved_floating_ips(lease_id)[0]
+   floating_ip = l.get_reserved_floating_ips()[0]
    server.associate_floating_ip(s.id, floating_ip_address=floating_ip)
 
    print(f"Waiting for SSH connectivity on {floating_ip} ...")
