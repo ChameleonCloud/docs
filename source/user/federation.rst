@@ -124,8 +124,8 @@ you can re-link your Chameleon account assuming you have access to same email.
    Check your email inbox for a verification link.
    Once you click this link, your Chameleon account will now be linked to the Globus account from step 3, and you should use this login method when using Chameleon in the future.
 
-   If you don't see this message, then your Globus account is using an email address that Chameleon doesn't have registered.
-   Please contact the :doc:`Help Desk <help>` for further assistance regarding this or any other issue with the account linking process.
+If you don't see this message, then your Globus account is using an email address that Chameleon doesn't have registered.
+Please contact the `Help Desk <https://chameleoncloud.org/user/help/>`_ for further assistance regarding this or any other issue with the account linking process.
 
 
 Troubleshooting Login Issues
@@ -147,8 +147,3 @@ For persistent login issues, contact our :doc:`Help Desk <help>` with details ab
 - Which authentication method you're trying to use
 - Any error messages you're seeing
 - Your institutional affiliation (if using federated login)
-
-.. note::
-   Users who had legacy Chameleon accounts (created before November 2020) successfully 
-   completed migration to federated identity in 2021. All current authentication uses 
-   federated identity providers.
