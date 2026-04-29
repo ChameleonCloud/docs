@@ -370,13 +370,21 @@ appliances.
    Allocate a network.
 
 On the next section, we can allocate a network to provide communication
-channels for instances in the cloud. Chameleon currently offers two public
-networks, ``sharednet1`` and ``fabnetv4``. We will use ``sharednet1``, which is
-the default network for providing connectivity to a Chameleon instance.
-``fabnetv4`` is specifically for accessing FABRIC testbed resources from
-Chameleon sites and for cross-site stitching — see
-:doc:`../technical/networks/networks_fabnet` for details. For this guide,
-``sharednet1`` is all we need.
+channels for instances in the cloud. For this guide, we'll use ``sharednet1``,
+Chameleon's shared default network — it provides internet connectivity
+out of the box and is the simplest option for a first experiment.
+
+``fabnetv4`` is a second shared network specifically for accessing FABRIC
+testbed resources and cross-site stitching — see
+:doc:`../technical/networks/networks_fabnet` for details.
+
+.. note::
+   If you plan to run many instances (for example, a class experiment with
+   many students), consider creating a **project network** (an isolated VLAN)
+   instead of placing all instances on ``sharednet1``. A project network gives
+   your experiment a private broadcast domain while still allowing you to
+   assign floating IPs to individual instances for public access. See
+   :doc:`../technical/networks/networks_vlan` for details.
 
 **Key Pairs**
 
