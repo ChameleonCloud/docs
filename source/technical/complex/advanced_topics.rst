@@ -37,7 +37,7 @@ By separating the deployment of instances (using Heat, or python-chi)
 from their contextualization (using Ansible or another tool),
 any necessary all-to-all information exchange can be performed.
 
-One specific example of this approach is our `MPI Trovi artifact <https://chameleoncloud.org/experiment/share/bee0e61d-b272-487f-b2c6-e7455f4b4474>`_.
+One specific example of this approach is our `MPI Trovi artifact <https://trovi.chameleoncloud.org/dashboard/artifacts/bee0e61d-b272-487f-b2c6-e7455f4b4474>`_.
 
 This artifact contains the necessary python-chi and Ansible scripts to deploy
 a cluster of instances capable of running an MPI application.

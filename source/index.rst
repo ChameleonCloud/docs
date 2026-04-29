@@ -1,9 +1,11 @@
-====================
-Welcome to Chameleon
-====================
+.. image:: ../_static/imgs/Chameleon_background_transparent.png
+   :align: center
 
-What is Chameleon?
-==================
+----
+
+===============
+About Chameleon
+===============
 
 Chameleon is an NSF-funded testbed system for Computer Science experimentation. 
 It provides researchers with deeply reconfigurable cloud infrastructure for systems, 
@@ -82,8 +84,8 @@ Quick Navigation
   * :doc:`User profile <user/profile>` - Manage your account settings
   * :doc:`Daypass access <technical/daypass>` - Temporary access for artifact reproduction
 
-About the Testbed
-=================
+About the Infrastructure
+=========================
 
 Chameleon operates multiple sites providing different capabilities:
 
@@ -92,7 +94,7 @@ Chameleon operates multiple sites providing different capabilities:
 * **CHI@TACC** (Texas): Large-scale bare metal cloud with diverse Intel/AMD hardware including GigaIO nodes
 * **CHI@UC** (Chicago): Networking-focused site with specialized hardware and GPU/FPGA resources
 * **CHI@NCAR** (Colorado): ARM ThunderX2 nodes for edge computing and atmospheric science research
-* **CHI@Edge**: Distributed edge computing with Raspberry Pi devices (including Raspberry Pi 5)
+* **CHI@Edge**: Distributed edge computing with Raspberry Pi devices (including Raspberry Pi 5) — `docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_
 * **KVM@TACC** (Texas): Traditional OpenStack cloud
 
 **Associate Sites:**

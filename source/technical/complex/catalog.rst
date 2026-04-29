@@ -5,7 +5,7 @@ Complex Appliances in Trovi
 
 .. note::
    Chameleon appliances, including *Complex Appliances*, have moved to
-   `Trovi <https://www.chameleoncloud.org/experiment/share/>`_. Filter Trovi
+   `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/>`_. Filter Trovi
    artifacts by the **appliance** tag to find Chameleon-supported OS images and
    heat templates. The `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_
    remains accessible for continuity but will eventually be retired — please
@@ -16,7 +16,7 @@ to deploy such as OpenStack or MPI or even more advanced deployments such as
 efficient SR-IOV enabled MPI in KVM virtual machines. We also provide common
 building blocks for cluster architectures, such as an NFS share.
 
-To find *Complex Appliances*, go to `Trovi <https://www.chameleoncloud.org/experiment/share/>`_
+To find *Complex Appliances*, go to `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/>`_
 and filter by the **appliance** tag. Click on any artifact to view its details,
 including the heat template needed to launch it.
 

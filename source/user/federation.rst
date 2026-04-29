@@ -38,9 +38,9 @@ automatically.
 
 .. important::
 
-   You must be part of project with an active allocation to use the testbed
-   sites! Refer to our :ref:`"getting started" guide <getting-started-project>`
-   for more info.
+   You must be part of a project with an active allocation to use the testbed
+   sites! Refer to our :doc:`project management guide <project>` for details on
+   creating a project or joining an existing one.
 
 .. note::
 
@@ -92,14 +92,19 @@ Authentication options
 Terms and Conditions
 ====================
 
-When creating an account, you will be asked to accept `terms and conditions
-<https://auth.chameleoncloud.org/auth/realms/chameleon/terms>`_ of use,
-note that as part of those terms and conditions you are requested to
-acknowledge Chameleon in publications produced using the testbed. See our FAQ
-for information on `how to reference Chameleon in your publications
+When creating an account, you will be asked to review and consent to the `Acceptable Use Policy
+<https://chameleoncloud.org/terms/view/user-terms/1.00/>`_, which governs all
+use of Chameleon resources and applies to every project on the testbed.
+
+As part of these terms, among others, you are requested to acknowledge Chameleon in
+publications produced using the testbed. See our `FAQ
+<https://www.chameleoncloud.org/learn/frequently-asked-questions/>`_ for
+information on `how to cite Chameleon
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-cite-chameleon->`_
 and the suggested `acknowledgement text
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-how-should-i-acknowledge-chameleon->`_.
+The FAQ also covers other common policy questions about allocation charges,
+usage best practices, and more.
 
 Account linking
 ===============

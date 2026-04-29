@@ -16,7 +16,7 @@ easily switch from one to other, see :ref:`gui-project-menu`).
 - |CHI@TACC| - Texas Advanced Computing Center: https://chi.tacc.chameleoncloud.org
 - |CHI@UC| - University of Chicago: https://chi.uc.chameleoncloud.org  
 - |CHI@NCAR| - National Center for Atmospheric Research: https://chi.ncar.chameleoncloud.org
-- |CHI@Edge| - Edge computing testbed: https://chi.edge.chameleoncloud.org
+- |CHI@Edge| - Edge computing testbed: https://chi.edge.chameleoncloud.org (`docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_)
 
 Chameleon also hosts |KVM@TACC|, a traditional OpenStack cloud where you may work with
 virtual machines. This site **does not** have access to bare metal resources. It

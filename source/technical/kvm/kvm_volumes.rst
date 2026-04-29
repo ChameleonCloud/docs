@@ -48,4 +48,4 @@ In the future, you will not need to partition and format the volume, and can jus
 Managing volumes via Python-chi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See `this Trovi artifact <https://chameleoncloud.org/experiment/share/48c7e345-e27e-4717-9459-d0e19743622c>`_ for how to manage volumes via python-chi.
+See `this Trovi artifact <https://trovi.chameleoncloud.org/dashboard/artifacts/48c7e345-e27e-4717-9459-d0e19743622c>`_ for how to manage volumes via python-chi.
