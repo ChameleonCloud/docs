@@ -101,9 +101,11 @@ public artifacts available on the testbed.
 
 .. image:: ../_static/imgs/getting_started/trovi-main.png
 
-Chameleon offers tutorials and experimental pattern notebooks on Trovi. We'll
-use one now to see how we can accomplish the same basic set up on Chameleon
-that we achieved in our previous section.
+Chameleon offers tutorials and experimental pattern notebooks on Trovi (see
+collection `here
+<https://trovi.chameleoncloud.org/dashboard/artifacts?badges=chameleon+supported&tags=experiment+pattern>`_).
+We'll use one now to see how we can accomplish the same basic set up on
+Chameleon that we achieved in our previous section.
 
 Go to the Trovi repository (after logging in to the site if you aren't
 already). The artifact we will use today is called the `Bare Metal Experiment
@@ -145,10 +147,9 @@ workspace. Your directory should include the following files:
 .. code-block:: bash
 
    $ ls
-   Analysis.ipynb             Experiment.ipynb   out            run_experiment.sh
-   latest.tar.gz      README.ipynb   setup.sh
+   README.md             Experiment.ipynb            scrips
 
-We can click on the directory and open the ``README.ipynb`` file, which
+We can click on the directory and open the ``README.md`` file, which
 provides some documentation on this artifact, including approximately how long
 it takes to run and any additional requirements.
 
@@ -281,47 +282,43 @@ and ``keypair`` parameters.
    SSH to the instance. You can specify a different key pair using the ``key_name``
    parameter.
 
-**SSHing and Running Scripts on the Instance**
+**Connecting to and Running Scripts on the Instance**
 
 After our server is running (remember, this can take up to 20 minutes in some
-cases; now is a good time to take a coffee break), we can use the ``ssh``
-utility to connect to the instance.
+cases; now is a good time to take a coffee break), we will association our
+instance with the reserved floating IP and then check our connectivity to the
+node based using the Server class ``check_connectivity`` method.
 
 .. code-block:: python
 
    floating_ip = l.get_reserved_floating_ips()[0]
-   server.associate_floating_ip(s.id, floating_ip_address=floating_ip)
-
-   print(f"Waiting for SSH connectivity on {floating_ip} ...")
-   timeout = 60*2
-   import socket
-   import time
-   # Repeatedly try to connect via SSH.
-   start_time = time.perf_counter()
-   while True:
-      try:
-         with socket.create_connection((floating_ip, 22), timeout=timeout):
-               print("Connection successful")
-               break
-      except OSError as ex:
-         time.sleep(10)
-         if time.perf_counter() - start_time >= timeout:
-               print(f"After {timeout} seconds, could not connect via SSH. Please try again.")
-
-   from chi import ssh
-
-   with ssh.Remote(floating_ip) as conn:
-      # Upload the script
-      conn.put("setup.sh")
-      # Run the script
-      conn.run("bash setup.sh")
+   s.associate_floating_ip(floating_ip)
+   s.check_connectivity(host=floating_ip)
 
 We have now associated our floating IP and verified our connection to the
-instance via the floating IP. We can then use our SSH connection to upload
-scripts to set up our experiment, run it, and transfer the results back to our
-local environment for processing and analysis. (See the ``Analysis.ipynb``
-notebook to see the results of this experiment! Better yet, see if you can
-replicate the experiment in this tutorial on a different Node Type.)
+instance via the floating IP. We can then use ``execute`` method to upload
+scripts to our instance for setting up our experiment, running it, and storing
+the results in Chameleon `object storage <#>`_.
+
+.. code-block:: python
+
+   # Clone git repo with experiment source code
+   my_server.execute("git clone https://github.com/ChameleonCloud/bare_metal_experiment_pattern")
+
+   # Run setup script
+   my_server.execute("bash bare_metal_experiment_pattern/scripts/setup.sh")
+   # Run experiment script for N iterations
+   iterations = 1
+   for i in range(iterations):
+      my_server.execute("bash bare_metal_experiment_pattern/scripts/run_experiment.sh 10")
+
+From this point, the remaining code blocks in this notebook will download the
+data locally from object storage and then plot figures using the experiment
+data. As an exercise, try to see if you can replicate the experiment in this
+tutorial on a different node type like a ``skylake`` or one of our many nodes
+with a GPU!
+
+----
 
 Congratulations! You just created your first lease and instance on Chameleon
 without ever leaving the comforts of your Jupyter Notebook!
