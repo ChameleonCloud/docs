@@ -12,7 +12,7 @@ The remainder of this document describes how to stitch Chameleon experiments to 
 
 .. note::
 
-    Stitching to FABRIC with the Python API is shown this a `Trovi Artifact <https://www.trovi.chameleoncloud.org/dashboard/artifacts/9284120f-3436-41f3-9e82-238e0628ec6c>`_
+    Stitching to FABRIC with the Python API is shown this a `Trovi Artifact <https://trovi.chameleoncloud.org/dashboard/artifacts/9284120f-3436-41f3-9e82-238e0628ec6c>`_
 
 
 .. _network-stitchable-create:

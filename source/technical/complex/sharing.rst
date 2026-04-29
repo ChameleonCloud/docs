@@ -6,7 +6,7 @@ Sharing Complex Appliances
 If you have written your own *Complex Appliance* or substantially customized an
 existing one, we would love if you shared them with our user community!
 Appliances are now published through `Trovi
-<https://www.trovi.chameleoncloud.org/dashboard/artifacts/>`_ — the Appliance
+<https://trovi.chameleoncloud.org/dashboard/artifacts/>`_ — the Appliance
 Catalog no longer accepts new submissions.
 
 To publish a new appliance, first create or find your artifact in Trovi, then

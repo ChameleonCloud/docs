@@ -9,7 +9,7 @@ Appliances* will consist of multiple nodes, make sure you have set the *Minimum
 Number of Hosts* in your Lease. You will also need a *Template* file or the URL
 for a *Template* file. Templates for Chameleon-supported complex appliances can
 be found on `Trovi
-<https://www.trovi.chameleoncloud.org/dashboard/artifacts/>`_ by filtering for
+<https://trovi.chameleoncloud.org/dashboard/artifacts/>`_ by filtering for
 the **appliance** tag. At |CHI@TACC| site or |CHI@UC| site, go to *Project* >
 *Orchestration* > *Stacks* use the navigation side bar.
 
@@ -19,9 +19,9 @@ the **appliance** tag. At |CHI@TACC| site or |CHI@UC| site, go to *Project* >
    The Stacks page
 
 .. tip::
-   You can find complex appliance templates on `Trovi <https://www.trovi.chameleoncloud.org/dashboard/artifacts/>`_ by filtering for the **appliance** tag.
+   You can find complex appliance templates on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/>`_ by filtering for the **appliance** tag.
 
-   #. Go to `Trovi <https://www.trovi.chameleoncloud.org/dashboard/artifacts/>`_, filter by the **appliance** tag, and identify the appliance you want to launch. Click on it to open its details page.
+   #. Go to `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/>`_, filter by the **appliance** tag, and identify the appliance you want to launch. Click on it to open its details page.
 
    #. Download the template file or copy its URL from the artifact's detail page, then use it when launching a stack.
 
