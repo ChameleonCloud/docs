@@ -109,7 +109,23 @@ allows you to launch, rebuild, or terminate stacks.
 
    The Stacks page
 
+Resource Types
+~~~~~~~~~~~~~~
 
+The *Resource Types* page lists all Heat resource types available for use in
+your templates, along with their properties and attributes.
+
+Template Versions
+~~~~~~~~~~~~~~~~~
+
+The *Template Versions* page lists the supported Heat Orchestration Template
+(HOT) versions and the features available in each.
+
+Template Generator
+~~~~~~~~~~~~~~~~~~
+
+The *Template Generator* provides a graphical interface for building Heat
+templates without writing YAML by hand.
 
 Object Store
 ------------
@@ -121,6 +137,44 @@ For detailed object store instructions, see :ref:`object-store`.
    :alt: The Containers page
 
    The Containers page
+
+Share
+-----
+
+.. figure:: shares.png
+
+The *Share* section provides interfaces for managing shared file systems using
+the OpenStack Manila service.
+
+Shares
+~~~~~~
+
+The *Shares* page allows you to create and manage shared file systems that can
+be mounted by multiple instances simultaneously.
+
+Share Snapshots
+~~~~~~~~~~~~~~~
+
+The *Share Snapshots* page allows you to create point-in-time snapshots of
+your shares for backup or cloning purposes.
+
+Share Networks
+~~~~~~~~~~~~~~
+
+The *Share Networks* page allows you to configure the network settings that
+shares use to communicate with instances.
+
+Share Groups
+~~~~~~~~~~~~
+
+The *Share Groups* page allows you to group shares together so that consistent
+snapshots can be taken across multiple shares at once.
+
+Security Services
+~~~~~~~~~~~~~~~~~
+
+The *Security Services* page allows you to configure authentication services
+(such as Active Directory or LDAP) that can be associated with share networks.
 
 Reservations
 ------------
@@ -136,10 +190,31 @@ For comprehensive reservation instructions, see :ref:`reservations`.
 Identity
 --------
 
-The *Projects* section under *Identity* shows projects you belong to and allows 
-you to set your default project.
+The *Identity* section provides interfaces for managing your account's projects,
+users, and credentials.
+
+Projects
+~~~~~~~~
+
+The *Projects* page shows projects you belong to and allows you to set your
+default project.
 
 .. figure:: projects.png
    :alt: The Projects page
 
    The Projects page
+
+Users
+~~~~~
+
+The *Users* page displays your account information. You can use this page to
+view your user ID, which is sometimes required when managing project membership
+or configuring access controls.
+
+Application Credentials
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The *Application Credentials* page allows you to create scoped credentials for
+use by applications or scripts without exposing your primary account password.
+Application credentials are tied to a specific project and can be given a
+limited set of roles.
