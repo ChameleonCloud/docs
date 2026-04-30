@@ -121,14 +121,14 @@ Template Versions
 ~~~~~~~~~~~~~~~~~
 
 The *Template Versions* page lists the supported Heat Orchestration Template
-(HOT) versions and the features available in each. For more on writing
-templates, see :ref:`heat-templates`.
+(HOT) versions and the features available in each.
 
 Template Generator
 ~~~~~~~~~~~~~~~~~~
 
 The *Template Generator* provides a graphical interface for building Heat
-templates without writing YAML by hand.
+templates without writing YAML by hand. For more on writing templates, see
+:ref:`heat-templates`.
 
 Object Store
 ------------

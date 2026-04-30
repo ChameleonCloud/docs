@@ -23,7 +23,7 @@ Chameleon GUI at the :ref:`gui-api-access`.
    credential. This is useful for creating fresh credentials without
    accessing the Chameleon GUI.
 
-#. Log in to the GUI at |CHI@TACC| or |CHI@UC|.
+#. Log in to the GUI at on a CHI site.
 
    .. important::
 
@@ -38,12 +38,12 @@ Chameleon GUI at the :ref:`gui-api-access`.
       The Project Dropdown
 
 #. Download *OpenStack RC Script* using :ref:`gui-user-menu` by clicking on
-   *Openstack RC File v3*.
+   *Openstack RC File*.
 
-   .. figure:: userdropdown.png
+   .. figure:: ../gui/user_dropdown.png
       :alt: The OpenStack RC File v3 link in the User Dropdown
 
-      The OpenStack RC File v3 link in the User Dropdown
+      The OpenStack RC File link in the User Dropdown
 
 #. Run the following command in the terminal:
 

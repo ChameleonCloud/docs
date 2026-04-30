@@ -1,7 +1,7 @@
 .. _using-cli:
 
-Using the CLI
-=============
+CLI Modes
+==========
 
 You can use the CLI in either Interactive Mode or Shell Mode. In either mode,
 the OpenStack client has to be configured by using the *OpenStack RC Script* or

@@ -14,7 +14,7 @@ Prerequisites
 OpenStack Client Installation
 -----------------------------
 
-#. Install the CLI by typing ``pip install python-openstackclient`` in the
+#. Install the CLI by typing ``pip install python-openstackclient chameleon-blazarclient`` in the
    terminal.
 
 #. Verify that it has installed correctly by typing ``openstack``. You will
@@ -22,11 +22,3 @@ OpenStack Client Installation
    to ``(openstack)``.
 
 #. Exit the client by typing ``exit``.
-
-#. There are some clients with new features or bugfixes not yet in the upstream
-   release branches, notably the Blazar CLI client. If you want to make
-   reservations via the CLI, you should install that here:
-
-   .. code-block:: shell
-
-      pip install git+https://github.com/chameleoncloud/python-blazarclient@chameleoncloud/2023.1
