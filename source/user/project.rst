@@ -13,18 +13,21 @@ Projects are the fundamental organizing unit for research on Chameleon. Each pro
 - **User management** with role-based access control (PI, Manager, Member)
 - **Resource isolation** with dedicated security groups, networks, and storage
 - **Usage tracking** and billing management for fair resource sharing
+- **Publication tracking** to record research outputs associated with the project
 
-All project management tasks are performed through the `Chameleon portal <https://www.chameleoncloud.org>`_. After
-you have `registered <https://www.chameleoncloud.org/user/register/>`_ and
-verified your email address, you may `login to the portal
-<https://www.chameleoncloud.org/login/>`_. Once logged in, you should be at
-*Dashboard* page automatically. If not, you can access your *Dashboard* via the
-dropdown list on top right of the screen.
+All project management tasks are performed through the `Chameleon portal
+<https://www.chameleoncloud.org>`_. `Log in to the portal
+<https://www.chameleoncloud.org/login/>`_ and go to your User Dashboard. You
+can access your *Dashboard* via the dropdown list on the top right of the
+screen.
+
+.. figure:: project/dashboard-navigation.png
+  :alt: Screenshot showing a dropdown menu with the opion "Dashboard" selected
 
 **Quick Navigation**
 
-- :ref:`Dashboard overview <dashboard-page>` - View projects and tickets
-- :ref:`Creating a project <creating-a-project>` - Start a new research project  
+- :ref:`Dashboard overview <dashboard-page>` - View projects, tickets, and outages
+- :ref:`Creating a project <creating-a-project>` - Start a new research or education project  
 - :ref:`Managing users <manage-users>` - Add/remove team members and set roles
 - :ref:`Allocation management <recharge-extend-allocation>` - Request renewals and recharges
 - :ref:`Publications tracking <manage-publications>` - Maintain research output records
@@ -40,8 +43,9 @@ dropdown list on top right of the screen.
 Dashboard
 =========
 
-The Dashboard's main page consists of two control panels - the *Active Projects*
-control panel and the *Open Tickets* panel.
+The Dashboard's **Overview** page consists of thre control panels - the *Active
+Projects* control panel, the *Ongoing Outages* panel, and the *Open Tickets*
+panel.
 
 .. figure:: project/dashboard.png
   :alt: The project dashboard
@@ -55,13 +59,16 @@ The *Open Tickets* panel lists all your active help desk tickets. In addition,
 you can `Open a Ticket <https://www.chameleoncloud.org/user/help/ticket/new/>`_
 via the *Open Tickets* panel.
 
+The *Ongoing Outages* panel displays information about ongoing outages on the
+system. Learn more about :ref:`Outages <outages-page>`.
+
 .. _projects-page:
 
 Projects
 ========
 
 The Dashboard's `Projects Page <https://www.chameleoncloud.org/user/projects/>`_
-allows you to manage your current projects.
+shows a list of all your active and inactive projects.
 
 .. figure:: project/projects.png
   :alt: Project list
@@ -82,7 +89,7 @@ Creating a Project
 ------------------
 
 To create a project, click the *+Create a Project* button. After filling out and
-submit the request form, a system administrator will review your request and
+submitting the request form, a system administrator will review your request and
 notify you once your project gets approved. Project durations are six months with
 a default allocation of 20,000 :ref:`service-units`.
 
@@ -96,11 +103,16 @@ a default allocation of 20,000 :ref:`service-units`.
 Service Units
 ~~~~~~~~~~~~~~
 
-One Service Unit (SU) is equivalent to one hour of usage of one allocatable
-resource (physical hosts, network segments, or floating IPs). For example, a
-reservation for 5 Skylake compute nodes for 8 hours would use 40 SUs. However,
-for certain types of resources, more SUs will be charged. For more details about
-allocation charges, see `here
+One Service Unit (SU) is equivalent to one hour of wall clock time on a base
+bare metal server. Specialized hardware is charged at a higher rate:
+
+- **Storage nodes, FPGAs, and most GPUs**: 2 SUs/hour
+- **A100 GPU servers**: 4 SUs/hour
+- **Floating IPs and non-stitchable VLANs**: 1 SU/hour
+- **Stitchable VLANs**: 2 SUs/hour
+
+KVM instances are charged fractionally based on the share of the physical
+host's resources they consume. For full details, see our `FAQ
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged->`__.
 
 .. _project-details:
@@ -158,28 +170,6 @@ allocation row, and then click *View Charge*. This will open a modal
 displaying a list of all charges against your allocation, including
 who initiated the charge, how many *Service Units* were charged, and
 what type of charge it was. 
-
-
-.. _manage-publications:
-
-Manage Publications
---------------------
-
-To add publications to a project, click the *Add Publications* button in the
-:ref:`project-details` page. Enter the publications in BibTex format. All
-regular BibTex publication types are supported. If you can provide a link,
-enter as *note* or *howpublished* using the url package.
-
-
-To manage the publications you have entered, use the *Publications Dashboard*.
-
-.. figure:: project/publication.png
-  :alt: Publications dashboard
-  
-  Publications dashboard
-  
-In the dashboard, you may remove a publication of a project by clicking the -
-button next to the publication text. 
 
 .. _manage-users:
 
@@ -240,6 +230,8 @@ receive the same default SU budget upon joining.
 .. figure:: project/defaultbudget.png
   :alt: Set project default budget
 
+  Set project default budget
+
 **Viewing User SU Budgets** - Project members will have their SU budget
 displayed next to their name in the *Project Members* table. This represents
 the allocation of resources that they can utilize within the project.
@@ -250,6 +242,8 @@ the SU budget for a specific user, use the slider or the SU Budget field to
 
 .. figure:: project/subudgetslider.png
   :alt: Adjust SU budget for user
+
+  Adjust SU budget for user
 
 .. _add-remove-members:
 
@@ -271,9 +265,9 @@ clicking the *gear* button at the end of the row; and clicking *Remove user*.
 It is also possible to bulk-add a large list of users by clicking the "Add
 multiple users" button, or remove all users without the Manager role by
 clicking the "Remove multiple users" button. Additionally, under this option
-there is a link which you can send to users that will allow them to request to
+there is a link that you can send to users that will allow them to request to
 join your project after they sign in to Chameleon. Once a request is made, the
-managers of a project will be notified, and will need to confirm the user.
+managers of a project will be notified, and will need to approve the request.
 
 .. figure:: project/multiple_users.png
   :alt: Adding multiple users.
@@ -282,7 +276,29 @@ managers of a project will be notified, and will need to confirm the user.
 
 If there is no user associated with an email address, an invitation will be
 sent with a link. When someone clicks on this link, they will be prompted to
-sign in or create an account, and then automatically added to the project.
+sign in or create an account, and are then automatically added to the project.
 Invitations show up at the bottom of the members list, and can be deleted or
 resent if needed. After an invitation is accepted, the user will show up under
 the *Project Members* section.
+
+.. _manage-publications:
+
+Manage Publications
+--------------------
+
+To add publications to a project, click the *Add Publications* button in the
+:ref:`project-details` page. Enter the publications in BibTeX format. All
+regular BibTeX publication types are supported. If you can provide a link,
+enter it as *note* or *howpublished* using the url package.
+
+
+To manage the publications you have entered, use the *Publications Dashboard*.
+
+.. figure:: project/publication.png
+  :alt: Publications dashboard
+  
+  Publications Dashboard
+
+In the dashboard, you may remove a publication from a project by clicking the -
+button next to the publication text. 
+
