@@ -1,4 +1,4 @@
-.. image:: ../_static/imgs/Chameleon_background_transparent.png
+.. image:: ./_static/imgs/Chameleon_background_transparent.png
    :align: center
 
 ----
@@ -54,7 +54,7 @@ Getting Started
 **Ready to use the testbed?**
   Choose your interface:
   
-  * :doc:`Web Interface <technical/gui/index>` - Point-and-click access to all features
+  * :doc:`Web Interface <technical/gui/index>` - Point-and-click access to all features (**recommended for beginners**)
   * :doc:`Command Line <technical/cli/index>` - Programmatic access and automation
   * :doc:`Jupyter Environment <technical/jupyter/index>` - Interactive notebooks and data analysis
 
