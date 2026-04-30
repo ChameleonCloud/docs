@@ -15,10 +15,6 @@ experiments.
   :width: 500
   :alt: Diagram showing L3 connectivity between Chameleon and FABRIC
 
-.. _network-l3multisite-create:
-
-Using FabnetV4
-______________
 
 +------+----------------+------------------+
 | Site | Current status | Fabnet Router IP |

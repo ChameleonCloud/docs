@@ -1,7 +1,7 @@
 .. _trovi-browsing:
 
-Browsing artifacts
-==================
+Browsing & Launching Artifacts
+==============================
 
 Trovi allows you to browse artifacts, presented in a scrolling list format. On
 the right hand side, there are multiple filtering options. The
@@ -21,9 +21,6 @@ in the bottom left corner of an artifact.
    templates — are now published on Trovi. Filter artifacts by the **appliance**
    tag to find them. Whether you are looking for a Jupyter notebook or a
    bare-metal image, you can find either one via Trovi.
-
-Launching an artifact
----------------------
 
 The most powerful feature available via Trovi is the ability to re-launch the
 available artifacts within Chameleon. Clicking "Launch with JupyterHub" will

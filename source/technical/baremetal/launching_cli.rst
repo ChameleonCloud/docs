@@ -54,7 +54,7 @@ instance, or by providing a file to the nova command line using the
 .. tip::
 
    Chameleon supported images are configured with appliance agents, including
-   ``collectd`` (for system monitoring) and :ref:`Heat agents <all-to-all-info-exchange>`.
+   ``collectd`` (for system monitoring) and :ref:`Heat agents <complex-advanced>`.
    To turn off appliance agents on boot, in order to remove the potential impact
    on experimental measurements, pass the following script as ``user-data``.
 
