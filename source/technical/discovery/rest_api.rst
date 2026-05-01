@@ -77,20 +77,19 @@ Below is what you should see in response:
 
 .. note:: The HTTP status of ``200 OK`` indicates that the server is able to process your request and that everything is fine.
 
-.. tip:: By default the response body is not displayed in a pretty format. You must add the pretty query parameter to the end of the URI if you want the API to display it in a prettier way. ``curl -i https://api.chameleoncloud.org/?pretty``
+.. tip::
+   Pipe any response through ``jq`` to pretty-print it and make it easier to
+   read:
 
-.. attention:: **Do not** use the pretty query parameter in your scripts, since it requires a bit more processing power to generate.
+   .. code-block:: shell
 
-.. note::
-   On macOS, the default shell is zsh, which treats ``?`` as a glob wildcard.
-   If you see ``zsh: no matches found`` when running these commands, quote the
-   URL: ``curl "https://api.chameleoncloud.org/sites?pretty"``.
+      curl https://api.chameleoncloud.org/ | jq
 
 You may notice that the response contains a number of link elements, which advertise other resources that you can access. For example, let's fetch the ``/sites`` resource.
 
 .. code-block:: shell
 
-   curl https://api.chameleoncloud.org/sites?pretty
+   curl https://api.chameleoncloud.org/sites | jq
 
 The response should look like:
 
@@ -220,7 +219,7 @@ For example, to get clusters at *CHI@TACC*:
 
 .. code-block:: shell
 
-   curl https://api.chameleoncloud.org/sites/tacc/clusters?pretty
+   curl https://api.chameleoncloud.org/sites/tacc/clusters | jq
 
 There is a link named ``nodes`` in each cluster description, which returns
 the list of nodes for that cluster.
@@ -231,7 +230,7 @@ the list of nodes for that cluster.
 
    .. code-block:: shell
 
-      curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes?pretty
+      curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes | jq
 
 You should get back a large collection of nodes. Each node is described in
 detail, so you can programmatically find the nodes most suitable for your
@@ -241,8 +240,8 @@ The following command examples allow you to see that some of the nodes on the *c
 
 .. code-block:: shell
 
-   curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes/f503a229-9d71-4819-bf56-5d8490b29e7c?pretty | grep -A 10 storage_devices
-   curl -s https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes/d4a46dc6-7cac-417f-800c-faea63a46130?pretty | grep -A 10 storage_devices
+   curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes/f503a229-9d71-4819-bf56-5d8490b29e7c | jq | grep -A 10 storage_devices
+   curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes/d4a46dc6-7cac-417f-800c-faea63a46130 | jq | grep -A 10 storage_devices
 
 
 Fetch the Latest Changes
@@ -257,7 +256,7 @@ To fetch the change history for a site:
 
 .. code-block:: shell
 
-   curl https://api.chameleoncloud.org/sites/tacc/versions?pretty
+   curl https://api.chameleoncloud.org/sites/tacc/versions | jq
 
 Each version in the response represents a change to some resource at that site.
 You can compare versions across experiment runs to verify that the hardware

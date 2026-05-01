@@ -50,26 +50,6 @@ script either via the GUI in the *Configuration* tab when launching an
 instance, or by providing a file to the nova command line using the
 ``--user-data`` option.
 
-.. _turn-off-appliance-agents:
-.. tip::
-
-   Chameleon supported images are configured with appliance agents, including
-   ``collectd`` (for system monitoring) and :ref:`Heat agents <complex-advanced>`.
-   To turn off appliance agents on boot, in order to remove the potential impact
-   on experimental measurements, pass the following script as ``user-data``.
-
-   .. code-block:: bash
-
-      #!/bin/bash
-      systemctl stop collectd.service
-      systemctl disable collectd.service
-      systemctl stop os-collect-config.service
-      systemctl disable os-collect-config.service
-
-   Turning off ``collectd`` will **stop** collecting system metrics, but you can
-   restart and configure the daemon anytime for monitoring your experiment. For power
-   monitoring capabilities, see :ref:`power-monitoring`.
-
 Customizing the Kernel
 ----------------------
 

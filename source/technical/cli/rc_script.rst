@@ -45,6 +45,15 @@ Chameleon GUI at the :ref:`gui-api-access`.
 
       The OpenStack RC File link in the User Dropdown
 
+   .. tip::
+
+      As an alternative to the RC file, you can also download a ``clouds.yaml``
+      file from the same menu. This lets you manage credentials for multiple
+      OpenStack environments in a single configuration file. See the `OpenStack
+      clouds.yaml documentation
+      <https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-yaml>`_
+      for details.
+
 #. Run the following command in the terminal:
 
    .. code-block:: shell

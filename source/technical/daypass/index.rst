@@ -14,6 +14,9 @@ your artifact. After the specified time limit, they will be automatically
 removed from this project. Daypass can be enabled on an artifact-by-artifact
 basis in Trovi.
 
+Enabling Daypass
+----------------
+
 To enable Daypass, the owner of an artifact first must permit reproducibility
 requests. This can be revoked at any time, preventing future requests.
 Additionally, you must also give your artifact a value for "Hours a user has to

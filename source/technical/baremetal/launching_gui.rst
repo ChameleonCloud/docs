@@ -98,10 +98,6 @@ To launch an instance with the GUI, follow the steps:
 
       Adding a Customization Script
 
-      .. tip::
-         You can :ref:`disable and turn off appliance agents
-         <turn-off-appliance-agents>` using a customization script.
-
 #. Finish configuring and start launching the instance by clicking on the
    *Launch Instance* button. The instance will show up in the instance list, at
    first in *Build* status. It takes a few minutes to deploy the instance on

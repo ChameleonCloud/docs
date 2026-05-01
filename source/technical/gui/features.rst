@@ -88,7 +88,10 @@ OpenStack clouds.yaml File
 Clicking on this menu item will download a ``clouds.yaml`` configuration file
 for use with the OpenStack Command Line Interface. This file can be used as an
 alternative to the RC file and allows you to manage multiple OpenStack
-environments in a single configuration file.
+environments in a single configuration file. See the `OpenStack clouds.yaml
+documentation
+<https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-yaml>`_
+for details on how to use it.
 
 Sign Out
 ~~~~~~~~

@@ -104,15 +104,8 @@ Service Units
 ~~~~~~~~~~~~~~
 
 One Service Unit (SU) is equivalent to one hour of wall clock time on a base
-bare metal server. Specialized hardware is charged at a higher rate:
-
-- **Storage nodes, FPGAs, and most GPUs**: 2 SUs/hour
-- **A100 GPU servers**: 4 SUs/hour
-- **Floating IPs and non-stitchable VLANs**: 1 SU/hour
-- **Stitchable VLANs**: 2 SUs/hour
-
-KVM instances are charged fractionally based on the share of the physical
-host's resources they consume. For full details, see our `FAQ
+bare metal server. For full details on SU rates for specialized hardware and
+KVM instances, see our `FAQ
 <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-units-of-an-allocation-and-how-am-i-charged->`__.
 
 .. _project-details:
