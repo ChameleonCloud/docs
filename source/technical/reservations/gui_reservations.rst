@@ -239,10 +239,10 @@ amount of floating IPs. Then, click on the *Update* button to finish your reques
 Reserving a Node by UUID
 ------------------------
 
-You may reserve a specific node by providing its *UUID*. To learn more about how
-to find a node with a specific type, see :ref:`resource-discovery`. In
-the *Create Lease* dialog, select *uid* in the *Resource Type* dropdown. Then,
-choose the *UUID* of the node you would like to reserve.
+You may reserve a specific node by providing its *UUID*. To learn more about
+how to find a node with a specific type, see :ref:`resource-discovery`. In the
+*Create Lease* dialog, use the **Resource Properties** bar to filter by the
+*uid* keyword then paste the ID of your desired node.
 
 .. figure:: reservations/uid.png
    :alt: Selecting a node by UUID

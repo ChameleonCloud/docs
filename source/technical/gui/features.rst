@@ -58,10 +58,18 @@ Timezone.
    Timezone.
 
 
-Help
-~~~~
+Documentation
+~~~~~~~~~~~~~
 
-The *Help* menu item will take you to this documentation site.
+The *Documentation* menu item will take you to this documentation site.
+
+
+Help Desk
+~~~~~~~~~
+
+The *Help Desk* menu item will take you to the `Chameleon Help Desk
+<https://chameleoncloud.org/user/help/>`_, where you can submit support tickets
+and find answers to common questions.
 
 
 OpenStack RC File
@@ -73,6 +81,17 @@ Command Line Interface. Source the RC file using ``source`` command to configure
 environment variables that allow you to easily log in using the :ref:`Command
 Line Interface <cli>`. For more information about *OpenStack RC* script, please
 see :ref:`cli-rc-script`.
+
+OpenStack clouds.yaml File
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Clicking on this menu item will download a ``clouds.yaml`` configuration file
+for use with the OpenStack Command Line Interface. This file can be used as an
+alternative to the RC file and allows you to manage multiple OpenStack
+environments in a single configuration file. See the `OpenStack clouds.yaml
+documentation
+<https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-yaml>`_
+for details on how to use it.
 
 Sign Out
 ~~~~~~~~

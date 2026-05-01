@@ -23,7 +23,7 @@ Chameleon GUI at the :ref:`gui-api-access`.
    credential. This is useful for creating fresh credentials without
    accessing the Chameleon GUI.
 
-#. Log in to the GUI at |CHI@TACC| or |CHI@UC|.
+#. Log in to the GUI at on a CHI site.
 
    .. important::
 
@@ -38,12 +38,21 @@ Chameleon GUI at the :ref:`gui-api-access`.
       The Project Dropdown
 
 #. Download *OpenStack RC Script* using :ref:`gui-user-menu` by clicking on
-   *Openstack RC File v3*.
+   *Openstack RC File*.
 
-   .. figure:: userdropdown.png
+   .. figure:: ../gui/user_dropdown.png
       :alt: The OpenStack RC File v3 link in the User Dropdown
 
-      The OpenStack RC File v3 link in the User Dropdown
+      The OpenStack RC File link in the User Dropdown
+
+   .. tip::
+
+      As an alternative to the RC file, you can also download a ``clouds.yaml``
+      file from the same menu. This lets you manage credentials for multiple
+      OpenStack environments in a single configuration file. See the `OpenStack
+      clouds.yaml documentation
+      <https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-yaml>`_
+      for details.
 
 #. Run the following command in the terminal:
 

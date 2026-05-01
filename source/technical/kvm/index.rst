@@ -32,4 +32,3 @@ being tied to physical nodes. Familiarity with some concepts, such as
    kvm_cli
    kvm_lbaas
    kvm_volumes
-   kvm_instance_migration

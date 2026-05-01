@@ -37,24 +37,14 @@ To launch an instance with the GUI, follow the steps:
 
       The Source configuration step
 
-#. In the *Flavor* step, select the *baremetal* flavor by clicking the "up"
-   arrow next to it. This is the only flavor available.
-
-   .. figure:: baremetal/launchflavor.png
-      :alt: The Flavor configuration step
-
-      The Flavor configuration step
-
-   .. hint::
-
-      If you are familiar with Openstack, other implementations allow for the
-      selection of flavors based on machine disk size and RAM. On Chameleon, the
-      only flavor available is "baremetal" because hardware selection is
-      performed in reservations.
-
 #. In the *Networks* step, select a network by clicking the "up" arrow next to
    it. To learn about the Chameleon default network and how to create your own
    network, see :ref:`networking`.
+
+   .. figure:: baremetal/networklaunch.png
+      :alt: The Source configuration step
+
+      The Source configuration step
 
 #. In the *Key Pair* step, select one of your SSH key pairs. If you only have
    one key pair associated with your account, then it is selected by default.
@@ -97,8 +87,8 @@ To launch an instance with the GUI, follow the steps:
    .. tip::
       On macOS, you can copy your public key with: ``cat ~/.ssh/id_rsa.pub | pbcopy``
 
-#. If you want to customize your instance after it has launched, you can add a
-   customization script in the *Configuration* step.
+#. If you want to customize your instance after it has launched, you click
+   *Advanced* and add a customization script in the *Configuration* step.
 
    - You can type in the script in *Customization Script*.
    - Or you can upload your script via *Load script from a file*.
@@ -107,10 +97,6 @@ To launch an instance with the GUI, follow the steps:
       :alt: Adding a Customization Script
 
       Adding a Customization Script
-
-      .. tip::
-         You can :ref:`disable and turn off appliance agents
-         <turn-off-appliance-agents>` using a customization script.
 
 #. Finish configuring and start launching the instance by clicking on the
    *Launch Instance* button. The instance will show up in the instance list, at

@@ -36,13 +36,13 @@ To log in to any of the testbed sites (|CHI@TACC|, |CHI@UC|, |CHI@NCAR|, |CHI@Ed
 dropdown on |Home|. The login process is triggered
 automatically.
 
-.. important::
+.. warning::
 
-   You must be part of a project with an active allocation to use the testbed
+   You must be part of a project with an active allocation to use the CHI
    sites! Refer to our :doc:`project management guide <project>` for details on
    creating a project or joining an existing one.
 
-.. note::
+.. tip::
 
    You can bookmark the URLs to the testbed sites and Jupyter environment if
    you want to access them directly in the future.
@@ -52,7 +52,6 @@ automatically.
    :figclass: screenshot
 
 You will be taken to a Single Sign On (SSO) page with several authentication options.
-**We recommend choosing "Sign in via federated identity" for the easiest experience.**
 
 Authentication options
 ----------------------
@@ -67,14 +66,9 @@ Authentication options
 
 - **ORCiD**: Sign in with a valid ORCiD account for research credential integration.
 
-.. tip::
-   **New users**: If you're unsure which option to choose, try "Sign in via federated identity" 
-   first - most universities and research institutions support this method, making it the fastest 
-   way to get started with Chameleon.
-
 .. warning::
    You may not find your institution on Globus. If so, you can still create an
-   account with another identity, such as GitHub, Google, or ORCiD. However,
+   account with another identity, such as Google or ORCiD. However,
    we encourage users to sign up using their institution, as it helps the 
    Chameleon operators verify user identity, which is an essential step 
    to getting Principal Investigator status on the testbed.
@@ -130,8 +124,8 @@ you can re-link your Chameleon account assuming you have access to same email.
    Check your email inbox for a verification link.
    Once you click this link, your Chameleon account will now be linked to the Globus account from step 3, and you should use this login method when using Chameleon in the future.
 
-   If you don't see this message, then your Globus account is using an email address that Chameleon doesn't have registered.
-   Please contact the :doc:`Help Desk <help>` for further assistance regarding this or any other issue with the account linking process.
+If you don't see this message, then your Globus account is using an email address that Chameleon doesn't have registered.
+Please contact the `Help Desk <https://chameleoncloud.org/user/help/>`_ for further assistance regarding this or any other issue with the account linking process.
 
 
 Troubleshooting Login Issues
@@ -149,11 +143,7 @@ If you experience difficulty logging in, try these solutions:
 **Getting Help:**
 
 For persistent login issues, contact our :doc:`Help Desk <help>` with details about:
+
 - Which authentication method you're trying to use
 - Any error messages you're seeing
 - Your institutional affiliation (if using federated login)
-
-.. note::
-   Users who had legacy Chameleon accounts (created before November 2020) successfully 
-   completed migration to federated identity in 2021. All current authentication uses 
-   federated identity providers.

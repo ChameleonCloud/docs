@@ -7,6 +7,8 @@
 Jupyter Interface
 =================
 
+.. figure:: jupyter-navigation.png
+
 Jupyter Notebooks are an excellent tool for prototyping, exploring, and
 ultimately documenting the entire experimental process. They combine the
 benefits of explanatory text, executable code, and rich
@@ -34,14 +36,16 @@ JupyterLab interface overview
 When you are logged in, you will land in the JupyterLab application environment.
 For up-to-date documentation about the JupyterLab interface, see the
 `official JupyterLab documentation
-<https://jupyterlab.readthedocs.io/en/stable/user/interface.html>`_. You will
-see a file browser on the left-hand side - this is your working directory. It's
-yours, so feel free to create and delete files as you see fit. Your working
-directory is initially populated with a few examples to help you get started,
-such as an example Notebook. Files that you save here will be persisted even if
-your server is torn down; the next time you log in the data will be restored.
-You should consider the rest of your server environment ephemeral, as updates to
-the Jupyter interface can cause your server to be re-built.
+<https://jupyterlab.readthedocs.io/en/stable/user/interface.html>`_. 
+
+You will see a file browser on the left-hand side - this is your working
+directory. It's yours, so feel free to create and delete files as you see fit.
+Your working directory is initially populated with a few examples to help you
+get started, such as an example Notebook. **Files that you save here will be
+persisted even if your server is torn down; the next time you log in the data
+will be restored**. You should consider the rest of your server environment
+ephemeral, as updates to the Jupyter interface can cause your server to be
+re-built.
 
 .. hint::
    Jupyter Notebooks do not deal well with large files, and you should avoid
@@ -59,15 +63,19 @@ the Jupyter interface can cause your server to be re-built.
 Working with Notebooks
 ----------------------
 
-Open the "Welcome.ipynb" Notebook to see some examples of how to interface with
-the Chameleon testbed from within a Notebook. All Notebook servers come with
-OpenStack python clients installed as well as the |python_chi|_ Chameleon
-testbed helper library. Other python modules you may want to use in your
-Notebook can be installed via the :ref:`console`.
+A great place to start is the `Bare Metal Experiment Pattern
+<https://trovi.chameleoncloud.org/dashboard/artifacts/50692573-4094-466c-b4fe-0ed3471f8993>`_
+on Trovi, which provides a complete, reusable notebook template for reserving,
+configuring, and running experiments on bare metal nodes. Beyond that, Trovi
+hosts a wide range of `community notebook artifacts
+<https://trovi.chameleoncloud.org/dashboard/artifacts?tags=experiment+pattern>`_
+that demonstrate Chameleon features and make it easy to get hands-on with
+different resource types and workflows.
 
-.. figure:: notebook.png
-   :alt: An example Jupyter Notebook in JupyterLab
-   :figclass: screenshot
+All Notebook servers come with OpenStack python clients installed as
+well as the |python_chi|_ library for programmatic interaction with Chameleon
+resources. Other python modules you may want to use in your Notebook can be
+installed via the :ref:`console`.
 
 .. _console:
 
@@ -78,6 +86,10 @@ You can open a web terminal console by going to File > New > Terminal. This
 works just like a remote shell, and you will also have `sudo` access so you can
 install additional software to support your needs.
 
+.. figure:: console.png
+   :alt: The web terminal console in JupyterLab
+   :figclass: screenshot
+
 .. hint::
    All Chameleon Notebook servers are built from a common base image. This means
    if your server is torn down (which can happen during an upgrade of the
@@ -85,10 +97,6 @@ install additional software to support your needs.
    you made since the server was created. For this reason it is a good idea to
    put this setup code in a script in your working directory. Your working
    directory is backed up and will persist across Jupyter server restarts.
-
-.. figure:: console.png
-   :alt: The web terminal console in JupyterLab
-   :figclass: screenshot
 
 Advanced topics
 ---------------

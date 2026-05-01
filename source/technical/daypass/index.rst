@@ -5,28 +5,26 @@ Daypass
 =======
 Normally, only Chameleon users with active allocations are able to launch and
 view Trovi artifacts. To allow anyone to launch an artifact, we also provide
-daypass. This allows for a non-Chameleon user to have access to Chameleon
-for a limited amount of time, using a small, separate allocation.
-People interested in reproducing your project will send requests
-to the managers of a project. If approved, the requesting user will receive an
-email invitation to join a reproducibility project. When they accept, they
-can use this project to run your artifact. After the specified time limit,
-they will be automatically removed from this project.
-Daypass can be enabled on an artifact-by-artifact basis in Trovi.
+daypass. This allows for a non-Chameleon user to have access to Chameleon for a
+limited amount of time, using a small, separate allocation. People interested
+in reproducing your project will send requests to the managers of a project. If
+approved, the requesting user will receive an email invitation to join a
+reproducibility project. When they accept, they can use this project to run
+your artifact. After the specified time limit, they will be automatically
+removed from this project. Daypass can be enabled on an artifact-by-artifact
+basis in Trovi.
 
-.. _enable-daypass:
+Enabling Daypass
+----------------
 
-Allowing Reproducibility Requests
-=================================
-
-First, the owner of an artifact must permit reproducibility requests. This can
-be revoked at any time, preventing future requests. Additionally, you must also
-give your artifact a value for "Hours a user has to reproduce." This value
-specifies how long a user will have access to Chameleon for. Consider how
-long it takes to run your experiment from start to finish as a lower bound for
-this value. The artifact owner must also assign their artifact to a project via
-the dropdown selector. As these requests are granting access to Chameleon
-resources, this is needed to tie granted requests to a PI.
+To enable Daypass, the owner of an artifact first must permit reproducibility
+requests. This can be revoked at any time, preventing future requests.
+Additionally, you must also give your artifact a value for "Hours a user has to
+reproduce." This value specifies how long a user will have access to Chameleon
+for. Consider how long it takes to run your experiment from start to finish as
+a lower bound for this value. The artifact owner must also assign their
+artifact to a project via the dropdown selector. As these requests are granting
+access to Chameleon resources, this is needed to tie granted requests to a PI.
 
 These fields can be accessed by navigating to an artifact's detail page, and
 then selecting "Share." At the bottom of the share page, you will see the

@@ -1,8 +1,8 @@
 Managing Object Store using the GUI
 ===================================
 
-To access the *Object Store* using the GUI at |CHI@TACC| or |CHI@UC|, use the
-navigation sidebar to go to *Project* > *Object Store* > *Containers*.
+To access the *Object Store* using the GUI at a CHI site, use the navigation
+sidebar to go to *Project* > *Object Store* > *Containers*.
 
 .. figure:: containerspage.png
    :alt: The Containers page
@@ -32,14 +32,8 @@ your new *Container* appear in the list on the *Containers* page.
 
    The Container list
 
-You may click on a *Container* to see the details and work with *Objects* belong
-to it.
-
-.. figure:: containerdetail.png
-   :alt: Container details
-   :figclass: screenshot
-
-   Container details
+You may click on a *Container* to see the details and work with *Objects*
+belonging to it.
 
 .. attention::
    Downloading a container is not available from the GUI. Use the CLI to
