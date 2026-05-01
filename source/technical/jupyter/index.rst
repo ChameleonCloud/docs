@@ -67,6 +67,10 @@ Open the **Welcome.ipynb Notebook** to see some resources with getting started
 guides and tutorials in bare metal instances, data management, orchestration,
 and more.
 
+.. figure:: notebook.png
+   :alt: An example Jupyter Notebook in JupyterLab
+   :figclass: screenshot
+
 A great place to start is the `Bare Metal Experiment Pattern
 <https://trovi.chameleoncloud.org/dashboard/artifacts/50692573-4094-466c-b4fe-0ed3471f8993>`_
 on Trovi, which provides a complete, reusable notebook template for reserving,
@@ -80,10 +84,6 @@ All Notebook servers come with OpenStack python clients installed as
 well as the |python_chi|_ library for programmatic interaction with Chameleon
 resources. Other python modules you may want to use in your Notebook can be
 installed via the :ref:`console`.
-
-.. figure:: notebook.png
-   :alt: An example Jupyter Notebook in JupyterLab
-   :figclass: screenshot
 
 .. _console:
 
