@@ -63,11 +63,23 @@ re-built.
 Working with Notebooks
 ----------------------
 
-Open the "Welcome.ipynb" Notebook to see some examples of how to interface with
-the Chameleon testbed from within a Notebook. All Notebook servers come with
-OpenStack python clients installed as well as the |python_chi|_ Chameleon
-testbed helper library. Other python modules you may want to use in your
-Notebook can be installed via the :ref:`console`.
+Open the **Welcome.ipynb Notebook** to see some resources with getting started
+guides and tutorials in bare metal instances, data management, orchestration,
+and more.
+
+A great place to start is the `Bare Metal Experiment Pattern
+<https://trovi.chameleoncloud.org/dashboard/artifacts/50692573-4094-466c-b4fe-0ed3471f8993>`_
+on Trovi, which provides a complete, reusable notebook template for reserving,
+configuring, and running experiments on bare metal nodes. Beyond that, Trovi
+hosts a wide range of `community notebook artifacts
+<https://trovi.chameleoncloud.org/dashboard/artifacts?tags=experiment+pattern>`_
+that demonstrate Chameleon features and make it easy to get hands-on with
+different resource types and workflows.
+
+All Notebook servers come with OpenStack python clients installed as
+well as the |python_chi|_ library for programmatic interaction with Chameleon
+resources. Other python modules you may want to use in your Notebook can be
+installed via the :ref:`console`.
 
 .. figure:: notebook.png
    :alt: An example Jupyter Notebook in JupyterLab

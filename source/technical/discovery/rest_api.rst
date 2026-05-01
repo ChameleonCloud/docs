@@ -1,9 +1,27 @@
 Using the REST APIs for Resource Discovery
 ===================================================
 
-The API is designed for users who want to programmatically discover Chameleon resources. It uses a REST architecture on top of the HTTP protocol. As a consequence, any HTTP client can be used to query the API: command-line tools (cURL), browsers, and the numerous HTTP libraries available in your favorite programming language.
+The Resource Discovery API gives programmatic access to the same hardware
+inventory that powers the `Hardware Discovery
+<https://chameleoncloud.org/hardware/>`_ page. It is aimed at three main use
+cases:
 
-It also implements the concept of "Hypermedia as the Engine of Application State" (HATEOAS), by specifying a set of hyperlinks in all responses returned by the API, which allow a user agent to discover at runtime the set of available resources as well as their semantics and content types, and transition from one resource to another.
+- **Scripted node selection** — find nodes matching specific hardware criteria
+  (CPU model, GPU, storage type, etc.) before constructing a reservation.
+- **Reproducibility tracking** — detect hardware changes between experiment
+  runs using the versioned change history.
+- **Tool building** — integrate Chameleon hardware data into your own
+  dashboards or automation frameworks.
+
+For most users, the Hardware Discovery page or the :ref:`python-chi <jupyter>`
+library is the easier path. This API is for power users and integrators who
+need direct, scriptable access.
+
+The API uses a REST architecture over HTTP, so any HTTP client works: cURL,
+a browser, or any language's HTTP library. It also implements "Hypermedia as
+the Engine of Application State" (HATEOAS) — every response includes ``links``
+that point to related resources, so you can traverse the full hierarchy by
+following links rather than constructing URLs manually.
 
 Prerequisites
 ___________________________
@@ -49,28 +67,24 @@ Below is what you should see in response:
 
 .. code-block:: javascript
 
-   HTTP/1.1 200 OK
-   Server: nginx/1.6.2
-   Date: Thu, 19 Apr 2018 14:34:01 GMT
-   Content-Type: application/json
-   Content-Length: 757
-   Connection: keep-alive
-   Allow: GET
-   Vary: accept
-   Last-Modified: Wed, 14 Mar 2018 15:05:58 GMT
-   ETag: "cc990a75afbc3aed5979c5cad2358b14"
-   Cache-Control: max-age=60, public, must-revalidate=true, proxy-revalidate=true, s-maxage=60
-   X-Info: Use `?pretty=yes` or add the HTTP header `X-Rack-PrettyJSON: yes` if you want pretty output.
-   X-UA-Compatible: IE=Edge,chrome=1
-   X-Runtime: 0.034541
+   HTTP/2 200
+   date: Fri, 01 May 2026 02:17:01 GMT
+   content-type: application/json
+   content-length: 250
+   strict-transport-security: max-age=15724800; includeSubDomains
 
-   {"type":"grid","uid":"chameleoncloud","version":"ee0253a05223dd0f5b88df7f78fb988e67f7b039","release":"3.5.7","timestamp":1524148441,"links":[{"rel":"sites","href":"/sites"},{"rel":"self","href":"/"},{"rel":"parent","href":"/"},{"rel":"version","href":"/versions/ee0253a05223dd0f5b88df7f78fb988e67f7b039"},{"rel":"versions","href":"/versions"},{"rel":"users","href":"/users"},{"rel":"notifications","href":"/notifications"}]}
+   {"type":"grid","uid":"chameleoncloud","version":"aaa09ab330838062ed66ee8a3841e90fe9495039","timestamp":"1776354589","links":[{"rel":"sites","href":"/sites"},{"rel":"self","href":"/"},{"rel":"parent","href":"/"},{"rel":"versions","href":"/versions"}]}
 
 .. note:: The HTTP status of ``200 OK`` indicates that the server is able to process your request and that everything is fine.
 
 .. tip:: By default the response body is not displayed in a pretty format. You must add the pretty query parameter to the end of the URI if you want the API to display it in a prettier way. ``curl -i https://api.chameleoncloud.org/?pretty``
 
 .. attention:: **Do not** use the pretty query parameter in your scripts, since it requires a bit more processing power to generate.
+
+.. note::
+   On macOS, the default shell is zsh, which treats ``?`` as a glob wildcard.
+   If you see ``zsh: no matches found`` when running these commands, quote the
+   URL: ``curl "https://api.chameleoncloud.org/sites?pretty"``.
 
 You may notice that the response contains a number of link elements, which advertise other resources that you can access. For example, let's fetch the ``/sites`` resource.
 
@@ -80,88 +94,67 @@ You may notice that the response contains a number of link elements, which adver
 
 The response should look like:
 
+.. note:: The actual response includes all 6 Chameleon sites. Two are shown here for brevity.
+
 .. code-block:: json
 
    {
-     "total": 2,
+     "total": 6,
      "offset": 0,
      "items": [
        {
+         "uid": "tacc",
+         "name": "CHI@TACC",
          "description": "Texas Advanced Computing Center",
          "email_contact": "help@chameleoncloud.org",
          "latitude": 30.390223,
-         "location": "Austin, Texas, USA",
          "longitude": -97.72563,
-         "name": "TACC",
+         "location": "Austin, Texas, USA",
          "security_contact": "help@chameleoncloud.org",
+         "site_class": "baremetal",
          "sys_admin_contact": "help@chameleoncloud.org",
-         "type": "site",
-         "uid": "tacc",
          "user_support_contact": "help@chameleoncloud.org",
-         "web": "https://www.chameleoncloud.org",
-         "version": "ee0253a05223dd0f5b88df7f78fb988e67f7b039",
+         "web": "https://chi.tacc.chameleoncloud.org",
+         "version": "aaa09ab330838062ed66ee8a3841e90fe9495039",
          "links": [
-           {
-             "rel": "clusters",
-             "href": "/sites/tacc/clusters",
-           },
            {
              "rel": "self",
              "href": "/sites/tacc"
            },
            {
              "rel": "parent",
-              "href": "/"
+             "href": "/"
            },
            {
-             "rel": "version",
-             "href": "/sites/tacc/versions/ee0253a05223dd0f5b88df7f78fb988e67f7b039"
+             "rel": "clusters",
+             "href": "/sites/tacc/clusters"
            },
            {
              "rel": "versions",
              "href": "/sites/tacc/versions"
            },
            {
-             "rel": "jobs",
-             "href": "/sites/tacc/jobs"
-           },
-           {
-             "rel": "deployments",
-             "href": "/sites/tacc/deployments"
-           },
-           {
-             "rel": "vlans",
-             "href": "/sites/tacc/vlans"
-           },
-           {
-             "rel": "metrics",
-             "href": "/sites/tacc/metrics"
-           },
-           {
-             "rel": "status",
-             "href": "/sites/tacc/status"
+             "rel": "version",
+             "href": "/sites/tacc/versions/aaa09ab330838062ed66ee8a3841e90fe9495039"
            }
-         ]
+         ],
+         "type": "site"
        },
        {
+         "uid": "uc",
+         "name": "CHI@UC",
          "description": "University of Chicago",
          "email_contact": "help@chameleoncloud.org",
          "latitude": 41.718002,
-         "location": "Argonne National Laboratory, Lemont, Illinois, USA",
          "longitude": -87.982952,
-         "name": "UC",
+         "location": "Argonne National Laboratory, Lemont, Illinois, USA",
          "security_contact": "help@chameleoncloud.org",
+         "site_class": "baremetal",
          "sys_admin_contact": "help@chameleoncloud.org",
-         "type": "site",
-         "uid": "uc",
          "user_support_contact": "help@chameleoncloud.org",
-         "web": "https://www.chameleoncloud.org",
-         "version": "ee0253a05223dd0f5b88df7f78fb988e67f7b039",
+         "web": "https://chi.uc.chameleoncloud.org",
+         "version": "aaa09ab330838062ed66ee8a3841e90fe9495039",
          "links": [
-           {
-             "rel": "clusters",
-             "href": "/sites/uc/clusters",
-           },
            {
              "rel": "self",
              "href": "/sites/uc"
@@ -171,41 +164,30 @@ The response should look like:
              "href": "/"
            },
            {
-             "rel": "version",
-             "href": "/sites/uc/versions/ee0253a05223dd0f5b88df7f78fb988e67f7b039"
+             "rel": "clusters",
+             "href": "/sites/uc/clusters"
            },
            {
              "rel": "versions",
              "href": "/sites/uc/versions"
            },
            {
-             "rel": "jobs",
-             "href": "/sites/uc/jobs"
-           },
-           {
-             "rel": "deployments",
-             "href": "/sites/uc/deployments"
-           },
-           {
-             "rel": "vlans",
-             "href": "/sites/uc/vlans"
-           },
-           {
-             "rel": "metrics",
-             "href": "/sites/uc/metrics"
-           },
-           {
-             "rel": "status",
-             "href": "/sites/uc/status"
+             "rel": "version",
+             "href": "/sites/uc/versions/aaa09ab330838062ed66ee8a3841e90fe9495039"
            }
-         ]
+         ],
+         "type": "site"
        }
      ],
-     "version": "ee0253a05223dd0f5b88df7f78fb988e67f7b039",
+     "version": "aaa09ab330838062ed66ee8a3841e90fe9495039",
      "links": [
        {
          "rel": "self",
          "href": "/sites"
+       },
+       {
+         "rel": "parent",
+         "href": "/"
        }
      ]
    }
@@ -217,39 +199,66 @@ ___________________________
 
 It is easy to discover resources using REST APIs when you chase down the ``links`` in the responses.
 
-As seen in the previous section, when you fetch the API root resource, you can find the link to the collection of sites. If you look at the site description, you will find a list of links to other resources. For example, each site has a link named ``clusters``. When you fetch this link, it returns the list of clusters on that site.
+As seen in the previous section, when you fetch the API root resource, you can
+find the link to the collection of sites. If you look at the site description,
+you will find a list of links to other resources. For example, each site has a
+link named ``clusters``. When you fetch this link, it returns the list of
+clusters on that site.
 
-For example, to get clusters at *TACC*:
+.. note::
+   In this API, a "cluster" is a logical grouping of nodes at a site inherited
+   from the Grid'5000 data model — it is not an HPC-style compute cluster.
+   Every baremetal site (CHI@TACC, CHI@UC, CHI@NCAR, CHI@NU, CHI@NRP) has
+   exactly one cluster, always named ``chameleon``. CHI@Edge has no clusters
+   and its devices are not accessible through this API path.
+
+   In practice this means the ``clusters`` level is a fixed pass-through: the
+   path to nodes at any baremetal site is always
+   ``/sites/{site}/clusters/chameleon/nodes``.
+
+For example, to get clusters at *CHI@TACC*:
 
 .. code-block:: shell
 
-   curl https://api.chameleoncloud.org/sites/tacc/clusters/?pretty
+   curl https://api.chameleoncloud.org/sites/tacc/clusters?pretty
 
-Again, you will find ``links`` in each cluster description. There is a link named ``nodes`` for each cluster, which as its name indicates, returns the list of nodes for the specific cluster.
+There is a link named ``nodes`` in each cluster description, which returns
+the list of nodes for that cluster.
 
-For example, to get nodes on the *Alamo* cluster at *TACC* site:
+.. tip::
+   Since every baremetal site uses the same cluster name, you can go directly
+   to the nodes endpoint without traversing the clusters step:
+
+   .. code-block:: shell
+
+      curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes?pretty
+
+You should get back a large collection of nodes. Each node is described in
+detail, so you can programmatically find the nodes most suitable for your
+experiments.
+
+The following command examples allow you to see that some of the nodes on the *chameleon* cluster at *TACC* have a different disk configuration:
 
 .. code-block:: shell
 
-   curl https://api.chameleoncloud.org/sites/tacc/clusters/alamo/nodes/?pretty
-
-You should get back a big collection of nodes. Each node is described in great details, so that you can programmatically find the cluster and nodes that are most suitable for your experiments.
-
-The following command examples allow you to see that some of the nodes on the *Alamo* cluster at *TACC* have a different disk configuration:
-
-.. code-block:: shell
-
-   curl https://api.chameleoncloud.org/sites/tacc/clusters/alamo/nodes/45f0fc6a-a21b-4461-8414-ebf765143aad?pretty | grep -A 10 storage_devices
-   curl -s https://api.chameleoncloud.org/sites/tacc/clusters/alamo/nodes/0a5b61b2-dc1c-4bee-86f7-247c9689ea88?pretty | grep -A 10 storage_devices
+   curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes/f503a229-9d71-4819-bf56-5d8490b29e7c?pretty | grep -A 10 storage_devices
+   curl -s https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes/d4a46dc6-7cac-417f-800c-faea63a46130?pretty | grep -A 10 storage_devices
 
 
 Fetch the Latest Changes
 ___________________________
 
-Let's go back to the site's description. In Chameleon, resources are added, updated, or removed over time. If you want to keep an eye on those changes, you can fetch the latest changes that occurred on a specific site:
+Chameleon hardware is added, updated, or removed over time — including
+component replacements that may affect your results even when a node's overall
+specifications appear unchanged. The versioned change history lets you detect
+these events, which is useful for experimental reproducibility.
+
+To fetch the change history for a site:
 
 .. code-block:: shell
 
-   curl https://api.chameleoncloud.org/sites/tacc/versions/?pretty
+   curl https://api.chameleoncloud.org/sites/tacc/versions?pretty
 
-Each version listed in the response represents a change to some resources of the Chameleon testbed.
+Each version in the response represents a change to some resource at that site.
+You can compare versions across experiment runs to verify that the hardware
+environment was consistent.
