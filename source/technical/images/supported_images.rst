@@ -7,6 +7,7 @@ Chameleon Supported Images
 There are a number of images built and supported by the Chameleon team,
 specifically:
 
+- CC-Ubuntu26.04
 - CC-Ubuntu24.04
 - CC-Ubuntu24.04-CUDA
 - CC-Ubuntu24.04-ROCm
