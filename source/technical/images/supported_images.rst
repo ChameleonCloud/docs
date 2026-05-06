@@ -7,8 +7,10 @@ Chameleon Supported Images
 There are a number of images built and supported by the Chameleon team,
 specifically:
 
+- CC-Ubuntu26.04
 - CC-Ubuntu24.04
 - CC-Ubuntu24.04-CUDA
+- CC-Ubuntu24.04-CUDA-VGPU
 - CC-Ubuntu24.04-ROCm
 - CC-Ubuntu24.04-ARM64
 - CC-Ubuntu22.04
@@ -18,7 +20,10 @@ specifically:
 
 The CUDA images, such as `Ubuntu24.04-CUDA <https://trovi.chameleoncloud.org/dashboard/artifacts/52c5de1e-5ee4-4341-a9af-7d835572a08e>`_,
 contain various settings, software, and drivers specifically
-for NVIDIA GPU nodes. The ROCm images contain similar settings, software,
+for NVIDIA GPU nodes. The ``CC-Ubuntu24.04-CUDA-VGPU`` image is a variant of
+the CUDA image for virtual GPU (vGPU) nodes at KVM@TACC. It is intended for
+use with the ``g1.h100.vgpu.1g.12gb`` flavor and comes pre-configured with the
+appropriate vGPU license. The ROCm images contain similar settings, software,
 and drivers for AMD GPU nodes. And finally, the ARM64 images, such as
 `Ubuntu24.04-ARM64 <https://trovi.chameleoncloud.org/dashboard/artifacts/634cf4db-3096-4ab3-b483-432629b98a20>`_,
 are images specifically built with ARM support for ARM nodes. Non-ARM

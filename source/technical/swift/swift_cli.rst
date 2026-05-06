@@ -128,3 +128,30 @@ Working with Folders
 There isn't "folders" when you managing the *Object Store* with the CLI.
 However, when you create an object, you may use the delimiter ``/`` to specify
 the path.
+
+Accessing Object Store from KVM instances
+------------------------------------------
+
+KVM@TACC does not have its own Object Store. To use the *Object Store* from a
+KVM instance, you need to authenticate against a Chameleon site that provides
+one, such as |CHI@TACC|.
+
+Use ``ccauth`` with ``--all-sites`` to generate credentials for all Chameleon
+sites at once:
+
+.. code-block:: bash
+
+   ccauth clouds-yaml --all-sites --output ~/.config/openstack/clouds.yaml
+
+This writes one cloud entry per site into your ``clouds.yaml``. You can inspect
+the file to confirm which site entry to use.
+Once you've identified the name of the site to use, export its cloud name and
+use standard OpenStack commands:
+
+.. code-block:: bash
+
+   export OS_CLOUD=tacc
+   openstack container list
+   openstack container create <container_name>
+   openstack object create <container_name> <local_file>
+   openstack object save <container_name> <object_name>
