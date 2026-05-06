@@ -3,11 +3,10 @@
 ccauth command
 ==============
 
-The ``ccauth`` command implements a keystoneauth1 plugin, so it must be installed
-in the same Python environment as the OpenStack clients using it. On first run,
-you'll be prompted to visit a URL to authenticate via your browser. Subsequent
-runs reuse the cached refresh token silently, unless it has expired and needs to
-be refreshed.
+The ``ccauth`` package must be installed in the same Python environment as the
+OpenStack clients using it. On first run, you'll be prompted to visit a URL
+to authenticate via your browser. Subsequent runs reuse the cached refresh
+token silently, unless it has expired and needs to be refreshed.
 
 .. note::
 
