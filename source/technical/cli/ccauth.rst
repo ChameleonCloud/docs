@@ -3,9 +3,6 @@
 ccauth command
 ==============
 
-``ccauth`` is an OpenStack Chameleon device-flow authentication helper for
-authenticating with OpenStack on Chameleon. It will automatically cache and refresh credentials.
-
 The ``ccauth`` command implements a keystoneauth1 plugin, so it must be installed
 in the same Python environment as the OpenStack clients using it. On first run,
 you'll be prompted to visit a URL to authenticate via your browser. Subsequent
