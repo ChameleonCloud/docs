@@ -21,6 +21,12 @@ authentication.
    being deprecated. Use ``cc-login`` to obtain fresh application credentials
    instead.
 
+.. note::
+
+   ``cc-login`` is available only on CC-* images. For a browser-based
+   authentication tool that works on any Chameleon instance, see
+   :ref:`ccauth <cli-ccauth>`.
+
 Usage
 ~~~~~
 

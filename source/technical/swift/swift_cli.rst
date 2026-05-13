@@ -129,6 +129,8 @@ There isn't "folders" when you managing the *Object Store* with the CLI.
 However, when you create an object, you may use the delimiter ``/`` to specify
 the path.
 
+.. _object-store-cli-kvm:
+
 Accessing Object Store from KVM instances
 ------------------------------------------
 
@@ -145,6 +147,7 @@ sites at once:
 
 This writes one cloud entry per site into your ``clouds.yaml``. You can inspect
 the file to confirm which site entry to use.
+
 Once you've identified the name of the site to use, export its cloud name and
 use standard OpenStack commands:
 

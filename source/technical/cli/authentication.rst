@@ -7,6 +7,13 @@ When using the CLI, you have to provide some credentials so the system trusts
 that the operations are really being executed by your user account. There are
 two ways of doing this.
 
+.. note::
+
+   If you are running OpenStack commands from a Chameleon instance, you can use
+   :ref:`ccauth <cli-ccauth>` to authenticate via your browser without manually
+   managing a password or application credential. ``ccauth`` is preinstalled on
+   all Chameleon supported images.
+
 Setting a CLI password
 ----------------------
 

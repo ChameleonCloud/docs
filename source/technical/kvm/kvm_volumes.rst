@@ -6,7 +6,7 @@ The storage on your instance is ephemeral, meaning that it will be lost when the
 Since instances are tied to a reservation, which expire, it may be useful to use volumes to store data that you want to keep beyond the lifetime of an instance.
 
 Currently, |KVM@TACC| does not have an object store, but you can set up access to the |CHI@TACC| object store, which is located in the same data center.
-See our :ref:`object-store` docs.
+See the :ref:`object-store-cli-kvm` docs for KVM-specific instructions using ``ccauth``.
 
 Managing Volumes via the GUI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

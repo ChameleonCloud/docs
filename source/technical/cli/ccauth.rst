@@ -3,17 +3,14 @@
 ccauth command
 ==============
 
+``ccauth`` is a command-line tool that authenticates you with Chameleon via
+your browser and generates OpenStack credentials (``clouds.yaml`` or
+``openrc``) for use with the OpenStack CLI.
+
 The ``ccauth`` package must be installed in the same Python environment as the
 OpenStack clients using it. On first run, you'll be prompted to visit a URL
 to authenticate via your browser. Subsequent runs reuse the cached refresh
 token silently, unless it has expired and needs to be refreshed.
-
-.. note::
-
-   ``ccauth`` is available as a library for developers who wish to use it in their
-   own projects, or for those interested in contributing to its development.
-   For more information, see the `ccauth GitHub repository
-   <https://github.com/ChameleonCloud/ccauth>`_.
 
 Installation
 ~~~~~~~~~~~~
@@ -157,6 +154,13 @@ To authenticate and run commands like ``openstack image list``, use the
     ccauth clouds-yaml --output ~/.config/openstack/clouds.yaml
     export OS_CLOUD=openstack
     openstack image list
+
+.. note::
+
+   ``ccauth`` is available as a library for developers who wish to use it in their
+   own projects, or for those interested in contributing to its development.
+   For more information, see the `ccauth GitHub repository
+   <https://github.com/ChameleonCloud/ccauth>`_.
 
 Other examples
 +++++++++++++++

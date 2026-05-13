@@ -355,7 +355,7 @@ instance. This can be an image, a snapshotted image, a volume, or some other
 appliance. Chameleon staff maintain a set of supported images (identified with
 a Chameleon badge in the list); these are also browsable via the `Appliances
 Catalog`_ on Trovi. There are also user-uploaded images and appliances. For our
-demo, we'll use the supported ``CC-Ubuntu24.04`` image. Scroll down in the list
+demo, we'll use the supported ``CC-Ubuntu26.04`` image. Scroll down in the list
 or type the name of the image in the search bar, find the image, and click the
 up-arrow icon next to it to allocate it as the instance source. See
 :doc:`../technical/images/index` for full documentation on images and

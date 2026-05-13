@@ -54,7 +54,7 @@ To make a snapshot of a bare metal instance, run the following command from insi
 
 You will be prompted to enter your username and password.
 
-.. tip:: You can skip entering username and password by setting the ``OS_USERNAME`` and ``OS_PASSWORD`` environment variables. You can set those environment variables manually or using :ref:`cli-rc-script`.
+.. tip:: You can skip entering username and password by setting the ``OS_USERNAME`` and ``OS_PASSWORD`` environment variables (manually or via :ref:`cli-rc-script`), or by authenticating with :ref:`ccauth <cli-ccauth>` and exporting its generated ``clouds.yaml`` entry via ``OS_CLOUD``.
 
 .. note:: When using the ``cc-snapshot``, it will create an image within your project with the ``shared`` visibility. Anyone with access to your project can access this image.
 
