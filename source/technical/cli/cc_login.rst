@@ -23,9 +23,11 @@ authentication.
 
 .. note::
 
-   ``cc-login`` is available only on CC-* images. For a browser-based
-   authentication tool that works on any Chameleon instance, see
-   :ref:`ccauth <cli-ccauth>`.
+   ``cc-login`` can be used to generate credentials for a single project
+   and Chameleon site and does not require a custom plugin for OpenStack
+   authentication. To generate credentials for multiple projects or sites,
+   via device flow authentication with OIDC tokens that automatically refresh,
+   see :ref:`ccauth <cli-ccauth>`.
 
 Usage
 ~~~~~
