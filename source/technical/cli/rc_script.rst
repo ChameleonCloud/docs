@@ -23,6 +23,10 @@ Chameleon GUI at the :ref:`gui-api-access`.
    credential. This is useful for creating fresh credentials without
    accessing the Chameleon GUI.
 
+   On any Chameleon instance (not just CC-* images), :ref:`ccauth <cli-ccauth>`
+   provides a browser-based alternative that generates ``clouds.yaml`` or ``openrc``
+   credentials for one or more Chameleon sites.
+
 #. Log in to the GUI at on a CHI site.
 
    .. important::

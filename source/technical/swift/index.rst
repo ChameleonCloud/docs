@@ -34,7 +34,8 @@ panel.
 
 .. hint::
    `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ users can access the TACC
-   store by using their |CHI@TACC| :ref:`OpenStack RC file <cli-rc-script>`.
+   store using ``ccauth`` to generate multi-site credentials. See
+   :ref:`object-store-cli-kvm` for step-by-step instructions.
 
 Objects and Containers
 ======================
