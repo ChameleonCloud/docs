@@ -19,13 +19,9 @@ Chameleon GUI at the :ref:`gui-api-access`.
 .. note::
 
    On an instance running a CC-* image, you can use the :ref:`cc-login <cli-cc-login>`
-   command to generate a new openrc file or clouds.yaml entry with an application
-   credential. This is useful for creating fresh credentials without
-   accessing the Chameleon GUI.
-
-   On any Chameleon instance (not just CC-* images), :ref:`ccauth <cli-ccauth>`
-   provides a browser-based alternative that generates ``clouds.yaml`` or ``openrc``
-   credentials for one or more Chameleon sites.
+   or :ref:`ccauth <cli-ccauth>` command to generate a new openrc file or clouds.yaml entries.
+   This is useful for creating fresh credentials without downloading them from the Chameleon GUI
+   and copying them to your instance.
 
 #. Log in to the GUI at on a CHI site.
 
