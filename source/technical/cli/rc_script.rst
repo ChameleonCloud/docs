@@ -7,15 +7,6 @@ You must use the *OpenStack RC Scripts* to configure the environment variables
 for accessing Chameleon features. You can downloaded the script from the
 Chameleon GUI at the :ref:`gui-api-access`.
 
-.. hint::
-
-   If you use the Chameleon supported (CC) images, you'll find an ``openrc``
-   file with a service token in the home directory for the ``cc`` user. The file
-   will be auto-sourced when you login, so you can use the
-   :ref:`openstack <using-cli>` and the :ref:`swift <object-store-cli>` CLI
-   directly, as well as the
-   :ref:`cc-snapshot utility <cc-snapshot-utility>` tool.
-
 .. note::
 
    On an instance running a CC-* image, you can use the :ref:`cc-login <cli-cc-login>`

@@ -32,4 +32,5 @@ the client and configure your shell environment to access Chameleon features.
    rc_script
    ccauth
    cc_login
+   vendordata_auth_removal
    usage
