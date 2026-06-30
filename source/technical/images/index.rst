@@ -8,6 +8,13 @@ All instances in Chameleon, whether KVM or bare metal, are running off disk imag
 
 To work around this limitation, we provide the ``cc-snapshot`` utility that you can execute from inside your running instance. The ``cc-snapshot`` utility is pre-installed in all Chameleon supported appliances. You can find our appliances on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/>`_ by filtering for the **appliance** tag.
 
+.. note::
+   Images can also be managed programmatically via the `chi.image module
+   <https://python-chi.readthedocs.io/en/latest/modules/image.html>`_ in
+   `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
 The image service on Chameleon uses `OpenStack Glance <https://docs.openstack.org/glance/latest/>`_. This documentation demonstrates how to accomplish common tasks with *Images* using the GUI and the CLI.
 
 The following matrix shows which Chameleon-supported images are compatible with the hardware available at each site.

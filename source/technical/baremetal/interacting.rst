@@ -5,6 +5,14 @@ Once your bare metal instance has launched, you may interact with it by using
 SSH if you have associated a *Floating IP* to it or by using the *Serial
 Console* from the GUI.
 
+.. note::
+   You can also connect to and run commands on instances programmatically via
+   the `chi.ssh module
+   <https://python-chi.readthedocs.io/en/latest/modules/ssh.html>`_ in
+   `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
 .. _connecting-via-ssh:
 
 Connecting via SSH

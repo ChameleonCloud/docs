@@ -23,6 +23,13 @@ segments (VLANs), and floating IPs.
    `CHI@Edge docs
    <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_.
 
+.. note::
+   Leases can also be created and managed programmatically via the `chi.lease
+   module <https://python-chi.readthedocs.io/en/latest/modules/lease.html>`_ in
+   `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
 .. attention::
 
    **A note on lease stacking**

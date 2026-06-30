@@ -5,6 +5,14 @@ Overview
 The following sections contain in-depth knowledge for utilizing Chameleon's
 advanced features.
 
+.. note::
+   Most workflows described in this guide can also be orchestrated
+   programmatically with `python-chi <https://python-chi.readthedocs.io/en/latest/>`_,
+   Chameleon's Python library — see our :doc:`Jupyter and python-chi guide
+   <../getting-started/jupyter-python-chi>` for an introduction and the
+   `module reference <https://python-chi.readthedocs.io/en/latest/>`_ for
+   full API details.
+
 - :doc:`discovery/index`: Discover Chameleon bare metal resources by node type and
   view node information.
 - :doc:`reservations/index`: Reserve Chameleon resources for use in your Project.

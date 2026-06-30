@@ -27,6 +27,13 @@ REST APIs.
    managed separately — see the `CHI@Edge docs
    <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_.
 
+.. note::
+   Hardware discovery is also available programmatically via the `chi.hardware
+   module <https://python-chi.readthedocs.io/en/latest/modules/hardware.html>`_
+   in `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
 .. toctree::
    :maxdepth: 1
    :caption: Resource Discovery Topics

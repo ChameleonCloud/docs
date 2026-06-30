@@ -22,6 +22,13 @@ The shared file system service is available at `CHI@UC <https://chi.uc.chameleon
 Each region has its own service and the shares created at one region are not available to the other. As all other Chameleon services, you can create
 and manage your shares using both GUI and CLI.
 
+.. note::
+   Shares can also be created and managed programmatically via the `chi.storage
+   module <https://python-chi.readthedocs.io/en/latest/modules/storage.html>`_
+   in `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
 .. toctree::
    :maxdepth: 1
    :caption: Shares Topics

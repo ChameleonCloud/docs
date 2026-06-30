@@ -17,6 +17,14 @@ the client and configure your shell environment to access Chameleon features.
 
 .. note::
 
+   Looking to script or orchestrate experiments in Python instead of shell?
+   `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ is Chameleon's
+   Python library and offers a programmatic alternative to the CLI — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
+.. note::
+
    Chameleon Cloud is primarily designed to support Unix-like environments.
    Therefore, it is highly recommended using CLI in a Unix-like system. For
    Windows 10 users, you may want to enable `Windows Subsystem for Linux

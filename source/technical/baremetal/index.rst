@@ -21,6 +21,14 @@ will be able to connect to it by setting up :ref:`gui-key-pairs`.
    container-based edge computing via |CHI@Edge| (`docs
    <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_).
 
+.. note::
+   Instances can also be launched and managed programmatically via the
+   `chi.server module
+   <https://python-chi.readthedocs.io/en/latest/modules/server.html>`_ in
+   `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
 .. toctree::
    :maxdepth: 1
    :caption: Bare Metal Topics
