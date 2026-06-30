@@ -4,15 +4,19 @@ CLI authentication
 ==================
 
 When using the CLI, you have to provide some credentials so the system trusts
-that the operations are really being executed by your user account. There are
-two ways of doing this.
+that the operations are really being executed by your user account. This page
+covers two such ways of doing this: a CLI password and application
+credentials. Both require manually creating and downloading credential files.
 
 .. note::
 
-   If you are running OpenStack commands from a Chameleon instance, you can use
-   :ref:`ccauth <cli-ccauth>` to authenticate via your browser without manually
-   managing a password or application credential. ``ccauth`` is preinstalled on
-   all Chameleon supported images.
+   For most users, :ref:`ccauth <cli-ccauth>` or :ref:`cc-login
+   <cli-cc-login>` are easier than the methods on this page — they
+   authenticate via your browser and generate credential files for you, with
+   no manual password or application credential setup required. See
+   :ref:`which authentication method should I use? <cli-which-auth-method>`
+   for guidance on choosing between them. Use a CLI password or application
+   credential only if neither of those tools fits your workflow.
 
 Setting a CLI password
 ----------------------

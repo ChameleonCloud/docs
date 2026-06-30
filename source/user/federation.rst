@@ -21,6 +21,14 @@ account if their institution is an `InCommon`_ member, use their Google account,
 `Globus ID <https://globusid.org/what>`_ tied to an email and password that they
 provide.
 
+.. note::
+
+   This page covers browser-based login to the Chameleon user portal, the
+   testbed GUI, and the Jupyter environment. The :ref:`Command Line Interface
+   <cli>` authenticates separately — signing in here does not by itself give
+   you CLI credentials. See :ref:`CLI authentication <cli-authentication>` to
+   set up CLI access.
+
 Logging In
 ==========
 
