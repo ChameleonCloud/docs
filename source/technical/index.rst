@@ -26,3 +26,5 @@ advanced features.
   or reviewers.
 - :doc:`kvm/index`: Use non-bare metal virtual machine resources in Chameleon's
   OpenStack implementation.
+- |CHI@Edge|: Use container-based edge computing resources, such as Raspberry
+  Pi devices (`docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_).

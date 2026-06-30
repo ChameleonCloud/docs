@@ -17,6 +17,12 @@ Service for OpenStack.
 Three types of resources can be reserved: physical bare metal hosts, network
 segments (VLANs), and floating IPs.
 
+.. note::
+   This section covers Blazar leases for bare metal resources. |CHI@Edge| uses a
+   different, container-lease model rather than Blazar reservations — see the
+   `CHI@Edge docs
+   <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_.
+
 .. attention::
 
    **A note on lease stacking**

@@ -11,6 +11,11 @@ KVM virtualization technology at the `KVM\@TACC
 <https://kvm.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used
 on this cloud, any virtual machines you upload must be compatible with KVM.
 
+.. note::
+   For container-based edge computing on devices such as Raspberry Pis and Jetson Nanos,
+   see |CHI@Edge| (`docs
+   <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_) instead.
+
 This documentation provide basic information about how to use the OpenStack web
 interface and provides some information specific to using OpenStack KVM on
 Chameleon. The interface is similar to the bare metal sites |CHI@TACC| and

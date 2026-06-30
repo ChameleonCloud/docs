@@ -53,10 +53,14 @@ Getting Started
 
 **Ready to use the testbed?**
   Choose your interface:
-  
+
   * :doc:`Web Interface <technical/gui/index>` - Point-and-click access to all features (**recommended for beginners**)
   * :doc:`Command Line <technical/cli/index>` - Programmatic access and automation
   * :doc:`Jupyter Environment <technical/jupyter/index>` - Interactive notebooks and data analysis
+
+**Looking for CHI@Edge?**
+  CHI@Edge's container-based edge computing resources are documented separately
+  — see the `CHI@Edge docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_.
 
 Quick Navigation
 ================

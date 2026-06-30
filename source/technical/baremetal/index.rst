@@ -15,6 +15,12 @@ lease, see :ref:`reservations`. Once your lease is started, you are
 almost ready to start an instance. But first, you need to make sure that you
 will be able to connect to it by setting up :ref:`gui-key-pairs`.
 
+.. note::
+   If your experiment doesn't need exclusive access to physical hardware,
+   Chameleon also offers a multi-tenant, virtualized cloud via :ref:`kvm` and
+   container-based edge computing via |CHI@Edge| (`docs
+   <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_).
+
 .. toctree::
    :maxdepth: 1
    :caption: Bare Metal Topics
