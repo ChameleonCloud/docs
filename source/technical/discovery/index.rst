@@ -17,11 +17,6 @@ Users can consult the registry via the resource discovery GUI or directly via
 REST APIs.
 
 .. note::
-   Some resource discovery features are available through the `Chameleon Portal
-   <https://chameleoncloud.org>`_, while others are available **only** through the
-   REST APIs.
-
-.. note::
    This section covers discovery of Chameleon's bare metal resources. |CHI@Edge|
    devices are not part of the resource registry and are discovered and
    managed separately — see the `CHI@Edge docs

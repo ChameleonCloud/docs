@@ -15,6 +15,12 @@ This guide will tell you all you need to know in order to use and configure *Com
 .. hint::
    Since *Complex Appliances* in Chameleon are currently implemented using the `OpenStack Heat <https://docs.openstack.org/heat/latest/>`_ orchestration service, we will be using OpenStack terminology and features to work with them. The templates described above are YAML files using the `Heat Orchestration Template (HOT) <https://docs.openstack.org/heat/latest/template_guide/hot_spec.html>`_ format (Heat also supports the AWS CloudFormation template format, but this is not covered here). A deployed complex appliance is referred to as a "stack" – just as a deployed single appliance is typically referred to as an "instance".
 
+.. note::
+   Multi-node deployments can also be orchestrated programmatically with
+   `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ instead of
+   Heat templates — see :doc:`advanced_topics` for an example that combines
+   python-chi with Ansible.
+
 .. toctree::
    :maxdepth: 2
    :caption: Complex Appliances Topics
