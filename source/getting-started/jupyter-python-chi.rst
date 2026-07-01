@@ -23,7 +23,7 @@
 .. _remix:
 
 =============================================
-Next steps: JupyterHub and ``python-chi``
+Next Steps: JupyterHub and ``python-chi``
 =============================================
 
 In the :doc:`getting started guide <index>`, we walked through how to find

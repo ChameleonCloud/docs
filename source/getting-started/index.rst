@@ -28,7 +28,7 @@
 ----
 
 ================
-Getting started
+Getting Started
 ================
 
 **Welcome to the Chameleon testbed! We're excited you're here.**
