@@ -76,7 +76,7 @@ Quick Navigation
   * :doc:`Complex deployments <technical/complex/index>` - Multi-node orchestration with Heat
   * :doc:`Networking <technical/networks/index>` - Advanced network topologies and isolation
   * :doc:`FPGA programming <technical/fpga/index>` - Hardware acceleration experiments
-  * :doc:`Share your work <technical/sharing/index>` - Publish experiments via Trovi
+  * :doc:`Package and share your work <technical/experiments/index>` - Publish experiments via Trovi
 
 **Data & Storage**
   * :doc:`Object storage <technical/swift/index>` - Scalable data storage and sharing
@@ -86,7 +86,7 @@ Quick Navigation
 **Getting Help**
   * :doc:`Help desk <user/help>` - Submit tickets and view system status
   * :doc:`User profile <user/profile>` - Manage your account settings
-  * :doc:`Daypass access <technical/daypass>` - Temporary access for artifact reproduction
+  * :doc:`Daypass access <technical/experiments/daypass>` - Temporary access for artifact reproduction
 
 About the Infrastructure
 =========================
