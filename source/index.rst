@@ -14,6 +14,11 @@ services, Chameleon offers both bare metal access to physical hardware and tradi
 virtual machines, giving you full control over the software stack and enabling 
 reproducible experimental research.
 
+.. note::
+  **Looking for CHI@Edge?**
+  **CHI@Edge's** container-based edge computing resources are documented separately
+  — see the `CHI@Edge docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_
+
 Key features
 ============
 
@@ -58,9 +63,6 @@ Getting started
   * :doc:`Command Line <technical/cli/index>` - Programmatic access and automation
   * :doc:`Jupyter Environment <technical/jupyter/index>` - Interactive notebooks and data analysis
 
-**Looking for CHI@Edge?**
-  CHI@Edge's container-based edge computing resources are documented separately
-  — see the `CHI@Edge docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_.
 
 Quick navigation
 ================

@@ -9,8 +9,11 @@ Overview
 
 .. warning::
    **Undergraduate and Graduate Students**: Please note that if you are a student (even a postdoc or PhD), you are **not eligible** to request PI status.
-   **Ask your faculty advisor or research supervisor to request PI status and add you to their project**. 
+   **Ask your faculty advisor or research supervisor to request PI status and add you to their project**.
    This is best approach for student researchers who want to work with Chameleon resources.
+   See the blog post `Getting Access to Chameleon as a Student Researcher
+   <https://blog.chameleoncloud.org/posts/tips-and-tricks-getting-access-to-chameleon-as-a-student/>`_
+   for a walkthrough of this and other access options, such as Daypass.
 
 Chameleon PIs carry significant responsibility for the users on their projects; we therefore limit PI eligibility to individuals from the following groups:
 

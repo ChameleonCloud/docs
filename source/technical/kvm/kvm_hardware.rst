@@ -33,6 +33,12 @@ For GPU flavors, (those starting with "g1.h100"), instances will be scheduled on
 | Network Adapters  | 1 x 25 Gbps,                                       |
 +-------------------+----------------------------------------------------+
 
+Two of the H100 nodes on KVM@TACC support NVIDIA **Multi-Instance GPU (MIG)**
+partitioning, which splits a single H100 into up to 7 smaller, isolated
+GPU instances instead of allocating full-GPU passthrough. This raises the
+effective per-node capacity from 4 to up to 28 instances, making it easier
+to get GPU access for smaller jobs that do not need a full H100.
+
 .. attention::
    Standard KVM@TACC instance leases can run for up to 6 months, but leases
    for GPU-attached flavors (``g1.h100.*``) are capped at **7 days (1

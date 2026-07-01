@@ -79,7 +79,7 @@ external subscription page where you can subscribe or unsubscribe:
 Terms of use
 ============
 
-Links to the following terms of use documents are available at the bottom of the profile page:
+Our terms of use documents are available at the bottom of the profile page:
 
-- **Chameleon User Terms of Use** — Applicable to all users
-- **Chameleon Project Lead Terms of Use** — Applicable to users who act as project leads (PIs)
+- `Chameleon User Terms of Use <https://www.chameleoncloud.org/terms/>`_ — Applicable to all users
+- `Chameleon Project Lead Terms of Use <https://chameleoncloud.org/terms/view/project-terms/1.00/>`_ — Applicable to users who act as project leads (PIs); see the "Project Leaders/PI's" section of the Terms of Use
