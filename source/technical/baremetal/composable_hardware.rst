@@ -33,7 +33,7 @@ CHI@UC
 ~~~~~~~
 
 - 8x Dell PowerEdge R6525 nodes
-- 2x AMD EPYC 7763 processors per node (256 threads total across the system)
+- 2x AMD EPYC 7763 processors per node (256 threads per node)
 - 512 GB RAM per node
 - 2x 480 GB SATA SSDs per node
 - 8x Nvidia A100 PCIe GPUs (80 GB), one attached to each node by default
@@ -44,8 +44,8 @@ CHI@TACC
 - 6x Dell PowerEdge R650 nodes
 - Intel Xeon Platinum 8380 processor per node
 - 256 GB RAM per node
-- 4x Nvidia A100 PCIe GPUs (40 GB) and 2x Nvidia A30 PCIe GPUs, distributed
-  across the 6 nodes
+- 4x Nvidia A100-class PCIe GPUs, distributed across the 6 nodes: 2x A100
+  (40 GB) and 2x A30
 
 .. note::
    CHI@TACC also hosts a separate LIQID-based composable system
