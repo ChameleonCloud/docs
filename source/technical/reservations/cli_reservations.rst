@@ -301,6 +301,10 @@ VLAN segment:
 
    openstack reservation lease create --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-combined-lease
 
+Once your lease is active, the network named above already exists — you
+still need to configure a subnet and router on it before instances can use
+it. See :ref:`network-isolation` for those steps.
+
 .. _reservation-cli-fip:
 
 

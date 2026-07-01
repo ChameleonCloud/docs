@@ -62,4 +62,8 @@ ______________________________________________________________
 
 As both CHI\@UC and CHI\@TACC can be stitched to FABRIC, you're able to use FABRIC to create a Layer 2 connection between nodes at the two sites.
 
-Examples coming soon!
+For a complete, current walkthrough of this pattern, see the Tips and Tricks
+post `Running LLMs on Chameleon GPUs from FABRIC via Stitch Ports
+<https://blog.chameleoncloud.org/posts/chi-fabric-stitch-ports/>`_, which
+demonstrates the full end-to-end workflow for cross-testbed experiments and
+links to a companion Trovi artifact you can fork and run yourself.

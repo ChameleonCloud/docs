@@ -137,6 +137,21 @@ Configuring networking using the CLI
 
 Before using the CLI, make sure you have configured environment variables using :ref:`cli-rc-script`.
 
+.. note::
+   There are two different ways to get an isolated VLAN network, and they're
+   not interchangeable:
+
+   - **Create it directly** (below) — Neutron picks any available network
+     segment for you automatically. This is the simplest path for most
+     experiments.
+   - **Reserve a specific segment via :ref:`reservation-cli-vlan`** — use this
+     instead if you need to guarantee a *specific* VLAN segment (for example,
+     to match one already configured on external hardware), or if direct
+     creation fails because Chameleon has no free segments left at the
+     moment (see the note below). Either way, once the network exists you
+     still configure its subnet and router the same way, as described in
+     this page.
+
 .. _network-cli-create:
 
 Creating a network
