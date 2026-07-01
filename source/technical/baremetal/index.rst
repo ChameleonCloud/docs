@@ -36,3 +36,4 @@ will be able to connect to it by setting up :ref:`gui-key-pairs`.
    launching_gui
    launching_cli
    interacting
+   composable_hardware

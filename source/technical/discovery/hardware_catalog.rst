@@ -26,8 +26,9 @@ type and view details of each node.
 
 You can filter for specific node features by selecting the checkboxes that
 match your filter criteria in the menu at the bottom or by clicking on a node
-type such as *compute_gigaio* or *gpu_a100_pcie*. The numbers printed next to
-the node types indicate the total number of nodes that we have in our capacity.
+type such as *compute_gigaio* (see :doc:`../baremetal/composable_hardware`)
+or *gpu_a100_pcie*. The numbers printed next to the node types indicate the
+total number of nodes that we have in our capacity.
 
 .. figure:: resourcebrowser.png
    :alt: Chameleon Resource Browser
