@@ -44,11 +44,16 @@ Results can also be sorted by relevance or other criteria.
 Viewing Artifact Details
 ------------------------
 
-Click on an artifact of interest from the search results to open the full
-artifact detail, including ...
-
-You can also download the source files for an artifact or view an artifacts
-linked Git repository.
+Click on an artifact of interest from the search results to open its detail
+page. At the top you'll find the artifact's title and at-a-glance stats — total
+launches, unique users, users who launched on Jupyter, versions, and last
+updated date — followed by an **About** section describing generally what the
+artifact does, how it works, hardware requirements, expected runtime, and
+outputs. The right-hand sidebar includes a launch action (see below), an
+**Authors** list with institutional affiliations and contact emails, a
+**Versions** panel for browsing prior releases, a **Citation** section with
+ready-to-copy standard and BibTeX citations, and a link to the artifact's
+source repository (e.g., GitHub) if you want to explore the underlying files.
 
 Launching an Artifact
 -----------------------
