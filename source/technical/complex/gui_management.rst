@@ -1,6 +1,6 @@
 .. _complex-gui:
 
-Managing Complex Appliances using the GUI
+Managing complex appliances using the GUI
 =========================================
 
 Before launching a *Complex Appliance*, make sure that you have a reservation
@@ -26,7 +26,7 @@ the **appliance** tag. At |CHI@TACC| site or |CHI@UC| site, go to *Project* >
    #. Download the template file or copy its URL from the artifact's detail page, then use it when launching a stack.
 
 
-Launching a Complex Appliance
+Launching a complex appliance
 -----------------------------
 
 To launch a stack, click the *Launch Stack* button in the upper right of the *Stacks* page. Then follow the steps:
@@ -55,7 +55,7 @@ To launch a stack, click the *Launch Stack* button in the upper right of the *St
 
    A Complex Appliance with the Create in Progress status
 
-Monitoring a Complex Appliance
+Monitoring a complex appliance
 ------------------------------
 
 To monitor and get more details about your *Complex Appliance*, click on it in the *Stacks* page.
@@ -99,7 +99,7 @@ To monitor and get more details about your *Complex Appliance*, click on it in t
 
      The Template tab
 
-Deleting a Complex Appliance
+Deleting a complex appliance
 ----------------------------
 
 To delete a *Complex Appliance*, select it in the *Stacks* page and click the *Delete Stacks* button. This will delete all resources of the stack, such as nodes and floating IP addresses.

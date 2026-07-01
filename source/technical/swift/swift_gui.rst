@@ -1,4 +1,4 @@
-Managing Object Store using the GUI
+Managing object store using the GUI
 ===================================
 
 To access the *Object Store* using the GUI at a CHI site, use the navigation
@@ -10,7 +10,7 @@ sidebar to go to *Project* > *Object Store* > *Containers*.
 
    The Containers page
 
-Working with Containers
+Working with containers
 -----------------------
 
 To create a container, click the *+Container* button. This will open the *Create
@@ -48,7 +48,7 @@ the *Container Detail Panel*.
 
    The Delete Container button
 
-Working with Objects
+Working with objects
 --------------------
 
 To upload a local file to a container, click the button with the *Upload* symbol
@@ -71,7 +71,7 @@ This will open the *Upload File* dialog.
 Choose a file to upload from your local file system and give a name to the
 object.
 
-Working with Folders
+Working with folders
 --------------------
 
 If you wish to create a *Folder* within your *Container*, click the *+Folder*

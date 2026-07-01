@@ -1,6 +1,6 @@
 .. _complex-advanced:
 
-Advanced Topics
+Advanced topics
 ===============
 
 The previous examples have all used ``user_data`` scripts to provide instances with contextualization information. While it is easy to use, this contextualization method has a major drawback: because it is given to the instance as part of its launch request, it cannot use any context information that is not yet known at this time. In practice, this means that in a client-server deployment, only one of these pattern will be possible:

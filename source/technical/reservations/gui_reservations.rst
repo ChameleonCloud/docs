@@ -1,4 +1,4 @@
-Provisioning and Managing Resources Using the GUI
+Provisioning and managing resources using the GUI
 =================================================
 
 To make reservations of the resources, first log into the Horizon GUI
@@ -15,7 +15,7 @@ In the navigation sidebar, go to the *Reservations* section and click *Leases*.
 
 .. _the-lease-calendars:
 
-The Lease Calendars
+The lease calendars
 -------------------
 
 To discover when resources are available, You can access the lease calendars by
@@ -54,7 +54,7 @@ represents time.
 
 .. _reservations-create-lease-gui:
 
-Creating a Lease to Reserve Resources
+Creating a lease to reserve resources
 -------------------------------------
 
 Once you have chosen a time period when you want to reserve resources, go back
@@ -172,7 +172,7 @@ the updates.
    email right after your lease is created. You can :ref:`disable the email
    notification by using the command line <disable-blazar-notification>`.
 
-Extending a Lease
+Extending a lease
 -----------------
 
 To prolong a lease, click on the *Update Lease* button in *Actions* column.
@@ -196,7 +196,7 @@ lease. Then, click on the *Update* button to finish your request.
    such as idle lease termination, by submitting a request.
 
 
-Changing the Number of Nodes of a Lease
+Changing the number of nodes of a lease
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is now possible to change the number of nodes reserved in a lease. For
@@ -215,7 +215,7 @@ To change the number of nodes of a lease, click on the *Update Lease* button in
 Navigate to the "Hosts" tab,  and fill out the form by specifying the new minimum
 and maximum numbers of hosts. Then, click on the *Update* button to finish your request.
 
-Changing the Number of Floating IPs in a Lease
+Changing the number of floating IPs in a lease
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is possible to change the number of floating IPs in a lease, whether the
@@ -236,7 +236,7 @@ To change the number of floating IPs, click on the *Update Lease* button in
 Navigate to the "Floating IPs" tab,  and fill out the form by specifying the
 amount of floating IPs. Then, click on the *Update* button to finish your request.
 
-Reserving a Node by UUID
+Reserving a node by UUID
 ------------------------
 
 You may reserve a specific node by providing its *UUID*. To learn more about

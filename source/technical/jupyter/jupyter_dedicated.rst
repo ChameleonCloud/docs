@@ -1,6 +1,6 @@
 .. _jupyter-dedicated:
 
-Dedicated Jupyter Servers
+Dedicated Jupyter servers
 =========================
 
 The :ref:`default Jupyter environment <jupyter>` available to all Chameleon

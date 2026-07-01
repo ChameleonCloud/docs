@@ -103,7 +103,7 @@ To make your artifact shareable, select it in Trovi, click "Share", and check th
 
 .. _trovi-roles:
 
-Assigning Roles to Other Users
+Assigning roles to other users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. figure:: sharing_edit_roles.png
    :alt: Screenshot of the artifact role menu

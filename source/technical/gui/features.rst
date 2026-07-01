@@ -1,4 +1,4 @@
-GUI Features
+GUI features
 ============
 
 Upon logging in to the GUI at a Chameleon site, you will see your project's
@@ -11,7 +11,7 @@ Overview page.
 
 .. _gui-project-menu:
 
-Project and Site Menu
+Project and site menu
 ---------------------
 
 To switch among the projects you belong to, use the project and site menu---the
@@ -26,7 +26,7 @@ to easily perform multi-site experiments.
 
 .. _gui-user-menu:
 
-User Menu
+User menu
 ---------
 
 To access user specific settings and download *OpenStack RC* files, use the user
@@ -64,7 +64,7 @@ Documentation
 The *Documentation* menu item will take you to this documentation site.
 
 
-Help Desk
+Help desk
 ~~~~~~~~~
 
 The *Help Desk* menu item will take you to the `Chameleon Help Desk
@@ -72,7 +72,7 @@ The *Help Desk* menu item will take you to the `Chameleon Help Desk
 and find answers to common questions.
 
 
-OpenStack RC File
+OpenStack RC file
 ~~~~~~~~~~~~~~~~~
 
 Clicking on this menu items will download a customized `RC file
@@ -82,7 +82,7 @@ environment variables that allow you to easily log in using the :ref:`Command
 Line Interface <cli>`. For more information about *OpenStack RC* script, please
 see :ref:`cli-rc-script`.
 
-OpenStack clouds.yaml File
+OpenStack clouds.yaml file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Clicking on this menu item will download a ``clouds.yaml`` configuration file
@@ -93,7 +93,7 @@ documentation
 <https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-yaml>`_
 for details on how to use it.
 
-Sign Out
+Sign out
 ~~~~~~~~
 
 Use the *sign out* menu item to sign out from your current site.

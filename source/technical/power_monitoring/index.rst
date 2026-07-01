@@ -9,7 +9,7 @@ Chameleon provides comprehensive power monitoring capabilities to help researche
 .. tip:: 
    For detailed examples, tool installation instructions, and advanced techniques, see our `Power Measurement and Management blog post <https://chameleoncloud.org/blog/2024/06/18/power-measurement-and-management-on-chameleon/>`_.
 
-Available Power Monitoring Methods
+Available power monitoring methods
 ==================================
 
 **Infrastructure-level monitoring:**
@@ -25,7 +25,7 @@ Available Power Monitoring Methods
 **Long-term monitoring:**
 - Prometheus exporters and Grafana for continuous data collection and visualization
 
-Hardware Support
+Hardware support
 ================
 
 Power monitoring support varies by node type:
@@ -33,7 +33,7 @@ Power monitoring support varies by node type:
 - **Limited support**: Specialized nodes (FPGAs, ARM64)
 - **Temperature monitoring**: Only available when nodes are powered on
 
-Getting Started
+Getting started
 ===============
 
 1. **For system-level monitoring**: Use ``ipmitool dcmi power reading`` to get current power consumption

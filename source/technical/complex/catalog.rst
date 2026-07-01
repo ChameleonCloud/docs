@@ -1,6 +1,6 @@
 .. _complex-catalog:
 
-Complex Appliances in Trovi
+Complex appliances in Trovi
 ============================
 
 .. note::

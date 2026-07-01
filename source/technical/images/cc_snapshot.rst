@@ -1,7 +1,7 @@
 .. _cc-snapshot-utility:
 
 ===========================
-The ``cc-snapshot`` Utility
+The ``cc-snapshot`` utility
 ===========================
 
 Overview

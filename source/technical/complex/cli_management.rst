@@ -1,6 +1,6 @@
 .. _complex-cli:
 
-Managing Complex Appliances using the CLI
+Managing complex appliances using the CLI
 =========================================
 
 .. tip:: Reading :ref:`cli` is highly recommended before continuing on the following sections.
@@ -27,7 +27,7 @@ The output should look like the following:
    | e5df33b5-5282-4935-8097-973328ca71e5 | my_stack      | CREATE_COMPLETE   | 2018-01-23T22:45:12Z | None                 |
    +--------------------------------------+---------------+-------------------+----------------------+----------------------+
 
-Launching a Complex Appliance
+Launching a complex appliance
 -----------------------------
 
 To launch a *Complex Appliance* using *Template*, run the command on your local machine:
@@ -62,7 +62,7 @@ Provide the path to and the name of the *Template* file in your local file syste
 
 Therefore, in order to use this *Template*, you must provide values for ``nfs_client_count``, ``key_name`` and ``reservation_id``.
 
-Monitoring a Complex Appliance
+Monitoring a complex appliance
 ------------------------------
 
 You can get details about your *Complex Appliance*, such as *Outputs*, *Events* and *Resources*, via the CLI. You will need the *UUID* of the *Complex Appliance*.
@@ -123,7 +123,7 @@ You can get details about your *Complex Appliance*, such as *Outputs*, *Events* 
 
      openstack stack resource show <stack_uuid> <resource_name>
 
-Deleting a Complex Appliance
+Deleting a complex appliance
 ----------------------------
 
 Use the following command to delete a stack:

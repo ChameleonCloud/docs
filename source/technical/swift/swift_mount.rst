@@ -1,6 +1,6 @@
 .. _cc-rclone:
 
-Mounting Object Store as a File System
+Mounting object store as a file system
 ======================================
 
 .. tip::

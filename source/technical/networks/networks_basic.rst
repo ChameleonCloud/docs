@@ -1,23 +1,23 @@
 .. _basic-networking:
 
-Basic Networking
+Basic networking
 ================
 
 .. Note:: Step-by-step instructions for getting started with Chameleon are available in the :ref:`getting-started` section of this documentation. These instructions include using basic networking functionality.
 
-Shared Network
+Shared network
 --------------
 
 All Chameleon Projects have access to the fixed network ``sharednet1`` which is used by most experiments. The ``sharednet1`` is a pre-configured network shared among all Chameleon Projects with one *Subnet* and includes a *Router* providing NAT access to the public Internet. All instances using ``sharednet1`` can communicate directly.
 
-Multiple Networks
+Multiple networks
 -----------------
 
 Some Chameleon bare metal nodes support connecting to multiple networks. Currently, the number of networks allowed is limited to the number of enabled NICs on the node (currently this is up to 2). It is possible to find such nodes via :ref:`resource-discovery` by filtering by the "Enabled" flag for a given Network Adapter slot. Note that the slots are 0-indexed, meaning the first NIC is referred to as Network Adapter #0.
 
 When launching a node that supports multiple networks, simply assign multiple networks to the instance when you are launching it. The networks will be mounted on NICs in the same order that the networks are assigned; that is, the first assigned network will be mounted on Network Adapter #0, and the second on Network Adapter #1, and so on.
 
-Floating IP Addresses
+Floating IP addresses
 ---------------------
 
 Instances on Chameleon are assigned a *fixed* IP address that can be used for local connectivity as well as NAT access to the public Internet. A publicly accessible IPv4 address (*Floating IP address*) is required in order to access Chameleon instances from the Internet or host public services. |CHI@TACC| and |CHI@UC| each have a limited number of public IP addresses that can be allocated to your instances.
@@ -32,7 +32,7 @@ When associating a floating IP, if you do not see your instance in the dropdown,
 
 In addition to the ad-hoc method described above, Floating IP addresses can also be reserved via the Reservation :ref:`GUI <reservations-create-lease-gui>` or :ref:`CLI <reservation-cli-fip>`. These ad-hoc and reserved addresses are drawn from separate pools, if all addresses from one pool are in use, we recommend trying the other method.
 
-Releasing Floating IP Addresses via GUI
+Releasing floating IP addresses via GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To release floating IP addresses through the GUI:
@@ -43,7 +43,7 @@ To release floating IP addresses through the GUI:
 
 You can also release floating IP addresses via the command line using ``openstack floating ip delete <floating-ip>``.
 
-Floating DNS Records
+Floating DNS records
 ^^^^^^^^^^^^^^^^^^^^
 
 Each Floating IP is also contained within a dedicated DNS A record; this means that you can access your instance over the Internet either via its Floating IP or a special hostname. This can be particularly helpful if you want to set up a TLS certificate for HTTPS to secure a service you are exposing over the web, e.g., with `LetsEncrypt <https://letsencrypt.org/>`_.
@@ -169,7 +169,7 @@ For more examples and information, see:
 - `Rocky Linux Guide <https://docs.rockylinux.org/guides/security/firewalld-beginners/#firewalld-for-beginners>`_
 
 
-Security Groups
+Security groups
 ^^^^^^^^^^^^^^^
 
 `KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.

@@ -3,7 +3,7 @@
 
 .. _jupyter-collaboration:
 
-Collaboration Strategies
+Collaboration strategies
 ========================
 
 It is often desirable to share your in-progress Notebooks with peers or

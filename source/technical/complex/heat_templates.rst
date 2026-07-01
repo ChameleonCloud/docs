@@ -1,11 +1,11 @@
 .. _heat-templates:
 
-Heat Orchestration Templates
+Heat orchestration templates
 ============================
 
 A *Heat Orchestration Template* is a YAML file that specifies how resources are used and configured in a *Complex Appliance*.
 
-A Case Example: NFS Share
+A case example: NFS share
 -------------------------
 
 Let's look at the NFS Share Template (available on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/729fc749-15da-419f-952a-0d3457baa09e>`_). The NFS share appliance deploys:
@@ -32,7 +32,7 @@ The ``parameters`` section defines inputs to be used on *Complex Appliance* laun
 
 The ``outputs`` section defines what values are returned to the user. *Outputs* are declared similarly to *Parameters*: they each have a name, an optional description, and a value. They allow to return information from the stack to the user. You may use the ``get_attr`` function to retrieve a resource's attribute for output.
 
-Heat Template Customization
+Heat template customization
 ---------------------------
 
 Customizing an existing template is a good way to start developing your own. We will use a simpler template than the previous example to start with: the Hello World complex appliance, which you can find on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/7cf9ebda-9c10-486a-8e78-0f1f2bee3315>`_.
@@ -235,7 +235,7 @@ Inside the resource group definition, change ``count: 2`` to ``count: { get_para
 
 At this stage, we have fully recreated the *NFS share* appliance starting from the *Hello World* one! The next section will explain how to write a new template from scratch.
 
-Writing a New Template
+Writing a new template
 ----------------------
 
 You may want to write a whole new template, rather than customizing an existing one. Each template should follow the same layout and be composed of the following sections:
@@ -320,7 +320,7 @@ Generally values will be calls to ``get_attr``, ``get_param``, or some other fun
 template and return them in the proper format to the user.
 
 
-Reserved Networks and Floating IPs
+Reserved networks and floating IPs
 ----------------------------------
 
 Chameleon's reservation service allows users to reserve VLAN segments and floating ips. In order to make use of these

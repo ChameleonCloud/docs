@@ -1,6 +1,6 @@
 .. _daypass:
 
-Daypass: Temporary Access for Reproduction
+Daypass: temporary access for reproduction
 ===========================================
 
 Normally, only Chameleon users with active allocations are able to launch and
@@ -14,7 +14,7 @@ your artifact. After the specified time limit, they will be automatically
 removed from this project. Daypass can be enabled on an artifact-by-artifact
 basis in Trovi.
 
-Enabling Daypass
+Enabling daypass
 ----------------
 
 To enable Daypass, the owner of an artifact first must permit reproducibility
@@ -40,7 +40,7 @@ automatically made under your PI's name. Your artifact should now appear with a
 "Request Daypass" button below the "Launch" button. The "Launch" button will
 not appear for users that are not a member of an active Chameleon project.
 
-Requesting a Daypass
+Requesting a daypass
 --------------------
 
 When another researcher wishes to reproduce your artifact (or when you wish to
@@ -59,7 +59,7 @@ project owners and explain why you are interested in their work.
 After submitting the form, the managers (and PI) of the project associated with
 the artifact will receive an email informing them of the request.
 
-Reviewing a Daypass Request
+Reviewing a daypass request
 ----------------------------
 
 After receiving an email with the daypass request, PIs and project managers
@@ -74,7 +74,7 @@ by choosing "approved" or "rejected" in the selector, and then clicking submit.
 After this decision is made, an email is sent to the requestor with the result.
 If the request is approved, an invitation is sent to the user.
 
-Using an Invitation
+Using an invitation
 --------------------
 
 If your daypass request is approved, an email will be sent to you with an

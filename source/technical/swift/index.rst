@@ -44,7 +44,7 @@ panel.
    store using ``ccauth`` to generate multi-site credentials. See
    :ref:`object-store-cli-kvm` for step-by-step instructions.
 
-Objects and Containers
+Objects and containers
 ======================
 
 *Objects* are equivalent to individual files. They are stored in *Containers*,

@@ -1,4 +1,4 @@
-Managing Shares using CLI
+Managing shares using CLI
 =========================
 
 As all other Chameleon services, you can manage your shares via CLI as well. 
@@ -20,7 +20,7 @@ Then, you must set environment variables for your account and project using :ref
   If you get HTTP 406 error of ``version is not supported by the API``, add ``--os-share-api-version 2.65`` to
   the command to specify manila minor version.
 
-List Shares
+List shares
 ------------
 
 To list all shares of your project, run the following command:
@@ -31,7 +31,7 @@ To list all shares of your project, run the following command:
   
 You can filter the results by the share name via adding a ``--name`` argument to the list command.
 
-Create Share
+Create share
 ------------
 
 To create a share, using the following command:
@@ -52,7 +52,7 @@ For example, for creating a 1 GiB share with name of ``my-first-share``, run:
 
 You can add the ``--public true`` to make your share public.
 
-Edit Share
+Edit share
 ----------
 
 To change the visibility of a share, run:
@@ -75,7 +75,7 @@ To extend/shrink the size of a share, run:
 
 .. _view-share-cli:
 
-View Share
+View share
 ----------
 
 To view the details of a share, run:
@@ -84,7 +84,7 @@ To view the details of a share, run:
 
   openstack share show <name/id of the share>
 
-Delete Share
+Delete share
 ------------
 
 To delete a share, run the following command:

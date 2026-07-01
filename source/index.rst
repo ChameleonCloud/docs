@@ -14,7 +14,7 @@ services, Chameleon offers both bare metal access to physical hardware and tradi
 virtual machines, giving you full control over the software stack and enabling 
 reproducible experimental research.
 
-Key Features
+Key features
 ============
 
 **Hardware Access**
@@ -41,7 +41,7 @@ Key Features
   * **Jupyter integration**: Interactive development and data analysis environment
   * **Multi-site deployment**: Experiments across geographically distributed sites
 
-Getting Started
+Getting started
 ===============
 
 **New to Chameleon?**
@@ -62,7 +62,7 @@ Getting Started
   CHI@Edge's container-based edge computing resources are documented separately
   — see the `CHI@Edge docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_.
 
-Quick Navigation
+Quick navigation
 ================
 
 **Core Workflow**
@@ -88,7 +88,7 @@ Quick Navigation
   * :doc:`User profile <user/profile>` - Manage your account settings
   * :doc:`Daypass access <technical/experiments/daypass>` - Temporary access for artifact reproduction
 
-About the Infrastructure
+About the infrastructure
 =========================
 
 Chameleon operates multiple sites providing different capabilities:

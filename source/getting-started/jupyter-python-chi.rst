@@ -23,7 +23,7 @@
 .. _remix:
 
 =============================================
-Next Steps: JupyterHub and ``python-chi``
+Next steps: JupyterHub and ``python-chi``
 =============================================
 
 In the :doc:`getting started guide <index>`, we walked through how to find
@@ -155,7 +155,7 @@ it takes to run and any additional requirements.
 
 Let's now open the ``Experiment.ipynb`` file.
 
-Getting Started with ``python-chi``: Bare Metal Experiment Pattern
+Getting started with ``python-chi``: bare metal experiment pattern
 ------------------------------------------------------------------
 
 .. image:: ../_static/imgs/getting_started/bare-metal-notebook.png

@@ -29,7 +29,7 @@ provide.
    you CLI credentials. See :ref:`CLI authentication <cli-authentication>` to
    set up CLI access.
 
-Logging In
+Logging in
 ==========
 
 To log in to the Chameleon user portal, where you can manage your projects,
@@ -91,7 +91,7 @@ Authentication options
 
    The Single Sign On (SSO) portal login page.
 
-Terms and Conditions
+Terms and conditions
 ====================
 
 When creating an account, you will be asked to review and consent to the `Acceptable Use Policy
@@ -136,7 +136,7 @@ If you don't see this message, then your Globus account is using an email addres
 Please contact the `Help Desk <https://chameleoncloud.org/user/help/>`_ for further assistance regarding this or any other issue with the account linking process.
 
 
-Troubleshooting Login Issues
+Troubleshooting login issues
 ============================
 
 If you experience difficulty logging in, try these solutions:

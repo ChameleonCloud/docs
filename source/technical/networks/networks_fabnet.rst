@@ -1,6 +1,6 @@
 .. _multisitelayer3:
 
-External Layer 3 Connectivity
+External layer 3 connectivity
 ===============================
 
 In addition to configuring networks and floating IPs within a given site (see :ref:`basic-networking`), we provide a shared network named

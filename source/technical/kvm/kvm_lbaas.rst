@@ -1,4 +1,4 @@
-Load Balancer as a Service
+Load balancer as a service
 ==========================
 
 Available on KVM@TACC is the OpenStack Octavia Load Balancer as a Service (LBaas). This service allows a single IP address to be used to distribute connections among a number of virtual machine instances.

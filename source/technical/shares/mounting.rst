@@ -1,6 +1,6 @@
 .. _mount-share:
 
-Mounting Shares to Instances
+Mounting shares to instances
 =============================
 
 In order to allow your instances to access the share, you need to create your instances using the :ref:`pre-reserved storage network <storage_network>`.

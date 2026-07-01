@@ -1,12 +1,12 @@
 .. _images-cli-management:
 
 =============================
-Managing Images using the CLI
+Managing images using the CLI
 =============================
 
 .. tip:: Reading :ref:`cli` is highly recommended before continuing on the following sections.
 
-Uploading an Image
+Uploading an image
 ==================
 
 After configuring the environment variables using :ref:`cli-rc-script`, run the following command:
@@ -17,7 +17,7 @@ After configuring the environment variables using :ref:`cli-rc-script`, run the 
 
 Provide the path to and the name of your image file in your local file system as the value of the ``file`` parameter. Also, indicate the image format using the ``format`` switch, such as ``QCOW2``. Finally, name your image via the ``image-name`` switch.
 
-Downloading an Image
+Downloading an image
 ====================
 
 Downloading an image file to your local machine is **only** available via the CLI. You may find it useful when transferring images from one Chameleon site to  another. To download an image file, run the following command:
@@ -31,7 +31,7 @@ Use ``filename`` to indicate where you would like to save the image in your loca
 .. important::
    If you do not provide the ``--file`` parameter, it will print out the binary image data in your terminal.
 
-Retrieving Images
+Retrieving images
 =================
 
 You may list all images of your project by typing:
@@ -42,7 +42,7 @@ You may list all images of your project by typing:
 
 Optionally, you may add filters to the list, such as ``--shared`` to only display the images shared within your project. Use ``openstack image list --help`` to see all the available filters.
 
-Viewing Image Details
+Viewing image details
 =====================
 
 You may view details of an image with the command:
@@ -53,7 +53,7 @@ You may view details of an image with the command:
 
 Replace ``image`` with either an image name or it's *UUID*.
 
-Sharing an Image
+Sharing an image
 ================
 
 You may share images several ways.  If you wish to share an image with everyone, use:
@@ -89,7 +89,7 @@ Replace ``image`` with the image *UUID* and the second project should now be abl
 .. important::
    Only the owner of the image can modify it or any properties.  However a project who has an image shared to it can remove themselves from the list of image members.
 
-Editing an Image
+Editing an image
 ================
 
 You may edit an image using the command:

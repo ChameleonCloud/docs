@@ -1,6 +1,6 @@
 .. _object-store-cli:
 
-Managing Object Store using the CLI
+Managing object store using the CLI
 ====================================
 
 .. tip::
@@ -17,7 +17,7 @@ In addition to :ref:`cli-installing`, you must also install
 Then, you must set environment variables for your account and project using
 :ref:`cli-rc-script`.
 
-Working with Containers
+Working with containers
 -----------------------
 
 To create a *Container*, use the following command:
@@ -66,7 +66,7 @@ following command, and **be careful**!
 
    openstack container delete --recursive <container_name>
 
-Working with Objects
+Working with objects
 --------------------
 
 You may upload a file from your local machine to a container using the following
@@ -122,7 +122,7 @@ the checksum has not changed:
    upload --changed --segment-size 4831838208 \
    <container_name> <path>
 
-Working with Folders
+Working with folders
 --------------------
 
 There isn't "folders" when you managing the *Object Store* with the CLI.
@@ -131,7 +131,7 @@ the path.
 
 .. _object-store-cli-kvm:
 
-Accessing Object Store from KVM instances
+Accessing object store from KVM instances
 ------------------------------------------
 
 KVM@TACC does not have its own Object Store. To use the *Object Store* from a

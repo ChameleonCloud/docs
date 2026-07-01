@@ -23,7 +23,7 @@ Chameleon PIs carry significant responsibility for the users on their projects; 
 
 We do occasionally provide case-by-case exceptions to this guideline in well-justified cases.
 
-How to Request PI Eligibility
+How to request PI eligibility
 =============================
 
 If you meet the eligibility criteria above, you can request PI status on Chameleon by following these steps:

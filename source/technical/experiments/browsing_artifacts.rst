@@ -1,6 +1,6 @@
 .. _trovi-browsing:
 
-Browsing & Launching Artifacts
+Browsing & launching artifacts
 ==============================
 
 Trovi allows you to browse artifacts, presented in a scrolling list format, and
@@ -8,7 +8,7 @@ to search or filter to narrow down results. You can also see how many times
 people have downloaded and launched an artifact via the icons in the bottom
 left corner of each entry.
 
-Searching & Filtering Artifacts
+Searching & filtering artifacts
 --------------------------------
 
 On the Trovi homepage, the **Browse Artifacts** section provides a search bar
@@ -41,7 +41,7 @@ Results can also be sorted by relevance or other criteria.
    tag. Whether you are looking for a Jupyter notebook or a bare-metal image,
    you can find either one via Trovi.
 
-Viewing Artifact Details
+Viewing artifact details
 ------------------------
 
 Click on an artifact of interest from the search results to open its detail
@@ -55,7 +55,7 @@ outputs. The right-hand sidebar includes a launch action (see below), an
 ready-to-copy standard and BibTeX citations, and a link to the artifact's
 source repository (e.g., GitHub) if you want to explore the underlying files.
 
-Launching an Artifact
+Launching an artifact
 -----------------------
 
 The most powerful feature available via Trovi is the ability to re-launch the

@@ -60,7 +60,7 @@ re-built.
 
 .. _notebooks:
 
-Working with Notebooks
+Working with notebooks
 ----------------------
 
 A great place to start is the `Bare Metal Experiment Pattern

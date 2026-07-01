@@ -1,11 +1,11 @@
-The Hardware Catalog on the Chameleon Portal
+The hardware catalog on the Chameleon portal
 ============================================
 
 You may use the `Hardware Discovery <https://chameleoncloud.org/hardware/>`_
 page at the `Chameleon Portal <https://chameleoncloud.org>`_ to see the
 different hardware resource types available at each Chameleon site.
 
-Availability Calendars
+Availability calendars
 ______________________
 
 The CHI site buttons in the **Availability Calendar** section of the Resource
@@ -18,7 +18,7 @@ calendars.
 
    Resource availability links to the lease calendars
 
-Chameleon Resource Browser
+Chameleon resource browser
 __________________________
 
 The Resource Browser allows you to **filter Chameleon resources** by node
@@ -63,7 +63,7 @@ filtering criteria.
    may be important for your experimental reproducibility to know about those
    hardware replacement events, in case it affects your metrics.
 
-Checking Availability for Node Types
+Checking availability for node types
 ____________________________________
 
 From the node detail view, you can click the **View Host Calendar** button to
@@ -87,7 +87,7 @@ calendar will open in its default view with a default node type loaded instead.
    follow a direct link to a site calendar while logged out, you will be
    redirected to log in and then returned to the calendar automatically.
 
-Generating a Reservation Script
+Generating a reservation script
 _______________________________
 
 .. figure:: generate_command.png

@@ -8,7 +8,7 @@ Chameleon offers several support channels to assist users with their
 questions and issues. Depending on the nature of your inquiry, you can choose
 from the following options:
 
-Community Forum
+Community forum
 ===============
 
 .. note::
@@ -44,7 +44,7 @@ an RSS feed of these outages by clicking on the *RSS* icon.
 
 .. _help-desk-page:
 
-Help Desk
+Help desk
 =========
 
 The |Help Desk| allows you to submit help request tickets and view the status of

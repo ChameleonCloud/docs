@@ -11,7 +11,7 @@ Prerequisites
 #. **pip** - If you're using Python 3.4 (or greater), then pip comes installed
    with Python by default.
 
-OpenStack Client Installation
+OpenStack client installation
 -----------------------------
 
 #. Install the CLI by typing ``pip install python-openstackclient chameleon-blazarclient`` in the

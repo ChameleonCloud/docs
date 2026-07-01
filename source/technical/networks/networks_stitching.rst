@@ -1,6 +1,6 @@
 .. _stitching:
 
-External Layer2 Connections (Stitching)
+External layer2 connections (stitching)
 =======================================
 
 
@@ -17,7 +17,7 @@ The remainder of this document describes how to stitch Chameleon experiments to 
 
 .. _network-stitchable-create:
 
-Configuring a Stitchable Network
+Configuring a stitchable network
 ________________________________
 
 Your first step will require creating a stitchable network. Unlike creating
@@ -57,7 +57,7 @@ Alternately, if you know the desired vlan_id in advance, say it's already config
     resource_properties='["and",["==","$stitch_provider","fabric"],["==","$segment_id","3490"]]' \
     segment_lease_3490
 
-Connecting Stitchable Isolated Networks across Chameleon Sites
+Connecting stitchable isolated networks across Chameleon sites
 ______________________________________________________________
 
 As both CHI\@UC and CHI\@TACC can be stitched to FABRIC, you're able to use FABRIC to create a Layer 2 connection between nodes at the two sites.

@@ -1,6 +1,6 @@
 .. _complex-sharing:
 
-Sharing Complex Appliances
+Sharing complex appliances
 ==========================
 
 If you have written your own *Complex Appliance* or substantially customized an

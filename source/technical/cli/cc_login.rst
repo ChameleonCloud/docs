@@ -58,7 +58,7 @@ and output format. Some of the most commonly used ones are:
 Examples
 ~~~~~~~~
 
-Complete workflow: Authenticating and running OpenStack commands
+Complete workflow: authenticating and running OpenStack commands
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 To authenticate and run commands like ``openstack image list``, you have two options

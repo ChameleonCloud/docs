@@ -1,4 +1,4 @@
-Persistent Storage via Volumes
+Persistent storage via volumes
 ==============================
 
 KVM supports volumes, which allow you to attach persistent storage to your instances.
@@ -8,10 +8,10 @@ Since instances are tied to a reservation, which expire, it may be useful to use
 Currently, |KVM@TACC| does not have an object store, but you can set up access to the |CHI@TACC| object store, which is located in the same data center.
 See the :ref:`object-store-cli-kvm` docs for KVM-specific instructions using ``ccauth``.
 
-Managing Volumes via the GUI
+Managing volumes via the GUI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Creating/Editing/Deleting Volumes
+Creating/Editing/Deleting volumes
 ---------------------------------
 
 1. Login to `KVM@TACC <https://kvm.tacc.chameleoncloud.org/project/>`__ using your Chameleon account.
@@ -31,7 +31,7 @@ Creating/Editing/Deleting Volumes
 
 4. To delete your volume, on the volume overview page you can select the action arrow click "Delete Volume".
 
-Attach/Detach Volumes
+Attach/Detach volumes
 ---------------------
 
 This guide assumes you have a running instance (see :ref:`kvm-launch-instance`).
@@ -45,7 +45,7 @@ These instructions may vary depending on your operating system, but for more inf
 
 In the future, you will not need to partition and format the volume, and can just mount it after attaching.
 
-Managing volumes via Python-chi
+Managing volumes via python-chi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 See `this Trovi artifact <https://trovi.chameleoncloud.org/dashboard/artifacts/48c7e345-e27e-4717-9459-d0e19743622c>`_ for how to manage volumes via python-chi.

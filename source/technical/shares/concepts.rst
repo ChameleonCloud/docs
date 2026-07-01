@@ -1,11 +1,11 @@
 .. _shares-concepts:
 
-Shares Concepts
+Shares concepts
 ===============
 
 .. _storage_network:
 
-Storage Networks
+Storage networks
 ----------------
 
 To provide isolation among shares created by different projects, accessing a share requires a storage network, which are special networks you can
