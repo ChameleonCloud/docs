@@ -1,9 +1,9 @@
 Work with KVM using the CLI
 ===========================
 
-For general information on CLI authentication and use, see the
-`command-line-interface section
-<https://chameleoncloud.readthedocs.io/en/latest/technical/cli.html#the-command-line-interface>`_.
+.. note::
+
+   For general information on CLI authentication and use, see :ref:`cli`.
 
 **Uploading qcow2 images to raw format for better instance launch performance**
 

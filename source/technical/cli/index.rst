@@ -52,4 +52,4 @@ Python library and offers a programmatic alternative to the CLI — see our
    authentication
    rc_script
    vendordata_auth_removal
-   usage
+   resources
