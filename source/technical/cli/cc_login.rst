@@ -17,9 +17,9 @@ authentication.
 
 .. warning::
 
-   Authentication information provided through instance vendor-data is
-   being deprecated. Use ``cc-login`` to obtain fresh application credentials
-   instead.
+   Authentication information is no longer provided through instance
+   vendor-data — see :ref:`cli-vendordata-auth-removal` for details. Use
+   ``cc-login`` to obtain fresh application credentials instead.
 
 .. note::
 

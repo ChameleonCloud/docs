@@ -31,7 +31,7 @@ in the ``resource_properties`` attribute. An example is provided below:
 
    openstack reservation lease create --reservation \
    resource_type=network,network_name=my-stitchable-network,\
-   resource_properties='["==","$stitch_provider","fabric"]' \
+   resource_properties='["=","$stitch_provider","fabric"]' \
    --start-date "2022-01-01 12:00" --end-date "2022-01-02 12:00" \
    my-stitchable-network-lease
 
@@ -54,7 +54,7 @@ Alternately, if you know the desired vlan_id in advance, say it's already config
     # in this example, we happened to know 3490 was the vlan ID we wanted
     openstack reservation lease create --reservation \
     resource_type=network,network_name=foo_bar,\
-    resource_properties='["and",["==","$stitch_provider","fabric"],["==","$segment_id","3490"]]' \
+    resource_properties='["and",["=","$stitch_provider","fabric"],["=","$segment_id","3490"]]' \
     segment_lease_3490
 
 Connecting stitchable isolated networks across Chameleon sites

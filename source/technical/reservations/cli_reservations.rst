@@ -1,6 +1,6 @@
 .. _reservation-cli:
 
-Provisioning and Managing Resources Using the CLI
+Provisioning and managing resources using the CLI
 =================================================
 
 The sections above present the most user friendly mode of usage, with most
@@ -13,7 +13,7 @@ presents some advanced usage using the command line tools.
    Reading :ref:`cli` is highly recommended before continuing on the following
    sections.
 
-Blazar Client Installation
+Blazar client installation
 --------------------------
 
 To reserve specific nodes, based on their identifier or their resource
@@ -36,7 +36,19 @@ use the CLI switches every time you run the commands. Type ``blazar`` in your
 terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in
 the *Shell Mode*.
 
-Creating a Lease to Reserve Physical Hosts
+.. warning::
+
+   Two common causes of an ``Internal Server Error`` when creating a lease:
+
+   - Your application credential does not have the **Unrestricted** checkbox
+     enabled — see :ref:`cli-application-credential`. Blazar requires this to
+     create reservations.
+   - Using ``==`` instead of ``=`` as the comparison operator inside
+     ``resource_properties``. The query language used by ``resource_properties``
+     takes a single ``=`` for equality, as in the examples below — ``==`` is
+     not valid and will cause the request to fail.
+
+Creating a lease to reserve physical hosts
 ------------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are
@@ -187,7 +199,7 @@ For example, you can use ``resource_properties='["=", "$architecture.smp_size",
 
 .. note:: Remember to use ``$`` in front of the property.
 
-Extending a Lease
+Extending a lease
 -----------------
 
 To extend your lease, use ``lease-update`` command, and provide time duration
@@ -200,7 +212,7 @@ a letter specifying the time unit. ``w`` is for weeks, ``d`` is for days and
 
    openstack reservation lease update --prolong-for "1d" my-first-lease
 
-Chameleon Node Types
+Chameleon node types
 --------------------
 
 The following node types are reservable on Chameleon.
@@ -237,7 +249,7 @@ The following node types are reservable on Chameleon.
 
 .. _reservation-cli-vlan:
 
-Creating a Lease to Reserve a VLAN Segment
+Creating a lease to reserve a VLAN segment
 ------------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are
@@ -274,11 +286,11 @@ a network by ``segment_id`` or ``physical_network``.
 
 .. code-block:: bash
 
-   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["=","$segment_id","3501"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 .. code-block:: bash
 
-   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["=","$physical_network","physnet1"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 While separate leases can be created to reserve nodes and VLAN segments, it is
 also possible to combine multiple reservations within a single lease. The
@@ -292,7 +304,7 @@ VLAN segment:
 .. _reservation-cli-fip:
 
 
-Creating a Lease to Reserve Floating IPs
+Creating a lease to reserve floating IPs
 ----------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are required:
@@ -316,7 +328,7 @@ June 17th, 2022 at 6:00pm and reserves three floating IPs:
    openstack reservation lease create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-fip-lease
 
 
-Reallocating a Node in Your Lease
+Reallocating a node in your lease
 ---------------------------------
 
 After creating your lease, you can view its details in the Horizon web
@@ -340,7 +352,7 @@ If you re-allocate a host because it is malfunctioning, please make sure to
 report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that
 we can fix it.
 
-Creating a Lease for a Flavor (on KVM@TACC)
+Creating a lease for a flavor (on KVM@TACC)
 -------------------------------------------
 
 Since KVM@TACC is virtualized, instead of creating a lease for a physical host,

@@ -3,6 +3,12 @@
 Mounting object store as a file system
 ======================================
 
+.. important::
+   The object store is no longer mounted automatically at boot. Before using
+   ``cc-mount-object-store`` for the first time, authenticate with
+   :ref:`ccauth <cli-ccauth>` and run ``setup-cc-mount-object-store`` once to
+   configure credentials. See :ref:`cli-vendordata-auth-removal` for details.
+
 .. tip::
    rclone can upload small and large files to the object store, however,
    if you have trouble uploading larger objects, you may need to use the

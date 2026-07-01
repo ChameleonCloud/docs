@@ -50,9 +50,10 @@ Creating an application credential
 ----------------------------------
 
 You can also generate *application credentials*, which act as dedicated one-off
-passwords that are authorized with the same permissions as your user account,
-within a single project. If you work on multiple projects simultaneously, you
-will need to generate one application credential for each project.
+passwords that are authorized with a scoped set of your user account's
+permissions, within a single project. If you work on multiple projects
+simultaneously, you will need to generate one application credential for each
+project.
 
 To create an application credential, navigate to the "Identity" dashboard in the
 :ref:`gui`, and go to the "Application Credentials" panel. Create a new
@@ -64,6 +65,16 @@ option.
 
 .. figure:: applicationcredentials.png
    :alt: Creating an application credential via the GUI
+
+.. note::
+
+   If a credential scoped only to the ``member`` role gets a ``403
+   Forbidden`` error on commands such as ``openstack image list`` or
+   ``openstack server create``, try creating a new application credential
+   that also includes the ``reader`` role alongside ``member``. This is a
+   known issue with role scoping for application credentials; including
+   ``reader`` resolves it for most operations while a permanent fix is in
+   progress.
 
 Once the system generates the credential, you will be given the option to
 download an :ref:`RC file <cli-rc-script>` that configures the CLI to use the
