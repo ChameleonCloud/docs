@@ -135,6 +135,24 @@ you can re-link your Chameleon account assuming you have access to same email.
 If you don't see this message, then your Globus account is using an email address that Chameleon doesn't have registered.
 Please contact the `Help Desk <https://chameleoncloud.org/user/help/>`_ for further assistance regarding this or any other issue with the account linking process.
 
+Lost access to your original email
+-----------------------------------
+
+The steps above assume you can still receive a verification email at the
+address on your existing Chameleon account. If that's no longer true — for
+example, you graduated, changed jobs, or your institution migrated email
+domains — self-service linking won't work, since there's no way to click a
+verification link sent to an inbox you can't access.
+
+In this case, contact the `Help Desk <https://chameleoncloud.org/user/help/>`_
+directly and include:
+
+- The old email address on your existing Chameleon account
+- The new email address you'd like to use going forward
+- Your institution (old and new, if it changed)
+
+Staff will use this information to verify your identity and relink your account manually.
+
 
 Troubleshooting login issues
 ============================
@@ -143,10 +161,33 @@ If you experience difficulty logging in, try these solutions:
 
 **Common Authentication Issues:**
 
-- **Institutional credentials not working**: Ensure your institutional credentials are 
+- **"An account with this email already exists" / repeated login loops**:
+  This almost always means you have two separate Globus identities (for
+  example, a Google sign-in and an institutional SSO login) that resolve to
+  two different Chameleon accounts, rather than a single duplicated account.
+  To fix it, log out of Globus entirely, go to your `Globus identity
+  settings <https://app.globus.org/settings/identities>`_, and link the two
+  identities together so they resolve to one Globus account. Then try
+  logging in to Chameleon again. If the accounts still won't merge, contact
+  our :doc:`Help Desk <help>` and ask staff to relink them manually.
+
+- **Prompted for a username and password**: Federated accounts never have a
+  separate Chameleon password to reset — there's nothing behind that screen.
+  If you land on a username/password prompt instead of your institution's
+  login page, it's a sign that your Globus identities aren't linked
+  together (see above), not a forgotten credential. Resetting a password
+  will not fix this.
+
+- **"Account is disabled, contact your administrator"**: This means your
+  account was automatically locked out after repeated failed login or
+  authentication attempts (often triggered by scripted or CLI logins using
+  stale credentials) — it is not a ban, and it isn't something you can
+  resolve yourself. Contact our :doc:`Help Desk <help>` and staff will
+  re-enable it for you.
+
+- **Institutional credentials not working**: Ensure your institutional credentials are
   up-to-date and correctly linked to your Chameleon account
 - **Browser issues**: Clear your browser cache and cookies, then try logging in again
-- **Password reset problems**: Use the password reset links provided in the portal
 
 **Getting Help:**
 
