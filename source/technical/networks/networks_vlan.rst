@@ -1,6 +1,6 @@
 .. _network-isolation:
 
-Isolated Network VLANs
+Isolated network VLANs
 ======================
 
 By default, bare metal nodes on each Chameleon site share the same local network (shared VLAN and IP subnet). However, some experiments may require more network isolation, which is now supported by Chameleon.
@@ -14,7 +14,7 @@ Chameleon's implementation of network isolation is based on dynamically managed 
 
 To use this feature, you will need to create a dedicated network and router. You can use a :ref:`Heat template <complex>`, use the *Network* panel of the GUI, or use the CLI.
 
-Configuring Networking using a Heat template
+Configuring networking using a Heat template
 --------------------------------------------
 
 #. Go to *Project* > *Orchestration* > *Stacks*.
@@ -29,7 +29,7 @@ Configuring Networking using a Heat template
 
 #. Start creating the network and router by clicking the *Launch* button.
 
-Creating a Network using the GUI
+Creating a network using the GUI
 --------------------------------
 
 To create a Network from either the *Network Topology* page or the *Networks* page, click the *+Create Network* button to open the *Create Network* dialog.
@@ -73,7 +73,7 @@ You may specify *DHCP* and static *Route* information at *Subnet Details* sectio
 
 Click *Create* button and a new Network will be created. Check if the network is created without error.
 
-Creating a Router
+Creating a router
 ^^^^^^^^^^^^^^^^^
 
 To create a *Router* from either the *Network Topology* page or the *Routers* page, click the *+Create Router* button to open the *Create Router* dialog.
@@ -85,7 +85,7 @@ To create a *Router* from either the *Network Topology* page or the *Routers* pa
 
 In this dialog, specify a *Router Name*. Optionally, you may select *public* as the *External Network* if you want to have external access.  Click *Create Router* to complete the process.
 
-Adding a Router Interface
+Adding a router interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Router may have multiple *Interfaces*, each connected to a *Network*. You may add an *Interface* to an existing *Router* by clicking on *Add Interface* from either the *Network Topology* page or the *Routers* page to open the *Add Interface* dialog.
@@ -108,7 +108,7 @@ A Router may have multiple *Interfaces*, each connected to a *Network*. You may 
 First, select a network and subnet you have created. You can specify an *IP address*; otherwise, Chameleon will attempt to assign an IP address automatically. The gateway IP you assigned to the subnet will be automatically picked.
 
 
-Deleting Networking Objects
+Deleting networking objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. attention::
@@ -130,16 +130,31 @@ Deleting Networking Objects
 #. Go to *Project* > *Network* > *Networks*, and delete the network by using the dropdown in the *Action* column. Alternatively, you may delete the network by selecting the network using the checkbox and click on *Delete Networks* button on the upper right corner. Confirm your deletion to finish the process.
 
 
-Configuring Networking using the CLI
+Configuring networking using the CLI
 ------------------------------------
 
 .. tip:: Reading :ref:`cli` is highly recommended before continuing on the following sections.
 
 Before using the CLI, make sure you have configured environment variables using :ref:`cli-rc-script`.
 
+.. note::
+   There are two different ways to get an isolated VLAN network, and they're
+   not interchangeable:
+
+   - **Create it directly** (below) — Neutron picks any available network
+     segment for you automatically. This is the simplest path for most
+     experiments.
+   - **Reserve a specific segment via :ref:`reservation-cli-vlan`** — use this
+     instead if you need to guarantee a *specific* VLAN segment (for example,
+     to match one already configured on external hardware), or if direct
+     creation fails because Chameleon has no free segments left at the
+     moment (see the note below). Either way, once the network exists you
+     still configure its subnet and router the same way, as described in
+     this page.
+
 .. _network-cli-create:
 
-Creating a Network
+Creating a network
 ^^^^^^^^^^^^^^^^^^
 
 You can create an *Isolated* VLAN Network using the command:
@@ -244,7 +259,7 @@ To see more options when creating a subnet, use the following command:
 
    openstack subnet create --help
 
-Creating a Router
+Creating a router
 ^^^^^^^^^^^^^^^^^
 
 To create a router, use the following command:
@@ -279,7 +294,7 @@ Your output should look like:
    | updated_at              | 2018-03-23T23:56:35Z                 |
    +-------------------------+--------------------------------------+
 
-Adding a Router Interface
+Adding a router interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Router Interface can be added and attached to a subnet with the command:
@@ -295,7 +310,7 @@ In addition, you can specify an *External Gateway* for your router and connect i
    openstack router set --external-gateway public <router_name>
 
 
-Deleting Networking Objects
+Deleting networking objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To delete a router with an External Gateway and subnets associated to it, use the following commands:

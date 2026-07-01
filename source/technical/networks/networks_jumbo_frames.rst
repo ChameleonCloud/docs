@@ -1,6 +1,6 @@
 .. _network-jumbo-frames:
 
-Jumbo Frames
+Jumbo frames
 =============
 
 By default, Ethernet frames for networks created on each Chameleon site
@@ -23,7 +23,7 @@ over Layer 2 connections then follow the steps below to implement.
     are not supported on Chameleon.
 
 
-Enabling Jumbo Frames When Creating a Network
+Enabling jumbo frames when creating a network
 ---------------------------------------------
 
 Enabling jumbo frames on a new network will ensure that the first Ethernet
@@ -42,7 +42,7 @@ the value specified.
     most Chameleon base images.
 
 
-Enabling Jumbo Frames on Existing Network
+Enabling jumbo frames on existing network
 -----------------------------------------
 
 You can also modify the MTU of an existing network using the command below.
@@ -53,7 +53,7 @@ Note that this will only affect newly created bare metal instances.
    openstack network set <network_name> --mtu 9000
 
 
-Enabling Jumbo Frames on Existing Instances
+Enabling jumbo frames on existing instances
 -------------------------------------------
 
 Setting the MTU on your Chameleon network only affects instances on boot to set

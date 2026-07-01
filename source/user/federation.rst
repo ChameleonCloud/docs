@@ -21,7 +21,15 @@ account if their institution is an `InCommon`_ member, use their Google account,
 `Globus ID <https://globusid.org/what>`_ tied to an email and password that they
 provide.
 
-Logging In
+.. note::
+
+   This page covers browser-based login to the Chameleon user portal, the
+   testbed GUI, and the Jupyter environment. The :ref:`Command Line Interface
+   <cli>` authenticates separately — signing in here does not by itself give
+   you CLI credentials. See :ref:`CLI authentication <cli-authentication>` to
+   set up CLI access.
+
+Logging in
 ==========
 
 To log in to the Chameleon user portal, where you can manage your projects,
@@ -83,7 +91,7 @@ Authentication options
 
    The Single Sign On (SSO) portal login page.
 
-Terms and Conditions
+Terms and conditions
 ====================
 
 When creating an account, you will be asked to review and consent to the `Acceptable Use Policy
@@ -100,12 +108,19 @@ and the suggested `acknowledgement text
 The FAQ also covers other common policy questions about allocation charges,
 usage best practices, and more.
 
+.. _federation-account-linking:
+
 Account linking
 ===============
 
 Chameleon accounts are linked to a federated identity provider, Globus.
-If you are no longer wish to/are able to log in via your original account source (e.g. you move institutions),
-you can re-link your Chameleon account assuming you have access to same email.
+You'll need to (re-)link your account if you're no longer able to log in via
+your original account source (e.g. you move institutions), or if you're
+stuck in an "account already exists" login loop because you have two
+separate Globus identities (e.g. a Google sign-in and an institutional
+login) pointing at two different Chameleon accounts. Either way, the fix
+below assumes you have access to the same email address as your existing
+account.
 
 .. note::
    Previously Chameleon also supported federated identity via TACC, but this is no longer supported after January 2026.
@@ -127,18 +142,55 @@ you can re-link your Chameleon account assuming you have access to same email.
 If you don't see this message, then your Globus account is using an email address that Chameleon doesn't have registered.
 Please contact the `Help Desk <https://chameleoncloud.org/user/help/>`_ for further assistance regarding this or any other issue with the account linking process.
 
+Lost access to your original email
+-----------------------------------
 
-Troubleshooting Login Issues
+If you no longer have access to the email address on your existing account —
+for example, you graduated, changed jobs, or your institution migrated email
+domains — you won't be able to complete the verification step above, since
+there's no inbox to receive the link.
+
+In this case, contact the `Help Desk <https://chameleoncloud.org/user/help/>`_
+directly and include:
+
+- The old email address on your existing Chameleon account
+- The new email address you'd like to use going forward
+- Your institution (old and new, if it changed)
+
+Staff will use this information to verify your identity and relink your account manually.
+
+
+Troubleshooting login issues
 ============================
 
 If you experience difficulty logging in, try these solutions:
 
 **Common Authentication Issues:**
 
-- **Institutional credentials not working**: Ensure your institutional credentials are 
+- **"An account with this email already exists" / repeated login loops**:
+  This almost always means you have two separate Globus identities (for
+  example, a Google sign-in and an institutional SSO login) pointing at two
+  different Chameleon accounts. Follow the :ref:`Account linking
+  <federation-account-linking>` steps above to link them into one. If two
+  accounts still won't merge afterward, contact our :doc:`Help Desk <help>`
+  and ask staff to merge them manually.
+
+- **Prompted for a username and password**: Federated accounts never have a
+  separate Chameleon password to reset — there's nothing behind that screen.
+  Landing here instead of your institution's login page is a symptom of the
+  same unlinked-identity issue above, not a forgotten credential; resetting
+  a password will not fix it.
+
+- **"Account is disabled, contact your administrator"**: This means your
+  account was automatically locked out after repeated failed login or
+  authentication attempts (often triggered by scripted or CLI logins using
+  stale credentials) — it is not a ban, and it isn't something you can
+  resolve yourself. Contact our :doc:`Help Desk <help>` and staff will
+  re-enable it for you.
+
+- **Institutional credentials not working**: Ensure your institutional credentials are
   up-to-date and correctly linked to your Chameleon account
 - **Browser issues**: Clear your browser cache and cookies, then try logging in again
-- **Password reset problems**: Use the password reset links provided in the portal
 
 **Getting Help:**
 

@@ -1,6 +1,6 @@
 .. _reservation-cli:
 
-Provisioning and Managing Resources Using the CLI
+Provisioning and managing resources using the CLI
 =================================================
 
 The sections above present the most user friendly mode of usage, with most
@@ -13,7 +13,7 @@ presents some advanced usage using the command line tools.
    Reading :ref:`cli` is highly recommended before continuing on the following
    sections.
 
-Blazar Client Installation
+Blazar client installation
 --------------------------
 
 To reserve specific nodes, based on their identifier or their resource
@@ -36,7 +36,19 @@ use the CLI switches every time you run the commands. Type ``blazar`` in your
 terminal session to enter the *Interactive Mode*. You may also use ``blazar`` in
 the *Shell Mode*.
 
-Creating a Lease to Reserve Physical Hosts
+.. warning::
+
+   Two common causes of an ``Internal Server Error`` when creating a lease:
+
+   - Your application credential does not have the **Unrestricted** checkbox
+     enabled — see :ref:`cli-application-credential`. Blazar requires this to
+     create reservations.
+   - Using ``==`` instead of ``=`` as the comparison operator inside
+     ``resource_properties``. The query language used by ``resource_properties``
+     takes a single ``=`` for equality, as in the examples below — ``==`` is
+     not valid and will cause the request to fail.
+
+Creating a lease to reserve physical hosts
 ------------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are
@@ -187,7 +199,7 @@ For example, you can use ``resource_properties='["=", "$architecture.smp_size",
 
 .. note:: Remember to use ``$`` in front of the property.
 
-Extending a Lease
+Extending a lease
 -----------------
 
 To extend your lease, use ``lease-update`` command, and provide time duration
@@ -200,7 +212,7 @@ a letter specifying the time unit. ``w`` is for weeks, ``d`` is for days and
 
    openstack reservation lease update --prolong-for "1d" my-first-lease
 
-Chameleon Node Types
+Chameleon node types
 --------------------
 
 The following node types are reservable on Chameleon.
@@ -237,7 +249,7 @@ The following node types are reservable on Chameleon.
 
 .. _reservation-cli-vlan:
 
-Creating a Lease to Reserve a VLAN Segment
+Creating a lease to reserve a VLAN segment
 ------------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are
@@ -274,11 +286,11 @@ a network by ``segment_id`` or ``physical_network``.
 
 .. code-block:: bash
 
-   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$segment_id","3501"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["=","$segment_id","3501"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 .. code-block:: bash
 
-   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["==","$physical_network","physnet1"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
+   openstack reservation lease create --reservation resource_type=network,network_name=my-network,resource_properties='["=","$physical_network","physnet1"]' --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-vlan-lease
 
 While separate leases can be created to reserve nodes and VLAN segments, it is
 also possible to combine multiple reservations within a single lease. The
@@ -289,10 +301,14 @@ VLAN segment:
 
    openstack reservation lease create --reservation min=1,max=1,resource_type=physical:host,resource_properties='["=", "$node_type", "compute_skylake"]' --reservation resource_type=network,network_name="my-network" --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-combined-lease
 
+Once your lease is active, the network named above already exists — you
+still need to configure a subnet and router on it before instances can use
+it. See :ref:`network-isolation` for those steps.
+
 .. _reservation-cli-fip:
 
 
-Creating a Lease to Reserve Floating IPs
+Creating a lease to reserve floating IPs
 ----------------------------------------
 
 To create a lease, use the ``lease-create`` command. The following arguments are required:
@@ -315,8 +331,18 @@ June 17th, 2022 at 6:00pm and reserves three floating IPs:
    PUBLIC_NETWORK_ID=$(openstack network show public -c id -f value)
    openstack reservation lease create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-fip-lease
 
+Once your floating IP lease is active, you can attach one of the reserved
+IPs to a running instance:
 
-Reallocating a Node in Your Lease
+.. code-block:: bash
+
+   openstack server add floating ip <server> <floating-ip-address>
+
+Use ``openstack floating ip list`` to see the floating IPs reserved by your
+lease, and ``openstack server remove floating ip <server> <floating-ip-address>``
+to detach one later.
+
+Reallocating a node in your lease
 ---------------------------------
 
 After creating your lease, you can view its details in the Horizon web
@@ -340,7 +366,9 @@ If you re-allocate a host because it is malfunctioning, please make sure to
 report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that
 we can fix it.
 
-Creating a Lease for a Flavor (on KVM@TACC)
+.. _reservation-cli-flavor:
+
+Creating a lease for a flavor (on KVM@TACC)
 -------------------------------------------
 
 Since KVM@TACC is virtualized, instead of creating a lease for a physical host,
@@ -387,3 +415,31 @@ For example, the following command will create a lease with the name of
      --start-date "2022-06-17 16:00" \
      --end-date "2022-06-17 18:00" \
      my-first-lease
+
+.. note::
+   KVM@TACC lease durations follow a different policy than bare metal — see
+   the `Chameleon FAQ
+   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
+   for details.
+
+Once the lease is active, a new flavor named ``reservation:<reservation-id>``
+becomes available — this is the flavor tied to your reservation. Launch your
+instance against it instead of the original flavor:
+
+.. code-block:: bash
+
+   openstack server create \
+     --flavor reservation:<reservation-id> \
+     --image <image> \
+     --network sharednet1 \
+     my-kvm-instance
+
+The ``<reservation-id>`` is the ``id`` of the individual reservation inside
+your lease (not the lease ID itself), which you can find with:
+
+.. code-block:: bash
+
+   openstack reservation lease show <lease-name>
+
+See :ref:`kvm-cli` for other KVM@TACC CLI operations, such as managing
+security groups and creating instance snapshots.

@@ -1,7 +1,7 @@
 .. _images-gui-management:
 
 =============================
-Managing Images using the GUI
+Managing images using the GUI
 =============================
 
 To manage your images, use the *Images* page at |CHI@TACC| or |CHI@UC|, by clicking on *Project* > *Compute* > *Images*.
@@ -15,7 +15,7 @@ To manage your images, use the *Images* page at |CHI@TACC| or |CHI@UC|, by click
 
 .. note:: Images at each site are stored independently. An Image made at |CHI@TACC| **will not** be available at |CHI@UC| (or vice versa) unless transferred manually.
 
-Uploading an Image
+Uploading an image
 ==================
 
 Use *+ Create Image* button to upload an image.
@@ -33,14 +33,14 @@ In the *Create Image* dialog:
 #. To add additional metadata for your image, use the *Metadata* section by clicking *Metadata* in the sidebar.
 #. Click the *Create Image* button to upload your image.
 
-Launching Instance using an Image
+Launching instance using an image
 =================================
 
 During the process of :ref:`launching instance <baremetal-gui-launch>` from the *Instance* page, it will ask you to select an image. Alternatively, you can launch instances with a selected image from the *Image* page by simply clicking on the *Launch* button located in the same row of the targeted image.
 
 .. tip:: Other than *Launch*, there are other actions you may perform on the image. Clicking on the dropdown to explore more on what you can do.
 
-Viewing Image Details
+Viewing image details
 =====================
 
 To view image details, click on the name of the Image.
@@ -56,7 +56,7 @@ The dropdown list in the top right corner allows you to perform various actions 
 
 .. _simple-publish:
 
-Publishing Images as Appliances via Trovi
+Publishing images as appliances via Trovi
 =========================================
 
 .. note::

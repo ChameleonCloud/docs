@@ -1,6 +1,8 @@
+:orphan:
+
 .. _sdn:
 
-Software Defined Networking
+Software defined networking
 ===========================
 
 .. warning::

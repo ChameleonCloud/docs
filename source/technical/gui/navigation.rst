@@ -1,4 +1,4 @@
-GUI Navigation
+GUI navigation
 ==============
 
 The navigation sidebar on the left allows you to access different sections
@@ -49,7 +49,7 @@ and sharing, see :ref:`images`.
 
 .. _gui-key-pairs:
 
-Key Pairs
+Key pairs
 ~~~~~~~~~
 
 The *Key Pairs* page allows you to create, import and manage SSH key pairs for instance access.
@@ -66,7 +66,7 @@ The *Network* section provides interfaces for managing virtual network resources
 It is backed by `OpenStack Neutron <https://docs.openstack.org/neutron/latest/>`_.
 For comprehensive networking instructions, see :ref:`networking`.
 
-Network Topology
+Network topology
 ~~~~~~~~~~~~~~~~
 
 The *Network Topology* page displays your current virtual network topology in 
@@ -77,7 +77,7 @@ topology or graph formats.
 
    The Network Topology page
 
-Networks, Routers, and Floating IPs
+Networks, routers, and floating IPs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *Networks*, *Routers*, and *Floating IPs* pages allow you to create and manage 
@@ -111,26 +111,26 @@ allows you to launch, rebuild, or terminate stacks.
 
    The Stacks page
 
-Resource Types
+Resource types
 ~~~~~~~~~~~~~~
 
 The *Resource Types* page lists all Heat resource types available for use in
 your templates, along with their properties and attributes.
 
-Template Versions
+Template versions
 ~~~~~~~~~~~~~~~~~
 
 The *Template Versions* page lists the supported Heat Orchestration Template
 (HOT) versions and the features available in each.
 
-Template Generator
+Template generator
 ~~~~~~~~~~~~~~~~~~
 
 The *Template Generator* provides a graphical interface for building Heat
 templates without writing YAML by hand. For more on writing templates, see
 :ref:`heat-templates`.
 
-Object Store
+Object store
 ------------
 
 The *Containers* section provides access to Chameleon's object/blob storage,
@@ -158,25 +158,25 @@ The *Shares* page allows you to create and manage shared file systems that can
 be mounted by multiple instances simultaneously. For background on share concepts
 and step-by-step procedures, see :ref:`shares-concepts` and :ref:`view-share-gui`.
 
-Share Snapshots
+Share snapshots
 ~~~~~~~~~~~~~~~
 
 The *Share Snapshots* page allows you to create point-in-time snapshots of
 your shares for backup or cloning purposes.
 
-Share Networks
+Share networks
 ~~~~~~~~~~~~~~
 
 The *Share Networks* page allows you to configure the network settings that
 shares use to communicate with instances.
 
-Share Groups
+Share groups
 ~~~~~~~~~~~~
 
 The *Share Groups* page allows you to group shares together so that consistent
 snapshots can be taken across multiple shares at once.
 
-Security Services
+Security services
 ~~~~~~~~~~~~~~~~~
 
 The *Security Services* page allows you to configure authentication services
@@ -220,7 +220,7 @@ The *Users* page displays your account information. You can use this page to
 view your user ID, which is sometimes required when managing project membership
 or configuring access controls.
 
-Application Credentials
+Application credentials
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The *Application Credentials* page allows you to create scoped credentials for

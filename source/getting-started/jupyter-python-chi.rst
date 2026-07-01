@@ -155,7 +155,7 @@ it takes to run and any additional requirements.
 
 Let's now open the ``Experiment.ipynb`` file.
 
-Getting Started with ``python-chi``: Bare Metal Experiment Pattern
+Getting started with ``python-chi``: bare metal experiment pattern
 ------------------------------------------------------------------
 
 .. image:: ../_static/imgs/getting_started/bare-metal-notebook.png
@@ -322,6 +322,14 @@ with a GPU!
 
 Congratulations! You just created your first lease and instance on Chameleon
 without ever leaving the comforts of your Jupyter Notebook!
+
+.. note::
+   This guide covers bare metal instances via the ``chi.server`` module.
+   python-chi_ also supports container-based edge computing on |CHI@Edge|
+   via the `chi.container module
+   <https://python-chi.readthedocs.io/en/latest/modules/container.html>`_ —
+   see the `CHI@Edge docs
+   <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_ for details.
 
 Be sure to `check out our additional tutorials on Trovi
 <https://trovi.chameleoncloud.org/dashboard/artifacts?tags=experiment+pattern>`_

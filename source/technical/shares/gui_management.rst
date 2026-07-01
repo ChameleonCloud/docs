@@ -1,4 +1,4 @@
-Managing Shares using GUI
+Managing shares using GUI
 =========================
 
 To manage your share, use the `Shares` page at `CHI@UC <https://chi.uc.chameleoncloud.org/>`_ or `CHI@TACC <https://chi.tacc.chameleoncloud.org/>`_
@@ -9,7 +9,7 @@ by navigating to `Project > Share > Shares`.
 
     The Shares page
 
-Create Share
+Create share
 ------------
 
 Click the `Create Share` button. In the `Create Share` dialog, provide a name and the size of your share, and then click the `Create` button to
@@ -26,7 +26,7 @@ create a share.
 
 .. _view-share-gui:
 
-View Share
+View share
 ----------
 
 You can look at the details of a share by clicking the share name in the `Shares` page. Note that the paths of the `export locations` are important
@@ -38,7 +38,7 @@ The access rules are listed in the `share details` page, though you can not edit
 
     The Share details
     
-Edit Share
+Edit share
 ----------
 You can manage the properties and extend the size of a share by clicking the `Action` dropdown in the `Shares` page. 
 
@@ -47,7 +47,7 @@ You can manage the properties and extend the size of a share by clicking the `Ac
 
     The Action dropdown
 
-Delete Share
+Delete share
 ------------
 You can use the `Action` dropdown to delete a single share, or select multiple shares and click the `Delete Shares` button. 
 

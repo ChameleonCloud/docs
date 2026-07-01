@@ -91,7 +91,7 @@ orchestration.
    for a guide on `choosing between bare metal and virtualized instances
    <https://chameleoncloud.org/blog/2025/10/21/bare-metal-or-kvm-which-should-you-choose-and-when/>`_.
 
-Pick Your Hardware
+Pick your hardware
 -------------------
 
 .. raw:: html
@@ -131,7 +131,7 @@ steps below to get started with any bare metal hardware on Chameleon -- as a
 challenge, try following this guide with a different node that you find on the
 `Hardware Discovery`_ page.
 
-My First Reservation: Reserving a Node
+My first reservation: reserving a node
 ---------------------------------------
 
 On Chameleon, you must reserve your resources before you can launch an instance
@@ -140,7 +140,7 @@ will use an on-demand reservation for this guide, but note that you can reserve
 resources in advance, which is often necessary to get access to popular, scarce
 hardware like GPUs.
 
-Step 1: Access a Testbed Site
+Step 1: access a testbed site
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As mentioned above, different Chameleon sites have different hardware. To log
@@ -184,7 +184,7 @@ change to another project.
    Projects will only appear as an option in this menu if they have a current
    active allocation of compute resources.
 
-Step 2: Go to the Host Calendar
+Step 2: go to the host calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: ../_static/imgs/getting_started/lease-table-view.png
@@ -210,7 +210,7 @@ your desired hardware — in our case, ``compute_cascadelake_r``.
    currently using. If you don't see a node type you expect, make sure you are
    logged in to the correct site.
 
-Step 3: Reserve a Node Directly from the Calendar
+Step 3: reserve a node directly from the calendar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you spot an available node (a row with no active reservations blocking
@@ -278,7 +278,7 @@ If your experiment requires an isolated private network across multiple nodes,
 check **Reserve Network** as well — but for a single-node first experiment,
 this is not necessary.
 
-Step 4: Submit Your Lease
+Step 4: submit your lease
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Click **Create**. Your lease will appear on the Leases page with a status of
@@ -293,7 +293,7 @@ Click **Create**. Your lease will appear on the Leases page with a status of
    <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-best-practices-of-chameleon-usage->`_
    for guidance on longer reservations.
 
-My First Instance: Launching an Instance
+My first instance: launching an instance
 ----------------------------------------
 
 In the following steps, we will walk through how to configure and launch an
@@ -310,7 +310,7 @@ then automatically configure, build, and launch your instance.
 
 To create a new instance, follow the steps below:
 
-Step 1: Go to the Instances Dashboard
+Step 1: go to the instances dashboard
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the sidebar from your site dasboard, click *Compute*, then click *Instances*
@@ -318,7 +318,7 @@ In the sidebar from your site dasboard, click *Compute*, then click *Instances*
 .. image:: ../_static/imgs/getting_started/instances-dashboard.png
 
 
-Step 2: Create a New Instance
+Step 2: create a new instance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Click on the *Launch Instance* button in the toolbar and the *Launch
@@ -409,7 +409,7 @@ the ``Import Key Pair``. If you have previously uploaded a key pair to Chameleon
 this key pair will appear in the "Available" section below. You can then reuse
 that key pair.
 
-Step 3: Click Launch
+Step 3: click launch
 ~~~~~~~~~~~~~~~~~~~~~
 
 Finally, we are ready to click ``Launch Instance``. Doing so will take us
@@ -425,7 +425,7 @@ to view more details.
 The detailed page gives you an overview of the instance. There are also other
 options to view logs, open a console (once the instance is running), and more.
 
-First Contact: Associating an IP Address & SSH
+First contact: associating an IP address & SSH
 ----------------------------------------------
 
 Your instance may take approximately ten to fifteen minutes to launch depending
@@ -439,7 +439,7 @@ SSH with the key pair that we added during our configuration step. The steps in
 the following section will show you how to connect to your instance so you can
 start working with the node you reserved.
 
-Step 1: Associate an IP
+Step 1: associate an IP
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Before you can access your instance, you need to first assign a floating IP
@@ -486,7 +486,7 @@ steps.
    should see your new Floating IP appear in the list. You can now go back to
    step 2.
 
-Step 2: Connect via SSH
+Step 2: connect via SSH
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once your instance is running and has a floating IP associated, open a terminal
@@ -525,7 +525,7 @@ confirming you are now running commands directly on the bare metal node:
 
 Congratulations! You just created your first Chameleon instance!
 
-What's Next?
+What's next?
 -------------
 
 Now that you've reserved a node, launched an instance, and connected via SSH,

@@ -1,6 +1,6 @@
 .. _cli-rc-script:
 
-The OpenStack RC Script
+The OpenStack RC script
 =======================
 
 You must use the *OpenStack RC Scripts* to configure the environment variables
@@ -12,7 +12,9 @@ Chameleon GUI at the :ref:`gui-api-access`.
    On an instance running a CC-* image, you can use the :ref:`cc-login <cli-cc-login>`
    or :ref:`ccauth <cli-ccauth>` command to generate a new openrc file or clouds.yaml entries.
    This is useful for creating fresh credentials without downloading them from the Chameleon GUI
-   and copying them to your instance.
+   and copying them to your instance — and is now the primary way to get credentials on an
+   instance, since they are :ref:`no longer provisioned automatically at boot
+   <cli-vendordata-auth-removal>`.
 
 #. Log in to the GUI at on a CHI site.
 
@@ -57,6 +59,17 @@ Chameleon GUI at the :ref:`gui-api-access`.
        next step if you are using Windows system.
 
 #. Enter your password when prompted.
+
+   .. note::
+
+      This prompt is for your :ref:`CLI password <cli-authentication>`, set
+      via the Chameleon Authentication Portal — **not** the institutional,
+      Google, or ORCiD credentials you use for federated login. If you don't
+      have a CLI password yet, see :ref:`cli-authentication` to set one, or
+      use :ref:`ccauth <cli-ccauth>` instead to avoid needing one at all. If
+      you sourced an RC file generated from an :ref:`application credential
+      <cli-application-credential>`, no password prompt will appear, since
+      the credential secret is already embedded in the file.
 
 #. For macOS/Linux users, your current terminal session has been configured to
    access your project. Now type ``openstack`` in your terminal session.

@@ -1,15 +1,14 @@
 .. _complex-catalog:
 
-Complex Appliances in Trovi
+Complex appliances in Trovi
 ============================
 
 .. note::
-   Chameleon appliances, including *Complex Appliances*, have moved to
-   `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts/>`_. Filter Trovi
+   All Chameleon appliances, including *Complex Appliances*, are now stored
+   and shared exclusively through `Trovi
+   <https://trovi.chameleoncloud.org/dashboard/artifacts/>`_. Filter Trovi
    artifacts by the **appliance** tag to find Chameleon-supported OS images and
-   heat templates. The `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_
-   remains accessible for continuity but will eventually be retired — please
-   start looking for appliances via Trovi.
+   heat templates. The old Appliance Catalog is deprecated and no longer used.
 
 Trovi has several *Complex Appliances* for popular technologies that people want
 to deploy such as OpenStack or MPI or even more advanced deployments such as

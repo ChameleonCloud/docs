@@ -44,6 +44,5 @@ Welcome to Chameleon
    technical/shares/index
    technical/networks/index
    technical/fpga/index
-   technical/sharing/index
-   technical/daypass/index
    technical/kvm/index
+   technical/experiments/index

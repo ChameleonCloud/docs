@@ -4,15 +4,19 @@ CLI authentication
 ==================
 
 When using the CLI, you have to provide some credentials so the system trusts
-that the operations are really being executed by your user account. There are
-two ways of doing this.
+that the operations are really being executed by your user account. This page
+covers two such ways of doing this: a CLI password and application
+credentials. Both require manually creating and downloading credential files.
 
 .. note::
 
-   If you are running OpenStack commands from a Chameleon instance, you can use
-   :ref:`ccauth <cli-ccauth>` to authenticate via your browser without manually
-   managing a password or application credential. ``ccauth`` is preinstalled on
-   all Chameleon supported images.
+   For most users, :ref:`ccauth <cli-ccauth>` or :ref:`cc-login
+   <cli-cc-login>` are easier than the methods on this page — they
+   authenticate via your browser and generate credential files for you, with
+   no manual password or application credential setup required. See
+   :ref:`which authentication method should I use? <cli-which-auth-method>`
+   for guidance on choosing between them. Use a CLI password or application
+   credential only if neither of those tools fits your workflow.
 
 Setting a CLI password
 ----------------------
@@ -46,9 +50,10 @@ Creating an application credential
 ----------------------------------
 
 You can also generate *application credentials*, which act as dedicated one-off
-passwords that are authorized with the same permissions as your user account,
-within a single project. If you work on multiple projects simultaneously, you
-will need to generate one application credential for each project.
+passwords that are authorized with a scoped set of your user account's
+permissions, within a single project. If you work on multiple projects
+simultaneously, you will need to generate one application credential for each
+project.
 
 To create an application credential, navigate to the "Identity" dashboard in the
 :ref:`gui`, and go to the "Application Credentials" panel. Create a new
@@ -60,6 +65,16 @@ option.
 
 .. figure:: applicationcredentials.png
    :alt: Creating an application credential via the GUI
+
+.. note::
+
+   If a credential scoped only to the ``member`` role gets a ``403
+   Forbidden`` error on commands such as ``openstack image list`` or
+   ``openstack server create``, try creating a new application credential
+   that also includes the ``reader`` role alongside ``member``. This is a
+   known issue with role scoping for application credentials; including
+   ``reader`` resolves it for most operations while a permanent fix is in
+   progress.
 
 Once the system generates the credential, you will be given the option to
 download an :ref:`RC file <cli-rc-script>` that configures the CLI to use the

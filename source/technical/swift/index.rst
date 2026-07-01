@@ -9,6 +9,13 @@ Chameleon provides an object store service through the `OpenStack Swift
 used for storing and retrieving data used during experiments, such as input
 files needed for your applications, or results produced by your experiments.
 
+.. note::
+   Objects can also be managed programmatically via the `chi.storage module
+   <https://python-chi.readthedocs.io/en/latest/modules/storage.html>`_ in
+   `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
+
 .. hint::
    Chameleon object store service is currently backed by a `Ceph
    <https://ceph.com/>`_ cluster with more than 2.1 PB of capacity. The data is
@@ -37,7 +44,7 @@ panel.
    store using ``ccauth`` to generate multi-site credentials. See
    :ref:`object-store-cli-kvm` for step-by-step instructions.
 
-Objects and Containers
+Objects and containers
 ======================
 
 *Objects* are equivalent to individual files. They are stored in *Containers*,

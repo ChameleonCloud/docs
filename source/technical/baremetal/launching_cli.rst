@@ -1,4 +1,4 @@
-Launching Instances with the CLI
+Launching instances with the CLI
 ================================
 
 .. tip::
@@ -50,7 +50,7 @@ script either via the GUI in the *Configuration* tab when launching an
 instance, or by providing a file to the nova command line using the
 ``--user-data`` option.
 
-Customizing the Kernel
+Customizing the kernel
 ----------------------
 
 It is easy to customize the operating system kernel or modify the kernel command

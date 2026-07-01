@@ -1,4 +1,4 @@
-Launching Instances with the GUI
+Launching instances with the GUI
 ================================
 
 .. _baremetal-gui-launch:
@@ -125,7 +125,7 @@ To launch an instance with the GUI, follow the steps:
 
 .. _baremetal-gui-associate-ip:
 
-Associate a Floating IP
+Associate a floating IP
 -----------------------
 
 To make your instance publicly accessible over the Internet, you must associate

@@ -14,7 +14,12 @@ services, Chameleon offers both bare metal access to physical hardware and tradi
 virtual machines, giving you full control over the software stack and enabling 
 reproducible experimental research.
 
-Key Features
+.. note::
+  **Looking for CHI@Edge?**
+  **CHI@Edge's** container-based edge computing resources are documented separately
+  — see the `CHI@Edge docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_
+
+Key features
 ============
 
 **Hardware Access**
@@ -41,7 +46,7 @@ Key Features
   * **Jupyter integration**: Interactive development and data analysis environment
   * **Multi-site deployment**: Experiments across geographically distributed sites
 
-Getting Started
+Getting started
 ===============
 
 **New to Chameleon?**
@@ -53,12 +58,13 @@ Getting Started
 
 **Ready to use the testbed?**
   Choose your interface:
-  
+
   * :doc:`Web Interface <technical/gui/index>` - Point-and-click access to all features (**recommended for beginners**)
   * :doc:`Command Line <technical/cli/index>` - Programmatic access and automation
   * :doc:`Jupyter Environment <technical/jupyter/index>` - Interactive notebooks and data analysis
 
-Quick Navigation
+
+Quick navigation
 ================
 
 **Core Workflow**
@@ -72,7 +78,7 @@ Quick Navigation
   * :doc:`Complex deployments <technical/complex/index>` - Multi-node orchestration with Heat
   * :doc:`Networking <technical/networks/index>` - Advanced network topologies and isolation
   * :doc:`FPGA programming <technical/fpga/index>` - Hardware acceleration experiments
-  * :doc:`Share your work <technical/sharing/index>` - Publish experiments via Trovi
+  * :doc:`Package and share your work <technical/experiments/index>` - Publish experiments via Trovi
 
 **Data & Storage**
   * :doc:`Object storage <technical/swift/index>` - Scalable data storage and sharing
@@ -82,9 +88,9 @@ Quick Navigation
 **Getting Help**
   * :doc:`Help desk <user/help>` - Submit tickets and view system status
   * :doc:`User profile <user/profile>` - Manage your account settings
-  * :doc:`Daypass access <technical/daypass>` - Temporary access for artifact reproduction
+  * :doc:`Daypass access <technical/experiments/daypass>` - Temporary access for artifact reproduction
 
-About the Infrastructure
+About the infrastructure
 =========================
 
 Chameleon operates multiple sites providing different capabilities:

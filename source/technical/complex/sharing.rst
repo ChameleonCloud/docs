@@ -1,6 +1,6 @@
 .. _complex-sharing:
 
-Sharing Complex Appliances
+Sharing complex appliances
 ==========================
 
 If you have written your own *Complex Appliance* or substantially customized an
@@ -16,7 +16,6 @@ published, your appliance will be discoverable by other Chameleon users when
 they filter Trovi by the **appliance** tag.
 
 .. note::
-   The `Appliance Catalog <https://www.chameleoncloud.org/appliances/>`_ is
-   still accessible for browsing existing appliances, but it is no longer
-   possible to add new appliances there. It will eventually be retired.
-   Please use Trovi for all new appliance submissions.
+   The old Appliance Catalog is deprecated and no longer used. All
+   appliances — images, heat templates, and other artifacts — are now stored
+   and shared exclusively through Trovi.

@@ -1,4 +1,4 @@
-Using the REST APIs for Resource Discovery
+Using the REST APIs for resource discovery
 ===================================================
 
 The Resource Discovery API gives programmatic access to the same hardware
@@ -52,7 +52,7 @@ or (RedHat-based distributions):
 
 Download and install the cURL package from `the website <https://curl.haxx.se/download.html>`_.
 
-Your First Requests
+Your first requests
 ___________________________
 
 The API entry-point for the resource discovery API is located at https://api.chameleoncloud.org/. Open your Terminal program (or the cURL executable if you're on Windows), and use cURL to fetch the resource located at that URL:
@@ -193,7 +193,7 @@ The response should look like:
 
 .. note:: Previous versions of the API included a ``"type"`` field (e.g. ``"type": "application/vnd.grid5000.collection+json"``) on every link object in responses. This field has since been removed and no longer appears in API responses.
 
-Discover Resources
+Discover resources
 ___________________________
 
 It is easy to discover resources using REST APIs when you chase down the ``links`` in the responses.
@@ -244,7 +244,7 @@ The following command examples allow you to see that some of the nodes on the *c
    curl https://api.chameleoncloud.org/sites/tacc/clusters/chameleon/nodes/d4a46dc6-7cac-417f-800c-faea63a46130 | jq | grep -A 10 storage_devices
 
 
-Fetch the Latest Changes
+Fetch the latest changes
 ___________________________
 
 Chameleon hardware is added, updated, or removed over time — including

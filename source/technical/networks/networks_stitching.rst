@@ -1,6 +1,6 @@
 .. _stitching:
 
-External Layer2 Connections (Stitching)
+External layer2 connections (stitching)
 =======================================
 
 
@@ -17,7 +17,7 @@ The remainder of this document describes how to stitch Chameleon experiments to 
 
 .. _network-stitchable-create:
 
-Configuring a Stitchable Network
+Configuring a stitchable network
 ________________________________
 
 Your first step will require creating a stitchable network. Unlike creating
@@ -31,7 +31,7 @@ in the ``resource_properties`` attribute. An example is provided below:
 
    openstack reservation lease create --reservation \
    resource_type=network,network_name=my-stitchable-network,\
-   resource_properties='["==","$stitch_provider","fabric"]' \
+   resource_properties='["=","$stitch_provider","fabric"]' \
    --start-date "2022-01-01 12:00" --end-date "2022-01-02 12:00" \
    my-stitchable-network-lease
 
@@ -54,12 +54,16 @@ Alternately, if you know the desired vlan_id in advance, say it's already config
     # in this example, we happened to know 3490 was the vlan ID we wanted
     openstack reservation lease create --reservation \
     resource_type=network,network_name=foo_bar,\
-    resource_properties='["and",["==","$stitch_provider","fabric"],["==","$segment_id","3490"]]' \
+    resource_properties='["and",["=","$stitch_provider","fabric"],["=","$segment_id","3490"]]' \
     segment_lease_3490
 
-Connecting Stitchable Isolated Networks across Chameleon Sites
+Connecting stitchable isolated networks across Chameleon sites
 ______________________________________________________________
 
 As both CHI\@UC and CHI\@TACC can be stitched to FABRIC, you're able to use FABRIC to create a Layer 2 connection between nodes at the two sites.
 
-Examples coming soon!
+For a complete, current walkthrough of this pattern, see the Tips and Tricks
+post `Running LLMs on Chameleon GPUs from FABRIC via Stitch Ports
+<https://blog.chameleoncloud.org/posts/chi-fabric-stitch-ports/>`_, which
+demonstrates the full end-to-end workflow for cross-testbed experiments and
+links to a companion Trovi artifact you can fork and run yourself.

@@ -1,23 +1,82 @@
 .. _basic-networking:
 
-Basic Networking
+Basic networking
 ================
 
 .. Note:: Step-by-step instructions for getting started with Chameleon are available in the :ref:`getting-started` section of this documentation. These instructions include using basic networking functionality.
 
-Shared Network
+.. _basic-networking-troubleshooting:
+
+Can't reach your instance?
+---------------------------
+
+If you can't connect to an instance over SSH or another port, there are
+**multiple independent layers** that can each block the connection on their
+own — fixing one does not mean the others are open. Check them in order:
+
+#. **Is a Floating IP associated with the instance, on a network with a
+   router?** See `Floating IP addresses`_ below.
+#. **(KVM@TACC only) Is a Security Group applied that allows the port?**
+   Security Groups only exist on KVM@TACC — bare metal instances at
+   |CHI@TACC| and |CHI@UC| have no Security Group menu at all, so this step
+   doesn't apply to them. See `Security groups`_ below.
+#. **Is the port open in the instance's own firewall?** Every
+   Chameleon-supported image runs a firewall *inside* the instance
+   (``firewalld``, or ``ufw`` on some older images), independently of any
+   Security Group, and it only allows SSH (port 22) by default. This is the
+   step people miss most often: opening a Security Group does **not** open
+   the instance's internal firewall, and opening the internal firewall does
+   **not** open a Security Group — on KVM@TACC you need both. See `Firewall`_
+   below.
+#. **Are you using the right key pair?** ``Permission denied (publickey)``
+   usually means the instance was launched with a different key than the one
+   you're connecting with.
+
+Shared network
 --------------
 
 All Chameleon Projects have access to the fixed network ``sharednet1`` which is used by most experiments. The ``sharednet1`` is a pre-configured network shared among all Chameleon Projects with one *Subnet* and includes a *Router* providing NAT access to the public Internet. All instances using ``sharednet1`` can communicate directly.
 
-Multiple Networks
+.. tip::
+   ``sharednet1`` is a shared, finite pool of addresses. If you're unable to
+   launch an instance on ``sharednet1`` because it has no free addresses,
+   you don't have to wait — create your own :ref:`isolated VLAN network
+   <network-isolation>` instead. It gets you a dedicated subnet under your
+   own control, with no dependency on ``sharednet1`` capacity.
+
+Multiple networks
 -----------------
 
 Some Chameleon bare metal nodes support connecting to multiple networks. Currently, the number of networks allowed is limited to the number of enabled NICs on the node (currently this is up to 2). It is possible to find such nodes via :ref:`resource-discovery` by filtering by the "Enabled" flag for a given Network Adapter slot. Note that the slots are 0-indexed, meaning the first NIC is referred to as Network Adapter #0.
 
 When launching a node that supports multiple networks, simply assign multiple networks to the instance when you are launching it. The networks will be mounted on NICs in the same order that the networks are assigned; that is, the first assigned network will be mounted on Network Adapter #0, and the second on Network Adapter #1, and so on.
 
-Floating IP Addresses
+.. tip::
+   **Worked example: keep SSH access while using a second NIC for your
+   experiment.** A common pattern is to put ``sharednet1`` (or any network
+   with a router and floating IP access) on Network Adapter #0 so you retain
+   normal SSH/management access, and put a dedicated :ref:`isolated network
+   <network-isolation>` on Network Adapter #1 for your experiment's data
+   path. To do this via the CLI, list both networks in the order you want
+   them assigned when creating the server:
+
+   .. code-block:: bash
+
+      openstack server create \
+        --nic net-id=<sharednet1_id> \
+        --nic net-id=<experiment_network_id> \
+        --image <image> \
+        --flavor baremetal \
+        --key-name <key_name> \
+        --hint reservation=<reservation_id> \
+        my-instance
+
+   ``sharednet1`` will come up as the first interface (e.g. ``eno1``) and
+   your isolated network as the second (e.g. ``eno2``). Keep managing the
+   instance over the ``sharednet1`` interface, and configure your experiment
+   traffic on the second one.
+
+Floating IP addresses
 ---------------------
 
 Instances on Chameleon are assigned a *fixed* IP address that can be used for local connectivity as well as NAT access to the public Internet. A publicly accessible IPv4 address (*Floating IP address*) is required in order to access Chameleon instances from the Internet or host public services. |CHI@TACC| and |CHI@UC| each have a limited number of public IP addresses that can be allocated to your instances.
@@ -30,9 +89,14 @@ Note that in order to use a *Floating IP address*, your instance must be connect
 The default network ``sharednet1`` is one such network, but it will also work with isolated networks that you create. For more information about VLAN and isolated networks, see :doc:`networks_vlan`.
 When associating a floating IP, if you do not see your instance in the dropdown, double-check that it is connected to an appropriate network.
 
-In addition to the ad-hoc method described above, Floating IP addresses can also be reserved via the Reservation :ref:`GUI <reservations-create-lease-gui>` or :ref:`CLI <reservation-cli-fip>`. These ad-hoc and reserved addresses are drawn from separate pools, if all addresses from one pool are in use, we recommend trying the other method.
+In addition to the ad-hoc method described above, Floating IP addresses can also be reserved via the Reservation :ref:`GUI <reservations-create-lease-gui>` or :ref:`CLI <reservation-cli-fip>`. These ad-hoc and reserved addresses are drawn from **separate pools**.
 
-Releasing Floating IP Addresses via GUI
+.. tip::
+   If you get an error that no Floating IP addresses are available, this
+   usually means one pool is exhausted, not both. Try the other method — if
+   ad-hoc allocation fails, try reserving one instead (or vice versa).
+
+Releasing floating IP addresses via GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To release floating IP addresses through the GUI:
@@ -43,7 +107,7 @@ To release floating IP addresses through the GUI:
 
 You can also release floating IP addresses via the command line using ``openstack floating ip delete <floating-ip>``.
 
-Floating DNS Records
+Floating DNS records
 ^^^^^^^^^^^^^^^^^^^^
 
 Each Floating IP is also contained within a dedicated DNS A record; this means that you can access your instance over the Internet either via its Floating IP or a special hostname. This can be particularly helpful if you want to set up a TLS certificate for HTTPS to secure a service you are exposing over the web, e.g., with `LetsEncrypt <https://letsencrypt.org/>`_.
@@ -169,10 +233,16 @@ For more examples and information, see:
 - `Rocky Linux Guide <https://docs.rockylinux.org/guides/security/firewalld-beginners/#firewalld-for-beginners>`_
 
 
-Security Groups
+Security groups
 ^^^^^^^^^^^^^^^
 
-`KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. By default, instances have no *Security Groups* applied, so all traffic is allowed.
+.. attention::
+   Security Groups are a **KVM@TACC-only** feature. Bare metal instances at
+   |CHI@TACC| and |CHI@UC| do not have a Security Group menu at all — on
+   those sites, the in-instance `Firewall`_ described above is your only
+   network-level access control.
+
+`KVM\@TACC <https://kvm.tacc.chameleoncloud.org>`_ supports *Security Groups*, which can be assigned directly to instances upon launch or after the instance is already running. Every instance is assigned the ``default`` Security Group unless you specify otherwise, and **that group blocks all inbound traffic, including SSH, by default** — it only allows outbound traffic. To reach an instance over SSH, you must apply a Security Group (e.g. the built-in "Allow SSH" group) that explicitly permits inbound TCP port 22. See :ref:`kvm-security-groups` for how to create and apply one via the GUI, or :ref:`kvm-cli` for the CLI equivalent.
 
 Limit bound interfaces
 ^^^^^^^^^^^^^^^^^^^^^^

@@ -42,7 +42,7 @@ The workflow for using these FPGAs on Chameleon consists of four main steps:
    Chameleon does not provide FPGA compilation services or development tools. Users need to compile their code elsewhere before running it on Chameleon's FPGAs. We are currently exploring new ways to provide FPGA development tools and workflows in the future.
 
 _________________________
-Reserving FPGA Hardware
+Reserving FPGA hardware
 _________________________
 
 CHI@UC provides two `compute_cascadelake_r` nodes equipped with Xilinx Alveo U280 FPGAs:
@@ -53,7 +53,7 @@ CHI@UC provides two `compute_cascadelake_r` nodes equipped with Xilinx Alveo U28
 To ensure you get the correct hardware, reserve these nodes specifically by UUID, `as explained here in our documentation <https://chameleoncloud.readthedocs.io/en/latest/technical/reservations.html#reserving-a-node-by-uuid>`_.
 
 _________________________
-Launching Your Instance
+Launching your instance
 _________________________
 
 After your reservation becomes active:
@@ -62,7 +62,7 @@ After your reservation becomes active:
 - Connect to your instance via SSH
 
 _______________________
-Installing Xilinx Tools
+Installing Xilinx tools
 _______________________
 
 Compiling code for FPGAs requires the Xilinx Vitis™ software platform, which provides a comprehensive development environment for creating FPGA-accelerated applications. The Vitis platform includes the Vitis Unified Software Platform, Vitis Core Development Kit, and Vitis AI Development Kit.
@@ -74,7 +74,7 @@ Guidelines for installing the Vitis platform can be found in the `AMD documentat
 Guidelines for installing the Xilinx Runtime (XRT) tools can be found in the `XRT documentation <https://xilinx.github.io/XRT/master/html/index.html>`__.
 
 ___________________________
-Loading Your Bitstream
+Loading your bitstream
 ___________________________
 
 After installing the required tools, you can program the Xilinx Alveo U280 FPGA with your pre-compiled bitstream using the `Xilinx Runtime (XRT) tools <https://xilinx.github.io/XRT/master/html/index.html>`_. The steps below are the basic workflow for flashing, but we encourage users to review the AMD documentation for more detailed instructions.

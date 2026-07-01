@@ -5,6 +5,14 @@ Overview
 The following sections contain in-depth knowledge for utilizing Chameleon's
 advanced features.
 
+.. note::
+   Most workflows described in this guide can also be orchestrated
+   programmatically with `python-chi <https://python-chi.readthedocs.io/en/latest/>`_,
+   Chameleon's Python library — see our :doc:`Jupyter and python-chi guide
+   <../getting-started/jupyter-python-chi>` for an introduction and the
+   `module reference <https://python-chi.readthedocs.io/en/latest/>`_ for
+   full API details.
+
 - :doc:`discovery/index`: Discover Chameleon bare metal resources by node type and
   view node information.
 - :doc:`reservations/index`: Reserve Chameleon resources for use in your Project.
@@ -20,9 +28,10 @@ advanced features.
   File System service.
 - :doc:`networks/index`: Create Isolated virtual networks within Chameleon.
 - :doc:`fpga/index`: Configure and work with FPGA nodes.
-- :doc:`sharing/index`: Share reproducible experiments and artifacts using the Trovi
-  Sharing Portal.
-- :doc:`daypass/index`: Enable temporary access to your experiments for collaborators
-  or reviewers.
+- :doc:`experiments/index`: Package and share reproducible experiments and artifacts
+  using the Trovi Sharing Portal, including granting temporary Daypass access to
+  collaborators or reviewers.
 - :doc:`kvm/index`: Use non-bare metal virtual machine resources in Chameleon's
   OpenStack implementation.
+- |CHI@Edge|: Use container-based edge computing resources, such as Raspberry
+  Pi devices (`docs <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_).

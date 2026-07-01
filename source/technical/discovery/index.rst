@@ -16,10 +16,18 @@ the Grid'5000 project <https://www.grid5000.fr/mediawiki/index.php/API>`_.
 Users can consult the registry via the resource discovery GUI or directly via
 REST APIs.
 
-.. note:: 
-   Some resource discovery features are available through the `Chameleon Portal
-   <https://chameleoncloud.org>`_, while others are available **only** through the
-   REST APIs.
+.. note::
+   This section covers discovery of Chameleon's bare metal resources. |CHI@Edge|
+   devices are not part of the resource registry and are discovered and
+   managed separately — see the `CHI@Edge docs
+   <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_.
+
+.. note::
+   Hardware discovery is also available programmatically via the `chi.hardware
+   module <https://python-chi.readthedocs.io/en/latest/modules/hardware.html>`_
+   in `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ — see our
+   :doc:`Jupyter and python-chi guide
+   <../../getting-started/jupyter-python-chi>` for an introduction.
 
 .. toctree::
    :maxdepth: 1

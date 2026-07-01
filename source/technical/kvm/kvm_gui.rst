@@ -17,12 +17,12 @@ you have selected and no information about your other projects is shown.
 
 .. figure:: new_overview.png
 
-Creating Leases for VMs
+Creating leases for VMs
 -----------------------
 
 Before launching an instance, you must have an active lease.
 
-Checking Availability
+Checking availability
 ~~~~~~~~~~~~~~~~~~~~~
 
 Before creating a lease, you can check availability using the *Flavor Calendar*. To access the Flavor Calendar:
@@ -44,7 +44,7 @@ The Flavor Calendar shows availability over time for flavors, allowing you to se
 
 .. _kvm-create-lease:
 
-Creating a Lease
+Creating a lease
 ~~~~~~~~~~~~~~~~
 
 Once you've confirmed availability, create a lease by navigating to the *Reservations* panel and clicking *Create Lease*. In the new lease form:
@@ -60,14 +60,20 @@ Once you've confirmed availability, create a lease by navigating to the *Reserva
 - Confirm your reservation after submitting the lease request. If capacity is insufficient, the GUI will display an error message and the lease will not be created.
 
 .. note::
-   
+
    Use the Flavor Calendar to check availability before creating a lease. If
    you are unable to create a lease, you may need to wait for resources to become
    available.
 
+.. note::
+   KVM@TACC lease durations follow a different policy than bare metal — see
+   the `Chameleon FAQ
+   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
+   for details.
+
 .. _kvm-launch-instance:
 
-Launching Instances
+Launching instances
 -------------------
 
 To launch an *Instance*, click the *Launch Instance* button. This will open the
@@ -143,7 +149,7 @@ next to your project's private network (PROJECT_NAME-net), not ``ext-net``.
 Now you can launch your instance by clicking on the *Launch* button and the
 *Instances* page will show progress as it starts.
 
-Managing Virtual Machine Instances
+Managing virtual machine instances
 ----------------------------------
 
 One of the main activities you'll be performing in the GUI is management of
@@ -158,7 +164,7 @@ instance.
 
 .. _kvm-associate-ip:
 
-Associating a Floating IP Address
+Associating a floating IP address
 ---------------------------------
 
 You may assign a Floating IP Address to your Instance by selecting *Associate
@@ -169,7 +175,7 @@ Floating IP* in the dropdown menu next to your Instance on the *Instances* page.
 This process is similar to :ref:`baremetal-gui-associate-ip` on |CHI@TACC| and
 |CHI@UC| bare metal sites.
 
-Key Pairs
+Key pairs
 ---------
 
 You will need to import or create SSH :ref:`gui-key-pairs`. This process is
@@ -177,7 +183,7 @@ similar to the process performed on |CHI@TACC| and |CHI@UC| bare metal sites.
 
 .. _kvm-security-groups:
 
-Security Groups
+Security groups
 ---------------
 
 *Security Groups* allow you to specify what inbound and outbound traffic is
@@ -227,7 +233,7 @@ finished, click *Add*.
 
 .. _kvm-security-group:
 
-Adding a Security Group to an Instance
+Adding a security group to an instance
 --------------------------------------
 
 Once you have defined a *Security Group*, you may apply it to an Instance by
@@ -247,7 +253,7 @@ finish the process.
 
 .. _kvm-create-snapshot:
 
-Creating a Instance Snapshot
+Creating a instance snapshot
 ----------------------------
 
 Unlike the baremetal sites, where you must use the cc-snapshot tool inside your instance to create a snapshot, on KVM@TACC you can create a snapshot directly from the GUI.
@@ -262,7 +268,7 @@ It may some time for the snapshot to complete. Once you see the Image is "Active
 
 .. _kvm-launch-snapshot:
 
-Launching an Instance from a Snapshot
+Launching an instance from a snapshot
 -------------------------------------
 
 To launch an instance from a snapshot, follow the instructions from the guide above, but under the "Source" tab, select "Instance Snapshot" instead of "Image" in the dropdown.

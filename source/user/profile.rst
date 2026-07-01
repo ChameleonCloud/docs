@@ -8,7 +8,7 @@ User Profile
 
   Navigate to the user profile page through the **User** tab
 
-Accessing Your Profile
+Accessing your profile
 ======================
 
 You can reach your Profile page via:
@@ -20,7 +20,7 @@ You can reach your Profile page via:
 
 .. figure:: profile/user-dropdown-profile.png
 
-Profile Overview
+Profile overview
 ================
 
 .. figure:: profile/profile.png
@@ -48,7 +48,7 @@ The Profile page shows summary of your account information:
 | PI Eligibility      | Your current PI eligibility status                                    |
 +---------------------+-----------------------------------------------------------------------+
 
-Editing Your Profile
+Editing your profile
 ====================
 
 .. figure:: profile/edit-profile.png
@@ -67,7 +67,7 @@ requesting PI status in :doc:`PI Eligibility <pi_eligibility>`.
    **Country of citizenship and name** cannot be edited directly. To
    these fields, you must file a support ticket.
 
-Managing Email Subscriptions
+Managing email subscriptions
 ============================
 
 Your profile page provides access to two mailing lists. Click either button to open the
@@ -76,10 +76,10 @@ external subscription page where you can subscribe or unsubscribe:
 - **Outage Notifications Mailing List** — Notifications about system outages
 - **Chameleon Users Mailing List** — General Chameleon user community announcements
 
-Terms of Use
+Terms of use
 ============
 
-Links to the following terms of use documents are available at the bottom of the profile page:
+Our terms of use documents are available at the bottom of the profile page:
 
-- **Chameleon User Terms of Use** — Applicable to all users
-- **Chameleon Project Lead Terms of Use** — Applicable to users who act as project leads (PIs)
+- `Chameleon User Terms of Use <https://www.chameleoncloud.org/terms/>`_ — Applicable to all users
+- `Chameleon Project Lead Terms of Use <https://chameleoncloud.org/terms/view/project-terms/1.00/>`_ — Applicable to users who act as project leads (PIs); see the "Project Leaders/PI's" section of the Terms of Use

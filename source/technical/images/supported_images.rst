@@ -1,7 +1,7 @@
 .. _chameleon-supported-images:
 
 ==========================
-Chameleon Supported Images
+Chameleon supported images
 ==========================
 
 There are a number of images built and supported by the Chameleon team,

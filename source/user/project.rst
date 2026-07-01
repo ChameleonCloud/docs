@@ -85,7 +85,7 @@ Each individual *Project* has its own:
 
 .. _creating-a-project:
 
-Creating a Project
+Creating a project
 ------------------
 
 To create a project, click the *+Create a Project* button. After filling out and
@@ -100,7 +100,7 @@ a default allocation of 20,000 :ref:`service-units`.
 
 .. _service-units:
 
-Service Units
+Service units
 ~~~~~~~~~~~~~~
 
 One Service Unit (SU) is equivalent to one hour of wall clock time on a base
@@ -110,7 +110,7 @@ KVM instances, see our `FAQ
 
 .. _project-details:
 
-Project Details
+Project details
 ~~~~~~~~~~~~~~~
 
 Clicking on a project from either the :ref:`dashboard-page` main page or the
@@ -128,7 +128,7 @@ and :ref:`manage users <manage-users>` of your project.
 
 .. _recharge-extend-allocation:
 
-Recharge or Extend Your Allocation
+Recharge or extend your allocation
 ----------------------------------
 
 .. figure:: project/allocationactions.png
@@ -149,7 +149,7 @@ contact the :doc:`Help Desk <help>`.
 
 .. _view-charge:
 
-View Allocation Usage Details
+View allocation usage details
 ------------------------------
 
 .. figure:: project/allocationusagedetails.png
@@ -166,7 +166,7 @@ what type of charge it was.
 
 .. _manage-users:
 
-Manage Users
+Manage users
 ------------
 
 In the dashboard, you can add or remove users (or "members") from your
@@ -175,7 +175,7 @@ each project member can consume on your project allocation.
 
 .. _user_roles:
 
-User Roles
+User roles
 ~~~~~~~~~~
 
 To manage user roles for a *Project*, scroll down to the *Project Members*
@@ -204,7 +204,7 @@ use the *Cancel* button to cancel the action.
 
 .. _set-SU-budgets:
 
-Set SU Budgets for Project Members
+Set SU budgets for project members
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The PI or project managers can set a service unit (SU) budget for each project
@@ -240,7 +240,7 @@ the SU budget for a specific user, use the slider or the SU Budget field to
 
 .. _add-remove-members:
 
-Adding and Removing New Members
+Adding and removing new members
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To add or remove users of a *Project*, use the *Project Members* section in the
@@ -276,7 +276,7 @@ the *Project Members* section.
 
 .. _manage-publications:
 
-Manage Publications
+Manage publications
 --------------------
 
 To add publications to a project, click the *Add Publications* button in the

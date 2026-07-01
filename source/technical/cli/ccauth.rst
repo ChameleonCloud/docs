@@ -143,7 +143,7 @@ Example output:
 Examples
 ~~~~~~~~
 
-Complete workflow: Authenticating and running OpenStack commands
+Complete workflow: authenticating and running OpenStack commands
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 To authenticate and run commands like ``openstack image list``, use the

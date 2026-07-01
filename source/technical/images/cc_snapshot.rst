@@ -1,40 +1,56 @@
 .. _cc-snapshot-utility:
 
 ===========================
-The ``cc-snapshot`` Utility
+The ``cc-snapshot`` utility
 ===========================
 
 Overview
 --------
 
-The ``cc-snapshot`` utility implements snapshotting a bare metal instance from command line and uploads it to `Glance <https://docs.openstack.org/glance/latest/>`_, so that it can be immediately used to boot a new bare metal instance. The snapshot images created with this tool are whole disk images.
+The ``cc-snapshot`` utility implements snapshotting a bare metal instance from
+command line and uploads it to `Glance
+<https://docs.openstack.org/glance/latest/>`_, so that it can be immediately
+used to boot a new bare metal instance. The snapshot images created with this
+tool are whole disk images.
 
-For ease of use, ``cc-snapshot`` has been installed in all the appliances supported by the Chameleon project. If you would like to use it in a different setting, it can be downloaded and installed from the `github repository <https://github.com/ChameleonCloud/cc-snapshot>`_.
+For ease of use, ``cc-snapshot`` has been installed in all the appliances
+supported by the Chameleon project. If you would like to use it in a different
+setting, it can be downloaded and installed from the `github repository
+<https://github.com/ChameleonCloud/cc-snapshot>`_.
 
-To make a snapshot of a bare metal instance, run the following command from inside the instance:
+.. tip::
+   ``cc-snapshot`` is also a useful tool for preserving an instance before it
+   expires. See the Tips and Tricks post `Extending Your Research Artifacts'
+   Lifespan <https://blog.chameleoncloud.org/posts/extending-your-research-artifacts-lifespan/>`_
+   for how default resource retention periods work and other ways to extend
+   them.
+
+.. note::
+   As of the :ref:`vendordata authentication changes <cli-vendordata-auth-removal>`,
+   ``cc-snapshot`` no longer reads credentials from vendordata. You must have
+   OpenStack credentials in your environment first — for example by running
+   ``ccauth openrc --output ~/openrc && source ~/openrc`` — and then run
+   ``cc-snapshot`` with ``sudo -E`` so root inherits them.
+
+To make a snapshot of a bare metal instance, run the following command from
+inside the instance:
 
 .. code-block:: bash
 
-   sudo cc-snapshot <image_name>
+   sudo -E cc-snapshot <image_name>
 
 .. tip::
    You may get warnings, such as "image too large", during snapshotting, and get prompted to confirm. If you are confident about what you are trying to do, you can skip all warnings by using the ``-f`` flag.
 
    .. code-block:: bash
 
-      sudo cc-snapshot -f <image_name>
+      sudo -E cc-snapshot -f <image_name>
 
    In addition, you can exclude directories by using the ``-e`` flag.
 
    .. code-block:: bash
 
-      sudo cc-snapshot -e <dir1> -e <dir2> <image_name>
-
-   You can use existing OpenStack environment credentials instead of vendordata by using the ``-o`` flag.
-
-   .. code-block:: bash
-
-      sudo cc-snapshot -o <image_name>
+      sudo -E cc-snapshot -e <dir1> -e <dir2> <image_name>
 
    You can use the faster zstd compression (default is zlib) by using the ``-z`` flag. Note that
    launching images compressed with zstd won't work on sites running OpenStack Xena or earlier.
@@ -48,13 +64,12 @@ To make a snapshot of a bare metal instance, run the following command from insi
 
    .. code-block:: bash
 
-      sudo cc-snapshot -z <image_name>
+      sudo -E cc-snapshot -z <image_name>
 
-   To see all available options for ``cc-snapshot``, run ``sudo cc-snapshot -h``.
+   To see all available options for ``cc-snapshot``, run ``sudo -E cc-snapshot -h``.
 
-You will be prompted to enter your username and password.
-
-.. tip:: You can skip entering username and password by setting the ``OS_USERNAME`` and ``OS_PASSWORD`` environment variables (manually or via :ref:`cli-rc-script`), or by authenticating with :ref:`ccauth <cli-ccauth>` and exporting its generated ``clouds.yaml`` entry via ``OS_CLOUD``.
+.. tip:: See :ref:`cli-vendordata-auth-removal` for how to generate credentials with
+   :ref:`ccauth <cli-ccauth>` or the :ref:`cli-rc-script` before running ``cc-snapshot``.
 
 .. note:: When using the ``cc-snapshot``, it will create an image within your project with the ``shared`` visibility. Anyone with access to your project can access this image.
 

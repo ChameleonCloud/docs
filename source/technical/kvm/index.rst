@@ -11,17 +11,21 @@ KVM virtualization technology at the `KVM\@TACC
 <https://kvm.tacc.chameleoncloud.org>`_ site. Since the KVM hypervisor is used
 on this cloud, any virtual machines you upload must be compatible with KVM.
 
+.. note::
+   For container-based edge computing on devices such as Raspberry Pis and Jetson Nanos,
+   see |CHI@Edge| (`docs
+   <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_) instead.
+   If you're unsure whether KVM or :ref:`baremetal` is the better fit for
+   your experiment, see the Tips and Tricks post `Bare Metal or KVM?
+   Which Should You Choose and When
+   <https://blog.chameleoncloud.org/posts/bare-metal-or-kvm-which-should-you-choose-and-when/>`_.
+
 This documentation provide basic information about how to use the OpenStack web
 interface and provides some information specific to using OpenStack KVM on
-Chameleon. The interface is similar to the bare metal sites |CHI@TACC| and
+Chameleon. The interface is similar to the bare metal sites, e.g., |CHI@TACC| and
 |CHI@UC|. However, the resources that you are using are virtual, rather than
 being tied to physical nodes. Familiarity with some concepts, such as
 :ref:`gui-key-pairs` are also required for KVM.
-
-.. note::
-   **GPU Access on KVM**
-
-   We have GPUs available NOW on `KVM\@TACC`. See below for details on GPU hardware available through KVM!
 
 .. toctree::
    :maxdepth: 2

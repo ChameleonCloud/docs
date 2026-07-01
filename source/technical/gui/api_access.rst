@@ -1,6 +1,6 @@
 .. _gui-api-access:
 
-API Access
+API access
 ==========
 
 The API Access page lists all the available REST APIs that are used for
