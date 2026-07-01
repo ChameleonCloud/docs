@@ -108,12 +108,19 @@ and the suggested `acknowledgement text
 The FAQ also covers other common policy questions about allocation charges,
 usage best practices, and more.
 
+.. _federation-account-linking:
+
 Account linking
 ===============
 
 Chameleon accounts are linked to a federated identity provider, Globus.
-If you are no longer wish to/are able to log in via your original account source (e.g. you move institutions),
-you can re-link your Chameleon account assuming you have access to same email.
+You'll need to (re-)link your account if you're no longer able to log in via
+your original account source (e.g. you move institutions), or if you're
+stuck in an "account already exists" login loop because you have two
+separate Globus identities (e.g. a Google sign-in and an institutional
+login) pointing at two different Chameleon accounts. Either way, the fix
+below assumes you have access to the same email address as your existing
+account.
 
 .. note::
    Previously Chameleon also supported federated identity via TACC, but this is no longer supported after January 2026.
@@ -138,11 +145,10 @@ Please contact the `Help Desk <https://chameleoncloud.org/user/help/>`_ for furt
 Lost access to your original email
 -----------------------------------
 
-The steps above assume you can still receive a verification email at the
-address on your existing Chameleon account. If that's no longer true — for
-example, you graduated, changed jobs, or your institution migrated email
-domains — self-service linking won't work, since there's no way to click a
-verification link sent to an inbox you can't access.
+If you no longer have access to the email address on your existing account —
+for example, you graduated, changed jobs, or your institution migrated email
+domains — you won't be able to complete the verification step above, since
+there's no inbox to receive the link.
 
 In this case, contact the `Help Desk <https://chameleoncloud.org/user/help/>`_
 directly and include:
@@ -163,20 +169,17 @@ If you experience difficulty logging in, try these solutions:
 
 - **"An account with this email already exists" / repeated login loops**:
   This almost always means you have two separate Globus identities (for
-  example, a Google sign-in and an institutional SSO login) that resolve to
-  two different Chameleon accounts, rather than a single duplicated account.
-  To fix it, log out of Globus entirely, go to your `Globus identity
-  settings <https://app.globus.org/settings/identities>`_, and link the two
-  identities together so they resolve to one Globus account. Then try
-  logging in to Chameleon again. If the accounts still won't merge, contact
-  our :doc:`Help Desk <help>` and ask staff to relink them manually.
+  example, a Google sign-in and an institutional SSO login) pointing at two
+  different Chameleon accounts. Follow the :ref:`Account linking
+  <federation-account-linking>` steps above to link them into one. If two
+  accounts still won't merge afterward, contact our :doc:`Help Desk <help>`
+  and ask staff to merge them manually.
 
 - **Prompted for a username and password**: Federated accounts never have a
   separate Chameleon password to reset — there's nothing behind that screen.
-  If you land on a username/password prompt instead of your institution's
-  login page, it's a sign that your Globus identities aren't linked
-  together (see above), not a forgotten credential. Resetting a password
-  will not fix this.
+  Landing here instead of your institution's login page is a symptom of the
+  same unlinked-identity issue above, not a forgotten credential; resetting
+  a password will not fix it.
 
 - **"Account is disabled, contact your administrator"**: This means your
   account was automatically locked out after repeated failed login or
