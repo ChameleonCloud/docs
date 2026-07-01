@@ -327,6 +327,16 @@ June 17th, 2022 at 6:00pm and reserves three floating IPs:
    PUBLIC_NETWORK_ID=$(openstack network show public -c id -f value)
    openstack reservation lease create --reservation resource_type=virtual:floatingip,network_id=${PUBLIC_NETWORK_ID},amount=3 --start-date "2022-06-17 16:00" --end-date "2022-06-17 18:00" my-first-fip-lease
 
+Once your floating IP lease is active, you can attach one of the reserved
+IPs to a running instance:
+
+.. code-block:: bash
+
+   openstack server add floating ip <server> <floating-ip-address>
+
+Use ``openstack floating ip list`` to see the floating IPs reserved by your
+lease, and ``openstack server remove floating ip <server> <floating-ip-address>``
+to detach one later.
 
 Reallocating a node in your lease
 ---------------------------------
@@ -351,6 +361,8 @@ entering your lease ID and the node ID where appropriate.
 If you re-allocate a host because it is malfunctioning, please make sure to
 report it to the `Help Desk <https://chameleoncloud.org/user/help/>`_ so that
 we can fix it.
+
+.. _reservation-cli-flavor:
 
 Creating a lease for a flavor (on KVM@TACC)
 -------------------------------------------
@@ -405,3 +417,25 @@ For example, the following command will create a lease with the name of
    the `Chameleon FAQ
    <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
    for details.
+
+Once the lease is active, a new flavor named ``reservation:<reservation-id>``
+becomes available — this is the flavor tied to your reservation. Launch your
+instance against it instead of the original flavor:
+
+.. code-block:: bash
+
+   openstack server create \
+     --flavor reservation:<reservation-id> \
+     --image <image> \
+     --network sharednet1 \
+     my-kvm-instance
+
+The ``<reservation-id>`` is the ``id`` of the individual reservation inside
+your lease (not the lease ID itself), which you can find with:
+
+.. code-block:: bash
+
+   openstack reservation lease show <lease-name>
+
+See :ref:`kvm-cli` for other KVM@TACC CLI operations, such as managing
+security groups and creating instance snapshots.
