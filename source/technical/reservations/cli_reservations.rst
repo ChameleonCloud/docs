@@ -399,3 +399,9 @@ For example, the following command will create a lease with the name of
      --start-date "2022-06-17 16:00" \
      --end-date "2022-06-17 18:00" \
      my-first-lease
+
+.. note::
+   KVM@TACC lease durations follow a different policy than bare metal — see
+   the `Chameleon FAQ
+   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
+   for details.

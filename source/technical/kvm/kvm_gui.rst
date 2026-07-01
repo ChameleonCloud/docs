@@ -60,10 +60,16 @@ Once you've confirmed availability, create a lease by navigating to the *Reserva
 - Confirm your reservation after submitting the lease request. If capacity is insufficient, the GUI will display an error message and the lease will not be created.
 
 .. note::
-   
+
    Use the Flavor Calendar to check availability before creating a lease. If
    you are unable to create a lease, you may need to wait for resources to become
    available.
+
+.. note::
+   KVM@TACC lease durations follow a different policy than bare metal — see
+   the `Chameleon FAQ
+   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
+   for details.
 
 .. _kvm-launch-instance:
 

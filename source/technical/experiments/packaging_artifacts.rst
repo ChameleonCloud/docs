@@ -157,6 +157,13 @@ Zenodo and check "Request DOI", then click "Save."
 This also creates a DOI, which you can easily include in your
 paper. The artifacts shared on Zenodo also appear on Trovi.
 
+.. tip::
+   Publishing to Zenodo is one way to keep your work available long-term.
+   For a full rundown of how long Chameleon resources and artifacts are
+   retained by default, and other options for extending their lifespan, see
+   the Tips and Tricks post `Extending Your Research Artifacts' Lifespan
+   <https://blog.chameleoncloud.org/posts/extending-your-research-artifacts-lifespan/>`_.
+
 Importing an artifact
 ---------------------
 
@@ -171,6 +178,14 @@ git remote URL, and choose which commit to tie the version to.
 
 To update the artifact, you must create a :ref:`new version <create-git-version>`.
 This ensures that a given version of your artifact always has the same contents.
+
+.. tip::
+   You can also generate the artifact's metadata ahead of time from the
+   command line using the ``troviclient`` tool, which produces a
+   ``trovi.json`` file to commit alongside your repository. See the Tips and
+   Tricks post `Importing GitHub Repositories to Trovi: A Step-by-Step Guide
+   <https://blog.chameleoncloud.org/posts/importing-github-repositories-to-trovi-a-step-by-step-guide/>`_
+   for a walkthrough.
 
 Exporting via git
 -----------------

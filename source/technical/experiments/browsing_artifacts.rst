@@ -34,6 +34,13 @@ right-hand side:
 
 Results can also be sorted by relevance or other criteria.
 
+Most artifacts on Trovi are user-uploaded, but we have some external artifacts
+marked with an **external artifact** label in the description that were brought
+in from outside sources rather than packaged directly on Trovi; see the Tips
+and Tricks post `Bringing External Reproducibility Artifacts Into Trovi
+<https://blog.chameleoncloud.org/posts/bringing-external-reproducibility-artifacts-into-trovi/>`_
+for details on how these are imported and launched.
+
 .. tip::
 
    Chameleon appliances — including Chameleon-supported OS images and heat

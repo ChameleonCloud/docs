@@ -172,6 +172,14 @@ the updates.
    email right after your lease is created. You can :ref:`disable the email
    notification by using the command line <disable-blazar-notification>`.
 
+.. note::
+   This 7-day limit applies to bare metal host leases. KVM@TACC instance
+   leases follow a different policy: :redbold:`6 months` for standard
+   flavors, but the same :redbold:`7-day` cap for GPU-attached flavors. See
+   the `Chameleon FAQ
+   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
+   for the authoritative policy.
+
 Extending a lease
 -----------------
 

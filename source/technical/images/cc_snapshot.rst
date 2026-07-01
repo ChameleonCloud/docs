@@ -7,9 +7,23 @@ The ``cc-snapshot`` utility
 Overview
 --------
 
-The ``cc-snapshot`` utility implements snapshotting a bare metal instance from command line and uploads it to `Glance <https://docs.openstack.org/glance/latest/>`_, so that it can be immediately used to boot a new bare metal instance. The snapshot images created with this tool are whole disk images.
+The ``cc-snapshot`` utility implements snapshotting a bare metal instance from
+command line and uploads it to `Glance
+<https://docs.openstack.org/glance/latest/>`_, so that it can be immediately
+used to boot a new bare metal instance. The snapshot images created with this
+tool are whole disk images.
 
-For ease of use, ``cc-snapshot`` has been installed in all the appliances supported by the Chameleon project. If you would like to use it in a different setting, it can be downloaded and installed from the `github repository <https://github.com/ChameleonCloud/cc-snapshot>`_.
+For ease of use, ``cc-snapshot`` has been installed in all the appliances
+supported by the Chameleon project. If you would like to use it in a different
+setting, it can be downloaded and installed from the `github repository
+<https://github.com/ChameleonCloud/cc-snapshot>`_.
+
+.. tip::
+   ``cc-snapshot`` is also a useful tool for preserving an instance before it
+   expires. See the Tips and Tricks post `Extending Your Research Artifacts'
+   Lifespan <https://blog.chameleoncloud.org/posts/extending-your-research-artifacts-lifespan/>`_
+   for how default resource retention periods work and other ways to extend
+   them.
 
 .. note::
    As of the :ref:`vendordata authentication changes <cli-vendordata-auth-removal>`,
@@ -18,7 +32,8 @@ For ease of use, ``cc-snapshot`` has been installed in all the appliances suppor
    ``ccauth openrc --output ~/openrc && source ~/openrc`` — and then run
    ``cc-snapshot`` with ``sudo -E`` so root inherits them.
 
-To make a snapshot of a bare metal instance, run the following command from inside the instance:
+To make a snapshot of a bare metal instance, run the following command from
+inside the instance:
 
 .. code-block:: bash
 

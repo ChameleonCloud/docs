@@ -14,6 +14,13 @@ your artifact. After the specified time limit, they will be automatically
 removed from this project. Daypass can be enabled on an artifact-by-artifact
 basis in Trovi.
 
+.. tip::
+   If you need to support a structured artifact evaluation (AE) process with
+   multiple reviewers, separate author/reviewer projects, and per-reviewer
+   compute budgets, rather than one-off reproduction by individuals, see the
+   Tips and Tricks post `Running Artifact Evaluations on Chameleon
+   <https://blog.chameleoncloud.org/posts/running-artifact-evaluations-on-chameleon/>`_.
+
 Enabling daypass
 ----------------
 

@@ -15,6 +15,10 @@ on this cloud, any virtual machines you upload must be compatible with KVM.
    For container-based edge computing on devices such as Raspberry Pis and Jetson Nanos,
    see |CHI@Edge| (`docs
    <https://chameleoncloud.gitbook.io/chi-edge/getting-started>`_) instead.
+   If you're unsure whether KVM or :ref:`baremetal` is the better fit for
+   your experiment, see the Tips and Tricks post `Bare Metal or KVM?
+   Which Should You Choose and When
+   <https://blog.chameleoncloud.org/posts/bare-metal-or-kvm-which-should-you-choose-and-when/>`_.
 
 This documentation provide basic information about how to use the OpenStack web
 interface and provides some information specific to using OpenStack KVM on

@@ -26,9 +26,18 @@ For GPU flavors, (those starting with "g1.h100"), instances will be scheduled on
 +-------------------+----------------------------------------------------+
 | Memory            | 1 TB DDR5-4800 RAM                                 |
 +-------------------+----------------------------------------------------+
-| Chassis           | Dell PowerEdge XE964                               |
+| Chassis           | Dell PowerEdge XE9640                              |
 +-------------------+----------------------------------------------------+
 | GPU               | 4 x NVIDIA HGX H100 4-GPU SXM 94GB HBM2e 700W GPU  |
 +-------------------+----------------------------------------------------+
 | Network Adapters  | 1 x 25 Gbps,                                       |
 +-------------------+----------------------------------------------------+
+
+.. attention::
+   Standard KVM@TACC instance leases can run for up to 6 months, but leases
+   for GPU-attached flavors (``g1.h100.*``) are capped at **7 days (1
+   week)** — the same duration limit that applies to bare metal host leases.
+   This timeboxing keeps GPU capacity available to more users over time. See
+   the `Chameleon FAQ
+   <https://www.chameleoncloud.org/learn/frequently-asked-questions/#toc-what-are-the-policies-on-chameleon-resource-usage->`_
+   for the authoritative policy.

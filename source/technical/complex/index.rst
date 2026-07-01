@@ -19,7 +19,10 @@ This guide will tell you all you need to know in order to use and configure *Com
    Multi-node deployments can also be orchestrated programmatically with
    `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ instead of
    Heat templates — see :doc:`advanced_topics` for an example that combines
-   python-chi with Ansible.
+   python-chi with Ansible. For a worked example of building an MPI cluster
+   this way, see the Tips and Tricks post `Building MPI Clusters on
+   Chameleon: A Practical Guide
+   <https://blog.chameleoncloud.org/posts/building-mpi-clusters-on-chameleon-a-practical-guide/>`_.
 
 .. toctree::
    :maxdepth: 2
