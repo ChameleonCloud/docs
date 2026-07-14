@@ -1,118 +1,171 @@
-The hardware catalog on the Chameleon portal
-============================================
+The resource discovery page
+===========================
 
-You may use the `Hardware Discovery <https://chameleoncloud.org/hardware/>`_
-page at the `Chameleon Portal <https://chameleoncloud.org>`_ to see the
-different hardware resource types available at each Chameleon site.
+You can browse all resources available on Chameleon using the `Resource
+Discovery <https://discover.chameleoncloud.org>`_ page.
+The page lets you filter by hardware characteristics, check current and future
+availability, and generate reservation commands.
 
-Availability calendars
-______________________
+.. figure:: new-resource-discovery.png
+   :alt: The Chameleon resource discovery page
 
-The CHI site buttons in the **Availability Calendar** section of the Resource
-Browser allow you to open the :ref:`the-lease-calendars` at the Chameleon
-sites. You must log in using your Chameleon account to view these lease
-calendars.
+   The Chameleon resource discovery page
 
-.. figure:: availability.png
-   :alt: Resource availability links to the lease calendars
+Filtering resources
+___________________
 
-   Resource availability links to the lease calendars
+The search bar at the top of the page filters across all resource types by
+keyword — node type name, GPU model, site, architecture, and more. When a
+search matches resources in a tab other than the one you are viewing, a notice
+appears below the availability panel with a link to switch to that tab.
 
-Chameleon resource browser
-__________________________
+.. figure:: new-search-gpu.png
+   :alt: Search results for "gpu" showing a cross-tab match notice
 
-The Resource Browser allows you to **filter Chameleon resources** by node
-type and view details of each node.
+   Search filtering nodes — with a cross-tab match notice
 
-You can filter for specific node features by selecting the checkboxes that
-match your filter criteria in the menu at the bottom or by clicking on a node
-type such as *compute_gigaio* (see :doc:`../baremetal/composable_hardware`)
-or *gpu_a100_pcie*. The numbers printed next to the node types indicate the
-total number of nodes that we have in our capacity.
+The left sidebar filters the results. Use the **Resource Type** slider to show
+bare metal nodes, virtual machine flavors, or both. The **Availability** filters
+narrow results to resources free starting at a specific time and for at least a
+given duration. Additional quick filters cover GPU presence, CPU architecture,
+and minimum RAM.
 
-.. figure:: resourcebrowser.png
-   :alt: Chameleon Resource Browser
+.. figure:: new-filter-bar.png
+   :alt: Resource filter sidebar
 
-   The Chameleon Resource Browser
+Expand **Advanced Filters** to filter on more specific hardware attributes
+including processor model, GPU count and vendor, placement, network, storage,
+and RDMA. Click **Reset all** in the sidebar to clear all active filters.
 
-You can also click the **Advanced Filters** dropdown to view even more node
-parameters.
+.. figure:: new-advanced-filters.png
+   :alt: Advanced filter options
 
-.. figure:: advanced-filters.png
+Availability panel
+__________________
 
-After you have selected filter criteria, you can click the **View** button at
-the bottom of the page to see details of individual nodes that match your
-filtering criteria.
+The **Availability of Filtered Nodes** panel shows current availability across
+sites. Each site has a color-coded bar where green is available, red is reserved,
+and yellow is under maintenance, with raw counts on the right. Click a site name
+to include or exclude it from results.
 
-.. figure:: view_resources.png
+Node type tags appear under each site. Clicking a tag filters the node list to
+that type and shows an active-filter pill below the panel. Tags shown in red
+indicate all nodes of that type are currently reserved.
 
-.. figure:: nodedetails.png
-   :alt: Node details
+.. figure:: new-status-now-type-selected.png
+   :alt: Availability panel with a node type tag selected
 
-   Node details
+   Status Now — node type tag selected
+
+Switch to **Reservation Calendar** to see upcoming reservations. On the **Bare
+Metal — Nodes** tab each node appears as its own row with red bars marking
+reserved windows. On the **Bare Metal — Node Types** tab nodes are collapsed to
+one row per type — overlapping bars show how many nodes of that type are
+simultaneously reserved, making it easy to spot when capacity opens up.
+
+.. figure:: new-node-availability-reservation-calendar.png
+   :alt: Reservation calendar showing individual nodes
+
+   Reservation calendar — individual nodes
+
+.. figure:: new-node-type-reservation-calendar.png
+   :alt: Reservation calendar aggregated by node type
+
+   Reservation calendar — by node type
+
+Bare Metal — Nodes
+__________________
+
+The **Bare Metal — Nodes** tab lists individual nodes matching your filters,
+sorted by soonest availability. Each card shows the node name, site, node type,
+current availability, and key hardware specs. Check the checkbox on a card to
+add that node to the reservation cart.
+
+Bare Metal — Node Types
+_______________________
+
+The **Bare Metal — Node Types** tab shows one card per node type with aggregated
+availability counts across all nodes of that type. Use this view when you need
+any available node of a given type rather than a specific one.
+
+.. figure:: new-node-type-cards.png
+   :alt: Bare Metal — Node Types view
+
+   Bare Metal — Node Types
+
+Node details
+____________
+
+Click any node card to open its detail panel. The **Node Info** tab shows the
+node's full specifications including its UUID, physical location, CPU, RAM, GPU,
+and architecture. Some nodes display an **Admin note** with important information
+about hardware capabilities or configuration requirements for that node. An
+inline availability chart lets you toggle between a Gantt view for this specific
+node and a line graph showing how many nodes of the same type will be free over
+the coming weeks at that site.
+
+.. figure:: new-admin-note.png
+   :alt: Node detail panel showing an admin note and specifications
+
+   Node detail — Node Info tab
+
+.. figure:: new-bare-metal-avail.png
+   :alt: Node type availability chart
+
+   Node type availability over time
 
 .. note::
-   All the nodes in Chameleon is identified by their *UUIDs*. You will need the
-   *UUID* of a node for making reservations and for power monitoring. In addition,
-   each node also has a *Version UUID*, which is used for retrieving its
-   maintenance history.
+   Each node's UUID is shown in the Node Info panel. You will need the UUID
+   when reserving a specific node by name or for power monitoring.
 
 .. attention::
-   When we replace faulty hardware on a node, the replacement part typically has
-   the same hardware characteristics. For example, a node with a faulty 250 GB
-   hard drive would be replaced with the same 250 GB hard drive model. However, it
-   may be important for your experimental reproducibility to know about those
-   hardware replacement events, in case it affects your metrics.
+   When Chameleon replaces faulty hardware the replacement typically has the
+   same specifications. If hardware-level reproducibility matters for your
+   experiment, take note of any hardware replacement events that may have
+   occurred during your reservation window.
 
-Checking availability for node types
-____________________________________
+The **Reserve Node** tab generates a ready-to-use reservation command. Choose
+**Reserve by node type** to reserve any available node of this type, or
+**Reserve by node name** to reserve this exact node. Select a duration and copy
+the command for your preferred tool.
 
-From the node detail view, you can click the **View Host Calendar** button to
-open the site lease calendar for that node. The calendar shows when the node is
-reserved, letting you identify open windows before making a reservation.
-For instructions on creating a lease, see :ref:`reservations-create-lease-gui`.
+.. figure:: new-bare-metal-cli.png
+   :alt: Auto-generated OpenStack CLI reservation command
 
-If you have filtered the resource browser down to a single node type, clicking
-**View Host Calendar** will open the calendar with that node type pre-selected,
-saving you from having to filter manually after landing on the calendar page.
-If your current filters produce results spanning multiple node types, the
-calendar will open in its default view with a default node type loaded instead.
+   Reserve Node — OpenStack CLI
 
-.. figure:: view_host_discovery.png
-   :alt: Node detail view with availability and reserve buttons
+.. figure:: new-bare-metal-python-chi.png
+   :alt: Auto-generated python-chi reservation snippet
 
-   Node detail view with availability and reserve buttons
+   Reserve Node — python-chi
 
-.. note::
-   You must be logged in to a Chameleon site to view its lease calendar. If you
-   follow a direct link to a site calendar while logged out, you will be
-   redirected to log in and then returned to the calendar automatically.
+.. figure:: new-bare-metal-horizon.png
+   :alt: Reserve in Horizon with node type pre-filled
 
-Generating a reservation script
-_______________________________
+   Reserve Node — Horizon
 
-.. figure:: generate_command.png
+.. _reserving-from-the-cart:
 
-From the filter page of the Hardware Resource Browser, you can also generate a
-reservation script by clicking the **Reserve** button at the bottom of the
-page. The generated command varies depending on your current filter state:
+Reserving from the cart
+_______________________
 
-- If you have filtered down to a **single node type**, the command will reserve
-  one node of that type by node type name.
-- If your filters produce a list of **nodes across multiple types**, the command
-  will reserve each of those exact nodes by their individual UUIDs.
+Checking the checkbox on any node or node type card adds it to the reservation
+cart. When resources are selected a floating bar appears at the bottom of the
+page — click **Reserve selected** to proceed to the cart.
 
-When clicking the **Reserve** button, a dialog containing the auto-generated
-command will appear for you to copy and paste.
+.. figure:: new-cart-reservation.png
+   :alt: Floating bar showing selected resources
 
-.. figure:: reservationscript.png
-   :alt: An auto-generated reservation script
+The cart page groups your selections by site and generates reservation
+instructions for each group. Resources from different sites or of different
+types (bare metal nodes and VM flavors) can be combined in the same cart, and
+each site gets its own set of tool tabs, duration picker, and generated command.
 
-   An auto-generated reservation script
+.. figure:: new-resource-in-cart.png
+   :alt: Cart page showing resources grouped by site
 
-.. seealso::
+   Cart page — resources from two sites
 
-   `Streamlining Resource Discovery and Reservations
-   <https://blog.chameleoncloud.org/posts/streamlining-resource-discovery-and-reservations/>`_
-   — A Tips&Tricks post walking through the hardware browser's filtering,
-   calendar, and reservation workflow end-to-end with a practical example.
+Use **Continue browsing** to return to the discovery page without losing your
+cart, or **Remove all from cart** to clear it. Individual resources can be
+removed with the × next to each entry.
