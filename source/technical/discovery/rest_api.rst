@@ -2,8 +2,8 @@ Using the REST APIs for resource discovery
 ===================================================
 
 The Resource Discovery API gives programmatic access to the same hardware
-inventory that powers the `Hardware Discovery
-<https://chameleoncloud.org/hardware/>`_ page. It is aimed at three main use
+inventory that powers the `Resource Discovery
+<https://discover.chameleoncloud.org>`_ page. It is aimed at three main use
 cases:
 
 - **Scripted node selection** — find nodes matching specific hardware criteria
@@ -13,7 +13,7 @@ cases:
 - **Tool building** — integrate Chameleon hardware data into your own
   dashboards or automation frameworks.
 
-For most users, the Hardware Discovery page or the :ref:`python-chi <jupyter>`
+For most users, the Resource Discovery page or the :ref:`python-chi <jupyter>`
 library is the easier path. This API is for power users and integrators who
 need direct, scriptable access.
 
