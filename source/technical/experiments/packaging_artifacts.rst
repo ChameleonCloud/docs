@@ -93,13 +93,21 @@ visible you want it to be.
    cite your artifact in, e.g., an academic paper.
 2. **Publish without DOI**: this option allows any Chameleon user to find and
    launch your artifact. It can be useful if you want to distribute the artifact
-   widely but do not necessarily with to publish it to Zenodo and get a DOI
+   widely but do not necessarily wish to publish it to Zenodo and get a DOI
    for citation.
-3. **Share via private link**: this option allows you to share the experiment to
+3. **Share via private link**: this option allows you to share the experiment with
    select people, like individual colleagues, advisors, or students. Anybody in
    possession of the link can view and launch any version of the artifact.
 
-To make your artifact shareable, select it in Trovi, click "Share", and check the box before "Enable all users to find and share".
+To make your artifact public (options 1 or 2), open the artifact in Trovi, click
+**Edit**, and change the **Visibility** dropdown from ``private`` to ``public``.
+Publishing to Zenodo and receiving a DOI is a separate step described in
+:ref:`trovi-zenodo`.
+
+To share a private artifact via secret link (option 3), open the artifact in
+Trovi, click **Edit**, and copy the **Shareable Secret Link** shown beneath the
+Visibility field. Anyone with this link can view and launch the artifact without
+needing explicit role assignment.
 
 .. _trovi-roles:
 
