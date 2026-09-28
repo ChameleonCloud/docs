@@ -78,6 +78,24 @@ From the artifact edit page on the Trovi dashboard, you can also add links to ot
 
 While editing an artifact, under "Linked Artifacts", you will see a table of all artifacts. Search or scroll to find the artifact you wish to link, and click the checkbox next to it. Below this table, you can rearrange the order of linked artifacts by dragging and dropping them. Click "Save Links" to save your changes.
 
+.. _trovi-videos-publications:
+
+Adding videos and publications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From the artifact edit page on the Trovi dashboard, you can also add videos,
+such as a recorded talk or demo, and publications that describe or use your
+artifact. They appear after the artifact's description, in the order listed.
+
+Under **Videos**, click **Add Video** and paste the video's URL. YouTube and
+Vimeo videos will be embeded on the artifact's page automatically.
+
+Under **Publications**, either click **Add Publication** fill in the form fields or add from BibTex.
+
+If you import your artifact from GitHub, you can also list videos and
+publications in the repository's ``trovi.json``, using the RO-Crate ``video``
+and ``citation`` properties.
+
 .. _trovi-sharing:
 
 Adjusting sharing settings
