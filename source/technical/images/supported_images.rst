@@ -13,6 +13,7 @@ specifically:
 - CC-Ubuntu24.04-CUDA-VGPU
 - CC-Ubuntu24.04-ROCm
 - CC-Ubuntu24.04-ARM64
+- CC-Ubuntu24.04-CUDA-ARM64
 - CC-Ubuntu22.04
 - CC-Ubuntu22.04-CUDA
 - CC-Ubuntu22.04-ARM64
@@ -26,9 +27,18 @@ use with the ``g1.h100.vgpu.1g.12gb`` flavor and comes pre-configured with the
 appropriate vGPU license. The ROCm images contain similar settings, software,
 and drivers for AMD GPU nodes. And finally, the ARM64 images, such as
 `Ubuntu24.04-ARM64 <https://trovi.chameleoncloud.org/dashboard/artifacts/634cf4db-3096-4ab3-b483-432629b98a20>`_,
-are images specifically built with ARM support for ARM nodes. Non-ARM
-images all assume x86-based architectures. All Chameleon-supported images can
+are images specifically built with ARM support for ARM nodes. The
+``CC-Ubuntu24.04-CUDA-ARM64`` image is the ARM64 variant of the CUDA image for
+the NVIDIA GH200 nodes at CHI@NCAR. Non-ARM images all assume x86-based
+architectures. All Chameleon-supported images can
 be found on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts?tags=appliance>`_ under the **appliance** tag.
+
+.. note::
+   The ``CC-Ubuntu24.04-CUDA-ARM64`` image uses Ubuntu's generic kernel with
+   4K pages. On the GH200 nodes, you can install a kernel with 64K pages, such
+   as NVIDIA's ``linux-nvidia-64k-hwe-24.04``, and reboot for a possible
+   performance gain. See the `NVIDIA Grace Ubuntu installation guide
+   <https://docs.nvidia.com/dccpu/ubuntu-install-guide/>`_.
 
 .. warning::
    Any images with operating system versions that are end-of-life, such as
