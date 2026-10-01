@@ -77,3 +77,18 @@ more space). The animation below shows how easy it is:
 
    Clicking the "Launch with JupyterHub" button to import a Trovi artifact into
    your own Jupyter server.
+
+.. _trovi-comments:
+
+Commenting on artifacts
+-----------------------
+
+You can leave a comment on an artifact, or reply to an existing comment to
+discuss it as a thread. Comments appear at the bottom of the artifact's page.
+You can edit or delete your own comments; deleting a comment removes its text,
+but any replies left beneath it are kept. If you own the artifact, you can also
+:ref:`moderate the comments on it <trovi-comment-moderation>`.
+
+.. note::
+
+   Trovi does not yet send email notifications for comments or replies.

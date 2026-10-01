@@ -146,6 +146,18 @@ assigning roles to other users.
 
 Artifact owners cannot have their Adminstrator privileges removed.
 
+.. _trovi-comment-moderation:
+
+Moderating comments on your artifact
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Comments are published immediately, without prior review. The artifact's owner
+and any user with the **Administrator** role can hide a comment after the fact
+with the **Flag** button, and restore it with **Approve**. When flagging, you
+may record a reason, which only the comment's author and the artifact's
+administrators can see. Administrators can also delete any comment on their
+artifact.
+
 .. _trovi-zenodo:
 
 Publishing to Zenodo
