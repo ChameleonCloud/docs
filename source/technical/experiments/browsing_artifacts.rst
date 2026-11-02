@@ -78,6 +78,32 @@ more space). The animation below shows how easy it is:
    Clicking the "Launch with JupyterHub" button to import a Trovi artifact into
    your own Jupyter server.
 
+.. _trovi-verification:
+
+Verifying artifacts
+-------------------
+
+Artifact verification is a way to provide formal feedback to an artifact's
+author on whether running the artifact met your expectations. The number of
+successful verifications can be seen when browsing all artifacts. By reporting
+a successful verification for an artifact, you are stating that you were able
+to run the artifact and reproduce the result described by the artifact's
+description. By reporting a failure to verify an artifact, you are stating that
+the artifact did not work. When failing to verify, we ask that you leave a
+:ref:`comment <trovi-comments>`, which will help the author and others trying
+to run the artifact.
+
+Your username will appear in a list with other users who left this feedback.
+To verify an artifact, you must be logged in and have launched it at least
+once. We provide a "best-effort" check that a user has launched an artifact,
+without a guarantee that they executed the entire artifact. You can only leave
+one verification for an artifact version, but you can update your verification
+from failure to success or vice versa. Authors and managers of an artifact
+cannot verify it.
+
+To submit a verification, click either the **Successfully verified** or
+**Failure to verify** button in the artifact sidebar.
+
 .. _trovi-comments:
 
 Commenting on artifacts
