@@ -3,6 +3,12 @@
 cc-login command
 ================
 
+.. warning::
+
+   ``cc-login`` uses the application credential flow, which is not
+   recommended, and support for it will be dropped soon. Use
+   :ref:`ccauth <cli-ccauth>` instead.
+
 If you use a CC-* image, a ``cc-login`` command will be available in the
 ``cc`` user's `PATH`. The command performs device authentication, caches an
 application credential for reuse, and can generate OpenStack ``openrc`` files
@@ -19,7 +25,7 @@ authentication.
 
    Authentication information is no longer provided through instance
    vendor-data — see :ref:`cli-vendordata-auth-removal` for details. Use
-   ``cc-login`` to obtain fresh application credentials instead.
+   :ref:`ccauth <cli-ccauth>` to obtain fresh credentials instead.
 
 .. note::
 
