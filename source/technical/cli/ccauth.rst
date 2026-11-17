@@ -16,9 +16,9 @@ token silently, unless it has expired and needs to be refreshed.
 
 .. note::
 
-   The application credential flow (:ref:`cc-login <cli-cc-login>`) is not
-   recommended, and support for it will be dropped soon. Use the ``ccauth``
-   commands below instead.
+   ``cc-login`` has been removed, and ``ccauth`` no longer creates
+   application credentials. If you used ``cc-login``, see
+   :ref:`cli-cc-login` for the equivalent ``ccauth`` commands.
 
 Installation
 ~~~~~~~~~~~~

@@ -10,13 +10,12 @@ credentials. Both require manually creating and downloading credential files.
 
 .. note::
 
-   For most users, :ref:`ccauth <cli-ccauth>` or :ref:`cc-login
-   <cli-cc-login>` are easier than the methods on this page — they
-   authenticate via your browser and generate credential files for you, with
-   no manual password or application credential setup required. See
-   :ref:`which authentication method should I use? <cli-which-auth-method>`
-   for guidance on choosing between them. Use a CLI password or application
-   credential only if neither of those tools fits your workflow.
+   For most users, :ref:`ccauth <cli-ccauth>` is easier than the methods on
+   this page — it authenticates via your browser and generates credential
+   files for you, with no manual password or application credential setup
+   required. See :ref:`which authentication method should I use?
+   <cli-which-auth-method>` for guidance. Use a CLI password or application
+   credential only if ccauth doesn't fit your workflow.
 
 Setting a CLI password
 ----------------------

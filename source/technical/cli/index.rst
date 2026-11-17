@@ -16,13 +16,11 @@ the client and configure your shell environment to access Chameleon features.
 :ref:`ccauth <cli-ccauth>` for most users: it authenticates via a
 browser-based device flow and can generate credentials for multiple
 projects and sites at once, so you don't need to manually download and
-manage separate credential files. If you're working with a single project
-and site and want a tool with nothing to install, :ref:`cc-login
-<cli-cc-login>` is a lighter-weight option preinstalled on CC-\* images.
-The :ref:`password and application credential methods
-<cli-authentication>` still work but require manually creating and
-downloading credential files for each project — only reach for them if
-neither ccauth nor cc-login fits your workflow.
+manage separate credential files. The :ref:`password and application
+credential methods <cli-authentication>` still work but require manually
+creating and downloading credential files for each project — only reach for
+them if ccauth doesn't fit your workflow. The ``cc-login`` command
+:ref:`has been removed <cli-cc-login>`.
 
 Looking to script or orchestrate experiments in Python instead of shell?
 `python-chi <https://python-chi.readthedocs.io/en/latest/>`_ is Chameleon's
@@ -48,8 +46,8 @@ Python library and offers a programmatic alternative to the CLI — see our
 
    installation
    ccauth
-   cc_login
    authentication
    rc_script
    vendordata_auth_removal
+   cc_login
    resources

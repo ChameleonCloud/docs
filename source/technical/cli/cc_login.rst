@@ -1,103 +1,42 @@
 .. _cli-cc-login:
 
-cc-login command
-================
+Removal of the cc-login command
+===============================
 
-.. warning::
+The ``cc-login`` command, which created an application credential on your
+behalf and wrote it to an ``openrc`` file or a ``clouds.yaml`` entry, has been
+removed, and ``ccauth`` no longer creates application credentials. Running
+``cc-login`` now prints a removal notice and exits with an error, so scripts
+that call it fail instead of continuing without credentials.
 
-   ``cc-login`` uses the application credential flow, which is not
-   recommended, and support for it will be dropped soon. Use
-   :ref:`ccauth <cli-ccauth>` instead.
+.. important::
 
-If you use a CC-* image, a ``cc-login`` command will be available in the
-``cc`` user's `PATH`. The command performs device authentication, caches an
-application credential for reuse, and can generate OpenStack ``openrc`` files
-or entries for ``clouds.yaml`` so the OpenStack CLI and libraries can use the
-cached credential.
+   Use :ref:`ccauth <cli-ccauth>` instead. Its ``openrc`` and ``clouds-yaml``
+   commands write files that authenticate through the ``v3chameleonoidc``
+   plugin, so ``ccauth`` must be installed in the same Python environment as
+   your OpenStack client. It is preinstalled on CC-\* images; elsewhere,
+   install it with ``pip install chameleon-ccauth``.
 
-The device authentication flow directs you to a URL in your browser where you
-log in with your Chameleon credentials and approve the device request. Once
-approved, ``cc-login`` creates an application credential on your behalf and
-caches it for reuse, so subsequent OpenStack operations do not require
-authentication.
+``openrc`` files and ``clouds.yaml`` entries that ``cc-login`` already wrote
+stop working once their application credential expires. Regenerate them with
+``ccauth``.
 
-.. warning::
+Replacing cc-login commands
+---------------------------
 
-   Authentication information is no longer provided through instance
-   vendor-data — see :ref:`cli-vendordata-auth-removal` for details. Use
-   :ref:`ccauth <cli-ccauth>` to obtain fresh credentials instead.
+.. list-table::
+   :header-rows: 1
 
-.. note::
+   * - ``cc-login``
+     - ``ccauth`` replacement
+   * - ``cc-login --output-openrc ~/openrc``
+     - ``ccauth openrc --output ~/openrc``
+   * - ``cc-login --output-clouds-yaml ~/.config/openstack/clouds.yaml``
+     - ``ccauth clouds-yaml --output ~/.config/openstack/clouds.yaml``
+   * - ``--app-cred-name``, ``--app-cred-expires-hours``, ``--ttl-seconds``
+     - No replacement. ``ccauth`` caches a refresh token and renews
+       credentials automatically.
 
-   ``cc-login`` can be used to generate credentials for a single project
-   and Chameleon site and does not require a custom plugin for OpenStack
-   authentication. To generate credentials for multiple projects or sites,
-   via device flow authentication with OIDC tokens that automatically refresh,
-   see :ref:`ccauth <cli-ccauth>`.
-
-Usage
-~~~~~
-
-.. code-block:: console
-
-    cc-login [OPTIONS]
-
-Options
-~~~~~~~
-
-The command accepts various options to configure authentication, credential caching,
-and output format. Some of the most commonly used ones are:
-
-- ``--app-cred-name``, ``--app-cred-expires-hours``: Name and lifetime (in hours)
-  for the application credential (default: 24 hours).
-- ``--ttl-seconds``: Local cache validity period in seconds before cc-login will
-  refresh the credential (default: 24 hours).
-- ``--force-refresh``: Bypass the local cache and perform fresh device
-  authentication + app-credential creation.
-- ``--output-openrc``, ``--force-openrc``: Write an ``openrc``-style file with
-  the app-credential (useful for sourcing in shell sessions).
-  Use ``--force-openrc`` to overwrite an existing file.
-- ``--output-clouds-yaml``, ``--cloud-name``, ``--force-clouds-yaml``:
-  Add or update a cloud entry in ``clouds.yaml`` (default cloud name: ``chameleon``).
-  Use ``--force-clouds-yaml`` to overwrite an existing entry.
-
-Examples
-~~~~~~~~
-
-Complete workflow: authenticating and running OpenStack commands
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-To authenticate and run commands like ``openstack image list``, you have two options
-to use credentials obtained via ``cc-login``:
-
-**Option 1: Source an openrc file**
-
-Generate an ``openrc`` file and source it in your shell session:
-
-.. code-block:: bash
-
-    cc-login --output-openrc ~/openrc_chameleon
-    source ~/openrc_chameleon
-    openstack image list
-
-**Option 2: Use clouds.yaml**
-
-Alternatively, generate or update an entry in ``clouds.yaml`` and use the
-``OS_CLOUD`` environment variable:
-
-.. code-block:: bash
-
-    cc-login --output-clouds-yaml ~/.config/openstack/clouds.yaml \
-      --cloud-name chameleon
-    export OS_CLOUD=chameleon
-    openstack image list
-
-Other examples
-+++++++++++++++
-
-Force a fresh device authentication (ignoring the local cache):
-
-.. code-block:: bash
-
-    cc-login --force-refresh
-
+``cc-login`` only worked with a single project and site at a time. ``ccauth``
+can also generate credentials for every site and project you have access to;
+see :ref:`ccauth <cli-ccauth>` for the full set of commands.
