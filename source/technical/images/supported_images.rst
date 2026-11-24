@@ -8,6 +8,9 @@ There are a number of images built and supported by the Chameleon team,
 specifically:
 
 - CC-Ubuntu26.04
+- CC-Ubuntu26.04-CUDA13
+- CC-Ubuntu26.04-ARM64
+- CC-Ubuntu26.04-CUDA13-ARM64
 - CC-Ubuntu24.04
 - CC-Ubuntu24.04-CUDA
 - CC-Ubuntu24.04-CUDA-VGPU
@@ -17,7 +20,8 @@ specifically:
 - CC-Ubuntu22.04
 - CC-Ubuntu22.04-CUDA
 - CC-Ubuntu22.04-ARM64
-- CC-Centos9-Stream
+- CC-CentOS10-Stream
+- CC-CentOS9-Stream
 
 The CUDA images, such as `Ubuntu24.04-CUDA <https://trovi.chameleoncloud.org/dashboard/artifacts/52c5de1e-5ee4-4341-a9af-7d835572a08e>`_,
 contain various settings, software, and drivers specifically
