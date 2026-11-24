@@ -8,6 +8,9 @@ There are a number of images built and supported by the Chameleon team,
 specifically:
 
 - CC-Ubuntu26.04
+- CC-Ubuntu26.04-CUDA13
+- CC-Ubuntu26.04-ARM64
+- CC-Ubuntu26.04-CUDA13-ARM64
 - CC-Ubuntu24.04
 - CC-Ubuntu24.04-CUDA
 - CC-Ubuntu24.04-CUDA-VGPU
@@ -17,7 +20,8 @@ specifically:
 - CC-Ubuntu22.04
 - CC-Ubuntu22.04-CUDA
 - CC-Ubuntu22.04-ARM64
-- CC-Centos9-Stream
+- CC-CentOS10-Stream
+- CC-CentOS9-Stream
 
 The CUDA images, such as `Ubuntu24.04-CUDA <https://trovi.chameleoncloud.org/dashboard/artifacts/52c5de1e-5ee4-4341-a9af-7d835572a08e>`_,
 contain various settings, software, and drivers specifically
@@ -39,6 +43,13 @@ be found on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts?tags=ap
    as NVIDIA's ``linux-nvidia-64k-hwe-24.04``, and reboot for a possible
    performance gain. See the `NVIDIA Grace Ubuntu installation guide
    <https://docs.nvidia.com/dccpu/ubuntu-install-guide/>`_.
+
+.. note::
+   The ``CC-Ubuntu26.04-CUDA13`` image ships CUDA 13, which supports only
+   NVIDIA GPUs from the Turing generation onward, such as the RTX 6000, A100,
+   and H100. It does not work on older GPUs such as the M40, P100, and V100.
+   For those nodes, use ``CC-Ubuntu24.04-CUDA`` or ``CC-Ubuntu22.04-CUDA``,
+   which ship CUDA 12.
 
 .. warning::
    Any images with operating system versions that are end-of-life, such as
