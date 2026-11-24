@@ -44,6 +44,13 @@ be found on `Trovi <https://trovi.chameleoncloud.org/dashboard/artifacts?tags=ap
    performance gain. See the `NVIDIA Grace Ubuntu installation guide
    <https://docs.nvidia.com/dccpu/ubuntu-install-guide/>`_.
 
+.. note::
+   The ``CC-Ubuntu26.04-CUDA13`` image ships CUDA 13, which supports only
+   NVIDIA GPUs from the Turing generation onward, such as the RTX 6000, A100,
+   and H100. It does not work on older GPUs such as the M40, P100, and V100.
+   For those nodes, use ``CC-Ubuntu24.04-CUDA`` or ``CC-Ubuntu22.04-CUDA``,
+   which ship CUDA 12.
+
 .. warning::
    Any images with operating system versions that are end-of-life, such as
    Ubuntu18.04 are no longer offered as Chameleon-supported images. However,
